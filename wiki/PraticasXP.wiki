@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Entendendo as práticas abordadas na Extreme Programming.
 #labels Phase-Support
 
 = Introdução =
