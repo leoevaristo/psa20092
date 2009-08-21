@@ -1,3 +1,5 @@
+#summary Conhecendo o framework SCRUM
+
 = SCRUM =
 
 Para melhor entender a metodologia SCRUM utilizada para planejamento de projetos de software. Também será usada no projeto de conclusão de curso.
