@@ -1,0 +1,15 @@
+Roles
+
+
+3.1.2.1.	Cadastro e manutenção de Usuários (Corretores, Funcionários); - Alain
+3.1.2.2.	Cadastro e manutenção de Clientes; - Carlos
+3.1.2.3.	Cadastro e manutenção de Imóveis; Felipe Weldson
+3.1.2.4.	Cadastro e manutenção de Proprietários; - Filipe Macedo
+3.1.2.5.	Cadastro e manutenção de visitas; - George
+3.1.2.6.	Cadastro e manutenção de Valores de mercado; Kleiton
+3.1.2.7.	Consultar Visitas; - Robson 
+3.1.2.8.	Gerenciar perfil de compra de cliente (Com base em visitas feitas); - Valdinei
+3.1.2.9.	Notificar imóvel ao corretor; - Yasmin
+3.1.2.10.	Consultar Imóveis; - Alain
+3.1.2.11.	Gerenciar agenda do corretor com vendas e visitas; - Carlos
+
