@@ -1,0 +1,55 @@
+Alterado por Kleyton e George
+
+Adm Condomínio - Requisitos
+
+--Dependências do Condomínio
+Cadastrar e editar dependencia
+Cadastrar e editar reserva de dependência
+Emitir relatório de reserva de dependência -- (Para controle interno e do módulo
+administrativo)
+Controle de quantidade de reservas por condômino (Ex: 3 por ano, podendo ser
+modificado de acordo com resultados de reuniões)
+
+--Apartamentos
+Cadastrar e editar apartamentos
+Emitir relatório ou consultas (Parâmetros como: sexo e faixa etária) contendo
+quantidade de condôminos por andar/apartamentos
+
+--Codôminos
+Cadastrar e editar condômino
+Emitir Relatório ou Consultar Condômino 
+Cadastrar e editar perfil do condômino
+Cadastrar e manipular pessoas autorizadas a terem acesso ao apartamento
+Emitir relatório de perfis dos condôminos -- (Para controle do módulo administrativo)
+Emitir relatório de condôminos por apartamento
+Emitir relatório de condôminos aniversariantes por mês
+Associar condômino a aptº
+
+
+--Veículos
+Cadastrar e editar Veículos
+Consultar veículo 
+Associar veículo a condômino
+
+
+--Estatuto do Condomínio
+Cadastrar e editar regras
+Cadastrar e editar infração
+Emitir relatório de infrações ocorridas
+Emitir aviso para condômino infrator
+Emitir multa para condômino infrator
+
+
+--Reuniões
+Cadastrar Pauta da reunião
+Cadastrar e editar reunião 
+Emitir relatório de aviso de reunião
+Emitir relatório da ata da reunião
+
+--Balancete
+Cadastrar e editar receita
+Cadastrar e editar despesas
+Emitir relatório de balancete
+Emitir relatório de carta de cobrança para o aptº inadimplente
+Emitir a cada x (a ser determinado pelo síndico ou resposável) meses carta de
+agradecimento para adimplentes
