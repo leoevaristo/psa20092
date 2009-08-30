@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Leia-me</title>
+<style type="text/css">
+<!--
+.style1 {color: #FF0000}
+-->
+li{
+	margin:10px 0;
+}
+</style>
+</head>
+
+<body>
+<h1>Orientações para montagem dos formulários</h1>
+    <p>É importante que sigam à risca todas as orientaçõs deste documento, pois como o css do formulário está padronizado se houver alguma modificação o layout irá "quebrar".</p>
+    <ul>
+        <li>Só existirá um Form;</li>
+        <li>Poderá existir vários "fieldsets", as tags "fieldset" servem para separar o conteúdo do form por grupo. Observando o modelo percebe-se que existe dois fieldsets, cada um com uma tag "legend" com suas descrições "grupo 01" e "grupo 02" respectivamente. Utilizando um exemplo real pode-se conciderar "Dados Pessoais" um grupo "Informações Gerais" para outro grupo; </li>
+        <li>A estrutura de uma linha do form está da seguinte forma: <span class="style1">&lt;span class=&quot;linhaForm&quot;&gt;&lt;label for=&quot;texto&quot; class=&quot;lab&quot;&gt;texto&lt;/label&gt;&lt;input id=&quot;texto&quot; name=&quot;texto&quot; class=&quot;inp&quot; type=&quot;text&quot; /&gt;&lt;/span&gt;</span></li>
+        <ul>
+          <li>A tag "span" representa uma linha, nela contém um atributo "class" que não deve ser alterada;</li>
+            <li>Dentro da tag "span" existem as tags "label" e "input", no caso dos inputs, eles podem ser modificados pelos "select" e "textarea" como contém no modelo padão;</li>
+            <li>Na tag "label" tamb&eacute;m não se deve mexer no atributo "class", j&aacute; no atribulo "for" será informado o nome do campo desejado, por exemplo for="nome" ou for="idade". Dentro da tag onde contém a palavra "texto" será substituido pelo nome do campo, esse é o texto que será mostrado para o usuário;</li>
+            <li>Na tag "input" tamb&eacute;m  não se deve  mexer no atributo "class", j&aacute; no atributo "id" será informado o mesmo nome que foi dado ao atributo "for" do label, exemplo id="nome" para for="nome", essa ligação será percebida quando o usuário clicar no "texto" que existe dentro da tag "label". Uma vez clicado irá ativar um "setfocus" para  o input em questão;</li>
+      </ul>
+        <li>É importante observar que todas as linhas seguem uma mesma estrutura e que NUNCA se deve modificar os atributos "class";</li>
+        <li>Para as tags "input" que tiverem o atributo "type" com a propriedade "radio" é importante sempre deixar o atributo "name" igual para todos, fazendo assim que todos pertençam ao mesmo grupo.</li>
+    </ul>
+</body>
+</html>

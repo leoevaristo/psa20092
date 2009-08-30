@@ -1,0 +1,31 @@
+*{ font-size:12px; font-family:"Trebuchet MS", sans-serif; }
+
+form.cadastro{
+	width:500px;
+	padding:0;
+	margin:0;
+}
+form.cadastro fieldset{
+	border:#cccccc 1px solid;
+	padding:10px;
+	margin:0;
+}
+form.cadastro fieldset span.linhaForm{
+	display:block;
+	margin:5px 0;
+}
+form.cadastro span.botoes{
+	display:block;
+	margin:5px 0;
+}
+form.cadastro fieldset span.linhaForm  label.lab{
+	width:130px;
+	float:left;
+	text-align:right;
+	margin-right:5px;	
+}
+form.cadastro fieldset span.linhaForm textarea.text{
+	width:250px;
+	height:100px;
+}
+
