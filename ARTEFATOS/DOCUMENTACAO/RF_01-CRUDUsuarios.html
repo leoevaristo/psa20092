@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>CRUD Usuários</title>
+<link href="css/layout.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<form class="cadastro">
+<fieldset>
+<legend>Dados Cadastrais</legend>
+    <span class="linhaForm">
+        <label for="opcoes" class="lab">Tipo Usuário</label>
+        <select id="opcoes" class="selec" name="opcoes">
+            <option value="Funcionario" >Funcionario</option>
+            <option value="Corretor" >Corretor</option>
+        </select>
+    </span>
+    <span class="linhaForm"><label for="nome" class="lab">Nome</label><input id="nome" name="nome" class="inp" type="text"  /></span>
+    <span class="linhaForm"><label for="rg" class="lab">RG</label><input id="rg" name="rg" class="inp" type="text" /></span>
+    <span class="linhaForm"><label for="cpf" class="lab">CPF</label><input id="cpf" name="cpf" class="inp" type="text" /></span>
+    <span class="linhaForm"><label for="dtanasc" class="lab">Data Nascimento</label><input id="dtanasc" name="dtanasc" class="inp" type="text" /></span>
+    <span class="linhaForm">
+    	<label class="lab">Sexo</label>
+    	<input id="radio01" type="radio" class="rad" name="radios" value="01" /><label for="masculino">Masculino</label>
+        <input id="radio02" type="radio" class="rad" name="radios" value="02" /><label for="Feminino">Feminino</label>
+	</span>
+      <span class="linhaForm"><label for="email" class="lab">E-mail</label><input id="email" name="email" class="inp" type="text" /></span>
+      <span class="linhaForm"><label for="telres" class="lab">Telefone Residencial</label><input id="telres" name="telres" class="inp" type="text" /></span>
+        <span class="linhaForm"><label for="telcomer" class="lab">Telefone Comercial</label><input id="telcomer" name="telcomer" class="inp" type="text" /></span>
+  <span class="linhaForm"><label for="telcel" class="lab">Telefone Celular</label><input id="telcel" name="telcel" class="inp" type="text" /></span>
+</fieldset>
+<fieldset>
+
+
+
+<legend>Corretor</legend>
+    <span class="linhaForm"><label for="creci" class="lab">CRECI</label><input id="creci" name="creci" class="inp" type="text"  /></span>
+</fieldset>
+<fieldset>
+
+
+
+<legend>Endereço</legend>
+    <span class="linhaForm"><label for="endereco" class="lab">Endereço</label><input id="endereco" name="endereco" class="inp" type="text" /></span>
+    <span class="linhaForm"><label for="bairro" class="lab">Bairro</label><input id="bairro" name="bairro" class="inp" type="text" /></span>
+    <span class="linhaForm"><label for="cep" class="lab">CEP</label><input id="cep" name="cep" class="inp" type="text" /></span>
+    <span class="linhaForm"><label for="cidade" class="lab">Cidade</label><input id="cidade" name="cidade" class="inp" type="text" /></span>
+    <span class="linhaForm">
+        <label for="estado" class="lab">Estado</label>
+        <select id="estado" class="selec" name="estado">
+            <option value="opcao1" >AC</option>
+            <option value="opcao2" >AL</option>
+            <option value="opcao3" >AP</option>
+            <option value="opcao1" >AM</option>
+            <option value="opcao2" >BA</option>
+            <option value="opcao3" >CE</option>
+            <option value="opcao1" >DF</option>
+            <option value="opcao2" >ES</option>
+            <option value="opcao3" >GO</option>
+            <option value="opcao1" >MA</option>
+            <option value="opcao2" >MT</option>
+            <option value="opcao3" >MS</option>
+            <option value="opcao1" >MG</option>
+            <option value="opcao2" >PA</option>
+            <option value="opcao3" >PB</option>
+            <option value="opcao1" >PR</option>
+            <option value="opcao2" >PE</option>
+            <option value="opcao3" >PI</option>
+            <option value="opcao1" >RJ</option>
+            <option value="opcao2" >RN</option>
+            <option value="opcao3" >RS</option>
+            <option value="opcao1" >RO</option>
+            <option value="opcao2" >RR</option>
+            <option value="opcao3" >SC</option>
+            <option value="opcao1" >SP</option>
+            <option value="opcao2" >SE</option>
+            <option value="opcao3" >TO</option>
+        </select>
+    </span>
+</fieldset>
+
+	<span class="botoes"><input id="enviar" name="enviar" type="submit" value="Enviar Dados" /><input id="enviar" name="limpar" type="reset" value="Limpar Fumulário" /></span>
+    
+    
+</form>
+</body>
+</html>
