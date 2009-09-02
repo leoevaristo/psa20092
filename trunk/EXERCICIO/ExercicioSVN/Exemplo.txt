@@ -4,5 +4,3 @@ exemplo do controle de versão
 Estamos usando o :
 - Subclipse
 - Subversion
-
-WOOHOO!!!
