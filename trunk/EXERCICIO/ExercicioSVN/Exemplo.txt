@@ -1,0 +1,6 @@
+Este Arquivo só serve para 
+exemplo do controle de versão
+
+Estamos usando o :
+- Subclipse
+- Subversion
