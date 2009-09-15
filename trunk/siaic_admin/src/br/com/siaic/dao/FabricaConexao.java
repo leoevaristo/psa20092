@@ -8,6 +8,19 @@ import java.sql.SQLException;
  * @author carlos junior
  */
 public class FabricaConexao {
+
+	
+	
+	
+	/**
+	 * Construtor da classe FabricaConexao.
+	 */
+	private FabricaConexao()
+	{
+		
+	}
+	
+	
 	
 	
 	/**
