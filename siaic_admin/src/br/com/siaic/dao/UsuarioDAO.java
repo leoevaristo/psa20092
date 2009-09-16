@@ -83,7 +83,7 @@ public class UsuarioDAO {
 	
 	
 	
-	public void removerCliente ( Usuario usuario )
+	public void removerUsuario ( Usuario usuario )
 	{
 		 
 	}
@@ -91,7 +91,7 @@ public class UsuarioDAO {
 	
 	
 	
-	public void alterarCliente ( Usuario usuario) throws SQLException 
+	public void alterarUsuario ( Usuario usuario) throws SQLException 
 	{
 		
 		String sql = "UPDATE PESSOA_USUARIO SET PEU_CRECI = ?, PEU_LOGIN = ?, PEU_SENHA = ?" 
