@@ -8,15 +8,7 @@ public class DAONotificacao {
 
 	private Query conn;
 
-	private static DAONotificacao instance;
-
-	private static DAONotificacao getInstance() {
-		if (DAONotificacao.instance == null)
-			DAONotificacao.instance = new DAONotificacao();
-		return DAONotificacao.instance;
-	}
-
-	private DAONotificacao() {
+	public DAONotificacao() {
 		this.conn = new Query();
 	}
 	
@@ -68,16 +60,17 @@ public class DAONotificacao {
 		return -1;
 	}
 	
-	public void notificar(int perfil, int corretor, int imovel) {
-		/*PreparedStatement ps = 
+	public void notificar(int codigoCliente, int codigoCorretor, int codigoImovel) {
+		PreparedStatement ps = 
 			this.conn.getPreparedStatement("insert into AGENDA (AGE_PESSOA_CLIENTE,AGE_PESSOA_USUARIO,AGE_IMOVEL) values (?,?,?)");
     	try {
-			ps.setInt(0, codigoPerfil);
-			
+			ps.setInt(0, codigoCliente);
+			ps.setInt(1, codigoCorretor);
+			ps.setInt(2, codigoImovel);
+			//ps.setString(3, "Agendamento automático, gerado por notificação.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return -1;*/
 	}
 	
 }
