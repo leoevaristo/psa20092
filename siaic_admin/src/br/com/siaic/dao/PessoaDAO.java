@@ -9,7 +9,11 @@ import br.com.siaic.businesslogic.Pessoa;
 
 
 
-
+/**
+ * 
+ * @author Carlos R. N. Junior
+ *
+ */
 public class PessoaDAO 
 {
 	
@@ -28,12 +32,16 @@ public class PessoaDAO
 		
 		try 
 		{
+			
 			this.conexao = FabricaConexao.conectar();
+			
 		}
+		
 		catch (SQLException e) 
 		{
 			
 			e.printStackTrace();
+			
 		}		
 		
 	}

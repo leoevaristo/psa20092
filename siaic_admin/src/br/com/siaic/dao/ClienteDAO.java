@@ -11,7 +11,11 @@ import br.com.siaic.businesslogic.Cliente;
 
 
 
-
+/**
+ * 
+ * @author Carlos R. N. Junior
+ *  *
+ */
 public class ClienteDAO {
 	
 	

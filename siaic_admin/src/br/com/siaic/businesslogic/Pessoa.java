@@ -2,7 +2,11 @@ package br.com.siaic.businesslogic;
 
 
 
-
+/**
+ * 
+ * @author Carlos R. N. Junior
+ *
+ */
 public class Pessoa 
 {
 	
