@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<file-systems VERSION="2.0.0" application-name="siaic_admin"
+ model-entity="FileSystems" workspace-home="./WebContent/WEB-INF">
+ <file-system NAME="WEB-INF" location="%workspace.home%" model-entity="FileSystemFolder"/>
+ <file-system NAME="WEB-ROOT" info="Content-Type=Web"
+  location="%workspace.home%/.." model-entity="FileSystemFolder"/>
+ <file-system NAME="src" location="%workspace.home%/../../src" model-entity="FileSystemFolder"/>
+ <file-system NAME="lib" location="%workspace.home%/lib" model-entity="FileSystemFolder"/>
+ <file-system NAME="classes" location="%workspace.home%/classes" model-entity="FileSystemFolder"/>
+ <file-system NAME="siaic_admin" location="%eclipse.project%" model-entity="FileSystemFolder"/>
+ <file-system NAME="lib-jsp-api.jar"
+  location="/usr/local/tomcat6/lib/jsp-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-servlet-api.jar"
+  location="/usr/local/tomcat6/lib/servlet-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-catalina-ant.jar"
+  location="/usr/local/tomcat6/lib/catalina-ant.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-el-api.jar"
+  location="/usr/local/tomcat6/lib/el-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jasper-el.jar"
+  location="/usr/local/tomcat6/lib/jasper-el.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jasper.jar"
+  location="/usr/local/tomcat6/lib/jasper.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jasper-jdt.jar"
+  location="/usr/local/tomcat6/lib/jasper-jdt.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-i18n-fr.jar"
+  location="/usr/local/tomcat6/lib/tomcat-i18n-fr.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-catalina-ha.jar"
+  location="/usr/local/tomcat6/lib/catalina-ha.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-catalina.jar"
+  location="/usr/local/tomcat6/lib/catalina.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-dbcp.jar"
+  location="/usr/local/tomcat6/lib/tomcat-dbcp.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-annotations-api.jar"
+  location="/usr/local/tomcat6/lib/annotations-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-catalina-tribes.jar"
+  location="/usr/local/tomcat6/lib/catalina-tribes.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-i18n-ja.jar"
+  location="/usr/local/tomcat6/lib/tomcat-i18n-ja.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-coyote.jar"
+  location="/usr/local/tomcat6/lib/tomcat-coyote.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-i18n-es.jar"
+  location="/usr/local/tomcat6/lib/tomcat-i18n-es.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-resources.jar"
+  location="/usr/lib/jvm/java-6-sun-1.6.0.12/jre/lib/resources.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-dnsns.jar"
+  location="/usr/lib/jvm/java-6-sun-1.6.0.12/jre/lib/ext/dnsns.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-sunjce_provider.jar"
+  location="/usr/lib/jvm/java-6-sun-1.6.0.12/jre/lib/ext/sunjce_provider.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-sunpkcs11.jar"
+  location="/usr/lib/jvm/java-6-sun-1.6.0.12/jre/lib/ext/sunpkcs11.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-localedata.jar"
+  location="/usr/lib/jvm/java-6-sun-1.6.0.12/jre/lib/ext/localedata.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-commons-beanutils.jar"
+  location="/home/carlos/NetBeansProjects/AprendizadoFacelets/build/web/WEB-INF/lib/commons-beanutils.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-commons-collections.jar"
+  location="/home/carlos/NetBeansProjects/AprendizadoFacelets/build/web/WEB-INF/lib/commons-collections.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-commons-digester.jar"
+  location="/home/carlos/NetBeansProjects/AprendizadoFacelets/build/web/WEB-INF/lib/commons-digester.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-commons-logging.jar"
+  location="/home/carlos/NetBeansProjects/AprendizadoFacelets/build/web/WEB-INF/lib/commons-logging.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jstl.jar"
+  location="/home/carlos/NetBeansProjects/AprendizadoFacelets/build/web/WEB-INF/lib/jstl.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-standard.jar"
+  location="/home/carlos/NetBeansProjects/AprendizadoFacelets/build/web/WEB-INF/lib/standard.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-el-impl-1.0.jar"
+  location="/home/carlos/NetBeansProjects/AprendizadoFacelets/build/web/WEB-INF/lib/el-impl-1.0.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jsf-api.jar"
+  location="/home/carlos/NetBeansProjects/AprendizadoFacelets/build/web/WEB-INF/lib/jsf-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jsf-facelets.jar"
+  location="/home/carlos/NetBeansProjects/AprendizadoFacelets/build/web/WEB-INF/lib/jsf-facelets.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jsf-impl.jar"
+  location="/home/carlos/NetBeansProjects/AprendizadoFacelets/build/web/WEB-INF/lib/jsf-impl.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-el-api-1.0.jar"
+  location="/home/carlos/workspace/siaic_admin/WebContent/WEB-INF/lib/el-api-1.0.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jstl-api-1.2.jar"
+  location="/home/carlos/workspace/siaic_admin/WebContent/WEB-INF/lib/jstl-api-1.2.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jstl-impl-1.2.jar"
+  location="/home/carlos/workspace/siaic_admin/WebContent/WEB-INF/lib/jstl-impl-1.2.jar" model-entity="FileSystemJar"/>
+ <web SERVLET_VERSION="2.4" model-entity="JstWeb" model-path="/web.xml">
+  <module URI="/WEB-INF/faces-config.xml" model-entity="WebJSFModule"
+   model-path="/faces-config.xml" src="src" web-root="WEB-ROOT"/>
+ </web>
+</file-systems>
