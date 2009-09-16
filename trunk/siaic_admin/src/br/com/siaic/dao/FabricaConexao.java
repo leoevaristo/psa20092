@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * @author carlos junior
+ * @author Carlos R. N. Junior
  */
 public class FabricaConexao {
 
@@ -24,7 +24,7 @@ public class FabricaConexao {
 	
 	
 	/**
-	 * Cria conexão única com o banco de dados.
+	 * Cria conexï¿½o ï¿½nica com o banco de dados.
 	 * @return Connection
 	 */
 	public static Connection conectar() throws SQLException
@@ -33,13 +33,15 @@ public class FabricaConexao {
 		try
 		{
 			
-			Class.forName("com.mysql.jdbc.Driver");
-			
+			Class.forName("com.mysql.jdbc.Driver");			
 			
 		}
+		
 		catch(ClassNotFoundException e)
 		{
+			
 			e.printStackTrace();
+			
 		}
 		
 		
