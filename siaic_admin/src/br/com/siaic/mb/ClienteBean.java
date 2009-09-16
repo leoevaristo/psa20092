@@ -7,13 +7,15 @@ import br.com.siaic.dao.ClienteDAO;
 
 
 
-public class ClienteBean {
+public class ClienteBean 
+{
 	
 	private Cliente cliente;
 	
 	
 	
-	public ClienteBean(){
+	public ClienteBean()
+	{
 		
 		cliente = new Cliente();
 	}
@@ -21,21 +23,24 @@ public class ClienteBean {
 	
 	
 	
-	public Cliente getCliente() {
+	public Cliente getCliente() 
+	{
 		return cliente;
 	}
 
 
 
 
-	public void setCliente(Cliente cliente) {
+	public void setCliente(Cliente cliente)
+	{
 		this.cliente = cliente;
 	}
 
 
 
 
-	public String addCliente() throws SQLException{
+	public String addCliente() throws SQLException
+	{
 		
 		ClienteDAO dao = new ClienteDAO();
 		
