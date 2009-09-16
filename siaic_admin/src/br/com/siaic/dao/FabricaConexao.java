@@ -45,7 +45,7 @@ public class FabricaConexao {
 		}
 		
 		
-		return DriverManager.getConnection("jdbc:mysql://localhost:3306/BANCO","LOGIN","SENHA");
+		return DriverManager.getConnection("jdbc:mysql://localhost:3306/SIAIC","root","21Cr4zy12");
 		
 	}
 
