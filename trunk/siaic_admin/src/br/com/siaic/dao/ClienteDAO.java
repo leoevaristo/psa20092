@@ -38,7 +38,7 @@ public class ClienteDAO {
 		
 		}
 		
-		catch ( SQLException e )
+		catch ( Exception e )
 		{
 			
 			e.printStackTrace();
@@ -52,8 +52,8 @@ public class ClienteDAO {
 	public void adicionarCliente ( Cliente cliente ) throws SQLException 
 	{
 		
-		String sql = "INSERT INTO PESSOA_CLIENTE( PEC_CODIGO,PEC_CPF,PEC_RG,PEC_CNPJ )" +
-				"VALUES (?, ?, ?,?)";
+		String sql = "INSERT INTO PESSOA_CLIENTE( PEC_CODIGO,PEC_CPF,PEC_RG,PEC_CNPJ )" 
+					+ "VALUES (?, ?, ?,?)";
 		
 		try{
 		
@@ -71,7 +71,7 @@ public class ClienteDAO {
 		
 		}
 		
-		catch ( SQLException e )
+		catch ( Exception e )
 		{
 			
 			throw new SQLException ( "Erro ao inserir dados no banco." );
@@ -94,7 +94,8 @@ public class ClienteDAO {
 	public void alterarCliente ( Cliente cliente ) throws SQLException 
 	{
 		
-		String sql = "UPDATE PESSOA_CLIENTE SET PEC_CPF = ?, PEC_RG = ?, PEC_CNPJ = ? WHERE PEC_CODIGO = ?";
+		String sql = "UPDATE PESSOA_CLIENTE SET PEC_CPF = ?, PEC_RG = ?, PEC_CNPJ = ?" 
+					+" WHERE PEC_CODIGO = ?";
 		
 		try
 		{
@@ -110,7 +111,7 @@ public class ClienteDAO {
 			
 		}
 		
-		catch(SQLException e)
+		catch(Exception e)
 		{
 			
 			throw new SQLException("Não foi possível alterar o banco de dados.");
@@ -125,10 +126,10 @@ public class ClienteDAO {
 	{
 		
 		String sql = "SELECT p.PES_ENDERECO, p.PES_NOME, p.PES_TELEFONE, p.PES_CELULAR, p.PES_EMAIL," 
-				+ "c.PEC_CODIGO,c.PEC_CPF,c.PEC_RG,c.PEC_CNPJ" 
-				+ "e.END_LOGRADOURO,e.END_NOME,e.END_CEP,e.END_BAIRRO,e.END_CODIGO "
-				+ "FROM PESSOA p, PESSOA_CLIENTE c, ENDERECO e" 
-				+ "WHERE p.PES_NOME LIKE ? AND p.PES_ENDERECO = e.END_CODIGO AND p.PES_CODIGO = c.PEC_CODIGO;";
+					+ "c.PEC_CODIGO,c.PEC_CPF,c.PEC_RG,c.PEC_CNPJ" 
+					+ "e.END_LOGRADOURO,e.END_NOME,e.END_CEP,e.END_BAIRRO,e.END_CODIGO "
+					+ "FROM PESSOA p, PESSOA_CLIENTE c, ENDERECO e" 
+					+ "WHERE p.PES_NOME LIKE ? AND p.PES_ENDERECO = e.END_CODIGO AND p.PES_CODIGO = c.PEC_CODIGO;";
 		
 					
 			PreparedStatement ps = conexao.prepareStatement(sql);
