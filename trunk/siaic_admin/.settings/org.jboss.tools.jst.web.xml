@@ -70,12 +70,12 @@
   location="/home/carlos/NetBeansProjects/AprendizadoFacelets/build/web/WEB-INF/lib/jsf-facelets.jar" model-entity="FileSystemJar"/>
  <file-system NAME="lib-jsf-impl.jar"
   location="/home/carlos/NetBeansProjects/AprendizadoFacelets/build/web/WEB-INF/lib/jsf-impl.jar" model-entity="FileSystemJar"/>
- <file-system NAME="lib-el-api-1.0.jar"
-  location="/home/carlos/workspace/siaic_admin/WebContent/WEB-INF/lib/el-api-1.0.jar" model-entity="FileSystemJar"/>
  <file-system NAME="lib-jstl-api-1.2.jar"
   location="/home/carlos/workspace/siaic_admin/WebContent/WEB-INF/lib/jstl-api-1.2.jar" model-entity="FileSystemJar"/>
  <file-system NAME="lib-jstl-impl-1.2.jar"
   location="/home/carlos/workspace/siaic_admin/WebContent/WEB-INF/lib/jstl-impl-1.2.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-mysql-connector-java-5.1.7-bin.jar"
+  location="/home/carlos/workspace/siaic_admin/WebContent/WEB-INF/lib/mysql-connector-java-5.1.7-bin.jar" model-entity="FileSystemJar"/>
  <web SERVLET_VERSION="2.4" model-entity="JstWeb" model-path="/web.xml">
   <module URI="/WEB-INF/faces-config.xml" model-entity="WebJSFModule"
    model-path="/faces-config.xml" src="src" web-root="WEB-ROOT"/>

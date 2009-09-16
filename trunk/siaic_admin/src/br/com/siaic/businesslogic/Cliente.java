@@ -7,10 +7,10 @@ import br.com.siaic.dao.ClienteDAO;
 
 
 
-/*
- * Classe que manipula todos os
- * dados referentes ao cliente.
+/**
  * 
+ * @author Carlos R. N. Junior
+ *
  */
 public class Cliente {
 	
