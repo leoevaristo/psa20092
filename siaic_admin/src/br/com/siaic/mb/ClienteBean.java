@@ -1,6 +1,8 @@
 package br.com.siaic.mb;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.dao.ClienteDAO;
@@ -81,5 +83,19 @@ public class ClienteBean
 		
 		
 		return r;
+	}
+	
+	
+	
+	
+	public List<Cliente> ExibirTodosClientes()
+	{
+		//TODO
+			
+		ClienteDAO dao = new ClienteDAO();
+		
+		return dao.getTodosClientes();	
+			
+		
 	}
 }
