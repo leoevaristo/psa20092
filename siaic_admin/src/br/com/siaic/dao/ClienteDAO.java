@@ -113,7 +113,7 @@ public class ClienteDAO {
 		catch(SQLException e)
 		{
 			
-			throw new SQLException("NÃ£o foi possÃ­vel alterar o banco de dados.");
+			throw new SQLException("Não foi possível alterar o banco de dados.");
 		
 		}
 	}
@@ -121,7 +121,7 @@ public class ClienteDAO {
 	
 	
 	
-	public List < Cliente > getClientes ( String nome ) throws SQLException
+	public List < Cliente > getClientesPeloNome ( String nome ) throws SQLException
 	{
 		
 		String sql = "SELECT p.PES_ENDERECO, p.PES_NOME, p.PES_TELEFONE, p.PES_CELULAR, p.PES_EMAIL," 
@@ -164,11 +164,15 @@ public class ClienteDAO {
 	
 	
 	
-	public Cliente getClientes ()
+	public List<Cliente> getTodosClientes ()
 	{
 		//TODO
-		return new Cliente();
+		return new ArrayList<Cliente>();
 	}
+	
+	
+	
+	
 	
 	
 	
