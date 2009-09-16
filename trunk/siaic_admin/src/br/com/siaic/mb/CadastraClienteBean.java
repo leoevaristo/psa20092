@@ -7,46 +7,66 @@ import br.com.siaic.dao.ClienteDAO;
 
 
 
-public class ClienteBean 
+public class CadastraClienteBean 
 {
 	
 	private Cliente cliente;
 	
 	
-	
-	public ClienteBean()
+	/**
+	 * 
+	 */
+	public CadastraClienteBean()
 	{
 		
 		cliente = new Cliente();
+		
 	}
 	
 	
 	
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public Cliente getCliente() 
 	{
+		
 		return cliente;
+		
 	}
 
 
 
-
+	/**
+	 * 
+	 * @param cliente
+	 */
 	public void setCliente(Cliente cliente)
 	{
+		
 		this.cliente = cliente;
+		
 	}
 
 
 
-
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
 	public String addCliente() throws SQLException
-	{
+	{	
+		//TODO
+		String r = "";
 		
 		ClienteDAO dao = new ClienteDAO();
 		
 		dao.adicionarCliente(cliente);
 		
-		return "sucesso";
+		return r;
+		
 	}
 
 }
