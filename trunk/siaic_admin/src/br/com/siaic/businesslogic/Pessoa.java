@@ -1,0 +1,163 @@
+package br.com.siaic.businesslogic;
+
+
+
+
+public class Pessoa 
+{
+	
+	
+	
+	
+	private String nome;
+	
+	
+	
+	
+	private String telefone;
+	
+	
+	
+	
+	private String celular;
+	
+	
+	
+	
+	private String email;
+	
+	
+	
+	
+	private String tipoPessoa;
+	
+	
+	
+	
+	private Endereco endereco;
+
+
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getNome() {
+		return nome;
+	}
+
+
+
+	/**
+	 * 
+	 * @param nome
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTelefone() {
+		return telefone;
+	}
+
+
+
+	/**
+	 * 
+	 * @param telefone
+	 */
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getCelular() {
+		return celular;
+	}
+
+
+
+	/**
+	 * 
+	 * @param celular
+	 */
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+
+
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	/**
+	 * 
+	 * @param email
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTipoPessoa() {
+		return tipoPessoa;
+	}
+
+
+
+	/**
+	 * 
+	 * @param tipoPessoa
+	 */
+	public void setTipoPessoa(String tipoPessoa) {
+		this.tipoPessoa = tipoPessoa;
+	}
+
+
+
+	/**
+	 * 
+	 * @return
+	 */
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+
+
+	/**
+	 * 
+	 * @param endereco
+	 */
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	
+	
+	
+	
+	
+}
