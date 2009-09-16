@@ -12,6 +12,10 @@ public class Pessoa
 	
 	
 	
+	private int codigoPessoa;
+	
+	
+	
 	
 	private String nome;
 	
@@ -40,6 +44,30 @@ public class Pessoa
 	
 	private Endereco endereco;
 
+	
+	
+	
+	public Pessoa()
+	{
+		endereco = new Endereco();
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int getCodigoPessoa() {
+		return codigoPessoa;
+	}
+
+
+	/**
+	 * 
+	 * @param codigoPessoa
+	 */
+	public void setCodigoPessoa(int codigoPessoa) {
+		this.codigoPessoa = codigoPessoa;
+	}	
 
 
 	/**

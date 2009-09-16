@@ -36,7 +36,7 @@ public class FabricaConexao {
 		{
 			
 			Class.forName(url);		
-			c = DriverManager.getConnection("jdbc:mysql://localhost:3306/SIAIC","USUARIO","SENHA");
+			c = DriverManager.getConnection("jdbc:mysql://localhost:3306/SIAIC","root","21Cr4zy12");
 			
 		}
 		
