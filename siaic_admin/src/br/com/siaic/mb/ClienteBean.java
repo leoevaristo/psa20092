@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.dao.ClienteDAO;
 
-public class AlteraClienteBean 
+public class ClienteBean 
 {
 
 	private Cliente cliente;
@@ -14,7 +14,7 @@ public class AlteraClienteBean
 	/**
 	 * 
 	 */
-	public AlteraClienteBean()
+	public ClienteBean()
 	{
 		
 		cliente = new Cliente();
@@ -46,6 +46,26 @@ public class AlteraClienteBean
 		this.cliente = cliente;
 		
 	}
+
+
+
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
+	public String addCliente() throws SQLException
+	{	
+		//TODO
+		String r = "";
+		
+		ClienteDAO dao = new ClienteDAO();
+		
+		dao.adicionarCliente(cliente);
+		
+		return r;
+		
+	}
 	
 	
 	
@@ -62,5 +82,4 @@ public class AlteraClienteBean
 		
 		return r;
 	}
-
 }
