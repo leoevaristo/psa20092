@@ -22,11 +22,6 @@ public class Cliente {
 
 
 
-	private String sobreNome;
-	
-	
-	
-	
 	//private String sexo;
 	
 	
@@ -101,31 +96,6 @@ public class Cliente {
 	{
 		this.codigo = codigo;
 	}
-	
-	
-	
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public String getSobreNome() 
-	{
-		return sobreNome;
-	}
-	
-	
-	
-	
-	/**
-	 * 
-	 * @param sobreNome
-	 */
-	public void setSobreNome(String sobreNome) 
-	{
-		this.sobreNome = sobreNome;
-	}	
-
 	
 	
 	

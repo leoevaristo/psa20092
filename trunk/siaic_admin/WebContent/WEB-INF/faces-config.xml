@@ -8,13 +8,9 @@
     
     
     <managed-bean>
-    	<managed-bean-class>br.com.siaic.mb.ClienteBean</managed-bean-class>
     	<managed-bean-name>clienteBean</managed-bean-name>
+    	<managed-bean-class> br.com.siaic.mb.ClienteBean </managed-bean-class>
     	<managed-bean-scope>request</managed-bean-scope>
-    	
-    	
-       
-    
     </managed-bean>
     
 </faces-config>
