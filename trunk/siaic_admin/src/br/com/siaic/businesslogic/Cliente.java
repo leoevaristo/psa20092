@@ -1,6 +1,11 @@
-package br.com.siaic.classes;
+package br.com.siaic.businesslogic;
 
-import java.util.Date;
+import java.sql.SQLException;
+
+import br.com.siaic.dao.ClienteDAO;
+
+
+
 
 /*
  * Classe que manipula todos os
@@ -12,17 +17,22 @@ public class Cliente {
 	
 	
 	
+	private int codigo;
+
+
+
+
 	private String sobreNome;
 	
 	
 	
 	
-	private String sexo;
+	//private String sexo;
 	
 	
 	
 	
-	private Date dataNascimento;
+	//private Date dataNascimento;
 	
 	
 	
@@ -42,31 +52,63 @@ public class Cliente {
 	
 	
 	
-	private String razaoSocial;
+	//private String razaoSocial;
 	
 	
 	
 	
-	private String inscEstadual;
+	//private String inscEstadual;
 	
 	
 	
 	
-	private String site;
+	//private String site;
 	
 	
 	
 	
-	private String nomeContato;
+	//private String nomeContato;
 	
 	
 	
 	
-	private String nomeFantasia;
+	//private String nomeFantasia;
+	
+	
+	public Cliente()
+	{
+		
+		
+	}
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int getCodigo()
+	{
+		return codigo;
+	}
+
+
+
+	/**
+	 * 
+	 * @param codigo
+	 */
+	public void setCodigo(int codigo)
+	{
+		this.codigo = codigo;
+	}
 	
 	
 	
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getSobreNome() 
 	{
 		return sobreNome;
@@ -75,52 +117,23 @@ public class Cliente {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @param sobreNome
+	 */
 	public void setSobreNome(String sobreNome) 
 	{
 		this.sobreNome = sobreNome;
-	}
+	}	
+
 	
 	
 	
 	
-	
-	public String getSexo()
-	{
-		return sexo;
-	}
-	
-	
-	
-	
-	
-	public void setSexo(String sexo) 
-	{
-		this.sexo = sexo;
-	}
-	
-	
-	
-	
-	
-	public Date getDataNascimento()
-	{
-		return dataNascimento;
-	}
-	
-	
-	
-	
-	
-	public void setDataNascimento(Date dataNascimento) 
-	{
-		this.dataNascimento = dataNascimento;
-	}
-	
-	
-	
-	
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getCpf() 
 	{
 		return cpf;
@@ -129,7 +142,10 @@ public class Cliente {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @param cpf
+	 */
 	public void setCpf(String cpf) 
 	{
 		this.cpf = cpf;
@@ -138,7 +154,10 @@ public class Cliente {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getRg() 
 	{
 		return rg;
@@ -146,7 +165,10 @@ public class Cliente {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @param rg
+	 */
 	public void setRg(String rg)
 	{
 		this.rg = rg;
@@ -155,7 +177,10 @@ public class Cliente {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getCnpj()
 	{
 		return cnpj;
@@ -164,7 +189,10 @@ public class Cliente {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @param cnpj
+	 */
 	public void setCnpj(String cnpj) 
 	{
 		this.cnpj = cnpj;
@@ -172,95 +200,5 @@ public class Cliente {
 	
 	
 	
-	
-	
-	public String getRazaoSocial() 
-	{
-		return razaoSocial;
-	}
-	
-	
-	
-	
-	
-	public void setRazaoSocial(String razaoSocial)
-	{
-		this.razaoSocial = razaoSocial;
-	}
-	
-	
-	
-	
-	
-	public String getInscEstadual() 
-	{
-		return inscEstadual;
-	}
-	
-	
-	
-	
-	
-	public void setInscEstadual(String inscEstadual)
-	{
-		this.inscEstadual = inscEstadual;
-	}
-	
-	
-	
-	
-	
-	public String getSite() 
-	{
-		return site;
-	}
-	
-	
-	
-	
-	
-	public void setSite(String site) 
-	{
-		this.site = site;
-	}
-	
-	
-	
-	
-	
-	public String getNomeContato() 
-	{
-		return nomeContato;
-	}
-	
-	
-	
-	
-	
-	public void setNomeContato(String nomeContato) 
-	{
-		this.nomeContato = nomeContato;
-	}
-	
-	
-	
-	
-	
-	public String getNomeFantasia() 
-	{
-		return nomeFantasia;
-	}
-	
-	
-	
-	
-	
-	public void setNomeFantasia(String nomeFantasia) 
-	{
-		this.nomeFantasia = nomeFantasia;
-	}
-
-
-	
-	
+		
 }
