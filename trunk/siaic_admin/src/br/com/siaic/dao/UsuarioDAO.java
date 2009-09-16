@@ -120,9 +120,8 @@ public class UsuarioDAO {
 	}
 	
 	
-	
-	
-/*	public List < Cliente > getClientesPeloNome ( String nome ) throws SQLException
+/*	
+	public List < Usuario > getUsuarioPeloNome ( String nome ) throws SQLException
 	{
 		
 		String sql = "SELECT p.PES_ENDERECO, p.PES_NOME, p.PES_TELEFONE, p.PES_CELULAR, p.PES_EMAIL," 
@@ -137,18 +136,18 @@ public class UsuarioDAO {
 			
 			ResultSet rs = ps.executeQuery();
 			
-			List<Cliente> listaClientes = new ArrayList<Cliente>();
+			List<Usuario> listaUsuarios = new ArrayList<Usuario>();
 			
 			while(rs.next())
 			{
-				Cliente cliente = new Cliente();
+				Usuario usuario = new Usuario();
 				
-				cliente.setCodigo(rs.getInt("PEC_CODIGO"));
-				cliente.setCpf(rs.getString("PEC_CPF"));
-				cliente.setRg(rs.getString("PEC_RG"));
-				cliente.setCnpj(rs.getString("PEC_CNPJ"));
+				usuario.setCodigoPessoa(rs.getInt("PEU_CODIGO"));
+				usuario.setCRECI(rs.getString("PEU_CRECI"));
+				usuario.setLogin(rs.getString("PEU_LOGIN"));
+				usuario.setSenha(rs.getString("PEU_SENHA"));
 				
-				listaClientes.add(cliente);
+				listaUsuarios.add(usuario);
 				
 			}
 			
@@ -158,20 +157,20 @@ public class UsuarioDAO {
 		
 		
 		
-		return listaClientes;
+		return listaUsuarios;
 		
 	}
 	
 	
 	
 	
-	public List<Cliente> getTodosClientes ()
+	public List<Usuario> getTodosUsuarios ()
 	{
 		//TODO
-		return new ArrayList<Cliente>();
+		return new ArrayList<Usuario>();
 	}
 	
-	*/
+	
 	
 	
 	
@@ -181,3 +180,4 @@ public class UsuarioDAO {
 	
 
 }
+*/
