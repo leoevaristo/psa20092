@@ -14,11 +14,11 @@
  	<h:form id="formCliente"> 
  	
  		<h:inputText value="#{clienteBean.cliente.codigo}" />
- 		<h:inputText value="#{clienteBean.cliente.sobreNome}" />
  		<h:inputText value="#{clienteBean.cliente.cpf}" />
  		<h:inputText value="#{clienteBean.cliente.rg}" />
+ 		<h:inputText value="#{clienteBean.cliente.cnpj}" />
  		
- 		<h:commandButton action="#{clienteBean.addCliente}" />
+ 		<h:commandButton action="#{clienteBean.addCliente}" value="Cadastrar" />
  		
  	
  	
