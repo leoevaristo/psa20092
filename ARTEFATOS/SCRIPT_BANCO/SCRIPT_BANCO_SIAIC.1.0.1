@@ -4,7 +4,8 @@
 	Versão Atual: 1.0.1 	
 	
 	Alteração 16/09/2009
-	Correção: Campo nome duplicado na especialização PESSOA - CLIENTE
+	Correção: Campo nome duplicado na especialização PESSOA - CLIENTE.
+		  Campo sexo na tabela Pessoa deve aceitar valores nulos (Será nulo quando tivermos um Cliente Pessoa Jurídica).
 	
 
 
@@ -63,7 +64,7 @@ CREATE TABLE PESSOA (
     PES_CELULAR VARCHAR(15) NULL,
     PES_EMAIL VARCHAR(40) NULL,
     PES_TIPO CHAR(1) NOT NULL, -- Refere-se se é Jurídica ou Física, conforme discutido em sala
-    PES_SEXO CHAR(1) NOT NULL,
+    PES_SEXO CHAR(1) NULL,
     PES_ENDERECO INT NOT NULL,
     FOREIGN KEY(PES_ENDERECO) REFERENCES ENDERECO(END_CODIGO),
     PRIMARY KEY(PES_CODIGO)
