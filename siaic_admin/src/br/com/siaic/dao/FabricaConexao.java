@@ -29,11 +29,14 @@ public class FabricaConexao {
 	 */
 	public static Connection conectar() throws SQLException
 	{
+		String url = "com.mysql.jdbc.Driver";
+		Connection c = null;
 		
 		try
 		{
 			
-			Class.forName("com.mysql.jdbc.Driver");			
+			Class.forName(url);		
+			c = DriverManager.getConnection("jdbc:mysql://localhost:3306/SIAIC","root","21Cr4zy12");
 			
 		}
 		
@@ -45,8 +48,12 @@ public class FabricaConexao {
 		}
 		
 		
-		return DriverManager.getConnection("jdbc:mysql://localhost:3306/SIAIC","root","21Cr4zy12");
+		return c;
 		
 	}
+	
+	
+	
+	
 
 }
