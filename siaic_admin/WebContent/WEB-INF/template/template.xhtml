@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<head>
+
+<title>SIAIC - Sistema Integrado de Administração de Imobiliárias e Condomínios</title>
+<link rel="stylesheet" type="text/css"  href="#{request.contextPath}/css/layout.css" />
+</head>
+
+<body>
+
+<!-- Inicio Container -->
+<div id="container">
+	<!-- Inicio Header -->
+    <div id="header">
+        <div id="logo">
+        	<img src="/images/logo.png" alt="SIAIC - Sistema Integrado de Administração de Imobiliárias e Condomínios" />
+        </div>
+        <ul id="menuHeader">
+        	<li><a href="#">Configurações</a></li>
+            <li>|</li>
+            <li><a href="#">Ajuda</a></li>
+            <li>|</li>
+            <li><a href="#">Sair</a></li>
+        </ul>
+    </div>
+    <!-- FIM Header -->
+    
+    <!-- Inicio Content -->
+    <div id="content"	>
+    	<!-- Inicio Left -->
+        <div id="col_left">
+			<span id="bgleft_topo"></span>
+            <div id="col_leftConteudo">
+            	<h3 id="titulo_perfil"><span class="none">Perfil do Usuário</span></h3>
+                <div id="perfil">
+                	<img src="/images/fotoperfil.jpg" alt="perfil" />
+                    <ul id="dadosperfil">
+                    	<li class="strong">Nome:</li>
+                        <li>Antonia</li>
+                        <li class="strong">Nível:</li>
+                        <li>Administrador</li>
+                    </ul>
+                </div>	
+            	<h3 id="titulo_moduloadmin"><span class="none">Perfil do Usuário</span></h3>
+                  <ul class="menumodulos">
+                      <li><a href="#"> Cadastro de Imóveis</a></li>
+                      <li><a href="#">Cadastro de Clientes</a></li>
+                      <li><a href="#">Cadastro de Usuários</a></li>
+                      <li><a href="#">Valores de Mercado</a></li>
+                      <li><a href="#">Cadastro de Clientes</a></li>
+                      <li><a href="#">Cadastro de Usuários</a></li>
+                      <li><a href="#">Valores de Mercado</a></li>
+                  </ul>
+            </div>
+            <span id="bgleft_rodape"></span>	        	
+        </div>
+        <!-- FIM Left -->
+        
+        <!-- Inicio Right -->
+        <div id="col_right">
+        	<span id="bgright_topo"></span>
+        	<div id="col_rightConteudo">
+        		<ui:insert name="conteudo"> </ui:insert>
+                
+                <div id="infogerais">
+                
+                <p id="info_titulo">» Listagem de Imóveis</p>
+                <a id="info_novo" href="">Novo Imóvel</a>
+                <table id="grid" cellspacing="1">
+                  <thead>
+                      <tr>
+                        <th width="50px">Código</th>
+                        <th>Imóvel</th>
+                        <th>Bairro</th>
+                        <th>Tipo</th>
+                        <th width="45px">Editar</th>
+                        <th width="45px">Excluir</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr class="cor1">
+                        <td class="textcenter">1</td>
+                        <td>Loteamento Cidade Balneario Novo Mundo</td>
+                        <td class="textcenter"> Bancários</td>
+                        <td class="textcenter">Apartamento</td>
+                        <td class="textcenter"><a href="#"> <img src="/images/imgedit.png" title="Editar" /></a></td>
+                        <td class="textcenter"><a href="#"> <img src="/images/imgdelete.png" title="Deletar" /></a></td>
+                      </tr>
+                      <tr class="cor2">
+                        <td class="textcenter">2</td>
+                        <td>Loteamento Cidade Balneario Novo Mundo</td>
+                        <td class="textcenter"> Bancários</td>
+                        <td class="textcenter">Apartamento</td>
+                        <td class="textcenter"><a href="#"> <img src="/images/imgedit.png" title="Editar" /></a></td>
+                        <td class="textcenter"><a href="#"> <img src="/images/imgdelete.png" title="Deletar" /></a></td>
+                      </tr>
+                      <tr class="cor1">
+                        <td class="textcenter">3</td>
+                        <td>Loteamento Cidade Balneario Novo Mundo</td>
+                        <td class="textcenter"> Bancários</td>
+                        <td class="textcenter">Apartamento</td>
+                        <td class="textcenter"><a href="#"> <img src="/images/imgedit.png" title="Editar" /></a></td>
+                        <td class="textcenter"><a href="#"> <img src="/images/imgdelete.png" title="Deletar" /></a></td>
+                      </tr>
+                      <tr class="cor2">
+                        <td class="textcenter">4</td>
+                        <td>Loteamento Cidade Balneario Novo Mundo</td>
+                        <td class="textcenter"> Bancários</td>
+                        <td class="textcenter">Apartamento</td>
+                        <td class="textcenter"><a href="#"> <img src="/images/imgedit.png" title="Editar" /></a></td>
+                        <td class="textcenter"><a href="#"> <img src="/images/imgdelete.png" title="Deletar" /></a></td>
+                      </tr>
+                      <tr class="cor1">
+                        <td class="textcenter">5</td>
+                        <td>Loteamento Cidade Balneario Novo Mundo</td>
+                        <td class="textcenter"> Bancários</td>
+                        <td class="textcenter">Apartamento</td>
+                        <td class="textcenter"><a href="#"> <img src="/images/imgedit.png" title="Editar" /></a></td>
+                        <td class="textcenter"><a href="#"> <img src="/images/imgdelete.png" title="Deletar" /></a></td>
+                      </tr>
+                      <tr class="cor2">
+                        <td class="textcenter">6</td>
+                        <td>Loteamento Cidade Balneario Novo Mundo</td>
+                        <td class="textcenter"> Bancários</td>
+                        <td class="textcenter">Apartamento</td>
+                        <td class="textcenter"><a href="#"> <img src="/images/imgedit.png" title="Editar" /></a></td>
+                        <td class="textcenter"><a href="#"> <img src="./images/imgdelete.png" title="Deletar" /></a></td>
+                      </tr>
+                  </tbody>
+                </table>
+                </div>
+               
+            </div>
+            <span id="bgright_rodape"></span>
+        </div>
+        <!-- FIM Right -->
+    </div>
+    <!-- FIM Content -->
+    
+    <!-- Inicio footer -->
+    <div id="footer" ><ui:insert name="rodape"></ui:insert> </div>
+    <!-- FIM Footer -->
+</div>
+<!-- FIM Container -->
+
+</body>
+</html>
+
