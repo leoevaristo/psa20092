@@ -1,11 +1,11 @@
 package br.com.siaic.mb;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.dao.ClienteDAO;
+import br.com.siaic.dao.PessoaDAO;
 
 public class ClienteBean 
 {
@@ -68,6 +68,8 @@ public class ClienteBean
 		//TODO
 		String r = "";
 		
+		PessoaDAO.getInstancia().adicionarPessoa(cliente);
+		
 		ClienteDAO.getInstancia().adicionarCliente(cliente);
 		
 		return r;
@@ -87,6 +89,7 @@ public class ClienteBean
 		String r ="";
 		
 		ClienteDAO.getInstancia().adicionarCliente(cliente);
+		
 		
 		
 		return r;
@@ -118,7 +121,7 @@ public class ClienteBean
 	public Cliente localizarClientePorId() throws SQLException
 	{
 			
-		return ClienteDAO.getInstancia().getClientePorId(getCliente().getCodigo());
+		return ClienteDAO.getInstancia().getClientePorId(getCliente().getCodigoPessoa());
 				
 	}
 	

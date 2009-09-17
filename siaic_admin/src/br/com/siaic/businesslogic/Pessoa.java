@@ -42,154 +42,219 @@ public class Pessoa
 	
 	
 	
-	private Endereco endereco;
+	private String sexo;
+	
+	
+	
+	
+	//private Endereco endereco;
 
 	
 	
 	
+
+
+
+
+
+
+
 	public Pessoa()
 	{
-		endereco = new Endereco();
+		//endereco = new Endereco();
 	}
+	
+	
+	
 	
 	/**
 	 * 
 	 * @return
 	 */
-	public int getCodigoPessoa() {
+	public int getCodigoPessoa() 
+	{
 		return codigoPessoa;
 	}
 
 
+	
+	
 	/**
 	 * 
 	 * @param codigoPessoa
 	 */
-	public void setCodigoPessoa(int codigoPessoa) {
+	public void setCodigoPessoa(int codigoPessoa) 
+	{
 		this.codigoPessoa = codigoPessoa;
 	}	
 
+	
+	
 
 	/**
 	 * 
 	 * @return
 	 */
-	public String getNome() {
+	public String getNome() 
+	{
 		return nome;
 	}
 
 
 
+	
 	/**
 	 * 
 	 * @param nome
 	 */
-	public void setNome(String nome) {
+	public void setNome(String nome)
+	{
 		this.nome = nome;
 	}
 
 
+	
 
 	/**
 	 * 
 	 * @return
 	 */
-	public String getTelefone() {
+	public String getTelefone() 
+	{
 		return telefone;
 	}
 
 
+	
 
 	/**
 	 * 
 	 * @param telefone
 	 */
-	public void setTelefone(String telefone) {
+	public void setTelefone(String telefone)
+	{
 		this.telefone = telefone;
 	}
 
 
+	
 
 	/**
 	 * 
 	 * @return
 	 */
-	public String getCelular() {
+	public String getCelular()
+	{
 		return celular;
 	}
 
+	
 
 
 	/**
 	 * 
 	 * @param celular
 	 */
-	public void setCelular(String celular) {
+	public void setCelular(String celular) 
+	{
 		this.celular = celular;
 	}
 
 
 
+	
 	/**
 	 * 
 	 * @return
 	 */
-	public String getEmail() {
+	public String getEmail()
+	{
 		return email;
 	}
 
+	
 
 
 	/**
 	 * 
 	 * @param email
 	 */
-	public void setEmail(String email) {
+	public void setEmail(String email)
+	{
 		this.email = email;
 	}
 
 
+	
 
 	/**
 	 * 
 	 * @return
 	 */
-	public String getTipoPessoa() {
+	public String getTipoPessoa() 
+	{
 		return tipoPessoa;
 	}
 
 
+	
 
 	/**
 	 * 
 	 * @param tipoPessoa
 	 */
-	public void setTipoPessoa(String tipoPessoa) {
+	public void setTipoPessoa(String tipoPessoa)
+	{
 		this.tipoPessoa = tipoPessoa;
 	}
 
 
+	
 
 	/**
 	 * 
 	 * @return
 	 */
-	public Endereco getEndereco() {
+/*	 public Endereco getEndereco() {
 		return endereco;
 	}
 
 
+*/
 
 	/**
 	 * 
 	 * @param endereco
 	 */
-	public void setEndereco(Endereco endereco) {
+	/*public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 	
 	
 	
+	*/
 	
+	
+	
+	
+	public String getSexo() 
+	{
+		return sexo;
+	}
+	
+	
+	
+
+	public void setSexo(String sexo) 
+	{
+		this.sexo = sexo;
+	}
+	
+	
+	
+
+	
+	
+
 	
 }

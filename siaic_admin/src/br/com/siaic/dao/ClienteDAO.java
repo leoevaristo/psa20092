@@ -95,10 +95,10 @@ public class ClienteDAO {
 		
 			PreparedStatement ps = conexao.prepareStatement ( sql );
 		
-			ps.setInt(1, cliente.getCodigo());
-			ps.setString(3, cliente.getCpf());
-			ps.setString(4, cliente.getRg());
-			ps.setString(5, cliente.getCnpj());
+			ps.setInt(1, cliente.getCodigoPessoa());
+			ps.setString(2, cliente.getCpf());
+			ps.setString(3, cliente.getRg());
+			ps.setString(4, cliente.getCnpj());
 			
 		
 			ps.execute();
@@ -107,10 +107,10 @@ public class ClienteDAO {
 		
 		}
 		
-		catch ( Exception e )
+		catch ( SQLException e )
 		{
 			
-			throw new SQLException ( "Erro ao inserir dados no banco." );
+			e.printStackTrace();
 			
 		}	
 		
@@ -149,7 +149,7 @@ public class ClienteDAO {
 			ps.setString(1, cliente.getCpf());
 			ps.setString(2, cliente.getRg());
 			ps.setString(3, cliente.getCnpj());
-			ps.setInt(4, cliente.getCodigo());
+			ps.setInt(4, cliente.getCodigoPessoa());
 			
 			ps.executeUpdate();
 			ps.close();
@@ -194,7 +194,7 @@ public class ClienteDAO {
 			{
 				Cliente cliente = new Cliente();
 				
-				cliente.setCodigo(rs.getInt("PEC_CODIGO"));
+				cliente.setCodigoPessoa(rs.getInt("PEC_CODIGO"));
 				cliente.setCpf(rs.getString("PEC_CPF"));
 				cliente.setRg(rs.getString("PEC_RG"));
 				cliente.setCnpj(rs.getString("PEC_CNPJ"));
@@ -230,6 +230,7 @@ public class ClienteDAO {
 		
 		
 		PreparedStatement ps = conexao.prepareStatement(sql);
+		
 		ResultSet rs = ps.executeQuery();
 		
 		List<Cliente> listaTodosClientes = new ArrayList<Cliente>();
@@ -239,7 +240,7 @@ public class ClienteDAO {
 			
 			Cliente cliente = new Cliente();
 			
-			cliente.setCodigo(rs.getInt("PEC_CODIGO"));
+			cliente.setCodigoPessoa(rs.getInt("PEC_CODIGO"));
 			cliente.setCpf(rs.getString("PEC_CPF"));
 			cliente.setRg(rs.getString("PEC_RG"));
 			cliente.setCnpj(rs.getString("PEC_CNPJ"));
@@ -276,7 +277,7 @@ public class ClienteDAO {
 		
 		Cliente cliente = new Cliente();
 		
-		cliente.setCodigo(rs.getInt("PEC_CODIGO"));
+		cliente.setCodigoPessoa(rs.getInt("PEC_CODIGO"));
 		cliente.setCpf(rs.getString("PEC_CPF"));
 		cliente.setRg(rs.getString("PEC_RG"));
 		cliente.setCnpj(rs.getString("PEC_CNPJ"));
