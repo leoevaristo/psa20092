@@ -117,7 +117,7 @@ public class UsuarioDAO {
 	
 	/**
 	 * 
-	 * @param clienteCodigo
+	 * @param usuarioodigo
 	 * @return
 	 * @throws SQLException
 	 */
