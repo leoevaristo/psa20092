@@ -40,7 +40,7 @@ public class FabricaConexao
 	 * Cria conex�o �nica com o banco de dados.
 	 * @return Connection
 	 */
-	public  Connection conectar() throws SQLException
+	public static  Connection conectar() throws SQLException
 	{
 		String url = "com.mysql.jdbc.Driver";
 		
