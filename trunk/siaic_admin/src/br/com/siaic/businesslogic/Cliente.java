@@ -1,9 +1,5 @@
 package br.com.siaic.businesslogic;
 
-import java.sql.SQLException;
-
-import br.com.siaic.dao.ClienteDAO;
-
 
 
 
@@ -17,8 +13,7 @@ public class Cliente extends Pessoa {
 	
 	
 	
-	private int codigo;
-
+	
 
 
 
@@ -73,30 +68,16 @@ public class Cliente extends Pessoa {
 	public Cliente()
 	{
 		
+				
 		
 	}
 	
 	
-	/**
-	 * 
-	 * @return
-	 */
-	public int getCodigo()
-	{
-		return codigo;
-	}
 
 
 
-	/**
-	 * 
-	 * @param codigo
-	 */
-	public void setCodigo(int codigo)
-	{
-		this.codigo = super.getCodigoPessoa();
-	}
-	
+
+
 	
 	
 	
