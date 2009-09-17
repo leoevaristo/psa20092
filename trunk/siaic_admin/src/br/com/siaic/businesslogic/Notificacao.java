@@ -15,6 +15,10 @@ import java.sql.Statement;
  */
 public class Notificacao {
 
+	private static Notificacao instance;
+
+	private DAONotificacao daoNotificacao;
+	
 	/**
 	 * <p>
 	 * Aciona uma notificação para um imóvel.
@@ -37,10 +41,6 @@ public class Notificacao {
 		}
 	}
 
-	private static Notificacao instance;
-
-	private DAONotificacao daoNotificacao;
-
 	private static Notificacao getInstance() {
 		if (Notificacao.instance == null)
 			Notificacao.instance = new Notificacao();
@@ -49,5 +49,10 @@ public class Notificacao {
 
 	private Notificacao() {
 		this.daoNotificacao = new DAONotificacao();
+	}
+	
+	public static void main(String[] args) {
+		Notificacao n = Notificacao.getInstance();
+		n.acionar(1);
 	}
 }
