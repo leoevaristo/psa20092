@@ -7,10 +7,11 @@ import java.sql.SQLException;
 /**
  * @author Carlos R. N. Junior
  */
-public class FabricaConexao {
+public class FabricaConexao 
+{
 
 	
-	
+	private static FabricaConexao instancia = null;
 	
 	/**
 	 * Construtor da classe FabricaConexao.
@@ -20,6 +21,18 @@ public class FabricaConexao {
 		
 	}
 	
+	public static FabricaConexao getInstancia()
+	{
+		
+		if(instancia == null)
+		{
+			instancia = new FabricaConexao();
+		}
+		
+		return instancia;
+	}
+	
+	
 	
 	
 	
@@ -27,16 +40,17 @@ public class FabricaConexao {
 	 * Cria conex�o �nica com o banco de dados.
 	 * @return Connection
 	 */
-	public static Connection conectar() throws SQLException
+	public  Connection conectar() throws SQLException
 	{
 		String url = "com.mysql.jdbc.Driver";
-		Connection c = null;
+		
+		
 		
 		try
 		{
 			
 			Class.forName(url);		
-			c = DriverManager.getConnection("jdbc:mysql://localhost:3306/SIAIC","root","21Cr4zy12");
+			
 			
 		}
 		
@@ -48,7 +62,7 @@ public class FabricaConexao {
 		}
 		
 		
-		return c;
+		return DriverManager.getConnection("jdbc:mysql://localhost:3306/SIAIC","root","21Cr4zy12");
 		
 	}
 	

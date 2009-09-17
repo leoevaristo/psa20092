@@ -9,8 +9,15 @@ import br.com.siaic.dao.ClienteDAO;
 
 public class ClienteBean 
 {
-
+	
+	
+	
+	/**
+	 * 
+	 */
 	private Cliente cliente;
+	
+	
 	
 	
 	/**
@@ -61,9 +68,7 @@ public class ClienteBean
 		//TODO
 		String r = "";
 		
-		ClienteDAO dao = new ClienteDAO();
-		
-		dao.adicionarCliente(cliente);
+		ClienteDAO.getInstancia().adicionarCliente(cliente);
 		
 		return r;
 		
@@ -71,31 +76,51 @@ public class ClienteBean
 	
 	
 	
-	
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
 	public String updateCliente() throws SQLException
 	{
 		//TODO
 		String r ="";
 		
-		ClienteDAO dao = new ClienteDAO();
-		
-		dao.alterarCliente(cliente);
+		ClienteDAO.getInstancia().adicionarCliente(cliente);
 		
 		
 		return r;
+		
 	}
 	
 	
 	
 	
-	public List<Cliente> ExibirTodosClientes()
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<Cliente> ExibirTodosClientes() throws SQLException
+	{	
+		
+		return 	ClienteDAO.getInstancia().getTodosClientes();
+			
+	}
+	
+	
+	
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
+	public Cliente localizarClientePorId() throws SQLException
 	{
-		//TODO
 			
-		ClienteDAO dao = new ClienteDAO();
-		
-		return dao.getTodosClientes();	
-			
-		
+		return ClienteDAO.getInstancia().getClientePorId(getCliente().getCodigo());
+				
 	}
+	
+	
 }
