@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class Query {
 	public Query() {
 		try {
-			this.conexao = FabricaConexao.conectar();
+			this.conexao = FabricaConexao.getInstancia().conectar();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
