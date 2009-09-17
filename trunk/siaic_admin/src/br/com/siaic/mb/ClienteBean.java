@@ -10,7 +10,7 @@ import br.com.siaic.dao.PessoaDAO;
 public class ClienteBean {
 
 	/**
-	 * @author Alain Rosemberg
+	 * @author Carlos Junior
 	 */
 	private Cliente cliente;
 
