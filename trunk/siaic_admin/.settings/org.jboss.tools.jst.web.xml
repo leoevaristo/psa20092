@@ -8,6 +8,48 @@
  <file-system NAME="lib" location="%workspace.home%/lib" model-entity="FileSystemFolder"/>
  <file-system NAME="classes" location="%workspace.home%/classes" model-entity="FileSystemFolder"/>
  <file-system NAME="siaic_admin" location="%eclipse.project%" model-entity="FileSystemFolder"/>
+ <file-system NAME="lib-annotations-api.jar"
+  location="D:\tomcat\lib\annotations-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-catalina-ant.jar"
+  location="D:\tomcat\lib\catalina-ant.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-catalina-ha.jar"
+  location="D:\tomcat\lib\catalina-ha.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-catalina-tribes.jar"
+  location="D:\tomcat\lib\catalina-tribes.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-catalina.jar"
+  location="D:\tomcat\lib\catalina.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-el-api.jar" location="D:\tomcat\lib\el-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jasper-el.jar"
+  location="D:\tomcat\lib\jasper-el.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jasper-jdt.jar"
+  location="D:\tomcat\lib\jasper-jdt.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jasper.jar" location="D:\tomcat\lib\jasper.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jsp-api.jar"
+  location="D:\tomcat\lib\jsp-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-servlet-api.jar"
+  location="D:\tomcat\lib\servlet-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-coyote.jar"
+  location="D:\tomcat\lib\tomcat-coyote.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-dbcp.jar"
+  location="D:\tomcat\lib\tomcat-dbcp.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-i18n-es.jar"
+  location="D:\tomcat\lib\tomcat-i18n-es.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-i18n-fr.jar"
+  location="D:\tomcat\lib\tomcat-i18n-fr.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-i18n-ja.jar"
+  location="D:\tomcat\lib\tomcat-i18n-ja.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jsf-api.jar"
+  location="C:\Documents and Settings\crnjunior\workspace\siaic_admin\WebContent\WEB-INF\lib\jsf-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jsf-facelets.jar"
+  location="C:\Documents and Settings\crnjunior\workspace\siaic_admin\WebContent\WEB-INF\lib\jsf-facelets.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jsf-impl.jar"
+  location="C:\Documents and Settings\crnjunior\workspace\siaic_admin\WebContent\WEB-INF\lib\jsf-impl.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jstl-api-1.2.jar"
+  location="C:\Documents and Settings\crnjunior\workspace\siaic_admin\WebContent\WEB-INF\lib\jstl-api-1.2.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jstl-impl-1.2.jar"
+  location="C:\Documents and Settings\crnjunior\workspace\siaic_admin\WebContent\WEB-INF\lib\jstl-impl-1.2.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-mysql-connector-java-5.1.7-bin.jar"
+  location="C:\Documents and Settings\crnjunior\workspace\siaic_admin\WebContent\WEB-INF\lib\mysql-connector-java-5.1.7-bin.jar" model-entity="FileSystemJar"/>
  <web SERVLET_VERSION="2.4" model-entity="JstWeb" model-path="/web.xml">
   <module URI="/WEB-INF/faces-config.xml" model-entity="WebJSFModule"
    model-path="/faces-config.xml" src="src" web-root="WEB-ROOT"/>
