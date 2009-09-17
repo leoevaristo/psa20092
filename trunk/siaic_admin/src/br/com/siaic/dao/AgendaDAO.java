@@ -256,16 +256,46 @@ public class AgendaDAO {
 	}
 	
 	/**
+	 * Deleta o registro na tabela Agenda representado pelo objeto {@link Agenda} passado por parâmetro.
 	 * 
-	 * @param a
-	 * @return <code>true</code> caso a atualização seja realizada com sucesso
-	 *         ou <code>false</code> caso contrário
+	 * @param a - {@link Agenda} registro que será deletado.
+	 * @return <code>true</code> caso a exclusão seja realizada com sucesso
+	 *         ou <code>false</code> caso contrário.
 	 * @throws SQLException
 	 */
 	public boolean ApagarAgenda(Agenda a) throws SQLException{
 		String query = new String("delete from agenda where AGE_CODIGO = ?");
 		PreparedStatement ps = DB.getConn().prepareStatement(query);
 		ps.setInt(1, a.getCodigo());
+		
+		boolean result = ps.executeUpdate() > 0;
+		ps.close();
+		return result;
+	}
+	
+	/**
+	 * Insere o registro na tabela Agenda representado pelo objeto {@link Agenda} passado por parâmetro.
+	 * 
+	 * @param a - {@link Agenda} que será inserida no banco de dados.
+	 * @return <code>true</code> caso a insersão seja realizada com sucesso
+	 *         ou <code>false</code> caso contrário.
+	 * @throws SQLException
+	 */
+	public boolean InserirAgenda(Agenda a) throws SQLException{
+		String query = new String("insert into agenda "
+				+ "(AGE_PESSOA_CLIENTE, AGE_PESSOA_USUARIO, "
+				+ "AGE_IMOVEL, AGE_DATA, AGE_HORA_INICIO, "
+				+ "AGE_HORA_FIM, AGE_DESCRICAO) "
+				+ "values (?, ?, ?, ?, ?, ?, ?)");
+		PreparedStatement ps = DB.getConn().prepareStatement(query);
+		
+		ps.setInt(1, a.getCliente().getCodigoPessoa());
+		ps.setInt(2, a.getCorretor().getCodigoPessoa());
+		//ps.setInt(3, nova.getImovel().getCodigoImovel());
+		ps.setDate(4, a.getData());
+		ps.setTime(5, a.getHoraInicio());
+		ps.setTime(6, a.getHoraFim());
+		ps.setString(7, a.getDescricao());
 		
 		boolean result = ps.executeUpdate() > 0;
 		ps.close();
