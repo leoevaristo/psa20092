@@ -12,7 +12,7 @@ import br.com.siaic.dao.ClienteDAO;
  * @author Carlos R. N. Junior
  *
  */
-public class Cliente {
+public class Cliente extends Pessoa {
 	
 	
 	
@@ -94,7 +94,7 @@ public class Cliente {
 	 */
 	public void setCodigo(int codigo)
 	{
-		this.codigo = codigo;
+		this.codigo = super.getCodigoPessoa();
 	}
 	
 	

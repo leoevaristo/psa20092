@@ -22,19 +22,51 @@ public class ClienteDAO {
 	
 	
 	
+	/**
+	 * 
+	 */
 	private Connection conexao = null;
 	
 	
 	
 	
+	/**
+	 * 
+	 */
+	private static ClienteDAO instance = null;
 	
-	public ClienteDAO()
+	
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public static ClienteDAO getInstancia()
+	{
+		if(instance == null)
+		{
+			instance = new ClienteDAO();
+		}
+		
+		return instance;
+	}
+	
+	
+	
+	
+	/**
+	 * 
+	 */
+	private ClienteDAO()
 	{
 		
 		try
 		{
 			
-			this.conexao = FabricaConexao.conectar();
+			
+			this.conexao = FabricaConexao.getInstancia().conectar();
+			
 		
 		}
 		
@@ -48,7 +80,11 @@ public class ClienteDAO {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @param cliente
+	 * @throws SQLException
+	 */
 	public void adicionarCliente ( Cliente cliente ) throws SQLException 
 	{
 		
@@ -83,6 +119,10 @@ public class ClienteDAO {
 	
 	
 	
+	/**
+	 * 
+	 * @param cliente
+	 */
 	public void removerCliente ( Cliente cliente )
 	{
 		 
@@ -91,6 +131,11 @@ public class ClienteDAO {
 	
 	
 	
+	/**
+	 * 
+	 * @param cliente
+	 * @throws SQLException
+	 */
 	public void alterarCliente ( Cliente cliente ) throws SQLException 
 	{
 		
@@ -114,7 +159,7 @@ public class ClienteDAO {
 		catch(Exception e)
 		{
 			
-			throw new SQLException("Não foi possível alterar o banco de dados.");
+			throw new SQLException("Nï¿½o foi possï¿½vel alterar o banco de dados.");
 		
 		}
 	}
@@ -122,6 +167,12 @@ public class ClienteDAO {
 	
 	
 	
+	/**
+	 * 
+	 * @param nome
+	 * @return
+	 * @throws SQLException
+	 */
 	public List < Cliente > getClientesPeloNome ( String nome ) throws SQLException
 	{
 		
@@ -165,10 +216,77 @@ public class ClienteDAO {
 	
 	
 	
-	public List<Cliente> getTodosClientes ()
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<Cliente> getTodosClientes () throws SQLException
 	{
 		//TODO
-		return new ArrayList<Cliente>();
+		String sql = "SELECT c.PEC_CODIGO, c.PEC_CPF, c.PEC_RG, c.PEC_CNPJ, p.PES_CODIGO" 
+					+ " FROM PESSOA_CLIENTE c, PESSOA p" 
+					+ "	WHERE c.PEC_CODIGO = p.PES_CODIGO";
+		
+		
+		PreparedStatement ps = conexao.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		
+		List<Cliente> listaTodosClientes = new ArrayList<Cliente>();
+		
+		while(rs.next())
+		{
+			
+			Cliente cliente = new Cliente();
+			
+			cliente.setCodigo(rs.getInt("PEC_CODIGO"));
+			cliente.setCpf(rs.getString("PEC_CPF"));
+			cliente.setRg(rs.getString("PEC_RG"));
+			cliente.setCnpj(rs.getString("PEC_CNPJ"));
+			
+			listaTodosClientes.add(cliente);
+			
+		}
+		
+		return listaTodosClientes;
+		
+	}
+	
+	
+	
+	
+	/**
+	 * 
+	 * @param clienteCodigo
+	 * @return
+	 * @throws SQLException
+	 */
+	public Cliente getClientePorId(int clienteCodigo) throws SQLException
+	{
+		
+		String sql = "SELECT c.PEC_CODIGO, c.PEC_CPF, c.PEC_RG, c.PEC_CNPJ, p.PES_CODIGO " 
+					+"FROM PESSOA_CLIENTE c, PESSOA p" 
+					+"WHERE c.PEC_CODIGO = ?  AND c.PEC_CODIGO = p.PES_CODIGO ";
+		
+		
+		PreparedStatement ps = conexao.prepareStatement(sql);
+		ps.setInt(1, clienteCodigo);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		Cliente cliente = new Cliente();
+		
+		cliente.setCodigo(rs.getInt("PEC_CODIGO"));
+		cliente.setCpf(rs.getString("PEC_CPF"));
+		cliente.setRg(rs.getString("PEC_RG"));
+		cliente.setCnpj(rs.getString("PEC_CNPJ"));
+			
+		ps.close();
+		rs.close();
+		
+		
+		return cliente;
+		
 	}
 	
 	
