@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import br.com.siaic.businesslogic.endereco.Bairro;
 import br.com.siaic.businesslogic.endereco.Cidade;
+import br.com.siaic.businesslogic.endereco.Endereco;
 import br.com.siaic.businesslogic.endereco.Estado;
 
 /**
@@ -126,6 +127,30 @@ public class EnderecoDAO {
 		return retorno;
 	}//public boolean adicionarBairro(Estado estado)
 		
+	public boolean adicionarEndereco(Endereco endereco) throws SQLException{
+		boolean retorno = false;
+		PreparedStatement ps = null;
+		String sql = "INSERT INTO ENDERECO(END_CODIGO, END_LOGRADOURO, END_NOME, END_CEP, END_BAIRRO) VALUES (null, ?, ?,?,?)";
+		
+		try {
+			conexao = FabricaConexao.getInstancia().conectar();
+			ps = conexao.prepareStatement(sql);
+			ps.setString(1, endereco.getEnderecoLogradouro() );
+			ps.setString(2, endereco.getEnderecoNome() );
+			ps.setString(3, endereco.getEnderecoCep() );
+			ps.setInt(4, endereco.getEnderecoBairro().getBairroCodigo() );
+			ps.execute();
+			retorno = true;
+		}//try
+		catch (Exception e) {
+			throw new SQLException("Erro ao inserir dados no banco." + e);
+		}//catch()
+		finally{
+			ps.close();
+		}//finally
+
+		return retorno;
+	}//public boolean adicionarBairro(Estado estado)
 	
 	
 	
@@ -146,7 +171,7 @@ public class EnderecoDAO {
 	public static void main(String[] args) {
 		try {
 			
-			boolean r = EnderecoDAO.getInstancia().adicionarBairro(new Bairro(-1, "Batalhão", new Cidade( 1 , "Catolé do Rocha", new Estado("PB", "Paraíba"))));
+			boolean r = EnderecoDAO.getInstancia().adicionarEndereco(new Endereco(-1, "Rua", "Diomedes Lobo, S/N", "58884000", new Bairro(1, "Batalhão", new Cidade( 1 , "Catolé do Rocha", new Estado("PB", "Paraíba")))));
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
