@@ -3,7 +3,6 @@ package br.com.siaic.businesslogic;
 import java.sql.Date;
 import java.sql.Time;
 
-import temp.*;
 import br.com.siaic.dao.AgendaDAO;
 import br.com.siaic.mb.AgendaBean;
 
@@ -23,7 +22,7 @@ public class Agenda {
 	private int codigo;
 	private Cliente cliente;
 	private Usuario corretor;
-	private Imovel imovel;
+	//private Imovel imovel;
 	private Date data;
 	private Time horaInicio;
 	private Time horaFim;
@@ -49,16 +48,16 @@ public class Agenda {
 	 * @throws Exception
 	 *             é lançada caso algum dos valores obrigatórios seja nulo.
 	 */
-	public Agenda(Usuario Corretor, Cliente Cliente, Imovel Imovel,
+	public Agenda(Usuario Corretor, Cliente Cliente, /*Imovel Imovel,*/
 			Date data, Time horaInicio, Time horaFim, String descricao)
 			throws Exception {
 		if ((Corretor == null) || (Cliente == null)
-				|| (Imovel == null)) {
+				/*|| (Imovel == null)*/) {
 			throw new Exception("Campo(s) obrigatório(s) nulo(s).");
 		}
 		this.corretor = Corretor;
 		this.cliente = Cliente;
-		this.imovel = Imovel;
+		//this.imovel = Imovel;
 		this.data = data;
 		this.horaInicio = horaInicio;
 		this.horaFim = horaFim;
@@ -92,13 +91,13 @@ public class Agenda {
 		this.corretor = corretor;
 	}
 
-	public Imovel getImovel() {
-		return imovel;
-	}
-
-	public void setImovel(Imovel imovel) {
-		this.imovel = imovel;
-	}
+//	public Imovel getImovel() {
+//		return imovel;
+//	}
+//
+//	public void setImovel(Imovel imovel) {
+//		this.imovel = imovel;
+//	}
 
 	public Date getData() {
 		return data;
