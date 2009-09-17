@@ -69,7 +69,7 @@ public class ClienteBean {
 		// TODO
 		String r = "";
 
-		ClienteDAO.getInstancia().adicionarCliente(cliente);
+		ClienteDAO.getInstancia().alterarCliente(cliente);
 
 		return r;
 
