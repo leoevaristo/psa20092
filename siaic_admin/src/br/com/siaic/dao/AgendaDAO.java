@@ -3,8 +3,9 @@ package br.com.siaic.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import temp.*;
 import br.com.siaic.businesslogic.Agenda;
 
 /**
@@ -49,12 +50,12 @@ public class AgendaDAO {
 		if (rs.first()) {
 			a = new Agenda();
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
-			a.setCliente(ClienteDAO.getInstance().getCliente(
+			a.setCliente(ClienteDAO.getInstancia().getClientePorId(
 					rs.getInt("AGE_PESSOA_CLIENTE")));
-			a.setCorretor(UsuarioDAO.getInstance().getUsuario(
+			a.setCorretor(UsuarioDAO.getInstancia().getUsuarioId(
 					rs.getInt("AGE_PESSOA_USUARIO")));
-			a.setImovel(ImovelDAO.getInstance().getImovel(
-					rs.getInt("AGE_PESSOA_USUARIO")));
+			//a.setImovel(ImovelDAO.getInstance().getImovel(
+			//		rs.getInt("AGE_PESSOA_USUARIO")));
 			a.setData(rs.getDate("AGE_DATA"));
 			a.setHoraInicio(rs.getTime("AGE_HORA_INICIO"));
 			a.setHoraFim(rs.getTime("AGE_HORA_INICIO"));
@@ -63,5 +64,34 @@ public class AgendaDAO {
 		rs.close();
 		ps.close();
 		return a;
+	}
+	
+	public List<Agenda> getAgendaList() throws SQLException{
+		String query = new String("select * from agenda");
+		PreparedStatement ps;
+		ps = DB.getConn().prepareStatement(query);
+		ResultSet rs = ps.executeQuery();
+
+		List<Agenda> l = new ArrayList<Agenda>();
+		Agenda a = null;
+		
+		while (rs.next()) {
+			a = new Agenda();
+			a.setCodigo(rs.getInt("AGE_CODIGO"));
+			a.setCliente(ClienteDAO.getInstancia().getClientePorId(
+					rs.getInt("AGE_PESSOA_CLIENTE")));
+			a.setCorretor(UsuarioDAO.getInstancia().getUsuarioId(
+					rs.getInt("AGE_PESSOA_USUARIO")));
+			//a.setImovel(ImovelDAO.getInstance().getImovel(
+			//		rs.getInt("AGE_PESSOA_USUARIO")));
+			a.setData(rs.getDate("AGE_DATA"));
+			a.setHoraInicio(rs.getTime("AGE_HORA_INICIO"));
+			a.setHoraFim(rs.getTime("AGE_HORA_INICIO"));
+			// a.setDescricao(rs.getString("AGE_DESCRICAO"));
+			l.add(a);
+		}
+		rs.close();
+		ps.close();
+		return l;
 	}
 }
