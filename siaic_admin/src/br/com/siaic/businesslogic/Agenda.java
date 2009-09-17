@@ -1,9 +1,12 @@
 package br.com.siaic.businesslogic;
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.sql.Time;
 
 import br.com.siaic.dao.AgendaDAO;
+import br.com.siaic.dao.ClienteDAO;
+import br.com.siaic.dao.UsuarioDAO;
 import br.com.siaic.mb.AgendaBean;
 
 /**
@@ -48,20 +51,31 @@ public class Agenda {
 	 * @throws Exception
 	 *             é lançada caso algum dos valores obrigatórios seja nulo.
 	 */
-	public Agenda(Usuario Corretor, Cliente Cliente, /*Imovel Imovel,*/
+	public Agenda(Usuario corretor, Cliente cliente, /*Imovel imovel,*/
 			Date data, Time horaInicio, Time horaFim, String descricao)
 			throws Exception {
-		if ((Corretor == null) || (Cliente == null)
-				/*|| (Imovel == null)*/) {
+		if ((corretor == null) || (cliente == null)
+				/*|| (imovel == null)*/) {
 			throw new Exception("Campo(s) obrigatório(s) nulo(s).");
 		}
-		this.corretor = Corretor;
-		this.cliente = Cliente;
-		//this.imovel = Imovel;
+		this.corretor = corretor;
+		this.cliente = cliente;
+		//this.imovel = imovel;
 		this.data = data;
 		this.horaInicio = horaInicio;
 		this.horaFim = horaFim;
 		this.setDescricao(descricao);
+	}
+	
+	public Agenda(int codCorretor, int codCliente, int codImovel, Date data,
+			Time horaInicio, Time horaFim, String descricao) throws SQLException {
+		
+		Usuario corretor = UsuarioDAO.getInstancia().getUsuarioId(codCorretor); 
+		Cliente cliente = ClienteDAO.getInstancia().getClientePorId(codCliente);
+		//Imovel imovel = ImovelDAO.getInstacia().getImovel(codImovel);
+		
+		this.Agenda(corretor, cliente, /*imovel, */data, horaInicio, horaFim, descricao);
+
 	}
 	
 	public Agenda(){
