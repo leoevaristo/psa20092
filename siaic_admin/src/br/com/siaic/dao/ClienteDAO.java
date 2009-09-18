@@ -79,9 +79,11 @@ public class ClienteDAO {
 		String sql = "INSERT INTO PESSOA_CLIENTE( PEC_CODIGO,PEC_CPF,PEC_RG,PEC_CNPJ )" 
 					+ "VALUES (?, ?, ?,?)";
 		
+		PreparedStatement ps = conexao.prepareStatement ( sql );
+		
 		try{
 		
-			PreparedStatement ps = conexao.prepareStatement ( sql );
+			
 		
 			ps.setInt(1, cliente.getCodigoPessoa());
 			ps.setString(2, cliente.getCpf());
@@ -110,10 +112,24 @@ public class ClienteDAO {
 	/**
 	 * 
 	 * @param cliente
+	 * @throws SQLException 
 	 */
-	public void removerCliente ( Cliente cliente )
+	public void removerCliente ( int idPessoa ) throws SQLException
 	{
+		 String sql = " DELETE PESSOA_CLIENTE, PESSOA FROM PESSOA_CLIENTE INNER JOIN PESSOA INNER JOIN ENDERECO "
+			 		 +" WHERE PESSOA_CLIENTE.PEC_CODIGO = ? AND PESSOA_CLIENTE.PEC_CODIGO =PESSOA.PES_CODIGO " 
+			 		 +" AND PESSOA.PES_ENDERECO = ENDERECO.END_CODIGO; ";
 		 
+		 PreparedStatement ps = conexao.prepareStatement(sql);
+		 
+		 try{
+			
+			ps.setInt(1, idPessoa);
+			if( ps.execute())
+				System.out.println("Dados apagados!");
+		 }finally{
+			 ps.close();
+		 }
 	}
 	
 	
@@ -215,7 +231,7 @@ public class ClienteDAO {
 		String sql = "SELECT c.PEC_CODIGO, c.PEC_CPF, c.PEC_RG, c.PEC_CNPJ, "
 					+ " p.PES_CODIGO, p.PES_NOME, p.PES_EMAIL, p.PES_TELEFONE, p.PES_CELULAR" 
 					+ " FROM PESSOA_CLIENTE c, PESSOA p" 
-					+ "	WHERE c.PEC_CODIGO = p.PES_CODIGO";
+					+ "	WHERE c.PEC_CODIGO = p.PES_CODIGO ORDER BY p.PES_CODIGO ASC;";
 		
 		
 		PreparedStatement ps = conexao.prepareStatement(sql);
