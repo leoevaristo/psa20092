@@ -118,9 +118,9 @@ public class UsuarioDAO {
 	public Usuario getUsuarioId(int usuarioCodido) throws SQLException
 	{
 		
-		String sql = "SELECT u.PEU_CODIGO, u.PEU_CRECI, u.PEU_LOGIN, u.PEU_SENHA , p.PES_CODIGO" 
-					+"FROM PESSOA_USUARIO u, PESSOA p" 
-					+"WHERE u.PEU_CODIGO = ?  AND u.PEU_CODIGO = p.PES_CODIGO ";
+		String sql = "SELECT PEU_CODIGO, PEU_CRECI, PEU_LOGIN, PEU_SENHA , PES_CODIGO" 
+					+"FROM PESSOA_USUARIOS , PESSOA " 
+					+"WHERE PEU_CODIGO = ?  AND PEU_CODIGO = PES_CODIGO ";
 		
 		
 		PreparedStatement ps = conexao.prepareStatement(sql);
