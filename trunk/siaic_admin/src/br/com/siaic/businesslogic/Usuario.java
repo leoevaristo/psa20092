@@ -8,11 +8,7 @@ package br.com.siaic.businesslogic;
  *
  */
 
-/**
- * @author Alan
- * 
- */
-public class Usuario {
+public class Usuario extends Pessoa {
 
 	private int codigoPessoa;
 

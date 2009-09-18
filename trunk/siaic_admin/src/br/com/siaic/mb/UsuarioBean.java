@@ -9,7 +9,7 @@ import br.com.siaic.dao.PessoaDAO;
 public class UsuarioBean {
 
 	/**
-	 * 
+	 * @author Alain Rosemberg
 	 */
 	private Usuario usuario;
 
