@@ -25,7 +25,7 @@ public class ImovelCaracteristicaDAO {
 		return ImovelCaracteristicaDAO.instance;
 	}
 
-	// Select geral da tabela Imovel_Caracteristicas.
+	// get da tabela Imovel_Caracteristicas.
 	public ImovelCaracteristica getImovelCaracteristica(int codigo)
 			throws SQLException {
 		String query = new String(
@@ -73,7 +73,7 @@ public class ImovelCaracteristicaDAO {
 		return result;
 	}
 	
-	// Select geral da tabela Imovel_Caracteristicas.
+	// Listagem da tabela Imovel_Caracteristicas.
 	public List<ImovelCaracteristica> getImovelCaracteristicaList()
 			throws SQLException {
 		String query = new String(
@@ -100,7 +100,7 @@ public class ImovelCaracteristicaDAO {
 		return l;
 	}
 	
-	//Deleta a caracteristica do imovel passando o codigo do perfil
+	// Deleta a caracteristica do imovel
 	public boolean delImovelCaracteristica(ImovelCaracteristica ic) throws SQLException{
 		String query = new String(
 		"delete from IMOVEL_CARACTERISTICAS where IMC_CODIGO = ? ");
@@ -114,7 +114,7 @@ public class ImovelCaracteristicaDAO {
 		return result;
 	}
 	
-	//Update das caracteristicas do imovel
+	// Update das caracteristicas do imovel
 	public boolean altImovelCaracteristica(ImovelCaracteristica icAtual,
 			ImovelCaracteristica icNovo) throws SQLException{
 		String query = new String(
