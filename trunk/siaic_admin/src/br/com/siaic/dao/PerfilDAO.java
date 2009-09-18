@@ -1,11 +1,12 @@
 package br.com.siaic.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.ImovelCaracteristica;
 import br.com.siaic.businesslogic.Perfil;
 
@@ -18,13 +19,39 @@ import br.com.siaic.businesslogic.Perfil;
 
 public class PerfilDAO {
 	private static PerfilDAO instance;
+	
+	private static ClienteDAO cdao = new ClienteDAO();
 		 
-	private static PerfilDAO getInstance() {
+	public static PerfilDAO getInstance() {
 		 if (PerfilDAO.instance == null) {
 		  PerfilDAO.instance = new PerfilDAO();
 		 }
 		 return PerfilDAO.instance;
 	}
+	//Busca de perfil por cliente
+	public List<Perfil> getPerfil(Cliente c) throws SQLException{
+		String query = "select * from PERFIL where PRF_PESSOA_CLIENTE = ?";
+		PreparedStatement ps;
+		ps = DB.getConn().prepareStatement(query);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		List<Perfil> l = new ArrayList<Perfil>();
+		
+		Perfil p = null;
+		while (rs.next()) {
+			p = new Perfil();
+			p.setCodigo(rs.getInt("PRF_CODIGO"));
+			p.setCliente(cdao.getClientePorId(rs.getInt("PRF_PESSOA_CLIENTE")));
+			p.setImovelCaracteristica(ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(rs.getInt("PRF_IMOVEL_CARACTERISTICA")));
+			p.setUsuario(UsuarioDAO.getInstancia().getUsuarioId(rs.getInt("PRF_USUARIO")));
+			l.add(p);
+		}
+		rs.close();
+		ps.close();
+		return l;
+	}
+			
 	// Insert da tabela Perfil.
 	public boolean addPerfil(Perfil p)
 			throws SQLException {
@@ -34,9 +61,9 @@ public class PerfilDAO {
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
 
-		ps.setInt(1, p.getCodigoPessoaCliente());
-		ps.setInt(2, p.getCodigoImovelCaracteristica());
-		ps.setInt(3, p.getCodigoUsuario());
+		ps.setInt(1, p.getCliente().getCodigoPessoa());
+		ps.setInt(2, p.getImovelCaracteristica().getCodigo());
+		ps.setInt(3, p.getUsuario().getCodigoPessoa());
 
 		boolean result = ps.executeUpdate() > 0;
 		ps.close();
@@ -54,9 +81,9 @@ public class PerfilDAO {
 		ps = DB.getConn().prepareStatement(query);
 		
 		ps.setInt(1, pNovo.getCodigo());
-		ps.setInt(2, pNovo.getCodigoPessoaCliente());
-		ps.setInt(3, pNovo.getCodigoImovelCaracteristica());
-		ps.setInt(4, pNovo.getCodigoUsuario());
+		ps.setInt(2, pNovo.getCliente().getCodigoPessoa());
+		ps.setInt(3, pNovo.getImovelCaracteristica().getCodigo());
+		ps.setInt(4, pNovo.getUsuario().getCodigoPessoa());
 		ps.setInt(5, pAtual.getCodigo());
 		
 		boolean result = ps.executeUpdate() > 0;
