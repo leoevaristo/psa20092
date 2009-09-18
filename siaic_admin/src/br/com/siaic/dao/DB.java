@@ -39,7 +39,8 @@ public class DB {
 			inicializado = true;
 		}
 		if (conn == null || conn.isClosed()) {
-			conn = DriverManager.getConnection(url, user, password);
+			//conn = DriverManager.getConnection(url, user, password);
+			conn = FabricaConexao.getInstancia().conectar();
 		}
 		return conn;
 	}
