@@ -52,7 +52,8 @@ public class ClienteDAO {
 		{
 			
 			
-			this.conexao = FabricaConexao.getInstancia().conectar();
+			FabricaConexao.getInstancia();
+			this.conexao = FabricaConexao.conectar();
 			
 		
 		}

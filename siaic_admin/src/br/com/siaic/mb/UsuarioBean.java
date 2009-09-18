@@ -50,8 +50,10 @@ public class UsuarioBean {
 	public String addUsuario() throws SQLException {
 		// TODO
 		String r = "";
-
-		PessoaDAO.getInstancia().adicionarPessoa(usuario);
+		
+		PessoaDAO daoPessoa = new PessoaDAO();
+		
+		daoPessoa.adicionarPessoa(usuario);
 
 		UsuarioDAO.getInstancia().adicionarUsuario(usuario);
 

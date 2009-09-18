@@ -69,6 +69,7 @@ public class PessoaDAO
 		setIdPessoa(pessoa);		
 		
 		ps.close();
+		this.conexao.close();
 		
 	}
 	
@@ -95,6 +96,8 @@ public class PessoaDAO
 		ps.close();
 		
 		rs.close();
+		
+		this.conexao.close();
 	}
 	
 
