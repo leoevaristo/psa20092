@@ -33,7 +33,7 @@ public class PerfilDAO {
 		String query = "select * from PERFIL where PRF_PESSOA_CLIENTE = ?";
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
-		
+		ps.setInt(1, c.getCodigoPessoa());
 		ResultSet rs = ps.executeQuery();
 		
 		List<Perfil> l = new ArrayList<Perfil>();
@@ -56,7 +56,7 @@ public class PerfilDAO {
 	public boolean addPerfil(Perfil p)
 			throws SQLException {
 		String query = new String(
-				"insert into PERFIL (PRF_PESSOA_CLIENTE, PRF_IMOVEL_CARACTERISCA, PRF_USUARIO) ")
+				"insert into PERFIL (PRF_PESSOA_CLIENTE, PRF_IMOVEL_CARACTERISTICA, PRF_USUARIO) ")
 				+ "values (?, ?, ?)";
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
