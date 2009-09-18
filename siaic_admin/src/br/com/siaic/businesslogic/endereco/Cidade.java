@@ -69,6 +69,10 @@ public class Cidade {
 		this.cidadeNome = cidadeNome;
 		this.cidadeEstado = cidadeEstado;
 	}
+
+	public Cidade() {
+		super();
+	}
 	
 	
 	

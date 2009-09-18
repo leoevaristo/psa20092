@@ -80,6 +80,11 @@ public class Bairro {
 		this.bairroNome = bairroNome;
 		this.bairroCidade = bairroCidade;
 	}
+
+
+	public Bairro() {
+		super();
+	}
 	
 	
 	
