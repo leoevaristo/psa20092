@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import br.com.siaic.businesslogic.endereco.Bairro;
 import br.com.siaic.businesslogic.endereco.Cidade;
 import br.com.siaic.businesslogic.endereco.Endereco;
@@ -517,18 +519,20 @@ public class EnderecoDAO {
 	
 	
 	public static void main(String[] args) {
+		
 		try {
 			
-			Endereco c = EnderecoDAO.getInstancia().getEnderecoPorCodigo(3);
+			Endereco endereco = EnderecoDAO.getInstancia().getEnderecoPorCep("58033904");
+			System.out.println(endereco.getEnderecoLogradouro());
+			System.out.println(endereco.getEnderecoNome());
+			System.out.println(endereco.getEnderecoCep());
 			
-			c.setEnderecoLogradouro("Rua");
-			EnderecoDAO.getInstancia().alterarEndereco(c);
-			
-		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
 	}
 	
 	
