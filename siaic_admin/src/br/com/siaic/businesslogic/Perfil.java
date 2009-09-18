@@ -1,5 +1,11 @@
 package br.com.siaic.businesslogic;
 
+import java.sql.SQLException;
+
+import br.com.siaic.dao.ClienteDAO;
+import br.com.siaic.dao.ImovelCaracteristicaDAO;
+import br.com.siaic.dao.UsuarioDAO;
+
 /**
  * 
  * @author Yasmim Tamie Hiramoto Pereira
@@ -9,9 +15,24 @@ package br.com.siaic.businesslogic;
 
 public class Perfil {
 	private int codigo;
-	private int codigoPessoaCliente;
-	private int codigoImovelCaracteristica;
-	private int codigoUsuario;
+	private Cliente cliente;
+	private ImovelCaracteristica imovelCaracteristica;
+	private Usuario usuario;
+	
+	public Perfil(){
+		
+	}
+	public Perfil(Cliente c, ImovelCaracteristica ic, Usuario u){
+		this.cliente = c;
+		this.imovelCaracteristica = ic;
+		this.usuario = u;
+	}
+	public Perfil(int codcli, int codic, int codusua) throws SQLException{
+		this.cliente = new ClienteDAO().getClientePorId(codcli);
+		this.imovelCaracteristica = ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(codic);
+		this.usuario = UsuarioDAO.getInstancia().getUsuarioId(codusua);
+	}
+	
 	
 	public int getCodigo() {
 		return codigo;
@@ -19,22 +40,23 @@ public class Perfil {
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	public int getCodigoPessoaCliente() {
-		return codigoPessoaCliente;
+	public Cliente getCliente() {
+		return cliente;
 	}
-	public void setCodigoPessoaCliente(int codigoPessoaCliente) {
-		this.codigoPessoaCliente = codigoPessoaCliente;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-	public int getCodigoImovelCaracteristica() {
-		return codigoImovelCaracteristica;
+	public ImovelCaracteristica getImovelCaracteristica() {
+		return imovelCaracteristica;
 	}
-	public void setCodigoImovelCaracteristica(int codigoImovelCaracteristica) {
-		this.codigoImovelCaracteristica = codigoImovelCaracteristica;
+	public void setImovelCaracteristica(ImovelCaracteristica imovelCaracteristica) {
+		this.imovelCaracteristica = imovelCaracteristica;
 	}
-	public int getCodigoUsuario() {
-		return codigoUsuario;
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	public void setCodigoUsuario(int codigoUsuario) {
-		this.codigoUsuario = codigoUsuario;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
+	
 }
