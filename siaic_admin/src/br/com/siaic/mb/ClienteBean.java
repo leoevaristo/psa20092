@@ -52,9 +52,13 @@ public class ClienteBean {
 		// TODO
 		String r = "";
 
-		PessoaDAO.getInstancia().adicionarPessoa(cliente);
+		ClienteDAO daoCliente = new ClienteDAO();
+		
+		PessoaDAO daoPessoa = new PessoaDAO();
+		
+		daoPessoa.adicionarPessoa(cliente);
 
-		ClienteDAO.getInstancia().adicionarCliente(cliente);
+		daoCliente.adicionarCliente(cliente);
 
 		return r;
 
@@ -69,7 +73,9 @@ public class ClienteBean {
 		// TODO
 		String r = "";
 
-		ClienteDAO.getInstancia().alterarCliente(cliente);
+		ClienteDAO dao = new ClienteDAO();
+		
+		dao.alterarCliente(cliente);
 
 		return r;
 
@@ -80,9 +86,11 @@ public class ClienteBean {
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<Cliente> ExibirTodosClientes() throws SQLException {
-
-		return ClienteDAO.getInstancia().getTodosClientes();
+	public List<Cliente> getTodosClientes() throws SQLException {
+		
+		ClienteDAO dao = new ClienteDAO();
+		
+		return dao.getTodosClientes();
 
 	}
 
@@ -92,8 +100,10 @@ public class ClienteBean {
 	 * @throws SQLException
 	 */
 	public Cliente localizarClientePorId() throws SQLException {
+		
+		ClienteDAO dao = new ClienteDAO();
 
-		return ClienteDAO.getInstancia().getClientePorId(
+		return dao.getClientePorId(
 				getCliente().getCodigoPessoa());
 
 	}

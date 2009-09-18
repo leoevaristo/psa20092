@@ -37,20 +37,7 @@ public class ClienteDAO {
 	
 	
 	
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public static ClienteDAO getInstancia()
-	{
-		if(instance == null)
-		{
-			instance = new ClienteDAO();
-		}
-		
-		return instance;
-	}
+
 	
 	
 	
@@ -58,7 +45,7 @@ public class ClienteDAO {
 	/**
 	 * 
 	 */
-	private ClienteDAO()
+	public ClienteDAO()
 	{
 		
 		try
@@ -224,7 +211,8 @@ public class ClienteDAO {
 	public List<Cliente> getTodosClientes () throws SQLException
 	{
 		//TODO
-		String sql = "SELECT c.PEC_CODIGO, c.PEC_CPF, c.PEC_RG, c.PEC_CNPJ, p.PES_CODIGO" 
+		String sql = "SELECT c.PEC_CODIGO, c.PEC_CPF, c.PEC_RG, c.PEC_CNPJ, "
+					+ " p.PES_CODIGO, p.PES_NOME, p.PES_EMAIL, p.PES_TELEFONE, p.PES_CELULAR" 
 					+ " FROM PESSOA_CLIENTE c, PESSOA p" 
 					+ "	WHERE c.PEC_CODIGO = p.PES_CODIGO";
 		
@@ -240,10 +228,13 @@ public class ClienteDAO {
 			
 			Cliente cliente = new Cliente();
 			
-			cliente.setCodigoPessoa(rs.getInt("PEC_CODIGO"));
+			cliente.setCodigoPessoa(rs.getInt("PES_CODIGO"));
 			cliente.setCpf(rs.getString("PEC_CPF"));
 			cliente.setRg(rs.getString("PEC_RG"));
 			cliente.setCnpj(rs.getString("PEC_CNPJ"));
+			cliente.setNome(rs.getString("PES_NOME"));
+			cliente.setEmail(rs.getString("PES_EMAIL"));
+			cliente.setTelefone(rs.getString("PES_TELEFONE"));
 			
 			listaTodosClientes.add(cliente);
 			
