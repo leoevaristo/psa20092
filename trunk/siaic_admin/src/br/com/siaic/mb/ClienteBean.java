@@ -2,11 +2,14 @@ package br.com.siaic.mb;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.endereco.Endereco;
 import br.com.siaic.dao.ClienteDAO;
-import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.PessoaDAO;
 
 public class ClienteBean {
@@ -88,7 +91,7 @@ public class ClienteBean {
 	public String addCliente() throws SQLException 
 	{
 		// TODO
-		String r = "";
+		String r = "sucesso";
 		
 		
 
@@ -149,6 +152,24 @@ public class ClienteBean {
 		return dao.getClientePorId(
 				getCliente().getCodigoPessoa());
 
+	}
+	
+	
+	
+	
+	public void excluiCliente() throws SQLException{
+		
+		  FacesContext context = FacesContext.getCurrentInstance();  
+		  HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();  
+		           
+		  Integer idPessoa = new Integer( req.getParameter("codigoPessoa") ).intValue();  
+		     
+		
+		  ClienteDAO dao = new ClienteDAO();
+		
+		  dao.removerCliente(idPessoa);
+		
+	
 	}
 
 }
