@@ -118,7 +118,7 @@ public class UsuarioDAO {
 	public Usuario getUsuarioId(int usuarioCodido) throws SQLException
 	{
 		
-		String sql = "SELECT u.PEU_CODIGO, u.PEU_CRECI, u.PEU_LOGIN, u.PEU_SENHA " 
+		String sql = "SELECT u.PEU_CODIGO, u.PEU_CRECI, u.PEU_LOGIN, u.PEU_SENHA , p.PES_CODIGO" 
 					+"FROM PESSOA_USUARIO u, PESSOA p" 
 					+"WHERE u.PEU_CODIGO = ?  AND u.PEU_CODIGO = p.PES_CODIGO ";
 		
