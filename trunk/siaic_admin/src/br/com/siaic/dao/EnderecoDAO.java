@@ -62,6 +62,7 @@ public class EnderecoDAO {
 		}//catch()
 		finally{
 			ps.close();
+			conexao.close();
 		}//finally
 
 		return retorno;
@@ -93,6 +94,7 @@ public class EnderecoDAO {
 		}//catch()
 		finally{
 			ps.close();
+			conexao.close();
 		}//finally
 
 		return retorno;
@@ -123,6 +125,7 @@ public class EnderecoDAO {
 		}//catch()
 		finally{
 			ps.close();
+			conexao.close();
 		}//finally
 
 		return retorno;
@@ -155,6 +158,7 @@ public class EnderecoDAO {
 		}//catch()
 		finally{
 			ps.close();
+			conexao.close();
 		}//finally
 
 		return retorno;
@@ -189,6 +193,7 @@ public class EnderecoDAO {
 
 		ps.close();
 		rs.close();
+		conexao.close();
 		
 		return estado;
 	}
@@ -221,7 +226,7 @@ public class EnderecoDAO {
 
 		ps.close();
 		rs.close();
-		
+		conexao.close();
 		return cidade;
 	}
 
@@ -254,6 +259,7 @@ public class EnderecoDAO {
 		
 		ps.close();
 		rs.close();
+		conexao.close();
 		
 		return bairro;
 	}
@@ -288,6 +294,7 @@ public class EnderecoDAO {
 		
 		ps.close();
 		rs.close();
+		conexao.close();
 		
 		return endereco;
 	}
@@ -322,6 +329,7 @@ public class EnderecoDAO {
 		
 		ps.close();
 		rs.close();
+		conexao.close();
 		
 		return endereco;
 	}
@@ -354,6 +362,7 @@ public class EnderecoDAO {
 			ps.setString(3, estado.getEstadoSigla());
 			ps.executeUpdate();
 			ps.close();
+			conexao.close();
 			retorno = true;
 			
 		}
@@ -396,6 +405,7 @@ public class EnderecoDAO {
 			ps.executeUpdate();
 
 			ps.close();
+			conexao.close();
 			retorno = true;
 			
 		}
@@ -438,6 +448,7 @@ public class EnderecoDAO {
 			ps.executeUpdate();
 
 			ps.close();
+			conexao.close();
 			retorno = true;
 			
 		}
@@ -484,6 +495,7 @@ public class EnderecoDAO {
 			ps.executeUpdate();
 
 			ps.close();
+			conexao.close();
 			retorno = true;
 			
 		}
