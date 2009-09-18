@@ -1,13 +1,12 @@
 package br.com.siaic.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.siaic.businesslogic.ImovelCaracteristica;
-import br.com.siaic.businesslogic.Perfil;
 
 /**
  * 
@@ -45,6 +44,7 @@ public class ImovelCaracteristicaDAO {
 			ic.setQtdeDormitorio(rs.getInt("IMC_DORMITORIOS_QTDE"));
 			ic.setQtdeGaragem(rs.getInt("IMC_VAGAS_GARAGEM_QTDE"));
 			ic.setQtdeSuite(rs.getInt("IMC_SUITES_QTDE"));
+			ic.setPiscina(rs.getString("IMC_PISCINA").charAt(0));
 		}
 		ps.close();
 		rs.close();
@@ -56,55 +56,84 @@ public class ImovelCaracteristicaDAO {
 	public boolean CadastrarCaracteristica(ImovelCaracteristica ic)
 			throws SQLException {
 		String query = new String(
-				"insert into IMOVEL_CARACTERISTICAS (IMC_CODIGO, IMC_DORMITORIOS_QTDE, IMC_SUITES_QTDE, IMC_VAGAS_GARAGEM_QTDE)")
-				+ "values (?, ?, ?, ?, ?)";
+				"insert into IMOVEL_CARACTERISTICAS (IMC_DORMITORIOS_QTDE, IMC_SUITES_QTDE, IMC_VAGAS_GARAGEM_QTDE, IMC_PISCINA) ")
+				+ "values (?, ?, ?, ?)";
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
 
-		ps.setInt(1, ic.getCodigo());
-		ps.setInt(2, ic.getQtdeDormitorio());
-		ps.setInt(3, ic.getQtdeSuite());
-		ps.setInt(4, ic.getQtdeGaragem());
-		ps.setString(5, Character.toString(ic.getPiscina()));
+		
+		ps.setInt(1, ic.getQtdeDormitorio());
+		ps.setInt(2, ic.getQtdeSuite());
+		ps.setInt(3, ic.getQtdeGaragem());
+		ps.setString(4, Character.toString(ic.getPiscina()));
 
-		ps.execute();
+		boolean result = ps.executeUpdate() > 0;
 		ps.close();
 		
-		return false;
+		return result;
 	}
-	// Select do das caracteristicas de imovel atraves do pessoa_cliente.
-	public ImovelCaracteristica buscaImovelCaracteristica(int codigo)throws SQLException {
+	
+	// Select geral da tabela Imovel_Caracteristicas.
+	public List<ImovelCaracteristica> getImovelCaracteristicaList()
+			throws SQLException {
 		String query = new String(
-				"select * from IMOVEL_CARACTERISTICAS where IMC_CODIGO = "+
-				"(select PRF_IMOVEL_CARACTERISTICA from PERFIL where PRF_PESSOA_CLIENTE = ?)");
+				"select * from imovel_caracteristicas");
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
-		ps.setInt(1, codigo);
 		ResultSet rs = ps.executeQuery();
 
+		List<ImovelCaracteristica> l = new ArrayList<ImovelCaracteristica>();
 		ImovelCaracteristica ic = null;
 
-		if (rs.first()) {
+		while (rs.next()) {
 			ic = new ImovelCaracteristica();
 			ic.setCodigo(rs.getInt("IMC_CODIGO"));
 			ic.setPiscina(rs.getString("IMC_PISCINA").charAt(0));
 			ic.setQtdeDormitorio(rs.getInt("IMC_DORMITORIOS_QTDE"));
 			ic.setQtdeGaragem(rs.getInt("IMC_VAGAS_GARAGEM_QTDE"));
 			ic.setQtdeSuite(rs.getInt("IMC_SUITES_QTDE"));
+			ic.setPiscina(rs.getString("IMC_PISCINA").charAt(0));
+			l.add(ic);
 		}
-		ps.close();
 		rs.close();
-		
-		return ic;
+		ps.close();
+		return l;
 	}
+	
 	//Deleta a caracteristica do imovel passando o codigo do perfil
-	public void delImovel(Perfil perfil) throws SQLException{
+	public boolean delImovelCaracteristica(ImovelCaracteristica ic) throws SQLException{
 		String query = new String(
-		"delete from IMOVEL_CARACTERISTICAS where IMC_CODIGO in "
-		+ "(select PRF_IMOVEL_CARACTERISTICA from PERFIL where PRF_CODIGO = ?)");
+		"delete from IMOVEL_CARACTERISTICAS where IMC_CODIGO = ? ");
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
-		ps.execute();	
+		ps.setInt(1, ic.getCodigo());
+		
+		boolean result = ps.executeUpdate() > 0;
 		ps.close();
+		
+		return result;
+	}
+	
+	//Update das caracteristicas do imovel
+	public boolean altImovelCaracteristica(ImovelCaracteristica icAtual,
+			ImovelCaracteristica icNovo) throws SQLException{
+		String query = new String(
+		"update IMOVEL_CARACTERISTICAS "+
+		"set IMC_CODIGO = ?, IMC_DORMITORIOS_QTDE = ?, IMC_SUITES_QTDE = ?, "+
+		"IMC_VAGAS_GARAGEM_QTDE = ?, IMC_PISCINA = ? "+
+		"where IMC_CODIGO = ?");
+		PreparedStatement ps;
+		ps = DB.getConn().prepareStatement(query);
+		
+		ps.setInt(1, icNovo.getCodigo());
+		ps.setInt(2, icNovo.getQtdeDormitorio());
+		ps.setInt(3, icNovo.getQtdeSuite());
+		ps.setInt(4, icNovo.getQtdeGaragem());
+		ps.setString(5, Character.toString(icNovo.getPiscina()));
+		ps.setInt(6, icAtual.getCodigo());
+		
+		boolean result = ps.executeUpdate() > 0;
+		ps.close();
+		return result;
 	}
 }
