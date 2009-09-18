@@ -6,6 +6,7 @@ import java.sql.Time;
 
 import br.com.siaic.dao.AgendaDAO;
 import br.com.siaic.dao.ClienteDAO;
+import br.com.siaic.dao.ImovelDAO;
 import br.com.siaic.dao.UsuarioDAO;
 import br.com.siaic.mb.AgendaBean;
 
@@ -25,7 +26,7 @@ public class Agenda {
 	private int codigo;
 	private Cliente cliente;
 	private Usuario corretor;
-	//private Imovel imovel;
+	private Imovel imovel;
 	private Date data;
 	private Time horaInicio;
 	private Time horaFim;
@@ -51,16 +52,16 @@ public class Agenda {
 	 * @throws Exception
 	 *             é lançada caso algum dos valores obrigatórios seja nulo.
 	 */
-	public Agenda(Usuario corretor, Cliente cliente, /*Imovel imovel,*/
+	public Agenda(Usuario corretor, Cliente cliente, Imovel imovel,
 			Date data, Time horaInicio, Time horaFim, String descricao)
 			throws Exception {
 		if ((corretor == null) || (cliente == null)
-				/*|| (imovel == null)*/) {
+				|| (imovel == null)) {
 			throw new Exception("Campo(s) obrigatório(s) nulo(s).");
 		}
 		this.corretor = corretor;
 		this.cliente = cliente;
-		//this.imovel = imovel;
+		this.imovel = imovel;
 		this.data = data;
 		this.horaInicio = horaInicio;
 		this.horaFim = horaFim;
@@ -68,14 +69,26 @@ public class Agenda {
 	}
 	
 	public Agenda(int codCorretor, int codCliente, int codImovel, Date data,
-			Time horaInicio, Time horaFim, String descricao) throws SQLException {
+			Time horaInicio, Time horaFim, String descricao) throws Exception {
+		
+		ClienteDAO cdao = new ClienteDAO();
+		ImovelDAO idao = new ImovelDAO();
 		
 		Usuario corretor = UsuarioDAO.getInstancia().getUsuarioId(codCorretor); 
-		Cliente cliente = ClienteDAO.getInstancia().getClientePorId(codCliente);
-		//Imovel imovel = ImovelDAO.getInstacia().getImovel(codImovel);
+		Cliente cliente = cdao.getClientePorId(codCliente);
+		Imovel imovel = idao.getImovel(codImovel);
 		
-		this.Agenda(corretor, cliente, /*imovel, */data, horaInicio, horaFim, descricao);
-
+		if ((corretor == null) || (cliente == null)
+				|| (imovel == null)) {
+			throw new Exception("Campo(s) obrigatório(s) nulo(s).");
+		}
+		this.corretor = corretor;
+		this.cliente = cliente;
+		this.imovel = imovel;
+		this.data = data;
+		this.horaInicio = horaInicio;
+		this.horaFim = horaFim;
+		this.setDescricao(descricao);
 	}
 	
 	public Agenda(){
@@ -105,13 +118,13 @@ public class Agenda {
 		this.corretor = corretor;
 	}
 
-//	public Imovel getImovel() {
-//		return imovel;
-//	}
-//
-//	public void setImovel(Imovel imovel) {
-//		this.imovel = imovel;
-//	}
+	public Imovel getImovel() {
+		return imovel;
+	}
+
+	public void setImovel(Imovel imovel) {
+		this.imovel = imovel;
+	}
 
 	public Date getData() {
 		return data;
