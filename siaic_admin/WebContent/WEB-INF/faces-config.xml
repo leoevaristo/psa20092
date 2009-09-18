@@ -15,5 +15,10 @@
   <managed-bean-class>br.com.siaic.mb.ClienteBean</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+ 	<managed-bean-name>imovelBean</managed-bean-name>
+ 	<managed-bean-class>br.com.siaic.mb.ImovelBean</managed-bean-class>
+ 	<managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
 
 </faces-config>
