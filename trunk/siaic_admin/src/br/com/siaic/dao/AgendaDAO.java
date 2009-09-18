@@ -8,6 +8,7 @@ import java.util.List;
 
 import br.com.siaic.businesslogic.Agenda;
 import br.com.siaic.businesslogic.Cliente;
+import br.com.siaic.businesslogic.Imovel;
 import br.com.siaic.businesslogic.Usuario;
 
 /**
@@ -23,6 +24,9 @@ import br.com.siaic.businesslogic.Usuario;
  */
 public class AgendaDAO {
 	private static AgendaDAO instance;
+	
+	private static ClienteDAO cdao = new ClienteDAO();
+	private static ImovelDAO idao = new ImovelDAO();
 
 	public static AgendaDAO getInstance() {
 		if (AgendaDAO.instance == null) {
@@ -51,16 +55,15 @@ public class AgendaDAO {
 		if (rs.first()) {
 			a = new Agenda();
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
-			a.setCliente(ClienteDAO.getInstancia().getClientePorId(
+			a.setCliente(cdao.getClientePorId(
 					rs.getInt("AGE_PESSOA_CLIENTE")));
 			a.setCorretor(UsuarioDAO.getInstancia().getUsuarioId(
 					rs.getInt("AGE_PESSOA_USUARIO")));
-			// a.setImovel(ImovelDAO.getInstance().getImovel(
-			// rs.getInt("AGE_PESSOA_USUARIO")));
+			a.setImovel(idao.getImovel(rs.getInt("AGE_PESSOA_USUARIO")));
 			a.setData(rs.getDate("AGE_DATA"));
 			a.setHoraInicio(rs.getTime("AGE_HORA_INICIO"));
 			a.setHoraFim(rs.getTime("AGE_HORA_INICIO"));
-			// a.setDescricao(rs.getString("AGE_DESCRICAO"));
+			a.setDescricao(rs.getString("AGE_DESCRICAO"));
 		}
 		rs.close();
 		ps.close();
@@ -84,16 +87,16 @@ public class AgendaDAO {
 		while (rs.next()) {
 			a = new Agenda();
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
-			a.setCliente(ClienteDAO.getInstancia().getClientePorId(
+			a.setCliente(cdao.getClientePorId(
 					rs.getInt("AGE_PESSOA_CLIENTE")));
 			a.setCorretor(UsuarioDAO.getInstancia().getUsuarioId(
 					rs.getInt("AGE_PESSOA_USUARIO")));
-			// a.setImovel(ImovelDAO.getInstance().getImovel(
-			// rs.getInt("AGE_PESSOA_USUARIO")));
+			a.setImovel(idao.getImovel(
+			rs.getInt("AGE_PESSOA_USUARIO")));
 			a.setData(rs.getDate("AGE_DATA"));
 			a.setHoraInicio(rs.getTime("AGE_HORA_INICIO"));
 			a.setHoraFim(rs.getTime("AGE_HORA_INICIO"));
-			// a.setDescricao(rs.getString("AGE_DESCRICAO"));
+			a.setDescricao(rs.getString("AGE_DESCRICAO"));
 			l.add(a);
 		}
 		rs.close();
@@ -123,16 +126,16 @@ public class AgendaDAO {
 		while (rs.next()) {
 			a = new Agenda();
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
-			a.setCliente(ClienteDAO.getInstancia().getClientePorId(
+			a.setCliente(cdao.getClientePorId(
 					rs.getInt("AGE_PESSOA_CLIENTE")));
 			a.setCorretor(UsuarioDAO.getInstancia().getUsuarioId(
 					rs.getInt("AGE_PESSOA_USUARIO")));
-			// a.setImovel(ImovelDAO.getInstance().getImovel(
-			// rs.getInt("AGE_PESSOA_USUARIO")));
+			 a.setImovel(idao.getImovel(
+			 rs.getInt("AGE_PESSOA_USUARIO")));
 			a.setData(rs.getDate("AGE_DATA"));
 			a.setHoraInicio(rs.getTime("AGE_HORA_INICIO"));
 			a.setHoraFim(rs.getTime("AGE_HORA_INICIO"));
-			// a.setDescricao(rs.getString("AGE_DESCRICAO"));
+			a.setDescricao(rs.getString("AGE_DESCRICAO"));
 			l.add(a);
 		}
 		rs.close();
@@ -161,16 +164,16 @@ public class AgendaDAO {
 		while (rs.next()) {
 			a = new Agenda();
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
-			a.setCliente(ClienteDAO.getInstancia().getClientePorId(
+			a.setCliente(cdao.getClientePorId(
 					rs.getInt("AGE_PESSOA_CLIENTE")));
 			a.setCorretor(UsuarioDAO.getInstancia().getUsuarioId(
 					rs.getInt("AGE_PESSOA_USUARIO")));
-			// a.setImovel(ImovelDAO.getInstance().getImovel(
-			// rs.getInt("AGE_PESSOA_USUARIO")));
+			 a.setImovel(idao.getImovel(
+			 rs.getInt("AGE_PESSOA_USUARIO")));
 			a.setData(rs.getDate("AGE_DATA"));
 			a.setHoraInicio(rs.getTime("AGE_HORA_INICIO"));
 			a.setHoraFim(rs.getTime("AGE_HORA_INICIO"));
-			// a.setDescricao(rs.getString("AGE_DESCRICAO"));
+			a.setDescricao(rs.getString("AGE_DESCRICAO"));
 			l.add(a);
 		}
 		rs.close();
@@ -187,35 +190,35 @@ public class AgendaDAO {
 	 * @throws SQLException 
 	 * @throws SQLException
 	 */
-//	public List<Agenda> getAgendaList(Imovel i) throws SQLException {
-//		String query = new String(
-//				"select * from agenda where AGE_IMOVEL = ?");
-//		PreparedStatement ps = DB.getConn().prepareStatement(query);
-//		ps.setInt(1, i.getCodigo());
-//		ResultSet rs = ps.executeQuery();
-//
-//		List<Agenda> l = new ArrayList<Agenda>();
-//		Agenda a = null;
-//
-//		while (rs.next()) {
-//			a = new Agenda();
-//			a.setCodigo(rs.getInt("AGE_CODIGO"));
-//			a.setCliente(ClienteDAO.getInstancia().getClientePorId(
-//					rs.getInt("AGE_PESSOA_CLIENTE")));
-//			a.setCorretor(UsuarioDAO.getInstancia().getUsuarioId(
-//					rs.getInt("AGE_PESSOA_USUARIO")));
-//			// a.setImovel(ImovelDAO.getInstance().getImovel(
-//			// rs.getInt("AGE_PESSOA_USUARIO")));
-//			a.setData(rs.getDate("AGE_DATA"));
-//			a.setHoraInicio(rs.getTime("AGE_HORA_INICIO"));
-//			a.setHoraFim(rs.getTime("AGE_HORA_INICIO"));
-//			// a.setDescricao(rs.getString("AGE_DESCRICAO"));
-//			l.add(a);
-//		}
-//		rs.close();
-//		ps.close();
-//		return l;
-//	}
+	public List<Agenda> getAgendaList(Imovel i) throws SQLException {
+		String query = new String(
+				"select * from agenda where AGE_IMOVEL = ?");
+		PreparedStatement ps = DB.getConn().prepareStatement(query);
+		ps.setInt(1, i.getCodigo());
+		ResultSet rs = ps.executeQuery();
+
+		List<Agenda> l = new ArrayList<Agenda>();
+		Agenda a = null;
+
+		while (rs.next()) {
+			a = new Agenda();
+			a.setCodigo(rs.getInt("AGE_CODIGO"));
+			a.setCliente(cdao.getClientePorId(
+					rs.getInt("AGE_PESSOA_CLIENTE")));
+			a.setCorretor(UsuarioDAO.getInstancia().getUsuarioId(
+					rs.getInt("AGE_PESSOA_USUARIO")));
+			 a.setImovel(idao.getImovel(
+			 rs.getInt("AGE_PESSOA_USUARIO")));
+			a.setData(rs.getDate("AGE_DATA"));
+			a.setHoraInicio(rs.getTime("AGE_HORA_INICIO"));
+			a.setHoraFim(rs.getTime("AGE_HORA_INICIO"));
+			 a.setDescricao(rs.getString("AGE_DESCRICAO"));
+			l.add(a);
+		}
+		rs.close();
+		ps.close();
+		return l;
+	}
 
 	/**
 	 * Atualiza um registro na tabela Agenda.</br>Substitui o registro "atual"
@@ -243,7 +246,7 @@ public class AgendaDAO {
 		ps.setInt(1, nova.getCodigo());
 		ps.setInt(2, nova.getCliente().getCodigoPessoa());
 		ps.setInt(3, nova.getCorretor().getCodigoPessoa());
-		//ps.setInt(4, nova.getImovel().getCodigoImovel());
+		ps.setInt(4, nova.getImovel().getCodigo());
 		ps.setDate(5, nova.getData());
 		ps.setTime(6, nova.getHoraInicio());
 		ps.setTime(7, nova.getHoraFim());
@@ -291,7 +294,7 @@ public class AgendaDAO {
 		
 		ps.setInt(1, a.getCliente().getCodigoPessoa());
 		ps.setInt(2, a.getCorretor().getCodigoPessoa());
-		//ps.setInt(3, nova.getImovel().getCodigoImovel());
+		ps.setInt(3, a.getImovel().getCodigo());
 		ps.setDate(4, a.getData());
 		ps.setTime(5, a.getHoraInicio());
 		ps.setTime(6, a.getHoraFim());
