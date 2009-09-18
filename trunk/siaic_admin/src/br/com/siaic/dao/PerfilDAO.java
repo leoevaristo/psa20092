@@ -25,8 +25,8 @@ public class PerfilDAO {
 		 }
 		 return PerfilDAO.instance;
 	}
-	// Inserção na tabela Perfil.
-	public boolean CadastrarPerfil(Perfil p)
+	// Insert da tabela Perfil.
+	public boolean addPerfil(Perfil p)
 			throws SQLException {
 		String query = new String(
 				"insert into PERFIL (PRF_PESSOA_CLIENTE, PRF_IMOVEL_CARACTERISCA, PRF_USUARIO) ")
@@ -34,7 +34,6 @@ public class PerfilDAO {
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
 
-		
 		ps.setInt(1, p.getCodigoPessoaCliente());
 		ps.setInt(2, p.getCodigoImovelCaracteristica());
 		ps.setInt(3, p.getCodigoUsuario());
@@ -44,7 +43,7 @@ public class PerfilDAO {
 		
 		return result;
 	}
-	//Update do perfil
+	//Update da tabela Perfil
 	public boolean altPerfil(Perfil pAtual, Perfil pNovo) throws SQLException{
 		String query = new String(
 		"update PERFIL "+
@@ -64,7 +63,7 @@ public class PerfilDAO {
 		ps.close();
 		return result;
 	}
-	//Deleta o perfil
+	//Delete da tabela Perfil
 	public boolean delPerfil(Perfil p) throws SQLException{
 		String query = new String(
 		"delete from PERFIL where PRF_CODIGO = ? ");
@@ -77,5 +76,4 @@ public class PerfilDAO {
 		
 		return result;
 	}
-
 }

@@ -1,6 +1,10 @@
 package br.com.siaic.mb;
 
+import java.sql.SQLException;
+
 import br.com.siaic.businesslogic.Perfil;
+import br.com.siaic.dao.ImovelCaracteristicaDAO;
+import br.com.siaic.dao.PerfilDAO;
 
 /**
  * 
@@ -22,5 +26,12 @@ public class PerfilBean {
 
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
+	}
+	public String addPerfil() throws SQLException{
+		String s = "";
+		PerfilDAO daoP = new PerfilDAO();
+		daoP.addPerfil(perfil);
+		
+		return s;
 	}
 }
