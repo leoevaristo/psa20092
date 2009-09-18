@@ -115,7 +115,7 @@ public class UsuarioDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public Usuario getUsuarioId(int usuarioCodido) throws SQLException
+	public Usuario getUsuarioId(int usuarioCodigo) throws SQLException
 	{
 		
 		String sql = "SELECT PEU_CODIGO, PEU_CRECI, PEU_LOGIN, PEU_SENHA , PES_CODIGO" 
@@ -124,16 +124,17 @@ public class UsuarioDAO {
 		
 		
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setInt(1, usuarioCodido);
+		ps.setInt(1, usuarioCodigo);
 		
 		ResultSet rs = ps.executeQuery();
 		
 		Usuario usuario = new Usuario();
 		
+		rs.first();
 		usuario.setCodigoPessoa(rs.getInt("PEU_CODIGO"));
-		usuario.setCRECI(rs.getString("PEU_CPF"));
-		usuario.setLogin(rs.getString("PEU_RG"));
-		usuario.setSenha(rs.getString("PEU_CNPJ"));
+		usuario.setCRECI(rs.getString("PEU_CRECI"));
+		usuario.setLogin(rs.getString("PEU_LOGIN"));
+		usuario.setSenha(rs.getString("PEU_SENHA"));
 			
 		ps.close();
 		rs.close();
