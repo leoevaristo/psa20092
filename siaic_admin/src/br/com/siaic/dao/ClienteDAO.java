@@ -258,7 +258,7 @@ public class ClienteDAO {
 	{
 		
 		String sql = "SELECT c.PEC_CODIGO, c.PEC_CPF, c.PEC_RG, c.PEC_CNPJ, p.PES_CODIGO " 
-					+"FROM PESSOA_CLIENTE c, PESSOA p" 
+					+"FROM PESSOA_CLIENTE c, PESSOA p " 
 					+"WHERE c.PEC_CODIGO = ?  AND c.PEC_CODIGO = p.PES_CODIGO ";
 		
 		
@@ -266,7 +266,7 @@ public class ClienteDAO {
 		ps.setInt(1, clienteCodigo);
 		
 		ResultSet rs = ps.executeQuery();
-		
+		rs.first();
 		Cliente cliente = new Cliente();
 		
 		cliente.setCodigoPessoa(rs.getInt("PEC_CODIGO"));
