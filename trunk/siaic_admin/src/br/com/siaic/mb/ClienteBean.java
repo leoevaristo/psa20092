@@ -4,7 +4,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.com.siaic.businesslogic.Cliente;
+import br.com.siaic.businesslogic.endereco.Endereco;
 import br.com.siaic.dao.ClienteDAO;
+import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.PessoaDAO;
 
 public class ClienteBean {
@@ -13,21 +15,55 @@ public class ClienteBean {
 	 * @author Carlos Junior
 	 */
 	private Cliente cliente;
+	
+	
+	
+	/**
+	 * 
+	 */
+	private Endereco endereco;
+	
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Endereco getEndereco() 
+	{
+		return endereco;
+	}
+
+	
+	
+	/**
+	 * 
+	 * @param endereco
+	 */
+	public void setEndereco(Endereco endereco) 
+	{
+		this.endereco = endereco;
+	}
 
 	/**
 	 * 
 	 */
-	public ClienteBean() {
+	public ClienteBean() 
+	{
 
 		cliente = new Cliente();
 
 	}
+	
+	
+	
 
 	/**
 	 * 
 	 * @return
 	 */
-	public Cliente getCliente() {
+	public Cliente getCliente() 
+	{
 
 		return cliente;
 
@@ -37,7 +73,8 @@ public class ClienteBean {
 	 * 
 	 * @param cliente
 	 */
-	public void setCliente(Cliente cliente) {
+	public void setCliente(Cliente cliente) 
+	{
 
 		this.cliente = cliente;
 
@@ -48,14 +85,17 @@ public class ClienteBean {
 	 * @return
 	 * @throws SQLException
 	 */
-	public String addCliente() throws SQLException {
+	public String addCliente() throws SQLException 
+	{
 		// TODO
 		String r = "";
+		
+		
 
 		ClienteDAO daoCliente = new ClienteDAO();
 		
 		PessoaDAO daoPessoa = new PessoaDAO();
-		
+				
 		daoPessoa.adicionarPessoa(cliente);
 
 		daoCliente.adicionarCliente(cliente);
@@ -63,6 +103,9 @@ public class ClienteBean {
 		return r;
 
 	}
+	
+	
+	
 
 	/**
 	 * 

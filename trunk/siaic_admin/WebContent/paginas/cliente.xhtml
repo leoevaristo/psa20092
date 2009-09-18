@@ -39,7 +39,14 @@
 					<h:inputText value="#{clienteBean.cliente.rg}" styleClass="obrigatorio" id="campo04" />
 					<h:outputLabel for="campo05"  value="CPF"/>
 					<h:inputText value="#{clienteBean.cliente.cpf}" styleClass="obrigatorio" id="campo05" />
-				</h:panelGrid>					
+				</h:panelGrid>	
+				<h:panelGrid columns="2">
+					<h:outputLabel for="campoEstado"  value="Estado"/>
+					<h:selectOneMenu id="campoEstado" value="">
+											
+					</h:selectOneMenu>	
+								
+				</h:panelGrid>				
 				<h:panelGrid columns="3" styleClass="botoes">
 					<h:commandButton action="#{clienteBean.addCliente}" value="" styleClass="input_submit" />
 					<h:commandButton action="#" value="" type="reset" styleClass="input_reset" />
