@@ -18,12 +18,12 @@ public class PessoaDAO
 	
 	
 	
-	private static PessoaDAO instancia = null;
 	
 	
 	
 	
-	private PessoaDAO()
+	
+	public PessoaDAO()
 	{
 		
 		try
@@ -41,17 +41,7 @@ public class PessoaDAO
 	
 	
 	
-	public static PessoaDAO getInstancia()
-	{
-		
-		if(instancia == null)
-		{
-			instancia = new PessoaDAO();
-		}
-		
-		return instancia;
-		
-	}
+
 	
 	
 	

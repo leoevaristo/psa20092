@@ -226,6 +226,10 @@ div#container div#content div#col_right div#col_rightConteudo form.forms span in
 div#container div#content div#col_right div#col_rightConteudo form.forms span input.obrigatorio{
 	border-left:4px solid #15688f;
 }
+
+.obrigatorio{
+	border-left:4px solid #15688f;
+}
 div#container div#content div#col_right div#col_rightConteudo form.forms span.infor p{
 	width:150px;
 	border-left:4px solid #15688f;
@@ -264,11 +268,26 @@ div#container div#content div#col_right div#col_rightConteudo form.forms span.bo
 div#container div#content div#col_right div#col_rightConteudo form.forms span.botoes input#input_submit{
 	background:url(../images/btnformsalvar.png);
 }
+.input_submit{
+	background:url(../images/btnformsalvar.png);
+	width:69px;
+	height:25px;
+	}
 div#container div#content div#col_right div#col_rightConteudo form.forms span.botoes input#input_reset{
 	background:url(../images/btnformlimpar.png);
 }
+.input_reset{
+	background:url(../images/btnformlimpar.png);
+	width:69px;
+	height:25px;
+}	
 div#container div#content div#col_right div#col_rightConteudo form.forms span.botoes input#input_buttom{
 	background:url(../images/btnformcancelar.png);
+}
+.input_button{
+	background:url(../images/btnformcancelar.png);
+	width:69px;
+	height:25px;
 }
 div#container div#content div#col_right div#infogerais{
 	width:100%;
@@ -291,16 +310,49 @@ div#container div#content div#col_right div#infogerais a#info_novo{
 	text-decoration:underline;
 	margin-right:10px;
 }
+
+.info_novo{
+	float:right;
+	background: url(../images/imgnovo.png) no-repeat 0 2px;
+	padding-left:18px;
+	color:#2e6587;
+	font-weight:bold;
+	font-size:12px;
+	text-decoration:underline;
+	margin-right:10px;
+}
+	
 div#container div#content div#col_right div#infogerais table#grid{
 	width:100%;
 	clear:both;
 }
+.grid{
+	width:100%;
+	clear:both;
+	
+	
+}
+.cor1{background:#e9f2f6;}
+.cor2{background:#dfecf3;}
+
 div#container div#content div#col_right div#infogerais table#grid thead{
 	color:#2e6587;
 	background:url(../images/bgtopgrid.png);
 	height:23px;
 }
+
+.thead{
+	color:#2e6587;
+	background:url(../images/bgtopgrid.png);
+	height:23px;
+}
+	
 div#container div#content div#col_right div#infogerais table#grid tbody td{
+	color:#051f2f;
+	padding: 2px 5px 2px 5px;
+}
+
+.tbody{
 	color:#051f2f;
 	padding: 2px 5px 2px 5px;
 }
