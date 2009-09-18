@@ -2,6 +2,7 @@ package br.com.siaic.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.com.siaic.businesslogic.endereco.Bairro;
@@ -127,6 +128,13 @@ public class EnderecoDAO {
 		return retorno;
 	}//public boolean adicionarBairro(Estado estado)
 		
+	/**
+	 * Adiciona um endereço na Base de Dados. Atenção: o código do endereço será ignorado nesta implementação. Este código será
+	 * corrigido mais tarde. 
+	 * @param endereco
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean adicionarEndereco(Endereco endereco) throws SQLException{
 		boolean retorno = false;
 		PreparedStatement ps = null;
@@ -152,8 +160,166 @@ public class EnderecoDAO {
 		return retorno;
 	}//public boolean adicionarBairro(Estado estado)
 	
+	/**
+	 * Recuperará um Estado enviando uma Sigla como argumento.
+	 * @param estadoSigla
+	 * @return
+	 * @throws SQLException
+	 */
+	public Estado getEstadoPorSigla(String estadoSigla) throws SQLException
+	{
+		
+		String sql = 		"SELECT * " + 
+							"FROM " + 
+								"ESTADO " +
+							"WHERE " +
+								"EST_SIGLA = ?";
+		
+		conexao = FabricaConexao.getInstancia().conectar();
+		PreparedStatement ps = conexao.prepareStatement(sql);
+		ps.setString(1, estadoSigla);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		Estado estado = new Estado();
+		
+		rs.next();
+		estado.setEstadoSigla(rs.getString(1));
+		estado.setEstadoNome(rs.getString(2));
+
+		ps.close();
+		rs.close();
+		
+		return estado;
+	}
+	
+	/**
+	 * Retorna um objeto Cidade enviando o código definido na base de dados
+	 * 
+	 * @param cidadeCodigo
+	 * @return
+	 * @throws SQLException
+	 */
+	public Cidade getCidadePorCodigo(int cidadeCodigo) throws SQLException
+	{
+		
+		String sql = 		"SELECT * " + 
+							"FROM " + 
+								"CIDADE " +
+							"WHERE " +
+								"CID_CODIGO = ?";
+
+		conexao = FabricaConexao.getInstancia().conectar();
+		PreparedStatement ps = conexao.prepareStatement(sql);
+		ps.setInt(1, cidadeCodigo);
+		ResultSet rs = ps.executeQuery();
+		Cidade cidade = new Cidade();
+		rs.next();
+		cidade.setCidadeCodigo(rs.getInt(1));
+		cidade.setCidadeNome(rs.getString(2));
+		cidade.setCidadeEstado(getEstadoPorSigla(rs.getString(3)));
+
+		ps.close();
+		rs.close();
+		
+		return cidade;
+	}
+
+	
+	/**
+	 * Recuperará um registro da Tabela Bairro enviando um código como argumento.
+	 * @param bairroCodigo
+	 * @return
+	 * @throws SQLException
+	 */
+	public Bairro getBairroPorCodigo(int bairroCodigo) throws SQLException
+	{
+		
+		String sql = 		"SELECT * " + 
+							"FROM " + 
+								"BAIRRO " +
+							"WHERE " +
+								"BAR_CODIGO = ?";
+
+		conexao = FabricaConexao.getInstancia().conectar();
+		PreparedStatement ps = conexao.prepareStatement(sql);
+		ps.setInt(1, bairroCodigo);
+		ResultSet rs = ps.executeQuery();
+		Bairro bairro = new Bairro();
+		rs.next();
+		
+		bairro.setBairroCodigo(rs.getInt(1));
+		bairro.setBairroNome(rs.getString(2));
+		bairro.setBairroCidade( getCidadePorCodigo( rs.getInt(3)) );
+		
+		ps.close();
+		rs.close();
+		
+		return bairro;
+	}
+	
+	/**
+	 * Recuperará um endereço pelo Código enviado como argumento.
+	 * @param enderecoCodigo
+	 * @return
+	 * @throws SQLException
+	 */
+	public Endereco getEnderecoPorCodigo(int enderecoCodigo) throws SQLException
+	{
+		
+		String sql = 		"SELECT * " + 
+							"FROM " + 
+								"ENDERECO " +
+							"WHERE " +
+								"END_CODIGO = ?";
+
+		conexao = FabricaConexao.getInstancia().conectar();
+		PreparedStatement ps = conexao.prepareStatement(sql);
+		ps.setInt(1, enderecoCodigo);
+		ResultSet rs = ps.executeQuery();
+		Endereco endereco = new Endereco();
+		rs.next();
+		
+		endereco.setEnderecoCodigo( rs.getInt(1));
+		endereco.setEnderecoLogradouro( rs.getString(2));
+		endereco.setEnderecoNome(rs.getString(3));
+		endereco.setEnderecoCep( rs.getString(4));
+		endereco.setEnderecoBairro( getBairroPorCodigo(rs.getInt(5)) );
+		
+		ps.close();
+		rs.close();
+		
+		return endereco;
+	}
 	
 	
+	public Endereco getEnderecoPorCep(String enderecoCep) throws SQLException
+	{
+		
+		String sql = 		"SELECT * " + 
+							"FROM " + 
+								"ENDERECO " +
+							"WHERE " +
+								"END_CEP = ?";
+
+		conexao = FabricaConexao.getInstancia().conectar();
+		PreparedStatement ps = conexao.prepareStatement(sql);
+		ps.setString(1, enderecoCep);
+		ResultSet rs = ps.executeQuery();
+		Endereco endereco = new Endereco();
+		rs.next();
+		
+		endereco.setEnderecoCodigo( rs.getInt(1));
+		endereco.setEnderecoLogradouro( rs.getString(2));
+		endereco.setEnderecoNome(rs.getString(3));
+		endereco.setEnderecoCep( rs.getString(4));
+		endereco.setEnderecoBairro( getBairroPorCodigo(rs.getInt(5)) );
+		
+		ps.close();
+		rs.close();
+		
+		return endereco;
+	}
 	
 	
 	
@@ -171,7 +337,13 @@ public class EnderecoDAO {
 	public static void main(String[] args) {
 		try {
 			
-			boolean r = EnderecoDAO.getInstancia().adicionarEndereco(new Endereco(-1, "Rua", "Diomedes Lobo, S/N", "58884000", new Bairro(1, "Batalhão", new Cidade( 1 , "Catolé do Rocha", new Estado("PB", "Paraíba")))));
+			System.out.println(EnderecoDAO.getInstancia().getEnderecoPorCep("580332904"));
+			//System.out.println(EnderecoDAO.getInstancia().getEnderecoPorCodigo(4));
+			//System.out.println(EnderecoDAO.getInstancia().getBairroPorCodigo(1));
+			//System.out.println(EnderecoDAO.getInstancia().getCidadePorCodigo(1));
+			//System.out.println(EnderecoDAO.getInstancia().getEstadoPorSigla("PB"));
+			//boolean r = EnderecoDAO.getInstancia().adicionarEndereco(new Endereco(-1, "Rua", "Diomedes Lobo, S/N", "58884000", new Bairro(1, "Batalhão", new Cidade( 1 , "Catolé do Rocha", new Estado("PB", "Paraíba")))));
+			//System.out.println(EnderecoDAO.getInstancia().getEnderecoPorCep("58033904"));
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
