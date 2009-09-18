@@ -9,7 +9,7 @@ import br.com.siaic.businesslogic.Usuario;
 
 /**
  * 
- * @author Alain Rosemberg *
+ * @author Alain Rosemberg 
  */
 public class UsuarioDAO {
 
@@ -40,16 +40,14 @@ public class UsuarioDAO {
 	 */
 	private UsuarioDAO() {
 
-		try {
-
-			this.conexao = FabricaConexao.getInstancia().conectar();
-
+		try
+		{
+			FabricaConexao.getInstancia();
+			this.conexao = FabricaConexao.conectar();
 		}
-
-		catch (Exception e) {
-
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
-
 		}
 	}
 
