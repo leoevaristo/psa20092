@@ -48,6 +48,10 @@ public class Estado {
 	private String estadoSigla;
 	private String estadoNome;
 
+	public Estado() {
+		super();
+	}
+
 	public Estado(String estadoSigla, String estadoNome) {
 		super();
 		this.estadoSigla = estadoSigla;
