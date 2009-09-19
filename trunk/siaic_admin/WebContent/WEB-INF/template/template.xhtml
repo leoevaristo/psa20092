@@ -37,7 +37,7 @@
         <div id="col_left">
 			<span id="bgleft_topo"></span>
             <div id="col_leftConteudo">
-            	<h3 id="titulo_perfil"><span class="none">Perfil do Usuário</span></h3>
+            	<h3 id="titulo_perfil"><span class="none" style="FONT-SIZE: small;">Perfil do Usuário</span></h3>
                 <div id="perfil">
                 	<img src="#{request.contextPath}/images/fotoperfil.jpg" alt="perfil" />
                     <ul id="dadosperfil">
@@ -51,7 +51,7 @@
                   <div id="menu">                  	
                  	 <ul class="menumodulos">
                  		  <li><a href="imovel.xhtml"> Imóveis</a></li>
-                    	  <li><a href="cliente.xhtml">Clientes</a></li>
+                    	  <li><a href="cliente.xhtml" style="FONT-SIZE: xx-small;">Clientes</a></li>
                     	  <li><a href="usuario.xhtml">Usuários</a></li>
                     	  <li><a href="valormercado.xhtml">Valores de Mercado</a></li>
                     	  <li><a href="#">Gerenciar Agenda</a></li>
@@ -69,9 +69,11 @@
         	<div id="col_rightConteudo">
         		
         		<h2 id="titulos_internos"> <h:outputText value="»" /> <ui:insert name="tituloGrande"></ui:insert></h2>
-                <h4> <h:outputText value="»" /> <ui:insert name="subtitulo"></ui:insert> </h4>
-                <div id="formularios">
-              	  <ui:insert name="conteudo" > </ui:insert>   
+                
+                <div class="formularios">
+               <h4> <ui:insert name="subtitulo"></ui:insert> </h4>
+               <ui:insert name="conteudo" > </ui:insert>   
+              	  
               	</div>
                 <div id="infogerais" class="grid">
                 <p id="info_titulo">  <ui:insert name="tituloLista"> </ui:insert> </p>
