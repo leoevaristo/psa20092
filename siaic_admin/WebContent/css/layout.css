@@ -216,7 +216,7 @@ div#container div#content div#col_right div#col_rightConteudo form.forms span{
 div#container div#content div#col_right div#col_rightConteudo form.forms span label{
 	width:130px;
 	float:left;
-	text-align:right;
+	text-align:center;
 	margin-right:5px;
 }
 
@@ -227,10 +227,8 @@ div#container div#content div#col_right div#col_rightConteudo form.forms span in
 	border-left:4px solid #15688f;
 }
 
-.obrigatorio{
-	border-left:4px solid #15688f;
-}
-div#container div#content div#col_right div#col_rightConteudo form.forms span.infor p{
+
+div#container div#content div#col_right div#col_rightConteudo form.forms span.infor {
 	width:150px;
 	border-left:4px solid #15688f;
 	float:right;
@@ -265,30 +263,18 @@ div#container div#content div#col_right div#col_rightConteudo form.forms span.bo
 	width:69px;
 	height:25px;
 }
-div#container div#content div#col_right div#col_rightConteudo form.forms span.botoes input#input_submit{
+div#container div#content div#col_right div#col_rightConteudo form.forms span.botoes input.input_submit{
 	background:url(../images/btnformsalvar.png);
 }
-.input_submit{
-	background:url(../images/btnformsalvar.png);
-	width:69px;
-	height:25px;
-	}
-div#container div#content div#col_right div#col_rightConteudo form.forms span.botoes input#input_reset{
+
+div#container div#content div#col_right div#col_rightConteudo form.forms span.botoes input.input_reset{
 	background:url(../images/btnformlimpar.png);
 }
-.input_reset{
-	background:url(../images/btnformlimpar.png);
-	width:69px;
-	height:25px;
-}	
-div#container div#content div#col_right div#col_rightConteudo form.forms span.botoes input#input_buttom{
+
+div#container div#content div#col_right div#col_rightConteudo form.forms span.botoes input.input_button{
 	background:url(../images/btnformcancelar.png);
 }
-.input_button{
-	background:url(../images/btnformcancelar.png);
-	width:69px;
-	height:25px;
-}
+
 div#container div#content div#col_right div#infogerais{
 	width:100%;
 	margin-top:30px;
@@ -311,51 +297,30 @@ div#container div#content div#col_right div#infogerais a#info_novo{
 	margin-right:10px;
 }
 
-.info_novo{
-	float:right;
-	background: url(../images/imgnovo.png) no-repeat 0 2px;
-	padding-left:18px;
-	color:#2e6587;
-	font-weight:bold;
-	font-size:12px;
-	text-decoration:underline;
-	margin-right:10px;
-}
+
 	
-div#container div#content div#col_right div#infogerais table#grid{
+div#container div#content div#col_right div#infogerais table.grid{
 	width:100%;
 	clear:both;
 }
-.grid{
-	width:100%;
-	clear:both;
-	
-	
-}
+
 .cor1{background:#e9f2f6;}
 .cor2{background:#dfecf3;}
 
-div#container div#content div#col_right div#infogerais table#grid thead{
+div#container div#content div#col_right div#infogerais table.grid thead{
 	color:#2e6587;
 	background:url(../images/bgtopgrid.png);
 	height:23px;
 }
 
-.thead{
-	color:#2e6587;
-	background:url(../images/bgtopgrid.png);
-	height:23px;
-}
+
 	
-div#container div#content div#col_right div#infogerais table#grid tbody td{
+div#container div#content div#col_right div#infogerais table.grid tbody td{
 	color:#051f2f;
 	padding: 2px 5px 2px 5px;
 }
 
-.tbody{
-	color:#051f2f;
-	padding: 2px 5px 2px 5px;
-}
+
 div#container div#content div#col_right div#infogerais table#grid tbody tr.cor1{
 	background:#e9f2f6;
 }
