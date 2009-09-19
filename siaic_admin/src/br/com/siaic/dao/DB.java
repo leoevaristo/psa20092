@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Inicializa o drive do mySQL e abre uma conexão com o banco.
+ * Inicializa o drive do mySQL e abre uma conexï¿½o com o banco.
  * 
  * @author Robson R. Vieira da Cunha
  * @version 1.0
@@ -21,11 +21,11 @@ public class DB {
 	private static Connection conn = null;
 
 	/**
-	 * Pega uma conexão aberta com o banco de dados. Evita que o drive do mySQL
-	 * seja carregado mais de uma vez. Evita que mais de uma conexão com a base
+	 * Pega uma conexï¿½o aberta com o banco de dados. Evita que o drive do mySQL
+	 * seja carregado mais de uma vez. Evita que mais de uma conexï¿½o com a base
 	 * de dados seja aberta.
 	 * 
-	 * @return {@link Connection} (conexão) aberta com o banco de dados.
+	 * @return {@link Connection} (conexï¿½o) aberta com o banco de dados.
 	 * @throws SQLException
 	 */
 	public static Connection getConn() throws SQLException {
