@@ -28,6 +28,20 @@
  	<managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  
+ 
+ <managed-bean>
+ 	<managed-bean-name>selectEstados</managed-bean-name>
+ 	<managed-bean-class>br.com.siaic.mb.SelectEstados</managed-bean-class>
+ 	<managed-bean-scope>session</managed-bean-scope> 
+ </managed-bean>
+ 
+ <managed-bean>
+ 	<managed-bean-name>estado</managed-bean-name>
+ 	<managed-bean-class>br.com.siaic.businesslogic.Estado</managed-bean-class>
+ 	<managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ 
+ 
  <navigation-rule>
  	<from-view-id>/paginas/cliente.xhtml</from-view-id>
  	<navigation-case>
@@ -36,5 +50,7 @@
  	</navigation-case>
  
  </navigation-rule>
+ 
+ 
 
 </faces-config>

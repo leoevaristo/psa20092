@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 		
@@ -18,31 +17,43 @@
 			<h:form styleClass="forms">				
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo0"  value="Tipo de Pessoa"/>
-					<h:selectOneMenu value="#{clienteBean.cliente.tipoPessoa}" id="campo0">
+					<h:selectOneMenu value="#{clienteBean.cliente.tipoPessoa}" id="campo0" onchange="submit()" immediate="true">
+						<f:selectItem itemValue="" itemLabel="Tipo de Cliente"/>
 						<f:selectItem itemValue="F" itemLabel="Física"/>
 						<f:selectItem itemValue="J" itemLabel="Jurídica"/>
 					</h:selectOneMenu>					
-				</h:panelGroup>				
+				</h:panelGroup>					
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo01"  value="Nome"/>
-					<h:inputText value="#{clienteBean.cliente.nome}" styleClass="obrigatorio" id="campo01" required="true" />
+					<h:inputText value="#{clienteBean.cliente.nome}" styleClass="obrigatorio" id="campo01"/>
 				</h:panelGroup>	
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo02"  value="E-mail"/>
-					<h:inputText value="#{clienteBean.cliente.email}" styleClass="" id="campo02" />				
+					<h:inputText value="#{clienteBean.cliente.email}" styleClass="obrigatorio" id="campo02"  />				
 				</h:panelGroup>					
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo03"  value="Telefone"/>
-					<h:inputText value="#{clienteBean.cliente.telefone}" styleClass="" id="campo03" />				
+					<h:inputText value="#{clienteBean.cliente.telefone}" styleClass="obrigatorio" id="campo03" />				
 				</h:panelGroup>
-				<h:panelGroup styleClass="textcenter"> 
+				<h:panelGroup styleClass="textcenter" rendered="#{clienteBean.cliente.tipoPessoa eq 'F'}"> 
 					<h:outputLabel for="campo04"  value="RG"/>
 					<h:inputText value="#{clienteBean.cliente.rg}" styleClass="obrigatorio" id="campo04" />				
 				</h:panelGroup>
-				<h:panelGroup styleClass="textcenter">
+				<h:panelGroup styleClass="textcenter" rendered="#{clienteBean.cliente.tipoPessoa eq 'F'}">
 					<h:outputLabel for="campo05"  value="CPF"/>
 					<h:inputText value="#{clienteBean.cliente.cpf}" styleClass="obrigatorio" id="campo05" />				
-				</h:panelGroup>			
+				</h:panelGroup>	
+				<h:panelGroup styleClass="textcenter" rendered="#{clienteBean.cliente.tipoPessoa eq 'J'}">
+					<h:outputLabel for="campo06"  value="CNPJ"/>
+					<h:inputText value="#{clienteBean.cliente.cnpj}" styleClass="obrigatorio" id="campo06" />				
+				</h:panelGroup>		
+				<!-- <h:panelGroup styleClass="textcenter">
+					<h:outputLabel for="campo06"  value="Estado"/>
+					<h:selectOneMenu value="#{enderecoBean.estado}" id="campo06">
+						<f:selectItems value="#{selectEstados.estados}"></f:selectItems>
+					</h:selectOneMenu>						
+				</h:panelGroup> 
+			 -->
 				<h:panelGroup>
 					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
 				</h:panelGroup>
