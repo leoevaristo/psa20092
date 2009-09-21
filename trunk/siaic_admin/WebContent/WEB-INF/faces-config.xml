@@ -2,55 +2,39 @@
 <faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
- 
- <application>
-  <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
- </application>
- 
- 
- 
- 
  <managed-bean>
   <managed-bean-name>clienteBean</managed-bean-name>
   <managed-bean-class>br.com.siaic.mb.ClienteBean</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
- 
  <managed-bean>
- 	<managed-bean-name>imovelBean</managed-bean-name>
- 	<managed-bean-class>br.com.siaic.mb.ImovelBean</managed-bean-class>
- 	<managed-bean-scope>session</managed-bean-scope>
+  <managed-bean-name>imovelBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.ImovelBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
- 
  <managed-bean>
- 	<managed-bean-name>enderecoBean</managed-bean-name>
- 	<managed-bean-class>br.com.siaic.mb.EnderecoBean</managed-bean-class>
- 	<managed-bean-scope>session</managed-bean-scope>
+  <managed-bean-name>enderecoBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.EnderecoBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
- 
- 
  <managed-bean>
- 	<managed-bean-name>selectEstados</managed-bean-name>
- 	<managed-bean-class>br.com.siaic.mb.SelectEstados</managed-bean-class>
- 	<managed-bean-scope>session</managed-bean-scope> 
+  <managed-bean-name>selectEstados</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.SelectEstados</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
- 
  <managed-bean>
- 	<managed-bean-name>estado</managed-bean-name>
- 	<managed-bean-class>br.com.siaic.businesslogic.Estado</managed-bean-class>
- 	<managed-bean-scope>session</managed-bean-scope>
+  <managed-bean-name>estado</managed-bean-name>
+  <managed-bean-class>br.com.siaic.businesslogic.endereco.Estado</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
- 
- 
  <navigation-rule>
- 	<from-view-id>/paginas/cliente.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>sucesso</from-outcome>
- 		<to-view-id>/paginas/sucesso.xhtml</to-view-id>
- 	</navigation-case>
- 
+  <from-view-id>/paginas/cliente.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>sucesso</from-outcome>
+   <to-view-id>/paginas/sucesso.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
- 
- 
-
+ <application>
+  <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+ </application>
 </faces-config>
