@@ -41,6 +41,7 @@ public class ImovelDAO {
 	            imo.setValor(rs.getInt("IMO_VALOR"));
 	            imo.setValorCondominio(rs.getInt("IMO_VALOR_CONDOMINIO"));
 	            imo.setProprietario(rs.getInt("IMO_CLIENTE"));
+	            imo.setEndereco(rs.getInt("IMO_ENDERECO"));
 	            return imo;
 			}
 			else
@@ -67,6 +68,7 @@ public class ImovelDAO {
 	            imo.setValor(rs.getInt("IMO_VALOR"));
 	            imo.setValorCondominio(rs.getInt("IMO_VALOR_CONDOMINIO"));
 	            imo.setProprietario(rs.getInt("IMO_CLIENTE"));
+	            imo.setEndereco(rs.getInt("IMO_ENDERECO"));
 	            imos.add(imo);
 			}
 		} catch (SQLException e) {
@@ -86,7 +88,8 @@ public class ImovelDAO {
     			" IMO_TIPO = ?," +
     			" IMO_VALOR = ?," +
     			" IMO_VALOR_CONDOMINIO = ?," +
-    			" IMO_CLIENTE = ?" +
+    			" IMO_CLIENTE = ?," +
+    			" IMO_ENDERECO = ?" +
     	  		" where imo_codigo = ?;");
     	try {
 			ps.setInt(1, imo.getCaracteristica());
@@ -97,6 +100,8 @@ public class ImovelDAO {
 			ps.setDouble(6, imo.getValor());
 			ps.setDouble(7, imo.getValorCondominio());
 			ps.setInt(8, imo.getProprietario());
+			ps.setInt(9, imo.getEndereco());
+			ps.setInt(10, imo.getCodigo());
     		ps.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -113,8 +118,8 @@ public class ImovelDAO {
   			" IMO_TIPO," +
   			" IMO_VALOR," +
   			" IMO_VALOR_CONDOMINIO," +
-  			" IMO_CLIENTE)" +
-  	  		" values (?,?,?,?,?,?,?,?);");
+  			" IMO_CLIENTE,IMO_ENDERECO)" +
+  	  		" values (?,?,?,?,?,?,?,?,?);");
   	try {
 			ps.setInt(1, imo.getCaracteristica());
 			ps.setInt(2, imo.getFinalidade());
@@ -124,6 +129,7 @@ public class ImovelDAO {
 			ps.setDouble(6, imo.getValor());
 			ps.setDouble(7, imo.getValorCondominio());
 			ps.setInt(8, imo.getProprietario());
+			ps.setInt(9, imo.getEndereco());
   		ps.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
