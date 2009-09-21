@@ -12,14 +12,58 @@
 		<ui:define name="subtitulo">  
 			<h:outputText value="Subtitulo" />
 		 </ui:define>			 
-		 <ui:define name="conteudo"> 		 
-				<h:outputText value="" styleClass="linha" />
-				<h:panelGrid columns="3" styleClass="botoes">
-					<h:commandButton action="#{clienteBean.addCliente}" value="" styleClass="input_submit" />
+		<ui:define name="conteudo"> 			
+			<h:form styleClass="forms">				
+				<h:panelGroup styleClass="textcenter">
+					<h:outputLabel for="campo0"  value=""/>
+					<h:selectOneMenu value="#" id="campo0" >
+						<f:selectItem itemValue="" itemLabel="Tipo "/>
+						<f:selectItem itemValue="" itemLabel=""/>
+						<f:selectItem itemValue="" itemLabel=""/>
+					</h:selectOneMenu>					
+				</h:panelGroup>					
+				<h:panelGroup styleClass="textcenter">
+					<h:outputLabel for="campo01"  value=""/>
+					<h:inputText value="#" styleClass="obrigatorio" id="campo01"/>
+				</h:panelGroup>	
+				<h:panelGroup styleClass="textcenter">
+					<h:outputLabel for="campo02"  value=""/>
+					<h:inputText value="#" styleClass="obrigatorio" id="campo02"  />				
+				</h:panelGroup>					
+				<h:panelGroup styleClass="textcenter">
+					<h:outputLabel for="campo03"  value=""/>
+					<h:inputText value="#" styleClass="obrigatorio" id="campo03" />				
+				</h:panelGroup>
+				<h:panelGroup styleClass="textcenter" > 
+					<h:outputLabel for="campo04"  value=""/>
+					<h:inputText value="#" styleClass="obrigatorio" id="campo04" />				
+				</h:panelGroup>
+				<h:panelGroup styleClass="textcenter" >
+					<h:outputLabel for="campo05"  value=""/>
+					<h:inputText value="#" styleClass="obrigatorio" id="campo05" />				
+				</h:panelGroup>	
+				<h:panelGroup styleClass="textcenter">
+					<h:outputLabel for="campo06"  value=""/>
+					<h:inputText value="#" styleClass="obrigatorio" id="campo06" />				
+				</h:panelGroup>		
+				<!-- <h:panelGroup styleClass="textcenter">
+					<h:outputLabel for="campo06"  value="Estado"/>
+					<h:selectOneMenu value="#{enderecoBean.estado}" id="campo06">
+						<f:selectItems value="#{selectEstados.estados}"></f:selectItems>
+					</h:selectOneMenu>						
+				</h:panelGroup> 
+			 -->
+				<h:panelGroup>
+					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
+				</h:panelGroup>
+				<h:panelGroup styleClass="linha"></h:panelGroup>
+				<h:panelGroup styleClass="botoes">
+					<h:commandButton action="#" value="" styleClass="input_submit" />
 					<h:commandButton action="#" value="" type="reset" styleClass="input_reset" />
 					<h:commandButton action="#" value="" styleClass="input_button" />
-				</h:panelGrid>		 
-		  </ui:define>			  
+				</h:panelGroup>						
+			</h:form>		
+		</ui:define>		  
 		<ui:define name="tituloLista"> 
 			<h:outputText value="Listagem (Cliente,Imóveis,Agenda)" />
 		</ui:define>		
@@ -27,30 +71,30 @@
 			<h:outputText value="Novo (Imóvel,Cliente, etc...)" />		
 		</ui:define>				
 		<ui:define name="infoGerais">
-			<h:dataTable rendered="#{!empty clienteBean.cliente.codigoPessoa}" styleClass="grid" headerClass="thead" rowClasses="cor1,cor2" value="#{clienteBean.todosClientes}" var="cliente"  >
+			<h:dataTable rendered="true" styleClass="grid" headerClass="thead" rowClasses="cor1,cor2" value=""  >
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Código" />
 					</f:facet>
-					<h:outputText value="#{cliente.codigoPessoa}"  />					
+					<h:outputText value="teste"  />					
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Nome" />
 					</f:facet>
-					<h:outputText value="#{cliente.nome}" />
+					<h:outputText value="" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Email" />
 					</f:facet>
-					<h:outputText value="#{cliente.email}" />
+					<h:outputText value="" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Telefone" />
 					</f:facet>
-					<h:outputText value="#{cliente.telefone}" />
+					<h:outputText value="" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
@@ -65,9 +109,8 @@
 						<h:outputText value="Excluir" />
 					</f:facet>
 					<h:form>
-					 <h:commandLink action="#{clienteBean.excluiCliente}" onclick="checa() ? true : false;" >
-					 	<h:graphicImage value="/images/imgdelete.png" />  
-   						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa"/>  
+					 <h:commandLink action="#" onclick="" >
+					 	<h:graphicImage value="/images/imgdelete.png" />    						
    					 </h:commandLink>  		
 				    </h:form>		
 				</h:column>			
