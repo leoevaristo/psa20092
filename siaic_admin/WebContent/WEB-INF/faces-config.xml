@@ -19,18 +19,6 @@
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  
- <managed-bean>
-  <managed-bean-name>enderecoBean</managed-bean-name>
-  <managed-bean-class>br.com.siaic.mb.EnderecoBean</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
- </managed-bean>
- 
- <managed-bean>
-  <managed-bean-name>selectEstados</managed-bean-name>
-  <managed-bean-class>br.com.siaic.mb.SelectEstados</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
- </managed-bean>
-
  <navigation-rule>
   <from-view-id>/paginas/cliente.xhtml</from-view-id>
   <navigation-case>
@@ -39,5 +27,29 @@
   </navigation-case>
  </navigation-rule>
  
+
+
+ <!-- ENDEREÇO -->
+ <managed-bean>
+  <managed-bean-name>estadoBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.endereco.EstadoBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ 
+ <managed-bean>
+  <managed-bean-name>enderecoBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.endereco.EnderecoBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ 
+ <managed-bean>
+  <managed-bean-name>selectEstados</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.endereco.SelectEstados</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+
+<!-- ENDEREÇO -->
+
+
 
 </faces-config>
