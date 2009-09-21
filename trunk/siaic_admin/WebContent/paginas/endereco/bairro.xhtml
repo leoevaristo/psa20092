@@ -9,10 +9,10 @@
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 		
 		<ui:define name="tituloGrande"> 
-			<h:outputText value="Página de Cadastro de Estado" />
+			<h:outputText value="Página do Cadastro de Bairro " />
 		 </ui:define>		
 		<ui:define name="subtitulo">  
-			<h:outputText value="» Cadastrar Estado" />
+			<h:outputText value="» Cadastrar Bairro" />
 		 </ui:define>		
 		 <ui:define name="conteudo"> 			
 			<h:form styleClass="forms">				
@@ -21,12 +21,7 @@
 					<h:outputLabel for="campo01"  value="Nome"/>
 					<h:inputText value="#{}" styleClass="obrigatorio" id="campo01" required="true" />
 				</h:panelGroup>
-					
-				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo02"  value="Sigla"/>
-					<h:inputText value="#{}" styleClass="obrigatorio" id="campo02" required="true" />				
-				</h:panelGroup>		
-										
+
 				<h:panelGroup>
 					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
 				</h:panelGroup>
