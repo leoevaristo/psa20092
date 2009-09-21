@@ -24,8 +24,8 @@ public class ValorMercadoDAO {
 	private ResultSet rst = null;
 	
 	private final String INSERIR_VALOR_MERCADO = 
-		"INSERT INTO(VAM_BAIRRO, " +
-		"            VAM_VALOR) " +
+		"INSERT INTO VALOR_MERCADO(VAM_BAIRRO, " +
+		"                          VAM_VALOR_VENAL) " +
 		"VALUES(?,?) ";
 	
 	public ValorMercadoDAO() {
@@ -78,6 +78,11 @@ public class ValorMercadoDAO {
 		return inserir;
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
+		ValorMercado vm = new ValorMercado();
+		ValorMercadoDAO vmd = new ValorMercadoDAO();
+		vm.setBairro(new EnderecoDAO().getBairroPorCodigo(1));
+		vm.setValor(300000);
+		vmd.inserirValorMercado(vm);
 	}
 }
