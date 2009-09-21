@@ -21,6 +21,10 @@
 					<h:outputLabel for="campo01"  value="Nome"/>
 					<h:inputText value="#{}" styleClass="obrigatorio" id="campo01" required="true" />
 				</h:panelGroup>
+				
+			    <h:selectOneMenu id="Cidade" value="#{}">
+  				 <f:selectItems value="#{Lista Cidades}" />
+				</h:selectOneMenu> 
 
 				<h:panelGroup>
 					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
