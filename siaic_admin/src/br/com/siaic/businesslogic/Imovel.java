@@ -1,7 +1,10 @@
 package br.com.siaic.businesslogic;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import br.com.siaic.dao.EnderecoDAO;
+import br.com.siaic.dao.ImovelCaracteristicaDAO;
 import br.com.siaic.dao.ImovelDAO;
 
 /**
@@ -22,8 +25,17 @@ public class Imovel {
     private double valor;
     private double valorCondominio;
     private int proprietario;
+    private int endereco;
     
-    public Imovel() {
+    public int getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(int endereco) {
+		this.endereco = endereco;
+	}
+
+	public Imovel() {
     	this.imoDAO = new ImovelDAO();
     }
     
@@ -106,5 +118,29 @@ public class Imovel {
 	
 	public static Imovel getImovel(int codigo) {
 		return new ImovelDAO().getImovel(codigo);
+	}
+	
+	public static void main(String[] args) {
+		Imovel imo = new ImovelDAO().getImovel(1);
+		System.out.println(imo.getFormaPagamento());
+		try {
+			System.out.println(new ImovelCaracteristicaDAO().getImovelCaracteristica(imo.getFinalidade()).getPiscina());
+			System.out.println(new EnderecoDAO().getEnderecoPorCodigo(imo.getEndereco()).getEnderecoNome());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		Imovel imoe = new Imovel(1);
+		imoe.setCaracteristica(1);
+		imoe.setDetalhe("Au au");
+		imoe.setEndereco(1);
+		imoe.setFinalidade(1);
+		imoe.setFormaPagamento("Só pra testar");
+		imoe.setProprietario(0);
+		imoe.setTipo(1);
+		imoe.setValor(900000);
+		imoe.setValorCondominio(0);
+		
+        new ImovelDAO().atualiza(imoe);	
 	}
 }
