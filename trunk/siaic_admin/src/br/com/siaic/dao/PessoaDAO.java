@@ -7,55 +7,29 @@ import java.sql.SQLException;
 
 import br.com.siaic.businesslogic.Pessoa;
 
-public class PessoaDAO 
-{
-	
-	
-	
-	
+public class PessoaDAO {
+
 	private Connection conexao = null;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public PessoaDAO()
-	{
-		
-		try
-		{
+
+	public PessoaDAO() {
+
+		try {
 			FabricaConexao.getInstancia();
 			this.conexao = FabricaConexao.conectar();
-		}
-		catch (SQLException e) 
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-	}
-	
-	
-	
-	
 
-	
-	
-	
-	
-	public void adicionarPessoa(Pessoa pessoa) throws SQLException
-	{
-		
-		String sql = "INSERT INTO PESSOA (PES_NOME, PES_TELEFONE, PES_CELULAR, " 
-			       + "PES_EMAIL, PES_TIPO, PES_SEXO, PES_ENDERECO) " 
-			       + "VALUES (? , ? , ? , ? , ? , ? , ? );";
-		
-		
+	}
+
+	public void adicionarPessoa(Pessoa pessoa) throws SQLException {
+
+		String sql = "INSERT INTO PESSOA (PES_NOME, PES_TELEFONE, PES_CELULAR, "
+				+ "PES_EMAIL, PES_TIPO, PES_SEXO, PES_ENDERECO) "
+				+ "VALUES (? , ? , ? , ? , ? , ? , ? );";
+
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		
+
 		ps.setString(1, pessoa.getNome());
 		ps.setString(2, pessoa.getTelefone());
 		ps.setString(3, pessoa.getCelular());
@@ -63,42 +37,34 @@ public class PessoaDAO
 		ps.setString(5, pessoa.getTipoPessoa());
 		ps.setString(6, pessoa.getSexo());
 		ps.setInt(7, 1);
-		
+
 		ps.execute();
-		
-		setIdPessoa(pessoa);		
-		
+
+		setIdPessoa(pessoa);
+
 		ps.close();
-		this.conexao.close();
-		
+		conexao.close();
+
 	}
-	
-	
-	
-	
-	
-	public void setIdPessoa(Pessoa pessoa) throws SQLException
-	{
-		
+
+	public void setIdPessoa(Pessoa pessoa) throws SQLException {
+
 		String sql = "SELECT MAX(PES_CODIGO) AS CODIGO FROM PESSOA;";
-		
+
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		
+
 		ResultSet rs = ps.executeQuery();
-		
-		while(rs.next())
-		{
-			
+
+		while (rs.next()) {
+
 			pessoa.setCodigoPessoa(rs.getInt("CODIGO"));
-		
-		}				
-		
+
+		}
+
 		ps.close();
-		
 		rs.close();
+		conexao.close();
 		
-		this.conexao.close();
 	}
-	
 
 }
