@@ -109,8 +109,8 @@ public class Imovel {
 	}
 	
 	/**
-	 * Recupera do banco de dados todos os imóveis.
-	 * @return List<T> de imóveis.
+	 * Recupera do banco de dados todos os imï¿½veis.
+	 * @return List<T> de imï¿½veis.
 	 */
 	public static List<Imovel> getImovel() {
 		return new ImovelDAO().getImoveis();
@@ -135,7 +135,7 @@ public class Imovel {
 		imoe.setDetalhe("Au au");
 		imoe.setEndereco(1);
 		imoe.setFinalidade(1);
-		imoe.setFormaPagamento("Só pra testar");
+		imoe.setFormaPagamento("Sï¿½ pra testar");
 		imoe.setProprietario(0);
 		imoe.setTipo(1);
 		imoe.setValor(900000);
