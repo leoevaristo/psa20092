@@ -47,13 +47,7 @@
 					<h:outputLabel for="campo06"  value="CNPJ"/>
 					<h:inputText value="#{clienteBean.cliente.cnpj}" styleClass="obrigatorio" id="campo06" />				
 				</h:panelGroup>		
-			<!--   <h:panelGroup styleClass="textcenter">
-			 		<h:outputLabel for="campo07"  value="Estado"/>
-					<h:selectOneMenu value="#{enderecoBean.estado.estadoSigla}" id="campo07">
-						<f:selectItems value="#{selectEstados.estados}"></f:selectItems>						
-				</h:selectOneMenu>						
-				</h:panelGroup> 
-			-->		<h:panelGroup>
+				<h:panelGroup>
 					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
 				</h:panelGroup>
 				<h:panelGroup styleClass="linha"></h:panelGroup>
@@ -112,7 +106,7 @@
 						<h:outputText value="Excluir" />
 					</f:facet>
 					<h:form id="excluiCliente">
-					 <h:commandLink action="#{clienteBean.excluiCliente}" onclick="checa();" >
+					 <h:commandLink id="excluir"  onclick="if (confirm('Você deseja excluir esse cliente?')) {return true }; return false;" action="#{clienteBean.excluiCliente}" >
 					 	<h:graphicImage value="/images/imgdelete.png" />  
    						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa"/>  
    					 </h:commandLink>  		
