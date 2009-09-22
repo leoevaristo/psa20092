@@ -17,8 +17,8 @@
 			<h:form styleClass="forms">				
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo0"  value="Tipo de Pessoa"/>
-					<h:selectOneMenu value="#{clienteBean.cliente.tipoPessoa}" id="campo0" onchange="submit()" immediate="true">
-						<f:selectItem itemValue="" itemLabel="Tipo de Cliente"/>
+					<h:selectOneMenu value="#{clienteBean.cliente.tipoPessoa}" id="campo0">
+						<f:selectItem itemValue="" itemLabel="Tipo de Pessoa"/>
 						<f:selectItem itemValue="F" itemLabel="Física"/>
 						<f:selectItem itemValue="J" itemLabel="Jurídica"/>
 					</h:selectOneMenu>					
@@ -35,26 +35,25 @@
 					<h:outputLabel for="campo03"  value="Telefone"/>
 					<h:inputText value="#{clienteBean.cliente.telefone}" styleClass="obrigatorio" id="campo03" />				
 				</h:panelGroup>
-				<h:panelGroup styleClass="textcenter" rendered="#{clienteBean.cliente.tipoPessoa eq 'F'}"> 
+				<h:panelGroup styleClass="textcenter"> 
 					<h:outputLabel for="campo04"  value="RG"/>
 					<h:inputText value="#{clienteBean.cliente.rg}" styleClass="obrigatorio" id="campo04" />				
 				</h:panelGroup>
-				<h:panelGroup styleClass="textcenter" rendered="#{clienteBean.cliente.tipoPessoa eq 'F'}">
+				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo05"  value="CPF"/>
 					<h:inputText value="#{clienteBean.cliente.cpf}" styleClass="obrigatorio" id="campo05" />				
 				</h:panelGroup>	
-				<h:panelGroup styleClass="textcenter" rendered="#{clienteBean.cliente.tipoPessoa eq 'J'}">
+				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo06"  value="CNPJ"/>
 					<h:inputText value="#{clienteBean.cliente.cnpj}" styleClass="obrigatorio" id="campo06" />				
 				</h:panelGroup>		
-				<!-- <h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo06"  value="Estado"/>
-					<h:selectOneMenu value="#{enderecoBean.estado}" id="campo06">
-						<f:selectItems value="#{selectEstados.estados}"></f:selectItems>
-					</h:selectOneMenu>						
+			<!--   <h:panelGroup styleClass="textcenter">
+			 		<h:outputLabel for="campo07"  value="Estado"/>
+					<h:selectOneMenu value="#{enderecoBean.estado.estadoSigla}" id="campo07">
+						<f:selectItems value="#{selectEstados.estados}"></f:selectItems>						
+				</h:selectOneMenu>						
 				</h:panelGroup> 
-			 -->
-				<h:panelGroup>
+			-->		<h:panelGroup>
 					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
 				</h:panelGroup>
 				<h:panelGroup styleClass="linha"></h:panelGroup>
@@ -101,16 +100,19 @@
 					<f:facet name="header">
 						<h:outputText value="Editar" />
 					</f:facet>
-					<h:outputLink value="#" styleClass="textcenter">
+					<h:form id="alteraCliente">
+					 <h:commandLink action="#{clienteBean.localizarClientePorId}"> 
 						<h:graphicImage value="/images/imgedit.png" />
-					</h:outputLink>
+						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa"/>
+					 </h:commandLink>
+					</h:form>
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Excluir" />
 					</f:facet>
-					<h:form>
-					 <h:commandLink action="#{clienteBean.excluiCliente}" onclick="checa() ? true : false;" >
+					<h:form id="excluiCliente">
+					 <h:commandLink action="#{clienteBean.excluiCliente}" onclick="checa();" >
 					 	<h:graphicImage value="/images/imgdelete.png" />  
    						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa"/>  
    					 </h:commandLink>  		
