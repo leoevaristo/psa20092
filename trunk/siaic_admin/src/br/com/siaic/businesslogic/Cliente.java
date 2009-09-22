@@ -1,5 +1,7 @@
 package br.com.siaic.businesslogic;
 
+import br.com.siaic.businesslogic.endereco.Endereco;
+
 /**
  * 
  * @author Carlos R. N. Junior
@@ -16,6 +18,8 @@ public class Cliente extends Pessoa {
 	private String rg;
 
 	private String cnpj;
+	
+	private int clienteEnderecoCodigo;
 
 	// private String razaoSocial;
 
@@ -27,10 +31,20 @@ public class Cliente extends Pessoa {
 
 	// private String nomeFantasia;
 
+
+
+
+
+
+
+
 	public Cliente() {
 
 	}
 
+	
+	
+	
 	/**
 	 * 
 	 * @return
@@ -39,6 +53,9 @@ public class Cliente extends Pessoa {
 		return cpf;
 	}
 
+	
+	
+	
 	/**
 	 * 
 	 * @param cpf
@@ -46,6 +63,9 @@ public class Cliente extends Pessoa {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	
+	
+	
 
 	/**
 	 * 
@@ -54,6 +74,9 @@ public class Cliente extends Pessoa {
 	public String getRg() {
 		return rg;
 	}
+	
+	
+	
 
 	/**
 	 * 
@@ -62,6 +85,9 @@ public class Cliente extends Pessoa {
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
+	
+	
+	
 
 	/**
 	 * 
@@ -70,6 +96,9 @@ public class Cliente extends Pessoa {
 	public String getCnpj() {
 		return cnpj;
 	}
+	
+	
+	
 
 	/**
 	 * 
@@ -78,5 +107,23 @@ public class Cliente extends Pessoa {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
+	
+	
+	
+	
+	public int getClienteEnderecoCodigo() {
+		return clienteEnderecoCodigo;
+	}
+
+
+
+
+	public void setClienteEnderecoCodigo(int clienteEnderecoCodigo) {
+		this.clienteEnderecoCodigo = clienteEnderecoCodigo;
+	}
+	
+	
+	
+
 
 }

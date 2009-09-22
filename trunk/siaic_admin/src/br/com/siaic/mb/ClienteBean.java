@@ -91,8 +91,9 @@ public class ClienteBean {
 		PessoaDAO daoPessoa = new PessoaDAO();
 
 		daoPessoa.adicionarPessoa(cliente);
-
 		daoCliente.adicionarCliente(cliente);
+		
+		destroiSessao();
 
 		return r;
 
@@ -182,6 +183,15 @@ public class ClienteBean {
 		contexto.getExternalContext().getSessionMap().remove("clienteBean");
 		
 		return "destruido";
+	}
+	
+	
+	
+	
+	public Endereco getEnderecoCliente(){
+		//TODO
+		
+		return new Endereco();
 	}
 
 }

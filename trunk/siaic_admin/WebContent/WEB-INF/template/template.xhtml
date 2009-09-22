@@ -54,8 +54,7 @@
                     	  <li><a href="#{request.contextPath}/paginas/cliente/cliente.xhtml">Clientes</a></li>
                     	  <li><a href="#{request.contextPath}/paginas/usuario.xhtml">Usuários</a></li>
                     	  <li><a href="valormercado.xhtml">Valores de Mercado</a></li>
-                    	  <li><a href="#">Gerenciar Agenda</a></li>
-                   	      
+                    	  <li><a href="#">Gerenciar Agenda</a></li>                   	      
                  	</ul>                  
                  </div>
               </div>
@@ -66,20 +65,15 @@
         <!-- Inicio Right -->
         <div id="col_right">
         	<span id="bgright_topo"></span>
-        	<div id="col_rightConteudo">
-        		
-        		<h2 id="titulos_internos"> <h:outputText value="»" /> <ui:insert name="tituloGrande"></ui:insert></h2>
-                
-                
-               <h4> <ui:insert name="subtitulo"></ui:insert> </h4>
-               <ui:insert name="conteudo" > </ui:insert>   
-              	  
-              	
-                <div id="infogerais" class="grid">
-                <p id="info_titulo">  <ui:insert name="tituloLista"> </ui:insert> </p>
-                <p><a id="info_novo" href="" ><ui:insert name="linkNovo"></ui:insert></a></p>
-                <ui:insert name="infoGerais"> </ui:insert>
-                </div>               
+        	<div id="col_rightConteudo">        		
+        		<h2 id="titulos_internos"> <h:outputText value="»" /> <ui:insert name="tituloGrande"></ui:insert></h2>                               
+                <h4> <ui:insert name="subtitulo"></ui:insert> </h4>
+                <ui:insert name="conteudo" > </ui:insert>                     	
+               <div id="infogerais" class="grid">
+              	 <p id="info_titulo">  <ui:insert name="tituloLista"> </ui:insert> </p>
+               	 <p><a id="info_novo" href="" ><ui:insert name="linkNovo"></ui:insert></a></p>
+               	 <ui:insert name="infoGerais"> </ui:insert>
+               </div>               
             </div>
             <span id="bgright_rodape"></span>
         </div>

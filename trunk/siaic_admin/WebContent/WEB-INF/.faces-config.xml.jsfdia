@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
  <PROCESS-ITEM NAME="rules:#paginas#sucesso.xhtml"
-  PATH="/paginas/sucesso.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/paginas/sucesso.xhtml" SHAPE="288,40,50,25" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#paginas#cliente#cliente.xhtml"
   PATH="/paginas/cliente/cliente.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#paginas#cliente#cliente.xhtml:0" NAME="item"
@@ -19,11 +19,12 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#cliente#altera_cliente.xhtml"
-  PATH="/paginas/cliente/altera_cliente.xhtml" SHAPE="256,177,0,0" model-entity="JSFProcessGroup">
+  PATH="/paginas/cliente/altera_cliente.xhtml" SHAPE="280,144,50,41" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#paginas#cliente#altera_cliente.xhtml:0"
    NAME="item" PATH="/paginas/cliente/altera_cliente.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="destruido::#paginas#cliente#cliente.xhtml"
     NAME="output" PATH="/paginas/cliente/cliente.xhtml"
+    SHAPE="329,176,334,176,334,216,16,216,16,24,31,24"
     TARGET="rules:#paginas#cliente#cliente.xhtml" TITLE="destruido" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
