@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.Usuario;
 
 /**
@@ -151,12 +150,9 @@ public class UsuarioDAO {
 	}
 
 	
-	
-	
-	
 	/**
 	 * 
-	 * @param usuarioodigo
+	 * @param usuarioCodigo
 	 * @return
 	 * @throws SQLException
 	 */
