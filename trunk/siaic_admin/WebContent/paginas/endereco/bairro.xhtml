@@ -19,12 +19,15 @@
 						
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo01"  value="Nome"/>
-					<h:inputText value="#{}" styleClass="obrigatorio" id="campo01" required="true" />
+					<h:inputText value="#{EnderecoBean.cidade.cidadeNome}" styleClass="obrigatorio" id="campo01" required="true" />
 				</h:panelGroup>
 				
-			    <h:selectOneMenu id="Cidade" value="#{}">
-  				 <f:selectItems value="#{Lista Cidades}" />
-				</h:selectOneMenu> 
+				<h:panelGroup styleClass="textcenter">
+					<h:outputLabel for="campo06"  value="Cidade"/>
+					<h:selectOneMenu value="#{enderecoBean.cidade}" id="campo06">
+						<f:selectItems value="#{selectCidades.cidades}"></f:selectItems>
+					</h:selectOneMenu>						
+				</h:panelGroup> 
 
 				<h:panelGroup>
 					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				

@@ -102,10 +102,7 @@ public class Endereco {
 		this.enderecoCep = enderecoCep;
 		this.enderecoBairro = enderecoBairro;
 	}
-	
-	
 
-	
-	
+
 
 }
