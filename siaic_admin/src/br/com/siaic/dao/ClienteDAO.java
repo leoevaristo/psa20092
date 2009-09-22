@@ -23,7 +23,6 @@ public class ClienteDAO {
 	/**
 	 * 
 	 */
-	
 
 	/**
 	 * 
@@ -54,27 +53,22 @@ public class ClienteDAO {
 		String sql = "INSERT INTO PESSOA_CLIENTE( PEC_CODIGO,PEC_CPF,PEC_RG,PEC_CNPJ )"
 				+ "VALUES (?, ?, ?,?)";
 
-		PreparedStatement ps = conexao.prepareStatement(sql);
+		
 
 		try {
-
+			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.setInt(1, cliente.getCodigoPessoa());
 			ps.setString(2, cliente.getCpf());
 			ps.setString(3, cliente.getRg());
 			ps.setString(4, cliente.getCnpj());
 
 			ps.execute();
-
 			ps.close();
 
+		}finally{
+			
+			conexao.close();
 		}
-
-		catch (SQLException e) {
-
-			e.printStackTrace();
-
-		}
-		conexao.close();
 	}
 
 	/**
@@ -87,15 +81,17 @@ public class ClienteDAO {
 				+ " WHERE PESSOA_CLIENTE.PEC_CODIGO = ? AND PESSOA_CLIENTE.PEC_CODIGO =PESSOA.PES_CODIGO "
 				+ " AND PESSOA.PES_ENDERECO = ENDERECO.END_CODIGO; ";
 
-		PreparedStatement ps = conexao.prepareStatement(sql);
+		
 
 		try {
-
+			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.setInt(1, idPessoa);
 			if (ps.execute())
 				System.out.println("Dados apagados!");
-		} finally {
 			ps.close();
+			
+		} finally {
+			
 			conexao.close();
 		}
 	}
@@ -125,10 +121,13 @@ public class ClienteDAO {
 
 		catch (Exception e) {
 
-			throw new SQLException("N�o foi poss�vel alterar o banco de dados.");
+			throw new SQLException("Não foi possível alterar o banco de dados.");
 
 		}
-		conexao.close();
+		finally{
+			
+			conexao.close();
+		}
 	}
 
 	/**
@@ -139,6 +138,7 @@ public class ClienteDAO {
 	 */
 	public List<Cliente> getClientesPeloNome(String nome) throws SQLException {
 
+		try{
 		String sql = "SELECT p.PES_ENDERECO, p.PES_NOME, p.PES_TELEFONE, p.PES_CELULAR, p.PES_EMAIL,"
 				+ "c.PEC_CODIGO,c.PEC_CPF,c.PEC_RG,c.PEC_CNPJ"
 				+ "e.END_LOGRADOURO,e.END_NOME,e.END_CEP,e.END_BAIRRO,e.END_CODIGO "
@@ -146,15 +146,15 @@ public class ClienteDAO {
 				+ "WHERE p.PES_NOME LIKE ? AND p.PES_ENDERECO = e.END_CODIGO AND p.PES_CODIGO = c.PEC_CODIGO;";
 
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setString(1, "%"+nome+"%");
+		ps.setString(1, "%" + nome + "%");
 
 		ResultSet rs = ps.executeQuery();
 
 		List<Cliente> listaClientes = new ArrayList<Cliente>();
 
 		while (rs.next()) {
+			
 			Cliente cliente = new Cliente();
-
 			cliente.setCodigoPessoa(rs.getInt("PEC_CODIGO"));
 			cliente.setCpf(rs.getString("PEC_CPF"));
 			cliente.setRg(rs.getString("PEC_RG"));
@@ -166,11 +166,15 @@ public class ClienteDAO {
 
 		ps.close();
 		rs.close();
-		conexao.close();
 		
 		return listaClientes;
-
+		
+		}finally{
+			conexao.close();
+		}
+		
 	}
+	
 
 	/**
 	 * 
@@ -179,11 +183,14 @@ public class ClienteDAO {
 	 */
 	public List<Cliente> getTodosClientes() throws SQLException {
 		// TODO
+		
 		String sql = "SELECT c.PEC_CODIGO, c.PEC_CPF, c.PEC_RG, c.PEC_CNPJ, "
 				+ " p.PES_CODIGO, p.PES_NOME, p.PES_EMAIL, p.PES_TELEFONE, p.PES_CELULAR"
 				+ " FROM PESSOA_CLIENTE c, PESSOA p"
 				+ "	WHERE c.PEC_CODIGO = p.PES_CODIGO ORDER BY p.PES_CODIGO ASC;";
 
+		try
+		{
 		PreparedStatement ps = conexao.prepareStatement(sql);
 
 		ResultSet rs = ps.executeQuery();
@@ -193,7 +200,6 @@ public class ClienteDAO {
 		while (rs.next()) {
 
 			Cliente cliente = new Cliente();
-
 			cliente.setCodigoPessoa(rs.getInt("PES_CODIGO"));
 			cliente.setCpf(rs.getString("PEC_CPF"));
 			cliente.setRg(rs.getString("PEC_RG"));
@@ -203,11 +209,17 @@ public class ClienteDAO {
 			cliente.setTelefone(rs.getString("PES_TELEFONE"));
 
 			listaTodosClientes.add(cliente);
-
+			
 		}
-		conexao.close();
+			return listaTodosClientes;
 
-		return listaTodosClientes;
+		
+		}finally{
+			
+		conexao.close();
+		}
+		
+		
 
 	}
 
@@ -219,28 +231,40 @@ public class ClienteDAO {
 	 */
 	public Cliente getClientePorId(int clienteCodigo) throws SQLException {
 
-		String sql = "SELECT c.PEC_CODIGO, c.PEC_CPF, c.PEC_RG, c.PEC_CNPJ, p.PES_CODIGO, "
-				+ "p.PES_NOME, p.PES_EMAIL FROM PESSOA_CLIENTE c, PESSOA p "
-				+ "WHERE c.PEC_CODIGO = ?  AND c.PEC_CODIGO = p.PES_CODIGO ";
+		try {
+			
+			String sql = "SELECT c.PEC_CODIGO, c.PEC_CPF, c.PEC_RG, c.PEC_CNPJ, p.PES_CODIGO, "
+					+ "p.PES_NOME, p.PES_EMAIL, p.PES_TELEFONE, p.PES_CELULAR, p.PES_ENDERECO, p.PES_TIPO "
+					+ "FROM PESSOA_CLIENTE c, PESSOA p "
+					+ "WHERE c.PEC_CODIGO = ?  AND c.PEC_CODIGO = p.PES_CODIGO ";
 
-		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setInt(1, clienteCodigo);
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setInt(1, clienteCodigo);
 
-		ResultSet rs = ps.executeQuery();
-		rs.first();
-		Cliente cliente = new Cliente();
+			ResultSet rs = ps.executeQuery();
+			rs.first();
+			
+			Cliente cliente = new Cliente();
+			cliente.setCodigoPessoa(rs.getInt("PEC_CODIGO"));
+			cliente.setCpf(rs.getString("PEC_CPF"));
+			cliente.setRg(rs.getString("PEC_RG"));
+			cliente.setCnpj(rs.getString("PEC_CNPJ"));
+			cliente.setNome(rs.getString("PES_NOME"));
+			cliente.setEmail(rs.getString("PES_EMAIL"));
+			cliente.setTelefone(rs.getString("PES_TELEFONE"));
+			cliente.setCelular(rs.getString("PES_CELULAR"));
+			cliente.setClienteEnderecoCodigo(rs.getInt("PES_ENDERECO"));
+			cliente.setTipoPessoa(rs.getString("PES_TIPO"));
 
-		cliente.setCodigoPessoa(rs.getInt("PEC_CODIGO"));
-		cliente.setCpf(rs.getString("PEC_CPF"));
-		cliente.setRg(rs.getString("PEC_RG"));
-		cliente.setCnpj(rs.getString("PEC_CNPJ"));
-		cliente.setNome(rs.getString("PES_NOME"));
+			ps.close();
+			rs.close();
 
-		ps.close();
-		rs.close();
-		conexao.close();
-		
-		return cliente;
+			return cliente;
+
+		} finally {
+
+			conexao.close();
+		}
 
 	}
 

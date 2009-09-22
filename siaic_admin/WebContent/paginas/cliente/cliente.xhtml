@@ -1,119 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:composition template="/WEB-INF/template/template.xhtml">
-		
-		<ui:define name="tituloGrande"> 
-			<h:outputText value="Página do Cliente" />
-		 </ui:define>		
-		<ui:define name="subtitulo">  
-			<h:outputText value="» Cadastrar Cliente" />
-		 </ui:define>		
-		 <ui:define name="conteudo"> 			
-			<h:form styleClass="forms">				
-				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo0"  value="Tipo de Pessoa"/>
-					<h:selectOneMenu value="#{clienteBean.cliente.tipoPessoa}" id="campo0">
-						<f:selectItem itemValue="" itemLabel="Tipo de Pessoa"/>
-						<f:selectItem itemValue="F" itemLabel="Física"/>
-						<f:selectItem itemValue="J" itemLabel="Jurídica"/>
-					</h:selectOneMenu>					
-				</h:panelGroup>					
-				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo01"  value="Nome"/>
-					<h:inputText value="#{clienteBean.cliente.nome}" styleClass="obrigatorio" id="campo01"/>
-				</h:panelGroup>	
-				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo02"  value="E-mail"/>
-					<h:inputText value="#{clienteBean.cliente.email}" styleClass="obrigatorio" id="campo02"  />				
-				</h:panelGroup>					
-				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo03"  value="Telefone"/>
-					<h:inputText value="#{clienteBean.cliente.telefone}" styleClass="obrigatorio" id="campo03" />				
-				</h:panelGroup>
-				<h:panelGroup styleClass="textcenter"> 
-					<h:outputLabel for="campo04"  value="RG"/>
-					<h:inputText value="#{clienteBean.cliente.rg}" styleClass="obrigatorio" id="campo04" />				
-				</h:panelGroup>
-				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo05"  value="CPF"/>
-					<h:inputText value="#{clienteBean.cliente.cpf}" styleClass="obrigatorio" id="campo05" />				
-				</h:panelGroup>	
-				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo06"  value="CNPJ"/>
-					<h:inputText value="#{clienteBean.cliente.cnpj}" styleClass="obrigatorio" id="campo06" />				
-				</h:panelGroup>		
-				<h:panelGroup>
-					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
-				</h:panelGroup>
-				<h:panelGroup styleClass="linha"></h:panelGroup>
-				<h:panelGroup styleClass="botoes">
-					<h:commandButton action="#{clienteBean.addCliente}" value="" styleClass="input_submit" />
-					<h:commandButton action="#" value="" type="reset" styleClass="input_reset" />
-					<h:commandButton action="#" value="" styleClass="input_button" />
-				</h:panelGroup>						
-			</h:form>		
-		</ui:define>		
-		<ui:define name="tituloLista"> 
-			<h:outputText value="Lista de Clientes" />
-		</ui:define>		
-		<ui:define name="linkNovo"> 	
-			<h:outputText value="Novo (Imóvel,Cliente, etc...)" />		
-		</ui:define>		
-		<ui:define name="infoGerais">		
-			<h:dataTable rendered="#{!empty clienteBean.cliente.codigoPessoa}" styleClass="grid" headerClass="thead" rowClasses="cor1,cor2" value="#{clienteBean.todosClientes}" var="cliente"  >
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Código"  />
-					</f:facet>
-					<h:outputText value="#{cliente.codigoPessoa}"  />					
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Nome" />
-					</f:facet>
-					<h:outputText value="#{cliente.nome}"  />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Email" />
-					</f:facet>
-					<h:outputText value="#{cliente.email}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Telefone" />
-					</f:facet>
-					<h:outputText value="#{cliente.telefone}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Editar" />
-					</f:facet>
-					<h:form id="alteraCliente">
-					 <h:commandLink action="#{clienteBean.localizarClientePorId}"> 
+<ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="tituloGrande">
+		<h:outputText value="Página do Cliente" />
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="» Cadastrar Cliente" />
+	</ui:define>
+	<ui:define name="conteudo">
+		<h:form styleClass="forms">
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campo0" value="Tipo de Pessoa" />
+				<h:selectOneMenu value="#{clienteBean.cliente.tipoPessoa}"
+					id="campo0">
+					<f:selectItem itemValue="" itemLabel="Tipo de Pessoa" />
+					<f:selectItem itemValue="F" itemLabel="Física" />
+					<f:selectItem itemValue="J" itemLabel="Jurídica" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campo01" value="Nome" />
+				<h:inputText value="#{clienteBean.cliente.nome}"
+					styleClass="obrigatorio" id="campo01" />
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campo02" value="E-mail" />
+				<h:inputText value="#{clienteBean.cliente.email}"
+					styleClass="obrigatorio" id="campo02" />
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campo03" value="Telefone" />
+				<h:inputText value="#{clienteBean.cliente.telefone}"
+					styleClass="obrigatorio" id="campo03" />
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campo04" value="RG" />
+				<h:inputText value="#{clienteBean.cliente.rg}"
+					styleClass="obrigatorio" id="campo04" />
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campo05" value="CPF" />
+				<h:inputText value="#{clienteBean.cliente.cpf}"
+					styleClass="obrigatorio" id="campo05" />
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campo06" value="CNPJ" />
+				<h:inputText value="#{clienteBean.cliente.cnpj}"
+					styleClass="obrigatorio" id="campo06" />
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />
+			</h:panelGroup>
+			<h:panelGroup styleClass="linha"></h:panelGroup>
+			<h:panelGroup styleClass="botoes">
+				<h:commandButton action="#{clienteBean.addCliente}" value=""
+					styleClass="input_submit" />
+				<h:commandButton action="#" value="" type="reset"
+					styleClass="input_reset" />
+				<h:commandButton action="#" value="" styleClass="input_button" />
+			</h:panelGroup>
+		</h:form>
+	</ui:define>
+	<ui:define name="tituloLista">
+		<h:outputText value="Lista de Clientes" />
+	</ui:define>
+	<ui:define name="linkNovo">
+		<h:outputText value="Novo (Imóvel,Cliente, etc...)" />
+	</ui:define>
+	<ui:define name="infoGerais">
+		<h:dataTable rendered="#{!empty clienteBean.cliente.codigoPessoa}"
+			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
+			value="#{clienteBean.todosClientes}" var="cliente">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Código" />
+				</f:facet>
+				<h:outputText value="#{cliente.codigoPessoa}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nome" />
+				</f:facet>
+				<h:outputText value="#{cliente.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Email" />
+				</f:facet>
+				<h:outputText value="#{cliente.email}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Telefone" />
+				</f:facet>
+				<h:outputText value="#{cliente.telefone}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Editar" />
+				</f:facet>
+				<h:form id="alteraCliente">
+					<h:commandLink action="#{clienteBean.localizarClientePorId}">
 						<h:graphicImage value="/images/imgedit.png" />
-						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa"/>
-					 </h:commandLink>
-					</h:form>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Excluir" />
-					</f:facet>
-					<h:form id="excluiCliente">
-					 <h:commandLink id="excluir"  onclick="if (confirm('Você deseja excluir esse cliente?')) {return true }; return false;" action="#{clienteBean.excluiCliente}" >
-					 	<h:graphicImage value="/images/imgdelete.png" />  
-   						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa"/>  
-   					 </h:commandLink>  		
-				    </h:form>		
-				</h:column>			
-			</h:dataTable>		
-		</ui:define>		
-	  <ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>		
-	</ui:composition>
+						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir" />
+				</f:facet>
+				<h:form id="excluiCliente">
+					<h:commandLink id="excluir"
+						onclick="if (confirm('Você deseja excluir esse cliente?')) {return true }; return false;"
+						action="#{clienteBean.excluiCliente}">
+						<h:graphicImage value="/images/imgdelete.png" />
+						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</ui:define>
+	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
+</ui:composition>
 </html>

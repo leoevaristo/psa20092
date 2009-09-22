@@ -6,15 +6,20 @@
 
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 	
-	
+	<ui:define name="tituloGrande"> 
+		<h:outputText value="Página do Cliente" />
+	 </ui:define>		
+	<ui:define name="subtitulo">  
+		<h:outputText value="» Alterar Cliente" />
+	</ui:define>	
 	<ui:define name="conteudo"> 			
 			<h:form styleClass="forms">				
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo0"  value="Tipo de Pessoa"/>
-					<h:selectOneMenu value="#{clienteBean.cliente.tipoPessoa}" id="campo0" >
-						<f:selectItem itemValue="" itemLabel="Tipo de Pessoa"/>
-						<f:selectItem itemValue="F" itemLabel="Física"/>
-						<f:selectItem itemValue="J" itemLabel="Jurídica"/>
+					<h:selectOneMenu value="#{clienteBean.cliente.tipoPessoa}"	id="campo0">
+						<f:selectItem itemValue="" itemLabel="Tipo de Pessoa" />
+						<f:selectItem itemValue="F" itemLabel="Física" />
+						<f:selectItem itemValue="J" itemLabel="Jurídica" />
 					</h:selectOneMenu>					
 				</h:panelGroup>					
 				<h:panelGroup styleClass="textcenter">
@@ -47,7 +52,6 @@
 				<h:panelGroup styleClass="linha"></h:panelGroup>
 				<h:panelGroup styleClass="botoes">
 					<h:commandButton action="#{clienteBean.updateCliente}" value="" styleClass="input_submit" />
-					<h:commandButton action="#" value="" type="reset" styleClass="input_reset" />
 					<h:commandButton action="#{clienteBean.destroiSessao}" value="" styleClass="input_button" immediate="true" />
 				</h:panelGroup>						
 			</h:form>		
