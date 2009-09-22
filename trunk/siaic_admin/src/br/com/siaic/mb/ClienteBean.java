@@ -2,11 +2,9 @@ package br.com.siaic.mb;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.endereco.Endereco;
@@ -152,6 +150,10 @@ public class ClienteBean {
 	
 	
 	
+	/**
+	 * 
+	 * @throws SQLException
+	 */
 	public void excluiCliente() throws SQLException {
 
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -165,6 +167,21 @@ public class ClienteBean {
 
 		dao.removerCliente(idPessoa);
 
+	}
+	
+	
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String destroiSessao(){
+		
+		FacesContext contexto = FacesContext.getCurrentInstance();
+		contexto.getExternalContext().getSessionMap().remove("clienteBean");
+		
+		return "destruido";
 	}
 
 }

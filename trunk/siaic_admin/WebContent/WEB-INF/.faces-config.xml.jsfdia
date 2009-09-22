@@ -19,5 +19,12 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#cliente#altera_cliente.xhtml"
-  PATH="/paginas/cliente/altera_cliente.xhtml" SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/paginas/cliente/altera_cliente.xhtml" SHAPE="256,177,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#cliente#altera_cliente.xhtml:0"
+   NAME="item" PATH="/paginas/cliente/altera_cliente.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="destruido::#paginas#cliente#cliente.xhtml"
+    NAME="output" PATH="/paginas/cliente/cliente.xhtml"
+    TARGET="rules:#paginas#cliente#cliente.xhtml" TITLE="destruido" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>
