@@ -19,7 +19,7 @@
 	<!-- Inicio Header -->
     <div id="header">
         <div id="logo">
-        	<img src="#{request.contextPath}/images/logo.png" alt="SIAIC - Sistema Integrado de Administração de Imobiliárias e Condomínios" />
+        	<a href="#{request.contextPath}/paginas/index.xhtml" target="_self" ><img src="#{request.contextPath}/images/logo.png" alt="SIAIC - Sistema Integrado de Administração de Imobiliárias e Condomínios" /></a>
         </div>
         <ul id="menuHeader">
         	<li><a href="#">Configurações</a></li>
@@ -51,8 +51,8 @@
                   <div id="menu">                  	
                  	 <ul class="menumodulos">
                  		  <li><a href="imovel.xhtml"> Imóveis</a></li>
-                    	  <li><a href="cliente.xhtml" style="FONT-SIZE: xx-small;">Clientes</a></li>
-                    	  <li><a href="usuario.xhtml">Usuários</a></li>
+                    	  <li><a href="#{request.contextPath}/paginas/cliente/cliente.xhtml">Clientes</a></li>
+                    	  <li><a href="#{request.contextPath}/paginas/usuario.xhtml">Usuários</a></li>
                     	  <li><a href="valormercado.xhtml">Valores de Mercado</a></li>
                     	  <li><a href="#">Gerenciar Agenda</a></li>
                    	      

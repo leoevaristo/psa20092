@@ -2,8 +2,11 @@ package br.com.siaic.mb;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.endereco.Endereco;
@@ -82,7 +85,7 @@ public class ClienteBean {
 	 */
 	public String addCliente() throws SQLException {
 		// TODO
-		System.out.println("metodo addCliente");
+		
 		String r = "sucesso";
 
 		ClienteDAO daoCliente = new ClienteDAO();
@@ -122,7 +125,7 @@ public class ClienteBean {
 	public List<Cliente> getTodosClientes() throws SQLException {
 
 		ClienteDAO dao = new ClienteDAO();
-
+		
 		return dao.getTodosClientes();
 
 	}
@@ -132,14 +135,23 @@ public class ClienteBean {
 	 * @return
 	 * @throws SQLException
 	 */
-	public Cliente localizarClientePorId() throws SQLException {
-
+	public String localizarClientePorId() throws SQLException {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
+		Integer idPessoa = new Integer(req.getParameter("codigoPessoa")).intValue();
+		
 		ClienteDAO dao = new ClienteDAO();
-
-		return dao.getClientePorId(getCliente().getCodigoPessoa());
+		setCliente(dao.getClientePorId(idPessoa));		
+		
+				
+		return "altera";
 
 	}
 
+	
+	
+	
 	public void excluiCliente() throws SQLException {
 
 		FacesContext context = FacesContext.getCurrentInstance();

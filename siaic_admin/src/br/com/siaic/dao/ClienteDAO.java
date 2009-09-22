@@ -146,7 +146,7 @@ public class ClienteDAO {
 				+ "WHERE p.PES_NOME LIKE ? AND p.PES_ENDERECO = e.END_CODIGO AND p.PES_CODIGO = c.PEC_CODIGO;";
 
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setString(1, nome);
+		ps.setString(1, "%"+nome+"%");
 
 		ResultSet rs = ps.executeQuery();
 
@@ -219,8 +219,8 @@ public class ClienteDAO {
 	 */
 	public Cliente getClientePorId(int clienteCodigo) throws SQLException {
 
-		String sql = "SELECT c.PEC_CODIGO, c.PEC_CPF, c.PEC_RG, c.PEC_CNPJ, p.PES_CODIGO "
-				+ "FROM PESSOA_CLIENTE c, PESSOA p "
+		String sql = "SELECT c.PEC_CODIGO, c.PEC_CPF, c.PEC_RG, c.PEC_CNPJ, p.PES_CODIGO, "
+				+ "p.PES_NOME, p.PES_EMAIL FROM PESSOA_CLIENTE c, PESSOA p "
 				+ "WHERE c.PEC_CODIGO = ?  AND c.PEC_CODIGO = p.PES_CODIGO ";
 
 		PreparedStatement ps = conexao.prepareStatement(sql);
@@ -234,6 +234,7 @@ public class ClienteDAO {
 		cliente.setCpf(rs.getString("PEC_CPF"));
 		cliente.setRg(rs.getString("PEC_RG"));
 		cliente.setCnpj(rs.getString("PEC_CNPJ"));
+		cliente.setNome(rs.getString("PES_NOME"));
 
 		ps.close();
 		rs.close();
