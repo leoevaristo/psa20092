@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.Pessoa;
 
 public class PessoaDAO {
@@ -34,22 +33,25 @@ public class PessoaDAO {
 				+ "PES_EMAIL, PES_TIPO, PES_SEXO, PES_ENDERECO) "
 				+ "VALUES (? , ? , ? , ? , ? , ? , ? );";
 
-		PreparedStatement ps = conexao.prepareStatement(sql);
+		try{
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, pessoa.getNome());
+			ps.setString(2, pessoa.getTelefone());
+			ps.setString(3, pessoa.getCelular());
+			ps.setString(4, pessoa.getEmail());
+			ps.setString(5, pessoa.getTipoPessoa());
+			ps.setString(6, pessoa.getSexo());
+			ps.setInt(7, 1);
+			ps.execute();
 
-		ps.setString(1, pessoa.getNome());
-		ps.setString(2, pessoa.getTelefone());
-		ps.setString(3, pessoa.getCelular());
-		ps.setString(4, pessoa.getEmail());
-		ps.setString(5, pessoa.getTipoPessoa());
-		ps.setString(6, pessoa.getSexo());
-		ps.setInt(7, 1);
+			setIdPessoa(pessoa);
 
-		ps.execute();
-
-		setIdPessoa(pessoa);
-
-		ps.close();
-		conexao.close();
+			ps.close();
+		
+			}finally{
+				conexao.close();
+			}
 
 	}
 	
@@ -59,20 +61,24 @@ public class PessoaDAO {
 	public void setIdPessoa(Pessoa pessoa) throws SQLException {
 
 		String sql = "SELECT MAX(PES_CODIGO) AS CODIGO FROM PESSOA;";
+		
+		try{
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
 
-		PreparedStatement ps = conexao.prepareStatement(sql);
+			while (rs.next()) {
 
-		ResultSet rs = ps.executeQuery();
+				pessoa.setCodigoPessoa(rs.getInt("CODIGO"));
 
-		while (rs.next()) {
+			}
 
-			pessoa.setCodigoPessoa(rs.getInt("CODIGO"));
-
+			ps.close();
+			rs.close();
+		
+		}finally{
+			conexao.close();
 		}
-
-		ps.close();
-		rs.close();
-		conexao.close();
 		
 	}
 	
@@ -80,15 +86,19 @@ public class PessoaDAO {
 	
 	public void alterarPessoa(Pessoa pessoa) throws SQLException {
 
-		String sql = "UPDATE PESSOA SET PES_NOME = ?, PES_TELEFONE = ?, PES_CELULAR = ?"
-				+ " PES_EMAIL, PES_SEXO, PES_TIPO WHERE PES_CODIGO = ?";
+		String sql = "UPDATE PESSOA SET PES_NOME = ?, PES_TELEFONE = ?, PES_CELULAR = ?,"
+				+ " PES_EMAIL = ?, PES_SEXO = ?, PES_TIPO = ? WHERE PES_CODIGO = ?";
 
 		try {
-
 			
 			PreparedStatement ps = conexao.prepareStatement(sql);
-
-			
+			ps.setString(1, pessoa.getNome());
+			ps.setString(2, pessoa.getTelefone());
+			ps.setString(3, pessoa.getCelular());
+			ps.setString(4, pessoa.getEmail());
+			ps.setString(5, pessoa.getSexo());
+			ps.setString(6, pessoa.getTipoPessoa());
+			ps.setInt(7, pessoa.getCodigoPessoa());			
 
 			ps.execute();
 			ps.close();

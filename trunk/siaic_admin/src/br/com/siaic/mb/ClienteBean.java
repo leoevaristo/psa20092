@@ -65,6 +65,9 @@ public class ClienteBean {
 		return cliente;
 
 	}
+	
+	
+	
 
 	/**
 	 * 
@@ -75,6 +78,9 @@ public class ClienteBean {
 		this.cliente = cliente;
 
 	}
+	
+	
+	
 
 	/**
 	 * 
@@ -98,6 +104,9 @@ public class ClienteBean {
 		return r;
 
 	}
+	
+	
+	
 
 	/**
 	 * 
@@ -108,10 +117,12 @@ public class ClienteBean {
 		// TODO
 		
 		String r = "";
-
-		ClienteDAO dao = new ClienteDAO();
-
-		dao.alterarCliente(cliente);
+		
+		PessoaDAO daoPessoa = new PessoaDAO();
+		ClienteDAO daoCliente = new ClienteDAO();
+		
+		daoPessoa.alterarPessoa(cliente);
+		daoCliente.alterarCliente(cliente);
 
 		return r;
 
@@ -140,11 +151,11 @@ public class ClienteBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
 		Integer idPessoa = new Integer(req.getParameter("codigoPessoa")).intValue();
+		//String tipoExibicao = new String(req.getParameter("tipoExibicao").toString());		
 		
 		ClienteDAO dao = new ClienteDAO();
 		setCliente(dao.getClientePorId(idPessoa));		
 		
-				
 		return "altera";
 
 	}
@@ -166,7 +177,6 @@ public class ClienteBean {
 				.intValue();
 
 		ClienteDAO dao = new ClienteDAO();
-
 		dao.removerCliente(idPessoa);
 
 	}
@@ -184,6 +194,22 @@ public class ClienteBean {
 		contexto.getExternalContext().getSessionMap().remove("clienteBean");
 		
 		return "destruido";
+	}
+	
+	
+	
+	public String exibeDetalhesCliente() throws SQLException{
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
+		Integer idPessoa = new Integer(req.getParameter("codigoPessoa")).intValue();
+		//String tipoExibicao = new String(req.getParameter("tipoExibicao").toString());		
+		
+		ClienteDAO dao = new ClienteDAO();
+		setCliente(dao.getClientePorId(idPessoa));		
+		
+		
+		return "detalhes";
 	}
 	
 	

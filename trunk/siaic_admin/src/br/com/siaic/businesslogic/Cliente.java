@@ -14,13 +14,17 @@ public class Cliente extends Pessoa {
 	// private Date dataNascimento;
 
 	private String cpf;
+	
 
 	private String rg;
 
+	
 	private String cnpj;
+	
 	
 	private int clienteEnderecoCodigo;
 
+	
 	// private String razaoSocial;
 
 	// private String inscEstadual;
@@ -30,9 +34,6 @@ public class Cliente extends Pessoa {
 	// private String nomeContato;
 
 	// private String nomeFantasia;
-
-
-
 
 
 

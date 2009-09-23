@@ -298,7 +298,12 @@ div#container div#content div#col_right div#infogerais a#info_novo{
 }
 
 
-	
+.panels{
+	font-weight: bold;
+	line-height: 25px;
+	border: thick #000;
+	font-size: medium;	
+	}
 div#container div#content div#col_right div#infogerais table.grid{
 	width:100%;
 	clear:both;
