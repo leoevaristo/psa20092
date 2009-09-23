@@ -108,28 +108,26 @@ public class ClienteDAO {
 
 		try {
 
+			
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.setString(1, cliente.getCpf());
 			ps.setString(2, cliente.getRg());
 			ps.setString(3, cliente.getCnpj());
 			ps.setInt(4, cliente.getCodigoPessoa());
+			
 
-			ps.executeUpdate();
+			ps.execute();
 			ps.close();
 
-		}
-
-		catch (Exception e) {
-
-			throw new SQLException("Não foi possível alterar o banco de dados.");
-
-		}
-		finally{
+		}finally{
 			
 			conexao.close();
 		}
 	}
 
+	
+	
+	
 	/**
 	 * 
 	 * @param nome

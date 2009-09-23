@@ -106,6 +106,7 @@ public class ClienteBean {
 	 */
 	public String updateCliente() throws SQLException {
 		// TODO
+		
 		String r = "";
 
 		ClienteDAO dao = new ClienteDAO();

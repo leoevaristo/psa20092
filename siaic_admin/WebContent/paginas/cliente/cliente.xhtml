@@ -14,11 +14,11 @@
 		<h:outputText value="» Cadastrar Cliente" />
 	</ui:define>
 	<ui:define name="conteudo">
-		<h:form styleClass="forms">
+		<h:form styleClass="forms" id="form1">
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo0" value="Tipo de Pessoa" />
 				<h:selectOneMenu value="#{clienteBean.cliente.tipoPessoa}"
-					id="campo0">
+					 id="campo0" onchange="Javascript:tipoPessoa()" >
 					<f:selectItem itemValue="" itemLabel="Tipo de Pessoa" />
 					<f:selectItem itemValue="F" itemLabel="Física" />
 					<f:selectItem itemValue="J" itemLabel="Jurídica" />
@@ -40,16 +40,21 @@
 					styleClass="obrigatorio" id="campo03" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoCelular" value="Celular" />
+				<h:inputText value="#{clienteBean.cliente.celular}"
+					 id="campoCelular" />
+			</h:panelGroup>			
+			<h:panelGroup styleClass="textcenter" id="panelRg">
 				<h:outputLabel for="campo04" value="RG" />
 				<h:inputText value="#{clienteBean.cliente.rg}"
 					styleClass="obrigatorio" id="campo04" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
-				<h:outputLabel for="campo05" value="CPF" />
+			<h:panelGroup styleClass="textcenter" id="panelCpf">
+				<h:outputLabel for="campo05" value="CPF"  />
 				<h:inputText value="#{clienteBean.cliente.cpf}"
 					styleClass="obrigatorio" id="campo05" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup styleClass="textcenter" id="panelCnpj">
 				<h:outputLabel for="campo06" value="CNPJ" />
 				<h:inputText value="#{clienteBean.cliente.cnpj}"
 					styleClass="obrigatorio" id="campo06" />

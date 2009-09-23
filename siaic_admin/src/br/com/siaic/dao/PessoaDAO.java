@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.Pessoa;
 
 public class PessoaDAO {
@@ -14,14 +15,19 @@ public class PessoaDAO {
 	public PessoaDAO() {
 
 		try {
+			
 			FabricaConexao.getInstancia();
 			this.conexao = FabricaConexao.conectar();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 	}
 
+	
+	
+	
 	public void adicionarPessoa(Pessoa pessoa) throws SQLException {
 
 		String sql = "INSERT INTO PESSOA (PES_NOME, PES_TELEFONE, PES_CELULAR, "
@@ -46,6 +52,9 @@ public class PessoaDAO {
 		conexao.close();
 
 	}
+	
+	
+	
 
 	public void setIdPessoa(Pessoa pessoa) throws SQLException {
 
@@ -66,5 +75,29 @@ public class PessoaDAO {
 		conexao.close();
 		
 	}
+	
+	
+	
+	public void alterarPessoa(Pessoa pessoa) throws SQLException {
+
+		String sql = "UPDATE PESSOA SET PES_NOME = ?, PES_TELEFONE = ?, PES_CELULAR = ?"
+				+ " PES_EMAIL, PES_SEXO, PES_TIPO WHERE PES_CODIGO = ?";
+
+		try {
+
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+
+			
+
+			ps.execute();
+			ps.close();
+
+		}finally{
+			
+			conexao.close();
+		}
+	}
+
 
 }
