@@ -20,27 +20,14 @@ public class UsuarioDAO {
 	 */
 	private Connection conexao = null;
 
-	/**
-	 * 
-	 */
-	private static UsuarioDAO instance = null;
+	
 
-	/**
-	 * 
-	 * @return
-	 */
-	public static UsuarioDAO getInstancia() {
-		if (instance == null) {
-			instance = new UsuarioDAO();
-		}
 
-		return instance;
-	}
 
 	/**
 	 * 
 	 */
-	private UsuarioDAO() {
+	public UsuarioDAO() {
 
 		try
 		{

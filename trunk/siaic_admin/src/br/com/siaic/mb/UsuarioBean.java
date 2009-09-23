@@ -3,8 +3,8 @@ package br.com.siaic.mb;
 import java.sql.SQLException;
 
 import br.com.siaic.businesslogic.Usuario;
-import br.com.siaic.dao.UsuarioDAO;
 import br.com.siaic.dao.PessoaDAO;
+import br.com.siaic.dao.UsuarioDAO;
 
 public class UsuarioBean {
 
@@ -34,7 +34,7 @@ public class UsuarioBean {
 
 	/**
 	 * 
-	 * @param cliente
+	 * @param usuario
 	 */
 	public void setUsuario(Usuario usuario) {
 
@@ -49,13 +49,15 @@ public class UsuarioBean {
 	 */
 	public String addUsuario() throws SQLException {
 		// TODO
-		String r = "";
-		
+		String r = "sucesso";
+
 		PessoaDAO daoPessoa = new PessoaDAO();
+		UsuarioDAO daoUsuario = new UsuarioDAO();
 		
 		daoPessoa.adicionarPessoa(usuario);
+		daoUsuario.adicionarUsuario(usuario);
 
-		UsuarioDAO.getInstancia().adicionarUsuario(usuario);
+		
 
 		return r;
 
@@ -69,8 +71,10 @@ public class UsuarioBean {
 	public String updateUsuario() throws SQLException {
 		// TODO
 		String r = "";
+		
+		UsuarioDAO daoUsuario = new UsuarioDAO();
 
-		UsuarioDAO.getInstancia().adicionarUsuario(usuario);
+		daoUsuario.adicionarUsuario(usuario);
 
 		return r;
 
@@ -96,8 +100,9 @@ public class UsuarioBean {
 	 * @throws SQLException
 	 */
 	public Usuario localizarUsuarioPorId() throws SQLException {
-
-		return UsuarioDAO.getInstancia().getUsuarioId(
+			UsuarioDAO daoUsuario = new UsuarioDAO();
+			
+		return daoUsuario.getUsuarioId(
 				getUsuario().getCodigoPessoa());
 
 	}
