@@ -43,17 +43,17 @@
 				<h:inputText value="#{clienteBean.cliente.celular}"
 					id="campoCelular" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup styleClass="textcenter" rendered="#{clienteBean.cliente.tipoPessoa eq 'F'}">
 				<h:outputLabel for="campo04" value="RG" />
 				<h:inputText value="#{clienteBean.cliente.rg}"
 					styleClass="obrigatorio" id="campo04" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup styleClass="textcenter" rendered="#{clienteBean.cliente.tipoPessoa eq 'F'}">
 				<h:outputLabel for="campo05" value="CPF" />
 				<h:inputText value="#{clienteBean.cliente.cpf}"
 					styleClass="obrigatorio" id="campo05" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter" id="panelSexo">
+			<h:panelGroup styleClass="textcenter" id="panelSexo" rendered="#{clienteBean.cliente.tipoPessoa eq 'F'}">
 				<h:outputLabel for="sexo" value="Sexo" />
 				<h:selectOneMenu value="#{clienteBean.cliente.sexo}" id="sexo">
 					<f:selectItem itemValue="" itemLabel="Sexo" />
@@ -61,7 +61,7 @@
 					<f:selectItem itemValue="F" itemLabel="Feminino" />
 				</h:selectOneMenu>
 			</h:panelGroup>			
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup styleClass="textcenter" >
 				<h:outputLabel for="campo06" value="CNPJ" />
 				<h:inputText value="#{clienteBean.cliente.cnpj}"
 					styleClass="obrigatorio" id="campo06" />

@@ -26,7 +26,7 @@
  <managed-bean>
   <managed-bean-name>selectEstados</managed-bean-name>
   <managed-bean-class>br.com.siaic.mb.endereco.SelectEstados</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
  	<managed-bean-name>usuarioBean</managed-bean-name>
