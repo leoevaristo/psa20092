@@ -1,60 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
-	<managed-bean>
-		<managed-bean-name>clienteBean</managed-bean-name>
-		<managed-bean-class>br.com.siaic.mb.ClienteBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>imovelBean</managed-bean-name>
-		<managed-bean-class>br.com.siaic.mb.ImovelBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
-	<!-- ENDEREÇO -->
-	<managed-bean>
-		<managed-bean-name>estadoBean</managed-bean-name>
-		<managed-bean-class>br.com.siaic.mb.endereco.EstadoBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>enderecoBean</managed-bean-name>
-		<managed-bean-class>br.com.siaic.mb.endereco.EnderecoBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>selectEstados</managed-bean-name>
-		<managed-bean-class>br.com.siaic.mb.endereco.SelectEstados</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
-	<!-- ENDEREÇO -->
-	<navigation-rule>
-		<from-view-id>/paginas/cliente/cliente.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>sucesso</from-outcome>
-			<to-view-id>/paginas/sucesso.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/paginas/cliente/cliente.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>altera</from-outcome>
-			<to-view-id>/paginas/cliente/altera_cliente.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/paginas/cliente/altera_cliente.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>destruido</from-outcome>
-			<to-view-id>/paginas/cliente/cliente.xhtml</to-view-id>
-			<redirect/>
-		</navigation-case> 
-	</navigation-rule>
-	<application>
-		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
-		
-	</application>
-	
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+ <managed-bean>
+  <managed-bean-name>clienteBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.ClienteBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>imovelBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.ImovelBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <!-- ENDEREÇO -->
+ <managed-bean>
+  <managed-bean-name>estadoBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.endereco.EstadoBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>enderecoBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.endereco.EnderecoBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>selectEstados</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.endereco.SelectEstados</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <!-- ENDEREÇO -->
+ <navigation-rule>
+  <from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>sucesso</from-outcome>
+   <to-view-id>/paginas/cliente/sucesso.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>altera</from-outcome>
+   <to-view-id>/paginas/cliente/altera_cliente.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/cliente/altera_cliente.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>destruido</from-outcome>
+   <to-view-id>/paginas/cliente/cadastra_cliente.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/cliente/consulta_cliente.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>detalhes</from-outcome>
+   <to-view-id>/paginas/cliente/detalhes_cliente.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <application>
+  <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+ </application>
 </faces-config>
