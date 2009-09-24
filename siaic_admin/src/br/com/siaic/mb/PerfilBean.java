@@ -3,7 +3,6 @@ package br.com.siaic.mb;
 import java.sql.SQLException;
 
 import br.com.siaic.businesslogic.Perfil;
-import br.com.siaic.dao.ImovelCaracteristicaDAO;
 import br.com.siaic.dao.PerfilDAO;
 
 /**

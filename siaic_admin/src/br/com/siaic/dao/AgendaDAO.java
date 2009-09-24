@@ -27,6 +27,7 @@ public class AgendaDAO {
 	
 	private static ClienteDAO cdao = new ClienteDAO();
 	private static ImovelDAO idao = new ImovelDAO();
+	private static UsuarioDAO udao = new UsuarioDAO();
 
 	public static AgendaDAO getInstance() {
 		if (AgendaDAO.instance == null) {
@@ -57,7 +58,7 @@ public class AgendaDAO {
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
 			a.setCliente(cdao.getClientePorId(
 					rs.getInt("AGE_PESSOA_CLIENTE")));
-			a.setCorretor(UsuarioDAO.getInstancia().getUsuarioId(
+			a.setCorretor(udao.getUsuarioId(
 					rs.getInt("AGE_PESSOA_USUARIO")));
 			a.setImovel(idao.getImovel(rs.getInt("AGE_PESSOA_USUARIO")));
 			a.setData(rs.getDate("AGE_DATA"));
@@ -89,7 +90,7 @@ public class AgendaDAO {
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
 			a.setCliente(cdao.getClientePorId(
 					rs.getInt("AGE_PESSOA_CLIENTE")));
-			a.setCorretor(UsuarioDAO.getInstancia().getUsuarioId(
+			a.setCorretor(udao.getUsuarioId(
 					rs.getInt("AGE_PESSOA_USUARIO")));
 			a.setImovel(idao.getImovel(
 			rs.getInt("AGE_PESSOA_USUARIO")));
@@ -128,7 +129,7 @@ public class AgendaDAO {
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
 			a.setCliente(cdao.getClientePorId(
 					rs.getInt("AGE_PESSOA_CLIENTE")));
-			a.setCorretor(UsuarioDAO.getInstancia().getUsuarioId(
+			a.setCorretor(udao.getUsuarioId(
 					rs.getInt("AGE_PESSOA_USUARIO")));
 			 a.setImovel(idao.getImovel(
 			 rs.getInt("AGE_PESSOA_USUARIO")));
@@ -166,7 +167,7 @@ public class AgendaDAO {
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
 			a.setCliente(cdao.getClientePorId(
 					rs.getInt("AGE_PESSOA_CLIENTE")));
-			a.setCorretor(UsuarioDAO.getInstancia().getUsuarioId(
+			a.setCorretor(udao.getUsuarioId(
 					rs.getInt("AGE_PESSOA_USUARIO")));
 			 a.setImovel(idao.getImovel(
 			 rs.getInt("AGE_PESSOA_USUARIO")));
@@ -205,7 +206,7 @@ public class AgendaDAO {
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
 			a.setCliente(cdao.getClientePorId(
 					rs.getInt("AGE_PESSOA_CLIENTE")));
-			a.setCorretor(UsuarioDAO.getInstancia().getUsuarioId(
+			a.setCorretor(udao.getUsuarioId(
 					rs.getInt("AGE_PESSOA_USUARIO")));
 			 a.setImovel(idao.getImovel(
 			 rs.getInt("AGE_PESSOA_USUARIO")));

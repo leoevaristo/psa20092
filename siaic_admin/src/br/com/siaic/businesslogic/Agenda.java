@@ -1,7 +1,6 @@
 package br.com.siaic.businesslogic;
 
 import java.sql.Date;
-import java.sql.SQLException;
 import java.sql.Time;
 
 import br.com.siaic.dao.AgendaDAO;
@@ -74,7 +73,7 @@ public class Agenda {
 		ClienteDAO cdao = new ClienteDAO();
 		ImovelDAO idao = new ImovelDAO();
 		
-		Usuario corretor = UsuarioDAO.getInstancia().getUsuarioId(codCorretor); 
+		Usuario corretor = new UsuarioDAO().getUsuarioId(codCorretor); 
 		Cliente cliente = cdao.getClientePorId(codCliente);
 		Imovel imovel = idao.getImovel(codImovel);
 		
