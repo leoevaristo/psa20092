@@ -30,7 +30,7 @@ public class Perfil {
 	public Perfil(int codcli, int codic, int codusua) throws SQLException{
 		this.cliente = new ClienteDAO().getClientePorId(codcli);
 		this.imovelCaracteristica = ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(codic);
-		this.usuario = UsuarioDAO.getInstancia().getUsuarioId(codusua);
+		this.usuario = new UsuarioDAO().getUsuarioId(codusua);
 	}
 	
 	
