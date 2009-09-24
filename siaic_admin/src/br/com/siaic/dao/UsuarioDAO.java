@@ -68,7 +68,25 @@ public class UsuarioDAO {
 
 	}
 
-	public void removerUsuario(Usuario usuario) {
+	public void removerUsuario(int idPessoa) throws SQLException {
+	
+		String sql = " DELETE PESSOA_USUARIOS, PESSOA FROM PESSOA_USUARIOS INNER JOIN PESSOA INNER JOIN ENDERECO "
+			+ " WHERE PESSOA_USUARIOS.PEU_CODIGO = ? AND PESSOA_USUARIOS.PEU_CODIGO =PESSOA.PES_CODIGO "
+			+ " AND PESSOA.PES_ENDERECO = ENDERECO.END_CODIGO; ";
+
+	
+
+	try {
+		PreparedStatement ps = conexao.prepareStatement(sql);
+		ps.setInt(1, idPessoa);
+		if (ps.execute())
+			System.out.println("Dados apagados!");
+		ps.close();
+		
+	} finally {
+		
+		conexao.close();
+	}
 
 	}
 
