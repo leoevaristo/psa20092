@@ -3,6 +3,9 @@ package br.com.siaic.mb;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+
 import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.Imovel;
 import br.com.siaic.businesslogic.ImovelCaracteristica;
@@ -55,7 +58,11 @@ public class ImovelBean {
     }
     
     public String consultaImovel() {
-    	this.imovel = Imovel.getImovel(1);
+    	FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
+		Integer codImovel = new Integer(req.getParameter("codigoImovel")).intValue();
+    	
+    	this.imovel = Imovel.getImovel(codImovel);
     	try {
     		this.imoCar = new ImovelCaracteristicaDAO().getImovelCaracteristica(this.imovel.getCaracteristica());
     		this.prop = new ClienteDAO().getClientePorId(this.imovel.getCodigo());
@@ -64,7 +71,7 @@ public class ImovelBean {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-    	return "";
+    	return "altera";
     }
     
     public List<Imovel> getTodosImoveis() {

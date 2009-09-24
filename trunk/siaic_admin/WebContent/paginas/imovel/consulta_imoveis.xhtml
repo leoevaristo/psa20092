@@ -26,10 +26,54 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Característica" />
+					<h:outputText value="Detalhe" />
 				</f:facet>
-				<h:outputText value="#{}" />
+				<h:outputText value="#{imo.detalhe}" />
 			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Forma de Pagamento" />
+				</f:facet>
+				<h:outputText value="#{imo.formaPagamento}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Editar" />
+				</f:facet>
+				<h:form id="alteraImovel">
+					<h:commandLink action="#{imovelBean.consultaImovel}">
+						<h:graphicImage value="/images/imgedit.png" />
+						<f:param value="#{imo.codigo}" name="codigoImovel" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<!--  <h:column>
+				<f:facet name="header">
+					<h:outputText value="Detalhes" />
+				</f:facet>
+				<h:form id="detalheImovel">
+					<h:commandLink id="detalheLink"
+						action="#{clienteBean.exibeDetalhesCliente}">
+						<h:outputText value="Exibir Detalhes" />
+						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir" />
+				</f:facet>
+				<h:form id="excluiImovel">
+					<h:commandLink id="excluir"
+						onclick="if (confirm('VocÃª tem certeza que deseja excluir esse cliente?')) {return true }; return false;"
+						action="#{clienteBean.excluiCliente}">
+						<h:graphicImage value="/images/imgdelete.png" />
+						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
+					</h:commandLink>
+				</h:form>
+			</h:column> -->
+			
 		  </h:dataTable>
 		</ui:define>
 	
