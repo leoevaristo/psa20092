@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -6,15 +6,44 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<ui:composition template="/WEB-INF/template/template.xhtml">	
-	<ui:define name="tituloGrande">Caracteristicas do Imóvel</ui:define>
-	<ui:define name="subtitulo">Menu</ui:define>
+	<ui:define name="tituloGrande">
+	  <h:outputText value="Características do Imóvel" />
+	</ui:define>
+	<ui:define name="subtitulo">
+	  <h:outputText value="Cadastrar"/>
+	</ui:define>
 	<ui:define name="conteudo">
-			<ul>
-				<li><a href="#{request.contextPath}/paginas/imovel_caracteristica/cadastrar_caracteristica.xhtml">Cadastrar</a></li>
-				<li><a href="#{request.contextPath}/paginas/imovel_caracteristica/consultar_caracteristica.xhtml">Consultar</a></li>
-				<li><a href="#{request.contextPath}/paginas/imovel_caracteristica/alterar_caracteristica.xhtml">Alterar</a></li>
-			</ul>
-	</ui:define>>
+		<h:form styleClass="forms">
+		  <span>
+			<h:panelGroup>
+				<h:outputLabel for="dormitorio" value="Quantidade de dormitórios" />
+				<h:inputText value="#{imovelCaracteristicaBean.caracteristica.dormitorio}" id="dormitorio" styleClass="opcional"/>
+			</h:panelGroup>
+		  </span>
+		  <span>
+			<h:panelGroup>
+				<h:outputLabel for="suite" value="Quantidade de Suítes" />
+				<h:inputText value="#{imovelCaracteristicaBean.caracteristica.suite}" id="suite" styleClass="opcional"/>
+			</h:panelGroup>
+		  </span>
+		  <span>
+			<h:panelGroup>
+				<h:outputLabel for="garagem" value="Quantidade de Vagas da Garagem" />
+				<h:inputText value="#{imovelCaracteristicaBean.caracteristica.garagem}" id="garagem" styleClass="opcional"/>
+			</h:panelGroup>
+		  </span>
+		  <span>
+			<h:panelGroup id="panelPiscina">
+				<h:outputLabel for="piscina" value="Piscina" />
+				<h:selectOneMenu value="#{imovelCaracteristicaBean.caracteristica.piscina}" id="piscina">
+					<f:selectItem itemValue="S" itemLabel="Sim" />
+					<f:selectItem itemValue="N" itemLabel="Não" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+		  </span>
+			
+		</h:form>
+	</ui:define>
 	</ui:composition>
 
 </html>

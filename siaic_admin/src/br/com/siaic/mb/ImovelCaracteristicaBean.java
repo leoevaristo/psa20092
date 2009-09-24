@@ -22,6 +22,15 @@ public class ImovelCaracteristicaBean {
 	public ImovelCaracteristica getImovelCaracteristica() {
 		return imovelCaracteristica;
 	}
+	
+	public ImovelCaracteristica getImovelCaracteristica(int codigo) {
+		try {
+			return new ImovelCaracteristicaDAO().getImovelCaracteristica(codigo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public void setImovelCaracteristica(ImovelCaracteristica imovelCaracteristica) {
 		this.imovelCaracteristica = imovelCaracteristica;

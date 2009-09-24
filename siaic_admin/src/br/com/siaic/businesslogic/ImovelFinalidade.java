@@ -12,7 +12,8 @@ public class ImovelFinalidade {
     }
     
     public ImovelFinalidade() {
-        
+        this.nome = "";
+        this.codigo = -1;
     }
     
 	public String getNome() {

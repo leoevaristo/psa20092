@@ -1,18 +1,49 @@
 package br.com.siaic.mb;
 
+import java.sql.SQLException;
+import java.util.List;
+
+import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.Imovel;
+import br.com.siaic.businesslogic.ImovelCaracteristica;
+import br.com.siaic.businesslogic.ImovelFinalidade;
+import br.com.siaic.businesslogic.endereco.Endereco;
+import br.com.siaic.dao.ClienteDAO;
+import br.com.siaic.dao.EnderecoDAO;
+import br.com.siaic.dao.ImovelCaracteristicaDAO;
+import br.com.siaic.dao.ImovelDAO;
+import br.com.siaic.dao.ImovelFinalidadeDAO;
 
 public class ImovelBean {
     
 	private Imovel imovel;
+	private Endereco endereco;
+	private ImovelCaracteristica imoCar;
+	private ImovelFinalidade imoFin;
+	private Cliente prop;
+	
 	private int codigoImovel;
     
     public ImovelBean() {
     	this.imovel = new Imovel();
+    	this.endereco = new Endereco();
+    	this.imoCar = new ImovelCaracteristica();
+    	this.imoFin = new ImovelFinalidade();
+    	this.imoFin.setNome("...");
+    	this.prop = new Cliente();
+    	this.prop.setNome("...");
     }
     
-    public Imovel getImovel() {
+    public ImovelFinalidade getImoFin() {
+		return imoFin;
+	}
+
+	public Imovel getImovel() {
     	return this.imovel;
+    }
+    
+    public Endereco getEndereco() {
+    	return this.endereco;
     }
     
     public int getCodigoImovel() {
@@ -23,7 +54,33 @@ public class ImovelBean {
     	this.codigoImovel = codigoImovel;
     }
     
-    public void consultaImovel() {
-    	this.imovel = Imovel.getImovel(this.codigoImovel);
+    public String consultaImovel() {
+    	this.imovel = Imovel.getImovel(1);
+    	try {
+    		this.imoCar = new ImovelCaracteristicaDAO().getImovelCaracteristica(this.imovel.getCaracteristica());
+    		this.prop = new ClienteDAO().getClientePorId(this.imovel.getCodigo());
+    		this.imoFin = new ImovelFinalidadeDAO().getImovelFinalidade(this.imovel.getFinalidade());
+			this.endereco = new EnderecoDAO().getEnderecoPorCodigo(this.imovel.getEndereco());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	return "";
     }
+    
+    public List<Imovel> getTodosImoveis() {
+    	return new ImovelDAO().getImoveis();
+    }
+    
+    public String atualizaImovel() {
+    	this.imovel.salvar();
+    	return "";
+    }
+
+	public ImovelCaracteristica getImoCar() {
+		return imoCar;
+	}
+
+	public Cliente getProp() {
+		return prop;
+	}
 }
