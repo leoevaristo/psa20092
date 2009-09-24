@@ -88,14 +88,16 @@ public class Endereco {
 	
 	
 	public Endereco() {
-		super();
+		//super();
+		
+		enderecoBairro = new Bairro();
 	}
 
 
 
 	public Endereco(int enderecoCodigo, String enderecoLogradouro,
 			String enderecoNome, String enderecoCep, Bairro enderecoBairro) {
-		super();
+		//super();
 		this.enderecoCodigo = enderecoCodigo;
 		this.enderecoLogradouro = enderecoLogradouro;
 		this.enderecoNome = enderecoNome;

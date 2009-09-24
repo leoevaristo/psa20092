@@ -120,11 +120,15 @@ public class CadastraClienteBean {
 
 		PessoaDAO daoPessoa = new PessoaDAO();
 		
-	//	EnderecoDAO daoEndereco = new EnderecoDAO();
-
+		EnderecoDAO daoEndereco = new EnderecoDAO();
+		
+		daoEndereco.adicionarEndereco(endereco);
+		
+		cliente.setEnderecoCodigo(endereco.getEnderecoCodigo());
+		
 		daoPessoa.adicionarPessoa(cliente);
 		daoCliente.adicionarCliente(cliente);
-	//	daoEndereco.adicionarEndereco(endereco);
+	
 		
 		
 

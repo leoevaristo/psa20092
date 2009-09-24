@@ -157,6 +157,7 @@ public class EnderecoDAO {
 			ps.setString(3, endereco.getEnderecoCep() );
 			ps.setInt(4, endereco.getEnderecoBairro().getBairroCodigo() );
 			ps.execute();
+			setIdEndereco(endereco);
 			retorno = true;
 		}//try
 		catch (SQLException e) {
@@ -166,7 +167,7 @@ public class EnderecoDAO {
 			ps.close();
 			conexao.close();
 		}//finally
-		setIdEndereco(endereco);
+		
 		return retorno;
 	}//public boolean adicionarBairro(Estado estado)
 	

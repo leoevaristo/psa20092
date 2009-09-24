@@ -252,7 +252,7 @@ public class ClienteDAO {
 			cliente.setEmail(rs.getString("PES_EMAIL"));
 			cliente.setTelefone(rs.getString("PES_TELEFONE"));
 			cliente.setCelular(rs.getString("PES_CELULAR"));
-			cliente.setClienteEnderecoCodigo(rs.getInt("PES_ENDERECO"));
+			cliente.setEnderecoCodigo(rs.getInt("PES_ENDERECO"));
 			cliente.setTipoPessoa(rs.getString("PES_TIPO"));
 			cliente.setSexo(rs.getString("PES_SEXO"));
 

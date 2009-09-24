@@ -1,6 +1,5 @@
 package br.com.siaic.businesslogic;
 
-import br.com.siaic.businesslogic.endereco.Endereco;
 
 /**
  * 
@@ -22,7 +21,7 @@ public class Cliente extends Pessoa {
 	private String cnpj;
 	
 	
-	private int clienteEnderecoCodigo;
+	
 
 	
 	// private String razaoSocial;
@@ -112,16 +111,7 @@ public class Cliente extends Pessoa {
 	
 	
 	
-	public int getClienteEnderecoCodigo() {
-		return clienteEnderecoCodigo;
-	}
 
-
-
-
-	public void setClienteEnderecoCodigo(int clienteEnderecoCodigo) {
-		this.clienteEnderecoCodigo = clienteEnderecoCodigo;
-	}
 	
 	
 	
