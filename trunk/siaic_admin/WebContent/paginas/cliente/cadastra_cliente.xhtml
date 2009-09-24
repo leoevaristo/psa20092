@@ -17,7 +17,7 @@
 		<h:form styleClass="forms" id="form1">
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo0" value="Tipo de Pessoa" />
-				<h:selectOneMenu value="#{clienteBean.cliente.tipoPessoa}"
+				<h:selectOneMenu value="#{cadastraClienteBean.cliente.tipoPessoa}"
 					id="campo0" onchange="Javascript:tipoPessoa()">
 					<f:selectItem itemValue="" itemLabel="Tipo de Pessoa" />
 					<f:selectItem itemValue="F" itemLabel="Física" />
@@ -26,37 +26,37 @@
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo01" value="Nome" />
-				<h:inputText value="#{clienteBean.cliente.nome}"
+				<h:inputText value="#{cadastraClienteBean.cliente.nome}"
 					styleClass="obrigatorio" id="campo01" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo02" value="E-mail" />
-				<h:inputText value="#{clienteBean.cliente.email}"
+				<h:inputText value="#{cadastraClienteBean.cliente.email}"
 					styleClass="obrigatorio" id="campo02" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo03" value="Telefone" />
-				<h:inputText value="#{clienteBean.cliente.telefone}"
+				<h:inputText value="#{cadastraClienteBean.cliente.telefone}"
 					styleClass="obrigatorio" id="campo03" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCelular" value="Celular" />
-				<h:inputText value="#{clienteBean.cliente.celular}"
+				<h:inputText value="#{cadastraClienteBean.cliente.celular}"
 					id="campoCelular" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter" id="panelRg">
 				<h:outputLabel for="campo04" value="RG" />
-				<h:inputText value="#{clienteBean.cliente.rg}"
+				<h:inputText value="#{cadastraClienteBean.cliente.rg}"
 					styleClass="obrigatorio" id="campo04" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter" id="panelCpf">
 				<h:outputLabel for="campo05" value="CPF" />
-				<h:inputText value="#{clienteBean.cliente.cpf}"
+				<h:inputText value="#{cadastraClienteBean.cliente.cpf}"
 					styleClass="obrigatorio" id="campo05" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter" id="panelSexo">
 				<h:outputLabel for="sexo" value="Sexo" />
-				<h:selectOneMenu value="#{clienteBean.cliente.sexo}" id="sexo">
+				<h:selectOneMenu value="#{cadastraClienteBean.cliente.sexo}" id="sexo">
 					<f:selectItem itemValue="" itemLabel="Sexo" />
 					<f:selectItem itemValue="M" itemLabel="Masculino" />
 					<f:selectItem itemValue="F" itemLabel="Feminino" />
@@ -64,23 +64,56 @@
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter" id="panelCnpj">
 				<h:outputLabel for="campo06" value="CNPJ" />
-				<h:inputText value="#{clienteBean.cliente.cnpj}"
+				<h:inputText value="#{cadastraClienteBean.cliente.cnpj}"
 					styleClass="obrigatorio" id="campo06" />
 			</h:panelGroup>
-			<h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoEstado" value="Estado" />
+				<h:selectOneMenu value="" id="campoEstado">
+					<f:selectItem itemValue="" itemLabel="Estado"/>
+					<f:selectItems value="#{selectEstados.estados}" />					
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoCidade" value="Cidade" />
+				<h:selectOneMenu value="#{cadastraClienteBean.cidade.cidadeCodigo}" id="campoCidade">
+					<f:selectItem itemValue="" itemLabel="Cidade"/>
+					<f:selectItems value="#{selectCidades.cidades}"/>				
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoBairro" value="Bairro" />
+				<h:selectOneMenu value="#{cadastraClienteBean.bairro.bairroCodigo}" id="campoBairro"> 
+					<f:selectItem itemValue="" itemLabel="Bairro"/>
+					<f:selectItems  value="#{selectBairros.bairros}" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoLogradouro" value="Logradouro"/>
+				<h:selectOneMenu value="#{cadastraClienteBean.endereco.enderecoLogradouro}" id="campoLogradouro">
+					<f:selectItem itemValue="" itemLabel="Logradouro"/>
+					<f:selectItems value="#{cadastraClienteBean.logradouro}" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoNomeEnd" value="Endereço" />
+				<h:inputText value="#{cadastraClienteBean.endereco.enderecoNome}" id="campoNomeEnd" styleClass="obrigatorio" />
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoCep" value="CEP" />
+				<h:inputText value="#{cadastraClienteBean.endereco.enderecoCep}" id="campoCep" styleClass="obrigatorio" />
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="linha"></h:panelGroup>
 			<h:panelGroup styleClass="botoes">
-				<h:commandButton action="#{clienteBean.addCliente}" value=""
+				<h:commandButton action="#{cadastraClienteBean.addCliente}" value=""
 					styleClass="input_submit" />
 				<h:commandButton action="#" value="" type="reset"
 					styleClass="input_reset" />
 				<h:commandButton action="#" value="" styleClass="input_button" />
-			</h:panelGroup>
-			<h:selectOneMenu value="#">
-				<f:selectItems value="#{selectEstados.estados}" />
-			</h:selectOneMenu>
+			</h:panelGroup>			
 		</h:form>
 	</ui:define>
 	<ui:define name="tituloLista">
@@ -88,60 +121,6 @@
 	</ui:define>
 	<ui:define name="linkNovo">
 		<h:outputText value="Novo Cliente" />
-	</ui:define>
-	<ui:define name="infoGerais">
-		<h:dataTable rendered="#{!empty clienteBean.cliente.codigoPessoa}"
-			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
-			value="#{clienteBean.todosClientes}" var="cliente">
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Código" />
-				</f:facet>
-				<h:outputText value="#{cliente.codigoPessoa}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Nome" />
-				</f:facet>
-				<h:outputText value="#{cliente.nome}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Email" />
-				</f:facet>
-				<h:outputText value="#{cliente.email}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Telefone" />
-				</f:facet>
-				<h:outputText value="#{cliente.telefone}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Editar" />
-				</f:facet>
-				<h:form id="alteraCliente">
-					<h:commandLink action="#{clienteBean.localizarClientePorId}">
-						<h:graphicImage value="/images/imgedit.png" />
-						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
-					</h:commandLink>
-				</h:form>
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Excluir" />
-				</f:facet>
-				<h:form id="excluiCliente">
-					<h:commandLink id="excluir"
-						onclick="if (confirm('Você tem certeza que deseja excluir esse cliente?')) {return true }; return false;"
-						action="#{clienteBean.excluiCliente}">
-						<h:graphicImage value="/images/imgdelete.png" />
-						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
-					</h:commandLink>
-				</h:form>
-			</h:column>
-		</h:dataTable>
 	</ui:define>
 	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
 </ui:composition>

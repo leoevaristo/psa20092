@@ -146,7 +146,7 @@ public class EnderecoDAO {
 	public boolean adicionarEndereco(Endereco endereco) throws SQLException{
 		boolean retorno = false;
 		PreparedStatement ps = null;
-		String sql = "INSERT INTO ENDERECO(END_CODIGO, END_LOGRADOURO, END_NOME, END_CEP, END_BAIRRO) VALUES (null, ?, ?,?,?)";
+		String sql = "INSERT INTO ENDERECO( END_LOGRADOURO, END_NOME, END_CEP, END_BAIRRO) VALUES ( ?, ?,?,?)";
 		
 		try {
 			FabricaConexao.getInstancia();
@@ -159,8 +159,8 @@ public class EnderecoDAO {
 			ps.execute();
 			retorno = true;
 		}//try
-		catch (Exception e) {
-			throw new SQLException("Erro ao inserir dados no banco." + e);
+		catch (SQLException e) {
+			e.printStackTrace();
 		}//catch()
 		finally{
 			ps.close();
@@ -550,7 +550,11 @@ public class EnderecoDAO {
 	}
 	
 	
-	
+	/**
+	 * Retorna o último código de endereço cadastrado.
+	 * @param endereco
+	 * @throws SQLException
+	 */
 	public void setIdEndereco(Endereco endereco) throws SQLException
 	{
 		
@@ -571,20 +575,26 @@ public class EnderecoDAO {
 		
 		rs.close();
 		
-		this.conexao.close();
+		
 	}
 	
 	
+	
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Bairro> getTodosBairros() throws SQLException{
 		//TODO
 		String sql = "SELECT b.BAR_CODIGO, b.BAR_NOME, b.BAR_CIDADE, ci.CID_CODIGO" +
 				"  FROM BAIRRO b, CIDADE ci WHERE b.BAR_CODIGO = ci.CID_CODIGO;";
 		
+		try{
 		
-		
-		FabricaConexao.getInstancia();
-		conexao = FabricaConexao.conectar();
-		PreparedStatement ps = conexao.prepareStatement(sql);
+			FabricaConexao.getInstancia();
+			conexao = FabricaConexao.conectar();
+			PreparedStatement ps = conexao.prepareStatement(sql);
 			
 			ResultSet rs = ps.executeQuery();
 			List<Bairro> todosBairros = new ArrayList<Bairro>();
@@ -597,12 +607,93 @@ public class EnderecoDAO {
 				todosBairros.add(bar);
 				
 			}
+			ps.close();
+			rs.close();
+			
 			return todosBairros;
-	
+			
+		}finally{
+			conexao.close();
+		}
 		
 		
 	}
 	
-
+	/**
+	 * Retorna uma lista com todos os estados cadastrados no banco.
+	 * @return 
+	 * @throws SQLException
+	 */
+	public List<Estado> getTodosEstados() throws SQLException{
+		
+		String sql = "SELECT EST_SIGLA, EST_NOME FROM ESTADO;";
+		
+		try{
+		
+		FabricaConexao.getInstancia();
+		conexao = FabricaConexao.conectar();
+		PreparedStatement ps = conexao.prepareStatement(sql);
+			
+			ResultSet rs = ps.executeQuery();
+			List<Estado> todosEstados = new ArrayList<Estado>();
+			while(rs.next()){
+				
+				Estado est = new Estado();
+				est.setEstadoSigla(rs.getString("EST_SIGLA"));
+				est.setEstadoNome(rs.getString("EST_NOME"));
+				todosEstados.add(est);
+				
+			}
+			
+			ps.close();
+			rs.close();
+			
+			return todosEstados;
+			
+		}finally{
+			conexao.close();
+		}
+			
+		
+	}
+	
+	
+	
+	
+	public List<Cidade> getTodasCidades() throws SQLException{
+		
+		String sql = "SELECT CID_CODIGO, CID_NOME, CID_ESTADO FROM CIDADE;";
+		
+		try{
+			
+		
+			FabricaConexao.getInstancia();
+			conexao = FabricaConexao.conectar();
+			PreparedStatement ps = conexao.prepareStatement(sql);	
+		
+			ResultSet rs = ps.executeQuery();
+			List<Cidade> todasCidades = new ArrayList<Cidade>();
+		
+			while(rs.next()){
+			
+				Cidade cid = new Cidade();
+				cid.setCidadeCodigo(rs.getInt("CID_CODIGO"));
+				cid.setCidadeNome(rs.getString("CID_NOME"));
+				cid.setCidadeEstado(getEstadoPorSigla(rs.getString("CID_ESTADO")));	
+				todasCidades.add(cid);
+				
+			}
+			
+			System.out.println(todasCidades.size());
+			ps.close();
+			rs.close();
+		
+			return todasCidades;
+	
+		}finally{
+			conexao.close();
+		
+		}
+	}
 
 }//class
