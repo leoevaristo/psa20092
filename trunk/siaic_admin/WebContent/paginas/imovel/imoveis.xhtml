@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="/WEB-INF/template/template.xhtml">
+		
+         <ui:define name="tituloGrande"> 
+			<h:outputText value="Imóveis" />
+		 </ui:define>		
+		 <ui:define name="subtitulo">  
+			<h:outputText value="Cadastrar de Imóveis" />
+		 </ui:define>
+		 <ui:define name="conteudo">
+		   <h:form styleClass="forms">
+		     <span>
+		     <h:panelGroup>
+		       <h:outputLabel value="Código:" />
+		       <h:outputText value="#{imovelBean.imovel.codigo}" />
+		     </h:panelGroup>
+		     </span>
+		     <span>
+		     <h:panelGroup>
+		       <h:outputLabel value="Detalhe:" />
+		       <h:inputTextarea value="#{imovelBean.imovel.detalhe}" rows="6" />
+		     </h:panelGroup>
+		     </span>
+		     <span>
+		     <h:panelGroup>
+		       <h:outputLabel value="Caracteristicas:" />
+		       <h:outputLink value="imovel_caracteristica/imovel_caracteristica.xhtml"> <h:outputText value="Consultar..." /> </h:outputLink>
+		     </h:panelGroup>
+		     </span>
+		     <span>
+		     <h:panelGroup>
+		       <h:outputLabel value="Forma de Pagamento:" />
+		       <h:inputTextarea value="#{imovelBean.imovel.formaPagamento}" rows="6" />
+		     </h:panelGroup>
+		     </span>
+		     <span>
+		     <h:panelGroup>
+		       <h:outputLabel value="Tipo:" />
+		       <h:inputText value="#{imovelBean.imovel.tipo}" />
+		     </h:panelGroup>
+		     </span>
+		     <span>
+		     <h:panelGroup>
+		       <h:outputLabel value="Valor:" classStyle="obrigatorio" />
+		       <h:inputText value="#{imovelBean.imovel.valor}" />
+		     </h:panelGroup>
+		     </span>
+		     <span>
+		     <h:panelGroup>
+		       <h:outputLabel value="Valor Condominio:" />
+		       <h:inputText value="#{imovelBean.imovel.valorCondominio}" />
+		     </h:panelGroup>
+		     </span>
+		     
+		     <span>
+		     <h:panelGroup>
+		       <h:outputLabel value="Finalidade:" />
+		       <h:outputLink value="#"> <h:outputText value="Consultar..." /> </h:outputLink>
+		     </h:panelGroup>
+		     </span>
+		     
+		     <span>
+		     <h:panelGroup>
+		       <h:outputLabel value="Proprietário:" />
+		       <h:outputLink value="#"> <h:outputText value="#{imovelBean.prop.nome}" /> </h:outputLink>
+		     </h:panelGroup>
+		     </span>
+		     
+		     <span>
+		     <h:panelGroup styleClass="botoes">
+				<h:commandButton action="#{imovelBean.atualizaImovel}" value=""
+					styleClass="input_submit" />
+				<h:commandButton action="#" value=""
+					styleClass="input_button" immediate="true" />
+			 </h:panelGroup>
+		     </span>
+		     
+		   </h:form>
+		 </ui:define>
+		 
+		 <ui:define name="rodape"></ui:define>
+		 
+	</ui:composition>
+
+</html>
