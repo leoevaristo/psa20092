@@ -45,7 +45,7 @@ public class Pessoa
 	private String sexo;
 	
 	
-	
+	private int EnderecoCodigo;
 	
 	//private Endereco endereco;
 
@@ -55,6 +55,20 @@ public class Pessoa
 
 
 
+
+
+
+
+	public int getEnderecoCodigo() {
+		return EnderecoCodigo;
+	}
+
+
+
+
+	public void setEnderecoCodigo(int enderecoCodigo) {
+		EnderecoCodigo = enderecoCodigo;
+	}
 
 
 

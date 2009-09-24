@@ -83,7 +83,7 @@
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoBairro" value="Bairro" />
-				<h:selectOneMenu value="#{cadastraClienteBean.bairro.bairroCodigo}" id="campoBairro"> 
+				<h:selectOneMenu value="#{cadastraClienteBean.endereco.enderecoBairro.bairroCodigo}" id="campoBairro"> 
 					<f:selectItem itemValue="" itemLabel="Bairro"/>
 					<f:selectItems  value="#{selectBairros.bairros}" />
 				</h:selectOneMenu>

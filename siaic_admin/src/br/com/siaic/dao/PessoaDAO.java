@@ -42,7 +42,7 @@ public class PessoaDAO {
 			ps.setString(4, pessoa.getEmail());
 			ps.setString(5, pessoa.getTipoPessoa());
 			ps.setString(6, pessoa.getSexo());
-			ps.setInt(7, 1);
+			ps.setInt(7, pessoa.getEnderecoCodigo());
 			ps.execute();
 
 			setIdPessoa(pessoa);
