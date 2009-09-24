@@ -29,9 +29,14 @@
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
- 	<managed-bean-name>usuarioBean</managed-bean-name>
- 	<managed-bean-class>br.com.siaic.mb.UsuarioBean</managed-bean-class>
- 	<managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-name>usuarioBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.UsuarioBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>agendaBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.AgendaBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <!-- ENDEREÇO -->
  <navigation-rule>
@@ -66,12 +71,12 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<from-view-id>/paginas/usuario.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>sucesso</from-outcome>
- 		<to-view-id>/paginas/usuario.xhtml</to-view-id>
- 		<redirect/>
- 	</navigation-case>
+  <from-view-id>/paginas/usuario.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>sucesso</from-outcome>
+   <to-view-id>/paginas/usuario.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>

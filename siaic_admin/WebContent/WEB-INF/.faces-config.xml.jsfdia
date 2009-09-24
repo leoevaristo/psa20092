@@ -43,4 +43,13 @@
     TITLE="detalhes" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#usuario.xhtml"
+  PATH="/paginas/usuario.xhtml" SHAPE="32,385,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#usuario.xhtml:0" NAME="item"
+   PATH="/paginas/usuario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="sucesso::#paginas#usuario.xhtml"
+    NAME="output" PATH="/paginas/usuario.xhtml"
+    TARGET="rules:#paginas#usuario.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>
