@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="/WEB-INF/template/template.xhtml">	
+	<ui:define name="tituloGrande">Gerenciar Agenda</ui:define>
+	<ui:define name="subtitulo">Menu</ui:define>
+	<ui:define name="conteudo">
+			<ul>
+				<li><a href="#{request.contextPath}/paginas/agenda/cadastrar_agenda.xhtml">Cadastrar</a></li>
+				<li><a href="#{request.contextPath}/paginas/agenda/agenda.xhtml">Consultar</a></li>
+			</ul>
+	</ui:define>>
+	</ui:composition>
+
+</html>
