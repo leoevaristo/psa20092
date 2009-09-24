@@ -87,32 +87,6 @@ public class ClienteBean {
 	 * @return
 	 * @throws SQLException
 	 */
-	public String addCliente() throws SQLException {
-		// TODO
-		
-		String r = "sucesso";
-
-		ClienteDAO daoCliente = new ClienteDAO();
-
-		PessoaDAO daoPessoa = new PessoaDAO();
-
-		daoPessoa.adicionarPessoa(cliente);
-		daoCliente.adicionarCliente(cliente);
-		
-		destroiSessao();
-
-		return r;
-
-	}
-	
-	
-	
-
-	/**
-	 * 
-	 * @return
-	 * @throws SQLException
-	 */
 	public String updateCliente() throws SQLException {
 		// TODO
 		

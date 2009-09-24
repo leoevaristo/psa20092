@@ -36,7 +36,7 @@ public class SelectEstados {
 	
 	
 	
-	public List<SelectItem> getEstados() throws SQLException {		
+	public List<SelectItem> getEstados()  {		
 		
 			return estados;
 	
