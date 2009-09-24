@@ -48,6 +48,11 @@
 		<managed-bean-class>br.com.siaic.mb.AgendaBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>cadastraUsuarioBean</managed-bean-name>
+		<managed-bean-class>br.com.siaic.mb.CadastraUsuarioBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 	<!-- ENDEREÇO -->
 	<navigation-rule>
 		<from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
@@ -88,6 +93,8 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	
+	
 	<application>
 		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
 	</application>
