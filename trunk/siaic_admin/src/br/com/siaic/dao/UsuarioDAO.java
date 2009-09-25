@@ -172,8 +172,7 @@ public class UsuarioDAO {
 			+"FROM PESSOA_USUARIOS , PESSOA " 
 			+"WHERE PEU_CODIGO = ?  AND PEU_CODIGO = PES_CODIGO ";
 		
-		
-		
+			
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		ps.setInt(1, usuarioCodigo);
 		
@@ -183,12 +182,16 @@ public class UsuarioDAO {
 		
 		rs.first();
 		usuario.setCodigoPessoa(rs.getInt("PEU_CODIGO"));
+		usuario.setLogin(rs.getString("PEU_LOGIN"));
+		usuario.setSenha(rs.getString("PEU_SENHA"));
+		usuario.setCRECI(rs.getString("PEU_CRECI"));
 		usuario.setNome(rs.getString("PES_NOME"));
 		usuario.setEmail(rs.getString("PES_EMAIL"));
 		usuario.setTelefone(rs.getString("PES_TELEFONE"));
-		usuario.setCRECI(rs.getString("PEU_CRECI"));
-		usuario.setLogin(rs.getString("PEU_LOGIN"));
-		usuario.setSenha(rs.getString("PEU_SENHA"));
+		usuario.setCelular(rs.getString("PES_CELULAR"));
+		usuario.setEnderecoCodigo(rs.getInt("PES_ENDERECO"));
+		usuario.setTipoPessoa(rs.getString("PES_TIPO"));
+		usuario.setSexo(rs.getString("PES_SEXO"));
 			
 		ps.close();
 		rs.close();
