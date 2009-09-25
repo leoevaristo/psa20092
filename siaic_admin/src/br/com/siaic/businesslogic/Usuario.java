@@ -10,21 +10,11 @@ package br.com.siaic.businesslogic;
 
 public class Usuario extends Pessoa {
 
-	private int codigoPessoa;
-
 	private String CRECI;
 
 	private String login;
 
 	private String senha;
-
-	public int getCodigoPessoa() {
-		return codigoPessoa;
-	}
-
-	public void setCodigoPessoa(int codigoPessoa) {
-		this.codigoPessoa = codigoPessoa;
-	}
 
 	public String getCRECI() {
 		return CRECI;

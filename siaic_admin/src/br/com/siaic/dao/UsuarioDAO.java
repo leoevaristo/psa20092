@@ -140,6 +140,9 @@ public class UsuarioDAO {
 			Usuario usuario = new Usuario();
 
 			usuario.setCodigoPessoa(rs.getInt("PES_CODIGO"));
+			usuario.setNome(rs.getString("PES_NOME"));
+			usuario.setEmail(rs.getString("PES_EMAIL"));
+			usuario.setTelefone(rs.getString("PES_TELEFONE"));
 			usuario.setLogin(rs.getString("PEU_LOGIN"));
 			usuario.setSenha(rs.getString("PEU_SENHA"));
 			usuario.setCRECI(rs.getString("PEU_CRECI"));
@@ -164,9 +167,11 @@ public class UsuarioDAO {
 	public Usuario getUsuarioId(int usuarioCodigo) throws SQLException
 	{
 		
-		String sql = "SELECT PEU_CODIGO, PEU_CRECI, PEU_LOGIN, PEU_SENHA , PES_CODIGO " 
-					+"FROM PESSOA_USUARIOS , PESSOA " 
-					+"WHERE PEU_CODIGO = ?  AND PEU_CODIGO = PES_CODIGO ";
+		String sql = "SELECT PEU_CODIGO, PEU_CRECI, PEU_LOGIN, PEU_SENHA , PES_CODIGO, " 
+			+"PES_NOME, PES_EMAIL, PES_TELEFONE "
+			+"FROM PESSOA_USUARIOS , PESSOA " 
+			+"WHERE PEU_CODIGO = ?  AND PEU_CODIGO = PES_CODIGO ";
+		
 		
 		
 		PreparedStatement ps = conexao.prepareStatement(sql);
@@ -178,6 +183,9 @@ public class UsuarioDAO {
 		
 		rs.first();
 		usuario.setCodigoPessoa(rs.getInt("PEU_CODIGO"));
+		usuario.setNome(rs.getString("PES_NOME"));
+		usuario.setEmail(rs.getString("PES_EMAIL"));
+		usuario.setTelefone(rs.getString("PES_TELEFONE"));
 		usuario.setCRECI(rs.getString("PEU_CRECI"));
 		usuario.setLogin(rs.getString("PEU_LOGIN"));
 		usuario.setSenha(rs.getString("PEU_SENHA"));

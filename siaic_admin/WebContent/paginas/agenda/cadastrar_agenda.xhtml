@@ -14,7 +14,12 @@
 		<h:form styleClass="forms">
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="corretor" value="Corretor" />
-				<h:inputText value="#" id="corretor" styleClass="obrigatorio"/>
+				<h:outputText value="#{cadastrarAgendaBean.corretor.nome}" id="corretor"/>
+			</h:panelGroup>
+			<h:panelGroup >
+				<h:commandLink  action="#{cadastrarAgendaBean.ConsultarCorretor}" >
+					<h:graphicImage value="/images/lupa.png" />
+				</h:commandLink>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="cliente" value="Cliente" />
