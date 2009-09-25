@@ -4,9 +4,6 @@ import java.sql.Date;
 import java.sql.Time;
 
 import br.com.siaic.dao.AgendaDAO;
-import br.com.siaic.dao.ClienteDAO;
-import br.com.siaic.dao.ImovelDAO;
-import br.com.siaic.dao.UsuarioDAO;
 import br.com.siaic.mb.agenda.AgendaBean;
 
 /**
@@ -67,30 +64,10 @@ public class Agenda {
 		this.setDescricao(descricao);
 	}
 	
-	public Agenda(int codCorretor, int codCliente, int codImovel, Date data,
-			Time horaInicio, Time horaFim, String descricao) throws Exception {
-		
-		ClienteDAO cdao = new ClienteDAO();
-		ImovelDAO idao = new ImovelDAO();
-		
-		Usuario corretor = new UsuarioDAO().getUsuarioId(codCorretor); 
-		Cliente cliente = cdao.getClientePorId(codCliente);
-		Imovel imovel = idao.getImovel(codImovel);
-		
-		if ((corretor == null) || (cliente == null)
-				|| (imovel == null)) {
-			throw new Exception("Campo(s) obrigatório(s) nulo(s).");
-		}
-		this.corretor = corretor;
-		this.cliente = cliente;
-		this.imovel = imovel;
-		this.data = data;
-		this.horaInicio = horaInicio;
-		this.horaFim = horaFim;
-		this.setDescricao(descricao);
-	}
-	
 	public Agenda(){
+		this.data = new Date(0);
+		this.horaFim = new Time(0);
+		this.horaInicio = new Time(0);
 	}
 
 	public int getCodigo() {
