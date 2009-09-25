@@ -296,14 +296,16 @@ public class EnderecoDAO {
 		ps.setInt(1, enderecoCodigo);
 		ResultSet rs = ps.executeQuery();
 		Endereco endereco = new Endereco();
-		rs.next();
 		
-		endereco.setEnderecoCodigo( rs.getInt(1));
-		endereco.setEnderecoLogradouro( rs.getString(2));
-		endereco.setEnderecoNome(rs.getString(3));
-		endereco.setEnderecoCep( rs.getString(4));
-		endereco.setEnderecoBairro( getBairroPorCodigo(rs.getInt(5)) );
+		while(rs.next()){
 		
+			
+			endereco.setEnderecoCodigo( rs.getInt(1));
+			endereco.setEnderecoLogradouro( rs.getString(2));
+			endereco.setEnderecoNome(rs.getString(3));
+			endereco.setEnderecoCep( rs.getString(4));
+			endereco.setEnderecoBairro( getBairroPorCodigo(rs.getInt(5)) );
+		}
 		ps.close();
 		rs.close();
 		conexao.close();
