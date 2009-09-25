@@ -17,28 +17,28 @@
 		  <span>
 			<h:panelGroup>
 				<h:outputLabel for="dormitorio" value="Quantidade de dormitórios" />
-				<h:inputText value="#{imovelCaracteristicaBean.caracteristica.dormitorio}" id="dormitorio" styleClass="opcional"/>
+				<h:inputText value="#{imovelCaracteristicaBean.imovelCaracteristica.qtdeDormitorio}" id="dormitorio" styleClass="opcional"/>
 			</h:panelGroup>
 		  </span>
 		  <span>
 			<h:panelGroup>
 				<h:outputLabel for="suite" value="Quantidade de Suítes" />
-				<h:inputText value="#{imovelCaracteristicaBean.caracteristica.suite}" id="suite" styleClass="opcional"/>
+				<h:inputText value="#{imovelCaracteristicaBean.imovelCaracteristica.qtdeSuite}" id="suite" styleClass="opcional"/>
 			</h:panelGroup>
 		  </span>
 		  <span>
 			<h:panelGroup>
 				<h:outputLabel for="garagem" value="Quantidade de Vagas da Garagem" />
-				<h:inputText value="#{imovelCaracteristicaBean.caracteristica.garagem}" id="garagem" styleClass="opcional"/>
+				<h:inputText value="#{imovelCaracteristicaBean.imovelCaracteristica.qtdeGaragem}" id="garagem" styleClass="opcional"/>
 			</h:panelGroup>
 		  </span>
 		  <span>
 			<h:panelGroup id="panelPiscina">
-				<h:outputLabel for="piscina" value="Piscina" />
-				<h:selectOneMenu value="#{imovelCaracteristicaBean.caracteristica.piscina}" id="piscina">
+				<!--<h:outputLabel for="piscina" value="Piscina" />
+				<h:selectOneMenu value="#{imovelCaracteristicaBean.imovelCaracteristica.piscina}" id="piscina">
 					<f:selectItem itemValue="S" itemLabel="Sim" />
 					<f:selectItem itemValue="N" itemLabel="Não" />
-				</h:selectOneMenu>
+				</h:selectOneMenu> -->
 			</h:panelGroup>
 		  </span>
 			
