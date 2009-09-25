@@ -143,6 +143,22 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/paginas/agenda/cadastrar_agenda.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ConsultarImovel</from-outcome>
+			<to-view-id>/paginas/agenda/consultar_imovel_agenda.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/paginas/agenda/consultar_imovel_agenda.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SelecionarImovel</from-outcome>
+			<to-view-id>/paginas/agenda/cadastrar_agenda.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 	<application>
 		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
 	</application>

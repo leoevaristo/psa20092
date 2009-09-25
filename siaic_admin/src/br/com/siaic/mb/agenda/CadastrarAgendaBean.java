@@ -11,6 +11,7 @@ import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.Imovel;
 import br.com.siaic.businesslogic.Usuario;
 import br.com.siaic.dao.ClienteDAO;
+import br.com.siaic.dao.ImovelDAO;
 import br.com.siaic.dao.UsuarioDAO;
 
 public class CadastrarAgendaBean {
@@ -95,6 +96,25 @@ public class CadastrarAgendaBean {
 		UsuarioDAO dao = new UsuarioDAO();
 		setCorretor((dao.getUsuarioId(idPessoa)));
 		return "SelecionarCorretor";
+	}
+	
+	public List<Imovel> getTodosImoveis() throws SQLException {
+		ImovelDAO dao = new ImovelDAO();
+		return dao.getImoveis();
+	}
+	
+	public String ConsultarImovel(){
+		return "ConsultarImovel";
+	}
+	
+	public String SelecionarImovel() throws SQLException{
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
+		Integer idImovel = new Integer(req.getParameter("codigoImovel")).intValue();
+		
+		ImovelDAO dao = new ImovelDAO();
+		setImovel((dao.getImovel(idImovel)));
+		return "SelecionarImovel";
 	}
 
 }
