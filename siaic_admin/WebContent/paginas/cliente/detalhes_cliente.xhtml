@@ -14,31 +14,31 @@
 		<ui:define name="conteudo">
 			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
 				<h:outputLabel for="campoNome" value="Cliente"/>
-				<h:outputText value="#{clienteBean.cliente.nome}" id="campoNome" />
+				<h:outputText value="#{consultaClienteBean.cliente.nome}" id="campoNome" />
 			</h:panelGrid>					
 			<h:panelGrid columns="2" columnClasses="cor1,cor2" styleClass="panels" >
 				<h:outputLabel for="campoEndereco" value="Endereço" />
-				<h:outputText value="" id="campoEndereco" />
+				<h:outputText value="#{consultaClienteBean.enderecoCliente}" id="campoEndereco" />
 			</h:panelGrid>	
 			<h:panelGrid columns="4" columnClasses="cor1,cor2" styleClass="panels">
 				<h:outputLabel for="campoTelefone" value="Telefone"/>
-				<h:outputText value="#{clienteBean.cliente.telefone}" id="campoTelefone"/>				
+				<h:outputText value="#{consultaClienteBean.cliente.telefone}" id="campoTelefone"/>				
 				<h:outputLabel for="campoCelular" value="Celular"/>
-				<h:outputText value="#{clienteBean.cliente.celular}" id="campoCelular"/>				
+				<h:outputText value="#{consultaClienteBean.cliente.celular}" id="campoCelular"/>				
 			</h:panelGrid>	
 			<h:panelGrid columns="2" columnClasses="cor1,cor2" styleClass="panels">
 				<h:outputLabel for="campoEmail" value="E-mail"/>
-				<h:outputText value="#{clienteBean.cliente.email}" id="campoEmail"/>
+				<h:outputText value="#{consultaClienteBean.cliente.email}" id="campoEmail"/>
 			</h:panelGrid>	
-			<h:panelGrid columns="4" columnClasses="cor1,cor2" styleClass="panels" >
+			<h:panelGrid columns="4" columnClasses="cor1,cor2" styleClass="panels" rendered="#{consultaClienteBean.cliente.tipoPessoa eq 'F'}" >
 				<h:outputLabel for="campoCpf" value="CPF"/>
-				<h:outputText value="#{clienteBean.cliente.cpf}" id="campoCpf"/>
+				<h:outputText value="#{consultaClienteBean.cliente.cpf}" id="campoCpf"/>
 				<h:outputLabel for="campoRg" value="Rg"/>
-				<h:outputText value="#{clienteBean.cliente.rg}" id="campoRg"/>
+				<h:outputText value="#{consultaClienteBean.cliente.rg}" id="campoRg"/>
 			</h:panelGrid>	
-			<h:panelGrid columns="2" columnClasses="cor1,cor2" styleClass="panels" >
+			<h:panelGrid columns="2" columnClasses="cor1,cor2" styleClass="panels" rendered="#{consultaClienteBean.cliente.tipoPessoa eq 'J'}">
 				<h:outputLabel for="campoCnpj" value="CNPJ"/>
-				<h:outputText value="#{clienteBean.cliente.cnpj}" id="campoCnpj"/>
+				<h:outputText value="#{consultaClienteBean.cliente.cnpj}" id="campoCnpj"/>
 			</h:panelGrid>
 			<h:panelGroup>		
 			<h:outputLink value="consulta_cliente.xhtml">

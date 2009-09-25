@@ -102,58 +102,14 @@ public class ClienteBean {
 
 	}
 
-	/**
-	 * 
-	 * @return
-	 * @throws SQLException
-	 */
-	public List<Cliente> getTodosClientes() throws SQLException {
 
-		ClienteDAO dao = new ClienteDAO();
-		
-		return dao.getTodosClientes();
 
-	}
 
-	/**
-	 * 
-	 * @return
-	 * @throws SQLException
-	 */
-	public String localizarClientePorId() throws SQLException {
-		
-		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
-		Integer idPessoa = new Integer(req.getParameter("codigoPessoa")).intValue();
-		//String tipoExibicao = new String(req.getParameter("tipoExibicao").toString());		
-		
-		ClienteDAO dao = new ClienteDAO();
-		setCliente(dao.getClientePorId(idPessoa));		
-		
-		return "altera";
-
-	}
 
 	
 	
 	
-	/**
-	 * 
-	 * @throws SQLException
-	 */
-	public void excluiCliente() throws SQLException {
 
-		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest req = (HttpServletRequest) context
-				.getExternalContext().getRequest();
-
-		Integer idPessoa = new Integer(req.getParameter("codigoPessoa"))
-				.intValue();
-
-		ClienteDAO dao = new ClienteDAO();
-		dao.removerCliente(idPessoa);
-
-	}
 	
 	
 	
@@ -172,19 +128,7 @@ public class ClienteBean {
 	
 	
 	
-	public String exibeDetalhesCliente() throws SQLException{
-		
-		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
-		Integer idPessoa = new Integer(req.getParameter("codigoPessoa")).intValue();
-		//String tipoExibicao = new String(req.getParameter("tipoExibicao").toString());		
-		
-		ClienteDAO dao = new ClienteDAO();
-		setCliente(dao.getClientePorId(idPessoa));		
-		
-		
-		return "detalhes";
-	}
+
 	
 	
 	

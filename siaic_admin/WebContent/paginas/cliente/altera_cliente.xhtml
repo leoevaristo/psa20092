@@ -78,7 +78,60 @@
 			</h:panelGroup>
 		</h:form>
 	</ui:define>
-
+	<ui:define name="infoGerais">
+                <h:dataTable rendered="#{clienteBean.cliente.codigoPessoa}"
+                        styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
+                        value="#{clienteBean.todosClientes}" var="cliente">
+                        <h:column>
+                                <f:facet name="header">
+                                        <h:outputText value="Código" />
+                                </f:facet>
+                                <h:outputText value="#{cliente.codigoPessoa}" />
+                        </h:column>
+                        <h:column>
+                                <f:facet name="header">
+                                        <h:outputText value="Nome" />
+                                </f:facet>
+                                <h:outputText value="#{cliente.nome}" />
+                        </h:column>
+                        <h:column>
+                                <f:facet name="header">
+                                        <h:outputText value="Email" />
+                                </f:facet>
+                                <h:outputText value="#{cliente.email}" />
+                        </h:column>
+                        <h:column>
+                                <f:facet name="header">
+                                        <h:outputText value="Telefone" />
+                                </f:facet>
+                                <h:outputText value="#{cliente.telefone}" />
+                        </h:column>
+                        <h:column>
+                                <f:facet name="header">
+                                        <h:outputText value="Editar" />
+                                </f:facet>
+                                <h:form id="alteraCliente">
+                                        <h:commandLink action="#{clienteBean.localizarClientePorId}">
+                                                <h:graphicImage value="/images/imgedit.png" />
+                                                <f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
+                                        </h:commandLink>
+                                </h:form>
+                        </h:column>
+                        <h:column>
+                                <f:facet name="header">
+                                        <h:outputText value="Excluir" />
+                                </f:facet>
+                                <h:form id="excluiCliente">
+                                        <h:commandLink id="excluir"
+                                                onclick="if (confirm('Você tem certeza que deseja excluir esse cliente?')) {return true }; return false;"
+                                                action="#{clienteBean.excluiCliente}">
+                                                <h:graphicImage value="/images/imgdelete.png" />
+                                                <f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
+                                        </h:commandLink>
+                                </h:form>
+                        </h:column>
+                </h:dataTable>
+        </ui:define>	
 </ui:composition>
 
 </html>
