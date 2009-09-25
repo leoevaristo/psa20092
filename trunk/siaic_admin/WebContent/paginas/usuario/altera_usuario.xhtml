@@ -8,16 +8,16 @@
 <ui:composition template="/WEB-INF/template/template.xhtml">
 
 	<ui:define name="tituloGrande">
-		<h:outputText value="Página do Cliente" />
+		<h:outputText value="Página do Usuario" />
 	</ui:define>
 	<ui:define name="subtitulo">
-		<h:outputText value="» Alterar Cliente" />
+		<h:outputText value="» Alterar Usuario" />
 	</ui:define>
 	<ui:define name="conteudo">
 		<h:form styleClass="forms">
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo0" value="Tipo de Pessoa" />
-				<h:selectOneMenu value="#{clienteBean.cliente.tipoPessoa}"
+				<h:selectOneMenu value="#{cadastraUsuarioBean.usuario.tipoPessoa}"
 					id="campo0">
 					<f:selectItem itemValue="" itemLabel="Tipo de Pessoa" />
 					<f:selectItem itemValue="F" itemLabel="Física" />
@@ -26,92 +26,77 @@
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo01" value="Nome" />
-				<h:inputText value="#{clienteBean.cliente.nome}"
+				<h:inputText value="#{cadastraUsuarioBean.usuario.nome}"
 					styleClass="obrigatorio" id="campo01" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo02" value="E-mail" />
-				<h:inputText value="#{clienteBean.cliente.email}"
+				<h:inputText value="#{cadastraUsuarioBean.usuario.email}"
 					styleClass="obrigatorio" id="campo02" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo03" value="Telefone" />
-				<h:inputText value="#{clienteBean.cliente.telefone}"
+				<h:inputText value="#{cadastraUsuarioBean.usuario.telefone}"
 					styleClass="obrigatorio" id="campo03" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCelular" value="Celular" />
-				<h:inputText value="#{clienteBean.cliente.celular}"
+				<h:inputText value="#{cadastraUsuarioBean.usuario.celular}"
 					id="campoCelular" />
-			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter" rendered="#{clienteBean.cliente.tipoPessoa eq 'F'}">
-				<h:outputLabel for="campo04" value="RG" />
-				<h:inputText value="#{clienteBean.cliente.rg}"
-					styleClass="obrigatorio" id="campo04" />
-			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter" rendered="#{clienteBean.cliente.tipoPessoa eq 'F'}">
-				<h:outputLabel for="campo05" value="CPF" />
-				<h:inputText value="#{clienteBean.cliente.cpf}"
-					styleClass="obrigatorio" id="campo05" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter" id="panelSexo" rendered="#{clienteBean.cliente.tipoPessoa eq 'F'}">
 				<h:outputLabel for="sexo" value="Sexo" />
-				<h:selectOneMenu value="#{clienteBean.cliente.sexo}" id="sexo">
+				<h:selectOneMenu value="#{cadastraUsuarioBean.usuario.sexo}" id="sexo">
 					<f:selectItem itemValue="" itemLabel="Sexo" />
 					<f:selectItem itemValue="M" itemLabel="Masculino" />
 					<f:selectItem itemValue="F" itemLabel="Feminino" />
 				</h:selectOneMenu>
 			</h:panelGroup>			
-			<h:panelGroup styleClass="textcenter" >
-				<h:outputLabel for="campo06" value="CNPJ" />
-				<h:inputText value="#{clienteBean.cliente.cnpj}"
-					styleClass="obrigatorio" id="campo06" />
-			</h:panelGroup>
 			<h:panelGroup>
 				<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="linha"></h:panelGroup>
 			<h:panelGroup styleClass="botoes">
-				<h:commandButton action="#{clienteBean.updateCliente}" value=""
+				<h:commandButton action="#{usuarioBean.updateUsuario}" value=""
 					styleClass="input_submit" />
-				<h:commandButton action="#{clienteBean.destroiSessao}" value=""
+				<h:commandButton action="#{usuarioBean.destroiSessao}" value=""
 					styleClass="input_button" immediate="true" />
 			</h:panelGroup>
 		</h:form>
 	</ui:define>
 	<ui:define name="infoGerais">
-                <h:dataTable rendered="#{clienteBean.cliente.codigoPessoa}"
+                <h:dataTable rendered="#{usuarioBean.usuario.codigoPessoa}"
                         styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
-                        value="#{clienteBean.todosClientes}" var="cliente">
+                        value="#{usuarioBean.todosUsuarios}" var="usuario">
                         <h:column>
                                 <f:facet name="header">
                                         <h:outputText value="Código" />
                                 </f:facet>
-                                <h:outputText value="#{cliente.codigoPessoa}" />
+                                <h:outputText value="#{usuario.codigoPessoa}" />
                         </h:column>
                         <h:column>
                                 <f:facet name="header">
                                         <h:outputText value="Nome" />
                                 </f:facet>
-                                <h:outputText value="#{cliente.nome}" />
+                                <h:outputText value="#{usuario.nome}" />
                         </h:column>
                         <h:column>
                                 <f:facet name="header">
                                         <h:outputText value="Email" />
                                 </f:facet>
-                                <h:outputText value="#{cliente.email}" />
+                                <h:outputText value="#{usuario.email}" />
                         </h:column>
                         <h:column>
                                 <f:facet name="header">
                                         <h:outputText value="Telefone" />
                                 </f:facet>
-                                <h:outputText value="#{cliente.telefone}" />
+                                <h:outputText value="#{usuario.telefone}" />
                         </h:column>
                         <h:column>
                                 <f:facet name="header">
                                         <h:outputText value="Editar" />
                                 </f:facet>
-                                <h:form id="alteraCliente">
+                                <h:form id="alteraUsuario">
                                         <h:commandLink action="#{clienteBean.localizarClientePorId}">
                                                 <h:graphicImage value="/images/imgedit.png" />
                                                 <f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
@@ -122,12 +107,12 @@
                                 <f:facet name="header">
                                         <h:outputText value="Excluir" />
                                 </f:facet>
-                                <h:form id="excluiCliente">
+                                <h:form id="excluiUsuario">
                                         <h:commandLink id="excluir"
-                                                onclick="if (confirm('Você tem certeza que deseja excluir esse cliente?')) {return true }; return false;"
-                                                action="#{clienteBean.excluiCliente}">
+                                                onclick="if (confirm('Você tem certeza que deseja excluir esse usuario?')) {return true }; return false;"
+                                                action="#{usuarioBean.excluiUsuario}">
                                                 <h:graphicImage value="/images/imgdelete.png" />
-                                                <f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
+                                                <f:param value="#{usuario.codigoPessoa}" name="codigoUsuario" />
                                         </h:commandLink>
                                 </h:form>
                         </h:column>
