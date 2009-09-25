@@ -111,10 +111,10 @@ public class CadastraUsuarioBean {
 	 * @return
 	 * @throws SQLException
 	 */
-	public String addCliente() throws SQLException {
+	public String addUsuario() throws SQLException {
 		// TODO
 		
-		String r = "sucesso_usuario";
+		String r = "sucesso";
 
 		UsuarioDAO daoUsuario = new UsuarioDAO();
 
