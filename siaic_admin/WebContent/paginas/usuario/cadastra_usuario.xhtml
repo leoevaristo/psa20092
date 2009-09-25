@@ -16,7 +16,7 @@
 	<ui:define name="conteudo">
 		<h:form styleClass="forms" id="form1">
 			<h:panelGroup styleClass="textcenter">
-				<h:outputLabel for="campo0" value="Tipo de Pessoa" />
+				<h:outputLabel for="campoTipoPessoa" value="Tipo de Pessoa" />
 				<h:selectOneMenu value="#{cadastraUsuarioBean.usuario.tipoPessoa}"
 					id="campo0" onchange="Javascript:tipoPessoa()">
 					<f:selectItem itemValue="" itemLabel="Tipo de Pessoa" />
@@ -27,7 +27,7 @@
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoNome" value="Nome" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.nome}"
-					styleClass="obrigatorio" id="campo01" size="50" />
+					styleClass="obrigatorio" id="campoNome" size="50" />
 			</h:panelGroup>
 
 
@@ -37,28 +37,28 @@
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoLogin" value="Login" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.login}"
-					styleClass="obrigatorio" id="campo01" size="20" />
+					styleClass="obrigatorio" id="campoLogin" size="20" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoSenha" value="Senha" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.senha}"
-					styleClass="obrigatorio" id="campo01" size="20" />
+					styleClass="obrigatorio" id="campoSenha" size="20" />
 			</h:panelGroup>
 
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCRECI" value="CRECI" />
-				<h:inputText value="#{cadastraUsuarioBean.usuario.creci}"
-					styleClass="obrigatorio" id="campo01" size="15" />
+				<h:inputText value="#{cadastraUsuarioBean.usuario.CRECI}"
+					styleClass="obrigatorio" id="campoCRECI" size="15" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoEmail" value="E-mail" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.email}"
-					styleClass="obrigatorio" id="campo02" size="50" />
+					styleClass="obrigatorio" id="campoEmail" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoTelefone" value="Telefone" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.telefone}"
-					styleClass="obrigatorio" id="campo03" size="50" />
+					styleClass="obrigatorio" id="campoTelefone" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCelular" value="Celular" />
