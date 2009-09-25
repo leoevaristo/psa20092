@@ -123,6 +123,7 @@ public class CadastraUsuarioBean {
 
 		PessoaDAO daoPessoa = new PessoaDAO();
 		
+
 	//	EnderecoDAO daoEndereco = new EnderecoDAO();
 
 		daoPessoa.adicionarPessoa(usuario);
