@@ -16,7 +16,7 @@ public class ImovelCaracteristicaBean {
 	
 	private ImovelCaracteristica imovelCaracteristica;
 	
-	public void imovelCaracteristicaBean(){
+	public ImovelCaracteristicaBean(){
 		imovelCaracteristica = new ImovelCaracteristica();
 	}
 
