@@ -11,6 +11,7 @@ import br.com.siaic.businesslogic.endereco.Bairro;
 import br.com.siaic.businesslogic.endereco.Cidade;
 import br.com.siaic.businesslogic.endereco.Endereco;
 import br.com.siaic.businesslogic.endereco.Estado;
+import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.PessoaDAO;
 import br.com.siaic.dao.UsuarioDAO;
 
@@ -119,7 +120,12 @@ public class CadastraUsuarioBean {
 
 		PessoaDAO daoPessoa = new PessoaDAO();
 		
-
+		EnderecoDAO daoEndereco = new EnderecoDAO();
+		
+		daoEndereco.adicionarEndereco(endereco);
+		
+		usuario.setEnderecoCodigo(endereco.getEnderecoCodigo());
+		
 	//	EnderecoDAO daoEndereco = new EnderecoDAO();
 
 		daoPessoa.adicionarPessoa(usuario);
