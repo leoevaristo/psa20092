@@ -7,7 +7,7 @@ import br.com.siaic.dao.AgendaDAO;
 import br.com.siaic.dao.ClienteDAO;
 import br.com.siaic.dao.ImovelDAO;
 import br.com.siaic.dao.UsuarioDAO;
-import br.com.siaic.mb.AgendaBean;
+import br.com.siaic.mb.agenda.AgendaBean;
 
 /**
  * Reflete a entidade "dbo.siaic.agenda"

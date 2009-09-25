@@ -64,4 +64,18 @@
     TITLE="consultacaracteristica" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#agenda#cadastrar_agenda.xhtml"
+  PATH="/paginas/agenda/cadastrar_agenda.xhtml" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#agenda#cadastrar_agenda.xhtml:0"
+   NAME="item" PATH="/paginas/agenda/cadastrar_agenda.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consulta::#paginas#agenda#consultar_cliente_agenda.xhtml"
+    NAME="output" PATH="/paginas/agenda/consultar_cliente_agenda.xhtml"
+    TARGET="rules:#paginas#agenda#consultar_cliente_agenda.xhtml"
+    TITLE="consulta" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#agenda#consultar_cliente_agenda.xhtml"
+  PATH="/paginas/agenda/consultar_cliente_agenda.xhtml" model-entity="JSFProcessGroup"/>
 </PROCESS>
