@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.ImovelCaracteristica;
 
 /**
@@ -24,6 +25,7 @@ public class ImovelCaracteristicaDAO {
 		}
 		return ImovelCaracteristicaDAO.instance;
 	}
+
 	// get da tabela Imovel_Caracteristicas
 	public ImovelCaracteristica getImovelCaracteristica(int codigo)
 			throws SQLException {
@@ -47,9 +49,10 @@ public class ImovelCaracteristicaDAO {
 		}
 		ps.close();
 		rs.close();
-		
+
 		return ic;
 	}
+
 	// Insert da tabela Imovel_Caracteristicas
 	public boolean addCaracteristica(ImovelCaracteristica ic)
 			throws SQLException {
@@ -66,14 +69,14 @@ public class ImovelCaracteristicaDAO {
 
 		boolean result = ps.executeUpdate() > 0;
 		ps.close();
-		
+
 		return result;
-	}	
+	}
+
 	// Listagem da tabela Imovel_Caracteristicas
 	public List<ImovelCaracteristica> getImovelCaracteristicaList()
 			throws SQLException {
-		String query = new String(
-				"select * from imovel_caracteristicas");
+		String query = new String("select * from imovel_caracteristicas");
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
 		ResultSet rs = ps.executeQuery();
@@ -95,40 +98,74 @@ public class ImovelCaracteristicaDAO {
 		ps.close();
 		return l;
 	}
-	
+
 	// Delete da tabela Imovel_Caracteristicas
-	public boolean delImovelCaracteristica(ImovelCaracteristica ic) throws SQLException{
+	public boolean delImovelCaracteristica(ImovelCaracteristica ic)
+			throws SQLException {
 		String query = new String(
-		"delete from IMOVEL_CARACTERISTICAS where IMC_CODIGO = ? ");
+				"delete from IMOVEL_CARACTERISTICAS where IMC_CODIGO = ? ");
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
 		ps.setInt(1, ic.getCodigo());
-		
+
 		boolean result = ps.executeUpdate() > 0;
 		ps.close();
-		
+
 		return result;
 	}
+
 	// Update da tabela Imovel_Caracteristicas
 	public boolean altImovelCaracteristica(ImovelCaracteristica icAtual,
-			ImovelCaracteristica icNovo) throws SQLException{
+			ImovelCaracteristica icNovo) throws SQLException {
 		String query = new String(
-		"update IMOVEL_CARACTERISTICAS "+
-		"set IMC_CODIGO = ?, IMC_DORMITORIOS_QTDE = ?, IMC_SUITES_QTDE = ?, "+
-		"IMC_VAGAS_GARAGEM_QTDE = ?, IMC_PISCINA = ? "+
-		"where IMC_CODIGO = ?");
+				"update IMOVEL_CARACTERISTICAS "
+						+ "set IMC_CODIGO = ?, IMC_DORMITORIOS_QTDE = ?, IMC_SUITES_QTDE = ?, "
+						+ "IMC_VAGAS_GARAGEM_QTDE = ?, IMC_PISCINA = ? "
+						+ "where IMC_CODIGO = ?");
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
-		
+
 		ps.setInt(1, icNovo.getCodigo());
 		ps.setInt(2, icNovo.getQtdeDormitorio());
 		ps.setInt(3, icNovo.getQtdeSuite());
 		ps.setInt(4, icNovo.getQtdeGaragem());
 		ps.setString(5, Character.toString(icNovo.getPiscina()));
 		ps.setInt(6, icAtual.getCodigo());
-		
+
 		boolean result = ps.executeUpdate() > 0;
 		ps.close();
 		return result;
+	}
+
+	public List<ImovelCaracteristica> getAllCaracteristica(int codigoImovel)
+			throws SQLException {
+		PreparedStatement ps = null;
+		
+		List<ImovelCaracteristica> listaAllCaracteristica = new ArrayList<ImovelCaracteristica>();
+		
+		String query = new String(
+				"select IMC_CODIGO, IMC_DORMITORIOS_QTDE, IMC_SUITES_QTDE, "+
+						"IMC_VAGAS_GARAGEM_QTDE, IMC_PISCINA "+
+						"from IMOVEL_CARACTERISTICAS where IMC_CODIGO = select("+
+						"IMO_CARACTERISTICA from IMOVEL	where IMO_IMOVEL = ?");
+		try {
+			ps = DB.getConn().prepareStatement(query);
+			ps.setInt(1, codigoImovel);
+			
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				ImovelCaracteristica ic = new ImovelCaracteristica();
+				ic.setCodigo(rs.getInt("IMC_CODIGO"));
+				ic.setQtdeDormitorio(rs.getInt("IMC_DORMITORIOS_QTDE"));
+				ic.setQtdeSuite(rs.getInt("IMC_SUITE_QTDE"));
+				ic.setPiscina(rs.getString("IMC_PISCINA").charAt(0));
+
+				listaAllCaracteristica.add(ic);
+			}
+		} finally {
+			ps.close();
+		}
+		return listaAllCaracteristica;
 	}
 }
