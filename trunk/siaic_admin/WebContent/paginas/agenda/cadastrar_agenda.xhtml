@@ -14,16 +14,19 @@
 		<h:form styleClass="forms">
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="corretor" value="Corretor" />
-				<h:inputText value="#{agendaBean.agenda.corretor}" id="corretor" styleClass="obrigatorio"/>
+				<h:inputText value="" id="corretor" styleClass="obrigatorio"/>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="cliente" value="Cliente" />
 				<h:inputText value="#{agendaBean.agenda.cliente}" id="cliente" styleClass="obrigatorio"/>
-				<h:commandButton action="#" value="Localizar" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="imovel" value="Imovel" />
 				<h:inputText value="#{agendaBean.agenda.imovel}" id="imovel" styleClass="obrigatorio"/>
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="data" value="Imovel" />
+				<h:inputText value="#{agendaBean.agenda.data}" id="data" styleClass="obrigatorio"/>
 			</h:panelGroup>
 			
 			
