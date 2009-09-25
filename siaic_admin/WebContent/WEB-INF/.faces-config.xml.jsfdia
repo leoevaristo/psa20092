@@ -64,8 +64,4 @@
     TITLE="consultacaracteristica" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM
-  NAME="rules:#paginas#imovel_caracteristica#imovel_caracteristica.xhtml"
-  PATH="/paginas/imovel_caracteristica/imovel_caracteristica.xhtml"
-  SHAPE="448,385,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

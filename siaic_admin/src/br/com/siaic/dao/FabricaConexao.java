@@ -48,7 +48,7 @@ public class FabricaConexao {
 		}
 
 		return DriverManager.getConnection("jdbc:mysql://localhost:3306/SIAIC",
-				"root", "t3mp4dm");
+				"root", "root");
 	}
 
 }
