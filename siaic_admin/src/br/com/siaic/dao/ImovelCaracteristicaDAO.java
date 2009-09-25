@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.ImovelCaracteristica;
 
 /**
@@ -26,6 +25,10 @@ public class ImovelCaracteristicaDAO {
 		return ImovelCaracteristicaDAO.instance;
 	}
 
+	private ImovelCaracteristicaDAO(){
+		
+	}
+	
 	// get da tabela Imovel_Caracteristicas
 	public ImovelCaracteristica getImovelCaracteristica(int codigo)
 			throws SQLException {

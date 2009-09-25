@@ -125,7 +125,7 @@ public class Imovel {
 		Imovel imo = new ImovelDAO().getImovel(1);
 		System.out.println(imo.getFormaPagamento());
 		try {
-			System.out.println(new ImovelCaracteristicaDAO().getImovelCaracteristica(imo.getFinalidade()).getPiscina());
+			System.out.println(ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(imo.getFinalidade()).getPiscina());
 			System.out.println(new EnderecoDAO().getEnderecoPorCodigo(imo.getEndereco()).getEnderecoNome());
 		} catch (SQLException e) {
 			e.printStackTrace();
