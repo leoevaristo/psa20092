@@ -1,4 +1,4 @@
-package br.com.siaic.mb;
+package br.com.siaic.mb.imovelcaracteristica;
 
 import java.sql.SQLException;
 
