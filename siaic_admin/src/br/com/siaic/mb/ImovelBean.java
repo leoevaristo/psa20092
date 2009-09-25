@@ -29,12 +29,10 @@ public class ImovelBean {
     
     public ImovelBean() {
     	this.imovel = new Imovel();
-    	this.endereco = new Endereco();
-    	this.imoCar = new ImovelCaracteristica();
-    	this.imoFin = new ImovelFinalidade();
-    	this.imoFin.setNome("...");
-    	this.prop = new Cliente();
-    	this.prop.setNome("...");
+	    this.endereco = new Endereco();
+	    this.imoCar = new ImovelCaracteristica();
+	    this.imoFin = new ImovelFinalidade();
+	    this.prop = new Cliente();
     }
     
     public ImovelFinalidade getImoFin() {
@@ -58,20 +56,32 @@ public class ImovelBean {
     }
     
     public String consultaImovel() {
-    	FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
-		Integer codImovel = new Integer(req.getParameter("codigoImovel")).intValue();
-    	
-    	this.imovel = Imovel.getImovel(codImovel);
+    	this.imovel = Imovel.getImovel(this.getParamCodigoImovel());
     	try {
     		this.imoCar = new ImovelCaracteristicaDAO().getImovelCaracteristica(this.imovel.getCaracteristica());
-    		this.prop = new ClienteDAO().getClientePorId(this.imovel.getCodigo());
+    		this.prop = new ClienteDAO().getClientePorId(this.imovel.getProprietario());
     		this.imoFin = new ImovelFinalidadeDAO().getImovelFinalidade(this.imovel.getFinalidade());
 			this.endereco = new EnderecoDAO().getEnderecoPorCodigo(this.imovel.getEndereco());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
     	return "altera";
+    }
+    
+    private int getParamCodigoImovel() {
+    	FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
+		Integer codImovel = new Integer(req.getParameter("codigoImovel")).intValue();
+		return codImovel;
+    }
+    
+    public String consultaCaracteristica() {
+    	return "consultacaracteristica";
+    }
+    
+    public String excluiImovel() {
+    	new ImovelDAO().getImovel(this.getParamCodigoImovel()).excluir();
+    	return "";
     }
     
     public List<Imovel> getTodosImoveis() {

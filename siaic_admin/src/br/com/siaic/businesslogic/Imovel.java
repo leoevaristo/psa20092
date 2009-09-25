@@ -37,6 +37,7 @@ public class Imovel {
 
 	public Imovel() {
     	this.imoDAO = new ImovelDAO();
+    	this.codigo = -1;
     }
     
     public Imovel(int codigoImovel) {

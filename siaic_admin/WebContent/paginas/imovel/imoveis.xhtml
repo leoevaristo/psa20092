@@ -23,7 +23,7 @@
 		    
 		     <h:panelGroup styleClass="textcenter">
 		       <h:outputLabel value="Finalidade:" />
-		       <h:commandLink value="Consultar" action="#{}" />
+		       <h:commandLink value="Detalhar..." action="#" />
 		     </h:panelGroup>
 		     
 		     <h:panelGroup styleClass="textcenter">
@@ -33,7 +33,8 @@
 		     		     
 		     <h:panelGroup styleClass="textcenter">
 		       <h:outputLabel value="Caracteristicas Básicas:" />
-		       <h:outputLink value="#"> <h:outputText value="Consultar..." /> </h:outputLink>
+		       <h:commandLink value="Detalhar..." action="#{imovelCaracteristicaBean.consultaCaracteristica}" />
+		        <f:param value="#{imovelBean.imovel.caracteristica}" name="codigoCarac" />
 		     </h:panelGroup>
 		     
 		     <h:panelGroup styleClass="textcenter">
