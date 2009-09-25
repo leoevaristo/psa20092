@@ -15,71 +15,58 @@
 		 </ui:define>
 		 <ui:define name="conteudo">
 		   <h:form styleClass="forms">
-		     <span>
-		     <h:panelGroup>
+		     
+		     <h:panelGroup styleClass="textcenter">
 		       <h:outputLabel value="Código:" />
 		       <h:outputText value="#{imovelBean.imovel.codigo}" />
 		     </h:panelGroup>
-		     </span>
-		     <span>
-		     <h:panelGroup>
-		       <h:outputLabel value="Detalhe:" />
-		       <h:inputTextarea value="#{imovelBean.imovel.detalhe}" rows="6" />
-		     </h:panelGroup>
-		     </span>
-		     <span>
-		     <h:panelGroup>
-		       <h:outputLabel value="Caracteristicas:" />
-		       <h:outputLink value="imovel_caracteristica/imovel_caracteristica.xhtml"> <h:outputText value="Consultar..." /> </h:outputLink>
-		     </h:panelGroup>
-		     </span>
-		     <span>
-		     <h:panelGroup>
-		       <h:outputLabel value="Forma de Pagamento:" />
-		       <h:inputTextarea value="#{imovelBean.imovel.formaPagamento}" rows="6" />
-		     </h:panelGroup>
-		     </span>
-		     <span>
-		     <h:panelGroup>
-		       <h:outputLabel value="Tipo:" />
-		       <h:inputText value="#{imovelBean.imovel.tipo}" />
-		     </h:panelGroup>
-		     </span>
-		     <span>
-		     <h:panelGroup>
-		       <h:outputLabel value="Valor:" classStyle="obrigatorio" />
-		       <h:inputText value="#{imovelBean.imovel.valor}" />
-		     </h:panelGroup>
-		     </span>
-		     <span>
-		     <h:panelGroup>
-		       <h:outputLabel value="Valor Condominio:" />
-		       <h:inputText value="#{imovelBean.imovel.valorCondominio}" />
-		     </h:panelGroup>
-		     </span>
-		     
-		     <span>
-		     <h:panelGroup>
+		    
+		     <h:panelGroup styleClass="textcenter">
 		       <h:outputLabel value="Finalidade:" />
-		       <h:outputLink value="#"> <h:outputText value="Consultar..." /> </h:outputLink>
+		       <h:commandLink value="Consultar" action="#{}" />
 		     </h:panelGroup>
-		     </span>
 		     
-		     <span>
-		     <h:panelGroup>
+		     <h:panelGroup styleClass="textcenter">
 		       <h:outputLabel value="Proprietário:" />
 		       <h:outputLink value="#"> <h:outputText value="#{imovelBean.prop.nome}" /> </h:outputLink>
 		     </h:panelGroup>
-		     </span>
+		     		     
+		     <h:panelGroup styleClass="textcenter">
+		       <h:outputLabel value="Caracteristicas Básicas:" />
+		       <h:outputLink value="#"> <h:outputText value="Consultar..." /> </h:outputLink>
+		     </h:panelGroup>
 		     
-		     <span>
+		     <h:panelGroup styleClass="textcenter">
+		       <h:outputLabel value="Tipo:" />
+		       <h:inputText value="#{imovelBean.imovel.tipo}" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup styleClass="textcenter">
+		       <h:outputLabel value="Valor:" />
+		       <h:inputText value="#{imovelBean.imovel.valor}" classStyle="obrigatorio" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup styleClass="textcenter">
+		       <h:outputLabel value="Valor Condominio:" />
+		       <h:inputText value="#{imovelBean.imovel.valorCondominio}" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup styleClass="textcenter">
+		       <h:outputLabel value="Forma de Pagamento:" />
+		       <h:inputTextarea value="#{imovelBean.imovel.formaPagamento}" rows="2" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup styleClass="textcenter">
+		       <h:outputLabel value="Detalhes:" />
+		       <h:inputTextarea value="#{imovelBean.imovel.detalhe}" rows="5" />
+		     </h:panelGroup>
+		     
 		     <h:panelGroup styleClass="botoes">
 				<h:commandButton action="#{imovelBean.atualizaImovel}" value=""
 					styleClass="input_submit" />
 				<h:commandButton action="#" value=""
 					styleClass="input_button" immediate="true" />
 			 </h:panelGroup>
-		     </span>
 		     
 		   </h:form>
 		 </ui:define>

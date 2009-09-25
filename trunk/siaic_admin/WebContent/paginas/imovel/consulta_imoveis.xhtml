@@ -15,6 +15,7 @@
 		</ui:define>
 	
 		<ui:define name="conteudo">
+		  <h:panelGroup styleClass="textcenter">
 		  <h:dataTable
 			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
 			value="#{imovelBean.todosImoveis}" var="imo">
@@ -48,33 +49,33 @@
 					</h:commandLink>
 				</h:form>
 			</h:column>
-			<!--  <h:column>
+			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Detalhes" />
 				</f:facet>
 				<h:form id="detalheImovel">
 					<h:commandLink id="detalheLink"
-						action="#{clienteBean.exibeDetalhesCliente}">
+						action="#{imovelBean.consultaImovel}">
 						<h:outputText value="Exibir Detalhes" />
-						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
+						<f:param value="#{imo.codigo}" name="codigoImovel" />
 					</h:commandLink>
 				</h:form>
-			</h:column>
+			</h:column>  
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Excluir" />
 				</f:facet>
 				<h:form id="excluiImovel">
 					<h:commandLink id="excluir"
-						onclick="if (confirm('Você tem certeza que deseja excluir esse cliente?')) {return true }; return false;"
-						action="#{clienteBean.excluiCliente}">
+						onclick="if (confirm('Você tem certeza que deseja excluir este imovel?')) {return true }; return false;"
+						action="#{imovelBean.excluiImovel}">
 						<h:graphicImage value="/images/imgdelete.png" />
-						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
+						<f:param value="#{imo.codigo}" name="codigoImovel" />
 					</h:commandLink>
 				</h:form>
-			</h:column> -->
-			
+			</h:column>
 		  </h:dataTable>
+		  </h:panelGroup>
 		</ui:define>
 	
 		<ui:define name="rodape">

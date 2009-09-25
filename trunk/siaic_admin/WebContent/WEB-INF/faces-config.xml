@@ -8,6 +8,11 @@
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
+		<managed-bean-name>imovelCaracteristicaBean</managed-bean-name>
+		<managed-bean-class>br.com.siaic.mb.ImovelCaracteristicaBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
 		<managed-bean-name>consultaClienteBean</managed-bean-name>
 		<managed-bean-class>br.com.siaic.mb.ConsultaClienteBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
