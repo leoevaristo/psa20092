@@ -43,13 +43,29 @@
     TITLE="detalhes" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#paginas#usuario.xhtml"
-  PATH="/paginas/usuario.xhtml" SHAPE="32,385,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#paginas#usuario.xhtml:0" NAME="item"
-   PATH="/paginas/usuario.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="sucesso::#paginas#usuario.xhtml"
-    NAME="output" PATH="/paginas/usuario.xhtml"
-    TARGET="rules:#paginas#usuario.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+ <PROCESS-ITEM NAME="rules:#paginas#imovel#consulta_imoveis.xhtml"
+  PATH="/paginas/imovel/consulta_imoveis.xhtml" SHAPE="32,385,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#imovel#consulta_imoveis.xhtml:0"
+   NAME="item" PATH="/paginas/imovel/consulta_imoveis.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="altera::#paginas#imovel#imoveis.xhtml"
+    NAME="output" PATH="/paginas/imovel/imoveis.xhtml"
+    TARGET="rules:#paginas#imovel#imoveis.xhtml" TITLE="altera" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#imovel#imoveis.xhtml"
+  PATH="/paginas/imovel/imoveis.xhtml" SHAPE="240,401,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#imovel#imoveis.xhtml:0" NAME="item"
+   PATH="/paginas/imovel/imoveis.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consultacaracteristica::#paginas#imovel_caracteristica#imovel_caracteristica.xhtml"
+    NAME="output"
+    PATH="/paginas/imovel_caracteristica/imovel_caracteristica.xhtml"
+    TARGET="rules:#paginas#imovel_caracteristica#imovel_caracteristica.xhtml"
+    TITLE="consultacaracteristica" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#imovel_caracteristica#imovel_caracteristica.xhtml"
+  PATH="/paginas/imovel_caracteristica/imovel_caracteristica.xhtml"
+  SHAPE="448,385,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
