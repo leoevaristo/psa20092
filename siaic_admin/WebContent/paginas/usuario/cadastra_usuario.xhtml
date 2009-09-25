@@ -25,17 +25,38 @@
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
-				<h:outputLabel for="campo01" value="Nome" />
+				<h:outputLabel for="campoNome" value="Nome" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.nome}"
 					styleClass="obrigatorio" id="campo01" size="50" />
 			</h:panelGroup>
+
+
+
+
+
 			<h:panelGroup styleClass="textcenter">
-				<h:outputLabel for="campo02" value="E-mail" />
+				<h:outputLabel for="campoLogin" value="Login" />
+				<h:inputText value="#{cadastraUsuarioBean.usuario.login}"
+					styleClass="obrigatorio" id="campo01" size="20" />
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoSenha" value="Senha" />
+				<h:inputText value="#{cadastraUsuarioBean.usuario.senha}"
+					styleClass="obrigatorio" id="campo01" size="20" />
+			</h:panelGroup>
+
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoCRECI" value="CRECI" />
+				<h:inputText value="#{cadastraUsuarioBean.usuario.creci}"
+					styleClass="obrigatorio" id="campo01" size="15" />
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoEmail" value="E-mail" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.email}"
 					styleClass="obrigatorio" id="campo02" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
-				<h:outputLabel for="campo03" value="Telefone" />
+				<h:outputLabel for="campoTelefone" value="Telefone" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.telefone}"
 					styleClass="obrigatorio" id="campo03" size="50" />
 			</h:panelGroup>
