@@ -19,12 +19,12 @@
 						
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo01"  value="Nome"/>
-					<h:inputText value="#{EstadoBean.estado.estadoNome}" styleClass="obrigatorio" id="campo01" required="true" />
+					<h:inputText value="#{enderecoBean.estado.estadoNome}" styleClass="obrigatorio" id="campo01" required="true" />
 				</h:panelGroup>
 					
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo02"  value="Sigla"/>
-					<h:inputText value="#{EstadoBean.estado.estadoSigla}" styleClass="obrigatorio" id="campo02" required="true" />				
+					<h:inputText value="#{enderecoBean.estado.estadoSigla}" styleClass="obrigatorio" id="campo02" required="true" />				
 				</h:panelGroup>		
 										
 				<h:panelGroup>
@@ -32,14 +32,14 @@
 				</h:panelGroup>
 				<h:panelGroup styleClass="linha"></h:panelGroup>
 				<h:panelGroup styleClass="botoes">
-					<h:commandButton action="#{}" value="" styleClass="input_submit" />
+					<h:commandButton action="#{enderecoBean.adicionarEstado}" value="" styleClass="input_submit" />
 					<h:commandButton action="#" value="" type="reset" styleClass="input_reset" />
 					<h:commandButton action="#" value="" styleClass="input_button" />
 				</h:panelGroup>						
 			</h:form>		
 		</ui:define>		
 		<ui:define name="tituloLista"> 
-			<h:outputText value="Lista de Usuarios" />
+			<h:outputText value="Lista de Estados" />
 		</ui:define>		
 		<ui:define name="linkNovo"> 	
 			<h:outputText value="Novo (Imóvel,Cliente, etc...)" />		
