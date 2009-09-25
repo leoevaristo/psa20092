@@ -157,6 +157,8 @@ public class ClienteDAO {
 				cliente.setCpf(rs.getString("PEC_CPF"));
 				cliente.setRg(rs.getString("PEC_RG"));
 				cliente.setCnpj(rs.getString("PEC_CNPJ"));
+				cliente.setNome(rs.getString("PES_PESSOA"));
+				cliente.setEmail(rs.getString("PES_EMAIL"));
 
 				listaClientes.add(cliente);
 

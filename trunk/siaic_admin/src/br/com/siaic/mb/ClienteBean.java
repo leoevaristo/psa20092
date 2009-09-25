@@ -82,49 +82,7 @@ public class ClienteBean {
 	
 	
 
-	/**
-	 * 
-	 * @return
-	 * @throws SQLException
-	 */
-	public String updateCliente() throws SQLException {
-		// TODO
-		
-		String r = "";
-		
-		PessoaDAO daoPessoa = new PessoaDAO();
-		ClienteDAO daoCliente = new ClienteDAO();
-		
-		daoPessoa.alterarPessoa(cliente);
-		daoCliente.alterarCliente(cliente);
-
-		return r;
-
-	}
-
-
-
-
-
 	
-	
-	
-
-	
-	
-	
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public String destroiSessao(){
-		
-		FacesContext contexto = FacesContext.getCurrentInstance();
-		contexto.getExternalContext().getSessionMap().remove("clienteBean");
-		
-		return "destruido";
-	}
 	
 	
 	

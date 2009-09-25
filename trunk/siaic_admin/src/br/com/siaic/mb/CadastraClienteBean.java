@@ -32,6 +32,7 @@ public class CadastraClienteBean {
 	
 	private Cliente cliente;
 	
+	
 	private static List<SelectItem> logradouro = new ArrayList<SelectItem>();
 	
 	
@@ -136,6 +137,7 @@ public class CadastraClienteBean {
 
 	}
 	
+	
 	public void setLogradouro(){
 		
 		logradouro.add(new SelectItem("Rua","Rua"));	
@@ -151,6 +153,12 @@ public class CadastraClienteBean {
 	
 	public List<SelectItem> getLogradouro(){
 		return logradouro;
+	}
+	
+	
+	public void limpaCampos(){
+		
+		//TODO
 	}
 	
 	
