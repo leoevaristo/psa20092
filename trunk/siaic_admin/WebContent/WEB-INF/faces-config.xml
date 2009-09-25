@@ -127,6 +127,22 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/paginas/agenda/cadastrar_agenda.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ConsultarCorretor</from-outcome>
+			<to-view-id>/paginas/agenda/consultar_corretor_agenda.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/paginas/agenda/consultar_corretor_agenda.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SelecionarCorretor</from-outcome>
+			<to-view-id>/paginas/agenda/cadastrar_agenda.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 	<application>
 		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
 	</application>
