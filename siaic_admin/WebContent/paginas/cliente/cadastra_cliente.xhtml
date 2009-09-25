@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -27,32 +27,32 @@
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo01" value="Nome" />
 				<h:inputText value="#{cadastraClienteBean.cliente.nome}"
-					styleClass="obrigatorio" id="campo01" />
+					styleClass="obrigatorio" id="campo01" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo02" value="E-mail" />
 				<h:inputText value="#{cadastraClienteBean.cliente.email}"
-					styleClass="obrigatorio" id="campo02" />
+					styleClass="obrigatorio" id="campo02" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo03" value="Telefone" />
 				<h:inputText value="#{cadastraClienteBean.cliente.telefone}"
-					styleClass="obrigatorio" id="campo03" />
+					styleClass="obrigatorio" id="campo03" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCelular" value="Celular" />
 				<h:inputText value="#{cadastraClienteBean.cliente.celular}"
-					id="campoCelular" />
+					id="campoCelular" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter" id="panelRg">
 				<h:outputLabel for="campo04" value="RG" />
 				<h:inputText value="#{cadastraClienteBean.cliente.rg}"
-					styleClass="obrigatorio" id="campo04" />
+					styleClass="obrigatorio" id="campo04" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter" id="panelCpf">
 				<h:outputLabel for="campo05" value="CPF" />
 				<h:inputText value="#{cadastraClienteBean.cliente.cpf}"
-					styleClass="obrigatorio" id="campo05" />
+					styleClass="obrigatorio" id="campo05" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter" id="panelSexo">
 				<h:outputLabel for="sexo" value="Sexo" />
@@ -65,7 +65,7 @@
 			<h:panelGroup styleClass="textcenter" id="panelCnpj">
 				<h:outputLabel for="campo06" value="CNPJ" />
 				<h:inputText value="#{cadastraClienteBean.cliente.cnpj}"
-					styleClass="obrigatorio" id="campo06" />
+					styleClass="obrigatorio" id="campo06" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoEstado" value="Estado" />
@@ -97,11 +97,13 @@
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoNomeEnd" value="Endereço" />
-				<h:inputText value="#{cadastraClienteBean.endereco.enderecoNome}" id="campoNomeEnd" styleClass="obrigatorio" />
+				<h:inputText value="#{cadastraClienteBean.endereco.enderecoNome}"
+				 id="campoNomeEnd" styleClass="obrigatorio" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCep" value="CEP" />
-				<h:inputText value="#{cadastraClienteBean.endereco.enderecoCep}" id="campoCep" styleClass="obrigatorio" />
+				<h:inputText value="#{cadastraClienteBean.endereco.enderecoCep}"
+				 id="campoCep" styleClass="obrigatorio" size="50"/>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />
