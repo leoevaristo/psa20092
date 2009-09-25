@@ -6,15 +6,11 @@ import java.util.List;
 
 import javax.faces.model.SelectItem;
 
-import br.com.siaic.businesslogic.Cliente;
-import br.com.siaic.businesslogic.Pessoa;
 import br.com.siaic.businesslogic.Usuario;
 import br.com.siaic.businesslogic.endereco.Bairro;
 import br.com.siaic.businesslogic.endereco.Cidade;
 import br.com.siaic.businesslogic.endereco.Endereco;
 import br.com.siaic.businesslogic.endereco.Estado;
-import br.com.siaic.dao.ClienteDAO;
-import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.PessoaDAO;
 import br.com.siaic.dao.UsuarioDAO;
 
