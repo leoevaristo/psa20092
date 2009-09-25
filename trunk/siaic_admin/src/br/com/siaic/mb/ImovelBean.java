@@ -58,7 +58,7 @@ public class ImovelBean {
     public String consultaImovel() {
     	this.imovel = Imovel.getImovel(this.getParamCodigoImovel());
     	try {
-    		this.imoCar = new ImovelCaracteristicaDAO().getImovelCaracteristica(this.imovel.getCaracteristica());
+    		this.imoCar = ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(this.imovel.getCaracteristica());
     		this.prop = new ClienteDAO().getClientePorId(this.imovel.getProprietario());
     		this.imoFin = new ImovelFinalidadeDAO().getImovelFinalidade(this.imovel.getFinalidade());
 			this.endereco = new EnderecoDAO().getEnderecoPorCodigo(this.imovel.getEndereco());

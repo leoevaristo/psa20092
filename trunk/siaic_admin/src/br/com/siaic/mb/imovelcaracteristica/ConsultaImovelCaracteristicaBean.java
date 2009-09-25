@@ -44,8 +44,8 @@ public class ConsultaImovelCaracteristicaBean {
 	}
 	
 	public List<ImovelCaracteristica> getAllCaracteristica() throws SQLException {
-		ImovelCaracteristicaDAO dao = new ImovelCaracteristicaDAO();
-		return dao.getAllCaracteristica(this.imovel.getCodigo());
+		
+		return ImovelCaracteristicaDAO.getInstance().getAllCaracteristica(this.imovel.getCodigo());
 	}
 	
 	public String ConsultarImovel(){
@@ -58,8 +58,7 @@ public class ConsultaImovelCaracteristicaBean {
 		Integer idIC = new Integer(req.getParameter("codigo")).intValue();
 		//String tipoExibicao = new String(req.getParameter("tipoExibicao").toString());		
 		
-		ImovelCaracteristicaDAO dao = new ImovelCaracteristicaDAO();
-		setCaracteristica(dao.getImovelCaracteristica(idIC));
+		setCaracteristica(ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(idIC));
 		return "SelecionarCaracteristica";
 	}
 }
