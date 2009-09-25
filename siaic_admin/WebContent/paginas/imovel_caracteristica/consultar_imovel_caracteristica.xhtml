@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="tituloGrande">
+		<h:outputText value="Caracteristicas do Imovel" />
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="Consultar Caracteristicas do Imovel" />
+	</ui:define>
+	<ui:define name="conteudo">
+		<h:form styleClass="forms" id="formFiltros">
+			<h:panelGroup>
+				<h:outputLabel for="campoFiltro" value="Filtrar por" />
+				<h:selectOneMenu value="" id="campoFiltro">
+					<f:selectItem itemValue="" itemLabel="Tipo de Filtro" />
+					<f:selectItem itemValue="imovel" itemLabel="Imovel" />
+					<f:selectItem itemValue="cliente" itemLabel="Cliente" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:outputLabel value="Palavra-chave" for="inFiltro" />
+				<h:inputText value="#{consultaImovelCaracteristicaBean.imovel.codigo}" id="inFiltro"/>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:commandButton action="#" value="Filtrar">
+				</h:commandButton>
+			</h:panelGroup>
+		</h:form>
+
+	</ui:define>
+	<ui:define name="tituloLista">
+		<h:outputText value="Lista das Caracteristicas do Imovel" />
+	</ui:define>
+	<ui:define name="infoGerais">
+		<h:dataTable 
+			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
+			value="#{consultarImovelCaracteristicaBean.allCaracteristica}" var="caracteristica" style=" height : 91px;">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Codigo" />
+				</f:facet>
+				<h:outputText value="#{caracteristica.codigo}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Dormitorios" />
+				</f:facet>
+				<h:outputText value="#{caracteristica.dormitorio}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Suites" />
+				</f:facet>
+				<h:outputText value="#{caracteristica.suite}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Vagas na Garagem" />
+				</f:facet>
+				<h:outputText value="#{caracteristica.garagem}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Piscina" />
+				</f:facet>
+				<h:outputText value="#{caracteristica.piscina}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Selecionar" />
+				</f:facet>
+				<h:form id="SelecionarCaracteristica">
+					<h:commandLink id="selecionar"
+						action="#{ConsultaImovelCaracteristicaBean.SelecionarCaracteristica}">
+						<h:graphicImage value="/images/check.png" />
+						<f:param value="#{imovel.codigo}" name="codigo" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</ui:define>
+	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
+</ui:composition>
+</html>
