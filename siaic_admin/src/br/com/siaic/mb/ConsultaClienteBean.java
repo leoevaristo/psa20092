@@ -10,6 +10,7 @@ import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.endereco.Endereco;
 import br.com.siaic.dao.ClienteDAO;
 import br.com.siaic.dao.EnderecoDAO;
+import br.com.siaic.dao.PessoaDAO;
 
 public class ConsultaClienteBean {
 	
@@ -75,9 +76,12 @@ public class ConsultaClienteBean {
 		
 		
 		
-		return "altera";
+		return "modifica";
 
 	}
+	
+	
+
 	
 	
 	public String getEnderecoCliente() throws SQLException{
@@ -125,6 +129,41 @@ public class ConsultaClienteBean {
 		return "detalhes";
 	}
 	
+	
+	
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
+	public String updateCliente() throws SQLException {
+		// TODO
+		
+		String r = "sucesso";
+		
+		PessoaDAO daoPessoa = new PessoaDAO();
+		ClienteDAO daoCliente = new ClienteDAO();
+		
+		daoPessoa.alterarPessoa(cliente);
+		daoCliente.alterarCliente(cliente);
+
+		return r;
+
+	}
+	
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String destroiSessao(){
+		
+		FacesContext contexto = FacesContext.getCurrentInstance();
+		contexto.getExternalContext().getSessionMap().remove("clienteBean");
+		
+		return "destruido";
+	}
 	
 
 }

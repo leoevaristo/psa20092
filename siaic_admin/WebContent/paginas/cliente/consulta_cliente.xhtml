@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -17,7 +16,7 @@
 		<h:form styleClass="forms" id="formFiltros">
 			<h:panelGroup>
 				<h:outputLabel for="campoFiltro" value="Filtrar por" />
-				<h:selectOneMenu value="" id="campoFiltro">
+				<h:selectOneMenu value="" id="campoFiltro" disabled="true">
 					<f:selectItem itemValue="" itemLabel="Tipo de Filtro" />
 					<f:selectItem itemValue="email" itemLabel="E-mail" />
 					<f:selectItem itemValue="nome" itemLabel="Nome" />
@@ -26,10 +25,10 @@
 			</h:panelGroup>
 			<h:panelGroup>
 				<h:outputLabel value="Palavra-chave" for="inFiltro" />
-				<h:inputText value="" />
+				<h:inputText value="" id="inFiltro"/>
 			</h:panelGroup>
 			<h:panelGroup>
-				<h:commandButton action="#" value="Filtrar" type="submit" />
+				<h:commandButton action="#" value="Filtrar" type="submit" /> 				
 			</h:panelGroup>
 		</h:form>
 
