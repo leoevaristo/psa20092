@@ -17,7 +17,7 @@
 		<h:form styleClass="forms" id="form1">
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo0" value="Tipo de Pessoa" />
-				<h:selectOneMenu value="#{cadastraClienteBean.cliente.tipoPessoa}"
+				<h:selectOneMenu value="#{cadastraUsuarioBean.usuario.tipoPessoa}"
 					id="campo0" onchange="Javascript:tipoPessoa()">
 					<f:selectItem itemValue="" itemLabel="Tipo de Pessoa" />
 					<f:selectItem itemValue="F" itemLabel="Física" />
@@ -26,27 +26,27 @@
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo01" value="Nome" />
-				<h:inputText value="#{cadastraClienteBean.cliente.nome}"
+				<h:inputText value="#{cadastraUsuarioBean.usuario.nome}"
 					styleClass="obrigatorio" id="campo01" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo02" value="E-mail" />
-				<h:inputText value="#{cadastraClienteBean.cliente.email}"
+				<h:inputText value="#{cadastraUsuarioBean.usuario.email}"
 					styleClass="obrigatorio" id="campo02" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo03" value="Telefone" />
-				<h:inputText value="#{cadastraClienteBean.cliente.telefone}"
+				<h:inputText value="#{cadastraUsuarioBean.usuario.telefone}"
 					styleClass="obrigatorio" id="campo03" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCelular" value="Celular" />
-				<h:inputText value="#{cadastraClienteBean.cliente.celular}"
+				<h:inputText value="#{cadastraUsuarioBean.usuario.celular}"
 					id="campoCelular" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter" id="panelSexo">
 				<h:outputLabel for="sexo" value="Sexo" />
-				<h:selectOneMenu value="#{cadastraClienteBean.cliente.sexo}" id="sexo">
+				<h:selectOneMenu value="#{cadastraUsuarioBean.usuario.sexo}" id="sexo">
 					<f:selectItem itemValue="" itemLabel="Sexo" />
 					<f:selectItem itemValue="M" itemLabel="Masculino" />
 					<f:selectItem itemValue="F" itemLabel="Feminino" />
@@ -61,33 +61,33 @@
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCidade" value="Cidade" />
-				<h:selectOneMenu value="#{cadastraClienteBean.cidade.cidadeCodigo}" id="campoCidade">
+				<h:selectOneMenu value="#{cadastraUsuarioBean.cidade.cidadeCodigo}" id="campoCidade">
 					<f:selectItem itemValue="" itemLabel="Cidade"/>
 					<f:selectItems value="#{selectCidades.cidades}"/>				
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoBairro" value="Bairro" />
-				<h:selectOneMenu value="#{cadastraClienteBean.endereco.enderecoBairro.bairroCodigo}" id="campoBairro"> 
+				<h:selectOneMenu value="#{cadastraUsuarioBean.endereco.enderecoBairro.bairroCodigo}" id="campoBairro"> 
 					<f:selectItem itemValue="" itemLabel="Bairro"/>
 					<f:selectItems  value="#{selectBairros.bairros}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoLogradouro" value="Logradouro"/>
-				<h:selectOneMenu value="#{cadastraClienteBean.endereco.enderecoLogradouro}" id="campoLogradouro">
+				<h:selectOneMenu value="#{cadastraUsuarioBean.endereco.enderecoLogradouro}" id="campoLogradouro">
 					<f:selectItem itemValue="" itemLabel="Logradouro"/>
 					<f:selectItems value="#{cadastraClienteBean.logradouro}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoNomeEnd" value="Endereço" />
-				<h:inputText value="#{cadastraClienteBean.endereco.enderecoNome}"
+				<h:inputText value="#{cadastraUsuarioBean.endereco.enderecoNome}"
 				 id="campoNomeEnd" styleClass="obrigatorio" size="50" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCep" value="CEP" />
-				<h:inputText value="#{cadastraClienteBean.endereco.enderecoCep}"
+				<h:inputText value="#{cadastraUsuarioBean.endereco.enderecoCep}"
 				 id="campoCep" styleClass="obrigatorio" size="50"/>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
@@ -95,7 +95,7 @@
 			</h:panelGroup>
 			<h:panelGroup styleClass="linha"></h:panelGroup>
 			<h:panelGroup styleClass="botoes">
-				<h:commandButton action="#{cadastraClienteBean.addCliente}" value=""
+				<h:commandButton action="#{cadastraUsuarioBean.addUsuario}" value=""
 					styleClass="input_submit" />
 				<h:commandButton action="#" value="" type="reset"
 					styleClass="input_reset" />
@@ -104,7 +104,7 @@
 		</h:form>
 	</ui:define>
 	<ui:define name="tituloLista">
-		<h:outputText value="Lista de Clientes" />
+		<h:outputText value="Lista de Usuarios" />
 	</ui:define>
 	<ui:define name="linkNovo">
 		<h:outputText value="Novo Cliente" />

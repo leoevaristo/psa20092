@@ -64,6 +64,11 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
+		<managed-bean-name>cadastrarUsuarioBean</managed-bean-name>
+		<managed-bean-class>br.com.siaic.mb.CadastraUsuarioBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
 		<managed-bean-name>consultaImovelCaracteristicaBean</managed-bean-name>
 		<managed-bean-class>br.com.siaic.mb.imovelcaracteristica.ConsultaImovelCaracteristicaBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
@@ -171,6 +176,9 @@
 			<to-view-id>/paginas/imovel_caracteristica/sucesso.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/paginas/usuario/cadastra_usuario.xhtml</from-view-id>
 	</navigation-rule>
 	<application>
 		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
