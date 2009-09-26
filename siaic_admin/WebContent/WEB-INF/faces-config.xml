@@ -88,6 +88,11 @@
 		<managed-bean-class>br.com.siaic.mb.endereco.CidadeBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>bairroBean</managed-bean-name>
+		<managed-bean-class>br.com.siaic.mb.endereco.BairroBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 	<!-- ENDEREÇO -->
 	<navigation-rule>
 		<from-view-id>/paginas/endereco/estado.xhtml</from-view-id>
@@ -243,6 +248,16 @@
 			<to-view-id>/paginas/endereco/cidade.xhtml</to-view-id>
 			<redirect/>
 	   </navigation-case>
+	</navigation-rule>
+	
+	
+	<navigation-rule>
+		<from-view-id>/paginas/endereco/cidade.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/paginas/endereco/cidade.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
 	</navigation-rule>
 	
 	
