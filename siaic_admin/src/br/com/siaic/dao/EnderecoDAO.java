@@ -89,7 +89,7 @@ public class EnderecoDAO {
 			conexao = FabricaConexao.conectar();
 			ps = conexao.prepareStatement(sql);
 			ps.setString(1, cidade.getCidadeNome());
-			ps.setString(2, cidade.getCidadeEstado().getEstadoSigla());
+			ps.setString(2, cidade.getCidadeEstado());
 			ps.execute();
 			retorno = true;
 		}//try
@@ -232,7 +232,7 @@ public class EnderecoDAO {
 		rs.next();
 		cidade.setCidadeCodigo(rs.getInt(1));
 		cidade.setCidadeNome(rs.getString(2));
-		cidade.setCidadeEstado(getEstadoPorSigla(rs.getString(3)));
+		cidade.setCidadeEstado(rs.getString(3));
 
 		ps.close();
 		rs.close();
@@ -417,7 +417,7 @@ public class EnderecoDAO {
 			
 			ps.setInt(1, cidade.getCidadeCodigo());
 			ps.setString(2, cidade.getCidadeNome());
-			ps.setString(3, cidade.getCidadeEstado().getEstadoSigla());
+			ps.setString(3, cidade.getCidadeEstado());
 			ps.setInt(4, cidade.getCidadeCodigo());
 			ps.executeUpdate();
 
@@ -682,7 +682,7 @@ public class EnderecoDAO {
 				Cidade cid = new Cidade();
 				cid.setCidadeCodigo(rs.getInt("CID_CODIGO"));
 				cid.setCidadeNome(rs.getString("CID_NOME"));
-				cid.setCidadeEstado(getEstadoPorSigla(rs.getString("CID_ESTADO")));	
+				cid.setCidadeEstado(rs.getString("CID_ESTADO"));	
 				todasCidades.add(cid);
 				
 			}

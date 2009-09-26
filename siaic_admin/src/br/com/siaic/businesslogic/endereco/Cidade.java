@@ -45,13 +45,13 @@ public class Cidade {
 	/**
 	 * @return the cidadeEstado
 	 */
-	public Estado getCidadeEstado() {
+	public String getCidadeEstado() {
 		return cidadeEstado;
 	}
 	/**
 	 * @param cidadeEstado the cidadeEstado to set
 	 */
-	public void setCidadeEstado(Estado cidadeEstado) {
+	public void setCidadeEstado(String cidadeEstado) {
 		this.cidadeEstado = cidadeEstado;
 	}
 	
@@ -60,18 +60,18 @@ public class Cidade {
 	
 	private int cidadeCodigo;
 	private String cidadeNome;
-	private Estado cidadeEstado;
+	private String cidadeEstado;
 
 	
-	public Cidade(int cidadeCodigo, String cidadeNome, Estado cidadeEstado) {
-		super();
+	public Cidade(int cidadeCodigo, String cidadeNome, String cidadeEstado) {
+		
 		this.cidadeCodigo = cidadeCodigo;
 		this.cidadeNome = cidadeNome;
 		this.cidadeEstado = cidadeEstado;
 	}
 
 	public Cidade() {
-		super();
+	
 	}
 	
 	

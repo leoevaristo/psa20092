@@ -185,7 +185,7 @@ public class ClienteDAO {
 		// TODO
 		
 		String sql = "SELECT c.PEC_CODIGO, c.PEC_CPF, c.PEC_RG, c.PEC_CNPJ, "
-				+ " p.PES_CODIGO, p.PES_NOME, p.PES_EMAIL, p.PES_TELEFONE, p.PES_CELULAR"
+				+ " p.PES_CODIGO, p.PES_NOME, p.PES_EMAIL, p.PES_TELEFONE, p.PES_CELULAR, p.PES_ENDERECO"
 				+ " FROM PESSOA_CLIENTE c, PESSOA p"
 				+ "	WHERE c.PEC_CODIGO = p.PES_CODIGO ORDER BY p.PES_CODIGO ASC;";
 
@@ -207,6 +207,7 @@ public class ClienteDAO {
 				cliente.setNome(rs.getString("PES_NOME"));
 				cliente.setEmail(rs.getString("PES_EMAIL"));
 				cliente.setTelefone(rs.getString("PES_TELEFONE"));
+				cliente.setTelefone(rs.getString("PES_ENDERECO"));
 
 				listaTodosClientes.add(cliente);
 			

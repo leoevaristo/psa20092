@@ -143,6 +143,7 @@ public class UsuarioDAO {
 			usuario.setNome(rs.getString("PES_NOME"));
 			usuario.setEmail(rs.getString("PES_EMAIL"));
 			usuario.setTelefone(rs.getString("PES_TELEFONE"));
+			usuario.setCelular(rs.getString("PES_CELULAR"));
 			usuario.setLogin(rs.getString("PEU_LOGIN"));
 			usuario.setSenha(rs.getString("PEU_SENHA"));
 			usuario.setCRECI(rs.getString("PEU_CRECI"));
@@ -167,10 +168,10 @@ public class UsuarioDAO {
 	public Usuario getUsuarioId(int usuarioCodigo) throws SQLException
 	{
 		
-		String sql = "SELECT PEU_CODIGO, PEU_CRECI, PEU_LOGIN, PEU_SENHA , PES_CODIGO, " 
-			+"PES_NOME, PES_EMAIL, PES_TELEFONE "
-			+"FROM PESSOA_USUARIOS , PESSOA " 
-			+"WHERE PEU_CODIGO = ?  AND PEU_CODIGO = PES_CODIGO ";
+		String sql = "SELECT pu.PEU_CODIGO, pu.PEU_CRECI, pu.PEU_LOGIN, pu.PEU_SENHA , pe.PES_CODIGO, " 
+			+"pe.PES_NOME, pe.PES_EMAIL, pe.PES_TELEFONE, pe.PES_CELULAR, pe.PES_ENDERECO, pe.PES_TIPO, pe.PES_SEXO "
+			+"FROM PESSOA_USUARIOS pu , PESSOA pe " 
+			+"WHERE pu.PEU_CODIGO = ?  AND pu.PEU_CODIGO = pe.PES_CODIGO ";
 		
 			
 		PreparedStatement ps = conexao.prepareStatement(sql);
