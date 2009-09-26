@@ -43,7 +43,6 @@ public class BairroBean {
 	{
 	  
       EnderecoDAO daoBairro = new EnderecoDAO();
-      
       daoBairro.adicionarBairro(bairro);      
       
       return "sucesso";
