@@ -85,6 +85,10 @@
 	</managed-bean>
 	<!-- ENDEREÇO -->
 	<navigation-rule>
+		<from-view-id>/paginas/endereco/estado.xhtml</from-view-id>
+	</navigation-rule>
+	
+	<navigation-rule>
 		<from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>sucesso</from-outcome>
