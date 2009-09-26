@@ -78,6 +78,11 @@
 		<managed-bean-class>br.com.siaic.mb.CadastraUsuarioBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>consultaUsuarioBean</managed-bean-name>
+		<managed-bean-class>br.com.siaic.mb.ConsultaUsuarioBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 	<!-- ENDEREÇO -->
 	<navigation-rule>
 		<from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
@@ -185,17 +190,31 @@
 	<navigation-rule>
 		<from-view-id>/paginas/usuario/cadastra_usuario.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>sucesso_usuario</from-outcome>
-			<to-view-id>/paginas/cliente/sucesso_usuario.xhtml</to-view-id>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/paginas/usuario/sucesso_usuario.xhtml</to-view-id>
 		</navigation-case>
-		
 	</navigation-rule>
-	
 	<navigation-rule>
 		<from-view-id>/paginas/usuario/cadastra_usuario.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>altera</from-outcome>
 			<to-view-id>/paginas/usuario/altera_usuario.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/paginas/usuario/altera_usuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>destruido</from-outcome>
+			<to-view-id>/paginas/usuario/cadastra_usuario.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/paginas/usuario/consulta_usuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>detalhes</from-outcome>
+			<to-view-id>/paginas/usuario/detalhes_usuario.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
