@@ -15,20 +15,19 @@
 			<h:outputText value="» Cadastrar Bairro" />
 		 </ui:define>		
 		 <ui:define name="conteudo"> 			
-			<h:form styleClass="forms">				
-						
+			<h:form styleClass="forms">								
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo01"  value="Nome"/>
 					<h:inputText value="#{bairroBean.bairro.bairroNome}" styleClass="obrigatorio" id="campo01" required="true" />
-				</h:panelGroup>
-				
+					
+				</h:panelGroup>				
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo02"  value="Cidade"/>
 					<h:selectOneMenu value="#{bairroBean.bairro.bairroCidade}" id="campo02">
 						<f:selectItems value="#{selectCidades.cidades}"></f:selectItems>
+						<f:convertNumber  integerOnly="true"/>
 					</h:selectOneMenu>						
 				</h:panelGroup> 
-
 				<h:panelGroup>
 					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
 				</h:panelGroup>
@@ -46,8 +45,7 @@
 		<ui:define name="linkNovo"> 	
 			<h:outputText value="Novo (Imóvel,Cliente, etc...)" />		
 		</ui:define>		
-		<ui:define name="infoGerais">		
-				
+		<ui:define name="infoGerais">					
 		</ui:define>		
 	  <ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>		
 	</ui:composition>

@@ -56,7 +56,7 @@ public class Bairro {
 	/**
 	 * @return the bairroCidade
 	 */
-	public Cidade getBairroCidade() {
+	public int getBairroCidade() {
 		return bairroCidade;
 	}
 
@@ -64,18 +64,18 @@ public class Bairro {
 	/**
 	 * @param bairroCidade the bairroCidade to set
 	 */
-	public void setBairroCidade(Cidade bairroCidade) {
+	public void setBairroCidade(int bairroCidade) {
 		this.bairroCidade = bairroCidade;
 	}
 
 
 	private int bairroCodigo;
 	private String bairroNome;
-	private Cidade bairroCidade;
+	private int bairroCidade;
 	
 	
-	public Bairro(int bairroCodigo, String bairroNome, Cidade bairroCidade) {
-		super();
+	public Bairro(int bairroCodigo, String bairroNome, int bairroCidade) {
+	//	super();
 		this.bairroCodigo = bairroCodigo;
 		this.bairroNome = bairroNome;
 		this.bairroCidade = bairroCidade;
@@ -83,7 +83,7 @@ public class Bairro {
 
 
 	public Bairro() {
-		super();
+	//	super();
 	}
 	
 	

@@ -114,14 +114,14 @@ public class EnderecoDAO {
 	public boolean adicionarBairro(Bairro bairro) throws SQLException{
 		boolean retorno = false;
 		PreparedStatement ps = null;
-		String sql = "INSERT INTO BAIRRO(BAR_CODIGO, BAR_NOME, BAR_CIDADE) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO BAIRRO(BAR_CODIGO, BAR_NOME, BAR_CIDADE) VALUES (null, ?, ?)";
 		
 		try {
 			FabricaConexao.getInstancia();
 			conexao = FabricaConexao.conectar();
 			ps = conexao.prepareStatement(sql);
 			ps.setString(1, bairro.getBairroNome() );
-			ps.setInt(2, bairro.getBairroCidade().getCidadeCodigo());
+			ps.setInt(2, bairro.getBairroCidade());
 			ps.execute();
 			retorno = true;
 		}//try
@@ -266,7 +266,7 @@ public class EnderecoDAO {
 		
 		bairro.setBairroCodigo(rs.getInt(1));
 		bairro.setBairroNome(rs.getString(2));
-		bairro.setBairroCidade( getCidadePorCodigo( rs.getInt(3)) );
+		bairro.setBairroCidade(  rs.getInt(3) );
 		
 		ps.close();
 		rs.close();
@@ -461,7 +461,7 @@ public class EnderecoDAO {
 			
 			ps.setInt(1, bairro.getBairroCodigo());
 			ps.setString(2, bairro.getBairroNome());
-			ps.setInt(3, bairro.getBairroCidade().getCidadeCodigo());
+			ps.setInt(3, bairro.getBairroCidade());
 			ps.setInt(4, bairro.getBairroCodigo());
 			ps.executeUpdate();
 
