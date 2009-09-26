@@ -252,10 +252,10 @@
 	
 	
 	<navigation-rule>
-		<from-view-id>/paginas/endereco/cidade.xhtml</from-view-id>
+		<from-view-id>/paginas/endereco/bairro.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>sucesso</from-outcome>
-			<to-view-id>/paginas/endereco/cidade.xhtml</to-view-id>
+			<to-view-id>/paginas/endereco/bairro.xhtml</to-view-id>
 			<redirect/>
 		</navigation-case>
 	</navigation-rule>
