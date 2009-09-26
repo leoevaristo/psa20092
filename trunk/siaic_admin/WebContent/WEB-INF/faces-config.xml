@@ -26,7 +26,7 @@
 	<managed-bean>
 		<managed-bean-name>estadoBean</managed-bean-name>
 		<managed-bean-class>br.com.siaic.mb.endereco.EstadoBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
+		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>enderecoBean</managed-bean-name>
@@ -81,6 +81,11 @@
 	<managed-bean>
 		<managed-bean-name>consultaUsuarioBean</managed-bean-name>
 		<managed-bean-class>br.com.siaic.mb.ConsultaUsuarioBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>cidadeBean</managed-bean-name>
+		<managed-bean-class>br.com.siaic.mb.endereco.CidadeBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	<!-- ENDEREÇO -->
@@ -222,6 +227,26 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/paginas/endereco/estado.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/paginas/endereco/estado.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>/paginas/endereco/cidade.xhtml</from-view-id>
+	   <navigation-case>
+	        <from-outcome>sucesso</from-outcome>
+			<to-view-id>/paginas/endereco/cidade.xhtml</to-view-id>
+			<redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	
+	
 	<application>
 		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
 	</application>

@@ -10,6 +10,7 @@ import javax.faces.model.SelectItem;
 import br.com.siaic.businesslogic.endereco.Bairro;
 import br.com.siaic.businesslogic.endereco.Cidade;
 import br.com.siaic.businesslogic.endereco.Endereco;
+import br.com.siaic.businesslogic.endereco.Estado;
 import br.com.siaic.dao.EnderecoDAO;
 
 /**
@@ -22,8 +23,33 @@ public class EnderecoBean {
 	private Endereco endereco;
 	private Bairro bairro;
 	private Cidade cidade;
+	private Estado estado;
 	
 	
+	public EnderecoBean()
+	{
+	  endereco = new Endereco();
+	  bairro = new Bairro();
+	  cidade = new Cidade();
+	  estado = new Estado();
+	
+	}
+	
+	
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+
+
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
+
+
 
 	public Cidade getCidade() {
 		return cidade;

@@ -7,11 +7,12 @@ package br.com.siaic.mb.endereco;
 import java.sql.SQLException;
 
 import br.com.siaic.businesslogic.endereco.Estado;
-import br.com.siaic.dao.DAONotificacao;
 import br.com.siaic.dao.EnderecoDAO;
 
 public class EstadoBean {
 	
+	
+
 	
 	/**
 	 * @return the estado
@@ -29,16 +30,16 @@ public class EstadoBean {
 
 	private Estado estado;
 
-	public EstadoBean(Estado estado) {
-		this.estado = estado;
+	public EstadoBean() {
+		estado = new Estado();
 	}
 	
-	public boolean adicionarEstado(Estado estado){
+	public String adicionarEstado(){
 	
-		boolean retorno = false;
+		String retorno = "sucesso";
 		EnderecoDAO enderecoDAO = new EnderecoDAO();
 		try {
-			retorno = enderecoDAO.adicionarEstado(estado);
+			enderecoDAO.adicionarEstado(estado);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -48,7 +49,7 @@ public class EstadoBean {
 	}
 	
 	
-	public boolean alterarEstado(Estado estado){
+	public boolean alterarEstado(){
 		boolean retorno = false;
 		EnderecoDAO enderecoDAO = new EnderecoDAO();
 		try {
@@ -62,7 +63,7 @@ public class EstadoBean {
 	}
 	
 	public Estado localizar(String estadoSigla){
-		Estado estado = null;
+		//Estado estado = null;
 		EnderecoDAO enderecoDAO = new EnderecoDAO();
 		try {
 			estado = enderecoDAO.getEstadoPorSigla(estadoSigla);

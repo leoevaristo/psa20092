@@ -20,6 +20,12 @@ public class ConsultaUsuarioBean {
 	private Endereco endereco;
 	
 	
+	public ConsultaUsuarioBean(){
+		usuario = new Usuario();
+		endereco = new Endereco();
+	}
+	
+	
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -29,10 +35,6 @@ public class ConsultaUsuarioBean {
 		this.endereco = endereco;
 	}
 
-
-	public ConsultaUsuarioBean(){
-		usuario = new Usuario();
-	}
 
 
 	public Usuario getUsuario() {
