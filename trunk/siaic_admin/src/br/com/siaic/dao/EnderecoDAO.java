@@ -114,7 +114,7 @@ public class EnderecoDAO {
 	public boolean adicionarBairro(Bairro bairro) throws SQLException{
 		boolean retorno = false;
 		PreparedStatement ps = null;
-		String sql = "INSERT INTO BAIRRO(BAR_CODIGO, BAR_NOME, BAR_CIDADE) VALUES (null, ?, ?)";
+		String sql = "INSERT INTO BAIRRO(BAR_CODIGO, BAR_NOME, BAR_CIDADE) VALUES (?, ?, ?)";
 		
 		try {
 			FabricaConexao.getInstancia();
