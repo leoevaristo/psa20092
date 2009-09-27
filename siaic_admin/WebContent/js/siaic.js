@@ -52,6 +52,19 @@ function tipoPessoa(){
 		panelSexo.style.display = "none";
 	}
 	
+function validaCampo()
+{
+	var nome = document.getElementById("form1:campoNome");
 	
+	if (nome.value == "")
+	{
+		alert("nulo!!");
+	}
+   	
+	
+}
 
+	
+	
+	
 }
