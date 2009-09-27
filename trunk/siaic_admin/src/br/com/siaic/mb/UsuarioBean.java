@@ -86,7 +86,7 @@ public class UsuarioBean {
 	 * @return
 	 * @throws SQLException
 	 */
-	public String updateCliente() throws SQLException {
+	public String updateUsuario() throws SQLException {
 		// TODO
 		
 		String r = "";
