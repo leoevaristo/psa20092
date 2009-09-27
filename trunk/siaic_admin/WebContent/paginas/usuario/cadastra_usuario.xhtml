@@ -15,25 +15,19 @@
 	</ui:define>
 	<ui:define name="conteudo">
 		<h:form styleClass="forms" id="form1">
-			<h:panelGroup styleClass="textcenter">
+  		  <h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoTipoPessoa" value="Tipo de Pessoa" />
 				<h:selectOneMenu value="#{cadastraUsuarioBean.usuario.tipoPessoa}"
-					id="campo0" onchange="Javascript:tipoPessoa()">
+					id="campo0" onchange="Javascript:tipoPessoa()" required="true">
 					<f:selectItem itemValue="" itemLabel="Tipo de Pessoa" />
 					<f:selectItem itemValue="F" itemLabel="Física" />
 					<f:selectItem itemValue="J" itemLabel="Jurídica" />
-				</h:selectOneMenu>
-			</h:panelGroup>
+			</h:selectOneMenu>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoNome" value="Nome" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.nome}"
 					styleClass="obrigatorio" id="campoNome" size="50" />
 			</h:panelGroup>
-
-
-
-
-
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoLogin" value="Login" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.login}"
