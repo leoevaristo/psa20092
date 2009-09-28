@@ -7,46 +7,24 @@
 
 	<ui:composition template="/WEB-INF/template/template.xhtml">	
 		<ui:define name="tituloGrande"> 
-			<h:outputText value="Título da Página" />
-		 </ui:define>			 
-		<ui:define name="subtitulo">  
-			<h:outputText value="Subtitulo" />
+			<h:outputText value="Acesso SIAIC" />
 		 </ui:define>			 
 		<ui:define name="conteudo"> 			
 			<h:form styleClass="forms">				
 				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo0"  value=""/>
-					<h:selectOneMenu value="#" id="campo0" >
-						<f:selectItem itemValue="" itemLabel="Tipo "/>
-						<f:selectItem itemValue="" itemLabel=""/>
-						<f:selectItem itemValue="" itemLabel=""/>
+					<h:outputLabel for="campoLogin"  value="Nome"/>
+					<h:inputText value="#" styleClass="obrigatorio" id="campoLogin"/>
+				</h:panelGroup>	
+				<h:panelGroup styleClass="textcenter">
+					<h:outputLabel for="campoSenha"  value="Senha"/>
+					<h:inputText value="#" styleClass="obrigatorio" id="campoSenha"  />				
+				</h:panelGroup>					
+				<h:panelGroup styleClass="textcenter">
+					<h:outputLabel for="campoPerfil"  value="Perfil"/>
+					<h:selectOneMenu value="#" id="campoPerfil" >
+						<f:selectItem itemValue="Adm" itemLabel="Administrador"/>
 					</h:selectOneMenu>					
 				</h:panelGroup>					
-				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo01"  value=""/>
-					<h:inputText value="#" styleClass="obrigatorio" id="campo01"/>
-				</h:panelGroup>	
-				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo02"  value=""/>
-					<h:inputText value="#" styleClass="obrigatorio" id="campo02"  />				
-				</h:panelGroup>					
-				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo03"  value=""/>
-					<h:inputText value="#" styleClass="obrigatorio" id="campo03" />				
-				</h:panelGroup>
-				<h:panelGroup styleClass="textcenter" > 
-					<h:outputLabel for="campo04"  value=""/>
-					<h:inputText value="#" styleClass="obrigatorio" id="campo04" />				
-				</h:panelGroup>
-				<h:panelGroup styleClass="textcenter" >
-					<h:outputLabel for="campo05"  value=""/>
-					<h:inputText value="#" styleClass="obrigatorio" id="campo05" />				
-				</h:panelGroup>	
-				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo06"  value=""/>
-					<h:inputText value="#" styleClass="obrigatorio" id="campo06" />				
-				</h:panelGroup>		
-			
 				<h:panelGroup>
 					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
 				</h:panelGroup>
@@ -54,62 +32,10 @@
 				<h:panelGroup styleClass="botoes">
 					<h:commandButton action="#" value="" styleClass="input_submit" />
 					<h:commandButton action="#" value="" type="reset" styleClass="input_reset" />
-					<h:commandButton action="#" value="" styleClass="input_button" />
+					<!-- <h:commandButton action="#" value="" styleClass="input_button" />-->
 				</h:panelGroup>						
 			</h:form>		
 		</ui:define>		  
-		<ui:define name="tituloLista"> 
-			<h:outputText value="Listagem (Cliente,Imóveis,Agenda)" />
-		</ui:define>		
-		<ui:define name="linkNovo"> 	
-			<h:outputText value="Novo (Imóvel,Cliente, etc...)" />		
-		</ui:define>				
-		<ui:define name="infoGerais">
-			<h:dataTable rendered="true" styleClass="grid" headerClass="thead" rowClasses="cor1,cor2" value=""  >
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Código" />
-					</f:facet>
-					<h:outputText value="teste"  />					
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Nome" />
-					</f:facet>
-					<h:outputText value="" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Email" />
-					</f:facet>
-					<h:outputText value="" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Telefone" />
-					</f:facet>
-					<h:outputText value="" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Editar" />
-					</f:facet>
-					<h:outputLink value="#" styleClass="textcenter">
-						<h:graphicImage value="/images/imgedit.png" />
-					</h:outputLink>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Excluir" />
-					</f:facet>
-					<h:form>
-					 <h:commandLink action="#" onclick="" >
-					 	<h:graphicImage value="/images/imgdelete.png" />    						
-   					 </h:commandLink>  		
-				    </h:form>		
-				</h:column>			
-			</h:dataTable>		
-		</ui:define>		
 		<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
 	</ui:composition>
 </html>
