@@ -18,7 +18,7 @@
   		  <h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo0" value="Pessoa" />
 				<h:selectOneMenu value="#{cadastraUsuarioBean.usuario.tipoPessoa}"
-					id="campo0" onchange="Javascript:tipoPessoa()" required="true">
+					id="campo0" required="true">
 					<f:selectItem itemValue="F" itemLabel="Física" />
 			</h:selectOneMenu>
 			</h:panelGroup>
@@ -110,7 +110,7 @@
 			<h:panelGroup styleClass="linha"></h:panelGroup>
 			<h:panelGroup styleClass="botoes">
 				<h:commandButton action="#{cadastraUsuarioBean.addUsuario}" value=""
-					styleClass="input_submit" />
+					styleClass="input_submit" onClick="JavaScript:validaCampo()" />
 				<h:commandButton action="#" value="" type="reset"
 					styleClass="input_reset" />
 				<h:commandButton action="#" value="" styleClass="input_button" />
