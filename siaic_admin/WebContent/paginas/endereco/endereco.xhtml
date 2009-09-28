@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="tituloGrande">
+		<h:outputText value="Página de Endereço" />
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="» Menu Cadastro" />
+	</ui:define>
+	<ui:define name="conteudo">
+		<h:panelGroup>
+			<h:outputLink
+				value="#{request.contextPath}/paginas/endereco/estado.xhtml">
+				<h:outputText value="# Cadastrar Estados" />
+			</h:outputLink>
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:outputLink
+				value="#{request.contextPath}/paginas/endereco/cidade.xhtml">
+				<h:outputText value="# Cadastrar Cidades" />
+			</h:outputLink>
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:outputLink
+				value="#{request.contextPath}/paginas/endereco/bairro.xhtml">
+				<h:outputText value="# Cadastrar Bairros" />
+			</h:outputLink>
+		</h:panelGroup>
+
+		<ui:define name="subtitulo">
+			<h:outputText value="» Menu Consulta" />
+		</ui:define>
+
+		<h:panelGroup>
+			<h:outputLink
+				value="#{request.contextPath}/paginas/endereco/listagem_estados.xhtml">
+				<h:outputText value="# Cadastrar Estados" />
+			</h:outputLink>
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:outputLink
+				value="#{request.contextPath}/paginas/endereco/listagem_cidades.xhtml">
+				<h:outputText value="# Cadastrar Cidades" />
+			</h:outputLink>
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:outputLink
+				value="#{request.contextPath}/paginas/endereco/listagem_bairros.xhtml">
+				<h:outputText value="# Cadastrar Bairros" />
+			</h:outputLink>
+		</h:panelGroup>
+
+	</ui:define>
+
+</ui:composition>
+</html>

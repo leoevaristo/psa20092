@@ -265,8 +265,30 @@
 		</navigation-case>
 	</navigation-rule>
 	
-	
-	
+	<navigation-rule>
+		<from-view-id>/paginas/endereco/listagem_estados.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/paginas/endereco/listagem_estados.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/paginas/endereco/listagem_cidades.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/paginas/endereco/listagem_cidades.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/paginas/endereco/listagem_bairros.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/paginas/endereco/listagem_bairros.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+
 	<application>
 		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
 	</application>
