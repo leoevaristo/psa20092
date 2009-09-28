@@ -93,6 +93,11 @@
 		<managed-bean-class>br.com.siaic.mb.endereco.BairroBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>consultaEstadoBean</managed-bean-name>
+		<managed-bean-class>br.com.siaic.mb.ConsultaEstadoBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 	<!-- ENDEREÇO -->
 	<navigation-rule>
 		<from-view-id>/paginas/endereco/estado.xhtml</from-view-id>
