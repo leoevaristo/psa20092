@@ -98,6 +98,16 @@
 		<managed-bean-class>br.com.siaic.mb.ConsultaEstadoBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>consultaCidadeBean</managed-bean-name>
+		<managed-bean-class>br.com.siaic.mb.ConsultaCidadeBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>consultaBairroBean</managed-bean-name>
+		<managed-bean-class>br.com.siaic.mb.ConsultaBairroBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 	<!-- ENDEREÇO -->
 	<navigation-rule>
 		<from-view-id>/paginas/endereco/estado.xhtml</from-view-id>

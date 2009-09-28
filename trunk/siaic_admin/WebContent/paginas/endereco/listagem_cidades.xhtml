@@ -7,10 +7,10 @@
 <ui:composition template="/WEB-INF/template/template.xhtml">
 
 	<ui:define name="tituloGrande">
-		<h:outputText value="Página de Listagem de Estados" />
+		<h:outputText value="Página de Listagem de Cidades" />
 	</ui:define>
 	<ui:define name="subtitulo">
-		<h:outputText value="» Consultar Estados" />
+		<h:outputText value="» Consultar Cidades" />
 	</ui:define>
 	<ui:define name="conteudo">
 		<h:form styleClass="forms" id="formFiltros">
@@ -34,26 +34,26 @@
 
 	</ui:define>
 	<ui:define name="tituloLista">
-		<h:outputText value="Lista de Estado" />
+		<h:outputText value="Lista de Cidades" />
 	</ui:define>
 	<ui:define name="linkNovo">
-		<h:outputText value="Novo Estado" />
+		<h:outputText value="Nova Cidade" />
 	</ui:define>
 	<ui:define name="infoGerais">
 		<h:dataTable 
 			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
-			value="#{consultaEstadoBean.todosEstados}" var="estado">
+			value="#{consultaCidadeBean.todasCidades}" var="cidade">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Codigo" />
+				</f:facet>
+				<h:outputText value="#{cidade.cidadeCodigo}" />
+			</h:column>
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Nome" />
 				</f:facet>
-				<h:outputText value="#{estado.estadoNome}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Sigla" />
-				</f:facet>
-				<h:outputText value="#{estado.estadoSigla}" />
+				<h:outputText value="#{cidade.cidadeNome}" />
 			</h:column>
 		</h:dataTable>
 	</ui:define>
