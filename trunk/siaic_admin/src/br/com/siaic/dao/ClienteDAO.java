@@ -207,7 +207,7 @@ public class ClienteDAO {
 				cliente.setNome(rs.getString("PES_NOME"));
 				cliente.setEmail(rs.getString("PES_EMAIL"));
 				cliente.setTelefone(rs.getString("PES_TELEFONE"));
-				cliente.setTelefone(rs.getString("PES_ENDERECO"));
+				
 
 				listaTodosClientes.add(cliente);
 			
