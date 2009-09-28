@@ -5,29 +5,24 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	 <ui:composition template="/WEB-INF/template/template.xhtml">	
+	<ui:composition template="/WEB-INF/template/template.xhtml">	
 		<ui:define name="tituloGrande"> 
 			<h:outputText value="Acesso SIAIC" />
-		 </ui:define>			 
-		<ui:define name="subtitulo">  
-			<h:outputText value="Subtitulo" />
 		 </ui:define>			 
 		<ui:define name="conteudo"> 			
 			<h:form styleClass="forms">				
 				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo01"  value="Login"/>
-					<h:inputText value="#" styleClass="obrigatorio" id="campo01"/>
+					<h:outputLabel for="campoLogin"  value="Nome"/>
+					<h:inputText value="#" styleClass="obrigatorio" id="campoLogin"/>
 				</h:panelGroup>	
 				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo02"  value="Senha"/>
-					<h:inputText value="#" styleClass="obrigatorio" id="campo02"  />				
+					<h:outputLabel for="campoSenha"  value="Senha"/>
+					<h:inputText value="#" styleClass="obrigatorio" id="campoSenha"  />				
 				</h:panelGroup>					
 				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campo0"  value="Perfil"/>
-					<h:selectOneMenu value="#" id="campo0" >
-						<f:selectItem itemValue="" itemLabel="Tipo "/>
-						<f:selectItem itemValue="" itemLabel=""/>
-						<f:selectItem itemValue="" itemLabel=""/>
+					<h:outputLabel for="campoPerfil"  value="Perfil"/>
+					<h:selectOneMenu value="#" id="campoPerfil" >
+						<f:selectItem itemValue="Adm" itemLabel="Administrador"/>
 					</h:selectOneMenu>					
 				</h:panelGroup>					
 				<h:panelGroup>
@@ -37,7 +32,7 @@
 				<h:panelGroup styleClass="botoes">
 					<h:commandButton action="#" value="" styleClass="input_submit" />
 					<h:commandButton action="#" value="" type="reset" styleClass="input_reset" />
-					<h:commandButton action="#" value="" styleClass="input_button" />
+					<!-- <h:commandButton action="#" value="" styleClass="input_button" />-->
 				</h:panelGroup>						
 			</h:form>		
 		</ui:define>		  
