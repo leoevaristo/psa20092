@@ -10,7 +10,7 @@
 		<h:outputText value="Página de Endereço" />
 	</ui:define>
 	<ui:define name="subtitulo">
-		<h:outputText value="» Menu Cadastro" />
+		<h:outputText value="» Menu Endereço" />
 	</ui:define>
 	<ui:define name="conteudo">
 		<h:panelGroup>
@@ -32,30 +32,25 @@
 			</h:outputLink>
 		</h:panelGroup>
 
-		<ui:define name="subtitulo">
-			<h:outputText value="» Menu Consulta" />
-		</ui:define>
-
-		<h:panelGroup>
+	<h:panelGroup>
 			<h:outputLink
 				value="#{request.contextPath}/paginas/endereco/listagem_estados.xhtml">
-				<h:outputText value="# Cadastrar Estados" />
+				<h:outputText value="# Consultar Estados" />
 			</h:outputLink>
 		</h:panelGroup>
 		<h:panelGroup>
 			<h:outputLink
 				value="#{request.contextPath}/paginas/endereco/listagem_cidades.xhtml">
-				<h:outputText value="# Cadastrar Cidades" />
+				<h:outputText value="# Consultar Cidades" />
 			</h:outputLink>
 		</h:panelGroup>
 		<h:panelGroup>
 			<h:outputLink
 				value="#{request.contextPath}/paginas/endereco/listagem_bairros.xhtml">
-				<h:outputText value="# Cadastrar Bairros" />
+				<h:outputText value="# Consultar Bairros" />
 			</h:outputLink>
 		</h:panelGroup>
 
 	</ui:define>
-
 </ui:composition>
 </html>
