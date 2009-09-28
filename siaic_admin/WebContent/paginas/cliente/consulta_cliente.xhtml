@@ -16,7 +16,7 @@
 		<h:form styleClass="forms" id="formFiltros">
 			<h:panelGroup>
 				<h:outputLabel for="campoFiltro" value="Filtrar por" />
-				<h:selectOneMenu value="" id="campoFiltro" disabled="true">
+				<h:selectOneMenu value="#{consultaClienteBean.tipoPesquisa}" id="campoFiltro" >
 					<f:selectItem itemValue="" itemLabel="Tipo de Filtro" />
 					<f:selectItem itemValue="email" itemLabel="E-mail" />
 					<f:selectItem itemValue="nome" itemLabel="Nome" />

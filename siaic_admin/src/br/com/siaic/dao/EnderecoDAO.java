@@ -591,7 +591,7 @@ public class EnderecoDAO {
 	public List<Bairro> getTodosBairros() throws SQLException{
 		//TODO
 		String sql = "SELECT b.BAR_CODIGO, b.BAR_NOME, b.BAR_CIDADE, ci.CID_CODIGO" +
-				"  FROM BAIRRO b, CIDADE ci WHERE b.BAR_CODIGO = ci.CID_CODIGO;";
+				"  FROM BAIRRO b, CIDADE ci WHERE b.BAR_CIDADE = ci.CID_CODIGO;";
 		
 		try{
 		
