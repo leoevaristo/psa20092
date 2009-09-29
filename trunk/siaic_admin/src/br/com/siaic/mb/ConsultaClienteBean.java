@@ -19,8 +19,8 @@ import br.com.siaic.dao.PessoaDAO;
 
 public class ConsultaClienteBean {
 	
-	private Cliente cliente;
 	
+	private Cliente cliente;	
 	
 	private Endereco endereco;
 	
@@ -29,6 +29,12 @@ public class ConsultaClienteBean {
 	private Estado estado;
 	
 	private Bairro bairro;
+	
+	private String tipoPesquisa;
+	
+	private String campoPesquisa;
+	
+	
 	
 	
 	public Bairro getBairro() {
@@ -65,7 +71,7 @@ public class ConsultaClienteBean {
 	}
 
 
-	private String tipoPesquisa;
+	
 	
 	
 	public Endereco getEndereco() {
@@ -203,6 +209,8 @@ public class ConsultaClienteBean {
 		daoPessoa.alterarPessoa(cliente);
 		daoCliente.alterarCliente(cliente);
 		daoEndereco.alterarEndereco(endereco);
+		
+		destroiSessao();
 
 		return r;
 
@@ -217,7 +225,7 @@ public class ConsultaClienteBean {
 	public String destroiSessao(){
 		
 		FacesContext contexto = FacesContext.getCurrentInstance();
-		contexto.getExternalContext().getSessionMap().remove("clienteBean");
+		contexto.getExternalContext().getSessionMap().remove("consultaClienteBean");
 		
 		return "destruido";
 	}
@@ -248,6 +256,54 @@ public class ConsultaClienteBean {
 	
 	public List<SelectItem> getLogradouro(){
 		return logradouro;
+	}
+	
+	public void escolheTipoPesquisa() throws SQLException{
+		
+		if(tipoPesquisa.equals("email")){
+			
+			pesquisaClientePorEmail(campoPesquisa);
+		
+		}else if(tipoPesquisa.equals("nome")){
+			
+			getClientePorNome();
+			
+		}else if(tipoPesquisa.equals("telefone")){
+			
+			pesquisaClientePorTelefone(campoPesquisa);
+		}
+		
+	}
+
+
+	private void pesquisaClientePorTelefone(String telefone) {
+		// TODO Auto-generated method stub
+			
+	}
+
+
+	public List<Cliente> getClientePorNome() throws SQLException {
+		
+		ClienteDAO daoCliente = new ClienteDAO();
+		
+		return daoCliente.getClientesPeloNome(campoPesquisa);
+		
+	}
+
+
+	private void pesquisaClientePorEmail(String email) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void setCampoPesquisa(String campoPesquisa) {
+		this.campoPesquisa = campoPesquisa;
+	}
+
+
+	public String getCampoPesquisa() {
+		return campoPesquisa;
 	}
 
 }
