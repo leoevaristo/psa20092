@@ -55,19 +55,7 @@
 				</f:facet>
 				<h:outputText value="#{estado.estadoSigla}" />
 			</h:column>
-						<h:column>
-				<f:facet name="header">
-					<h:outputText value="Excluir" />
-				</f:facet>
-				<h:form id="excluiEstado">
-					<h:commandLink id="excluir"
-						onclick="if (confirm('Você tem certeza que deseja excluir esse Estado?')) {return true }; return false;"
-						action="#{consultaEstadoBean.excluiEstado}">
-						<h:graphicImage value="/images/imgdelete.png" />
-					</h:commandLink>
-				</h:form>
-			</h:column>
-			
+					
 		</h:dataTable>
 	</ui:define>
 	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>

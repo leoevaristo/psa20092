@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.Usuario;
 
 /**
@@ -157,6 +158,50 @@ public class UsuarioDAO {
 		return listaTodosUsuarios;
 
 	}
+	
+	public List<Usuario> getUsuarioPeloNome(String nome) throws SQLException {
+
+		String sql = "SELECT p.PES_ENDERECO, p.PES_NOME, p.PES_TELEFONE, p.PES_CELULAR, p.PES_EMAIL, "
+			+ "c.PEU_CODIGO,c.PEU_LOGIN,c.PEU_SENHA,c.PEU_CRECI, "
+			+ "e.END_LOGRADOURO,e.END_NOME,e.END_CEP,e.END_BAIRRO,e.END_CODIGO "
+			+ "FROM PESSOA p, PESSOA_USUARIOS c, ENDERECO e "
+			+ "WHERE p.PES_NOME LIKE ? AND p.PES_ENDERECO = e.END_CODIGO AND p.PES_CODIGO = c.PEU_CODIGO;";
+
+		try{
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, "%" + nome + "%");
+
+			ResultSet rs = ps.executeQuery();
+
+			List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+
+			while (rs.next()) {
+			
+				Usuario usuario = new Usuario();
+				usuario.setCodigoPessoa(rs.getInt("PEU_CODIGO"));
+				usuario.setLogin(rs.getString("PEU_LOGIN"));
+				usuario.setSenha(rs.getString("PEU_SENHA"));
+				usuario.setCRECI(rs.getString("PEU_CRECI"));
+				usuario.setNome(rs.getString("PES_NOME"));
+				usuario.setEmail(rs.getString("PES_EMAIL"));
+				usuario.setTelefone(rs.getString("PES_TELEFONE"));
+
+				listaUsuarios.add(usuario);
+
+			}
+
+			ps.close();
+			rs.close();
+		
+			return listaUsuarios;
+		
+			}finally{
+				conexao.close();
+		}
+		
+	}
+
 
 	
 	/**
