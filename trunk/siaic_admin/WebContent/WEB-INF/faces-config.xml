@@ -78,6 +78,26 @@
 		<managed-bean-class>br.com.siaic.mb.endereco.BairroBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>cidadeBean</managed-bean-name>
+		<managed-bean-class>br.com.siaic.mb.endereco.CidadeBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>consultaBairroBean</managed-bean-name>
+		<managed-bean-class>br.com.siaic.mb.ConsultaBairroBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>consultaEstadoBean</managed-bean-name>
+		<managed-bean-class>br.com.siaic.mb.ConsultaEstadoBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>consultaCidadeBean</managed-bean-name>
+		<managed-bean-class>br.com.siaic.mb.ConsultaCidadeBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 	<!-- ENDEREÇO -->
 	<navigation-rule>
 		<from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>

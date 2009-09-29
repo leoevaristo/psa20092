@@ -23,7 +23,7 @@
 				</h:panelGroup>				
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo02"  value="Cidade"/>
-					<h:selectOneMenu value="#{bairroBean.bairro.bairroCidade}" id="campo02">
+					<h:selectOneMenu value="#{bairroBean.bairro.bairroCidade}" id="campo02" required="true">
 						<f:selectItems value="#{selectCidades.cidades}"></f:selectItems>
 						<f:convertNumber  integerOnly="true"/>
 					</h:selectOneMenu>						

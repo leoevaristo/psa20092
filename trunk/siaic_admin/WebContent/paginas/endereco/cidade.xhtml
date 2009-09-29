@@ -19,12 +19,12 @@
 						
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo01"  value="Nome"/>
-					<h:inputText value="#{cidadeBean.cidade.cidadeNome}" styleClass="obrigatorio" id="campo01"  />
+					<h:inputText value="#{cidadeBean.cidade.cidadeNome}" styleClass="obrigatorio" id="campo01" required="true" />
 				</h:panelGroup>
 				
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campo02"  value="Estado"/>
-					<h:selectOneMenu value="#{cidadeBean.cidade.cidadeEstado}" id="campo02">
+					<h:selectOneMenu value="#{cidadeBean.cidade.cidadeEstado}" id="campo02" required="true">
 						<f:selectItems value="#{selectEstados.estados}"></f:selectItems>
 					</h:selectOneMenu>						
 				</h:panelGroup> 
