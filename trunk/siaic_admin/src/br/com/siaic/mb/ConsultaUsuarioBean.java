@@ -178,7 +178,15 @@ public class ConsultaUsuarioBean {
 		return r;
 
 	}
+
+	public void escolheTipoPesquisa() throws SQLException{
+		
+		if(tipoPesquisa.equals("nome")){
+			
+			getUsuarioPorNome();
+		}
 	
+	}
 	
 	public List<Usuario> getUsuarioPorNome() throws SQLException {
 		
@@ -188,14 +196,7 @@ public class ConsultaUsuarioBean {
 		
 	}
 	
-	public void escolheTipoPesquisa() throws SQLException{
-		
-		if(tipoPesquisa.equals("nome")){
-			
-			getUsuarioPorNome();
-		}
-	
-	}
+
 
 	
 	
