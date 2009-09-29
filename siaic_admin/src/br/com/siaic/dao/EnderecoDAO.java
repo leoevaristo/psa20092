@@ -390,6 +390,38 @@ public class EnderecoDAO {
 		return retorno;  
 	}
 	
+	
+	
+	
+	
+	public boolean removerEstado(Estado estado) throws SQLException {
+
+		boolean retorno = false; 
+		String sql =  "DELETE FROM ESTADO WHERE EST_SIGLA = ? ";
+		try {
+			
+			FabricaConexao.getInstancia();
+			conexao = FabricaConexao.conectar();
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			
+			ps.setString(1, estado.getEstadoSigla());
+			ps.execute();
+			ps.close();
+			conexao.close();
+			retorno = true;
+			
+		}
+
+		catch (Exception e) {
+
+			throw new SQLException("N�o foi poss�vel realizar a atualiza��o" + e);
+		}
+		return retorno;  
+	}
+
+	
+	
+	
 	/**
  	 * Este m�todo ir� atualizar um registro na tabela Cidade enviando um objeto do tipo Cidade como argumento.
 	 * Aten��o: ser� considerada a Cidade a ser atualizada pelo c�digo contido dentro do objeto enviado como argumento.
