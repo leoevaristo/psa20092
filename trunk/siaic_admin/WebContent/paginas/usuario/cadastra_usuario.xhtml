@@ -15,52 +15,52 @@
 	</ui:define>
 	<ui:define name="conteudo">
 		<h:form styleClass="forms" id="form1">
-  		  <h:panelGroup styleClass="textcenter">
-				<h:outputLabel for="campo0" value="Pessoa" />
+  		 <h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campo0" value="Tipo de Pessoa" />
 				<h:selectOneMenu value="#{cadastraUsuarioBean.usuario.tipoPessoa}"
-					id="campo0" required="true">
-					<f:selectItem itemValue="F" itemLabel="Física" />
-			</h:selectOneMenu>
-			</h:panelGroup>
+					id="campo0" required="true" visible="false">
+				<f:selectItem itemValue="F" itemLabel="Física" />
+			   </h:selectOneMenu>
+		</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoNome" value="Nome" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.nome}"
-					styleClass="obrigatorio" id="campoNome" size="50" />
+					styleClass="obrigatorio" id="campoNome" size="50" required="true" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoLogin" value="Login" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.login}"
-					styleClass="obrigatorio" id="campoLogin" size="20" />
+					styleClass="obrigatorio" id="campoLogin" size="10" required="true" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoSenha" value="Senha" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.senha}"
-					styleClass="obrigatorio" id="campoSenha" size="20" />
+					styleClass="obrigatorio" id="campoSenha" size="10" required="true" />
 			</h:panelGroup>
 
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCRECI" value="CRECI" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.CRECI}"
-					styleClass="obrigatorio" id="campoCRECI" size="15" />
+					styleClass="obrigatorio" id="campoCRECI" size="15" required="true" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoEmail" value="E-mail" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.email}"
-					styleClass="obrigatorio" id="campoEmail" size="50" />
+					styleClass="obrigatorio" id="campoEmail" size="30" required="true" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoTelefone" value="Telefone" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.telefone}"
-					styleClass="obrigatorio" id="campoTelefone" size="50" />
+					styleClass="obrigatorio" id="campoTelefone" size="12" required="true" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCelular" value="Celular" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.celular}"
-					id="campoCelular" size="50" />
+					id="campoCelular" size="12" required="true" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter" id="panelSexo">
 				<h:outputLabel for="sexo" value="Sexo" />
-				<h:selectOneMenu value="#{cadastraUsuarioBean.usuario.sexo}" id="sexo">
+				<h:selectOneMenu value="#{cadastraUsuarioBean.usuario.sexo}" id="sexo" required="true">
 					<f:selectItem itemValue="" itemLabel="Sexo" />
 					<f:selectItem itemValue="M" itemLabel="Masculino" />
 					<f:selectItem itemValue="F" itemLabel="Feminino" />
@@ -68,28 +68,28 @@
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoEstado" value="Estado" />
-				<h:selectOneMenu value="" id="campoEstado">
+				<h:selectOneMenu value="" id="campoEstado" required="true">
 					<f:selectItem itemValue="" itemLabel="Estado"/>
 					<f:selectItems value="#{selectEstados.estados}" />					
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCidade" value="Cidade" />
-				<h:selectOneMenu value="#{cadastraUsuarioBean.cidade.cidadeCodigo}" id="campoCidade">
+				<h:selectOneMenu value="#{cadastraUsuarioBean.cidade.cidadeCodigo}" id="campoCidade" required="true">
 					<f:selectItem itemValue="" itemLabel="Cidade"/>
 					<f:selectItems value="#{selectCidades.cidades}"/>				
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoBairro" value="Bairro" />
-				<h:selectOneMenu value="#{cadastraUsuarioBean.endereco.enderecoBairro.bairroCodigo}" id="campoBairro"> 
+				<h:selectOneMenu value="#{cadastraUsuarioBean.endereco.enderecoBairro.bairroCodigo}" id="campoBairro" required="true"> 
 					<f:selectItem itemValue="" itemLabel="Bairro"/>
 					<f:selectItems  value="#{selectBairros.bairros}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoLogradouro" value="Logradouro"/>
-				<h:selectOneMenu value="#{cadastraUsuarioBean.endereco.enderecoLogradouro}" id="campoLogradouro">
+				<h:selectOneMenu value="#{cadastraUsuarioBean.endereco.enderecoLogradouro}" id="campoLogradouro" required="true">
 					<f:selectItem itemValue="" itemLabel="Logradouro"/>
 					<f:selectItems value="#{cadastraClienteBean.logradouro}" />
 				</h:selectOneMenu>
@@ -97,12 +97,12 @@
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoNomeEnd" value="Endereço" />
 				<h:inputText value="#{cadastraUsuarioBean.endereco.enderecoNome}"
-				 id="campoNomeEnd" styleClass="obrigatorio" size="50" />
+				 id="campoNomeEnd" styleClass="obrigatorio" size="50" required="true" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCep" value="CEP" />
 				<h:inputText value="#{cadastraUsuarioBean.endereco.enderecoCep}"
-				 id="campoCep" styleClass="obrigatorio" size="50"/>
+				 id="campoCep" styleClass="obrigatorio" size="10" required="true"/>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />
@@ -110,7 +110,7 @@
 			<h:panelGroup styleClass="linha"></h:panelGroup>
 			<h:panelGroup styleClass="botoes">
 				<h:commandButton action="#{cadastraUsuarioBean.addUsuario}" value=""
-					styleClass="input_submit"  onclick="" />
+					styleClass="input_submit" />
 				<h:commandButton action="#" value="" type="reset"
 					styleClass="input_reset" />
 				<h:commandButton action="#" value="" styleClass="input_button" />

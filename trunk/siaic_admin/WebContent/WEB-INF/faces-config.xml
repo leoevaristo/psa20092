@@ -64,7 +64,7 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>cadastrarUsuarioBean</managed-bean-name>
+		<managed-bean-name>cadastraUsuarioBean</managed-bean-name>
 		<managed-bean-class>br.com.siaic.mb.CadastraUsuarioBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
@@ -198,6 +198,10 @@
 	</navigation-rule>
 	<navigation-rule>
 		<from-view-id>/paginas/usuario/cadastra_usuario.xhtml</from-view-id>
+		<navigation-case>
+		<from-outcome>sucesso</from-outcome>
+		<to-view-id>/paginas/usuario/sucesso_usuario.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
 		<from-view-id>/paginas/usuario/cadastra_usuario.xhtml</from-view-id>
