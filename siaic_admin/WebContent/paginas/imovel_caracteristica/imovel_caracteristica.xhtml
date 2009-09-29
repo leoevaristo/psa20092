@@ -8,43 +8,43 @@
 	<ui:composition template="/WEB-INF/template/template.xhtml">	
 	<ui:define name="tituloGrande">Caracteristicas do Imovel</ui:define>
 	<ui:define name="subtitulo">Menu</ui:define>
-=======
+
 	<ui:define name="tituloGrande">
 	  <h:outputText value="Características do Imóvel" />
 	</ui:define>
 	<ui:define name="subtitulo">
 	  <h:outputText value="Cadastrar"/>
 	</ui:define>
->>>>>>> .r387
+
 	<ui:define name="conteudo">
 		<h:form styleClass="forms">
-		  <span>
-			<h:panelGroup>
-				<h:outputLabel for="dormitorio" value="Quantidade de dormitórios" />
+		  
+		  <h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="dormitorio" value="Qtde de dormitorios" />
 				<h:inputText value="#{imovelCaracteristicaBean.imovelCaracteristica.qtdeDormitorio}" id="dormitorio" styleClass="opcional"/>
 			</h:panelGroup>
-		  </span>
-		  <span>
-			<h:panelGroup>
-				<h:outputLabel for="suite" value="Quantidade de Suítes" />
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="suite" value="Qtde de Suites" />
 				<h:inputText value="#{imovelCaracteristicaBean.imovelCaracteristica.qtdeSuite}" id="suite" styleClass="opcional"/>
 			</h:panelGroup>
-		  </span>
-		  <span>
-			<h:panelGroup>
-				<h:outputLabel for="garagem" value="Quantidade de Vagas da Garagem" />
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="garagem" value="Qtde de Vagas da Garagem" />
 				<h:inputText value="#{imovelCaracteristicaBean.imovelCaracteristica.qtdeGaragem}" id="garagem" styleClass="opcional"/>
 			</h:panelGroup>
-		  </span>
-		  <span>
-			<h:panelGroup id="panelPiscina">
-				<!--<h:outputLabel for="piscina" value="Piscina" />
+			<h:panelGroup styleClass="textcenter" >
+				<h:outputLabel for="piscina" value="Piscina" />
 				<h:selectOneMenu value="#{imovelCaracteristicaBean.imovelCaracteristica.piscina}" id="piscina">
 					<f:selectItem itemValue="S" itemLabel="Sim" />
-					<f:selectItem itemValue="N" itemLabel="Não" />
-				</h:selectOneMenu> -->
+					<f:selectItem itemValue="N" itemLabel="Nao" />
+				</h:selectOneMenu>
 			</h:panelGroup>
-		  </span>
+			
+			<h:panelGroup styleClass="botoes">
+				<h:commandButton action="#{imovelCaracteristicaBean.atualizaCarac}" value=""
+					styleClass="input_submit" />
+				<h:commandButton action="#" value=""
+					styleClass="input_button" immediate="true" />
+			 </h:panelGroup>
 			
 		</h:form>
 	</ui:define>
