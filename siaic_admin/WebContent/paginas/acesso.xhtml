@@ -13,11 +13,11 @@
 			<h:form styleClass="forms">				
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campoLogin"  value="Nome"/>
-					<h:inputText value="#" styleClass="obrigatorio" id="campoLogin"/>
+					<h:inputText value="#{consultaUsuarioBean.usuario.login}" styleClass="obrigatorio" id="campoLogin"/>
 				</h:panelGroup>	
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campoSenha"  value="Senha"/>
-					<h:inputText value="#" styleClass="obrigatorio" id="campoSenha"  />				
+					<h:inputText value="#{consultaUsuarioBean.usuario.senha}" styleClass="obrigatorio" id="campoSenha"  />				
 				</h:panelGroup>					
 				<h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="campoPerfil"  value="Perfil"/>
@@ -30,7 +30,7 @@
 				</h:panelGroup>
 				<h:panelGroup styleClass="linha"></h:panelGroup>
 				<h:panelGroup styleClass="botoes">
-					<h:commandButton action="#" value="" styleClass="input_submit" />
+					<h:commandButton action="#{consultaUsuarioBean.login}" value="" styleClass="input_submit" />
 					<h:commandButton action="#" value="" type="reset" styleClass="input_reset" />
 					<!-- <h:commandButton action="#" value="" styleClass="input_button" />-->
 				</h:panelGroup>						
