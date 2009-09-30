@@ -6,10 +6,8 @@ import java.util.List;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
-import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.Usuario;
 import br.com.siaic.businesslogic.endereco.Endereco;
-import br.com.siaic.dao.ClienteDAO;
 import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.PessoaDAO;
 import br.com.siaic.dao.UsuarioDAO;
@@ -18,6 +16,7 @@ public class ConsultaUsuarioBean {
 	
 	private Usuario usuario;
 	
+	private Usuario login;
 	
 	private Endereco endereco;
 	
@@ -25,6 +24,17 @@ public class ConsultaUsuarioBean {
 	
 	private String campoPesquisa;
 	
+
+	public Usuario getLogin() {
+		return login;
+	}
+
+
+	public void setLogin(Usuario login) {
+		this.login = login;
+	}
+
+
 	public String getTipoPesquisa() {
 		return tipoPesquisa;
 	}
@@ -187,7 +197,7 @@ public class ConsultaUsuarioBean {
 		
     	UsuarioDAO daoUsuario = new UsuarioDAO();
 		
-		daoUsuario.Login(usuario);
+		daoUsuario.getAcessoUsuario(login);
 
 		return r;
 
@@ -201,8 +211,7 @@ public class ConsultaUsuarioBean {
 			
 			getUsuarioPorNome();
 		}
-	
-	}
+}
 	
 	public List<Usuario> getUsuarioPorNome() throws SQLException {
 		

@@ -5,7 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:composition template="/WEB-INF/template/template.xhtml">	
+	<ui:composition template="/WEB-INF/template/templateAcesso.xhtml">	
 		<ui:define name="tituloGrande"> 
 			<h:outputText value="Acesso SIAIC" />
 		 </ui:define>			 
@@ -19,23 +19,17 @@
 					<h:outputLabel for="campoSenha"  value="Senha"/>
 					<h:inputText value="#{consultaUsuarioBean.usuario.senha}" styleClass="obrigatorio" id="campoSenha"  />				
 				</h:panelGroup>					
-				<h:panelGroup styleClass="textcenter">
-					<h:outputLabel for="campoPerfil"  value="Perfil"/>
-					<h:selectOneMenu value="#" id="campoPerfil" >
-						<f:selectItem itemValue="Adm" itemLabel="Administrador"/>
-					</h:selectOneMenu>					
-				</h:panelGroup>					
 				<h:panelGroup>
 					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
 				</h:panelGroup>
 				<h:panelGroup styleClass="linha"></h:panelGroup>
 				<h:panelGroup styleClass="botoes">
-					<h:commandButton action="#{consultaUsuarioBean.login}" value="" styleClass="input_submit" />
+					<h:commandButton action="#{consultaUsuarioBean.acessoUsuario}" value="" styleClass="input_submit" />
 					<h:commandButton action="#" value="" type="reset" styleClass="input_reset" />
 					<!-- <h:commandButton action="#" value="" styleClass="input_button" />-->
 				</h:panelGroup>						
 			</h:form>		
 		</ui:define>		  
-		<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
+		<!-- <ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define> -->
 	</ui:composition>
 </html>

@@ -204,28 +204,44 @@ public class UsuarioDAO {
 
 
 
-	public void Login (Usuario usuario) throws SQLException {
+	
+	
+	public List<Usuario> getAcessoUsuario(Usuario login) throws SQLException {
 
-		String sql = "SELECT u.PEU_LOGIN, u.PEU_SENHA"
-				+ " FROM PESSOA_USUARIOS u";
+		String sql = "SELECT u.PEU_LOGIN, u.PEU_SENHA "
+			+ "FROM PESSOA_USUARIOS u "
+			+ "WHERE u.PEU_LOGIN LIKE ? ";
 
-		try {
-
+		try{
+			
 			PreparedStatement ps = conexao.prepareStatement(sql);
-			ps.setString(1, usuario.getLogin());
-			ps.setString(2, usuario.getSenha());
+			ps.setString(1,"%"+login+"%");
 
-			ps.executeUpdate();
+			ResultSet rs = ps.executeQuery();
+
+			List<Usuario> listaAcesso = new ArrayList<Usuario>();
+
+			while (rs.next()) {
+			
+				Usuario usuario = new Usuario();
+				usuario.setLogin(rs.getString("PEU_LOGIN"));
+				usuario.setSenha(rs.getString("PEU_SENHA"));
+
+				listaAcesso.add(login);
+
+			}
+
 			ps.close();
-
+			rs.close();
+		
+			return listaAcesso;
+		
+			}finally{
+				conexao.close();
 		}
-
-		catch (Exception e) {
-
-			throw new SQLException("N�o foi poss�vel alterar o banco de dados.");
-
-		}
+		
 	}
+	
 
 	
 	
