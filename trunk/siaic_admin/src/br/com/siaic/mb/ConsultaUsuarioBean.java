@@ -179,6 +179,22 @@ public class ConsultaUsuarioBean {
 
 	}
 
+	
+	public String acessoUsuario() throws SQLException {
+		// TODO
+		
+		String r = "logado";
+		
+    	UsuarioDAO daoUsuario = new UsuarioDAO();
+		
+		daoUsuario.Login(usuario);
+
+		return r;
+
+	}
+	
+	
+	
 	public void escolheTipoPesquisa() throws SQLException{
 		
 		if(tipoPesquisa.equals("nome")){

@@ -93,7 +93,7 @@ public class UsuarioDAO {
 
 	public void alterarUsuario(Usuario usuario) throws SQLException {
 
-		String sql = "UPDATE PESSOA_USUARIO SET PEU_CRECI = ?, PEU_LOGIN = ?, PEU_SENHA = ?"
+		String sql = "UPDATE PESSOA_USUARIOS SET PEU_CRECI = ?, PEU_LOGIN = ?, PEU_SENHA = ?"
 				+ " WHERE PEU_CODIGO = ?";
 
 		try {
@@ -203,6 +203,32 @@ public class UsuarioDAO {
 	}
 
 
+
+	public void Login (Usuario usuario) throws SQLException {
+
+		String sql = "SELECT u.PEU_LOGIN, u.PEU_SENHA"
+				+ " FROM PESSOA_USUARIOS u";
+
+		try {
+
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, usuario.getLogin());
+			ps.setString(2, usuario.getSenha());
+
+			ps.executeUpdate();
+			ps.close();
+
+		}
+
+		catch (Exception e) {
+
+			throw new SQLException("N�o foi poss�vel alterar o banco de dados.");
+
+		}
+	}
+
+	
+	
 	
 	/**
 	 * 
