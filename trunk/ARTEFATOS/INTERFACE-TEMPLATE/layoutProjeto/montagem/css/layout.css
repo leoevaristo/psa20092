@@ -1,4 +1,5 @@
 @charset "iso-8859-1";
+@import url("login.css");
 /* CSS Document
 	@Data: 13/09/2009
 	@Author: José Carlos Lacerda
@@ -317,6 +318,7 @@ div#container div#content div#col_right span#bgright_rodape{
 	background:url(../images/bgright_rodape.png) no-repeat;
 	display:block;
 }
+
 /* -- fim Container -> header -> col_left -- */
 
 
