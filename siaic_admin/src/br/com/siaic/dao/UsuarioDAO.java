@@ -159,6 +159,39 @@ public class UsuarioDAO {
 
 	}
 	
+	
+	public List<Usuario> getUsuariosLogin(Usuario login) throws SQLException {
+		// TODO
+		String sql = "SELECT PEU_LOGIN "
+				+ " FROM PESSOA_USUARIOS "
+				+ "WHERE u.PEU_LOGIN LIKE ? ";
+
+		PreparedStatement ps = conexao.prepareStatement(sql);
+		ps.setString(1, "%" + login + "%");
+		
+		ResultSet rs = ps.executeQuery();
+
+		List<Usuario> listaUsuariosLogin = new ArrayList<Usuario>();
+
+		while (rs.next()) {
+
+			Usuario usuario = new Usuario();
+
+			usuario.setLogin(rs.getString("PEU_LOGIN"));
+	
+
+			listaUsuariosLogin.add(usuario);
+
+		}
+		conexao.close();
+
+		return listaUsuariosLogin;
+
+	}
+	
+	
+	
+	
 	public List<Usuario> getUsuarioPeloNome(String nome) throws SQLException {
 
 		String sql = "SELECT p.PES_ENDERECO, p.PES_NOME, p.PES_TELEFONE, p.PES_CELULAR, p.PES_EMAIL, "
