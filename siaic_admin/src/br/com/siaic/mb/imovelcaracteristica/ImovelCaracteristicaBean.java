@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.tools.JavaCompiler;
 
 import br.com.siaic.businesslogic.ImovelCaracteristica;
 import br.com.siaic.dao.ImovelCaracteristicaDAO;
@@ -19,6 +20,15 @@ public class ImovelCaracteristicaBean {
 	
 	private ImovelCaracteristica imovelCaracteristica;
 	
+	private int codigo;
+	
+	public void setCodigo(int valor) {
+		this.codigo = valor;
+	}
+	public int getCodigo() {
+		return codigo;
+	}
+	
 	public ImovelCaracteristicaBean(){
 		imovelCaracteristica = new ImovelCaracteristica();
 		this.consultaCaracteristica();
@@ -33,10 +43,7 @@ public class ImovelCaracteristicaBean {
 	}
 	
 	public String consultaCaracteristica() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
-		Integer codCarac = new Integer(req.getParameter("codigoCarac")).intValue();
-
+        Integer codCarac = this.getCodigoParam();
 		try {
 			if (codCarac != null) {
 			    this.imovelCaracteristica = ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(codCarac);
@@ -47,10 +54,10 @@ public class ImovelCaracteristicaBean {
 			    }
 			} else 
 				return "";
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException ee) {
+			ee.printStackTrace();
 		}
-		return "consultacaracteristica";
+		return "";
 	}
 	
 	public String addImovelCaracteristica() throws SQLException{
@@ -63,12 +70,26 @@ public class ImovelCaracteristicaBean {
 	
 	public String atualizaCarac() {
 	    try {
-			ImovelCaracteristicaDAO.getInstance().altImovelCaracteristica(this.imovelCaracteristica, this.imovelCaracteristica);
-			this.imovelCaracteristica = ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(this.imovelCaracteristica.getCodigo());
-		} catch (SQLException e) {
-			e.printStackTrace();
+			Integer codCarac = this.getCodigoParam();
+	    	ImovelCaracteristicaDAO.getInstance().altImovelCaracteristica(this.imovelCaracteristica, this.imovelCaracteristica);
+			this.imovelCaracteristica = ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(codCarac);
+		} catch (SQLException ee) {
+			ee.printStackTrace();
 		}
 		return "";
+	}
+	
+	public Integer getCodigoParam() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
+		Integer codCarac = null;
+		if (req.getParameter("codigoCarac") != null)
+		    codCarac = new Integer(req.getParameter("codigoCarac")).intValue();
+		return codCarac;
+	}
+	
+	public String voltarParaImovel() {
+		return "imovel";
 	}
 	
 	public static void main(String[] args) {

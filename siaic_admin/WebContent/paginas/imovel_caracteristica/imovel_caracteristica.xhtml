@@ -15,10 +15,12 @@
 	<ui:define name="subtitulo">
 	  <h:outputText value="Cadastrar"/>
 	</ui:define>
-
+    
 	<ui:define name="conteudo">
 		<h:form styleClass="forms">
-		  
+		  <!-- FORCEPS PATTERN KKKK -->
+		  <input type="hidden" value="#{imovelCaracteristicaBean.imovelCaracteristica.codigo}" name="codigoCarac" />
+		
 		  <h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="dormitorio" value="Qtde de dormitorios" />
 				<h:inputText value="#{imovelCaracteristicaBean.imovelCaracteristica.qtdeDormitorio}" id="dormitorio" styleClass="opcional"/>
@@ -40,11 +42,9 @@
 			</h:panelGroup>
 			
 			<h:panelGroup styleClass="botoes">
-				<h:commandButton action="#{imovelCaracteristicaBean.atualizaCarac}" value=""
-					styleClass="input_submit" />
-				<h:commandButton action="#" value=""
-					styleClass="input_button" immediate="true" />
-			 </h:panelGroup>
+				<h:commandButton action="#{imovelCaracteristicaBean.atualizaCarac}" value="" styleClass="input_submit" />
+				<h:commandButton action="#{imovelCaracteristicaBean.voltarParaImovel}" value="" styleClass="input_button" immediate="true" />
+			</h:panelGroup>
 			
 		</h:form>
 	</ui:define>
