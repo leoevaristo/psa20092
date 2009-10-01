@@ -163,7 +163,7 @@
 			<to-view-id>/paginas/imovel/imoveis.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
-	</navigation-rule>
+<!--  	</navigation-rule>-->
 	</navigation-rule>
  <navigation-rule>
   <from-view-id>/paginas/agenda/cadastrar_agenda.xhtml</from-view-id>
