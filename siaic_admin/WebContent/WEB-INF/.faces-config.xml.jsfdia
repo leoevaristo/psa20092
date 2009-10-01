@@ -82,41 +82,9 @@
   PATH="/paginas/agenda/cadastrar_agenda.xhtml" SHAPE="288,513,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#paginas#agenda#cadastrar_agenda.xhtml:0"
    NAME="item" PATH="/paginas/agenda/cadastrar_agenda.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="ConsultarCliente::#paginas#agenda#consultar_cliente_agenda.xhtml"
-    NAME="output" PATH="/paginas/agenda/consultar_cliente_agenda.xhtml"
-    TARGET="rules:#paginas#agenda#consultar_cliente_agenda.xhtml"
-    TITLE="ConsultarCliente" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
-  <PROCESS-ITEM ID="rules:#paginas#agenda#cadastrar_agenda.xhtml:1"
-   NAME="item1" PATH="/paginas/agenda/cadastrar_agenda.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="ConsultarCorretor::#paginas#agenda#consultar_corretor_agenda.xhtml"
-    NAME="output" PATH="/paginas/agenda/consultar_corretor_agenda.xhtml"
-    TARGET="rules:#paginas#agenda#consultar_corretor_agenda.xhtml"
-    TITLE="ConsultarCorretor" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
-  <PROCESS-ITEM ID="rules:#paginas#agenda#cadastrar_agenda.xhtml:2"
-   NAME="item2" PATH="/paginas/agenda/cadastrar_agenda.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="ConsultarImovel::#paginas#agenda#consultar_imovel_agenda.xhtml"
-    NAME="output" PATH="/paginas/agenda/consultar_imovel_agenda.xhtml"
-    TARGET="rules:#paginas#agenda#consultar_imovel_agenda.xhtml"
-    TITLE="ConsultarImovel" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM
-  NAME="rules:#paginas#agenda#consultar_cliente_agenda.xhtml"
-  PATH="/paginas/agenda/consultar_cliente_agenda.xhtml"
-  SHAPE="32,497,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM
-   ID="rules:#paginas#agenda#consultar_cliente_agenda.xhtml:0"
-   NAME="item" PATH="/paginas/agenda/consultar_cliente_agenda.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="SelecionarCliente::#paginas#agenda#cadastrar_agenda.xhtml"
-    NAME="output" PATH="/paginas/agenda/cadastrar_agenda.xhtml"
-    TARGET="rules:#paginas#agenda#cadastrar_agenda.xhtml"
-    TITLE="SelecionarCliente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="sucesso::#paginas#agenda#sucesso.xhtml"
+    NAME="output" PATH="/paginas/agenda/sucesso.xhtml"
+    TARGET="rules:#paginas#agenda#sucesso.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#endereco#estado.xhtml"
@@ -126,45 +94,6 @@
    <PROCESS-ITEM-OUTPUT ID="sucesso::#paginas#endereco#estado.xhtml"
     NAME="output" PATH="/paginas/endereco/estado.xhtml"
     TARGET="rules:#paginas#endereco#estado.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#paginas#agenda#agenda.xhtml"
-  PATH="/paginas/agenda/agenda.xhtml" SHAPE="32,673,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#paginas#agenda#agenda.xhtml:0" NAME="item"
-   PATH="/paginas/agenda/agenda.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="CadastrarAgenda::#paginas#agenda#cadastrar_agenda.xhtml"
-    NAME="output" PATH="/paginas/agenda/cadastrar_agenda.xhtml"
-    TARGET="rules:#paginas#agenda#cadastrar_agenda.xhtml"
-    TITLE="CadastrarAgenda" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM
-  NAME="rules:#paginas#agenda#consultar_corretor_agenda.xhtml"
-  PATH="/paginas/agenda/consultar_corretor_agenda.xhtml"
-  SHAPE="32,785,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM
-   ID="rules:#paginas#agenda#consultar_corretor_agenda.xhtml:0"
-   NAME="item" PATH="/paginas/agenda/consultar_corretor_agenda.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="SelecionarCorretor::#paginas#agenda#cadastrar_agenda.xhtml"
-    NAME="output" PATH="/paginas/agenda/cadastrar_agenda.xhtml"
-    TARGET="rules:#paginas#agenda#cadastrar_agenda.xhtml"
-    TITLE="SelecionarCorretor" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM
-  NAME="rules:#paginas#agenda#consultar_imovel_agenda.xhtml"
-  PATH="/paginas/agenda/consultar_imovel_agenda.xhtml"
-  SHAPE="32,897,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM
-   ID="rules:#paginas#agenda#consultar_imovel_agenda.xhtml:0"
-   NAME="item" PATH="/paginas/agenda/consultar_imovel_agenda.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="SelecionarImovel::#paginas#agenda#cadastrar_agenda.xhtml"
-    NAME="output" PATH="/paginas/agenda/cadastrar_agenda.xhtml"
-    TARGET="rules:#paginas#agenda#cadastrar_agenda.xhtml"
-    TITLE="SelecionarImovel" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM
@@ -303,4 +232,17 @@
     TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#acesso.xhtml"
+  PATH="/paginas/acesso.xhtml" SHAPE="32,1521,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#acesso.xhtml:0" NAME="item"
+   PATH="/paginas/acesso.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logado::#paginas#BoasVindas.xhtml"
+    NAME="output" PATH="/paginas/BoasVindas.xhtml"
+    TARGET="rules:#paginas#BoasVindas.xhtml" TITLE="logado" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#agenda#sucesso.xhtml"
+  PATH="/paginas/agenda/sucesso.xhtml" SHAPE="448,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#BoasVindas.xhtml"
+  PATH="/paginas/BoasVindas.xhtml" SHAPE="240,1681,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
