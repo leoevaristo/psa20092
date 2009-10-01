@@ -209,7 +209,7 @@ public class ValorMercadoDAO {
 	 * @throws Exception
 	 *************************************************************** 
 	 */
-	public boolean alterarValorMercado(double valor, Bairro bairro) throws Exception {
+	public boolean alterarValorMercado(double valor, int bairro) throws Exception {
 		boolean alterou = false;
 		int resultado = 0;
 		
@@ -221,7 +221,7 @@ public class ValorMercadoDAO {
 			
 			pstm = this.con.prepareStatement(this.ALTERAR_VALOR_MERCADO);
 			pstm.setDouble(1, valor);
-			pstm.setInt(2, bairro.getBairroCodigo());
+			pstm.setInt(2, bairro);
 			resultado = pstm.executeUpdate();
 			if(resultado == 0) {
 				System.out.println("O valor de mercado não pode ser alterado. ");
