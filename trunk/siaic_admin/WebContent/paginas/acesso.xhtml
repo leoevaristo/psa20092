@@ -11,23 +11,23 @@
 		 </ui:define>			 
 		<ui:define name="conteudo"> 			
 			<h:form styleClass="forms">				
-				<h:panelGroup styleClass="textcenter">
+				<span>
 					<h:outputLabel for="campoLogin"  value="Nome"/>
-					<h:inputText value="#{consultaUsuarioBean.usuario.login}" styleClass="obrigatorio" id="campoLogin"/>
-				</h:panelGroup>	
-				<h:panelGroup styleClass="textcenter">
+					<h:inputText value="#{consultaUsuarioBean.usuario.login}" styleClass="obrigatorio campos" id="campoLogin"/>
+				</span>	
+				<span>
 					<h:outputLabel for="campoSenha"  value="Senha"/>
-					<h:inputText value="#{consultaUsuarioBean.usuario.senha}" styleClass="obrigatorio" id="campoSenha"  />				
-				</h:panelGroup>					
-				<h:panelGroup>
+					<h:inputText value="#{consultaUsuarioBean.usuario.senha}" styleClass="obrigatorio campos" id="campoSenha"  />				
+				</span>					
+				<span>
 					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
-				</h:panelGroup>
+				</span>
 				<h:panelGroup styleClass="linha"></h:panelGroup>
-				<h:panelGroup styleClass="botoes">
+				<span class="botoes">
 					<h:commandButton action="#{consultaUsuarioBean.acessoUsuario}" value="" styleClass="input_submit" />
 					<h:commandButton action="#" value="" type="reset" styleClass="input_reset" />
 					<!-- <h:commandButton action="#" value="" styleClass="input_button" />-->
-				</h:panelGroup>						
+				</span>						
 			</h:form>		
 		</ui:define>		  
 		<!-- <ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define> -->
