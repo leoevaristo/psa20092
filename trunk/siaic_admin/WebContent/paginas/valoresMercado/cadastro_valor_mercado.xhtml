@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="/WEB-INF/template/template.xhtml">
+		<ui:define name="tituloGrande"> 
+			<h:outputText value="Página Cadastro de Cidade" />
+		 </ui:define>		
+		<ui:define name="subtitulo">  
+			<h:outputText value="» Cadastrar Valor de Mercado" />
+		 </ui:define>		
+		 <ui:define name="conteudo"> 			
+			<h:form styleClass="forms">				
+			    <h:panelGroup styleClass="textcenter">
+					<h:outputLabel for="cmbBairros"  value="Bairro"/>
+					<h:selectOneMenu value="#{ValorMercadoBean.bairro.bairroNome}" id="campo02" required="true">
+						<f:selectItems value="#{selectBairros.bairros}">
+						</f:selectItems>
+					</h:selectOneMenu>						
+				</h:panelGroup> 
+				<h:panelGroup styleClass="textcenter">
+					<h:outputLabel for="campo01"  value="Valor Venal (R$)"/>
+					<h:inputText value="#{ValorMercadoBean.valorMercado.valor}" styleClass="obrigatorio" id="campo01" required="true" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
+				</h:panelGroup>
+				<h:panelGroup styleClass="linha"></h:panelGroup>
+				<h:panelGroup styleClass="botoes">
+					<h:commandButton action="#{ValorMercadoBean.addValorMercado}" value="Cadastrar" styleClass="input_submit" />
+					<h:commandButton  value="Limpar" type="reset" styleClass="input_reset" />
+					<h:commandButton  value="Cancelar" styleClass="input_button" />
+				</h:panelGroup>	
+				
+			</h:form>		
+		</ui:define>		
+		<ui:define name="tituloLista"> 
+			<h:outputText value="Lista de Usuarios" />
+		</ui:define>		
+		<ui:define name="linkNovo"> 	
+			<h:outputText value="" />		
+		</ui:define>		
+		<ui:define name="infoGerais">		
+				
+		</ui:define>		
+	  <ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>	
+	</ui:composition>
+
+</html>

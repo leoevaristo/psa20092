@@ -22,6 +22,13 @@
 		<managed-bean-class>br.com.siaic.mb.ImovelBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<!-- EVALOR MERCADO IÍNICIO -->
+	<managed-bean>
+		<managed-bean-name>ValorMercadoBean</managed-bean-name>
+		<managed-bean-class>br.com.siaic.mb.ValorMercadoBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<!-- VALOR MERCADO FIM -->
 	<!-- ENDERE�O -->
 	<managed-bean>
 		<managed-bean-name>estadoBean</managed-bean-name>
@@ -316,6 +323,14 @@
    <to-view-id>/paginas/imovel_caracteristica/imovel_caracteristica.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
+ 
+ <navigation-rule>
+		<from-view-id>/paginas/valoresMercado/cadastro_valor_mercado.xhtml</from-view-id>
+		<navigation-case>
+		<from-outcome>sucesso</from-outcome>
+		<to-view-id>/paginas/valoresMercado/cadastro_valor_mercado.xhtml</to-view-id>
+		</navigation-case>
+</navigation-rule>
 	
  <navigation-rule>
   <from-view-id>/paginas/acesso.xhtml</from-view-id>
