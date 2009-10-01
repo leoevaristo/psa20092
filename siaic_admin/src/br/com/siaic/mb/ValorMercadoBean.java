@@ -10,6 +10,7 @@ public class ValorMercadoBean {
 	
 	private ValorMercado valorMercado = null;
 	private Bairro bairro = null;
+	private double valor = 0.0;
 	
 	public ValorMercadoBean() {
 		this.valorMercado = new ValorMercado();
@@ -32,11 +33,25 @@ public class ValorMercadoBean {
 		this.bairro = bairro;
 	}
 
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
 	public String addValorMercado() throws Exception {
 		ValorMercadoDAO vmd = new ValorMercadoDAO();
 		valorMercado.setBairro(new EnderecoDAO().getBairroPorCodigo(Integer.parseInt(bairro.getBairroNome())));
 		System.out.println(valorMercado.getBairro().getBairroCodigo());
 		vmd.inserirValorMercado(valorMercado);
 		return "sucesso";
+	}
+	
+	public void consultarValorMercado() throws Exception {
+		ValorMercadoDAO vmd = new ValorMercadoDAO();
+		//valorMercado.setBairro(new EnderecoDAO().getBairroPorCodigo(Integer.parseInt(bairro.getBairroNome())));
+		valorMercado = vmd.consultaValorMercadoPorBairro(bairro);
 	}
 }
