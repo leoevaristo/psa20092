@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
 import br.com.siaic.businesslogic.Cliente;
@@ -34,6 +35,10 @@ public class CadastraClienteBean {
 	
 	
 	private static List<SelectItem> logradouro = new ArrayList<SelectItem>();
+	
+	private static List<SelectItem> cidades = new ArrayList<SelectItem>();
+	
+	
 	
 	
 	
@@ -159,6 +164,36 @@ public class CadastraClienteBean {
 		//TODO
 	}
 	
+	public void filtraCidadePorEstado(ValueChangeEvent event) throws SQLException{
+		
+		
+		if(event.getNewValue() != event.getOldValue()){
+			List<Cidade> cid = new ArrayList<Cidade>();
+			EnderecoDAO dao = new EnderecoDAO();
+			cid = dao.getCidadePorEstado(event.getNewValue().toString());
+			setCidades(cid);
+		
+		}
+	}
+	
+	public  List<SelectItem> getCidades()  {
+		return cidades;
+	}
+
+
+	public static  void setCidades(List<Cidade> listCidades) {
+		
+		if(!cidades.isEmpty()){
+			cidades.clear();
+		}
+		
+		for(Cidade cid : listCidades){
+			cidades.add(new SelectItem(cid.getCidadeCodigo(),cid.getCidadeNome()));
+		}
+	}
+	
+
+
 	
 
 }
