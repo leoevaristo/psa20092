@@ -730,5 +730,37 @@ public class EnderecoDAO {
 		
 		}
 	}
+	
+	public List<Cidade> getCidadePorEstado(String estadoSigla) throws SQLException
+	{
+		
+		String sql = 		"SELECT * " + 
+							"FROM " + 
+								"CIDADE " +
+							"WHERE " +
+								"CID_ESTADO = ?";
+
+		
+		FabricaConexao.getInstancia();
+		conexao = FabricaConexao.conectar();
+		PreparedStatement ps = conexao.prepareStatement(sql);
+		ps.setString(1, estadoSigla);
+		ResultSet rs = ps.executeQuery();
+		List<Cidade> cidades = new ArrayList<Cidade>();
+		
+		while(rs.next()){
+		
+			Cidade cid = new Cidade();
+			cid.setCidadeCodigo(rs.getInt("CID_CODIGO"));
+			cid.setCidadeNome(rs.getString("CID_NOME"));
+			cid.setCidadeEstado(rs.getString("CID_ESTADO"));	
+			cidades.add(cid);
+			
+		}
+		ps.close();
+		rs.close();
+		conexao.close();
+		return cidades;
+	}
 
 }//class

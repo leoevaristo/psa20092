@@ -1,8 +1,5 @@
 package br.com.siaic.businesslogic;
 
-import java.sql.Date;
-import java.sql.Time;
-
 import br.com.siaic.dao.AgendaDAO;
 import br.com.siaic.mb.agenda.AgendaBean;
 
@@ -20,54 +17,78 @@ import br.com.siaic.mb.agenda.AgendaBean;
 public class Agenda {
 
 	private int codigo;
-	private Cliente cliente;
-	private Usuario corretor;
-	private Imovel imovel;
-	private Date data;
-	private Time horaInicio;
-	private Time horaFim;
+	private int codCliente;
+	private int codCorretor;
+	private int codImovel;
+	private String data;
+	private String horaInicio;
+	private String horaFim;
 	private String descricao;
+	
 
 	/**
 	 * Construtor de Agenda.
 	 * 
 	 * @param Corretor
-	 *            - objeto {@link Usuario}. Não pode ser nulo.
+	 *            - objeto {@link Usuario}. Nï¿½o pode ser nulo.
 	 * @param Cliente
-	 *            - objeto {@link Cliente}. Não pode ser nulo.
+	 *            - objeto {@link Cliente}. Nï¿½o pode ser nulo.
 	 * @param Imovel
-	 *            - objeto {@link Imovel}. Não pode ser nulo.
+	 *            - objeto {@link Imovel}. Nï¿½o pode ser nulo.
 	 * @param data
 	 *            - data da visita.
 	 * @param horaInicio
-	 *            - horário do início da visita.
+	 *            - horï¿½rio do inï¿½cio da visita.
 	 * @param horaFim
-	 *            - horário do final da visita.
+	 *            - horï¿½rio do final da visita.
 	 * @param descricao
-	 *            - descrição e/ou detalhes da visita.
+	 *            - descriï¿½ï¿½o e/ou detalhes da visita.
 	 * @throws Exception
-	 *             é lançada caso algum dos valores obrigatórios seja nulo.
+	 *             ï¿½ lanï¿½ada caso algum dos valores obrigatï¿½rios seja nulo.
 	 */
-	public Agenda(Usuario corretor, Cliente cliente, Imovel imovel,
+	/*public Agenda(int corretor, Cliente cliente, Imovel imovel,
 			Date data, Time horaInicio, Time horaFim, String descricao)
 			throws Exception {
 		if ((corretor == null) || (cliente == null)
 				|| (imovel == null)) {
-			throw new Exception("Campo(s) obrigatório(s) nulo(s).");
+			throw new Exception("Campo(s) obrigatÃ³rio(s) nulo(s).");
 		}
-		this.corretor = corretor;
-		this.cliente = cliente;
+		this.codCorretor = corretor;
+		this.codCliente = cliente;
 		this.imovel = imovel;
 		this.data = data;
 		this.horaInicio = horaInicio;
 		this.horaFim = horaFim;
 		this.setDescricao(descricao);
-	}
+	}*/
 	
 	public Agenda(){
-		this.data = new Date(0);
-		this.horaFim = new Time(0);
-		this.horaInicio = new Time(0);
+
+
+	}
+
+	public int getCodCliente() {
+		return codCliente;
+	}
+
+	public void setCodCliente(int codCliente) {
+		this.codCliente = codCliente;
+	}
+
+	public int getCodCorretor() {
+		return codCorretor;
+	}
+
+	public void setCodCorretor(int codCorretor) {
+		this.codCorretor = codCorretor;
+	}
+
+	public int getCodImovel() {
+		return codImovel;
+	}
+
+	public void setCodImovel(int codImovel) {
+		this.codImovel = codImovel;
 	}
 
 	public int getCodigo() {
@@ -78,51 +99,27 @@ public class Agenda {
 		this.codigo = codigo;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-	public Usuario getCorretor() {
-		return corretor;
-	}
-
-	public void setCorretor(Usuario corretor) {
-		this.corretor = corretor;
-	}
-
-	public Imovel getImovel() {
-		return imovel;
-	}
-
-	public void setImovel(Imovel imovel) {
-		this.imovel = imovel;
-	}
-
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
-	public Time getHoraInicio() {
+	public String getHoraInicio() {
 		return horaInicio;
 	}
 
-	public void setHoraInicio(Time horaInicio) {
+	public void setHoraInicio(String horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 
-	public Time getHoraFim() {
+	public String getHoraFim() {
 		return horaFim;
 	}
 
-	public void setHoraFim(Time horaFim) {
+	public void setHoraFim(String horaFim) {
 		this.horaFim = horaFim;
 	}
 

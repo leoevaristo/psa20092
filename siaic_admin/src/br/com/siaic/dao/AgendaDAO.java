@@ -12,8 +12,8 @@ import br.com.siaic.businesslogic.Imovel;
 import br.com.siaic.businesslogic.Usuario;
 
 /**
- * Singleton - Responsavel por todas as consultas, inseções, exclusões, edições
- * e trasações com a base de dados na tabela "dbo.siaic.agenda".
+ * Singleton - Responsavel por todas as consultas, inseï¿½ï¿½es, exclusï¿½es, ediï¿½ï¿½es
+ * e trasaï¿½ï¿½es com a base de dados na tabela "dbo.siaic.agenda".
  * 
  * @author Robson R. Vieira da Cunha
  * @version 1.0
@@ -24,10 +24,7 @@ import br.com.siaic.businesslogic.Usuario;
  */
 public class AgendaDAO {
 	private static AgendaDAO instance;
-	
-	private static ClienteDAO cdao = new ClienteDAO();
-	private static ImovelDAO idao = new ImovelDAO();
-	private static UsuarioDAO udao = new UsuarioDAO();
+
 
 	public static AgendaDAO getInstance() {
 		if (AgendaDAO.instance == null) {
@@ -41,9 +38,9 @@ public class AgendaDAO {
 	 * mesma exista.
 	 * 
 	 * @param codigo
-	 *            - código da agenda.
-	 * @return {@code Agenda} caso exista uma com o codigo passa por parâmetro
-	 *         ou {@code null} caso contrário.
+	 *            - cï¿½digo da agenda.
+	 * @return {@code Agenda} caso exista uma com o codigo passa por parï¿½metro
+	 *         ou {@code null} caso contrï¿½rio.
 	 * @throws SQLException
 	 */
 	public Agenda getAgenda(int codigo) throws SQLException {
@@ -56,14 +53,12 @@ public class AgendaDAO {
 		if (rs.first()) {
 			a = new Agenda();
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
-			a.setCliente(cdao.getClientePorId(
-					rs.getInt("AGE_PESSOA_CLIENTE")));
-			a.setCorretor(udao.getUsuarioId(
-					rs.getInt("AGE_PESSOA_USUARIO")));
-			a.setImovel(idao.getImovel(rs.getInt("AGE_PESSOA_USUARIO")));
-			a.setData(rs.getDate("AGE_DATA"));
-			a.setHoraInicio(rs.getTime("AGE_HORA_INICIO"));
-			a.setHoraFim(rs.getTime("AGE_HORA_INICIO"));
+			a.setCodCliente(rs.getInt("AGE_PESSOA_CLIENTE"));
+			a.setCodCorretor(rs.getInt("AGE_PESSOA_USUARIO"));
+			a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
+			a.setData(rs.getString("AGE_DATA"));
+			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
+			a.setHoraFim(rs.getString("AGE_HORA_INICIO"));
 			a.setDescricao(rs.getString("AGE_DESCRICAO"));
 		}
 		rs.close();
@@ -88,15 +83,12 @@ public class AgendaDAO {
 		while (rs.next()) {
 			a = new Agenda();
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
-			a.setCliente(cdao.getClientePorId(
-					rs.getInt("AGE_PESSOA_CLIENTE")));
-			a.setCorretor(udao.getUsuarioId(
-					rs.getInt("AGE_PESSOA_USUARIO")));
-			a.setImovel(idao.getImovel(
-			rs.getInt("AGE_PESSOA_USUARIO")));
-			a.setData(rs.getDate("AGE_DATA"));
-			a.setHoraInicio(rs.getTime("AGE_HORA_INICIO"));
-			a.setHoraFim(rs.getTime("AGE_HORA_INICIO"));
+			a.setCodCliente(rs.getInt("AGE_PESSOA_CLIENTE"));
+			a.setCodCorretor(rs.getInt("AGE_PESSOA_USUARIO"));
+			a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
+			a.setData(rs.getString("AGE_DATA"));
+			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
+			a.setHoraFim(rs.getString("AGE_HORA_INICIO"));
 			a.setDescricao(rs.getString("AGE_DESCRICAO"));
 			l.add(a);
 		}
@@ -106,7 +98,7 @@ public class AgendaDAO {
 	}
 
 	/**
-	 * Lista todas as ocorrencias da tabela Agenda de um determinado Usuário
+	 * Lista todas as ocorrencias da tabela Agenda de um determinado Usuï¿½rio
 	 * (Corretor)
 	 * 
 	 * @param u
@@ -127,15 +119,12 @@ public class AgendaDAO {
 		while (rs.next()) {
 			a = new Agenda();
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
-			a.setCliente(cdao.getClientePorId(
-					rs.getInt("AGE_PESSOA_CLIENTE")));
-			a.setCorretor(udao.getUsuarioId(
-					rs.getInt("AGE_PESSOA_USUARIO")));
-			 a.setImovel(idao.getImovel(
-			 rs.getInt("AGE_PESSOA_USUARIO")));
-			a.setData(rs.getDate("AGE_DATA"));
-			a.setHoraInicio(rs.getTime("AGE_HORA_INICIO"));
-			a.setHoraFim(rs.getTime("AGE_HORA_INICIO"));
+			a.setCodCliente(rs.getInt("AGE_PESSOA_CLIENTE"));
+			a.setCodCorretor(rs.getInt("AGE_PESSOA_USUARIO"));
+			a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
+			a.setData(rs.getString("AGE_DATA"));
+			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
+			a.setHoraFim(rs.getString("AGE_HORA_INICIO"));
 			a.setDescricao(rs.getString("AGE_DESCRICAO"));
 			l.add(a);
 		}
@@ -165,15 +154,12 @@ public class AgendaDAO {
 		while (rs.next()) {
 			a = new Agenda();
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
-			a.setCliente(cdao.getClientePorId(
-					rs.getInt("AGE_PESSOA_CLIENTE")));
-			a.setCorretor(udao.getUsuarioId(
-					rs.getInt("AGE_PESSOA_USUARIO")));
-			 a.setImovel(idao.getImovel(
-			 rs.getInt("AGE_PESSOA_USUARIO")));
-			a.setData(rs.getDate("AGE_DATA"));
-			a.setHoraInicio(rs.getTime("AGE_HORA_INICIO"));
-			a.setHoraFim(rs.getTime("AGE_HORA_INICIO"));
+			a.setCodCliente(rs.getInt("AGE_PESSOA_CLIENTE"));
+			a.setCodCorretor(rs.getInt("AGE_PESSOA_USUARIO"));
+			a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
+			a.setData(rs.getString("AGE_DATA"));
+			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
+			a.setHoraFim(rs.getString("AGE_HORA_INICIO"));
 			a.setDescricao(rs.getString("AGE_DESCRICAO"));
 			l.add(a);
 		}
@@ -183,7 +169,7 @@ public class AgendaDAO {
 	}
 
 	/**
-	 * Lista todas as ocorrencias da tabela Agenda de um determinado Imóvel
+	 * Lista todas as ocorrencias da tabela Agenda de um determinado Imï¿½vel
 	 * 
 	 * @param i
 	 *            {@link Imovel}
@@ -204,15 +190,12 @@ public class AgendaDAO {
 		while (rs.next()) {
 			a = new Agenda();
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
-			a.setCliente(cdao.getClientePorId(
-					rs.getInt("AGE_PESSOA_CLIENTE")));
-			a.setCorretor(udao.getUsuarioId(
-					rs.getInt("AGE_PESSOA_USUARIO")));
-			 a.setImovel(idao.getImovel(
-			 rs.getInt("AGE_PESSOA_USUARIO")));
-			a.setData(rs.getDate("AGE_DATA"));
-			a.setHoraInicio(rs.getTime("AGE_HORA_INICIO"));
-			a.setHoraFim(rs.getTime("AGE_HORA_INICIO"));
+			a.setCodCliente(rs.getInt("AGE_PESSOA_CLIENTE"));
+			a.setCodCorretor(rs.getInt("AGE_PESSOA_USUARIO"));
+			a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
+			a.setData(rs.getString("AGE_DATA"));
+			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
+			a.setHoraFim(rs.getString("AGE_HORA_INICIO"));
 			 a.setDescricao(rs.getString("AGE_DESCRICAO"));
 			l.add(a);
 		}
@@ -223,17 +206,17 @@ public class AgendaDAO {
 
 	/**
 	 * Atualiza um registro na tabela Agenda.</br>Substitui o registro "atual"
-	 * representado pelo objeto passado por parâmetro pelo objeto "novo" também
-	 * passado por parâmetro.
+	 * representado pelo objeto passado por parï¿½metro pelo objeto "novo" tambï¿½m
+	 * passado por parï¿½metro.
 	 * 
 	 * @param atual
 	 *            - {@link Agenda} representa o registro atual na tabela
 	 *            "Agenda"
 	 * @param nova
-	 *            - {@link Agenda} representa o registro novo que substituirá o
+	 *            - {@link Agenda} representa o registro novo que substituirï¿½ o
 	 *            atual.
-	 * @return <code>true</code> caso a atualização seja realizada com sucesso
-	 *         ou <code>false</code> caso contrário
+	 * @return <code>true</code> caso a atualizaï¿½ï¿½o seja realizada com sucesso
+	 *         ou <code>false</code> caso contrï¿½rio
 	 * @throws SQLException
 	 */
 	public boolean AtualizarAgenda(Agenda atual, Agenda nova) throws SQLException {
@@ -245,12 +228,12 @@ public class AgendaDAO {
 				+ "where AGE_CODIGO = ?");
 		PreparedStatement ps = DB.getConn().prepareStatement(query);
 		ps.setInt(1, nova.getCodigo());
-		ps.setInt(2, nova.getCliente().getCodigoPessoa());
-		ps.setInt(3, nova.getCorretor().getCodigoPessoa());
-		ps.setInt(4, nova.getImovel().getCodigo());
-		ps.setDate(5, nova.getData());
-		ps.setTime(6, nova.getHoraInicio());
-		ps.setTime(7, nova.getHoraFim());
+		ps.setInt(2, nova.getCodCliente());
+		ps.setInt(3, nova.getCodCorretor());
+		ps.setInt(4, nova.getCodImovel());
+		ps.setString(5, nova.getData());
+		ps.setString(6, nova.getHoraInicio());
+		ps.setString(7, nova.getHoraFim());
 		ps.setString(8, nova.getDescricao());
 		ps.setInt(9, atual.getCodigo());
 		
@@ -260,11 +243,11 @@ public class AgendaDAO {
 	}
 	
 	/**
-	 * Deleta o registro na tabela Agenda representado pelo objeto {@link Agenda} passado por parâmetro.
+	 * Deleta o registro na tabela Agenda representado pelo objeto {@link Agenda} passado por parï¿½metro.
 	 * 
-	 * @param a - {@link Agenda} registro que será deletado.
-	 * @return <code>true</code> caso a exclusão seja realizada com sucesso
-	 *         ou <code>false</code> caso contrário.
+	 * @param a - {@link Agenda} registro que serï¿½ deletado.
+	 * @return <code>true</code> caso a exclusï¿½o seja realizada com sucesso
+	 *         ou <code>false</code> caso contrï¿½rio.
 	 * @throws SQLException
 	 */
 	public boolean ApagarAgenda(Agenda a) throws SQLException{
@@ -278,31 +261,42 @@ public class AgendaDAO {
 	}
 	
 	/**
-	 * Insere o registro na tabela Agenda representado pelo objeto {@link Agenda} passado por parâmetro.
+	 * Insere o registro na tabela Agenda representado pelo objeto {@link Agenda} passado por parï¿½metro.
 	 * 
-	 * @param a - {@link Agenda} que será inserida no banco de dados.
-	 * @return <code>true</code> caso a insersão seja realizada com sucesso
-	 *         ou <code>false</code> caso contrário.
+	 * @param a - {@link Agenda} que serï¿½ inserida no banco de dados.
+	 * @return <code>true</code> caso a insersï¿½o seja realizada com sucesso
+	 *         ou <code>false</code> caso contrï¿½rio.
 	 * @throws SQLException
 	 */
 	public boolean InserirAgenda(Agenda a) throws SQLException{
-		String query = new String("insert into agenda "
+		String query = new String("INSERT INTO AGENDA "
 				+ "(AGE_PESSOA_CLIENTE, AGE_PESSOA_USUARIO, "
 				+ "AGE_IMOVEL, AGE_DATA, AGE_HORA_INICIO, "
 				+ "AGE_HORA_FIM, AGE_DESCRICAO) "
 				+ "values (?, ?, ?, ?, ?, ?, ?)");
-		PreparedStatement ps = DB.getConn().prepareStatement(query);
 		
-		ps.setInt(1, a.getCliente().getCodigoPessoa());
-		ps.setInt(2, a.getCorretor().getCodigoPessoa());
-		ps.setInt(3, a.getImovel().getCodigo());
-		ps.setDate(4, a.getData());
-		ps.setTime(5, a.getHoraInicio());
-		ps.setTime(6, a.getHoraFim());
-		ps.setString(7, a.getDescricao());
+		try{
+			
+			PreparedStatement ps = DB.getConn().prepareStatement(query);
 		
-		boolean result = ps.executeUpdate() > 0;
-		ps.close();
-		return result;
+			ps.setInt(1, a.getCodCliente());
+			ps.setInt(2, a.getCodCorretor());
+			ps.setInt(3, a.getCodImovel());
+			ps.setString(4, a.getData());
+			ps.setString(5, a.getHoraInicio());
+			ps.setString(6, a.getHoraFim());
+			ps.setString(7, a.getDescricao());
+		
+			boolean result = ps.executeUpdate() > 0;
+			ps.close();
+			
+			
+			return result;
+			
+		}finally{
+			
+			DB.getConn().close();
+			
+		}
 	}
 }

@@ -16,12 +16,15 @@ import br.com.siaic.businesslogic.Imovel;
 public class ImovelDAO {
     private Query conn;
     
+    
+
     public ImovelDAO() {
     	this.conn = new Query();
+    	
     }
     
     /**
-     * Retorna o imóvel do código passado, do contrário retorna null.
+     * Retorna o imï¿½vel do cï¿½digo passado, do contrï¿½rio retorna null.
      * @param codigo
      * @return Imovel ou null.
      */
@@ -59,8 +62,9 @@ public class ImovelDAO {
     }
     
     public List<Imovel> getImoveis() {
+    	
     	List<Imovel> imos = new ArrayList<Imovel>();
-    	PreparedStatement ps = this.conn.getPreparedStatement("select * from imovel;");
+    	PreparedStatement ps = this.conn.getPreparedStatement("SELECT * FROM IMOVEL, ENDERECO WHERE IMOVEL.IMO_ENDERECO = ENDERECO.END_CODIGO;");
     	try {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next())
@@ -75,6 +79,7 @@ public class ImovelDAO {
 	            imo.setValorCondominio(rs.getInt("IMO_VALOR_CONDOMINIO"));
 	            imo.setProprietario(rs.getInt("IMO_CLIENTE"));
 	            imo.setEndereco(rs.getInt("IMO_ENDERECO"));
+	            System.out.println(rs.getInt("IMO_ENDERECO"));
 	            imos.add(imo);
 			}
 		} catch (SQLException e) {
@@ -87,6 +92,7 @@ public class ImovelDAO {
 				e.printStackTrace();
 			}
 		}
+		
     	return imos;
     }
     

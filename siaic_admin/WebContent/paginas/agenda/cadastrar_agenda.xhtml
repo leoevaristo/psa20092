@@ -14,36 +14,35 @@
 		<h:form styleClass="forms">
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="corretor" value="Corretor" />
-				<h:outputText value="#{cadastrarAgendaBean.corretor.nome}" id="corretor"/>
-			</h:panelGroup>
-			<h:panelGroup >
-				<h:commandLink  action="#{cadastrarAgendaBean.ConsultarCorretor}" >
-					<h:graphicImage value="/images/lupa.png" />
-				</h:commandLink>
+				<h:selectOneMenu value="#{cadastrarAgendaBean.agenda.codCorretor}" id="corretor">
+					<f:selectItem itemLabel="Corretor" itemValue="" />
+					<f:selectItems value="#{cadastrarAgendaBean.corretores}" />				 
+				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="cliente" value="Cliente" />
-				<h:outputText value="#{cadastrarAgendaBean.cliente.nome}" id="cliente"/>
-			</h:panelGroup>
-			<h:panelGroup >
-				<h:commandLink  action="#{cadastrarAgendaBean.ConsultarCliente}" >
+				<h:inputText value="#{cadastrarAgendaBean.cliente.nome}" id="cliente" 
+				valueChangeListener="#{cadastrarAgendaBean.listarClientes}"  />						
+				<h:commandLink  action="#">
 					<h:graphicImage value="/images/lupa.png" />
-				</h:commandLink>
+				</h:commandLink>				
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
-				<h:outputLabel for="imovel" value="Imovel" />
-				<h:outputText value="#{cadastrarAgendaBean.imovel.codigo}" id="imovel"/>
-			</h:panelGroup>
-			<h:panelGroup >
-				<h:commandLink action="#{cadastrarAgendaBean.ConsultarImovel}">
-					<h:graphicImage value="/images/lupa.png" />
-				</h:commandLink>
+				<h:selectOneMenu value="#{cadastrarAgendaBean.agenda.codCliente}">
+					<f:selectItems value="#{cadastrarAgendaBean.listaClientesSelect}" />
+				</h:selectOneMenu>
+			</h:panelGroup>				
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel value="Imóvel" for="imovel" />				
+				<h:selectOneMenu value="#{cadastrarAgendaBean.agenda.codImovel}" id="imovel">
+					<f:selectItems value="#{cadastrarAgendaBean.listaImoveis}" />
+				</h:selectOneMenu>									
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="data" value="Data" />
 				<h:inputText value="#{cadastrarAgendaBean.agenda.data}" id="data" styleClass="obrigatorio" >
-					<f:convertDateTime pattern="dd/MM/yyyy"/>
-				</h:inputText>
+					
+				</h:inputText> 
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="horaInicio" value="Hora de inicio (h:m:s)" />
@@ -56,9 +55,15 @@
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="descricao" value="Descricao" />
 				<h:inputTextarea value="#{cadastrarAgendaBean.agenda.descricao}" id="descricao" />
-			</h:panelGroup>
-							
-		</h:form>
+			</h:panelGroup>		
+			<h:panelGroup styleClass="linha"></h:panelGroup>
+			<h:panelGroup styleClass="botoes">
+				<h:commandButton action="#{cadastrarAgendaBean.criarRegistro}" value=""
+					styleClass="input_submit"/>
+				<h:commandButton action="#" value="" styleClass="input_reset" />
+				<h:commandButton action="#{cadastraClienteBean.limpaCampos}" value="" styleClass="input_button" />
+			</h:panelGroup>						
+		</h:form>		
 	</ui:define>
 	</ui:composition>
 </html>

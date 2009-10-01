@@ -164,62 +164,14 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/paginas/agenda/agenda.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>CadastrarAgenda</from-outcome>
-			<to-view-id>/paginas/agenda/cadastrar_agenda.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
 	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/paginas/agenda/cadastrar_agenda.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>ConsultarCliente</from-outcome>
-			<to-view-id>/paginas/agenda/consultar_cliente_agenda.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/paginas/agenda/consultar_cliente_agenda.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>SelecionarCliente</from-outcome>
-			<to-view-id>/paginas/agenda/cadastrar_agenda.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/paginas/agenda/cadastrar_agenda.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>ConsultarCorretor</from-outcome>
-			<to-view-id>/paginas/agenda/consultar_corretor_agenda.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/paginas/agenda/consultar_corretor_agenda.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>SelecionarCorretor</from-outcome>
-			<to-view-id>/paginas/agenda/cadastrar_agenda.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/paginas/agenda/cadastrar_agenda.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>ConsultarImovel</from-outcome>
-			<to-view-id>/paginas/agenda/consultar_imovel_agenda.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/paginas/agenda/consultar_imovel_agenda.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>SelecionarImovel</from-outcome>
-			<to-view-id>/paginas/agenda/cadastrar_agenda.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
-	</navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/agenda/cadastrar_agenda.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>sucesso</from-outcome>
+   <to-view-id>/paginas/agenda/sucesso.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
 	<navigation-rule>
 		<from-view-id>/paginas/imovel_caracteristica/cadastrar_imovel_caracteristica.xhtml</from-view-id>
 		<navigation-case>
