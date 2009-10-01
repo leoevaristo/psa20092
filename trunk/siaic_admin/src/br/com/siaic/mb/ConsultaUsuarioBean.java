@@ -96,6 +96,14 @@ public class ConsultaUsuarioBean {
 
 	}
 	
+	public List<Usuario> getUsuariosLogin() throws SQLException {
+
+		UsuarioDAO dao = new UsuarioDAO();
+		
+		return dao.getUsuariosLogin(login);
+
+	}
+	
 	
 	/**
 	 * 
