@@ -121,29 +121,18 @@
     TARGET="rules:#paginas#usuario#sucesso_usuario.xhtml"
     TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
-  <PROCESS-ITEM ID="rules:#paginas#usuario#cadastra_usuario.xhtml:1"
-   NAME="item1" PATH="/paginas/usuario/cadastra_usuario.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="altera::#paginas#usuario#altera_usuario.xhtml" NAME="output"
-    PATH="/paginas/usuario/altera_usuario.xhtml"
-    TARGET="rules:#paginas#usuario#altera_usuario.xhtml" TITLE="altera" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#paginas#usuario#altera_usuario.xhtml"
-  PATH="/paginas/usuario/altera_usuario.xhtml" SHAPE="32,1121,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#paginas#usuario#altera_usuario.xhtml:0"
-   NAME="item" PATH="/paginas/usuario/altera_usuario.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="destruido::#paginas#usuario#cadastra_usuario.xhtml"
-    NAME="output" PATH="/paginas/usuario/cadastra_usuario.xhtml"
-    TARGET="rules:#paginas#usuario#cadastra_usuario.xhtml"
-    TITLE="destruido" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#usuario#consulta_usuario.xhtml"
   PATH="/paginas/usuario/consulta_usuario.xhtml" SHAPE="32,1265,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#paginas#usuario#consulta_usuario.xhtml:0"
    NAME="item" PATH="/paginas/usuario/consulta_usuario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="altera::#paginas#usuario#alterar_usuario.xhtml" NAME="output"
+    PATH="/paginas/usuario/alterar_usuario.xhtml"
+    TARGET="rules:#paginas#usuario#alterar_usuario.xhtml" TITLE="altera" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#paginas#usuario#consulta_usuario.xhtml:1"
+   NAME="item1" PATH="/paginas/usuario/consulta_usuario.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
     ID="detalhes::#paginas#usuario#detalhes_usuario.xhtml" NAME="output"
     PATH="/paginas/usuario/detalhes_usuario.xhtml"
@@ -245,4 +234,66 @@
   PATH="/paginas/agenda/sucesso.xhtml" SHAPE="448,593,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#paginas#BoasVindas.xhtml"
   PATH="/paginas/BoasVindas.xhtml" SHAPE="240,1681,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#usuario#alterar_usuario.xhtml"
+  PATH="/paginas/usuario/alterar_usuario.xhtml" SHAPE="32,1329,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#usuario#alterar_usuario.xhtml:0"
+   NAME="item" PATH="/paginas/usuario/alterar_usuario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="destruido::#paginas#usuario#cadastra_usuario.xhtml"
+    NAME="output" PATH="/paginas/usuario/cadastra_usuario.xhtml"
+    TARGET="rules:#paginas#usuario#cadastra_usuario.xhtml"
+    TITLE="destruido" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#agenda#consulta_agenda.xhtml"
+  PATH="/paginas/agenda/consulta_agenda.xhtml" SHAPE="272,753,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#agenda#consulta_agenda.xhtml:0"
+   NAME="item" PATH="/paginas/agenda/consulta_agenda.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="sucesso::#paginas#agenda#alterar_agenda.xhtml" NAME="output"
+    PATH="/paginas/agenda/alterar_agenda.xhtml"
+    TARGET="rules:#paginas#agenda#alterar_agenda.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#paginas#agenda#consulta_agenda.xhtml:1"
+   NAME="item1" PATH="/paginas/agenda/consulta_agenda.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="detalhes::#paginas#agenda#detalhes_agenda.xhtml" NAME="output"
+    PATH="/paginas/agenda/detalhes_agenda.xhtml"
+    TARGET="rules:#paginas#agenda#detalhes_agenda.xhtml"
+    TITLE="detalhes" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#agenda#agenda.xhtml"
+  PATH="/paginas/agenda/agenda.xhtml" SHAPE="32,593,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#agenda#agenda.xhtml:0" NAME="item"
+   PATH="/paginas/agenda/agenda.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastra::#paginas#agenda#cadastrar_agenda.xhtml" NAME="output"
+    PATH="/paginas/agenda/cadastrar_agenda.xhtml"
+    TARGET="rules:#paginas#agenda#cadastrar_agenda.xhtml"
+    TITLE="cadastra" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="consulta::#paginas#agenda#consulta_agenda.xhtml" NAME="output1"
+    PATH="/paginas/agenda/consulta_agenda.xhtml"
+    TARGET="rules:#paginas#agenda#consulta_agenda.xhtml"
+    TITLE="consulta" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#agenda#alterar_agenda.xhtml"
+  PATH="/paginas/agenda/alterar_agenda.xhtml" SHAPE="32,737,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#agenda#alterar_agenda.xhtml:0"
+   NAME="item" PATH="/paginas/agenda/alterar_agenda.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="destruido::#paginas#agenda#consulta_agenda.xhtml" NAME="output"
+    PATH="/paginas/agenda/consulta_agenda.xhtml"
+    TARGET="rules:#paginas#agenda#consulta_agenda.xhtml"
+    TITLE="destruido" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="sucesso::#paginas#agenda#consulta_agenda.xhtml" NAME="output1"
+    PATH="/paginas/agenda/consulta_agenda.xhtml"
+    TARGET="rules:#paginas#agenda#consulta_agenda.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#agenda#detalhes_agenda.xhtml"
+  PATH="/paginas/agenda/detalhes_agenda.xhtml" SHAPE="496,849,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

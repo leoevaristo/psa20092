@@ -63,6 +63,7 @@ public class AgendaDAO {
 		}
 		rs.close();
 		ps.close();
+		
 		return a;
 	}
 
@@ -73,7 +74,7 @@ public class AgendaDAO {
 	 * @throws SQLException
 	 */
 	public List<Agenda> getAgendaList() throws SQLException {
-		System.out.println("getAgendaList");
+		
 		String query = new String("SELECT * FROM AGENDA ORDER BY AGE_CODIGO DESC;");
 		PreparedStatement ps = DB.getConn().prepareStatement(query);
 		ResultSet rs = ps.executeQuery();
