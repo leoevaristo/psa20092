@@ -69,9 +69,6 @@ public class ConsultaClienteBean {
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
-
-
-	
 	
 	
 	public Endereco getEndereco() {

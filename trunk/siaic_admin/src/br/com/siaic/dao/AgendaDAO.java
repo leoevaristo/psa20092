@@ -44,7 +44,7 @@ public class AgendaDAO {
 	 * @throws SQLException
 	 */
 	public Agenda getAgenda(int codigo) throws SQLException {
-		String query = new String("select * from agenda where AGE_CODIGO = ?");
+		String query = new String("SELECT * FROM AGENDA WHERE AGE_CODIGO = ?");
 		PreparedStatement ps = DB.getConn().prepareStatement(query);
 		ps.setInt(1, codigo);
 		ResultSet rs = ps.executeQuery();
@@ -55,10 +55,10 @@ public class AgendaDAO {
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
 			a.setCodCliente(rs.getInt("AGE_PESSOA_CLIENTE"));
 			a.setCodCorretor(rs.getInt("AGE_PESSOA_USUARIO"));
-			a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
+			a.setCodImovel(rs.getInt("AGE_IMOVEL"));
 			a.setData(rs.getString("AGE_DATA"));
 			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
-			a.setHoraFim(rs.getString("AGE_HORA_INICIO"));
+			a.setHoraFim(rs.getString("AGE_HORA_FIM"));
 			a.setDescricao(rs.getString("AGE_DESCRICAO"));
 		}
 		rs.close();
@@ -73,23 +73,25 @@ public class AgendaDAO {
 	 * @throws SQLException
 	 */
 	public List<Agenda> getAgendaList() throws SQLException {
-		String query = new String("select * from agenda");
+		System.out.println("getAgendaList");
+		String query = new String("SELECT * FROM AGENDA ORDER BY AGE_CODIGO DESC;");
 		PreparedStatement ps = DB.getConn().prepareStatement(query);
 		ResultSet rs = ps.executeQuery();
 
 		List<Agenda> l = new ArrayList<Agenda>();
-		Agenda a = null;
+		
 
 		while (rs.next()) {
-			a = new Agenda();
+			Agenda a = new Agenda();
 			a.setCodigo(rs.getInt("AGE_CODIGO"));
 			a.setCodCliente(rs.getInt("AGE_PESSOA_CLIENTE"));
 			a.setCodCorretor(rs.getInt("AGE_PESSOA_USUARIO"));
 			a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
 			a.setData(rs.getString("AGE_DATA"));
 			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
-			a.setHoraFim(rs.getString("AGE_HORA_INICIO"));
+			a.setHoraFim(rs.getString("AGE_HORA_FIM"));
 			a.setDescricao(rs.getString("AGE_DESCRICAO"));
+			
 			l.add(a);
 		}
 		rs.close();
@@ -124,7 +126,7 @@ public class AgendaDAO {
 			a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
 			a.setData(rs.getString("AGE_DATA"));
 			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
-			a.setHoraFim(rs.getString("AGE_HORA_INICIO"));
+			a.setHoraFim(rs.getString("AGE_HORA_FIM"));
 			a.setDescricao(rs.getString("AGE_DESCRICAO"));
 			l.add(a);
 		}
@@ -159,7 +161,7 @@ public class AgendaDAO {
 			a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
 			a.setData(rs.getString("AGE_DATA"));
 			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
-			a.setHoraFim(rs.getString("AGE_HORA_INICIO"));
+			a.setHoraFim(rs.getString("AGE_HORA_FIM"));
 			a.setDescricao(rs.getString("AGE_DESCRICAO"));
 			l.add(a);
 		}
@@ -195,7 +197,7 @@ public class AgendaDAO {
 			a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
 			a.setData(rs.getString("AGE_DATA"));
 			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
-			a.setHoraFim(rs.getString("AGE_HORA_INICIO"));
+			a.setHoraFim(rs.getString("AGE_HORA_FIM"));
 			 a.setDescricao(rs.getString("AGE_DESCRICAO"));
 			l.add(a);
 		}
@@ -250,13 +252,14 @@ public class AgendaDAO {
 	 *         ou <code>false</code> caso contr�rio.
 	 * @throws SQLException
 	 */
-	public boolean ApagarAgenda(Agenda a) throws SQLException{
-		String query = new String("delete from agenda where AGE_CODIGO = ?");
+	public boolean ApagarAgenda(int codigoEntrada) throws SQLException{
+		String query = new String("DELETE FROM AGENDA WHERE AGE_CODIGO = ?");
 		PreparedStatement ps = DB.getConn().prepareStatement(query);
-		ps.setInt(1, a.getCodigo());
+		ps.setInt(1, codigoEntrada);
 		
 		boolean result = ps.executeUpdate() > 0;
 		ps.close();
+		
 		return result;
 	}
 	
@@ -297,6 +300,36 @@ public class AgendaDAO {
 			
 			DB.getConn().close();
 			
+		}
+	}
+	
+	public boolean AtualizarAgenda( Agenda agenda) throws SQLException {
+		String query = new String("UPDATE AGENDA SET "
+				+ "AGE_PESSOA_CLIENTE = ?, "
+				+ "AGE_PESSOA_USUARIO = ?, AGE_IMOVEL = ?, "
+				+ "AGE_DATA = ?, AGE_HORA_INICIO = ?, "
+				+ "AGE_HORA_FIM = ?, AGE_DESCRICAO = ? "
+				+ "WHERE AGE_CODIGO = ?");
+		
+		try{
+			PreparedStatement ps = DB.getConn().prepareStatement(query);
+			ps.setInt(1, agenda.getCodCliente());
+			ps.setInt(2,agenda.getCodCorretor() );
+			ps.setInt(3,agenda.getCodImovel() );
+			ps.setString(4,agenda.getData() );
+			ps.setString(5,agenda.getHoraInicio() );
+			ps.setString(6,agenda.getHoraFim() );
+			ps.setString(7,agenda.getDescricao() );
+			ps.setInt(8, agenda.getCodigo() );
+			
+		
+			boolean result = ps.executeUpdate() > 0;
+			ps.close();
+			
+			return result;
+			
+		}finally{
+			DB.getConn().close();
 		}
 	}
 }

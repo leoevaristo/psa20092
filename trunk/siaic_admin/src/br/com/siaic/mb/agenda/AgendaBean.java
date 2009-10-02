@@ -8,10 +8,10 @@ public class AgendaBean {
 	}
 	
 	public String CadastrarAgenda(){
-		return "CadastrarAgenda";
+		return "cadastra";
 	}
 	
 	public String ConsultarAgenda(){
-		return "ConsultarAgenda";
+		return "consulta";
 	}
 }

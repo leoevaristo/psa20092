@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="/WEB-INF/template/template.xhtml">
+	
+		<ui:define name="tituloGrande">
+			<h:outputText value="Gerenciar Agenda"/>
+		</ui:define>
+		<ui:define name="subtitulo">
+			<h:outputText value="Alterar"/>
+		</ui:define>		
+		
+	<ui:define name="conteudo">
+		<h:form styleClass="forms">
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="corretor" value="Corretor" />
+				<h:selectOneMenu value="#{consultaAgendaBean.agenda.codCorretor}" id="corretor" immediate="true">
+					<f:selectItem itemLabel="Corretor" itemValue="" />
+					<f:selectItems value="#{consultaAgendaBean.corretores}" />				 
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel value="Nome do Cliente" for="nomeCliente" />
+				<h:outputText value="#{consultaAgendaBean.cliente.nome}" id="nomeCliente" />	
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel value="Imóvel" for="imovel" />				
+				<h:selectOneMenu value="#{consultaAgendaBean.agenda.codImovel}" id="imovel">
+					<f:selectItems value="#{consultaAgendaBean.listaImoveis}" />
+				</h:selectOneMenu>									
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="data" value="Data" />
+				<h:inputText value="#{consultaAgendaBean.agenda.data}" id="data" styleClass="obrigatorio" >					
+				</h:inputText> 
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="horaInicio" value="Hora de inicio (h:m:s)" />
+				<h:inputText value="#{consultaAgendaBean.agenda.horaInicio}" id="horaInicio" />
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="horaFim" value="Hora de fim (h:m:s)" />
+				<h:inputText value="#{consultaAgendaBean.agenda.horaFim}" id="horaFim" />
+			</h:panelGroup>	
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="descricao" value="Descricao" />
+				<h:inputTextarea value="#{consultaAgendaBean.agenda.descricao}" id="descricao" />
+			</h:panelGroup>		
+			<h:panelGroup styleClass="linha"></h:panelGroup>
+			<h:panelGroup styleClass="botoes">
+				<h:commandButton action="#{consultaAgendaBean.updateAgenda}" value=""
+					styleClass="input_submit"/>
+				<h:commandButton action="#" value="" styleClass="input_reset" />
+				<h:commandButton action="#{consultaAgendaBean.destroiSessao}" value="" styleClass="input_button" immediate="true" />
+			</h:panelGroup>						
+		</h:form>		
+	</ui:define>
+
+	</ui:composition>
+
+</html>

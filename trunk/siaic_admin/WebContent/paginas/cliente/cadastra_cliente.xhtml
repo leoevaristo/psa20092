@@ -22,6 +22,7 @@
 					<f:selectItem itemValue="F" itemLabel="Física" />
 					<f:selectItem itemValue="J" itemLabel="Jurídica" />
 				</h:selectOneMenu>
+				<h:message for="campo0"/>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo01" value="Nome" />
@@ -73,7 +74,7 @@
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoEstado" value="Estado" />
 				<h:selectOneMenu value="#{cadastraClienteBean.cidade.cidadeEstado}" 
-							    id="campoEstado" onchange="submit()"  immediate="true" valueChangeListener="#{cadastraClienteBean.filtraCidadePorEstado}">
+							    id="campoEstado" valueChangeListener="#{cadastraClienteBean.filtraCidadePorEstado}" onchange="submit()"  immediate="true" >
 					<f:selectItem itemValue="" itemLabel="Estado"/>
 					<f:selectItems value="#{selectEstados.estados}" />										
 				</h:selectOneMenu>
@@ -82,7 +83,7 @@
 				<h:outputLabel for="campoCidade" value="Cidade" />
 				<h:selectOneMenu value="#{cadastraClienteBean.cidade.cidadeNome}" id="campoCidade">
 					<f:selectItem itemValue="" itemLabel="Cidade"/>
-					<f:selectItems value="#{selectCidades.cidades}"/>				
+					<f:selectItems value="#{cadastraClienteBean.cidades}"/>				
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
