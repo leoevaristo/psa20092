@@ -13,11 +13,11 @@
 			<h:form styleClass="forms">				
 				<span>
 					<h:outputLabel for="campoLogin"  value="Nome"/>
-					<h:inputText value="#{consultaUsuarioBean.usuario.login}" styleClass="obrigatorio campos" id="campoLogin"/>
+					<h:inputText value="#{consultaUsuarioBean.usuario.login}" styleClass="obrigatorio campos" size="10" id="campoLogin" required="true"/>
 				</span>	
 				<span>
 					<h:outputLabel for="campoSenha"  value="Senha"/>
-					<h:inputText value="#{consultaUsuarioBean.usuario.senha}" styleClass="obrigatorio campos" id="campoSenha"  />				
+					<h:inputText value="#{consultaUsuarioBean.usuario.senha}" styleClass="obrigatorio campos" size="10" id="campoSenha" required="true" />				
 				</span>					
 				<span>
 					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
