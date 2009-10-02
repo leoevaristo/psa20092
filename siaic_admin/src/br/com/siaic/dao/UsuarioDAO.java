@@ -178,7 +178,7 @@ public class UsuarioDAO {
 			Usuario usuario = new Usuario();
 
 			usuario.setLogin(rs.getString("PEU_LOGIN"));
-	
+			usuario.setSenha(rs.getString("PEU_SENHA"));
 
 			listaUsuariosLogin.add(usuario);
 
