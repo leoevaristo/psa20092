@@ -205,7 +205,7 @@ public class ConsultaUsuarioBean {
 		
     	UsuarioDAO daoUsuario = new UsuarioDAO();
 		
-		daoUsuario.getAcessoUsuario(login);
+		daoUsuario.getAcessoUsuario(usuario);
 
 		return r;
 

@@ -7,65 +7,58 @@
 <ui:composition template="/WEB-INF/template/template.xhtml">
 
 	<ui:define name="tituloGrande">
-		<h:outputText value="Página do Cliente" />
+		<h:outputText value="Página do Usuario" />
 	</ui:define>
 	<ui:define name="subtitulo">
-		<h:outputText value="» Alterar Cliente" />
+		<h:outputText value="» Alterar Usuario" />
 	</ui:define>
 	<ui:define name="conteudo">
 		<h:form styleClass="forms">
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo0" value="Tipo de Pessoa" />
-				<h:selectOneMenu value="#{consultaClienteBean.cliente.tipoPessoa}"
+				<h:selectOneMenu value="#{consultaUsuarioBean.usuario.tipoPessoa}"
 					id="campo0">
-					<f:selectItem itemValue="" itemLabel="Tipo de Pessoa" />
 					<f:selectItem itemValue="F" itemLabel="Física" />
-					<f:selectItem itemValue="J" itemLabel="Jurídica" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo01" value="Nome" />
-				<h:inputText value="#{consultaClienteBean.cliente.nome}"
+				<h:inputText value="#{consultaUsuarioBean.usuario.nome}"
 					styleClass="obrigatorio" id="campo01" />
+			</h:panelGroup>
+						<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoLogin" value="Login" />
+				<h:inputText value="#{consultaUsuarioBean.usuario.login}"
+					styleClass="obrigatorio" id="campoLogin" size="10" required="true" />
+			</h:panelGroup>
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoSenha" value="Senha" />
+				<h:inputText value="#{consultaUsuarioBean.usuario.senha}"
+					styleClass="obrigatorio" id="campoSenha" size="10" required="true" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo02" value="E-mail" />
-				<h:inputText value="#{consultaClienteBean.cliente.email}"
+				<h:inputText value="#{consultaUsuarioBean.usuario.email}"
 					styleClass="obrigatorio" id="campo02" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campo03" value="Telefone" />
-				<h:inputText value="#{consultaClienteBean.cliente.telefone}"
+				<h:inputText value="#{consultaUsuarioBean.usuario.telefone}"
 					styleClass="obrigatorio" id="campo03" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCelular" value="Celular" />
-				<h:inputText value="#{consultaClienteBean.cliente.celular}"
+				<h:inputText value="#{consultaUsuarioBean.usuario.celular}"
 					id="campoCelular" />
-			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter" rendered="#{consultaClienteBeancliente.tipoPessoa eq 'F'}">
-				<h:outputLabel for="campo04" value="RG" />
-				<h:inputText value="#{consultaClienteBean.cliente.rg}"
-					styleClass="obrigatorio" id="campo04" />
-			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter" rendered="#{consultaClienteBean.cliente.tipoPessoa eq 'F'}">
-				<h:outputLabel for="campo05" value="CPF" />
-				<h:inputText value="#{consultaClienteBean.cliente.cpf}"
-					styleClass="obrigatorio" id="campo05" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter" id="panelSexo" rendered="#{consultaClienteBean.cliente.tipoPessoa eq 'F'}">
 				<h:outputLabel for="sexo" value="Sexo" />
-				<h:selectOneMenu value="#{consultaClienteBean.cliente.sexo}" id="sexo">
+				<h:selectOneMenu value="#{consultaUsuarioBean.usuario.sexo}" id="sexo">
 					<f:selectItem itemValue="" itemLabel="Sexo" />
 					<f:selectItem itemValue="M" itemLabel="Masculino" />
 					<f:selectItem itemValue="F" itemLabel="Feminino" />
 				</h:selectOneMenu>
 			</h:panelGroup>			
-			<h:panelGroup styleClass="textcenter" rendered="#{consultaClienteBean.cliente.tipoPessoa eq 'J'}" >
-				<h:outputLabel for="campo06" value="CNPJ" />
-				<h:inputText value="#{consultaClienteBean.cliente.cnpj}"
-					styleClass="obrigatorio" id="campo06" />
-			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoEstado" value="Estado" />
 				<h:selectOneMenu value="" id="campoEstado">
@@ -75,33 +68,33 @@
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCidade" value="Cidade" />
-				<h:selectOneMenu value="#{consultaClienteBean.endereco.enderecoBairro.bairroCidade}" id="campoCidade">
+				<h:selectOneMenu value="#{consultaUsuarioBean.endereco.enderecoBairro.bairroCidade}" id="campoCidade">
 					<f:selectItem itemValue="" itemLabel="Cidade"/>
 					<f:selectItems value="#{selectCidades.cidades}"/>				
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoBairro" value="Bairro" />
-				<h:selectOneMenu value="#{consultaClienteBean.endereco.enderecoBairro.bairroCodigo}" id="campoBairro"> 
+				<h:selectOneMenu value="#{consultaUsuarioBean.endereco.enderecoBairro.bairroCodigo}" id="campoBairro"> 
 					<f:selectItem itemValue="" itemLabel="Bairro"/>
 					<f:selectItems  value="#{selectBairros.bairros}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoLogradouro" value="Logradouro"/>
-				<h:selectOneMenu value="#{consultaClienteBean.endereco.enderecoLogradouro}" id="campoLogradouro">
+				<h:selectOneMenu value="#{consultaUsuarioBean.endereco.enderecoLogradouro}" id="campoLogradouro">
 					<f:selectItem itemValue="" itemLabel="Logradouro"/>
 					<f:selectItems value="#{consultaClienteBean.logradouro}" required="true" />
 				</h:selectOneMenu>
 			</h:panelGroup>			
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoNomeEnd" value="Endereço" />
-				<h:inputText value="#{consultaClienteBean.endereco.enderecoNome}"
+				<h:inputText value="#{consultaUsuarioBean.endereco.enderecoNome}"
 				 id="campoNomeEnd" styleClass="obrigatorio" size="50" required="true"/>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoCep" value="CEP" />
-				<h:inputText value="#{consultaClienteBean.endereco.enderecoCep}"
+				<h:inputText value="#{consultaUsuarioBean.endereco.enderecoCep}"
 				 id="campoCep" styleClass="obrigatorio" size="50" required="true"/>			 
 			</h:panelGroup>			
 			<h:panelGroup>
