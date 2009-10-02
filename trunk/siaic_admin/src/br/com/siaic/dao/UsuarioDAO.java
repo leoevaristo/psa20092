@@ -184,9 +184,10 @@ public class UsuarioDAO {
 
 		}
 		conexao.close();
+		return listaUsuariosLogin;
 
        
-		return listaUsuariosLogin;
+//		return listaUsuariosLogin;
 	}
 	
 	
