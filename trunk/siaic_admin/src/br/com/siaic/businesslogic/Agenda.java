@@ -67,29 +67,78 @@ public class Agenda {
 
 	}
 
+
+
+
+
+
+
+
 	public int getCodCliente() {
 		return codCliente;
 	}
+
+
+
+
+
+
+
 
 	public void setCodCliente(int codCliente) {
 		this.codCliente = codCliente;
 	}
 
+
+
+
+
+
+
+
 	public int getCodCorretor() {
 		return codCorretor;
 	}
+
+
+
+
+
+
+
 
 	public void setCodCorretor(int codCorretor) {
 		this.codCorretor = codCorretor;
 	}
 
+
+
+
+
+
+
+
 	public int getCodImovel() {
 		return codImovel;
 	}
 
+
+
+
+
+
+
+
 	public void setCodImovel(int codImovel) {
 		this.codImovel = codImovel;
 	}
+
+
+
+
+
+
+
 
 	public int getCodigo() {
 		return codigo;

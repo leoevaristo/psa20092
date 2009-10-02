@@ -17,9 +17,9 @@
 		<h:form styleClass="forms">
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="corretor" value="Corretor" />
-				<h:selectOneMenu value="#{consultaAgendaBean.agenda.codCorretor}" id="corretor" immediate="true">
+				<h:selectOneMenu value="#{consultaAgendaBean.agenda.codCorretor}" id="corretor">
 					<f:selectItem itemLabel="Corretor" itemValue="" />
-					<f:selectItems value="#{consultaAgendaBean.corretores}" />				 
+					<f:selectItems value="#{selectCorretores.corretores}" />				 
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
@@ -29,7 +29,7 @@
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel value="Imóvel" for="imovel" />				
 				<h:selectOneMenu value="#{consultaAgendaBean.agenda.codImovel}" id="imovel">
-					<f:selectItems value="#{consultaAgendaBean.listaImoveis}" />
+					<f:selectItems value="#{selectImoveis.listaImoveis}" />
 				</h:selectOneMenu>									
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">

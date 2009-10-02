@@ -63,7 +63,7 @@
 				</f:facet>
 				<h:form id="detalheEntrada">
 					<h:commandLink id="detalheLink"
-						action="#">
+						action="#{consultaAgendaBean.exibirDetalhesAgenda}">
 						<h:outputText value="Exibir Detalhes" />
 						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
 					</h:commandLink>
