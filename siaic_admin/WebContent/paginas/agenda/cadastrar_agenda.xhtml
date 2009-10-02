@@ -41,7 +41,6 @@
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="data" value="Data" />
 				<h:inputText value="#{cadastrarAgendaBean.agenda.data}" id="data" styleClass="obrigatorio" >
-					
 				</h:inputText> 
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
@@ -61,7 +60,7 @@
 				<h:commandButton action="#{cadastrarAgendaBean.criarRegistro}" value=""
 					styleClass="input_submit"/>
 				<h:commandButton action="#" value="" styleClass="input_reset" />
-				<h:commandButton action="#{cadastraClienteBean.limpaCampos}" value="" styleClass="input_button" />
+				<h:commandButton action="#" value="" styleClass="input_button" immediate="true" />
 			</h:panelGroup>						
 		</h:form>		
 	</ui:define>

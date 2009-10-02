@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="tituloGrande">
+		<h:outputText value="Gerenciar Agenda"/>
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="Consultar"/>
+	</ui:define>
+	<ui:define name="infoGerais">
+		<h:dataTable styleClass="grid" headerClass="thead"
+			rowClasses="cor1,cor2" value="#{consultaAgendaBean.todasEntradas}"
+			var="entrada">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Código" />
+				</f:facet>
+				<h:outputText value="#{entrada.codigo}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Descrição" />
+				</f:facet>
+				<h:outputText value="#{entrada.descricao}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data" />
+				</f:facet>
+				<h:outputText value="#{entrada.data}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Horário de Início" />
+				</f:facet>
+				<h:outputText value="#{entrada.horaInicio}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Horário Fim" />
+				</f:facet>
+				<h:outputText value="#{entrada.horaFim}" />
+			</h:column>			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Editar" />
+				</f:facet>
+				<h:form id="alteraEntrada">
+					<h:commandLink	action="#{consultaAgendaBean.localizarAgendaPorId}">
+						<h:graphicImage value="/images/imgedit.png" />
+						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Detalhes" />
+				</f:facet>
+				<h:form id="detalheEntrada">
+					<h:commandLink id="detalheLink"
+						action="#">
+						<h:outputText value="Exibir Detalhes" />
+						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir" />
+				</f:facet>
+				<h:form id="excluiEntrada">
+					<h:commandLink id="excluir"
+						onclick="if (confirm('Você tem certeza que deseja excluir essa entrada?')) {return true }; return false;"
+						action="#{consultaAgendaBean.excluiEntrada}">
+						<h:graphicImage value="/images/imgdelete.png" />
+						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</ui:define>
+
+</ui:composition>
+
+</html>
