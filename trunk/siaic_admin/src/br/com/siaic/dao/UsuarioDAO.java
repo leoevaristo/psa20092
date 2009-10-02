@@ -180,13 +180,13 @@ public class UsuarioDAO {
 			usuario.setLogin(rs.getString("PEU_LOGIN"));
 			usuario.setSenha(rs.getString("PEU_SENHA"));
 
-			listaUsuariosLogin.add(usuario);
+			listaUsuariosLogin.add(login);
 
 		}
 		conexao.close();
 
+       
 		return listaUsuariosLogin;
-
 	}
 	
 	
@@ -266,6 +266,7 @@ public class UsuarioDAO {
 
 			ps.close();
 			rs.close();
+	    
 		
 			return listaAcesso;
 		
