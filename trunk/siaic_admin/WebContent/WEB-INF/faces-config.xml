@@ -188,7 +188,7 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/paginas/usuario/cadastra_usuario.xhtml</from-view-id>
+  <from-view-id>/paginas/usuario/consulta_usuario.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>altera</from-outcome>
    <to-view-id>/paginas/usuario/altera_usuario.xhtml</to-view-id>

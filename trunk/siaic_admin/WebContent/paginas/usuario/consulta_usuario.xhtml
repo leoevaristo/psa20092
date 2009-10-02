@@ -12,8 +12,8 @@
 	<ui:define name="subtitulo">
 		<h:outputText value="» Consultar Usuario" />
 	</ui:define>
-	<ui:define name="conteudo">
-		<h:form styleClass="forms" id="formFiltros">
+	<!--<ui:define name="conteudo">
+		 <h:form styleClass="forms" id="formFiltros">
 			<h:panelGroup>
 				<h:outputLabel for="campoFiltro" value="Filtrar por" />
 				<h:selectOneMenu value="#{consultaUsuarioBean.tipoPesquisa}" id="campoFiltro" >
@@ -27,11 +27,11 @@
 			<h:panelGroup>
 				<h:commandButton action="#{consultaUsuarioBean.escolheTipoPesquisa}" value="Filtrar" type="submit" /> 				
 			</h:panelGroup>
-		</h:form>
+		</h:form> 
 
-	</ui:define>
+	</ui:define>-->
 	<ui:define name="tituloLista">
-		<h:outputText value="Lista de Usuario" />
+		<h:outputText value="Lista de Usuarios" />
 	</ui:define>
 	<ui:define name="linkNovo">
 		<h:outputText value="Novo Usuario" />
@@ -39,7 +39,7 @@
 	<ui:define name="infoGerais">
 		<h:dataTable 
 			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
-			value="#{consultaUsuarioBean.usuarioPorNome}" var="usuario" rendered="#{consultaUsuarioBean.tipoPesquisa eq 'nome'}">
+			value="#{consultaUsuarioBean.todosUsuarios}" var="usuario">
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Código" />
@@ -68,7 +68,7 @@
 				<f:facet name="header">
 					<h:outputText value="Editar" />
 				</f:facet>
-				<h:form id="alteraCliente">
+				<h:form id="alteraUsuario">
 					<h:commandLink action="#{consultaUsuarioBean.UsuarioId}">
 						<h:graphicImage value="/images/imgedit.png" />
 						<f:param value="#{usuario.codigoPessoa}" name="codigoPessoa" />
@@ -91,7 +91,7 @@
 				<f:facet name="header">
 					<h:outputText value="Excluir" />
 				</f:facet>
-				<h:form id="excluiCliente">
+				<h:form id="excluiUsuario">
 					<h:commandLink id="excluir"
 						onclick="if (confirm('Você tem certeza que deseja excluir esse usuario?')) {return true }; return false;"
 						action="#{consultaUsuarioBean.excluiUsuario}">

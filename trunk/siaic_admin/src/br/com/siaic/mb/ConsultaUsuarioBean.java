@@ -169,7 +169,7 @@ public class ConsultaUsuarioBean {
 		
 		UsuarioDAO dao = new UsuarioDAO();
 		setUsuario(dao.getUsuarioId(idPessoa));	
-		getEnderecoUsuario();
+		//getEnderecoUsuario();
 		
 		
 		return "detalhes";
@@ -185,7 +185,7 @@ public class ConsultaUsuarioBean {
 	public String updateUsuario() throws SQLException {
 		// TODO
 		
-		String r = "sucesso";
+		String r = "altera";
 		
 		PessoaDAO daoPessoa = new PessoaDAO();
 		UsuarioDAO daoUsuario = new UsuarioDAO();
@@ -215,7 +215,7 @@ public class ConsultaUsuarioBean {
 	
 	public void escolheTipoPesquisa() throws SQLException{
 		
-		if(tipoPesquisa.equals("nome")){
+		if(tipoPesquisa.equals("login")){
 			
 			getUsuarioPorNome();
 		}
