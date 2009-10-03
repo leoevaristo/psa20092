@@ -5,82 +5,91 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:composition template="/WEB-INF/template/template.xhtml">
-	
-		<ui:define name="tituloGrande">
-			<h:outputText value="Imóveis" />
+<ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="tituloGrande">
+		<h:outputText value="Imóveis" />
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="Consulta de Imóveis" />
+	</ui:define>
+
+    <ui:define name="tituloLista">
+			<h:outputText value="Lista de Imóveis" />
 		</ui:define>
-		<ui:define name="subtitulo">
-			<h:outputText value="Consulta de Imóveis" />
+		<ui:define name="linkNovo">
+		  <h:form>
+			<h:commandLink value="Novo Imovel" action="#{imovelBean.novoImovel}" />
+		  </h:form>
 		</ui:define>
-	
-		<ui:define name="conteudo">
-		  <h:panelGroup styleClass="textcenter">
-		  
-		  <h:dataTable
-			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
-			value="#{imovelBean.todosImoveis}" var="imo">
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Código" />
-				</f:facet>
-				<h:outputText value="#{imo.codigo}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Detalhe" />
-				</f:facet>
-				<h:outputText value="#{imo.detalhe}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Forma de Pagamento" />
-				</f:facet>
-				<h:outputText value="#{imo.formaPagamento}" />
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Editar" />
-				</f:facet>
-				<h:form id="alteraImovel">
-					<h:commandLink action="#{imovelBean.consultaImovel}">
-						<h:graphicImage value="/images/imgedit.png" />
-						<f:param value="#{imo.codigo}" name="codigoImovel" />
-					</h:commandLink>
-				</h:form>
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Detalhes" />
-				</f:facet>
-				<h:form id="detalheImovel">
-					<h:commandLink id="detalheLink"
-						action="#{imovelBean.consultaImovel}">
-						<h:outputText value="Exibir Detalhes" />
-						<f:param value="#{imo.codigo}" name="codigoImovel" />
-					</h:commandLink>
-				</h:form>
-			</h:column>  
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Excluir" />
-				</f:facet>
-				<h:form id="excluiImovel">
-					<h:commandLink id="excluir"
-						onclick="if (confirm('VocÃª tem certeza que deseja excluir este imovel?')) {return true }; return false;"
-						action="#{imovelBean.excluiImovel}">
-						<h:graphicImage value="/images/imgdelete.png" />
-						<f:param value="#{imo.codigo}" name="codigoImovel" />
-					</h:commandLink>
-				</h:form>
-			</h:column>
-		  </h:dataTable>
-		  </h:panelGroup>
-		</ui:define>
-	
-		<ui:define name="rodape">
-		</ui:define>
-	</ui:composition>
+
+	<ui:define name="infoGerais">
+		
+		<h:panelGroup styleClass="textcenter">
+
+			<h:dataTable styleClass="grid" headerClass="thead" rowClasses="cor1,cor2" 
+				value="#{imovelBean.todosImoveis}" var="imo">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Código" />
+					</f:facet>
+					<h:outputText value="#{imo.codigo}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Detalhe" />
+					</f:facet>
+					<h:outputText value="#{imo.detalhe}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Forma de Pagamento" />
+					</f:facet>
+					<h:outputText value="#{imo.formaPagamento}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Editar" />
+					</f:facet>
+					<h:form id="alteraImovel">
+						<h:commandLink action="#{imovelBean.consultaImovel}">
+							<h:graphicImage value="/images/imgedit.png" />
+							<f:param value="#{imo.codigo}" name="codigoImovel" />
+						</h:commandLink>
+					</h:form>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Detalhes" />
+					</f:facet>
+					<h:form id="detalheImovel">
+						<h:commandLink id="detalheLink"
+							action="#{imovelBean.consultaImovel}">
+							<h:outputText value="Exibir Detalhes" />
+							<f:param value="#{imo.codigo}" name="codigoImovel" />
+						</h:commandLink>
+					</h:form>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Excluir" />
+					</f:facet>
+					<h:form id="excluiImovel">
+						<h:commandLink id="excluir"
+							onclick="if (confirm('VocÃª tem certeza que deseja excluir este imovel?')) {return true }; return false;"
+							action="#{imovelBean.excluiImovel}">
+							<h:graphicImage value="/images/imgdelete.png" />
+							<f:param value="#{imo.codigo}" name="codigoImovel" />
+						</h:commandLink>
+					</h:form>
+				</h:column>
+			</h:dataTable>
+		</h:panelGroup>
+	</ui:define>
+
+	<ui:define name="rodape">
+	</ui:define>
+</ui:composition>
 
 </html>
