@@ -18,12 +18,13 @@
     
 	<ui:define name="conteudo">
 		<h:form styleClass="forms">
+		
 		  <!-- FORCEPS PATTERN KKKK -->
 		  <input type="hidden" value="#{imovelCaracteristicaBean.imovelCaracteristica.codigo}" name="codigoCarac" />
 		
-		  <h:panelGroup styleClass="textcenter">
-				<h:outputLabel for="dormitorio" value="Qtde de dormitorios" />
-				<h:inputText value="#{imovelCaracteristicaBean.imovelCaracteristica.qtdeDormitorio}" id="dormitorio" styleClass="opcional"/>
+		   <h:panelGroup styleClass="textcenter">
+			 <h:outputLabel for="dormitorio" value="Qtde de dormitorios" />
+			  <h:inputText value="#{imovelCaracteristicaBean.imovelCaracteristica.qtdeDormitorio}" id="dormitorio" styleClass="opcional"/>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="suite" value="Qtde de Suites" />

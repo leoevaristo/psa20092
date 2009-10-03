@@ -37,6 +37,10 @@ public class ImovelBean {
 
 	private static List<SelectItem> logradouro = new ArrayList<SelectItem>();
 
+	public List<SelectItem> getLogradouroo() {
+		return logradouro;
+	}
+
 	private int codigoImovel;
 
 	public ImovelBean() {
@@ -118,15 +122,16 @@ public class ImovelBean {
 	public String consultaImovel() {
 		this.imovel = Imovel.getImovel(this.getParamCodigoImovel());
 		try {
-			this.imoCar = ImovelCaracteristicaDAO.getInstance()
-					.getImovelCaracteristica(this.imovel.getCaracteristica());
-			this.prop = new ClienteDAO().getClientePorId(this.imovel
-					.getProprietario());
-			this.imoFin = new ImovelFinalidadeDAO()
-					.getImovelFinalidade(this.imovel.getFinalidade());
-			this.endereco = new EnderecoDAO().getEnderecoPorCodigo(this.imovel
-					.getEndereco());
-//			this.bairro;
+			this.imoCar = ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(this.imovel.getCaracteristica());
+			this.prop = new ClienteDAO().getClientePorId(this.imovel.getProprietario());
+			this.imoFin = new ImovelFinalidadeDAO().getImovelFinalidade(this.imovel.getFinalidade());
+			EnderecoDAO edao = new EnderecoDAO();
+			this.endereco = edao.getEnderecoPorCodigo(this.imovel.getEndereco());
+			
+			this.bairro = edao.getBairroPorCodigo(this.endereco.getEnderecoBairro().getBairroCodigo());
+			this.cidade = edao.getCidadePorCodigo(this.bairro.getBairroCidade());
+			this.estado = edao.getEstadoPorSigla(this.cidade.getCidadeEstado());
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -144,6 +149,10 @@ public class ImovelBean {
 
 	public String consultaCaracteristica() {
 		return "consultacaracteristica";
+	}
+	
+	public String novoImovel() {
+		return "novo";
 	}
 
 	public String excluiImovel() {
@@ -165,6 +174,11 @@ public class ImovelBean {
 			e.printStackTrace();
 		}
 		return "";
+	}
+	
+	public String salvaImovel() {
+		
+		return "salva";
 	}
 
 	public ImovelCaracteristica getImoCar() {
