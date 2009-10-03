@@ -12,12 +12,15 @@
 	<ui:define name="subtitulo">
 		<h:outputText value="» Consultar Usuario" />
 	</ui:define>
-	<!--<ui:define name="conteudo">
-		 <h:form styleClass="forms" id="formFiltros">
+	<ui:define name="conteudo">
+		<h:form styleClass="forms" id="formFiltros">
 			<h:panelGroup>
 				<h:outputLabel for="campoFiltro" value="Filtrar por" />
 				<h:selectOneMenu value="#{consultaUsuarioBean.tipoPesquisa}" id="campoFiltro" >
+					<f:selectItem itemValue="" itemLabel="Tipo de Filtro" />
+					<f:selectItem itemValue="email" itemLabel="E-mail" />
 					<f:selectItem itemValue="nome" itemLabel="Nome" />
+					<f:selectItem itemValue="telefone" itemLabel="Telefone" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup>
@@ -27,19 +30,18 @@
 			<h:panelGroup>
 				<h:commandButton action="#{consultaUsuarioBean.escolheTipoPesquisa}" value="Filtrar" type="submit" /> 				
 			</h:panelGroup>
-		</h:form> 
-
-	</ui:define>-->
+		</h:form>
+	</ui:define>
 	<ui:define name="tituloLista">
 		<h:outputText value="Lista de Usuarios" />
 	</ui:define>
 	<ui:define name="linkNovo">
-		<h:outputText value="Novo Usuario" />
+		<h:outputText value="Novo Usuarios" />
 	</ui:define>
 	<ui:define name="infoGerais">
 		<h:dataTable 
 			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
-			value="#{consultaUsuarioBean.todosUsuarios}" var="usuario">
+			value="#{consultaUsuarioBean.usuarioPorNome}" var="usuario" rendered="#{consultaUsuarioBean.tipoPesquisa eq 'nome'}">
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Código" />
@@ -68,8 +70,8 @@
 				<f:facet name="header">
 					<h:outputText value="Editar" />
 				</f:facet>
-				<h:form id="alteraUsuario">
-					<h:commandLink action="#{consultaUsuarioBean.UsuarioId}">
+				<h:form id="alteraCliente">
+					<h:commandLink action="#{consultaUsuarioBean.UsuarioPorId}">
 						<h:graphicImage value="/images/imgedit.png" />
 						<f:param value="#{usuario.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
@@ -81,7 +83,7 @@
 				</f:facet>
 				<h:form id="detalheCliente">
 					<h:commandLink id="detalheLink"
-						action="#{consultaUsuarioBean.exibeDetalhesUsuarios}">
+						action="#{consultaClienteBean.exibeDetalhesCliente}">
 						<h:outputText value="Exibir Detalhes" />
 						<f:param value="#{usuario.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
@@ -91,12 +93,76 @@
 				<f:facet name="header">
 					<h:outputText value="Excluir" />
 				</f:facet>
-				<h:form id="excluiUsuario">
+				<h:form id="excluiCliente">
 					<h:commandLink id="excluir"
-						onclick="if (confirm('Você tem certeza que deseja excluir esse usuario?')) {return true }; return false;"
-						action="#{consultaUsuarioBean.excluiUsuario}">
+						onclick="if (confirm('Você tem certeza que deseja excluir esse cliente?')) {return true }; return false;"
+						action="#{consultaUsuarioBean.excluiCliente}">
 						<h:graphicImage value="/images/imgdelete.png" />
 						<f:param value="#{usuario.codigoPessoa}" name="codigoPessoa" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+		<h:dataTable 
+			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
+			value="#{consultaUsuarioBean.todosUsuarios}" var="usuarios" rendered="#{consultaUsuarioBean.campoPesquisa eq null}">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Código" />
+				</f:facet>
+				<h:outputText value="#{usuarios.codigoPessoa}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nome" />
+				</f:facet>
+				<h:outputText value="#{usuarios.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Email" />
+				</f:facet>
+				<h:outputText value="#{usuarios.email}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Telefone" />
+				</f:facet>
+				<h:outputText value="#{usuarios.telefone}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Editar" />
+				</f:facet>
+				<h:form id="alteraUsuario">
+					<h:commandLink action="#{consultaUsuarioBean.localizarUsuarioPorId}">
+						<h:graphicImage value="/images/imgedit.png" />
+						<f:param value="#{usuarios.codigoPessoa}" name="codigoPessoa" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Detalhes" />
+				</f:facet>
+				<h:form id="detalheUsuario">
+					<h:commandLink id="detalheLink"
+						action="#{consultaUsuarioBean.exibeDetalhesUsuario}">
+						<h:outputText value="Exibir Detalhes" />
+						<f:param value="#{usuarios.codigoPessoa}" name="codigoPessoa" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir" />
+				</f:facet>
+				<h:form id="excluiUsuario">
+					<h:commandLink id="excluir"
+						onclick="if (confirm('Você tem certeza que deseja excluir esse Usuario?')) {return true }; return false;"
+						action="#{consultaUsuarioBean.excluiUsuario}">
+						<h:graphicImage value="/images/imgdelete.png" />
+						<f:param value="#{usuarios.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
 				</h:form>
 			</h:column>
