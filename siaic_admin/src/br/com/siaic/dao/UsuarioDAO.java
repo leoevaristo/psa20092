@@ -3,11 +3,10 @@ package br.com.siaic.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException; 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.Usuario;
 
 /**
@@ -321,6 +320,42 @@ public class UsuarioDAO {
 		
 		return usuario;
 		
+	}
+	
+	public List<Usuario> getTodosCorretores() throws SQLException {
+		// TODO
+		String sql = "SELECT PEU_CODIGO, PEU_LOGIN, PEU_SENHA, PEU_CRECI, "
+				+ " PES_CODIGO, PES_NOME, PES_EMAIL, PES_TELEFONE, PES_CELULAR"
+				+ " FROM PESSOA_USUARIOS, PESSOA "
+				+ "	WHERE PEU_CODIGO = PES_CODIGO ORDER BY PES_CODIGO ASC;";
+
+		PreparedStatement ps = conexao.prepareStatement(sql);
+
+		ResultSet rs = ps.executeQuery();
+
+		List<Usuario> listaTodosUsuarios = new ArrayList<Usuario>();
+
+		while (rs.next()) {
+			
+			if(!rs.getString("PEU_CRECI").isEmpty()){
+				
+				Usuario usuario = new Usuario();
+				usuario.setCodigoPessoa(rs.getInt("PES_CODIGO"));
+				usuario.setNome(rs.getString("PES_NOME"));
+				usuario.setEmail(rs.getString("PES_EMAIL"));
+				usuario.setTelefone(rs.getString("PES_TELEFONE"));
+				usuario.setCelular(rs.getString("PES_CELULAR"));
+				usuario.setLogin(rs.getString("PEU_LOGIN"));
+				usuario.setSenha(rs.getString("PEU_SENHA"));
+				usuario.setCRECI(rs.getString("PEU_CRECI"));			
+
+				listaTodosUsuarios.add(usuario);
+			}
+		}
+		conexao.close();
+
+		return listaTodosUsuarios;
+
 	}
 	
 
