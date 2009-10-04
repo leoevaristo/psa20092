@@ -135,9 +135,9 @@
 					<h:outputText value="Editar" />
 				</f:facet>
 				<h:form id="alteraCliente">
-					<h:commandLink action="#{consultaClienteBean.localizarClientePorId}">
+					<h:commandLink action="#{consultaUsuarioBean.localizarUsuarioPorId}">
 						<h:graphicImage value="/images/imgedit.png" />
-						<f:param value="#{clientes.codigoPessoa}" name="codigoPessoa" />
+						<f:param value="#{usuarios.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
 				</h:form>
 			</h:column>
@@ -147,9 +147,9 @@
 				</f:facet>
 				<h:form id="detalheCliente">
 					<h:commandLink id="detalheLink"
-						action="#{consultaClienteBean.exibeDetalhesCliente}">
+						action="#{consultaUsuarioBean.exibeDetalhesUsuario}">
 						<h:outputText value="Exibir Detalhes" />
-						<f:param value="#{clientes.codigoPessoa}" name="codigoPessoa" />
+						<f:param value="#{ususarios.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
 				</h:form>
 			</h:column>
@@ -159,10 +159,10 @@
 				</f:facet>
 				<h:form id="excluiCliente">
 					<h:commandLink id="excluir"
-						onclick="if (confirm('Você tem certeza que deseja excluir esse cliente?')) {return true }; return false;"
-						action="#{consultaClienteBean.excluiCliente}">
+						onclick="if (confirm('Você tem certeza que deseja excluir esse Usuario?')) {return true }; return false;"
+						action="#{consultaUsuarioBean.excluiUsuario}">
 						<h:graphicImage value="/images/imgdelete.png" />
-						<f:param value="#{clientes.codigoPessoa}" name="codigoPessoa" />
+						<f:param value="#{usuarios.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
 				</h:form>
 			</h:column>
