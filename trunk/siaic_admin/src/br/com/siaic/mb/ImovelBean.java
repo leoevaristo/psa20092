@@ -36,6 +36,8 @@ public class ImovelBean {
 	private Estado estado;
 
 	private static List<SelectItem> logradouro = new ArrayList<SelectItem>();
+	private static List<SelectItem> listaClientes = new ArrayList<SelectItem>();	
+	private static List<SelectItem> listaCaracteristica = new ArrayList<SelectItem>();
 
 	public List<SelectItem> getLogradouroo() {
 		return logradouro;
@@ -57,6 +59,32 @@ public class ImovelBean {
 
 		if (logradouro.isEmpty())
 			setLogradouro();
+		
+		if(listaClientes.isEmpty()){
+			try {
+				setListaClientes();
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+		}
+		
+		if(listaCaracteristica.isEmpty()){
+			try {
+				setListaCaracteristica();
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public List<SelectItem> getListaClientes() {
+		return listaClientes;
+	}
+
+	public static void setListaClientes(List<SelectItem> listaClientes) {
+		ImovelBean.listaClientes = listaClientes;
 	}
 
 	public void setLogradouro() {
@@ -122,16 +150,22 @@ public class ImovelBean {
 	public String consultaImovel() {
 		this.imovel = Imovel.getImovel(this.getParamCodigoImovel());
 		try {
-			this.imoCar = ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(this.imovel.getCaracteristica());
-			this.prop = new ClienteDAO().getClientePorId(this.imovel.getProprietario());
-			this.imoFin = new ImovelFinalidadeDAO().getImovelFinalidade(this.imovel.getFinalidade());
+			this.imoCar = ImovelCaracteristicaDAO.getInstance()
+					.getImovelCaracteristica(this.imovel.getCaracteristica());
+			this.prop = new ClienteDAO().getClientePorId(this.imovel
+					.getProprietario());
+			this.imoFin = new ImovelFinalidadeDAO()
+					.getImovelFinalidade(this.imovel.getFinalidade());
 			EnderecoDAO edao = new EnderecoDAO();
-			this.endereco = edao.getEnderecoPorCodigo(this.imovel.getEndereco());
-			
-			this.bairro = edao.getBairroPorCodigo(this.endereco.getEnderecoBairro().getBairroCodigo());
-			this.cidade = edao.getCidadePorCodigo(this.bairro.getBairroCidade());
+			this.endereco = edao
+					.getEnderecoPorCodigo(this.imovel.getEndereco());
+
+			this.bairro = edao.getBairroPorCodigo(this.endereco
+					.getEnderecoBairro().getBairroCodigo());
+			this.cidade = edao
+					.getCidadePorCodigo(this.bairro.getBairroCidade());
 			this.estado = edao.getEstadoPorSigla(this.cidade.getCidadeEstado());
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -150,8 +184,9 @@ public class ImovelBean {
 	public String consultaCaracteristica() {
 		return "consultacaracteristica";
 	}
-	
+
 	public String novoImovel() {
+
 		return "novo";
 	}
 
@@ -175,9 +210,9 @@ public class ImovelBean {
 		}
 		return "";
 	}
-	
+
 	public String salvaImovel() {
-		
+
 		return "salva";
 	}
 
@@ -188,4 +223,51 @@ public class ImovelBean {
 	public Cliente getProp() {
 		return prop;
 	}
+	
+	public void setListaClientes() throws SQLException {
+
+		List<Cliente> lc = new ClienteDAO().getTodosClientes();
+
+		for (Cliente cli : lc) {
+			listaClientes.add(new SelectItem(cli.getCodigoPessoa(), cli.getNome()));
+		}
+
+	}
+	
+	public void setListaCaracteristica() throws SQLException {
+
+		List<ImovelCaracteristica> lc = ImovelCaracteristicaDAO.getInstance().getImovelCaracteristicaList();
+
+		for (ImovelCaracteristica car : lc) {
+			StringBuilder sb = new StringBuilder();
+			sb.append("Piscina: ");
+			sb.append(car.getPiscina() == 'S' ? "SIM" : "NÃO");
+			sb.append(" Dormitorios: ");
+			sb.append(car.getQtdeDormitorio());
+			sb.append(" V. Garagem: ");
+			sb.append(car.getQtdeGaragem());
+			sb.append(" Suites: ");
+			sb.append(car.getQtdeSuite());
+			
+			listaCaracteristica.add(new SelectItem(car.getCodigo(), sb.toString()));
+		}
+
+	}
+	
+	public List<SelectItem> getListaCaracteristica() {
+		return ImovelBean.listaCaracteristica;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
