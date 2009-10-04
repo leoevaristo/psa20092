@@ -15,11 +15,6 @@
 		 </ui:define>
 		 <ui:define name="conteudo">
 		   <h:form styleClass="forms">
-		     
-		     <h:panelGroup styleClass="textcenter">
-		       <h:outputLabel value="Código:" />
-		       <h:outputText value="#{imovelBean.imovel.codigo}" />
-		     </h:panelGroup>
 		    
 		     <h:panelGroup styleClass="textcenter">
 		       <h:outputLabel value="Finalidade:" />
@@ -28,14 +23,16 @@
 		     
 		     <h:panelGroup styleClass="textcenter">
 		       <h:outputLabel value="Proprietário:" />
-		       <h:outputLink value="#"> <h:outputText value="#{imovelBean.prop.nome}" /> </h:outputLink>
+		       <h:selectOneMenu value="#{imovelBean.prop.codigoPessoa}" id="prop">
+			     <f:selectItems value="#{imovelBean.listaClientes}" />
+			   </h:selectOneMenu>
 		     </h:panelGroup>
 		     		     
 		     <h:panelGroup styleClass="textcenter">
 		       <h:outputLabel value="Caracteristicas Básicas:" />
-		       <h:commandLink value="Detalhar..." action="#{imovelBean.consultaCaracteristica}" >
-		         <f:param value="#{imovelBean.imovel.caracteristica}" name="codigoCarac" />
-		       </h:commandLink>
+		       <h:selectOneMenu value="#{imovelBean.imoCar.codigo}" id="carac">
+			     <f:selectItems value="#{imovelBean.listaCaracteristica}" />
+			   </h:selectOneMenu>
 		     </h:panelGroup>
 		     
 		     <h:panelGroup styleClass="textcenter">
