@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Modelo Formulário</title>
+<link href="css/layout.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<form class="cadastro">
+<fieldset>
+<legend>Cadastro da Reunião</legend>
+    <span class="linhaForm"><label for="data" class="lab">Data</label>
+    <input id="data" name="data" class="inp" type="text" /></span>
+    <span class="linhaForm"><label for="horario" class="lab">Horário</label>
+      <input id="horario" name="horario" class="inp" type="text" /></span>
+    <span class="linhaForm">
+    <span class="linhaForm"><label for="local" class="lab">Local</label>
+      <input id="local" name="local" class="inp" type="text" /></span>
+    <span class="linhaForm">
+    <span class="linhaForm">
+    	<label for="razao" class="lab">Motivo da Reunião</label>
+        <textarea id="razao" class="text" name="razao"></textarea>
+    </span>
+    <span class="linhaForm">
+    	<label for="ata" class="lab">Resumo da Reunião</label>
+        <textarea id="ata" class="text" name="ata"></textarea>
+    </span>
+</fieldset>
+	<span class="botoes"><input id="enviar" name="enviar" type="submit" value="Enviar Dados" /><input id="enviar" name="limpar" type="reset" value="Limpar Formulário" /></span>
+</form>
+</body>
+</html>
