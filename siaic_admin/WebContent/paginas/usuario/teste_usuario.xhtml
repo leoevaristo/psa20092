@@ -7,7 +7,7 @@
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 	
 		<ui:define name="tituloGrande">
-			<h:outputText value="Página do Usuario" />
+			<h:outputText value="Página do Cliente" />
 		</ui:define>
 		<ui:define name="subtitulo">
 			<h:outputText value="» Menu de Opções" />
@@ -15,12 +15,12 @@
 		<ui:define name="conteudo"> 
 			<h:panelGroup>
 				<h:outputLink value="#{request.contextPath}/paginas/usuario/cadastra_usuario.xhtml">
-					<h:outputText value="# Cadastrar Usuarios"  />
+					<h:outputText value="# Cadastrar Cliente"  />
 				</h:outputLink>
 			</h:panelGroup>
 			<h:panelGroup>
 				<h:outputLink value="#{request.contextPath}/paginas/usuario/consulta_usuario.xhtml">
-					<h:outputText value="# Consultar Usuarios"  />
+					<h:outputText value="# Consultar Clientes"  />
 				</h:outputLink>	
 			</h:panelGroup>	
 		</ui:define>		
