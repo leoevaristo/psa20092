@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Administração de Condomínio - Associar Veículos a Apartamento</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="635" border="0">
+    <tr>
+      <td height="34" colspan="2">Associar Veículos a Apartamento </td>
+    </tr>
+      <tr>
+      <td width="159">Apartamento</td>
+      <td width="460"><select name="cmbCidade" id="cmbCidade">
+      	<option value="1">Apartamento I</option>
+		<option value="2">Apartamento II</option>
+		<option value="3">Apartamento III</option>
+	  </select>      
+	  </td>
+    </tr>
+  <td width=35%><P align="right">Lista de Véiculos<br>
+   <select name="List1" size="5" multiple style="width: 100pt">
+   <option value="Veículo I">Veículo I</OPTION>
+   <option value="Veículo II">Veículo II</OPTION>
+   <option value="Veículo III">Veículo III</OPTION>
+   </select></P>
+  </td>
+   <td width=10%><P align="center">
+   <input type="button" name="insere"value=">>" OnClick="TrocaList(document.form.List1,document.form.List2)"><BR>
+   <input type="button" name="deleta" value="<<" OnClick="TrocaList(document.form.List2,document.form.List1)"><BR>
+   </TD></P>
+   <td width=35%><P align="left">Veículos<BR>
+	<select name="List2" size ="5" multiple style="width: 100pt"></select></P>
+	</td>
+    <tr>
+      <td colspan="2"><input type="submit" name="Submit" value="Enviar Dados" />
+      <input type="submit" name="Submit2" value="Limpar" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
