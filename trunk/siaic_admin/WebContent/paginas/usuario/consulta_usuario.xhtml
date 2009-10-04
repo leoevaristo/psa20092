@@ -7,7 +7,7 @@
 <ui:composition template="/WEB-INF/template/template.xhtml">
 
 	<ui:define name="tituloGrande">
-		<h:outputText value="Página do Usuario" />
+		<h:outputText value="Página do Cliente" />
 	</ui:define>
 	<ui:define name="subtitulo">
 		<h:outputText value="» Consultar Usuario" />
@@ -33,10 +33,10 @@
 		</h:form>
 	</ui:define>
 	<ui:define name="tituloLista">
-		<h:outputText value="Lista de Usuarios" />
+		<h:outputText value="Lista de Usuario" />
 	</ui:define>
 	<ui:define name="linkNovo">
-		<h:outputText value="Novo Usuarios" />
+		<h:outputText value="Novo Usuario" />
 	</ui:define>
 	<ui:define name="infoGerais">
 		<h:dataTable 
@@ -70,8 +70,8 @@
 				<f:facet name="header">
 					<h:outputText value="Editar" />
 				</f:facet>
-				<h:form id="alteraCliente">
-					<h:commandLink action="#{consultaUsuarioBean.UsuarioPorId}">
+				<h:form id="alteraUsuario">
+					<h:commandLink action="#{consultaUsuarioBean.localizarUsuarioPorId}">
 						<h:graphicImage value="/images/imgedit.png" />
 						<f:param value="#{usuario.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
@@ -81,9 +81,9 @@
 				<f:facet name="header">
 					<h:outputText value="Detalhes" />
 				</f:facet>
-				<h:form id="detalheCliente">
+				<h:form id="detalheUsuario">
 					<h:commandLink id="detalheLink"
-						action="#{consultaClienteBean.exibeDetalhesCliente}">
+						action="#{consultaUsuarioBean.exibeDetalhesUsuario}">
 						<h:outputText value="Exibir Detalhes" />
 						<f:param value="#{usuario.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
@@ -93,10 +93,10 @@
 				<f:facet name="header">
 					<h:outputText value="Excluir" />
 				</f:facet>
-				<h:form id="excluiCliente">
+				<h:form id="excluiUsuario">
 					<h:commandLink id="excluir"
-						onclick="if (confirm('Você tem certeza que deseja excluir esse cliente?')) {return true }; return false;"
-						action="#{consultaUsuarioBean.excluiCliente}">
+						onclick="if (confirm('Você tem certeza que deseja excluir esse Usuario?')) {return true }; return false;"
+						action="#{consultaUsuarioBean.excluiUsuario}">
 						<h:graphicImage value="/images/imgdelete.png" />
 						<f:param value="#{usuario.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
@@ -134,10 +134,10 @@
 				<f:facet name="header">
 					<h:outputText value="Editar" />
 				</f:facet>
-				<h:form id="alteraUsuario">
-					<h:commandLink action="#{consultaUsuarioBean.localizarUsuarioPorId}">
+				<h:form id="alteraCliente">
+					<h:commandLink action="#{consultaClienteBean.localizarClientePorId}">
 						<h:graphicImage value="/images/imgedit.png" />
-						<f:param value="#{usuarios.codigoPessoa}" name="codigoPessoa" />
+						<f:param value="#{clientes.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
 				</h:form>
 			</h:column>
@@ -145,11 +145,11 @@
 				<f:facet name="header">
 					<h:outputText value="Detalhes" />
 				</f:facet>
-				<h:form id="detalheUsuario">
+				<h:form id="detalheCliente">
 					<h:commandLink id="detalheLink"
-						action="#{consultaUsuarioBean.exibeDetalhesUsuario}">
+						action="#{consultaClienteBean.exibeDetalhesCliente}">
 						<h:outputText value="Exibir Detalhes" />
-						<f:param value="#{usuarios.codigoPessoa}" name="codigoPessoa" />
+						<f:param value="#{clientes.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
 				</h:form>
 			</h:column>
@@ -157,12 +157,12 @@
 				<f:facet name="header">
 					<h:outputText value="Excluir" />
 				</f:facet>
-				<h:form id="excluiUsuario">
+				<h:form id="excluiCliente">
 					<h:commandLink id="excluir"
-						onclick="if (confirm('Você tem certeza que deseja excluir esse Usuario?')) {return true }; return false;"
-						action="#{consultaUsuarioBean.excluiUsuario}">
+						onclick="if (confirm('Você tem certeza que deseja excluir esse cliente?')) {return true }; return false;"
+						action="#{consultaClienteBean.excluiCliente}">
 						<h:graphicImage value="/images/imgdelete.png" />
-						<f:param value="#{usuarios.codigoPessoa}" name="codigoPessoa" />
+						<f:param value="#{clientes.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
 				</h:form>
 			</h:column>
