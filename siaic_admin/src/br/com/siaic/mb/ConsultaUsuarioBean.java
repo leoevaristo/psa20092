@@ -195,6 +195,10 @@ public class ConsultaUsuarioBean {
 		if(tipoPesquisa.equals("login")){
 			
 			getUsuarioPorNome();
+		} else
+		if(tipoPesquisa.equals("acessar"))
+		{
+			getAcessoPorLogin();
 		}
 }
 	
@@ -205,7 +209,17 @@ public class ConsultaUsuarioBean {
 		return daoUsuario.getUsuarioPeloNome(campoPesquisa);
 		
 	}
-	
+
+	public List<Usuario> getAcessoPorLogin() throws SQLException {
+		
+		String r = "logado";
+		
+		UsuarioDAO daoUsuario = new UsuarioDAO();
+		
+		return daoUsuario.getUsuarioAcesso(campoPesquisa);
+		
+		
+	}
 
 
 	

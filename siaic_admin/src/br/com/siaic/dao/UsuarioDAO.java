@@ -203,6 +203,44 @@ public class UsuarioDAO {
 		
 	}
 
+
+	
+	public List<Usuario> getUsuarioAcesso(String login) throws SQLException {
+
+		String sql = "SELECT p.PEU_LOGIN, p.PEU_SENHA "
+			+ "FROM PESSOA_USUARIOS p "
+			+ "WHERE p.PEU_LOGIN LIKE ? ";
+
+		try{
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, "%" + login + "%");
+
+			ResultSet rs = ps.executeQuery();
+
+			List<Usuario> listaLogin = new ArrayList<Usuario>();
+
+			while (rs.next()) {
+			
+				Usuario usuario = new Usuario();
+				usuario.setLogin(rs.getString("PEU_LOGIN"));
+				usuario.setSenha(rs.getString("PEU_SENHA"));
+     			listaLogin.add(usuario);
+			}
+
+			ps.close();
+			rs.close();
+		
+			return listaLogin;
+		
+			}finally{
+				conexao.close();
+		}
+		
+	}
+	
+	
+	
 	/**
 	 * 
 	 * @param usuarioCodigo
