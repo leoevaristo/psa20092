@@ -7,25 +7,22 @@
 <ui:composition template="/WEB-INF/template/template.xhtml">
 
 	<ui:define name="tituloGrande">
-		<h:outputText value="Página do Cliente" />
-	</ui:define>
-	<ui:define name="subtitulo">
-		<h:outputText value="» Consultar Cliente" />
+		<h:outputText value="Acesso SIAIC" />
 	</ui:define>
 	<ui:define name="conteudo">
 		<h:form styleClass="forms" id="formFiltros">
 			<h:panelGroup>
-				<h:outputLabel for="campoFiltro" value="Filtrar por" />
+				<h:outputLabel value="Login" for="inFiltro" />
+				<h:inputText value="#{consultaUsuarioBean.campoPesquisa}" id="inFiltro"/>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:outputLabel for="campoFiltro" value="Perfil" />
 				<h:selectOneMenu value="#{consultaUsuarioBean.tipoPesquisa}" id="campoFiltro" >
 					<f:selectItem itemValue="acessar" itemLabel="Acessar" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup>
-				<h:outputLabel value="Palavra-chave" for="inFiltro" />
-				<h:inputText value="#{consultaUsuarioBean.campoPesquisa}" id="inFiltro"/>
-			</h:panelGroup>
-			<h:panelGroup>
-				<h:commandButton action="#{consultaUsuarioBean.escolheTipoPesquisa}" value="Filtrar" type="submit" /> 				
+				<h:commandButton action="#{consultaUsuarioBean.escolheTipoPesquisa}" value="Acessar" type="submit" /> 				
 			</h:panelGroup>
 		</h:form>
 	</ui:define>
