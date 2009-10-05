@@ -39,7 +39,7 @@
 		<h:outputText value="Novo Usuario" />
 	</ui:define>
 	<ui:define name="infoGerais">
-		 <h:dataTable 
+		<h:dataTable 
 			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
 			value="#{consultaUsuarioBean.usuarioPorNome}" var="usuario" rendered="#{consultaUsuarioBean.tipoPesquisa eq 'nome'}">
 			<h:column>
@@ -73,7 +73,7 @@
 				<h:form id="alteraUsuario">
 					<h:commandLink action="#{consultaUsuarioBean.localizarUsuarioPorId}">
 						<h:graphicImage value="/images/imgedit.png" />
-						<f:param value="#{Usuario.codigoPessoa}" name="codigoPessoa" />
+						<f:param value="#{usuario.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
 				</h:form>
 			</h:column>
@@ -105,7 +105,7 @@
 		</h:dataTable>
 		<h:dataTable 
 			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
-			value="#{consultaUsuarioBean.todosUsuarios}" var="usuarios" rendered="#{consultaUsuarioBean.campoPesquisa eq 'telefone'}">
+			value="#{consultaUsuarioBean.todosUsuarios}" var="usuarios" rendered="#{consultaUsuarioBean.campoPesquisa eq null}">
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Código" />
@@ -149,7 +149,7 @@
 					<h:commandLink id="detalheLink"
 						action="#{consultaUsuarioBean.exibeDetalhesUsuario}">
 						<h:outputText value="Exibir Detalhes" />
-						<f:param value="#{Usuarios.codigoPessoa}" name="codigoPessoa" />
+						<f:param value="#{usuarios.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
 				</h:form>
 			</h:column>
@@ -162,7 +162,7 @@
 						onclick="if (confirm('Você tem certeza que deseja excluir esse Usuario?')) {return true }; return false;"
 						action="#{consultaUsuarioBean.excluiUsuario}">
 						<h:graphicImage value="/images/imgdelete.png" />
-						<f:param value="#{Usuarios.codigoPessoa}" name="codigoPessoa" />
+						<f:param value="#{usuarios.codigoPessoa}" name="codigoPessoa" />
 					</h:commandLink>
 				</h:form>
 			</h:column>
