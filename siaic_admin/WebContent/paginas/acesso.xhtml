@@ -13,7 +13,7 @@
 		<h:form styleClass="forms" id="formFiltros">
 			<h:panelGroup>
 				<h:outputLabel value="Login" for="inFiltro" />
-				<h:inputText value="#{consultaUsuarioBean.campoPesquisa}" id="inFiltro"/>
+				<h:inputText value="#{consultaUsuarioBean.campoPesquisa}" id="inFiltro" required="true"/>
 			</h:panelGroup>
 			<h:panelGroup>
 				<h:outputLabel for="campoFiltro" value="Perfil" />
@@ -22,15 +22,15 @@
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup>
-				<h:commandButton action="#{consultaUsuarioBean.escolheTipoPesquisa}" value="Acessar" type="submit" /> 				
+				<h:commandButton action="#{consultaUsuarioBean.escolheTipoPesquisa}" value="Acessar" type="submit"  /> 				
 			</h:panelGroup>
 		</h:form>
 	</ui:define>
-	<ui:define name="tituloLista">
-		<h:outputText value="Lista de Clientes" />
+<!-- 	<ui:define name="tituloLista">
+		<h:outputText value="Lista de Usuarios" />
 	</ui:define>
 	<ui:define name="linkNovo">
-		<h:outputText value="Novo Cliente" />
+		<h:outputText value="Novo Usuario" />
 	</ui:define>
 	<ui:define name="infoGerais">
 		<h:dataTable 
@@ -49,7 +49,7 @@
 				<h:outputText value="#{usuario.senha}" />
 			</h:column>
 		</h:dataTable>
-	</ui:define>
+	</ui:define> -->
 	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
 </ui:composition>
 </html>
