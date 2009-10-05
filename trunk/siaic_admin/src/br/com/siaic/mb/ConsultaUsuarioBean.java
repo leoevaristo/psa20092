@@ -190,7 +190,7 @@ public class ConsultaUsuarioBean {
 	}
 
 	
-	public void escolheTipoPesquisa() throws SQLException{
+	public String escolheTipoPesquisa() throws SQLException{
 		
 		if(tipoPesquisa.equals("login")){
 			
@@ -198,8 +198,11 @@ public class ConsultaUsuarioBean {
 		} else
 		if(tipoPesquisa.equals("acessar"))
 		{
+			String r = "logado";
 			getAcessoPorLogin();
+			return r;
 		}
+		return campoPesquisa;
 }
 	
 	public List<Usuario> getUsuarioPorNome() throws SQLException {
