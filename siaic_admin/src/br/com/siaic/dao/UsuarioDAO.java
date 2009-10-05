@@ -159,37 +159,6 @@ public class UsuarioDAO {
 	}
 	
 	
-	public List<Usuario> getUsuariosLogin(Usuario login) throws SQLException {
-		// TODO
-		String sql = "SELECT PEU_LOGIN "
-				+ " FROM PESSOA_USUARIOS "
-				+ "WHERE u.PEU_LOGIN LIKE ? ";
-
-		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setString(1, "%" + login + "%");
-		
-		ResultSet rs = ps.executeQuery();
-
-		List<Usuario> listaUsuariosLogin = new ArrayList<Usuario>();
-
-		while (rs.next()) {
-
-			Usuario usuario = new Usuario();
-
-			usuario.setLogin(rs.getString("PEU_LOGIN"));
-
-			listaUsuariosLogin.add(login);
-
-		}
-		conexao.close();
-		return listaUsuariosLogin;
-
-       
-//		return listaUsuariosLogin;
-	}
-	
-	
-	
 	
 	public List<Usuario> getUsuarioPeloNome(String nome) throws SQLException {
 
@@ -234,51 +203,6 @@ public class UsuarioDAO {
 		
 	}
 
-
-
-	
-	
-	public List<Usuario> getAcessoUsuario(Usuario login) throws SQLException {
-
-		String sql = "SELECT u.PEU_LOGIN, u.PEU_SENHA "
-			+ "FROM PESSOA_USUARIOS u "
-			+ "WHERE u.PEU_LOGIN LIKE ? ";
-
-		try{
-			
-			PreparedStatement ps = conexao.prepareStatement(sql);
-			ps.setString(1,"%"+login+"%");
-
-			ResultSet rs = ps.executeQuery();
-
-			List<Usuario> listaAcesso = new ArrayList<Usuario>();
-
-			while (rs.next()) {
-			
-				Usuario usuario = new Usuario();
-				usuario.setLogin(rs.getString("PEU_LOGIN"));
-				usuario.setSenha(rs.getString("PEU_SENHA"));
-
-				listaAcesso.add(login);
-
-			}
-
-			ps.close();
-			rs.close();
-	    
-		
-			return listaAcesso;
-		
-			}finally{
-				conexao.close();
-		}
-		
-	}
-	
-
-	
-	
-	
 	/**
 	 * 
 	 * @param usuarioCodigo
