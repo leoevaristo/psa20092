@@ -212,7 +212,6 @@ public class ConsultaUsuarioBean {
 
 	public List<Usuario> getAcessoPorLogin() throws SQLException {
 		
-		String r = "logado";
 		
 		UsuarioDAO daoUsuario = new UsuarioDAO();
 		
