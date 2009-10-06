@@ -207,6 +207,7 @@ public class UsuarioDAO {
 	
 	public List<Usuario> getUsuarioAcesso(String login) throws SQLException {
 
+		String str;
 		String sql = "SELECT p.PEU_LOGIN, p.PEU_SENHA "
 			+ "FROM PESSOA_USUARIOS p "
 			+ "WHERE p.PEU_LOGIN LIKE ? ";
@@ -228,11 +229,21 @@ public class UsuarioDAO {
      			listaLogin.add(usuario);
 			}
 
+			if (rs==null)
+			{
+				str="nada";
+				System.out.println(str);
+			}
+			
 			ps.close();
 			rs.close();
 		
-			return listaLogin;
 		
+
+			
+			return listaLogin;
+			
+			
 			}finally{
 				conexao.close();
 		}

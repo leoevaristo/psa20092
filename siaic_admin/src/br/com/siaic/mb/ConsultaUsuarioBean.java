@@ -191,13 +191,14 @@ public class ConsultaUsuarioBean {
 
 	
 	public String escolheTipoPesquisa() throws SQLException{
-		
+		UsuarioDAO daoUsuario = new UsuarioDAO();
 		if(tipoPesquisa.equals("login")){
 			
 			getUsuarioPorNome();
 		} else
 		if(tipoPesquisa.equals("acessar"))
 		{
+	
 			String r = "logado";
 			getAcessoPorLogin();
 			return r;
