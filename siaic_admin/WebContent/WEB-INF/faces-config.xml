@@ -209,7 +209,7 @@
  <navigation-rule>
   <from-view-id>/paginas/usuario/consulta_usuario.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>altera</from-outcome>
+   <from-outcome>modifica</from-outcome>
    <to-view-id>/paginas/usuario/alterar_usuario.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
