@@ -7,8 +7,10 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
 import br.com.siaic.businesslogic.Usuario;
+import br.com.siaic.businesslogic.endereco.Bairro;
+import br.com.siaic.businesslogic.endereco.Cidade;
 import br.com.siaic.businesslogic.endereco.Endereco;
-import br.com.siaic.dao.ClienteDAO;
+import br.com.siaic.businesslogic.endereco.Estado;
 import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.PessoaDAO;
 import br.com.siaic.dao.UsuarioDAO;
@@ -21,6 +23,44 @@ public class ConsultaUsuarioBean {
 	
 	private Endereco endereco;
 	
+	private Cidade cidade;
+	
+	private Estado estado;
+	
+	private Bairro bairro;
+	
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
+
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
+
+	public Bairro getBairro() {
+		return bairro;
+	}
+
+
+	public void setBairro(Bairro bairro) {
+		this.bairro = bairro;
+	}
+
+
+
+
 	private String tipoPesquisa;
 	
 	private String campoPesquisa;
@@ -112,7 +152,7 @@ public class ConsultaUsuarioBean {
 		
 		UsuarioDAO dao = new UsuarioDAO();
 		setUsuario(dao.getUsuarioId(idPessoa));
-		
+		getEnderecoUsuario();
 		
 		
 		return "modifica";
@@ -133,7 +173,7 @@ public class ConsultaUsuarioBean {
 		
 	}
 	
-	
+
 	/**
 	 * 
 	 * @throws SQLException
@@ -178,7 +218,7 @@ public class ConsultaUsuarioBean {
 	public String updateUsuario() throws SQLException {
 		// TODO
 		
-		String r = "altera";
+		String r = "sucesso";
 		
 		PessoaDAO daoPessoa = new PessoaDAO();
 		UsuarioDAO daoUsuario = new UsuarioDAO();
@@ -187,6 +227,8 @@ public class ConsultaUsuarioBean {
 		daoPessoa.alterarPessoa(usuario);
 		daoUsuario.alterarUsuario(usuario);
 		daoEndereco.alterarEndereco(endereco);
+		
+		destroiSessao();
 
 		return r;
 
@@ -194,7 +236,6 @@ public class ConsultaUsuarioBean {
 
 	
 	public String escolheTipoPesquisa() throws SQLException{
-		UsuarioDAO daoUsuario = new UsuarioDAO();
 		if(tipoPesquisa.equals("login")){
 			
 			getUsuarioPorNome();
