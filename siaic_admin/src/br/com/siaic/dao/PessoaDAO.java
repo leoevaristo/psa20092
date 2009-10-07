@@ -87,7 +87,7 @@ public class PessoaDAO {
 	public void alterarPessoa(Pessoa pessoa) throws SQLException {
 
 		String sql = "UPDATE PESSOA SET PES_NOME = ?, PES_TELEFONE = ?, PES_CELULAR = ?,"
-				+ " PES_EMAIL = ?, PES_SEXO = ?, PES_TIPO = ? WHERE PES_CODIGO = ?";
+				+ " PES_EMAIL = ?, PES_SEXO = ?, PES_TIPO = ?, PES_ENDERECO = ? WHERE PES_CODIGO = ?";
 
 		try {
 			
@@ -98,7 +98,8 @@ public class PessoaDAO {
 			ps.setString(4, pessoa.getEmail());
 			ps.setString(5, pessoa.getSexo());
 			ps.setString(6, pessoa.getTipoPessoa());
-			ps.setInt(7, pessoa.getCodigoPessoa());			
+			ps.setInt(7, pessoa.getCodigoPessoa());		
+			ps.setInt(8,pessoa.getEnderecoCodigo());
 
 			ps.execute();
 			ps.close();

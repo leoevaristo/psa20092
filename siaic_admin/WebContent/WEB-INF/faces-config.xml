@@ -108,7 +108,7 @@
  <managed-bean>
   <managed-bean-name>consultaUsuarioBean</managed-bean-name>
   <managed-bean-class>br.com.siaic.mb.ConsultaUsuarioBean</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <!-- ENDEREÇO -->
  <managed-bean>
@@ -217,7 +217,7 @@
  <navigation-rule>
   <from-view-id>/paginas/usuario/alterar_usuario.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>destruido</from-outcome>
+   <from-outcome>altera</from-outcome>
    <to-view-id>/paginas/usuario/cadastra_usuario.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
