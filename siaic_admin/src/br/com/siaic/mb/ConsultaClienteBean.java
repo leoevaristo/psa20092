@@ -205,7 +205,7 @@ public class ConsultaClienteBean {
 		
 		daoPessoa.alterarPessoa(cliente);
 		daoCliente.alterarCliente(cliente);
-		daoEndereco.alterarEndereco(endereco, cliente);
+		daoEndereco.alterarEndereco(endereco);
 		
 		destroiSessao();
 
