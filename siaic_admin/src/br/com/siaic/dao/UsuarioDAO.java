@@ -110,7 +110,7 @@ public class UsuarioDAO {
 
 		catch (Exception e) {
 
-			throw new SQLException("N�o foi poss�vel alterar o banco de dados.");
+			throw new SQLException("Nao foi possivel alterar o banco de dados.");
 
 		}
 	}
