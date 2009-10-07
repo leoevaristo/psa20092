@@ -7,6 +7,7 @@
 	@CopyRight: BC10 - Criação de Sites
 */
 /* CSS Document */
+
 body{ 
 	background:url(../images/bgsite.jpg) #0b5481 no-repeat center 0; 
 	margin:0; 
@@ -33,6 +34,7 @@ a{outline:none; color:#615e5d; text-decoration:none;}
 .textcenter{ text-align:center;}
 .textleft{ text-align:left;}
 .textright{ text-align:right;}
+
 /* FIM CLASSES */
 
 /* TITULOS */
@@ -217,7 +219,7 @@ div#container div#content div#col_right div#col_rightConteudo form.forms span{
 div#container div#content div#col_right div#col_rightConteudo form.forms span label{
 	width:130px;
 	float:left;
-	text-align:center;
+	text-align:right;
 	margin-right:5px;
 }
 
@@ -354,6 +356,3 @@ div#container div#footer{
 /* -- Container -> footer -- */
 
 /* -- fim Container -- */
-
-
-
