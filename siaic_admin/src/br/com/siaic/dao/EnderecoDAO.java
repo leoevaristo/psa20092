@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.siaic.businesslogic.Pessoa;
 import br.com.siaic.businesslogic.endereco.Bairro;
 import br.com.siaic.businesslogic.endereco.Cidade;
 import br.com.siaic.businesslogic.endereco.Endereco;
@@ -517,7 +518,7 @@ public class EnderecoDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean alterarEndereco(Endereco endereco) throws SQLException {
+	public boolean alterarEndereco(Endereco endereco, Pessoa pessoa) throws SQLException {
 
 		boolean retorno = false; 
 		String sql =    "UPDATE " + 
@@ -542,6 +543,7 @@ public class EnderecoDAO {
 			ps.setString(4, endereco.getEnderecoCep());
 			ps.setInt(5, endereco.getEnderecoBairro().getBairroCodigo());
 			ps.setInt(6, endereco.getEnderecoCodigo());
+			//ps.setInt(6, endereco.getEnderecoCodigo());
 			
 			ps.executeUpdate();
 

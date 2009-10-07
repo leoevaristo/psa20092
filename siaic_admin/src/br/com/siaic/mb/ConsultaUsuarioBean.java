@@ -186,7 +186,7 @@ public class ConsultaUsuarioBean {
 		
 		daoPessoa.alterarPessoa(usuario);
 		daoUsuario.alterarUsuario(usuario);
-		daoEndereco.alterarEndereco(endereco);
+		daoEndereco.alterarEndereco(endereco, usuario);
 
 		return r;
 
