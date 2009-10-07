@@ -518,7 +518,7 @@ public class EnderecoDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean alterarEndereco(Endereco endereco, Pessoa pessoa) throws SQLException {
+	public boolean alterarEndereco(Endereco endereco) throws SQLException {
 
 		boolean retorno = false; 
 		String sql =    "UPDATE " + 
