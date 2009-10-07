@@ -159,9 +159,7 @@ public class ConsultaUsuarioBean {
 
 	}
 	
-	
 
-	
 	
 	public String getEnderecoUsuario() throws SQLException{
 		
@@ -239,14 +237,7 @@ public class ConsultaUsuarioBean {
 		if(tipoPesquisa.equals("login")){
 			
 			getUsuarioPorNome();
-		} else
-		if(tipoPesquisa.equals("acessar"))
-		{
-	
-			String r = "logado";
-			getAcessoPorLogin();
-			return r;
-		}
+		} 
 		return campoPesquisa;
 }
 	
@@ -257,17 +248,6 @@ public class ConsultaUsuarioBean {
 		return daoUsuario.getUsuarioPeloNome(campoPesquisa);
 		
 	}
-
-	public List<Usuario> getAcessoPorLogin() throws SQLException {
-		
-		
-		UsuarioDAO daoUsuario = new UsuarioDAO();
-		
-		return daoUsuario.getUsuarioAcesso(campoPesquisa);
-		
-		
-	}
-
 
 	
 	
