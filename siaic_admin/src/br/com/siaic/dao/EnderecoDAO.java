@@ -314,6 +314,10 @@ public class EnderecoDAO {
 		return endereco;
 	}
 	
+
+	
+
+	
 	/**
 	 * Recuperar� um endere�o pelo Cep enviado como argumento.
 	 * @param enderecoCep
@@ -733,7 +737,7 @@ public class EnderecoDAO {
 		}
 	}
 	
-	public List<Cidade> getCidadePorEstado(String estadoSigla) throws SQLException
+	public List<Cidade> getCidadePorEstado(String cidadeEstado) throws SQLException
 	{
 		
 		String sql = 		"SELECT * " + 
@@ -746,7 +750,7 @@ public class EnderecoDAO {
 		FabricaConexao.getInstancia();
 		conexao = FabricaConexao.conectar();
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setString(1, estadoSigla);
+		ps.setString(1, cidadeEstado);
 		ResultSet rs = ps.executeQuery();
 		List<Cidade> cidades = new ArrayList<Cidade>();
 		

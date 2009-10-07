@@ -47,6 +47,7 @@ public class Pessoa
 	
 	private int EnderecoCodigo;
 	
+
 	//private Endereco endereco;
 
 	

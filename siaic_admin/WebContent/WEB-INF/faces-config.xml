@@ -207,19 +207,28 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/paginas/usuario/consulta_usuario.xhtml</from-view-id>
+  <from-view-id>/paginas/usuario/cadastra_usuario.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>modifica</from-outcome>
+   <from-outcome>altera</from-outcome>
    <to-view-id>/paginas/usuario/alterar_usuario.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>destruido</from-outcome>
+   <to-view-id>/paginas/usuario/cadastra_usuario.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/paginas/usuario/alterar_usuario.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>altera</from-outcome>
-   <to-view-id>/paginas/usuario/cadastra_usuario.xhtml</to-view-id>
+   <from-outcome>destruido</from-outcome>
+   <to-view-id>/paginas/usuario/consulta_usuario.xhtml</to-view-id>
    <redirect/>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>sucesso</from-outcome>
+   <to-view-id>/paginas/usuario/consulta_usuario.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -227,6 +236,11 @@
   <navigation-case>
    <from-outcome>detalhes</from-outcome>
    <to-view-id>/paginas/usuario/detalhes_usuario.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>modifica</from-outcome>
+   <to-view-id>/paginas/usuario/alterar_usuario.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
  </navigation-rule>
