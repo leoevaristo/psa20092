@@ -12,17 +12,21 @@
 	<ui:define name="conteudo">
 		<h:form styleClass="forms" id="formFiltros">
 			<h:panelGroup>
-				<h:outputLabel value="Login" for="inFiltro" />
-				<h:inputText value="#{consultaUsuarioBean.campoPesquisa}" id="inFiltro" required="true"/>
+				<h:outputLabel value="Login" />
+				<h:inputText value="#{consultaUsuarioBean.usuario.login}"  required="true"/>
 			</h:panelGroup>
 			<h:panelGroup>
+				<h:outputLabel value="Login" />
+				<h:inputText value="#{consultaUsuarioBean.usuario.senha}"  required="true"/>
+			</h:panelGroup>
+			<!--  <h:panelGroup>
 				<h:outputLabel for="campoFiltro" value="Perfil" />
 				<h:selectOneMenu value="#{consultaUsuarioBean.tipoPesquisa}" id="campoFiltro" >
 					<f:selectItem itemValue="acessar" itemLabel="Acessar" />
 				</h:selectOneMenu>
-			</h:panelGroup>
+			</h:panelGroup> -->
 			<h:panelGroup>
-				<h:commandButton action="#{consultaUsuarioBean.escolheTipoPesquisa}" value="Acessar" type="submit"  /> 				
+				<h:commandButton action="#{consultaUsuarioBean.usuarioAcesso}" value="Acessar" type="submit"  /> 				
 			</h:panelGroup>
 		</h:form>
 	</ui:define>
@@ -35,7 +39,7 @@
 	<ui:define name="infoGerais">
 		<h:dataTable 
 			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
-			value="#{consultaUsuarioBean.acessoPorLogin}" var="usuario" rendered="#{consultaUsuarioBean.tipoPesquisa eq 'acessar'}">
+			value="#{consultaUsuarioBean.usuarioAcesso}" var="usuario" >
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Login" />
