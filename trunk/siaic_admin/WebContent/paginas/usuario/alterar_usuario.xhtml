@@ -51,7 +51,7 @@
 				<h:inputText value="#{consultaUsuarioBean.usuario.celular}"
 					id="campoCelular" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter" id="panelSexo" rendered="#{consultaClienteBean.cliente.tipoPessoa eq 'F'}">
+			<h:panelGroup styleClass="textcenter" id="panelSexo" rendered="#{consultaUsuarioBean.usuario.tipoPessoa eq 'F'}">
 				<h:outputLabel for="sexo" value="Sexo" />
 				<h:selectOneMenu value="#{consultaUsuarioBean.usuario.sexo}" id="sexo">
 					<f:selectItem itemValue="" itemLabel="Sexo" />
@@ -102,9 +102,9 @@
 			</h:panelGroup>
 			<h:panelGroup styleClass="linha"></h:panelGroup>
 			<h:panelGroup styleClass="botoes">
-				<h:commandButton action="#{consultaClienteBean.updateCliente}" value=""
+				<h:commandButton action="#{consultaUsuarioBean.updateUsuario}" value=""
 					styleClass="input_submit" />
-				<h:commandButton action="#{consultaClienteBean.destroiSessao}" value=""
+				<h:commandButton action="#{consultaUsuarioBean.destroiSessao}" value=""
 					styleClass="input_button" immediate="true" />
 			</h:panelGroup>
 		</h:form>
