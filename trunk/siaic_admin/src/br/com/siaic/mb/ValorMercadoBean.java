@@ -44,14 +44,14 @@ public class ValorMercadoBean {
 	public String addValorMercado() throws Exception {
 		ValorMercadoDAO vmd = new ValorMercadoDAO();
 		valorMercado.setBairro(new EnderecoDAO().getBairroPorCodigo(Integer.parseInt(bairro.getBairroNome())));
-		System.out.println(valorMercado.getBairro().getBairroCodigo());
 		vmd.inserirValorMercado(valorMercado);
 		return "sucesso";
 	}
 	
-	public void consultarValorMercado() throws Exception {
+	public ValorMercado consultaValor() throws Exception {
 		ValorMercadoDAO vmd = new ValorMercadoDAO();
-		//valorMercado.setBairro(new EnderecoDAO().getBairroPorCodigo(Integer.parseInt(bairro.getBairroNome())));
-		valorMercado = vmd.consultaValorMercadoPorBairro(bairro);
+		this.valorMercado = vmd.consultaValorMercadoPorBairro(bairro);
+		
+		return this.valorMercado;
 	}
 }
