@@ -134,8 +134,8 @@ public class RegrasDAO {
 
 			Regras regra = new Regras();
 
-			regra.setCodigoRegra(rs.getString());
-			regra.setRegra(rs.getString());
+		//	regra.setCodigoRegra(rs.getString());
+		//	regra.setRegra(rs.getString());
 			
 
 			listaTodosAsRegras.add(regra);
@@ -165,8 +165,8 @@ public class RegrasDAO {
 		Regras regra = new Regras();
 		
 		rs.first();
-		regra.setCodigoRegra(rs.getInt());
-		regra.setRegra(rs.getString());
+		//regra.setCodigoRegra(rs.getInt());
+		//regra.setRegra(rs.getString());
 			
 		ps.close();
 		rs.close();
