@@ -154,7 +154,7 @@ public class CadastrarAgendaBean {
 				
 		for(Cliente cliente : listagemClientes){
 			
-			listaClientes.add(new SelectItem(cliente.getCodigoPessoa(), cliente.getNome() + " , " + cliente.getTelefone() +" , " + cliente.getEmail()));
+			listaClientes.add(new SelectItem(cliente.getCodigoPessoa(), cliente.getNome() + " , " + cliente.getEmail()));
 			
 		}
 	}
