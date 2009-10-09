@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="tituloGrande">
+		<h:outputText value="Página de Regras" />
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="» Alterar Regra" />
+	</ui:define>
+	<ui:define name="conteudo">
+		<h:form styleClass="forms">
+ 			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoRegra" value="Regra" />
+				<!-- <h:inputText value="#{cadastraRegraBean.regra.regra}"
+					styleClass="obrigatorio" id="campoRegra" size="50" required="true" /> -->
+		           <h:inputTextarea value="#{cadastraRegraBean.regra.regra}" rows="2" cols="40" styleClass="obrigatorio" id="campoRegra" required="true" />
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />
+			</h:panelGroup>
+			<h:panelGroup styleClass="linha"></h:panelGroup>
+			<h:panelGroup styleClass="botoes">
+				<h:commandButton action="#{consultaRegraBean.updateRegra}" value=""
+					styleClass="input_submit" />
+				<h:commandButton action="#{consultaUsuarioBean.destroiSessao}" value=""
+					styleClass="input_button" immediate="true" />
+			</h:panelGroup>
+		</h:form>
+	</ui:define>	
+</ui:composition>
+
+</html>
