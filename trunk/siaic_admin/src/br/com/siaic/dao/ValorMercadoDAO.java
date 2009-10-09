@@ -124,7 +124,8 @@ public class ValorMercadoDAO {
 			} else {
                 
 				valorMercado = new ValorMercado();
-				valorMercado = this.montaValorMercado(this.rst);
+				valorMercado.setBairro(bairro);
+				valorMercado.setValor(this.rst.getDouble(2));
 			}
 			
 		} catch ( SQLException sql ) {
@@ -273,8 +274,8 @@ public class ValorMercadoDAO {
 		//vm.setBairro(new EnderecoDAO().getBairroPorCodigo(1));
 		//vm.setValor(300000);
 		//vmd.inserirValorMercado(vm);
-		vm = vmd.consultaValorMercadoPorBairro(new EnderecoDAO().getBairroPorCodigo(1));
-		System.out.println(vm.getBairro().getBairroNome());
+		vm = vmd.consultaValorMercadoPorBairro(new EnderecoDAO().getBairroPorCodigo(2));
+		System.out.println(vm.getValor());
 		
 		//vmd.excluirValorMercado(new EnderecoDAO().getBairroPorCodigo(1));
 		
