@@ -15,7 +15,7 @@
 			<h:form styleClass="forms">				
 			    <h:panelGroup styleClass="textcenter">
 					<h:outputLabel for="cmbBairros"  value="Bairro"/>
-					<h:selectOneMenu value="#{ValorMercadoBean.bairro.bairroNome}" id="campo02" required="true">
+					<h:selectOneMenu value="#{ValorMercadoBean.bairro.bairroCodigo}" id="campo02" required="true">
 						<f:selectItems value="#{selectBairros.bairros}">
 						</f:selectItems>
 					</h:selectOneMenu>						
@@ -29,7 +29,7 @@
 				</h:panelGroup>
 				<h:panelGroup styleClass="linha"></h:panelGroup>
 				<h:panelGroup styleClass="botoes">
-					<h:commandButton action="#{ValorMercadoBean.consultarValorMercado}" value="Consultar Valor Venal" styleClass="input_submit" />
+					<h:commandButton action="#{ValorMercadoBean.consultaValor}" value="Consultar Valor Venal" styleClass="input_submit" />
 				</h:panelGroup>	
 				
 			</h:form>		
