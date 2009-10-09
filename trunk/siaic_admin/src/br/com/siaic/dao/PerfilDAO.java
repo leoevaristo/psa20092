@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.siaic.businesslogic.Cliente;
+import br.com.siaic.businesslogic.ImovelCaracteristica;
 import br.com.siaic.businesslogic.Perfil;
 
 /**
@@ -102,5 +103,28 @@ public class PerfilDAO {
 		ps.close();
 		
 		return result;
+	}
+	// Listagem da tabela Perfil
+	public List<Perfil> getPerfilList()
+			throws SQLException {
+		String query = new String("select * from perfil");
+		PreparedStatement ps;
+		ps = DB.getConn().prepareStatement(query);
+		ResultSet rs = ps.executeQuery();
+
+		List<Perfil> l = new ArrayList<Perfil>();
+		Perfil p = null;
+
+		while (rs.next()) {
+			p = new Perfil();
+			p.setCodigo(rs.getInt("PRF_CODIGO"));
+			p.setCliente(rs.getInt("PRF_PESSOA_CLIENTE"));
+			p.setImovelCaracteristica(rs.getInt("PRF_IMOVEL_CARACTERISTICA"));
+			p.setUsuario(rs.getInt("PRF_USUARIO"));
+			l.add(p);
+		}
+		rs.close();
+		ps.close();
+		return l;
 	}
 }
