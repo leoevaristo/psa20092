@@ -15,6 +15,8 @@ public class SelectImoveis {
 	
 	private static List<SelectItem> listaImoveis = new ArrayList<SelectItem>();
 	
+	private List<Integer> imoveisSelecionados;
+	
 	public SelectImoveis(){
 		if(listaImoveis.isEmpty())
 			try {
@@ -49,6 +51,16 @@ public class SelectImoveis {
 			listaImoveis.add((new SelectItem(imo.getCodigo(),logEnd + " " + nomeEnd + " " + bairroEnd + " " + cepEnd)));
 		}
 		
+	}
+
+	public void setImoveisSelecionados(List<Integer> imoveisSelecionados) {
+		this.imoveisSelecionados = imoveisSelecionados;
+	}
+
+	public List<Integer> getImoveisSelecionados() {
+		
+	
+		return imoveisSelecionados;
 	}
 
 }

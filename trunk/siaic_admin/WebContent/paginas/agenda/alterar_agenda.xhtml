@@ -15,47 +15,47 @@
 		
 	<ui:define name="conteudo">
 		<h:form styleClass="forms">
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="panelCorretores">
 				<h:outputLabel for="corretor" value="Corretor" />
 				<h:selectOneMenu value="#{consultaAgendaBean.agenda.codCorretor}" id="corretor">
 					<f:selectItem itemLabel="Corretor" itemValue="" />
 					<f:selectItems value="#{selectCorretores.corretores}" />				 
 				</h:selectOneMenu>
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="panelNomeCliente">
 				<h:outputLabel value="Nome do Cliente" for="nomeCliente" />
 				<h:outputText value="#{consultaAgendaBean.cliente.nome}" id="nomeCliente" />	
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="panelImovel">
 				<h:outputLabel value="Imóvel" for="imovel" />				
 				<h:selectOneMenu value="#{consultaAgendaBean.agenda.codImovel}" id="imovel">
 					<f:selectItems value="#{selectImoveis.listaImoveis}" />
 				</h:selectOneMenu>									
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="panelData">
 				<h:outputLabel for="data" value="Data" />
 				<h:inputText value="#{consultaAgendaBean.agenda.data}" id="data" styleClass="obrigatorio" >					
 				</h:inputText> 
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="panelHoraIni">
 				<h:outputLabel for="horaInicio" value="Hora de inicio (h:m:s)" />
 				<h:inputText value="#{consultaAgendaBean.agenda.horaInicio}" id="horaInicio" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="panelHoraFim">
 				<h:outputLabel for="horaFim" value="Hora de fim (h:m:s)" />
 				<h:inputText value="#{consultaAgendaBean.agenda.horaFim}" id="horaFim" />
-			</h:panelGroup>	
-			<h:panelGroup styleClass="textcenter">
+			</h:panelGroup>
+			<h:panelGroup id="panelDescricao">
 				<h:outputLabel for="descricao" value="Descricao" />
 				<h:inputTextarea value="#{consultaAgendaBean.agenda.descricao}" id="descricao" />
-			</h:panelGroup>		
-			<h:panelGroup styleClass="linha"></h:panelGroup>
-			<h:panelGroup styleClass="botoes">
-				<h:commandButton action="#{consultaAgendaBean.updateAgenda}" value=""
-					styleClass="input_submit"/>
-				<h:commandButton action="#" value="" styleClass="input_reset" />
-				<h:commandButton action="#{consultaAgendaBean.destroiSessao}" value="" styleClass="input_button" immediate="true" />
-			</h:panelGroup>						
+			</h:panelGroup>
+			<span class="linha"></span>
+			<span class="botoes">
+				<h:commandButton action="#{consultaAgendaBean.updateAgenda}" value="Salvar"
+					styleClass="input_botao"/>
+				<h:commandButton action="#" value="Limpar" styleClass="input_botao" />
+				<h:commandButton action="#{consultaAgendaBean.destroiSessao}" value="Cancelar" styleClass="input_botao" immediate="true" />
+			</span>						
 		</h:form>		
 	</ui:define>
 
