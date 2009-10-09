@@ -20,7 +20,7 @@
  <managed-bean>
   <managed-bean-name>imovelBean</managed-bean-name>
   <managed-bean-class>br.com.siaic.mb.ImovelBean</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <!-- EVALOR MERCADO IÍNICIO -->
  <managed-bean>
@@ -184,6 +184,16 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
+ 
+  <navigation-rule>
+  <from-view-id>/paginas/imovel/cadastra_imovel.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>novo</from-outcome>
+   <to-view-id>/paginas/imovel/consulta_imoveis.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ 
  <navigation-rule>
   <from-view-id>/paginas/agenda/cadastrar_agenda.xhtml</from-view-id>
   <navigation-case>

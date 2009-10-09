@@ -16,46 +16,57 @@
 		 <ui:define name="conteudo">
 		   <h:form styleClass="forms">
 		    
-		     <h:panelGroup styleClass="textcenter">
+		     <h:panelGroup id="finalidade">
 		       <h:outputLabel value="Finalidade:" />
 		       <h:inputText value="#{imovelBean.imoFin.nome}" styleClass="obrigatorio" size="50" required="true"/>
 		     </h:panelGroup>
 		     
-		     <h:panelGroup styleClass="textcenter">
+		     <h:panelGroup id="proprietario">
 		       <h:outputLabel value="Proprietário:" />
 		       <h:selectOneMenu value="#{imovelBean.prop.codigoPessoa}" id="prop">
 			     <f:selectItems value="#{imovelBean.listaClientes}" />
 			   </h:selectOneMenu>
 		     </h:panelGroup>
 		     		     
-		     <h:panelGroup styleClass="textcenter">
+		     <h:panelGroup id="caracbasica">
 		       <h:outputLabel value="Caracteristicas Básicas:" />
 		       <h:selectOneMenu value="#{imovelBean.imoCar.codigo}" id="carac">
 			     <f:selectItems value="#{imovelBean.listaCaracteristica}" />
 			   </h:selectOneMenu>
 		     </h:panelGroup>
 		     
-		     <h:panelGroup styleClass="textcenter">
+		     <h:panelGroup id="tipo">
+		       <h:outputLabel value="Tipo:" />
+		       <h:selectOneMenu value="#{imovelBean.imovel.tipo}" layout="pageDirection">
+		         <f:selectItem itemValue="1" itemLabel="Apartamento" />
+		         <f:selectItem itemValue="2" itemLabel="Casa" />
+		         <f:selectItem itemValue="3" itemLabel="Comercial" />
+		         <f:selectItem itemValue="4" itemLabel="Industrial" />
+		         <f:selectItem itemValue="5" itemLabel="Rural" />
+		       </h:selectOneMenu>
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="valor">
 		       <h:outputLabel value="Valor:" />
 		       <h:inputText value="#{imovelBean.imovel.valor}" styleClass="obrigatorio" size="10" maxlength="8" />
 		     </h:panelGroup>
 		     
-		     <h:panelGroup styleClass="textcenter">
+		     <h:panelGroup id="valcond">
 		       <h:outputLabel value="Valor Condominio:" />
 		       <h:inputText value="#{imovelBean.imovel.valorCondominio}" size="10" maxlength="8" />
 		     </h:panelGroup>
 		     
-		     <h:panelGroup styleClass="textcenter">
+		     <h:panelGroup id="formpag">
 		       <h:outputLabel value="Forma de Pagamento:" />
 		       <h:inputTextarea value="#{imovelBean.imovel.formaPagamento}" rows="2" />
 		     </h:panelGroup>
 		     
-		     <h:panelGroup styleClass="textcenter">
+		     <h:panelGroup id="detalhes">
 		       <h:outputLabel value="Detalhes:" />
 		       <h:inputTextarea value="#{imovelBean.imovel.detalhe}" rows="5" />
 		     </h:panelGroup>
 		     
-		     <h:panelGroup styleClass="textcenter">
+		     <h:panelGroup id="estado">
 				<h:outputLabel for="campoEstado" value="Estado" />
 				<h:selectOneMenu value="#{imovelBean.cidade.cidadeEstado}" 
 							    id="campoEstado" onchange="submit()"  immediate="true" valueChangeListener="#{cadastraClienteBean.filtraCidadePorEstado}">
@@ -63,48 +74,37 @@
 					<f:selectItems value="#{selectEstados.estados}" />										
 				</h:selectOneMenu>
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="cidade">
 				<h:outputLabel for="campoCidade" value="Cidade" />
-				<h:selectOneMenu value="#{imovelBean.cidade.cidadeNome}" id="campoCidade">
+				<h:selectOneMenu value="#{imovelBean.endereco.enderecoBairro.bairroCidade}" id="campoCidade">
 					<f:selectItem itemValue="" itemLabel="Cidade"/>
 					<f:selectItems value="#{selectCidades.cidades}"/>				
 				</h:selectOneMenu>
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="bairro">
 				<h:outputLabel for="campoBairro" value="Bairro" />
 				<h:selectOneMenu value="#{imovelBean.endereco.enderecoBairro.bairroCodigo}" id="campoBairro"> 
 					<f:selectItem itemValue="" itemLabel="Bairro"/>
 					<f:selectItems  value="#{selectBairros.bairros}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="logradouro">
 				<h:outputLabel for="campoLogradouro" value="Logradouro"/>
 				<h:selectOneMenu value="#{imovelBean.endereco.enderecoLogradouro}" id="campoLogradouro">
 					<f:selectItem itemValue="" itemLabel="Logradouro"/>
 					<f:selectItems value="#{imovelBean.logradouroo}"  />
 				</h:selectOneMenu>
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="endereco">
 				<h:outputLabel for="campoNomeEnd" value="EndereÃ§o" />
 				<h:inputText value="#{imovelBean.endereco.enderecoNome}"
 				 id="campoNomeEnd" styleClass="obrigatorio" size="50" required="true"/>
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="cep">
 				<h:outputLabel for="campoCep" value="CEP" />
 				<h:inputText value="#{imovelBean.endereco.enderecoCep}"
 				 id="campoCep" styleClass="obrigatorio" size="50" required="true"/>			 
 			</h:panelGroup>
-			
-			<h:panelGroup styleClass="textcenter">
-		       <h:outputLabel value="Tipo:" />
-		       <h:selectOneRadio value="#{imovelBean.imovel.tipo}" styleClass="obrigatorio" >
-		         <f:selectItem itemValue="1" itemLabel="Apartamento" />
-		         <f:selectItem itemValue="2" itemLabel="Casa" />
-		         <f:selectItem itemValue="3" itemLabel="Comercial" />
-		         <f:selectItem itemValue="4" itemLabel="Industrial" />
-		         <f:selectItem itemValue="5" itemLabel="Rural" />
-		       </h:selectOneRadio>
-		     </h:panelGroup>
 
 			<h:panelGroup styleClass="linha"></h:panelGroup>
 		     

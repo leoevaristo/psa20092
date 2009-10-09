@@ -11,7 +11,11 @@ public class ImovelFinalidade {
     	this.codigo = codigo;
     }
     
-    public ImovelFinalidade() {
+    public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public ImovelFinalidade() {
         this.nome = "";
         this.codigo = -1;
     }
