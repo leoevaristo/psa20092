@@ -105,6 +105,14 @@ public class ImovelFinalidadeDAO {
     	try {
     		ps.setString(1, imf.getNome());
 			ps.execute();
+			ps.close();
+			
+			ps = this.conn.getPreparedStatement("select MAX(IMF_CODIGO) AS IMF_CODIGO from IMOVEL_FINALIDADE;");
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+			    imf.setCodigo(rs.getInt("IMF_CODIGO"));
+			    //imf.setNome(rs.getString("IMF_NOME"));
+			}			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

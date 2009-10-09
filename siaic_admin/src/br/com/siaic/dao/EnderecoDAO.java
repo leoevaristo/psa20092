@@ -138,7 +138,7 @@ public class EnderecoDAO {
 	}//public boolean adicionarBairro(Estado estado)
 		
 	/**
-	 * Adiciona um endereï¿½o na Base de Dados. Atenï¿½ï¿½o: o cï¿½digo do endereï¿½o serï¿½ ignorado nesta implementaï¿½ï¿½o. Este cï¿½digo serï¿½
+	 * Adiciona um endereï¿½o na Base de Dados. O Objeto será retornado com o código cadastrado no banco.
 	 * corrigido mais tarde. 
 	 * @param endereco
 	 * @return

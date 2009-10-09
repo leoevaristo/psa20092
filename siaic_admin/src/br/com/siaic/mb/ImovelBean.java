@@ -186,7 +186,6 @@ public class ImovelBean {
 	}
 
 	public String novoImovel() {
-
 		return "novo";
 	}
 
@@ -212,8 +211,23 @@ public class ImovelBean {
 	}
 
 	public String salvaImovel() {
-
-		return "salva";
+		ImovelFinalidadeDAO finDao = new ImovelFinalidadeDAO();
+		finDao.salvar(this.imoFin);
+		this.imovel.setFinalidade(this.imoFin.getCodigo());
+		
+		this.imovel.setProprietario(this.prop.getCodigoPessoa());
+		this.imovel.setCaracteristica(this.imoCar.getCodigo());
+		
+		EnderecoDAO end = new EnderecoDAO();
+		try {
+			end.adicionarEndereco(this.endereco);
+			this.imovel.setEndereco(this.endereco.getEnderecoCodigo());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		this.imovel.salvar();
+		return "novo";
 	}
 
 	public ImovelCaracteristica getImoCar() {
