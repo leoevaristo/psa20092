@@ -15,7 +15,7 @@ import br.com.siaic.dao.FabricaConexao;
  * 
  * @author Alain Rosemberg 
  */
-public class RegrasDAO {
+public class Condomino {
 
 	/**
 	 * 
@@ -29,7 +29,7 @@ public class RegrasDAO {
 	/**
 	 * 
 	 */
-	public RegrasDAO() {
+	public Condomino() {
 
 		try
 		{
