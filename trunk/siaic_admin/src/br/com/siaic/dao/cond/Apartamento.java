@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.siaic.businesslogic.Usuario;
 import br.com.siaic.businesslogic.cond.Regras;
 import br.com.siaic.dao.FabricaConexao;
 
@@ -42,7 +41,7 @@ public class Apartamento {
 		}
 	}
 
-	public void adicionarRegras (Regras regra) throws SQLException {
+	public void adicionarApartamento (Apartamento apartamento) throws SQLException {
 
 		String sql = "INSERT INTO REGRAS( ?)"
 				+ "VALUES (?)";
@@ -51,8 +50,8 @@ public class Apartamento {
 
 			PreparedStatement ps = conexao.prepareStatement(sql);
 
-			ps.setInt(1, regra.getCodigoRegra());
-			ps.setString(2, regra.getRegra());
+//			ps.setInt(1, regra.getCodigoRegra());
+//			ps.setString(2, regra.getRegra());
 
 			ps.execute();
 
