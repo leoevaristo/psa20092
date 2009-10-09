@@ -48,10 +48,8 @@ public class ValorMercadoBean {
 		return "sucesso";
 	}
 	
-	public ValorMercado consultaValor() throws Exception {
+	public void consultaValor() throws Exception {
 		ValorMercadoDAO vmd = new ValorMercadoDAO();
 		this.valorMercado = vmd.consultaValorMercadoPorBairro(bairro);
-		
-		return this.valorMercado;
 	}
 }
