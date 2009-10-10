@@ -19,11 +19,11 @@
 				<h:outputLabel for="campoRegra" value="Regra" />
 				<!-- <h:inputText value="#{cadastraRegraBean.regra.regra}"
 					styleClass="obrigatorio" id="campoRegra" size="50" required="true" /> -->
-		           <h:inputTextarea value="#{cadastraRegraBean.regra.regra}" rows="2" cols="40" styleClass="obrigatorio" id="campoRegra" required="true" />
+		           <h:inputTextarea value="#{cadastraRegrasBean.regra.regra}" rows="2" cols="40" styleClass="obrigatorio" id="campoRegra" required="true" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="linha"></h:panelGroup>
 			<h:panelGroup styleClass="botoes">
-				<h:commandButton action="#{cadastraUsuarioBean.addUsuario}" value=""
+				<h:commandButton action="#{cadastraRegrasBean.addRegras}" value=""
 					styleClass="input_submit" />
 				<h:commandButton action="#" value="" type="reset"
 					styleClass="input_reset" />
