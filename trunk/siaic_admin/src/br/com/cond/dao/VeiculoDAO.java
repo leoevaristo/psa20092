@@ -95,7 +95,7 @@ public class VeiculoDAO {
 
 	public void alterarVeiculos(Veiculo veiculo) throws SQLException {
 
-		String sql = "UPDATE veiculo SET VEI_DESCRICAO, VEI_PLACA, VEI_COR, VEI_APA_CODIGO"
+		String sql = "UPDATE admcon_veiculo SET VEI_DESCRICAO, VEI_PLACA, VEI_COR, VEI_APA_CODIGO"
 				+ " WHERE VEI_CODIGO = ?";
 
 		try {
@@ -129,30 +129,32 @@ public class VeiculoDAO {
 	 */
 	public List<Veiculo> getTodosOsVeiculos() throws SQLException {
 		// TODO
-		String sql = "SELECT ?, ?, ?, ?, "
-				+ " FROM veiculo "
-				+ "	WHERE ? ORDER BY ?";
+		String sql = "SELECT VEI_CODIGO, VEI_DESCRICAO, VEI_PLACA, VEI_COR "
+				+ " FROM admcon_veiculo "
+				+ "	WHERE VEI_CODIGO ORDER BY VEI_CODIGO";
 
 		PreparedStatement ps = conexao.prepareStatement(sql);
 
 		ResultSet rs = ps.executeQuery();
 
-		List<Veiculo> listaTodosAsveiculos = new ArrayList<Veiculo>();
+		List<Veiculo> listaTodoOsVeiculos = new ArrayList<Veiculo>();
 
 		while (rs.next()) {
 
 			Veiculo veiculo = new Veiculo();
 
-		//	veiculo.setCodigoveiculo(rs.getString());
-		//	veiculo.setveiculo(rs.getString());
+		 	veiculo.setCodigoVeiculo(rs.getInt("VEI_CODIGO"));
+			veiculo.setPlaca(rs.getString("VEI_PLACA"));
+			veiculo.setDescricao(rs.getString("VEI_DESCRICAO"));
+			veiculo.setCor(rs.getString("VEI_COR"));
 			
 
-			listaTodosAsveiculos.add(veiculo);
+			listaTodoOsVeiculos.add(veiculo);
 
 		}
 		conexao.close();
 
-		return listaTodosAsveiculos;
+		return listaTodoOsVeiculos;
 
 	}
 	
@@ -161,9 +163,9 @@ public class VeiculoDAO {
 	public Veiculo getVeiculoId(int veiculoCodigo) throws SQLException
 	{
 		
-		String sql = "SELECT ? " 
-			+"FROM veiculo " 
-			+"WHERE ? = ?  ";
+		String sql = "SELECT VEI_CODIGO, VEI_DESCRICAO, VEI_PLACA, VEI_COR " 
+			+"FROM admcon_veiculo " 
+			+"WHERE  VEI_CODIGO = ?  ";
 		
 			
 		PreparedStatement ps = conexao.prepareStatement(sql);
@@ -174,8 +176,11 @@ public class VeiculoDAO {
 		Veiculo veiculo = new Veiculo();
 		
 		rs.first();
-		//veiculo.setCodigoveiculo(rs.getInt());
-		//veiculo.setveiculo(rs.getString());
+	 	veiculo.setCodigoVeiculo(rs.getInt("VEI_CODIGO"));
+		veiculo.setPlaca(rs.getString("VEI_PLACA"));
+		veiculo.setDescricao(rs.getString("VEI_DESCRICAO"));
+		veiculo.setCor(rs.getString("VEI_COR"));
+
 			
 		ps.close();
 		rs.close();
