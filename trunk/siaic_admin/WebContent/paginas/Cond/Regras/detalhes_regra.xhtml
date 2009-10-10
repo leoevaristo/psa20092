@@ -6,32 +6,18 @@
 
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 		<ui:define name="tituloGrande">
-			<h:outputText value="Página do Usuario" />
+			<h:outputText value="Página das Regras" />
 		</ui:define>
 		<ui:define name="subtitulo">
-			<h:outputText value="» Detalhes do Usuario" />
+			<h:outputText value="» Detalhes da Regra" />
 		</ui:define>		
 		<ui:define name="conteudo">
 			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
-				<h:outputLabel for="campoNome" value="Usuario"/>
-				<h:outputText value="#{consultaUsuarioBean.usuario.nome}" id="campoNome" />
+				<h:outputLabel for="campoRegra" value="regra"/>
+				<h:outputText value="#{consultaRegraBean.regra.regra}" id="campoRegra" />
 			</h:panelGrid>					
-			<h:panelGrid columns="2" columnClasses="cor1,cor2" styleClass="panels" >
-				<h:outputLabel for="campoEndereco" value="Endereço" />
-				<h:outputText value="#{consultaUsuarioBean.enderecoUsuario}" id="campoEndereco" />
-			</h:panelGrid>	
-			<h:panelGrid columns="4" columnClasses="cor1,cor2" styleClass="panels">
-				<h:outputLabel for="campoTelefone" value="Telefone"/>
-				<h:outputText value="#{consultaUsuarioBean.usuario.telefone}" id="campoTelefone"/>				
-				<h:outputLabel for="campoCelular" value="Celular"/>
-				<h:outputText value="#{consultaUsuarioBean.usuario.celular}" id="campoCelular"/>				
-			</h:panelGrid>	
-			<h:panelGrid columns="2" columnClasses="cor1,cor2" styleClass="panels">
-				<h:outputLabel for="campoEmail" value="E-mail"/>
-				<h:outputText value="#{consultaUsuarioBean.usuario.email}" id="campoEmail"/>
-			</h:panelGrid>	
 			<h:panelGroup>		
-			<h:outputLink value="consulta_usuario.xhtml">
+			<h:outputLink value="consulta_regra.xhtml">
 				<h:outputText value="voltar para página de consulta" />
 			</h:outputLink>	
 			</h:panelGroup>
