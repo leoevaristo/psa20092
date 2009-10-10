@@ -88,13 +88,14 @@ public class RegrasDAO {
 
 	public void alterarRegras(Regras regra) throws SQLException {
 
-		String sql = "UPDATE admcon_regras SET REG_DESCRICAO "
+		String sql = "UPDATE admcon_regras SET REG_DESCRICAO = ? "
 				+ " WHERE  REG_CODIGO = ? ";
 
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(sql);
-			ps.setInt(1, regra.getCodigoRegra());
+			ps.setString(1, regra.getRegra());
+			ps.setInt(2, regra.getCodigoRegra());
 
 			ps.executeUpdate();
 			ps.close();
