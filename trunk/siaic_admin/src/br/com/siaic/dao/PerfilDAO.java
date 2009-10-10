@@ -19,7 +19,7 @@ import br.com.siaic.businesslogic.Perfil;
 public class PerfilDAO {
 	private static PerfilDAO instance;
 	
-	private static ClienteDAO cdao = new ClienteDAO();
+	
 	private static UsuarioDAO udao = new UsuarioDAO();
 		 
 	public static PerfilDAO getInstance() {
@@ -30,6 +30,7 @@ public class PerfilDAO {
 	}
 	//Busca de perfil por cliente
 	public List<Perfil> getPerfil(Cliente c) throws SQLException{
+		
 		String query = "select * from PERFIL where PRF_PESSOA_CLIENTE = ?";
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
@@ -42,7 +43,7 @@ public class PerfilDAO {
 		while (rs.next()) {
 			p = new Perfil();
 			p.setCodigo(rs.getInt("PRF_CODIGO"));
-			p.setCliente(cdao.getClientePorId(rs.getInt("PRF_PESSOA_CLIENTE")));
+			p.setCliente(new ClienteDAO().getClientePorId(rs.getInt("PRF_PESSOA_CLIENTE")));
 			p.setImovelCaracteristica(ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(rs.getInt("PRF_IMOVEL_CARACTERISTICA")));
 			p.setUsuario(udao.getUsuarioId(rs.getInt("PRF_USUARIO")));
 			l.add(p);

@@ -14,15 +14,15 @@
 		<h:form styleClass="forms">
 			<h:panelGroup id="panelNomeCliente">
 				<h:outputLabel for="cliente" value="Cliente" />
-				<h:inputText value="#{consultaPerfilBean.cliente.nome}" id="cliente" 
-				valueChangeListener="#{perfilBean.listarClientes}"  />						
+				<h:inputText value="#{consultaPerfilBean.perfil.cliente.nome}" id="cliente" 
+				valueChangeListener="#{consultaPerfilBean.listarClientes}"  />						
 				<h:commandLink  action="#">
 					<h:graphicImage value="/images/lupa.png" />
 				</h:commandLink>				
 			</h:panelGroup>
 			<h:panelGroup id="panelClienteSelect">
-				<h:selectOneMenu value="#{perfilBean.perfil.cliente.codigoPessoa}">
-					<f:selectItems value="#{perfilBean.listaClientesSelect}" />
+				<h:selectOneMenu value="#{consultaPerfilBean.perfil.cliente.codigoPessoa}">
+					<f:selectItems value="#{consultaPerfilBean.listaClientesSelect}" />
 				</h:selectOneMenu>
 				<h:commandButton action="#{consultaPerfilBean.Buscar}" value="Buscar" />
 			</h:panelGroup>	
@@ -81,6 +81,11 @@
 				</h:form>
 			</h:column>
 		</h:dataTable>
+		<span class="linha"></span>
+			<span class="botoes">
+				<h:commandButton action="#{consultaPerfilBean.Limpar}" value="" styleClass="input_reset" />
+				<h:commandButton action="#{consultaPerfilBean.Cancelar}" value="" styleClass="input_button" immediate="true" />
+			</span>
 	</ui:define>
 	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
 </ui:composition>
