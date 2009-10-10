@@ -20,7 +20,9 @@ public class Perfil {
 	private Usuario usuario;
 	
 	public Perfil(){
-		
+		cliente = new Cliente();
+		imovelCaracteristica = new ImovelCaracteristica();
+		usuario = new Usuario();
 	}
 	public Perfil(Cliente c, ImovelCaracteristica ic, Usuario u){
 		this.cliente = c;
