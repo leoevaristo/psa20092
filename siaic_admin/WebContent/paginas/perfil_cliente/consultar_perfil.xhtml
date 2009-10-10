@@ -26,7 +26,11 @@
 				</h:selectOneMenu>
 				<h:commandButton action="#{consultaPerfilBean.Buscar}" value="Buscar" />
 			</h:panelGroup>	
-			
+			<span class="linha"></span>
+			<span class="botoes">
+				<h:commandButton action="#{consultaPerfilBean.Limpar}" value="" styleClass="input_reset" />
+				<h:commandButton action="#{consultaPerfilBean.Cancelar}" value="" styleClass="input_button" immediate="true" />
+			</span>
 		</h:form>
 
 	</ui:define>
@@ -81,11 +85,9 @@
 				</h:form>
 			</h:column>
 		</h:dataTable>
-		<span class="linha"></span>
-			<span class="botoes">
-				<h:commandButton action="#{consultaPerfilBean.Limpar}" value="" styleClass="input_reset" />
-				<h:commandButton action="#{consultaPerfilBean.Cancelar}" value="" styleClass="input_button" immediate="true" />
-			</span>
+		<h:form>
+			
+		</h:form>
 	</ui:define>
 	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
 </ui:composition>
