@@ -15,6 +15,7 @@ import br.com.cond.dao.RegrasDAO;
 import br.com.siaic.dao.FabricaConexao;
 
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRStyle;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 
