@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.siaic.businesslogic.Usuario;
 import br.com.cond.businesslogic.Regras;
 import br.com.siaic.dao.FabricaConexao;
 
@@ -44,15 +43,14 @@ public class RegrasDAO {
 
 	public void adicionarRegras (Regras regra) throws SQLException {
 
-		String sql = "INSERT INTO REGRAS( ?)"
+		String sql = "INSERT INTO admcon_regras (REG_DESCRICAO)"
 				+ "VALUES (?)";
 
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(sql);
 
-			ps.setInt(1, regra.getCodigoRegra());
-			ps.setString(2, regra.getRegra());
+			ps.setString(1, regra.getRegra());
 
 			ps.execute();
 
@@ -70,7 +68,7 @@ public class RegrasDAO {
 
 	public void removerRegra(int idRegra) throws SQLException {
 	
-		String sql = " DELETE REGRA ";
+		String sql = " DELETE FROM admcon_regras WHERE REG_CODIGO = ? ";
 
 	
 
@@ -90,14 +88,13 @@ public class RegrasDAO {
 
 	public void alterarRegras(Regras regra) throws SQLException {
 
-		String sql = "UPDATE REGRA SET ?, ?, ?"
-				+ " WHERE  = ?";
+		String sql = "UPDATE admcon_regras SET REG_DESCRICAO "
+				+ " WHERE  REG_CODIGO = ? ";
 
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.setInt(1, regra.getCodigoRegra());
-			ps.setString(2, regra.getRegra());
 
 			ps.executeUpdate();
 			ps.close();
@@ -120,9 +117,9 @@ public class RegrasDAO {
 	 */
 	public List<Regras> getTodasAsRegras() throws SQLException {
 		// TODO
-		String sql = "SELECT ?, ?, ?, ?, "
-				+ " FROM REGRA "
-				+ "	WHERE ? ORDER BY ?";
+		String sql = "SELECT REG_CODIGO, REG_DESCRICAO "
+				+ " FROM admcon_regras "
+				+ "	ORDER BY REG_CODIGO";
 
 		PreparedStatement ps = conexao.prepareStatement(sql);
 
@@ -134,8 +131,8 @@ public class RegrasDAO {
 
 			Regras regra = new Regras();
 
-		//	regra.setCodigoRegra(rs.getString());
-		//	regra.setRegra(rs.getString());
+			regra.setCodigoRegra(rs.getInt("REG_CODIGO"));
+			regra.setRegra(rs.getString("REG_DESCRICAO"));
 			
 
 			listaTodosAsRegras.add(regra);
@@ -152,9 +149,9 @@ public class RegrasDAO {
 	public Regras getRegraId(int regraCodigo) throws SQLException
 	{
 		
-		String sql = "SELECT ? " 
-			+"FROM REGRA " 
-			+"WHERE ? = ?  ";
+		String sql = "SELECT REG_CODIGO,REG_DESCRICAO " 
+			+"FROM admcon_regras " 
+			+"WHERE REG_CODIGO = ?  ";
 		
 			
 		PreparedStatement ps = conexao.prepareStatement(sql);
@@ -165,8 +162,8 @@ public class RegrasDAO {
 		Regras regra = new Regras();
 		
 		rs.first();
-		//regra.setCodigoRegra(rs.getInt());
-		//regra.setRegra(rs.getString());
+		regra.setCodigoRegra(rs.getInt("REG_CODIGO"));
+		regra.setRegra(rs.getString("REG_DESCRICAO"));
 			
 		ps.close();
 		rs.close();
