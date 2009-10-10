@@ -15,7 +15,7 @@ import br.com.siaic.dao.FabricaConexao;
  * 
  * @author Alain Rosemberg 
  */
-public class Veiculo {
+public class VeiculoDAO {
 
 	/**
 	 * 
@@ -29,7 +29,7 @@ public class Veiculo {
 	/**
 	 * 
 	 */
-	public Veiculo() {
+	public VeiculoDAO() {
 
 		try
 		{

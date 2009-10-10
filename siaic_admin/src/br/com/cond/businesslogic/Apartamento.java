@@ -9,7 +9,9 @@ public class Apartamento {
 
 	private int codigoApartamento;
 	
-	private String Regra;
+	private int Andar;
+	
+	private String Bloco;
 
 	public int getCodigoApartamento() {
 		return codigoApartamento;
@@ -19,12 +21,24 @@ public class Apartamento {
 		this.codigoApartamento = codigoApartamento;
 	}
 
-	public String getRegra() {
-		return Regra;
+	public int getAndar() {
+		return Andar;
 	}
 
-	public void setRegra(String regra) {
-		Regra = regra;
+	public void setAndar(int andar) {
+		Andar = andar;
 	}
+
+	public String getBloco() {
+		return Bloco;
+	}
+
+	public void setBloco(String bloco) {
+		Bloco = bloco;
+	}
+	
+	
+	
+	
 
 }

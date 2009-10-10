@@ -14,7 +14,7 @@ import br.com.siaic.dao.FabricaConexao;
  * 
  * @author Alain Rosemberg 
  */
-public class Apartamento {
+public class ApartamentoDAO {
 
 	/**
 	 * 
@@ -28,7 +28,7 @@ public class Apartamento {
 	/**
 	 * 
 	 */
-	public Apartamento() {
+	public ApartamentoDAO() {
 
 		try
 		{
@@ -41,7 +41,7 @@ public class Apartamento {
 		}
 	}
 
-	public void adicionarApartamento (Apartamento apartamento) throws SQLException {
+	public void adicionarApartamento (ApartamentoDAO apartamento) throws SQLException {
 
 		String sql = "INSERT INTO REGRAS( ?)"
 				+ "VALUES (?)";
