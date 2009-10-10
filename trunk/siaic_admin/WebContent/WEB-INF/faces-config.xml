@@ -121,10 +121,15 @@
   <managed-bean-class>br.com.siaic.mb.SelectImoveis</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
-  <managed-bean>
+ <managed-bean>
   <managed-bean-name>selectCorretores</managed-bean-name>
   <managed-bean-class>br.com.siaic.mb.SelectCorretores</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>perfilBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.PerfilBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <navigation-rule>
   <from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
@@ -184,8 +189,7 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
- 
-  <navigation-rule>
+ <navigation-rule>
   <from-view-id>/paginas/imovel/cadastra_imovel.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>novo</from-outcome>
@@ -193,7 +197,6 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
- 
  <navigation-rule>
   <from-view-id>/paginas/agenda/cadastrar_agenda.xhtml</from-view-id>
   <navigation-case>
@@ -361,14 +364,14 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
-  <navigation-rule>
+ <navigation-rule>
   <from-view-id>/paginas/agenda/consulta_agenda.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>detalhes</from-outcome>
    <to-view-id>/paginas/agenda/detalhes_agenda.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
-  </navigation-rule>
+ </navigation-rule>
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
  </application>
