@@ -75,7 +75,7 @@ public class VeiculoDAO {
 
 	public void removerveiculo(int idveiculo) throws SQLException {
 	
-		String sql = " DELETE veiculo ";
+		String sql = " DELETE FROM admcon_veiculo WHERE VEI_CODIGO = ? ";
 
 	
 
@@ -95,15 +95,19 @@ public class VeiculoDAO {
 
 	public void alterarVeiculos(Veiculo veiculo) throws SQLException {
 
-		String sql = "UPDATE veiculo SET ?, ?, ?"
-				+ " WHERE  = ?";
+		String sql = "UPDATE veiculo SET VEI_DESCRICAO, VEI_PLACA, VEI_COR, VEI_APA_CODIGO"
+				+ " WHERE VEI_CODIGO = ?";
 
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(sql);
-//			ps.setInt(1, veiculo.getCodigoveiculo());
-//			ps.setString(2, veiculo.getveiculo());
-
+			ps.setString(1, veiculo.getDescricao());
+			ps.setString(2, veiculo.getPlaca());
+			ps.setString(3, veiculo.getCor());
+			ps.setInt(4, veiculo.getCodigoApartamento());
+			ps.setInt(4, veiculo.getCodigoVeiculo());
+			
+			
 			ps.executeUpdate();
 			ps.close();
 
@@ -123,7 +127,7 @@ public class VeiculoDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<Veiculo> getTodasAsveiculos() throws SQLException {
+	public List<Veiculo> getTodosOsVeiculos() throws SQLException {
 		// TODO
 		String sql = "SELECT ?, ?, ?, ?, "
 				+ " FROM veiculo "
@@ -154,7 +158,7 @@ public class VeiculoDAO {
 	
 	
 	
-	public Veiculo getveiculoId(int veiculoCodigo) throws SQLException
+	public Veiculo getVeiculoId(int veiculoCodigo) throws SQLException
 	{
 		
 		String sql = "SELECT ? " 
