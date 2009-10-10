@@ -10,16 +10,13 @@ import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 
 import br.com.siaic.businesslogic.Cliente;
-import br.com.siaic.businesslogic.ImovelCaracteristica;
 import br.com.siaic.businesslogic.Perfil;
-import br.com.siaic.dao.AgendaDAO;
 import br.com.siaic.dao.ClienteDAO;
 import br.com.siaic.dao.PerfilDAO;
 
 public class ConsultaPerfilBean {
 		
 		private Perfil perfil;
-		private Cliente cliente;
 		
 		private static List<SelectItem> listaClientes = new ArrayList<SelectItem>();
 		
@@ -43,7 +40,12 @@ public class ConsultaPerfilBean {
 			}
 		}
 		
+		public List<SelectItem> getListaClientesSelect() {
+			return listaClientes;
+		}
+		
 		public void Buscar() {
+			listaPerfis.clear();
 			try {
 				listaPerfis = PerfilDAO.getInstance().getPerfil(new ClienteDAO().getClientePorId(perfil.getCliente().getCodigoPessoa()));
 				} catch (SQLException e) {
@@ -52,7 +54,6 @@ public class ConsultaPerfilBean {
 		}
 		
 		public List<Perfil> getListaPerfis() {
-			
 			return listaPerfis;
 			
 		}
@@ -68,10 +69,12 @@ public class ConsultaPerfilBean {
 
 			PerfilDAO.getInstance().delPerfil(idEntradaAgenda);
 			
+			Buscar();
+			
+			
 		}
 		
 		public ConsultaPerfilBean(){
-			this.cliente = new Cliente();
 			this.perfil = new Perfil();
 		}
 		
@@ -81,11 +84,16 @@ public class ConsultaPerfilBean {
 		public void setPerfil(Perfil perfil) {
 			this.perfil = perfil;
 		}
-		public Cliente getCliente() {
-			return cliente;
+		
+		public void Limpar() {
+			perfil = new Perfil();
+			listaPerfis.clear();
+			listaClientes.clear();
 		}
-		public void setCliente(Cliente cliente) {
-			this.cliente = cliente;
+		
+		public String Cancelar(){
+			Limpar();
+			return "Cancelar";
 		}
 		
 		
