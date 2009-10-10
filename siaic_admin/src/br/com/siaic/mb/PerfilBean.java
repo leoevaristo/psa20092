@@ -26,6 +26,8 @@ import br.com.siaic.dao.UsuarioDAO;
 public class PerfilBean {
 	private Perfil perfil;
 	
+	private String msg;
+	
 	private static List<SelectItem> corretores = new ArrayList<SelectItem>();
 	
 	private static List<SelectItem> listaClientes = new ArrayList<SelectItem>();
@@ -34,7 +36,7 @@ public class PerfilBean {
 	
 	public PerfilBean() {
 		perfil = new Perfil();
-
+		msg = new String("");
 		
 			try {
 				setListaCaracteristicas();
@@ -47,11 +49,16 @@ public class PerfilBean {
 		
 	}
 	
+	public String getMsg(){
+		return msg;
+	}
+	
 	public List<SelectItem> getCaracteristicas(){
 		return listaCaracteristicas;
 	}
 	
 	public void setListaCaracteristicas() throws SQLException {
+		listaCaracteristicas.clear();
 		List<ImovelCaracteristica> imoc = ImovelCaracteristicaDAO.getInstance().getImovelCaracteristicaList();
 		for (ImovelCaracteristica imoca : imoc) {
 			listaCaracteristicas.add(new SelectItem(imoca.getCodigo(),imoca.toString()));
@@ -63,7 +70,7 @@ public class PerfilBean {
 	}
 	
 	public void setCorretores() throws SQLException {
-		
+		corretores.clear();
 		UsuarioDAO dao = new UsuarioDAO();
 		List<Usuario> usu = dao.getTodosCorretores();
 		
@@ -88,9 +95,8 @@ public class PerfilBean {
 	}
 	
 	public void setListaClientes(List<Cliente> listagemClientes) {
-		if(!listaClientes.isEmpty()){			
-			listaClientes.clear();
-		}
+		
+		listaClientes.clear();
 				
 		for(Cliente cliente : listagemClientes){
 			
@@ -103,7 +109,17 @@ public class PerfilBean {
 		return listaClientes;
 	}
 	
-	
+	public void Limpar() {
+		msg = new String("");
+		perfil = new Perfil();
+		try {
+			setListaCaracteristicas();
+			setCorretores();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		listaClientes.clear();
+	}
 	
 	public String addPerfil() throws SQLException{
 		String s = "";
@@ -113,6 +129,12 @@ public class PerfilBean {
 		
 		s = PerfilDAO.getInstance().addPerfil(perfil) ? "Sucesso" : "Falha";
 		
+		if (s.equals("Sucesso")) {
+			msg = "Cadastro realizado com sucesso";
+		} else {
+			msg = "Cadastro não realizado";
+		}
+			
 		return s;
 	}
 	
