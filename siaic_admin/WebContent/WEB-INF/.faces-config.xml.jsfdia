@@ -331,4 +331,21 @@
     TARGET="rules:#paginas#imovel#consulta_imoveis.xhtml" TITLE="novo" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#perfil_cliente#cadastrar_perfil.xhtml"
+  PATH="/paginas/perfil_cliente/cadastrar_perfil.xhtml"
+  SHAPE="32,1649,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#perfil_cliente#cadastrar_perfil.xhtml:0"
+   NAME="item" PATH="/paginas/perfil_cliente/cadastrar_perfil.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Cancelar::#paginas#perfil_cliente#perfil_cliente.xhtml"
+    NAME="output" PATH="/paginas/perfil_cliente/perfil_cliente.xhtml"
+    TARGET="rules:#paginas#perfil_cliente#perfil_cliente.xhtml"
+    TITLE="Cancelar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#perfil_cliente#perfil_cliente.xhtml"
+  PATH="/paginas/perfil_cliente/perfil_cliente.xhtml"
+  SHAPE="240,1809,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
