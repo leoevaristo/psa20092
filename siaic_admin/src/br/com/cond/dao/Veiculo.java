@@ -44,7 +44,7 @@ public class Veiculo {
 
 	public void adicionarRegras (Regras regra) throws SQLException {
 
-		String sql = "INSERT INTO REGRAS( ?)"
+		String sql = "INSERT INTO VEICULO( ?)"
 				+ "VALUES (?)";
 
 		try {
