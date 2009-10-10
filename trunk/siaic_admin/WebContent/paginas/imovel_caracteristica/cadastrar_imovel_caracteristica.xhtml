@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -6,15 +6,25 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<ui:composition template="/WEB-INF/template/template.xhtml">	
-	<ui:define name="tituloGrande"><h:outputText value="Caracteristicas do Imovel"/>
+	<ui:define name="tituloGrande">Caracteristicas do Imovel</ui:define>
+	<ui:define name="subtitulo">Menu</ui:define>
+
+	<ui:define name="tituloGrande">
+	  <h:outputText value="Características do Imóvel" />
 	</ui:define>
-	<ui:define name="subtitulo"><h:outputText value="Cadastrar"/>
+	<ui:define name="subtitulo">
+	  <h:outputText value="Cadastrar"/>
 	</ui:define>
+    
 	<ui:define name="conteudo">
 		<h:form styleClass="forms">
-			<h:panelGroup styleClass="textcenter">
-				<h:outputLabel for="dormitorio" value="Qtde de dormitorios" />
-				<h:inputText value="#{imovelCaracteristicaBean.imovelCaracteristica.qtdeDormitorio}" id="dormitorio" styleClass="opcional"/>
+		
+		  <!-- FORCEPS PATTERN KKKK -->
+		  <input type="hidden" value="#{imovelCaracteristicaBean.imovelCaracteristica.codigo}" name="codigoCarac" />
+		
+		   <h:panelGroup styleClass="textcenter">
+			 <h:outputLabel for="dormitorio" value="Qtde de dormitorios" />
+			  <h:inputText value="#{imovelCaracteristicaBean.imovelCaracteristica.qtdeDormitorio}" id="dormitorio" styleClass="opcional"/>
 			</h:panelGroup>
 			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="suite" value="Qtde de Suites" />
@@ -31,8 +41,10 @@
 					<f:selectItem itemValue="N" itemLabel="Nao" />
 				</h:selectOneMenu>
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
-				<h:commandButton styleClass="input_submit" action="#{imovelCaracteristicaBean.addImovelCaracteristica}"/>
+			
+			<h:panelGroup styleClass="botoes">
+				<h:commandButton action="#{imovelCaracteristicaBean.atualizaCarac}" value="" styleClass="input_submit" />
+				<h:commandButton action="#{imovelCaracteristicaBean.voltarParaImovel}" value="" styleClass="input_button" immediate="true" />
 			</h:panelGroup>
 			
 		</h:form>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -8,47 +8,13 @@
 	<ui:composition template="/WEB-INF/template/template.xhtml">	
 	<ui:define name="tituloGrande">Caracteristicas do Imovel</ui:define>
 	<ui:define name="subtitulo">Menu</ui:define>
-
-	<ui:define name="tituloGrande">
-	  <h:outputText value="Características do Imóvel" />
-	</ui:define>
-	<ui:define name="subtitulo">
-	  <h:outputText value="Cadastrar"/>
-	</ui:define>
-    
 	<ui:define name="conteudo">
-		<h:form styleClass="forms">
-		
-		  <!-- FORCEPS PATTERN KKKK -->
-		  <input type="hidden" value="#{imovelCaracteristicaBean.imovelCaracteristica.codigo}" name="codigoCarac" />
-		
-		   <h:panelGroup styleClass="textcenter">
-			 <h:outputLabel for="dormitorio" value="Qtde de dormitorios" />
-			  <h:inputText value="#{imovelCaracteristicaBean.imovelCaracteristica.qtdeDormitorio}" id="dormitorio" styleClass="opcional"/>
-			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
-				<h:outputLabel for="suite" value="Qtde de Suites" />
-				<h:inputText value="#{imovelCaracteristicaBean.imovelCaracteristica.qtdeSuite}" id="suite" styleClass="opcional"/>
-			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
-				<h:outputLabel for="garagem" value="Qtde de Vagas da Garagem" />
-				<h:inputText value="#{imovelCaracteristicaBean.imovelCaracteristica.qtdeGaragem}" id="garagem" styleClass="opcional"/>
-			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter" >
-				<h:outputLabel for="piscina" value="Piscina" />
-				<h:selectOneMenu value="#{imovelCaracteristicaBean.imovelCaracteristica.piscina}" id="piscina">
-					<f:selectItem itemValue="S" itemLabel="Sim" />
-					<f:selectItem itemValue="N" itemLabel="Nao" />
-				</h:selectOneMenu>
-			</h:panelGroup>
-			
-			<h:panelGroup styleClass="botoes">
-				<h:commandButton action="#{imovelCaracteristicaBean.atualizaCarac}" value="" styleClass="input_submit" />
-				<h:commandButton action="#{imovelCaracteristicaBean.voltarParaImovel}" value="" styleClass="input_button" immediate="true" />
-			</h:panelGroup>
-			
-		</h:form>
-	</ui:define>
+			<ul>
+				<li><a href="#{request.contextPath}/paginas/imovel_caracteristica/cadastrar_imovel_caracteristica.xhtml">Cadastrar</a></li>
+				<li><a href="#{request.contextPath}/paginas/imovel_caracteristica/consultar_imovel_caracteristica.xhtml">Consultar</a></li>
+				<li><a href="#{request.contextPath}/paginas/imovel_caracteristica/alterar_imovel_caracteristica.xhtml">Alterar</a></li>
+			</ul>
+	</ui:define>>
 	</ui:composition>
 
 </html>
