@@ -11,6 +11,7 @@ import br.com.siaic.businesslogic.Imovel;
 import br.com.siaic.businesslogic.ImovelCaracteristica;
 import br.com.siaic.businesslogic.Perfil;
 import br.com.siaic.dao.ImovelCaracteristicaDAO;
+import br.com.siaic.dao.PerfilDAO;
 
 public class ConsultaPerfilBean {
 		
@@ -37,7 +38,7 @@ public class ConsultaPerfilBean {
 		
 		public List<Perfil> getAllPerfil() throws SQLException {
 			
-			return PerfilDAO.getInstance().getAllPerfil(this.cliente.getCodigoPessoa()());
+			return null; //PerfilDAO.getInstance().getAllPerfil(this.cliente.getCodigoPessoa());
 		}
 		
 		public String ConsultarImovel(){
@@ -50,7 +51,7 @@ public class ConsultaPerfilBean {
 			Integer idIC = new Integer(req.getParameter("codigo")).intValue();
 			//String tipoExibicao = new String(req.getParameter("tipoExibicao").toString());		
 			
-			setCaracteristica(ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(idIC));
+			//setCaracteristica(ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(idIC));
 			return "SelecionarCaracteristica";
 		}
 

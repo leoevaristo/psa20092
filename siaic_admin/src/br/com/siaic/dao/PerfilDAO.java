@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.siaic.businesslogic.Cliente;
-import br.com.siaic.businesslogic.ImovelCaracteristica;
 import br.com.siaic.businesslogic.Perfil;
 
 /**
@@ -118,9 +117,9 @@ public class PerfilDAO {
 		while (rs.next()) {
 			p = new Perfil();
 			p.setCodigo(rs.getInt("PRF_CODIGO"));
-			p.setCliente(rs.getInt("PRF_PESSOA_CLIENTE"));
-			p.setImovelCaracteristica(rs.getInt("PRF_IMOVEL_CARACTERISTICA"));
-			p.setUsuario(rs.getInt("PRF_USUARIO"));
+			p.setCliente(new ClienteDAO().getClientePorId(rs.getInt("PRF_PESSOA_CLIENTE")));
+			p.setImovelCaracteristica(ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(rs.getInt("PRF_IMOVEL_CARACTERISTICA")));
+			p.setUsuario(new UsuarioDAO().getUsuarioId(rs.getInt("PRF_USUARIO")));
 			l.add(p);
 		}
 		rs.close();
