@@ -140,6 +140,21 @@
 					</h:commandLink>
 				</h:form>
 			</h:column>
+			
+			
+			
+						<h:column>
+				<f:facet name="header">
+					<h:outputText value="relatorio" />
+				</f:facet>
+				<h:form id="relatorio">
+					<h:commandLink id="relatorio"
+						action="#{consultaRegraBean.gerar}">
+						<h:graphicImage value="/images/imgdelete.png" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			
 		</h:dataTable>
 	</ui:define>
 	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>

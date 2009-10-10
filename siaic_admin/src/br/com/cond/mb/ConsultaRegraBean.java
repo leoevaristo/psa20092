@@ -1,18 +1,32 @@
 package br.com.cond.mb;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.JOptionPane;
+import javax.swing.text.View;
+
+import com.mysql.jdbc.Connection;
 
 import br.com.cond.businesslogic.Regras;
 import br.com.cond.dao.RegrasDAO;
+import br.com.siaic.dao.FabricaConexao;
+
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+
 
 public class ConsultaRegraBean {
 	
-	private Regras regra;
+	private Connection conexao = null;
 	
+	private Regras regra;
+		
 	private String tipoPesquisa;
 	
 	private String campoPesquisa;
@@ -179,5 +193,24 @@ public class ConsultaRegraBean {
 		return "destruido";
 	}
 	
+	
+	public JasperPrint gerar() throws SQLException {
+		JasperPrint rel = null;
+		try {
 
+	        FabricaConexao.getInstancia();
+  		    this.conexao = (Connection) FabricaConexao.conectar();
+			HashMap map = new HashMap();
+			String arquivoJasper = "../paginas/Cond/Regras/RelRegra.jasper";
+			rel = JasperFillManager.fillReport(arquivoJasper, map, conexao);
+		} catch (JRException e) {
+			JOptionPane.showMessageDialog(null,e.getMessage());
+		}finally{
+			conexao.close();
+
+	}
+		return rel;
+
+	}
 }
+
