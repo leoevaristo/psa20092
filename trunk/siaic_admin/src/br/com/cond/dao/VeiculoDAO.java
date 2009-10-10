@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.siaic.businesslogic.Usuario;
-import br.com.cond.businesslogic.Regras;
+
+import br.com.cond.businesslogic.Veiculo;
 import br.com.siaic.dao.FabricaConexao;
 
 /**
@@ -42,18 +42,23 @@ public class VeiculoDAO {
 		}
 	}
 
-	public void adicionarRegras (Regras regra) throws SQLException {
+	public void adicionarVeiculo (Veiculo veiculo) throws SQLException {
 
-		String sql = "INSERT INTO VEICULO( ?)"
-				+ "VALUES (?)";
+		String sql = "INSERT INTO admcon_veiculo (VEI_DESCRICAO, VEI_PLACA, VEI_COR, VEI_APA_CODIGO)"
+				+ "VALUES (?, ?, ?, ?)";
 
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(sql);
 
-			ps.setInt(1, regra.getCodigoRegra());
-			ps.setString(2, regra.getRegra());
+			ps.setString(1, veiculo.getDescricao());
+			ps.setString(2, veiculo.getPlaca());
+			ps.setString(3, veiculo.getCor());
+			ps.setInt(4, veiculo.getCodigoApartamento());
 
+			
+			
+			
 			ps.execute();
 
 			ps.close();
@@ -68,15 +73,15 @@ public class VeiculoDAO {
 
 	}
 
-	public void removerRegra(int idRegra) throws SQLException {
+	public void removerveiculo(int idveiculo) throws SQLException {
 	
-		String sql = " DELETE REGRA ";
+		String sql = " DELETE veiculo ";
 
 	
 
 	try {
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setInt(1, idRegra);
+		ps.setInt(1, idveiculo);
 		if (ps.execute())
 			System.out.println("Dados apagados!");
 		ps.close();
@@ -88,16 +93,16 @@ public class VeiculoDAO {
 
 	}
 
-	public void alterarRegras(Regras regra) throws SQLException {
+	public void alterarVeiculos(Veiculo veiculo) throws SQLException {
 
-		String sql = "UPDATE REGRA SET ?, ?, ?"
+		String sql = "UPDATE veiculo SET ?, ?, ?"
 				+ " WHERE  = ?";
 
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(sql);
-			ps.setInt(1, regra.getCodigoRegra());
-			ps.setString(2, regra.getRegra());
+//			ps.setInt(1, veiculo.getCodigoveiculo());
+//			ps.setString(2, veiculo.getveiculo());
 
 			ps.executeUpdate();
 			ps.close();
@@ -118,61 +123,61 @@ public class VeiculoDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<Regras> getTodasAsRegras() throws SQLException {
+	public List<Veiculo> getTodasAsveiculos() throws SQLException {
 		// TODO
 		String sql = "SELECT ?, ?, ?, ?, "
-				+ " FROM REGRA "
+				+ " FROM veiculo "
 				+ "	WHERE ? ORDER BY ?";
 
 		PreparedStatement ps = conexao.prepareStatement(sql);
 
 		ResultSet rs = ps.executeQuery();
 
-		List<Regras> listaTodosAsRegras = new ArrayList<Regras>();
+		List<Veiculo> listaTodosAsveiculos = new ArrayList<Veiculo>();
 
 		while (rs.next()) {
 
-			Regras regra = new Regras();
+			Veiculo veiculo = new Veiculo();
 
-		//	regra.setCodigoRegra(rs.getString());
-		//	regra.setRegra(rs.getString());
+		//	veiculo.setCodigoveiculo(rs.getString());
+		//	veiculo.setveiculo(rs.getString());
 			
 
-			listaTodosAsRegras.add(regra);
+			listaTodosAsveiculos.add(veiculo);
 
 		}
 		conexao.close();
 
-		return listaTodosAsRegras;
+		return listaTodosAsveiculos;
 
 	}
 	
 	
 	
-	public Regras getRegraId(int regraCodigo) throws SQLException
+	public Veiculo getveiculoId(int veiculoCodigo) throws SQLException
 	{
 		
 		String sql = "SELECT ? " 
-			+"FROM REGRA " 
+			+"FROM veiculo " 
 			+"WHERE ? = ?  ";
 		
 			
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setInt(1, regraCodigo);
+		ps.setInt(1, veiculoCodigo);
 		
 		ResultSet rs = ps.executeQuery();
 		
-		Regras regra = new Regras();
+		Veiculo veiculo = new Veiculo();
 		
 		rs.first();
-		//regra.setCodigoRegra(rs.getInt());
-		//regra.setRegra(rs.getString());
+		//veiculo.setCodigoveiculo(rs.getInt());
+		//veiculo.setveiculo(rs.getString());
 			
 		ps.close();
 		rs.close();
 		
 		
-		return regra;
+		return veiculo;
 		
 	}
 	

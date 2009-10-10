@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.cond.businesslogic.Regras;
+import br.com.cond.businesslogic.Apartamento;
 import br.com.siaic.dao.FabricaConexao;
 
 /**
@@ -41,17 +41,17 @@ public class ApartamentoDAO {
 		}
 	}
 
-	public void adicionarApartamento (ApartamentoDAO apartamento) throws SQLException {
+	public void adicionarApartamento (Apartamento apartamento) throws SQLException {
 
-		String sql = "INSERT INTO REGRAS( ?)"
-				+ "VALUES (?)";
+		String sql = "INSERT INTO admcon_apartamento (APA_ANDAR, APA_BLOCO)"
+				+ "VALUES (?, ?)";
 
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(sql);
 
-//			ps.setInt(1, regra.getCodigoRegra());
-//			ps.setString(2, regra.getRegra());
+			ps.setInt(1, apartamento.getAndar());
+			ps.setString(2, apartamento.getBloco());
 
 			ps.execute();
 
@@ -67,15 +67,15 @@ public class ApartamentoDAO {
 
 	}
 
-	public void removerRegra(int idRegra) throws SQLException {
+	public void removerApartamento(int idApartamento) throws SQLException {
 	
-		String sql = " DELETE REGRA ";
+		String sql = " DELETE  FROM admcon_apartamento WHERE APA_CODIGO = ? ";
 
 	
 
 	try {
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setInt(1, idRegra);
+		ps.setInt(1, idApartamento);
 		if (ps.execute())
 			System.out.println("Dados apagados!");
 		ps.close();
@@ -87,16 +87,17 @@ public class ApartamentoDAO {
 
 	}
 
-	public void alterarRegras(Regras regra) throws SQLException {
+	public void alterarApartamento(Apartamento apartamento) throws SQLException {
 
-		String sql = "UPDATE REGRA SET ?, ?, ?"
-				+ " WHERE  = ?";
+		String sql = "UPDATE admcon_apartamento SET APA_ANDAR = ?, APA_BLOCO = ? "
+				+ " WHERE  APA_CODIGO = ?";
 
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(sql);
-			ps.setInt(1, regra.getCodigoRegra());
-			ps.setString(2, regra.getRegra());
+			ps.setInt(1, apartamento.getAndar());
+			ps.setString(2, apartamento.getBloco());
+			ps.setInt(3, apartamento.getCodigoApartamento());
 
 			ps.executeUpdate();
 			ps.close();
@@ -117,61 +118,63 @@ public class ApartamentoDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<Regras> getTodasAsRegras() throws SQLException {
+	public List<Apartamento> getTodosOsApartamentos() throws SQLException {
 		// TODO
-		String sql = "SELECT ?, ?, ?, ?, "
-				+ " FROM REGRA "
-				+ "	WHERE ? ORDER BY ?";
+		String sql = "SELECT APA_CODIGO, APA_ANDAR, APA_BLOCO "
+				+ " FROM admcon_apartamento "
+				+ " ORDER BY APA_BLOCO";
 
 		PreparedStatement ps = conexao.prepareStatement(sql);
 
 		ResultSet rs = ps.executeQuery();
 
-		List<Regras> listaTodosAsRegras = new ArrayList<Regras>();
+		List<Apartamento> listaTodosApartamentos = new ArrayList<Apartamento>();
 
 		while (rs.next()) {
 
-			Regras regra = new Regras();
+			Apartamento apartamento = new Apartamento();
 
 		//	regra.setCodigoRegra(rs.getString());
 		//	regra.setRegra(rs.getString());
 			
 
-			listaTodosAsRegras.add(regra);
+			listaTodosApartamentos.add(apartamento);
 
 		}
 		conexao.close();
 
-		return listaTodosAsRegras;
+		return listaTodosApartamentos;
 
 	}
 	
 	
 	
-	public Regras getRegraId(int regraCodigo) throws SQLException
+	public Apartamento getApartamentoId(int apartamentoCodigo) throws SQLException
 	{
 		
-		String sql = "SELECT ? " 
-			+"FROM REGRA " 
-			+"WHERE ? = ?  ";
+		String sql = "SELECT APA_CODIGO, APA_ANDAR, APA_BLOCO " 
+			+"FROM admcon_apartamento " 
+			+"WHERE APA_CODIGO = ?  ";
 		
 			
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setInt(1, regraCodigo);
+		ps.setInt(1, apartamentoCodigo);
 		
 		ResultSet rs = ps.executeQuery();
 		
-		Regras regra = new Regras();
+		Apartamento apartamento = new Apartamento();
 		
 		rs.first();
-		//regra.setCodigoRegra(rs.getInt());
-		//regra.setRegra(rs.getString());
-			
+		
+		apartamento.setCodigoApartamento(rs.getInt("APA_CODIGO"));
+		apartamento.setAndar(rs.getInt("APA_ANDAR"));
+		apartamento.setBloco(rs.getString("APA_BLOCO"));
+		
 		ps.close();
 		rs.close();
 		
 		
-		return regra;
+		return apartamento;
 		
 	}
 	
