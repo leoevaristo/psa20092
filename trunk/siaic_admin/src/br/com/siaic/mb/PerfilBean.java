@@ -121,6 +121,11 @@ public class PerfilBean {
 		listaClientes.clear();
 	}
 	
+	public String Cancelar(){
+		Limpar();
+		return "Cancelar";
+	}
+	
 	public String addPerfil() throws SQLException{
 		String s = "";
 		perfil.setCliente(new ClienteDAO().getClientePorId(perfil.getCliente().getCodigoPessoa()));
