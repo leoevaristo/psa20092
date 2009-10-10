@@ -145,6 +145,43 @@ public class RegrasDAO {
 	}
 	
 	
+	public List<Regras> getRegraPelaRegra(String nregra) throws SQLException {
+
+		String sql = "SELECT REG_CODIGO,REG_DESCRICAO "
+			+ "FROM admcon_regras "
+			+ "WHERE REG_CODIGO LIKE ? ";
+
+		try{
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, "%" + nregra + "%");
+
+			ResultSet rs = ps.executeQuery();
+
+			List<Regras> listaRegras = new ArrayList<Regras>();
+
+			while (rs.next()) {
+			
+				Regras regra = new Regras();
+				regra.setCodigoRegra(rs.getInt("REG_CODIGO"));
+				regra.setRegra(rs.getString("REG_DESCRICAO"));
+
+				listaRegras.add(regra);
+
+			}
+
+			ps.close();
+			rs.close();
+		
+			return listaRegras;
+		
+			}finally{
+				conexao.close();
+		}
+		
+	}
+
+	
 	
 	public Regras getRegraId(int regraCodigo) throws SQLException
 	{
