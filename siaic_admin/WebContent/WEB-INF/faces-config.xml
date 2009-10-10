@@ -440,6 +440,14 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/perfil_cliente/consultar_perfil.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>Cancelar</from-outcome>
+   <to-view-id>/paginas/perfil_cliente/perfil_cliente.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
  </application>
