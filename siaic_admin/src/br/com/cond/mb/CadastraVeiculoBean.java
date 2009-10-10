@@ -4,196 +4,105 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.event.ValueChangeEvent;
+
 import javax.faces.model.SelectItem;
 
-import br.com.siaic.businesslogic.Cliente;
-import br.com.siaic.businesslogic.endereco.Bairro;
-import br.com.siaic.businesslogic.endereco.Cidade;
-import br.com.siaic.businesslogic.endereco.Endereco;
-import br.com.siaic.businesslogic.endereco.Estado;
-import br.com.siaic.dao.ClienteDAO;
-import br.com.siaic.dao.EnderecoDAO;
-import br.com.siaic.dao.PessoaDAO;
+import br.com.cond.businesslogic.Apartamento;
+import br.com.cond.businesslogic.Veiculo;
+import br.com.cond.dao.ApartamentoDAO;
+import br.com.cond.dao.VeiculoDAO;
+
 
 public class CadastraVeiculoBean {
 	
 	
-	private Endereco endereco;
+	private Apartamento apartamento;
+	
+	private Veiculo veiculo;
 	
 	
-	private Bairro bairro;
-	
-	
-	private Cidade cidade;
-	
-	
-	private Estado estado;
-	
-	
-	private Cliente cliente;
-	
-	
-	private static List<SelectItem> logradouro = new ArrayList<SelectItem>();
-	
-	private static List<SelectItem> cidades = new ArrayList<SelectItem>();
-	
-	
-	
-	
+	private static List<SelectItem> apartamentos = new ArrayList<SelectItem>();
 	
 
-	
-	
 	
 	public CadastraVeiculoBean(){
 		
-		cliente = new Cliente();
-		endereco = new Endereco();
-		cidade = new Cidade();
-		estado = new Estado();
-		bairro = new Bairro();
-		
-		if(logradouro.isEmpty())
-		setLogradouro();
-		
+		veiculo = new Veiculo();
+		apartamento = new Apartamento();
+	
 	
 	}
 	
 	
-	public Bairro getBairro() {
-		return bairro;
+	
+	public Apartamento getApartamento() {
+		return apartamento;
 	}
 
 
-	public void setBairro(Bairro bairro) {
-		this.bairro = bairro;
+
+	public void setApartamento(Apartamento apartamento) {
+		this.apartamento = apartamento;
 	}
 
 
-	public Cidade getCidade() {
-		return cidade;
+
+	public Veiculo getVeiculo() {
+		return veiculo;
 	}
 
 
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
 	}
 
 
-	public Estado getEstado() {
-		return estado;
+
+	public static List<SelectItem> getApartamentos() {
+		return apartamentos;
 	}
 
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+
+	public static void setApartamentos(List<SelectItem> apartamentos) {
+		CadastraVeiculoBean.apartamentos = apartamentos;
 	}
 
-	
-	
-	public Endereco getEndereco() {
-		return endereco;
-	}
-	
-	
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-	
-	
-	public Cliente getCliente() {
-		return cliente;
-	}
-	
-	
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-	
-	
+
+
 	/**
 	 * 
 	 * @return
 	 * @throws SQLException
 	 */
-	public String addCliente() throws SQLException {
+	public String addVeiculo() throws SQLException {
 		// TODO
 		
 		String r = "sucesso";
 
-		ClienteDAO daoCliente = new ClienteDAO();
+		VeiculoDAO daoVeiculo = new VeiculoDAO();
 
-		PessoaDAO daoPessoa = new PessoaDAO();
+		ApartamentoDAO daoApartamento = new ApartamentoDAO();
 		
-		EnderecoDAO daoEndereco = new EnderecoDAO();
+		daoApartamento.adicionarApartamento(apartamento);
 		
-		daoEndereco.adicionarEndereco(endereco);
-		
-		cliente.setEnderecoCodigo(endereco.getEnderecoCodigo());
-		
-		daoPessoa.adicionarPessoa(cliente);
-		daoCliente.adicionarCliente(cliente);	
-		
+		veiculo.setCodigoApartamento(apartamento.getCodigoApartamento());
+	
+     	daoVeiculo.adicionarVeiculo(veiculo);	
 
-		return r;
+     	return r;
 
 	}
 	
 	
-	public void setLogradouro(){
-		
-		logradouro.add(new SelectItem("Rua","Rua"));	
-		logradouro.add(new SelectItem("Avenida", "Avenida"));
-		logradouro.add(new SelectItem("Estrada", "Estrada"));
-		logradouro.add(new SelectItem("Praça", "Praça"));
-		logradouro.add(new SelectItem("Travessa", "Travessa"));
-		logradouro.add(new SelectItem("Alameda", "Alameda"));
-		logradouro.add(new SelectItem("Parque", "Parque"));
-		
-	}
-	
-	
-	public List<SelectItem> getLogradouro(){
-		return logradouro;
-	}
-	
+
 	
 	public void limpaCampos(){
 		
 		//TODO
 	}
 	
-	public void filtraCidadePorEstado(ValueChangeEvent event) throws SQLException{
-		
-		
-		if(event.getNewValue() != event.getOldValue()){
-			List<Cidade> cid = new ArrayList<Cidade>();
-			EnderecoDAO dao = new EnderecoDAO();
-			cid = dao.getCidadePorEstado(event.getNewValue().toString());
-			setCidades(cid);
-		
-		}
-	}
-	
-	public  List<SelectItem> getCidades()  {
-		return cidades;
-	}
 
-
-	public static  void setCidades(List<Cidade> listCidades) {
-		
-		if(!cidades.isEmpty()){
-			cidades.clear();
-		}
-		
-		for(Cidade cid : listCidades){
-			cidades.add(new SelectItem(cid.getCidadeCodigo(),cid.getCidadeNome()));
-		}
-	}
-	
-
-
-	
 
 }
