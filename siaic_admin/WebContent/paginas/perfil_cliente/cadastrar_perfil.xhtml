@@ -12,25 +12,43 @@
 	</ui:define>
 	<ui:define name="conteudo">
 		<h:form styleClass="forms">
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="panelCorretores">
+				<h:outputLabel for="corretor" value="Corretor" />
+				<h:selectOneMenu value="#{perfilBean.perfil.usuario.codigoPessoa}" id="corretor">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{perfilBean.corretores}" />				 
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup id="panelNomeCliente">
 				<h:outputLabel for="cliente" value="Cliente" />
-				<h:inputText value="#{perfilBean.perfil.cliente}" id="cliente" styleClass="obrigatorio"/>
-				<h:commandButton action="#" value="Localizar" />
+				<h:inputText value="#{perfilBean.perfil.cliente.nome}" id="cliente" 
+				valueChangeListener="#{perfilBean.listarClientes}"  />						
+				<h:commandLink  action="#">
+					<h:graphicImage value="/images/lupa.png" />
+				</h:commandLink>				
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
-				<h:outputLabel for="caracteristica" value="Caracteristica do Imovel" />
-				<h:inputText value="#{perfilBean.perfil.caracteristica}" id="caracteristica" styleClass="obrigatorio"/>
-				<h:commandButton action="#" value="Localizar" />
+			<h:panelGroup id="panelClienteSelect">
+				<h:outputLabel for="." value="." />
+				<h:selectOneMenu value="#{perfilBean.perfil.cliente.codigoPessoa}">
+					<f:selectItems value="#{perfilBean.listaClientesSelect}" />
+				</h:selectOneMenu>
+			</h:panelGroup>	
+			<h:panelGroup id="panelImovelCaracteristicas">
+				<h:outputLabel for="caracImovel" value="Caracteristicas do Imovel" />
+				<h:selectOneMenu value="#{perfilBean.perfil.imovelCaracteristica.codigo}" id="caracImovel">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{perfilBean.caracteristicas}" />				 
+				</h:selectOneMenu>
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
-				<h:outputLabel for="usuario" value="Usuario" />
-				<h:inputText value="#{perfilBean.perfil.usuario}" id="usuario" styleClass="obrigatorio"/>
-				<h:commandButton action="#" value="Localizar" />
-			</h:panelGroup>
-			
-			
+			<span class="linha"></span>
+			<span class="botoes">
+				<h:commandButton action="#{perfilBean.addPerfil}" value=""
+					styleClass="input_submit"/>
+				<h:commandButton action="#" value="" styleClass="input_reset" />
+				<h:commandButton action="#" value="" styleClass="input_button" immediate="true" />
+			</span>
 		</h:form>
-	</ui:define>>
+	</ui:define>
 	</ui:composition>
 
 </html>

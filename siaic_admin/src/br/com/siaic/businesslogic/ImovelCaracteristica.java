@@ -55,4 +55,19 @@ public class ImovelCaracteristica {
 	public void setPiscina(char piscina) {
 		this.piscina = piscina;
 	}
+	public String toString(){
+		String s = new String();
+		
+		s = Integer.toString(qtdeDormitorio)+" quartos, "+
+			Integer.toString(qtdeSuite)+" suites, "+
+			Integer.toString(qtdeGaragem)+" vagas na garagem, ";
+		
+		if (piscina == 'S' || piscina == 's' ) {
+			s = s+"com piscina";
+		} else if (piscina == 'N' || piscina == 'n') {
+			s=s+"sem piscina";
+		}
+		
+		return s;
+	}
 }
