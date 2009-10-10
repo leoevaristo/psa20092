@@ -141,6 +141,11 @@
   <managed-bean-class>br.com.cond.mb.ConsultaRegraBean</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>consultaPerfilBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.ConsultaPerfilBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
  <navigation-rule>
   <from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
   <navigation-case>
