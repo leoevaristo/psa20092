@@ -348,4 +348,76 @@
  <PROCESS-ITEM NAME="rules:#paginas#perfil_cliente#perfil_cliente.xhtml"
   PATH="/paginas/perfil_cliente/perfil_cliente.xhtml"
   SHAPE="240,1809,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#cadastra_regra.xhtml"
+  PATH="/paginas/Cond/Regras/cadastra_regra.xhtml" SHAPE="48,2241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#Cond#Regras#cadastra_regra.xhtml:0"
+   NAME="item" PATH="/paginas/Cond/Regras/cadastra_regra.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="sucesso::#paginas#Cond#Regras#sucesso.xhtml"
+    NAME="output" PATH="/paginas/Cond/Regras/sucesso.xhtml"
+    TARGET="rules:#paginas#Cond#Regras#sucesso.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#paginas#Cond#Regras#cadastra_regra.xhtml:1"
+   NAME="item1" PATH="/paginas/Cond/Regras/cadastra_regra.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="altera::#paginas#Cond#Regras#alterar_regra.xhtml" NAME="output"
+    PATH="/paginas/Cond/Regras/alterar_regra.xhtml"
+    TARGET="rules:#paginas#Cond#Regras#alterar_regra.xhtml"
+    TITLE="altera" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="destruido::#paginas#Cond#Regras#cadastra_regra.xhtml"
+    NAME="output1" PATH="/paginas/Cond/Regras/cadastra_regra.xhtml"
+    TARGET="rules:#paginas#Cond#Regras#cadastra_regra.xhtml"
+    TITLE="destruido" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#alterar_regra.xhtml"
+  PATH="/paginas/Cond/Regras/alterar_regra.xhtml" SHAPE="288,2433,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#Cond#Regras#alterar_regra.xhtml:0"
+   NAME="item" PATH="/paginas/Cond/Regras/alterar_regra.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="destruido::#paginas#Cond#Regras#consulta_regra.xhtml"
+    NAME="output" PATH="/paginas/Cond/Regras/consulta_regra.xhtml"
+    TARGET="rules:#paginas#Cond#Regras#consulta_regra.xhtml"
+    TITLE="destruido" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="sucesso::#paginas#Cond#Regras#consulta_regra.xhtml"
+    NAME="output1" PATH="/paginas/Cond/Regras/consulta_regra.xhtml"
+    TARGET="rules:#paginas#Cond#Regras#consulta_regra.xhtml"
+    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#consulta_regra.xhtml"
+  PATH="/paginas/Cond/Regras/consulta_regra.xhtml" SHAPE="48,2417,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#Cond#Regras#consulta_regra.xhtml:0"
+   NAME="item" PATH="/paginas/Cond/Regras/consulta_regra.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="detalhes::#paginas#Cond#Regras#detalhes_regra.xhtml"
+    NAME="output" PATH="/paginas/Cond/Regras/detalhes_regra.xhtml"
+    TARGET="rules:#paginas#Cond#Regras#detalhes_regra.xhtml"
+    TITLE="detalhes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="modifica::#paginas#Cond#Regras#alterar_regra.xhtml"
+    NAME="output1" PATH="/paginas/Cond/Regras/alterar_regra.xhtml"
+    TARGET="rules:#paginas#Cond#Regras#alterar_regra.xhtml"
+    TITLE="modifica" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#sucesso.xhtml"
+  PATH="/paginas/Cond/Regras/sucesso.xhtml" SHAPE="288,2257,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#detalhes_regra.xhtml"
+  PATH="/paginas/Cond/Regras/detalhes_regra.xhtml" SHAPE="288,2577,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#perfil_cliente#consultar_perfil.xhtml"
+  PATH="/paginas/perfil_cliente/consultar_perfil.xhtml"
+  SHAPE="32,2129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#perfil_cliente#consultar_perfil.xhtml:0"
+   NAME="item" PATH="/paginas/perfil_cliente/consultar_perfil.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Cancelar::#paginas#perfil_cliente#perfil_cliente.xhtml"
+    NAME="output" PATH="/paginas/perfil_cliente/perfil_cliente.xhtml"
+    TARGET="rules:#paginas#perfil_cliente#perfil_cliente.xhtml"
+    TITLE="Cancelar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>
