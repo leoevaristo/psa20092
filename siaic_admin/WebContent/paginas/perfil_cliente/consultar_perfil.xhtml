@@ -6,30 +6,27 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="/WEB-INF/template/template.xhtml">
-
-	<ui:define name="tituloGrande">
-		<h:outputText value="Perfil do Cliente" />
+	<ui:define name="tituloGrande"><h:outputText value="Perfil do Cliente" />
 	</ui:define>
-	<ui:define name="subtitulo">
-		<h:outputText value="Consultar Perfil do Cliente" />
+	<ui:define name="subtitulo"><h:outputText value="Consultar Perfil do Cliente" />
 	</ui:define>
 	<ui:define name="conteudo">
-		<h:form styleClass="forms" id="formFiltros">
-			<h:panelGroup>
-				<h:outputLabel for="campoFiltro" value="Filtrar por" />
-				<h:selectOneMenu value="" id="campoFiltro">
-					<f:selectItem itemValue="" itemLabel="Tipo de Filtro" />
-					<f:selectItem itemValue="cliente" itemLabel="Cliente" />
+		<h:form styleClass="forms">
+			<h:panelGroup id="panelNomeCliente">
+				<h:outputLabel for="cliente" value="Cliente" />
+				<h:inputText value="#{consultaPerfilBean.cliente.nome}" id="cliente" 
+				valueChangeListener="#{perfilBean.listarClientes}"  />						
+				<h:commandLink  action="#">
+					<h:graphicImage value="/images/lupa.png" />
+				</h:commandLink>				
+			</h:panelGroup>
+			<h:panelGroup id="panelClienteSelect">
+				<h:selectOneMenu value="#{perfilBean.perfil.cliente.codigoPessoa}">
+					<f:selectItems value="#{perfilBean.listaClientesSelect}" />
 				</h:selectOneMenu>
-			</h:panelGroup>
-			<h:panelGroup>
-				<h:outputLabel value="Palavra-chave" for="inFiltro" />
-				<h:inputText value="#{consultaPerfilBean.cliente.codigo}" id="inFiltro"/>
-			</h:panelGroup>
-			<h:panelGroup>
-				<h:commandButton action="#" value="Filtrar">
-				</h:commandButton>
-			</h:panelGroup>
+				<h:commandButton action="#{consultaPerfilBean.Buscar}" value="Buscar" />
+			</h:panelGroup>	
+			
 		</h:form>
 
 	</ui:define>
@@ -37,42 +34,49 @@
 		<h:outputText value="Lista dos Perfis" />
 	</ui:define>
 	<ui:define name="infoGerais">
-		<h:dataTable 
-			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
-			value="#{consultarPerfilBean.allPerfil}" var="perfil" style=" height : 91px;">
+		<h:dataTable styleClass="grid" headerClass="thead"
+			rowClasses="cor1,cor2" value="#{consultaPerfilBean.listaPerfis}"
+			var="entrada">
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Codigo" />
 				</f:facet>
-				<h:outputText value="#{perfil.codigo}" />
+				<h:outputText value="#{entrada.codigo}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Cliente" />
+					<h:outputText value="Qtde Dormitorios" />
 				</f:facet>
-				<h:outputText value="#{perfil.cliente}" />
+				<h:outputText value="#{entrada.imovelCaracteristica.qtdeDormitorio}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Caracteristicas do Perfil" />
+					<h:outputText value="Qtde Suites" />
 				</f:facet>
-				<h:outputText value="#{perfil.caracteristicas}" />
-			</h:column>
+				<h:outputText value="#{entrada.imovelCaracteristica.qtdeSuite}" />
+			</h:column>			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Usuario" />
+					<h:outputText value="Qtde Garagem" />
 				</f:facet>
-				<h:outputText value="#{perfil.usuario}" />
-			</h:column>
+				<h:outputText value="#{entrada.imovelCaracteristica.qtdeGaragem}" />
+			</h:column>	
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Selecionar" />
+					<h:outputText value="Piscina" />
 				</f:facet>
-				<h:form id="SelecionarPerfil">
-					<h:commandLink id="selecionar"
-						action="#{ConsultaPerfilBean.SelecionarCaracteristica}">
-						<h:graphicImage value="/images/check.png" />
-						<f:param value="#{imovel.codigo}" name="codigo" />
+				<h:outputText value="#{entrada.imovelCaracteristica.piscina}" />
+			</h:column>	
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir" />
+				</f:facet>
+				<h:form id="excluiEntrada">
+					<h:commandLink id="excluir"
+						onclick="if (confirm('Voce tem certeza que deseja excluir essa entrada?')) {return true }; return false;"
+						action="#{consultaPerfilBean.excluiEntrada}">
+						<h:graphicImage value="/images/imgdelete.png" />
+						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
 					</h:commandLink>
 				</h:form>
 			</h:column>

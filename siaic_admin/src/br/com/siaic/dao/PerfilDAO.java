@@ -91,18 +91,21 @@ public class PerfilDAO {
 		return result;
 	}
 	//Delete da tabela Perfil
-	public boolean delPerfil(Perfil p) throws SQLException{
+	public boolean delPerfil(int cod) throws SQLException{
 		String query = new String(
 		"delete from PERFIL where PRF_CODIGO = ? ");
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
-		ps.setInt(1, p.getCodigo());
+		ps.setInt(1, cod);
 		
 		boolean result = ps.executeUpdate() > 0;
 		ps.close();
 		
 		return result;
 	}
+	
+	
+	
 	// Listagem da tabela Perfil
 	public List<Perfil> getPerfilList()
 			throws SQLException {
