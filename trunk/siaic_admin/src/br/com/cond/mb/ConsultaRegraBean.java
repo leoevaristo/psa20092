@@ -7,7 +7,6 @@ import java.util.List;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.swing.JOptionPane;
-import javax.swing.text.View;
 
 import com.mysql.jdbc.Connection;
 
@@ -18,7 +17,7 @@ import br.com.siaic.dao.FabricaConexao;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
+
 
 
 public class ConsultaRegraBean {
