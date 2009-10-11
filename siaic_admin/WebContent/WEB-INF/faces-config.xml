@@ -146,6 +146,21 @@
   <managed-bean-class>br.com.siaic.mb.ConsultaPerfilBean</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+ 	<managed-bean-name>usuario</managed-bean-name>
+ 	<managed-bean-class>br.com.siaic.businesslogic.Usuario</managed-bean-class>
+ 	<managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+ 	<managed-bean-name>acesso</managed-bean-name>
+ 	<managed-bean-class>br.com.siaic.businesslogic.Acesso</managed-bean-class>
+ 	<managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+ 	<managed-bean-name>acessoBean</managed-bean-name>
+ 	<managed-bean-class>br.com.siaic.mb.AcessoBean</managed-bean-class>
+ 	<managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
  <navigation-rule>
   <from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
   <navigation-case>
@@ -448,6 +463,24 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/acesso.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>sucesso</from-outcome>
+   <to-view-id>/paginas/usuario/cadastra_usuario.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/acesso.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>falhou</from-outcome>
+   <to-view-id>/paginas/usuario/sucesso_usuario.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+
+
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
  </application>

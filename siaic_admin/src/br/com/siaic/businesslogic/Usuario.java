@@ -39,5 +39,7 @@ public class Usuario extends Pessoa {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	
 
 }

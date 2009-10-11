@@ -205,12 +205,13 @@ public class UsuarioDAO {
 
 
 	
-	public List<Usuario> getUsuarioAcesso(String login) throws SQLException {
 
-		String str;
-		String sql = "SELECT p.PEU_LOGIN, p.PEU_SENHA "
-			+ "FROM PESSOA_USUARIOS p "
-			+ "WHERE p.PEU_LOGIN LIKE ? ";
+	
+	public List<Usuario> getAcesso(String login) throws SQLException {
+
+		String sql = "SELECT PEU_LOGIN "
+			+ "FROM PESSOA_USUARIOS "
+			+ "WHERE PEU_LOGIN LIKE ? ";
 
 		try{
 			
@@ -218,37 +219,65 @@ public class UsuarioDAO {
 			ps.setString(1, "%" + login + "%");
 
 			ResultSet rs = ps.executeQuery();
+			
+			List<Usuario> listaUsuarios = new ArrayList<Usuario>();
 
-			List<Usuario> listaLogin = new ArrayList<Usuario>();
-
+			
 			while (rs.next()) {
 			
 				Usuario usuario = new Usuario();
 				usuario.setLogin(rs.getString("PEU_LOGIN"));
-				usuario.setSenha(rs.getString("PEU_SENHA"));
-     			listaLogin.add(usuario);
+				listaUsuarios.add(usuario);
 			}
 
-			if (rs==null)
-			{
-				str="nada";
-				System.out.println(str);
-			}
-			
 			ps.close();
 			rs.close();
-		
-		
 
-			
-			return listaLogin;
-			
-			
+			return listaUsuarios;
+
 			}finally{
 				conexao.close();
 		}
 		
 	}
+
+
+	/*public List<Usuario> getAcessoCorretor(String login) throws SQLException {
+
+		String sql = "SELECT PEU_LOGIN "
+			+ "FROM PESSOA_USUARIOS "
+			+ "WHERE PEU_LOGIN LIKE ? AND PEU_CRECI = null";
+
+
+		try{
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, "%" + login + "%");
+
+			ResultSet rs = ps.executeQuery();
+			
+			List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+
+			
+			while (rs.next()) {
+			
+				Usuario usuario = new Usuario();
+				usuario.setLogin(rs.getString("PEU_LOGIN"));
+				listaUsuarios.add(usuario);
+			}
+
+			ps.close();
+			rs.close();
+
+			return listaUsuarios;
+
+			}finally{
+				conexao.close();
+		}
+		
+	}
+*/
+	
 	
 	
 	
