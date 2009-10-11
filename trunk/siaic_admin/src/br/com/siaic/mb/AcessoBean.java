@@ -1,12 +1,14 @@
 package br.com.siaic.mb;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.context.FacesContext;
-
 import br.com.siaic.businesslogic.Usuario;
-import br.com.siaic.dao.UsuarioDAO;
+import br.com.siaic.dao.FabricaConexao;
 
 public class AcessoBean {
 	
@@ -16,101 +18,90 @@ public class AcessoBean {
 	
 	private Usuario Senha;
 	
-
-
-
-
-	private String tipoPesquisa;
-	
-	private String campoPesquisa;
-	
-
-	public Usuario getLogin() {
-		return login;
-	}
-
-
-	public void setLogin(Usuario login) {
-		this.login = login;
-	}
-
-
-	public String getTipoPesquisa() {
-		return tipoPesquisa;
-	}
-
-
-	public void setTipoPesquisa(String tipoPesquisa) {
-		this.tipoPesquisa = tipoPesquisa;
-	}
-
-
-	public String getCampoPesquisa() {
-		return campoPesquisa;
-	}
-
-
-	public void setCampoPesquisa(String campoPesquisa) {
-		this.campoPesquisa = campoPesquisa;
-	}
-
-
-	
-	public AcessoBean(){
-		usuario = new Usuario();
-	}
-	
+	private Connection conexao = null;
 
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
-
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-		
-	/**
-	 * 
-	 * @return
-	 * @throws SQLException
-	 */
 
+	public Usuario getLogin() {
+		return login;
+	}
+
+	public void setLogin(Usuario login) {
+		this.login = login;
+	}
+
+	public Usuario getSenha() {
+		return Senha;
+	}
+
+	public void setSenha(Usuario senha) {
+		Senha = senha;
+	}
 	
-	public String escolheTipoPesquisa() throws SQLException{
-		if(tipoPesquisa.equals("administrador")){
-			
-			getAcessoLogin();
-		} /*else if (tipoPesquisa.equals("corretor"))
+
+	public AcessoBean() {
+
+		try
 		{
-		  getAcessoCorretor();
-		}*/
-		return campoPesquisa;
-}
+			FabricaConexao.getInstancia();
+			this.conexao = FabricaConexao.conectar();
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+
 	
-	public List<Usuario> getAcessoLogin() throws SQLException {
-		
-		UsuarioDAO daoUsuario = new UsuarioDAO();
-		
-		return daoUsuario.getAcesso(campoPesquisa);
+	public List<Usuario> getAcesso(String login) throws SQLException {
+
+		String sql = "SELECT PEU_LOGIN "
+			+ "FROM PESSOA_USUARIOS "
+			+ "WHERE PEU_LOGIN LIKE ? ";
+
+
+		try{
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, "%" + login + "%");
+
+			ResultSet rs = ps.executeQuery();
+			
+			List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+
+			
+			while (rs.next()) {
+			
+				Usuario usuario = new Usuario();
+				usuario.setLogin(rs.getString("PEU_LOGIN"));
+				listaUsuarios.add(usuario);
+			}
+
+			ps.close();
+			rs.close();
+
+			return listaUsuarios;
+
+			}finally{
+				conexao.close();
+		}
 		
 	}
 	
+  public String ValidaLogin()
+  {
+	return null;
+	  
+	  
+  }
 
 	
 	
-	/**
-	 * 
-	 * @return
-	 */
-	public String destroiSessao(){
-		
-		FacesContext contexto = FacesContext.getCurrentInstance();
-		contexto.getExternalContext().getSessionMap().remove("usuarioBean");
-		
-		return "destruido";
-	}
 	
-
 }
