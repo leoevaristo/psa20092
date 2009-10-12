@@ -26,7 +26,7 @@ public class ReuniaoBean {
 	public ReuniaoBean(){
 		reuniao = new Reuniao();
 		setReservaList();
-		acao = "cadastrar";
+		acao = "Cadastrar";
 	}
 	
 	public void setReservaList(){
@@ -44,9 +44,9 @@ public class ReuniaoBean {
 	public String addReuniao() throws SQLException{
 		String s = "";
 		String nav = "";
-		if (acao.equals("editar")) {
+		if (acao.equals("Editar")) {
 			s = new ReuniaoDAO().altReuniao(atual, reuniao) ? "Sucesso" : "Falha";
-			acao = "cadastrar";
+			acao = "Cadastrar";
 			nav = "editar";
 		} else {
 			s = new ReuniaoDAO().addReuniao(reuniao) ? "Sucesso" : "Falha";
@@ -125,8 +125,8 @@ public class ReuniaoBean {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		acao = "editar";
+		msg = "";
+		acao = "Editar";
 		return acao;
 	}
 	
