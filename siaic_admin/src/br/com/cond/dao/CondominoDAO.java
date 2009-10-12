@@ -8,6 +8,11 @@ import br.com.siaic.dao.DB;
 
 import java.sql.PreparedStatement;
 
+/**
+ * 
+ * @author Robson
+ *
+ */
 public class CondominoDAO {
 	
 	public Condomino getCondominio(int cod) throws SQLException {
