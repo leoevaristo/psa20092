@@ -1,4 +1,7 @@
 package br.com.cond.businesslogic;
+
+import java.sql.Date;
+
 /**
  * 
  * @author Alain Rosemberg
@@ -8,34 +11,53 @@ package br.com.cond.businesslogic;
 
 public class Condomino {
 
-	private int codigoCondomino;
-	private String Nome;
-	private String DataNasc;
+	private int codigo;
+	private String nome;
+	private char sexo;
+	private Date dataNasc;
+	private Condomino condomino;
 	private Apartamento apartamento;
 	
-	public int getCodigoCondomino() {
-		return codigoCondomino;
+	public int getCodigo() {
+		return codigo;
 	}
-	public void setCodigoCondomino(int codigoCondomino) {
-		this.codigoCondomino = codigoCondomino;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
-	public String getDataNasc() {
-		return DataNasc;
+	public char getSexo() {
+		return sexo;
 	}
-	public void setDataNasc(String dataNasc) {
-		DataNasc = dataNasc;
+	public void setSexo(char sexo) {
+		this.sexo = sexo;
+	}
+	public Date getDataNasc() {
+		return dataNasc;
+	}
+	public void setDataNasc(Date dataNasc) {
+		this.dataNasc = dataNasc;
+	}
+	public Condomino getCondomino() {
+		return condomino;
+	}
+	public void setCondomino(Condomino condomino) {
+		this.condomino = condomino;
 	}
 	public Apartamento getApartamento() {
 		return apartamento;
 	}
 	public void setApartamento(Apartamento apartamento) {
 		this.apartamento = apartamento;
+	}
+	
+	public String toString() {
+		String s = nome+", "+apartamento.toString();
+		return s;
 	}
 
 
