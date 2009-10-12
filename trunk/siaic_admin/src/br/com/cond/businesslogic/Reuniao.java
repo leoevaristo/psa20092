@@ -11,6 +11,11 @@ public class Reuniao {
 	private String descricao;
 	private AgendaDependencia dependencia;
 	
+	public Reuniao() {
+		dependencia = new AgendaDependencia();
+		descricao = new String("");
+	}
+	
 	public int getCodigo() {
 		return codigo;
 	}

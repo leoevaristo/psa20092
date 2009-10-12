@@ -4,7 +4,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletRequest;
 
 import br.com.cond.businesslogic.AgendaDependencia;
 import br.com.cond.businesslogic.Reuniao;
@@ -16,12 +18,15 @@ import br.com.cond.dao.ReuniaoDAO;
 
 public class ReuniaoBean {
 	private Reuniao reuniao;
+	private Reuniao atual;
 	private List<SelectItem> reservaList = new ArrayList<SelectItem>();
+	private String acao;
 	private String msg;
 	
 	public ReuniaoBean(){
 		reuniao = new Reuniao();
 		setReservaList();
+		acao = "cadastrar";
 	}
 	
 	public void setReservaList(){
@@ -38,16 +43,22 @@ public class ReuniaoBean {
 
 	public String addReuniao() throws SQLException{
 		String s = "";
-		
-		s = new ReuniaoDAO().addReuniao(reuniao) ? "Sucesso" : "Falha";
-		
-		if (s.equals("Sucesso")) {
-			msg = "Cadastro realizado com sucesso";
+		String nav = "";
+		if (acao.equals("editar")) {
+			s = new ReuniaoDAO().altReuniao(atual, reuniao) ? "Sucesso" : "Falha";
+			acao = "cadastrar";
+			nav = "editar";
 		} else {
-			msg = "Cadastro não realizado";
+			s = new ReuniaoDAO().addReuniao(reuniao) ? "Sucesso" : "Falha";
+			nav = "cadastrar";
 		}
-			
-		return s;
+		if (s.equals("Sucesso")) {
+			msg = "Operação realizada com sucesso";
+		} else {
+			msg = "Operação não realizada";
+			nav = "";
+		}
+		return nav;
 	}
 	
 	public void Limpar() {
@@ -56,6 +67,9 @@ public class ReuniaoBean {
 	}
 	public String getMsg(){
 		return msg;
+	}
+	public String getAcao(){
+		return acao;
 	}
 	
 	public String Cancelar(){
@@ -73,6 +87,47 @@ public class ReuniaoBean {
 
 	public void setReuniao(Reuniao reuniao) {
 		this.reuniao = reuniao;
+	}
+	
+	public void excluiEntrada() throws SQLException {
+
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context
+				.getExternalContext().getRequest();
+
+		Integer cod = new Integer(req.getParameter("codigoEntrada"))
+				.intValue();
+
+		new ReuniaoDAO().delReuniao(new ReuniaoDAO().getReuniao(cod));
+		
+	}
+	
+	public List<Reuniao> getListaReuniao() {
+		List<Reuniao> l = null;
+		try {
+			l = new ReuniaoDAO().getReuniaoListByDate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return l;
+	}
+	
+	public String editarEntrada(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context
+				.getExternalContext().getRequest();
+
+		Integer cod = new Integer(req.getParameter("codigoEntrada"))
+				.intValue();
+		try {
+			reuniao = new ReuniaoDAO().getReuniao(cod);
+			atual = new ReuniaoDAO().getReuniao(reuniao.getCodigo());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		acao = "editar";
+		return acao;
 	}
 	
 }
