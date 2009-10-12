@@ -27,4 +27,7 @@ public class Dependencia {
 	public void setReservavel(char reservavel) {
 		this.reservavel = reservavel;
 	}
+	public String toString() {
+		return descricao;
+	}
 }

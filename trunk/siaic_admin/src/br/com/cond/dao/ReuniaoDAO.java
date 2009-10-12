@@ -41,7 +41,8 @@ public class ReuniaoDAO {
 				r = new Reuniao();
 				r.setCodigo(rs.getInt("REU_CODIGO"));
 				r.setDescrição(rs.getString("REU_DESCRIÇÃO"));
-				r.setAgd_codigo(rs.getInt("REU_AGD_CODIGO"));
+				//TODO Modificar para o DAO.
+				r.setDependencia(new AgendaDependencia());
 			}
 			ps.close();
 			rs.close();
@@ -52,13 +53,13 @@ public class ReuniaoDAO {
 		public boolean addReuniao(Reuniao r)
 				throws SQLException {
 			String query = new String(
-					"insert into ADMCON_REUNIAO (REU_DESCRICAO, REU_AGD_CODIGO) ")
-					+ "values (?, ?)";
+					"insert into ADMCON_REUNIAO (REU_DESCRICAO, REU_AGD_CODIGO) "
+					+ "values (?, ?)");
 			PreparedStatement ps;
 			ps = DB.getConn().prepareStatement(query);
 
-			ps.setString(2, r.getDescrição());
-			ps.setInt(3, r.getAgd_codigo());
+			ps.setString(1, r.getDescrição());
+			ps.setInt(2, r.getDependencia().getCodigo());
 
 			boolean result = ps.executeUpdate() > 0;
 			ps.close();
@@ -76,7 +77,7 @@ public class ReuniaoDAO {
 			ps = DB.getConn().prepareStatement(query);
 
 			ps.setString(1, rNovo.getDescrição());
-			ps.setInt(2, rNovo.getAgd_codigo());
+			ps.setInt(2, rNovo.getDependencia().getCodigo());
 			ps.setInt(3, rAtual.getCodigo());
 
 			boolean result = ps.executeUpdate() > 0;
@@ -113,7 +114,8 @@ public class ReuniaoDAO {
 				r = new Reuniao();
 				r.setCodigo(rs.getInt("REU_CODIGO"));
 				r.setDescrição(rs.getString("REU_DESCRICAO"));
-				r.setAgd_codigo(rs.getInt("REU_AGD_CODIGO"));
+				//TODO Modificar para o DAO.
+				r.setDependencia(new AgendaDependencia());
 
 				l.add(r);
 			}
@@ -132,8 +134,6 @@ public class ReuniaoDAO {
 
 			List<AgendaDependencia> l = new ArrayList<AgendaDependencia>();
 			AgendaDependencia d = null;
-			
-			
 
 			while (rs.next()) {
 				d = new AgendaDependencia();
@@ -141,6 +141,7 @@ public class ReuniaoDAO {
 				d.setData(rs.getDate("AGD_DATA"));
 				d.setHoraInicio(rs.getTime("AGD_HORA_INICIO"));
 				d.setHoraFinal(rs.getTime("AGD_HORA_FINAL"));	
+				//TODO Modificar para o DAO.
 				d.setCondomino(new Condomino());
 				d.setDependencia(new Dependencia());
 				d.setFinalidade(new AgendaFinalidade());

@@ -18,13 +18,9 @@ public class AgendaDependencia {
 	private AgendaFinalidade finalidade;
 	private char comparecimento;
 	
-	public AgendaDependencia(){
-		
-	}
-
 	public String toString(){
 		String s = new String();
-		
+		s = dependencia.toString()+", "+data.toString()+", às "+horaInicio.toString();
 		return s;
 	}
 	

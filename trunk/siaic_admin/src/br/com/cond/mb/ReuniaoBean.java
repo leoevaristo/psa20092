@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.faces.model.SelectItem;
 
+import br.com.cond.businesslogic.AgendaDependencia;
 import br.com.cond.businesslogic.Reuniao;
 import br.com.cond.dao.ReuniaoDAO;
 
@@ -21,21 +22,24 @@ public class ReuniaoBean {
 	
 	public ReuniaoBean(){
 		reuniao = new Reuniao();
+		setReservaList();
 	}
 	
 	public void setReservaList(){
-		List<br.com.cond.dao.Dependencia> l = null;
+		List<AgendaDependencia> l = null;
 		try {
 			l = new ReuniaoDAO().getDependencia();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		for (br.com.cond.dao.Dependencia d : l){
-			reservaList.add
+		for (AgendaDependencia d : l){
+			reservaList.add(new SelectItem(d.getCodigo(), d.toString()));
 		}
-		
-		reservaList.add(arg0)
+	}
+	
+	public List<SelectItem> getReservaList() {
+		return reservaList;
 	}
 	
 	public Reuniao getReuniao() {
