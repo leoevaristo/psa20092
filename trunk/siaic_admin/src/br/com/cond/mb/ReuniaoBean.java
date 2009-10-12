@@ -19,28 +19,14 @@ import br.com.cond.dao.ReuniaoDAO;
 public class ReuniaoBean {
 	private Reuniao reuniao;
 	private Reuniao atual;
-	private List<SelectItem> reservaList = new ArrayList<SelectItem>();
 	private String acao;
 	private String msg;
 	
 	public ReuniaoBean(){
 		reuniao = new Reuniao();
-		setReservaList();
 		acao = "Cadastrar";
 	}
 	
-	public void setReservaList(){
-		List<AgendaDependencia> l = null;
-		try {
-			l = new ReuniaoDAO().getDependencia();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		for (AgendaDependencia d : l){
-			reservaList.add(new SelectItem(d.getCodigo(), d.toString()));
-		}
-	}
-
 	public String addReuniao() throws SQLException{
 		String s = "";
 		String nav = "";
@@ -50,7 +36,6 @@ public class ReuniaoBean {
 			nav = "Editar";
 		} else {
 			s = new ReuniaoDAO().addReuniao(reuniao) ? "Sucesso" : "Falha";
-			nav = "Cadastrar";
 		}
 		if (s.equals("Sucesso")) {
 			msg = "Operação realizada com sucesso";
@@ -86,6 +71,18 @@ public class ReuniaoBean {
 	}
 	
 	public List<SelectItem> getReservaList() {
+		List<AgendaDependencia> l = null;
+		try {
+			l = new ReuniaoDAO().getDependencia();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		List<SelectItem> reservaList = new ArrayList<SelectItem>();
+		
+		for (AgendaDependencia d : l){
+			reservaList.add(new SelectItem(d.getCodigo(), d.toString()));
+		}
 		return reservaList;
 	}
 	
