@@ -36,7 +36,7 @@ public class ReuniaoDAO {
 			if (rs.first()) {
 				r = new Reuniao();
 				r.setCodigo(rs.getInt("REU_CODIGO"));
-				r.setDescricao(rs.getString("REU_DESCRIÇÃO"));
+				r.setDescricao(rs.getString("REU_DESCRICAO"));
 				//TODO Modificar para o DAO.
 				r.setDependencia(new AgendaDependencia());
 			}
@@ -151,6 +151,30 @@ public class ReuniaoDAO {
 			ps.close();
 			rs.close();
 			
+			return l;
+		}
+		// Listagem da tabela Reuniao e Dependencia pela ordem de data
+		public List<Reuniao> getReuniaoListByDate()
+				throws SQLException {
+			String query = new String("select * from admcon_reuniao, admcon_agenda_dependencia "
+									+"where REU_AGD_CODIGO = AGD_CODIGO order by AGD_DATA desc");
+			PreparedStatement ps;
+			ps = DB.getConn().prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+
+			List<Reuniao> l = new ArrayList<Reuniao>();
+			Reuniao r = null;
+
+			while (rs.next()) {
+				r = new Reuniao();
+				r.setCodigo(rs.getInt("REU_CODIGO"));
+				r.setDescricao(rs.getString("REU_DESCRICAO"));
+				//TODO Modificar para o DAO.
+				r.setDependencia(new AgendaDependencia());
+				l.add(r);
+			}
+			rs.close();
+			ps.close();
 			return l;
 		}
 		
