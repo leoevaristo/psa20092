@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="/WEB-INF/template/template.xhtml">	
+	<ui:define name="tituloGrande"><h:outputText value="Reuniao"/>
+	</ui:define>
+	<ui:define name="subtitulo"><h:outputText value="Cadastrar"/>
+	</ui:define>
+	<ui:define name="conteudo">
+		<h:form styleClass="forms">
+			<h:panelGroup id="panelReuniao">
+				<h:outputLabel for="agdCodigo" value="Dependencia" />
+				<h:selectOneMenu value="#{reuniaoBean.reuniao.agd_codigo}" id="agdCodigo">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{reuniaoBean.}" />				 
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup id="panelNomeCliente">
+				<h:outputLabel for="cliente" value="Cliente" />
+				<h:inputText value="#{perfilBean.perfil.cliente.nome}" id="cliente" 
+				valueChangeListener="#{perfilBean.listarClientes}"  />						
+				<h:commandLink  action="#">
+					<h:graphicImage value="/images/lupa.png" />
+				</h:commandLink>				
+			</h:panelGroup>
+			<h:panelGroup id="panelClienteSelect">
+				<h:outputLabel for="." value="." />
+				<h:selectOneMenu value="#{perfilBean.perfil.cliente.codigoPessoa}">
+					<f:selectItems value="#{perfilBean.listaClientesSelect}" />
+				</h:selectOneMenu>
+			</h:panelGroup>	
+			<h:panelGroup id="panelImovelCaracteristicas">
+				<h:outputLabel for="caracImovel" value="Caracteristicas do Imovel" />
+				<h:selectOneMenu value="#{perfilBean.perfil.imovelCaracteristica.codigo}" id="caracImovel">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{perfilBean.caracteristicas}" />				 
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<span class="linha"></span>
+			<span class="botoes">
+				<h:commandButton action="#{perfilBean.addPerfil}" value=""
+					styleClass="input_submit"/>
+				<h:commandButton action="#{perfilBean.Limpar}" value="" styleClass="input_reset" />
+				<h:commandButton action="#{perfilBean.Cancelar}" value="" styleClass="input_button" immediate="true" />
+			</span>
+			<h:outputText value="#{perfilBean.msg}" />
+		</h:form>
+	</ui:define>
+	</ui:composition>
+
+</html>
