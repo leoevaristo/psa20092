@@ -219,7 +219,7 @@ div#container div#content div#col_right div#col_rightConteudo form.forms span{
 div#container div#content div#col_right div#col_rightConteudo form.forms span label{
 	width:130px;
 	float:left;
-	text-align:right;
+	text-align: right;
 	margin-right:5px;
 }
 
@@ -265,6 +265,11 @@ div#container div#content div#col_right div#col_rightConteudo form.forms span.bo
 	outline:none;
 	width:69px;
 	height:25px;
+}
+div#container div#content div#col_right div#col_rightConteudo form.forms span.botoes input.input_botao{
+	background:url(../images/btnformbotao.png);
+	font-size: 11px;
+	color:#fff; 	
 }
 div#container div#content div#col_right div#col_rightConteudo form.forms span.botoes input.input_submit{
 	background:url(../images/btnformsalvar.png);
@@ -342,6 +347,15 @@ div#container div#content div#col_right span#bgright_rodape{
 	background:url(../images/bgright_rodape.png) no-repeat;
 	display:block;
 }
+
+.msgErro{
+	background-color: #FF6347;
+	color: #FFF;
+	font-weight: bold;
+	border: 2px solid #DDA0DD;
+	line-height: 2;
+	
+	}
 /* -- fim Container -> header -> col_left -- */
 
 

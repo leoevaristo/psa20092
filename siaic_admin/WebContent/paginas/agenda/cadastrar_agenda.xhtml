@@ -1,69 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
 
-	<ui:composition template="/WEB-INF/template/template.xhtml">	
-	<ui:define name="tituloGrande"><h:outputText value="Gerenciar Agenda"/>
+<ui:composition template="/WEB-INF/template/template.xhtml">
+	<ui:define name="tituloGrande">
+		<h:outputText value="Gerenciar Agenda" />
 	</ui:define>
-	<ui:define name="subtitulo"><h:outputText value="Cadastrar"/>
+	<ui:define name="subtitulo">
+		<h:outputText value="Cadastrar" />
 	</ui:define>
 	<ui:define name="conteudo">
-		<h:form styleClass="forms">
-			<h:panelGroup id="panelCorretores">
+		<a4j:form styleClass="forms">
+			<h:panelGrid columns="3" id="panelCorretores">
 				<h:outputLabel for="corretor" value="Corretor" />
-				<h:selectOneMenu value="#{cadastrarAgendaBean.agenda.codCorretor}" id="corretor">
+				<h:selectOneMenu value="#{cadastrarAgendaBean.agenda.codCorretor}"
+					id="corretor" required="true" requiredMessage="Campo Obrigatório">
 					<f:selectItem itemLabel="Corretor" itemValue="" />
-					<f:selectItems value="#{cadastrarAgendaBean.corretores}" />				 
+					<f:selectItems value="#{cadastrarAgendaBean.corretores}" />
 				</h:selectOneMenu>
+				<h:message for="corretor" styleClass="msgErro" />
+			</h:panelGrid>
+			<a4j:region>
+				<h:panelGrid columns="2" id="panelLocalizaCliente">
+					<h:outputLabel for="cli" value="Cliente" />
+					<h:outputText value="#{cadastrarAgendaBean.cliente.nome}" id="cli"
+						rendered="#{not empty cadastrarAgendaBean.cliente}" />
+					<rich:spacer />
+					<a4j:commandButton value="Localizar Cliente" id="cliente">
+						<rich:componentControl attachTo="cliente" for="modalCliente"
+							operation="show" event="onclick" />
+					</a4j:commandButton>
+				</h:panelGrid>
+				<h:panelGrid columns="2" id="panelImovel">
+					<h:outputLabel value="Imóvel" for="filtroCliente" />
+					<a4j:commandButton value="Filtrar pelo Perfil do Cliente"
+						id="filtroCliente"
+						action="#{cadastrarAgendaBean.listarImoveisPerfil}"
+						reRender="listaDeImoveis" ajaxSingle="true">
+					</a4j:commandButton>
+				</h:panelGrid>
+				<h:panelGrid columns="2" id="listaDeImoveis">
+					<a4j:outputPanel>
+						<rich:pickList sourceListWidth="250px"
+							value="#{cadastrarAgendaBean.imoveisSelecionados}"
+							id="pickImoveis" 							
+							copyAllControlLabel="Adicionar todos"
+							copyControlLabel="Adicionar à lista"
+							removeAllControlLabel="Remover todos"
+							removeControlLabel="Remover da lista">
+							<f:selectItems value="#{cadastrarAgendaBean.listaImoveis}" />
+						</rich:pickList>
+						<h:message for="pickImoveis" styleClass="msgErro" />
+					</a4j:outputPanel>
+				</h:panelGrid>
+			</a4j:region>
+			<a4j:region>
+				<h:panelGrid columns="3" id="panelDados">
+					<h:outputLabel for="data" value="Data" />
+					<h:inputText value="#{cadastrarAgendaBean.agenda.data}" id="data"
+						styleClass="obrigatorio" required="true"
+						requiredMessage="Campo Obrigatório">
+					</h:inputText>
+					<h:message for="data" styleClass="msgErro" />
+					<h:outputLabel for="horaInicio" value="Hora de inicio (h:m:s)" />
+					<h:inputText value="#{cadastrarAgendaBean.agenda.horaInicio}"
+						id="horaInicio" required="true"
+						requiredMessage="Campo Obrigatório" />
+					<h:message for="horaInicio" styleClass="msgErro" />
+					<h:outputLabel for="horaFim" value="Hora de fim (h:m:s)" />
+					<h:inputText value="#{cadastrarAgendaBean.agenda.horaFim}"
+						id="horaFim" required="true" requiredMessage="Campo Obrigatório" />
+					<h:message for="horaFim" styleClass="msgErro" />
+					<h:outputLabel for="descricao" value="Descricao" />
+					<h:inputTextarea value="#{cadastrarAgendaBean.agenda.descricao}"
+						id="descricao" required="true" requiredMessage="Campo Obrigatório" />
+					<h:message for="descricao" styleClass="msgErro" />
+				</h:panelGrid>
+			</a4j:region>
+			<h:panelGroup styleClass="linha" />
+			<h:panelGroup styleClass="botoes">
+				<h:commandButton action="#{cadastrarAgendaBean.criarRegistro}"
+					value="" styleClass="input_submit" />
+				<h:commandButton action="#{cadastrarAgendaBean.limparCampos}"
+					value="" styleClass="input_reset" immediate="true" />
+				<h:commandButton action="#{cadastrarAgendaBean.destroiSessao}"
+					value="" styleClass="input_button" immediate="true" />
 			</h:panelGroup>
-			<h:panelGroup id="panelNomeCliente">
-				<h:outputLabel for="cliente" value="Cliente" />
-				<h:inputText value="#{cadastrarAgendaBean.cliente.nome}" id="cliente" 
-				valueChangeListener="#{cadastrarAgendaBean.listarClientes}"  />						
-				<h:commandLink  action="#">
-					<h:graphicImage value="/images/lupa.png" />
-				</h:commandLink>				
-			</h:panelGroup>
-			<h:panelGroup id="panelClienteSelect">
-				<h:outputLabel for="." value="." />
-				<h:selectOneMenu value="#{cadastrarAgendaBean.agenda.codCliente}">
-					<f:selectItems value="#{cadastrarAgendaBean.listaClientesSelect}" />
-				</h:selectOneMenu>
-			</h:panelGroup>			
-			<h:panelGroup id="panelImovel">
-				<h:outputLabel value="Imóvel" for="imovel" />				
-				<h:selectOneMenu value="#{cadastrarAgendaBean.agenda.codImovel}" id="imovel">
-					<f:selectItems value="#{cadastrarAgendaBean.listaImoveis}" />
-				</h:selectOneMenu>									
-			</h:panelGroup>
-			<h:panelGroup id="panelData">
-				<h:outputLabel for="data" value="Data" />
-				<h:inputText value="#{cadastrarAgendaBean.agenda.data}" id="data" styleClass="obrigatorio" >
-				</h:inputText> 
-			</h:panelGroup>
-			<h:panelGroup id="panelHoraIni">
-				<h:outputLabel for="horaInicio" value="Hora de inicio (h:m:s)" />
-				<h:inputText value="#{cadastrarAgendaBean.agenda.horaInicio}" id="horaInicio" />
-			</h:panelGroup>
-			<h:panelGroup id="panelHoraFim">
-				<h:outputLabel for="horaFim" value="Hora de fim (h:m:s)" />
-				<h:inputText value="#{cadastrarAgendaBean.agenda.horaFim}" id="horaFim" />
-			</h:panelGroup>
-			<h:panelGroup id="panelDescricao">
-				<h:outputLabel for="descricao" value="Descricao" />
-				<h:inputTextarea value="#{cadastrarAgendaBean.agenda.descricao}" id="descricao" />
-			</h:panelGroup>
-			<span class="linha"></span>
-			<span class="botoes">
-				<h:commandButton action="#{cadastrarAgendaBean.criarRegistro}" value=""
-					styleClass="input_submit"/>
-				<h:commandButton action="#" value="" styleClass="input_reset" />
-				<h:commandButton action="#" value="" styleClass="input_button" immediate="true" />
-			</span>						
-		</h:form>		
+		</a4j:form>
+		<ui:include src="/includes/modal_cliente.xhtml" />
 	</ui:define>
-	</ui:composition>
+</ui:composition>
 </html>

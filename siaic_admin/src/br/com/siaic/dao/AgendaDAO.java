@@ -25,7 +25,6 @@ import br.com.siaic.businesslogic.Usuario;
 public class AgendaDAO {
 	private static AgendaDAO instance;
 
-
 	public static AgendaDAO getInstance() {
 		if (AgendaDAO.instance == null) {
 			AgendaDAO.instance = new AgendaDAO();
@@ -63,7 +62,7 @@ public class AgendaDAO {
 		}
 		rs.close();
 		ps.close();
-		
+
 		return a;
 	}
 
@@ -74,13 +73,13 @@ public class AgendaDAO {
 	 * @throws SQLException
 	 */
 	public List<Agenda> getAgendaList() throws SQLException {
-		
-		String query = new String("SELECT * FROM AGENDA ORDER BY AGE_CODIGO DESC;");
+
+		String query = new String(
+				"SELECT * FROM AGENDA ORDER BY AGE_CODIGO DESC;");
 		PreparedStatement ps = DB.getConn().prepareStatement(query);
 		ResultSet rs = ps.executeQuery();
 
 		List<Agenda> l = new ArrayList<Agenda>();
-		
 
 		while (rs.next()) {
 			Agenda a = new Agenda();
@@ -92,7 +91,7 @@ public class AgendaDAO {
 			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
 			a.setHoraFim(rs.getString("AGE_HORA_FIM"));
 			a.setDescricao(rs.getString("AGE_DESCRICAO"));
-			
+
 			l.add(a);
 		}
 		rs.close();
@@ -177,12 +176,11 @@ public class AgendaDAO {
 	 * @param i
 	 *            {@link Imovel}
 	 * @return Lista de {@link Agenda}
-	 * @throws SQLException 
+	 * @throws SQLException
 	 * @throws SQLException
 	 */
 	public List<Agenda> getAgendaList(Imovel i) throws SQLException {
-		String query = new String(
-				"select * from agenda where AGE_IMOVEL = ?");
+		String query = new String("select * from agenda where AGE_IMOVEL = ?");
 		PreparedStatement ps = DB.getConn().prepareStatement(query);
 		ps.setInt(1, i.getCodigo());
 		ResultSet rs = ps.executeQuery();
@@ -199,7 +197,7 @@ public class AgendaDAO {
 			a.setData(rs.getString("AGE_DATA"));
 			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
 			a.setHoraFim(rs.getString("AGE_HORA_FIM"));
-			 a.setDescricao(rs.getString("AGE_DESCRICAO"));
+			a.setDescricao(rs.getString("AGE_DESCRICAO"));
 			l.add(a);
 		}
 		rs.close();
@@ -222,7 +220,8 @@ public class AgendaDAO {
 	 *         ou <code>false</code> caso contr�rio
 	 * @throws SQLException
 	 */
-	public boolean AtualizarAgenda(Agenda atual, Agenda nova) throws SQLException {
+	public boolean AtualizarAgenda(Agenda atual, Agenda nova)
+			throws SQLException {
 		String query = new String("update agenda set "
 				+ "AGE_CODIGO = ?, AGE_PESSOA_CLIENTE = ?, "
 				+ "AGE_PESSOA_USUARIO = ?, AGE_IMOVEL = ?, "
@@ -239,50 +238,54 @@ public class AgendaDAO {
 		ps.setString(7, nova.getHoraFim());
 		ps.setString(8, nova.getDescricao());
 		ps.setInt(9, atual.getCodigo());
-		
+
 		boolean result = ps.executeUpdate() > 0;
 		ps.close();
 		return result;
 	}
-	
+
 	/**
-	 * Deleta o registro na tabela Agenda representado pelo objeto {@link Agenda} passado por par�metro.
+	 * Deleta o registro na tabela Agenda representado pelo objeto
+	 * {@link Agenda} passado por par�metro.
 	 * 
-	 * @param a - {@link Agenda} registro que ser� deletado.
-	 * @return <code>true</code> caso a exclus�o seja realizada com sucesso
-	 *         ou <code>false</code> caso contr�rio.
+	 * @param a
+	 *            - {@link Agenda} registro que ser� deletado.
+	 * @return <code>true</code> caso a exclus�o seja realizada com sucesso ou
+	 *         <code>false</code> caso contr�rio.
 	 * @throws SQLException
 	 */
-	public boolean ApagarAgenda(int codigoEntrada) throws SQLException{
+	public boolean ApagarAgenda(int codigoEntrada) throws SQLException {
 		String query = new String("DELETE FROM AGENDA WHERE AGE_CODIGO = ?");
 		PreparedStatement ps = DB.getConn().prepareStatement(query);
 		ps.setInt(1, codigoEntrada);
-		
+
 		boolean result = ps.executeUpdate() > 0;
 		ps.close();
-		
+
 		return result;
 	}
-	
+
 	/**
-	 * Insere o registro na tabela Agenda representado pelo objeto {@link Agenda} passado por par�metro.
+	 * Insere o registro na tabela Agenda representado pelo objeto
+	 * {@link Agenda} passado por par�metro.
 	 * 
-	 * @param a - {@link Agenda} que ser� inserida no banco de dados.
-	 * @return <code>true</code> caso a insers�o seja realizada com sucesso
-	 *         ou <code>false</code> caso contr�rio.
+	 * @param a
+	 *            - {@link Agenda} que ser� inserida no banco de dados.
+	 * @return <code>true</code> caso a insers�o seja realizada com sucesso ou
+	 *         <code>false</code> caso contr�rio.
 	 * @throws SQLException
 	 */
-	public boolean InserirAgenda(Agenda a) throws SQLException{
+	public boolean InserirAgenda(Agenda a) throws SQLException {
 		String query = new String("INSERT INTO AGENDA "
 				+ "(AGE_PESSOA_CLIENTE, AGE_PESSOA_USUARIO, "
 				+ "AGE_IMOVEL, AGE_DATA, AGE_HORA_INICIO, "
 				+ "AGE_HORA_FIM, AGE_DESCRICAO) "
 				+ "values (?, ?, ?, ?, ?, ?, ?)");
-		
-		try{
-			
+
+		try {
+
 			PreparedStatement ps = DB.getConn().prepareStatement(query);
-		
+
 			ps.setInt(1, a.getCodCliente());
 			ps.setInt(2, a.getCodCorretor());
 			ps.setInt(3, a.getCodImovel());
@@ -290,47 +293,103 @@ public class AgendaDAO {
 			ps.setString(5, a.getHoraInicio());
 			ps.setString(6, a.getHoraFim());
 			ps.setString(7, a.getDescricao());
-		
+
 			boolean result = ps.executeUpdate() > 0;
 			ps.close();
-			
-			
+
 			return result;
-			
-		}finally{
-			
+
+		} finally {
+
 			DB.getConn().close();
-			
+
 		}
 	}
-	
-	public boolean AtualizarAgenda( Agenda agenda) throws SQLException {
+
+	public boolean AtualizarAgenda(Agenda agenda) throws SQLException {
+
 		String query = new String("UPDATE AGENDA SET "
 				+ "AGE_PESSOA_CLIENTE = ?, "
 				+ "AGE_PESSOA_USUARIO = ?, AGE_IMOVEL = ?, "
 				+ "AGE_DATA = ?, AGE_HORA_INICIO = ?, "
 				+ "AGE_HORA_FIM = ?, AGE_DESCRICAO = ? "
 				+ "WHERE AGE_CODIGO = ?");
-		
-		try{
+
+		try {
 			PreparedStatement ps = DB.getConn().prepareStatement(query);
 			ps.setInt(1, agenda.getCodCliente());
-			ps.setInt(2,agenda.getCodCorretor() );
-			ps.setInt(3,agenda.getCodImovel() );
-			ps.setString(4,agenda.getData() );
-			ps.setString(5,agenda.getHoraInicio() );
-			ps.setString(6,agenda.getHoraFim() );
-			ps.setString(7,agenda.getDescricao() );
-			ps.setInt(8, agenda.getCodigo() );
-			
-		
+			ps.setInt(2, agenda.getCodCorretor());
+			ps.setInt(3, agenda.getCodImovel());
+			ps.setString(4, agenda.getData());
+			ps.setString(5, agenda.getHoraInicio());
+			ps.setString(6, agenda.getHoraFim());
+			ps.setString(7, agenda.getDescricao());
+			ps.setInt(8, agenda.getCodigo());
+
 			boolean result = ps.executeUpdate() > 0;
 			ps.close();
-			
+
 			return result;
-			
-		}finally{
+
+		} finally {
 			DB.getConn().close();
 		}
+	}
+
+	public void associarImovelAgenda(int imovelCodigo, int agendaCodigo) {
+
+		String sql = "INSERT INTO IMOVEL_AGENDA (IMA_IMOVEL_CODIGO,IMA_AGENDA_CODIGO)"
+				+ " VALUES(?,?);";
+
+		try {
+
+			PreparedStatement ps = DB.getConn().prepareStatement(sql);
+			ps.setInt(1, imovelCodigo);
+			ps.setInt(2, agendaCodigo);
+			ps.execute();
+
+			ps.close();
+
+		} catch (SQLException e) {
+
+			e.getLocalizedMessage();
+		} finally {
+
+			try {
+				DB.getConn().close();
+			} catch (SQLException e) {
+
+				e.getLocalizedMessage();
+			}
+
+		}
+
+	}
+
+	public int getUltimoIndiceAgenda() {
+
+		String sql = "SELECT max(AGE_CODIGO) AS CODIGO  FROM AGENDA";
+
+		int codigoAgenda = 0;
+
+		try {
+
+			PreparedStatement ps = DB.getConn().prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				codigoAgenda = rs.getInt("CODIGO");
+			}
+
+		} catch (SQLException e) {
+			e.getLocalizedMessage();
+		} finally {
+			try {
+				DB.getConn().close();
+			} catch (SQLException e) {
+				e.getLocalizedMessage();
+			}
+		}
+		return codigoAgenda;
 	}
 }

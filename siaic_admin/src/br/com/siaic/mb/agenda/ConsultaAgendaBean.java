@@ -24,6 +24,7 @@ public class ConsultaAgendaBean {
 	private Imovel imovel;
 
 	private Usuario usuario;
+	
 
 	public Cliente getCliente() {
 		return cliente;
@@ -124,17 +125,20 @@ public class ConsultaAgendaBean {
 	public void buscaImovelEntrada() {
 		ImovelDAO daoImovel = new ImovelDAO();
 		setImovel(daoImovel.getImovel(getAgenda().getCodImovel()));
+		
 	}
 
 	public void buscaCorretorEntrada() throws SQLException {
 		UsuarioDAO daoUsuairo = new UsuarioDAO();
 		setUsuario(daoUsuairo.getUsuarioId(getAgenda().getCodCorretor()));
+		
 	}
 
 	public void buscaClienteEntrada() throws SQLException {
 		ClienteDAO daoCliente = new ClienteDAO();
 
 		setCliente(daoCliente.getClientePorId(getAgenda().getCodCliente()));
+		
 	}
 	
 	public String exibirDetalhesAgenda() throws SQLException{

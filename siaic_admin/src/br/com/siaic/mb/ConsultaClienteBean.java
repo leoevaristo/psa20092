@@ -237,6 +237,8 @@ public class ConsultaClienteBean {
 		return tipoPesquisa;
 	}
 	
+
+	
 	
 	public void setLogradouro(){
 		

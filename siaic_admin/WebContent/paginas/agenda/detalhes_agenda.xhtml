@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
 
 <ui:composition template="/WEB-INF/template/template.xhtml">
 	<ui:define name="tituloGrande">
@@ -12,38 +14,46 @@
 		<h:outputText value="» Detalhes da Agenda" />
 	</ui:define>
 	<ui:define name="conteudo">
-		<h:panelGrid columns="2" columnClasses="cor1,cor2" styleClass="panels">
-			<h:outputLabel for="campoNomeCorretor" value="Corretor Responsável:" />
-			<h:outputText value="#{consultaAgendaBean.usuario.nome}"
-				id="campoCorretor" />
-		</h:panelGrid>
-		<h:panelGrid columns="4" columnClasses="cor1,cor2" styleClass="panels">
-			<h:outputLabel for="campoCliente" value="Cliente:" />
-			<h:outputText value="#{consultaAgendaBean.cliente.nome}"
-				id="campoCliente" />		
-			<h:outputLabel for="campoTelefone" value="Telefone Cliente:" />
-			<h:outputText value="#{consultaAgendaBean.cliente.telefone}"
-				id="campoTelefone" />
-		</h:panelGrid>
-		<h:panelGrid columns="2" columnClasses="cor1,cor2" styleClass="panels">
-			<h:outputLabel for="campoData" value="Data da Visita:" />
-			<h:outputText value="#{consultaAgendaBean.agenda.data}"
-				id="campoData" />			
-		</h:panelGrid>
-		<h:panelGrid columns="4" columnClasses="cor1,cor2" styleClass="panels">
-			<h:outputLabel for="campoHrInicio" value="Horário Início:" />
-			<h:outputText value="#{consultaAgendaBean.agenda.horaInicio}"
-				id="campoHrInicio" />
-			<h:outputLabel for="campoHrFim" value="Horário Encerramento:" />
-			<h:outputText value="#{consultaAgendaBean.agenda.horaFim}"
-				id="campoHrFim" />				
-		</h:panelGrid>
-		<h:panelGrid columns="2" columnClasses="cor1,cor2" styleClass="panels">
-			<h:outputLabel for="campoDescricao" value="Descrição:"/>
-			<h:outputText value="#{consultaAgendaBean.agenda.descricao}" />
-		</h:panelGrid>
-		<h:panelGroup>
+		<rich:panel header="Dados do Cliente">
+			<h:panelGrid columns="2" columnClasses="cor1,cor2"
+				styleClass="panels">
+				<h:outputLabel for="campoNomeCorretor" value="Corretor Responsável:" />
+				<h:outputText value="#{consultaAgendaBean.usuario.nome}"
+					id="campoCorretor" />
+			</h:panelGrid>
+			<h:panelGrid columns="2" columnClasses="cor1,cor2"
+				styleClass="panels">
+				<h:outputLabel for="campoCliente" value="Cliente:" />
+				<h:outputText value="#{consultaAgendaBean.cliente.nome}"
+					id="campoCliente" />
+				<h:outputLabel for="campoTelefone" value="Telefone:" />
+				<h:outputText value="#{consultaAgendaBean.cliente.telefone}"
+					id="campoTelefone" />
+			</h:panelGrid>
+			<h:panelGrid columns="2" columnClasses="cor1,cor2"
+				styleClass="panels">
+				<h:outputLabel for="campoData" value="Data da Visita:" />
+				<h:outputText value="#{consultaAgendaBean.agenda.data}"
+					id="campoData" />
+			</h:panelGrid>
+			<h:panelGrid columns="2" columnClasses="cor1,cor2"
+				styleClass="panels">
+				<h:outputLabel for="campoHrInicio" value="Horário Início:" />
+				<h:outputText value="#{consultaAgendaBean.agenda.horaInicio}"
+					id="campoHrInicio" />
+				<h:outputLabel for="campoHrFim" value="Horário Encerramento:" />
+				<h:outputText value="#{consultaAgendaBean.agenda.horaFim}"
+					id="campoHrFim" />
+			</h:panelGrid>
+			<h:panelGrid columns="2" columnClasses="cor1,cor2"
+				styleClass="panels">
+				<h:outputLabel for="campoDescricao" value="Descrição:" />
+				<h:outputText value="#{consultaAgendaBean.agenda.descricao}" />
+			</h:panelGrid>
+		</rich:panel>
+		<h:panelGroup id="link">
 			<h:outputLink value="consulta_agenda.xhtml">
+				<h:graphicImage value="/images/back.png" />
 				<h:outputText value="voltar para página de consulta" />
 			</h:outputLink>
 		</h:panelGroup>

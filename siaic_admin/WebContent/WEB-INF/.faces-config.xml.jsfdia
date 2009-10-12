@@ -91,6 +91,14 @@
     NAME="output" PATH="/paginas/agenda/sucesso.xhtml" SHAPE="-1,16"
     TARGET="rules:#paginas#agenda#sucesso.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#paginas#agenda#cadastrar_agenda.xhtml:1"
+   NAME="item1" PATH="/paginas/agenda/cadastrar_agenda.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="destruido::#paginas#agenda#consulta_agenda.xhtml" NAME="output"
+    PATH="/paginas/agenda/consulta_agenda.xhtml"
+    TARGET="rules:#paginas#agenda#consulta_agenda.xhtml"
+    TITLE="destruido" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#endereco#estado.xhtml"
   PATH="/paginas/endereco/estado.xhtml" SHAPE="32,1361,0,0" model-entity="JSFProcessGroup">
@@ -435,7 +443,7 @@
     TITLE="Cancelar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM
+<PROCESS-ITEM
   NAME="rules:#paginas#Cond#Reuniao#consultar_reuniao.xhtml"
   PATH="/paginas/Cond/Reuniao/consultar_reuniao.xhtml"
   SHAPE="240,3201,0,0" model-entity="JSFProcessGroup">

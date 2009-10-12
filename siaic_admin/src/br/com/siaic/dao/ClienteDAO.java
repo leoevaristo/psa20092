@@ -229,7 +229,7 @@ public class ClienteDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public Cliente getClientePorId(int clienteCodigo) throws SQLException {
+	public Cliente getClientePorId(int clienteCodigo) {
 		
 		String sql = "SELECT c.PEC_CODIGO, c.PEC_CPF, c.PEC_RG, c.PEC_CNPJ, p.PES_CODIGO, "
 			+ "p.PES_NOME, p.PES_EMAIL, p.PES_TELEFONE, p.PES_CELULAR, p.PES_ENDERECO, p.PES_TIPO, p.PES_SEXO "
@@ -263,10 +263,19 @@ public class ClienteDAO {
 
 			return cliente;
 
+		} catch (SQLException e) {
+			
+			e.getLocalizedMessage();
 		} finally {
 
-			conexao.close();
+			try {
+				conexao.close();
+			} catch (SQLException e) {
+				
+				e.getLocalizedMessage();
+			}
 		}
+		return null;
 
 	}
 
