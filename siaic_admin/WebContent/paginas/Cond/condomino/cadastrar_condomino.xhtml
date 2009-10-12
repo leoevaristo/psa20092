@@ -9,6 +9,7 @@
 	<ui:define name="tituloGrande"><h:outputText value="Condomino"/></ui:define>
 	<ui:define name="subtitulo"><h:outputText value="Cadastrar"/></ui:define>
 	<ui:define name="conteudo">
+	<h:form styleClass="forms">
 		<h:panelGroup>
 			<h:outputLabel for="nome" value="Nome" />
 			<h:inputText id="nome" value="#" />					
@@ -21,7 +22,7 @@
 			<h:outputLabel for="datanasc" value="Data Nascimento" />
 			<rich:calendar id="datanasc" datePattern="dd/MM/yyyy" locale="pt_Br" /> 			
 		</h:panelGroup>
-		
+	</h:form>
 	</ui:define>
 
 	</ui:composition>
