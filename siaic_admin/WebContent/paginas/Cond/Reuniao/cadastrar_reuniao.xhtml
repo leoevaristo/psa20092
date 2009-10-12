@@ -14,9 +14,9 @@
 		<h:form styleClass="forms">
 			<h:panelGroup id="panelReuniao">
 				<h:outputLabel for="agdCodigo" value="Dependencia" />
-				<h:selectOneMenu value="#{reuniaoBean.reuniao.agd_codigo}" id="agdCodigo">
+				<h:selectOneMenu value="#{reuniaoBean.reuniao.dependencia.codigo}" id="agdCodigo">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{reuniaoBean.}" />				 
+					<f:selectItems value="#{reuniaoBean.reservaList}" />				 
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup id="panelNomeCliente">

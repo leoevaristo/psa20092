@@ -9,7 +9,7 @@ package br.com.cond.businesslogic;
 public class Reuniao {
 	private int codigo;
 	private String descrição;
-	private int agd_codigo;
+	private AgendaDependencia dependencia;
 	
 	public int getCodigo() {
 		return codigo;
@@ -23,11 +23,11 @@ public class Reuniao {
 	public void setDescrição(String descrição) {
 		this.descrição = descrição;
 	}
-	public int getAgd_codigo() {
-		return agd_codigo;
+	public AgendaDependencia getDependencia() {
+		return dependencia;
 	}
-	public void setAgd_codigo(int agdCodigo) {
-		agd_codigo = agdCodigo;
+	public void setDependencia(AgendaDependencia dependencia) {
+		this.dependencia = dependencia;
 	}
 	
 }
