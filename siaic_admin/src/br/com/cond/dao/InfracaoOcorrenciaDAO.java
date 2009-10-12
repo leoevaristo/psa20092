@@ -6,9 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import br.com.cond.businesslogic.Infracao;
 import br.com.cond.businesslogic.InfracaoOcorrencia;
 import br.com.siaic.dao.FabricaConexao;
+
+
+/**
+ * 
+ * @author George Fernandes Maia
+ *
+ */
+
 
 public class InfracaoOcorrenciaDAO {
 	private Connection conexao = null;
