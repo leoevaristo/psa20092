@@ -13,39 +13,23 @@
 	<ui:define name="conteudo">
 		<h:form styleClass="forms">
 			<h:panelGroup id="panelReuniao">
-				<h:outputLabel for="agdCodigo" value="Dependencia" />
+				<h:outputLabel for="agdCodigo" value="Dependencia Agendada" />
 				<h:selectOneMenu value="#{reuniaoBean.reuniao.dependencia.codigo}" id="agdCodigo">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
 					<f:selectItems value="#{reuniaoBean.reservaList}" />				 
 				</h:selectOneMenu>
+			
 			</h:panelGroup>
-			<h:panelGroup id="panelNomeCliente">
-				<h:outputLabel for="cliente" value="Cliente" />
-				<h:inputText value="#{perfilBean.perfil.cliente.nome}" id="cliente" 
-				valueChangeListener="#{perfilBean.listarClientes}"  />						
-				<h:commandLink  action="#">
-					<h:graphicImage value="/images/lupa.png" />
-				</h:commandLink>				
-			</h:panelGroup>
-			<h:panelGroup id="panelClienteSelect">
-				<h:outputLabel for="." value="." />
-				<h:selectOneMenu value="#{perfilBean.perfil.cliente.codigoPessoa}">
-					<f:selectItems value="#{perfilBean.listaClientesSelect}" />
-				</h:selectOneMenu>
-			</h:panelGroup>	
-			<h:panelGroup id="panelImovelCaracteristicas">
-				<h:outputLabel for="caracImovel" value="Caracteristicas do Imovel" />
-				<h:selectOneMenu value="#{perfilBean.perfil.imovelCaracteristica.codigo}" id="caracImovel">
-					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{perfilBean.caracteristicas}" />				 
-				</h:selectOneMenu>
+			<h:panelGroup id="panelDescricao">
+				<h:outputLabel for="descricao" value="Descricao" />
+				<h:inputTextarea value="#{reuniaoBean.reuniao.descricao}" id="descricao" />
 			</h:panelGroup>
 			<span class="linha"></span>
 			<span class="botoes">
-				<h:commandButton action="#{perfilBean.addPerfil}" value=""
+				<h:commandButton action="#{reuniaoBean.addReuniao}" value=""
 					styleClass="input_submit"/>
-				<h:commandButton action="#{perfilBean.Limpar}" value="" styleClass="input_reset" />
-				<h:commandButton action="#{perfilBean.Cancelar}" value="" styleClass="input_button" immediate="true" />
+				<h:commandButton action="#{reuniaoBean.Limpar}" value="" styleClass="input_reset" />
+				<h:commandButton action="#{reuniaoBean.Cancelar}" value="" styleClass="input_button" immediate="true" />
 			</span>
 			<h:outputText value="#{perfilBean.msg}" />
 		</h:form>

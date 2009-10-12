@@ -1,10 +1,8 @@
 package br.com.cond.dao;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +11,7 @@ import br.com.cond.businesslogic.AgendaFinalidade;
 import br.com.cond.businesslogic.Condomino;
 import br.com.cond.businesslogic.Dependencia;
 import br.com.cond.businesslogic.Reuniao;
-import br.com.siaic.businesslogic.ImovelCaracteristica;
 import br.com.siaic.dao.DB;
-import br.com.siaic.dao.ImovelCaracteristicaDAO;
 
 /**
  * @author Yasmim
@@ -40,7 +36,7 @@ public class ReuniaoDAO {
 			if (rs.first()) {
 				r = new Reuniao();
 				r.setCodigo(rs.getInt("REU_CODIGO"));
-				r.setDescrição(rs.getString("REU_DESCRIÇÃO"));
+				r.setDescricao(rs.getString("REU_DESCRIÇÃO"));
 				//TODO Modificar para o DAO.
 				r.setDependencia(new AgendaDependencia());
 			}
@@ -58,7 +54,7 @@ public class ReuniaoDAO {
 			PreparedStatement ps;
 			ps = DB.getConn().prepareStatement(query);
 
-			ps.setString(1, r.getDescrição());
+			ps.setString(1, r.getDescricao());
 			ps.setInt(2, r.getDependencia().getCodigo());
 
 			boolean result = ps.executeUpdate() > 0;
@@ -71,12 +67,12 @@ public class ReuniaoDAO {
 				Reuniao rNovo) throws SQLException {
 			String query = new String(
 					"update ADMCON_REUNIAO "
-							+ "REU_DESCRICAO = ?, REU_AGD_CODIGO = ? "
+							+ "set REU_DESCRICAO = ?, REU_AGD_CODIGO = ? "
 							+ "where REU_CODIGO = ?");
 			PreparedStatement ps;
 			ps = DB.getConn().prepareStatement(query);
 
-			ps.setString(1, rNovo.getDescrição());
+			ps.setString(1, rNovo.getDescricao());
 			ps.setInt(2, rNovo.getDependencia().getCodigo());
 			ps.setInt(3, rAtual.getCodigo());
 
@@ -113,7 +109,7 @@ public class ReuniaoDAO {
 			while (rs.next()) {
 				r = new Reuniao();
 				r.setCodigo(rs.getInt("REU_CODIGO"));
-				r.setDescrição(rs.getString("REU_DESCRICAO"));
+				r.setDescricao(rs.getString("REU_DESCRICAO"));
 				//TODO Modificar para o DAO.
 				r.setDependencia(new AgendaDependencia());
 
@@ -127,7 +123,7 @@ public class ReuniaoDAO {
 		//Pega a dependencia para uma reuniao em aberto
 		public List<AgendaDependencia> getDependencia() throws SQLException{
 			String query = new String("select * from ADMCON_AGENDA_DEPENDENCIA "
-									+ "where AGD_DATA < getdate()");
+									+ "where AGD_DATA > now()");
 			PreparedStatement ps;
 			ps = DB.getConn().prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
@@ -145,7 +141,10 @@ public class ReuniaoDAO {
 				d.setCondomino(new Condomino());
 				d.setDependencia(new Dependencia());
 				d.setFinalidade(new AgendaFinalidade());
-				d.setComparecimento(rs.getString("AGD_COMPARECIMENTO").charAt(0));
+				char c = (rs.getString("AGD_COMPARECIMENTO") == null || 
+						  rs.getString("AGD_COMPARECIMENTO").isEmpty()) ?
+						  '\0' : rs.getString("AGD_COMPARECIMENTO").charAt(0);
+				d.setComparecimento(c);
 				l.add(d);
 			}
 
