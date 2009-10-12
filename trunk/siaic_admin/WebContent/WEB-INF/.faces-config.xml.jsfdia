@@ -443,10 +443,10 @@
    ID="rules:#paginas#Cond#Reuniao#consultar_reuniao.xhtml:0"
    NAME="item" PATH="/paginas/Cond/Reuniao/consultar_reuniao.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="editar::#paginas#Cond#Reuniao#cadastrar_reuniao.xhtml"
+    ID="Editar::#paginas#Cond#Reuniao#cadastrar_reuniao.xhtml"
     NAME="output" PATH="/paginas/Cond/Reuniao/cadastrar_reuniao.xhtml"
     TARGET="rules:#paginas#Cond#Reuniao#cadastrar_reuniao.xhtml"
-    TITLE="editar" model-entity="JSFProcessItemOutput"/>
+    TITLE="Editar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM
@@ -457,10 +457,10 @@
    ID="rules:#paginas#Cond#Reuniao#cadastrar_reuniao.xhtml:0"
    NAME="item" PATH="/paginas/Cond/Reuniao/cadastrar_reuniao.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="editar::#paginas#Cond#Reuniao#consultar_reuniao.xhtml"
+    ID="Editar::#paginas#Cond#Reuniao#consultar_reuniao.xhtml"
     NAME="output" PATH="/paginas/Cond/Reuniao/consultar_reuniao.xhtml"
     TARGET="rules:#paginas#Cond#Reuniao#consultar_reuniao.xhtml"
-    TITLE="editar" model-entity="JSFProcessItemOutput"/>
+    TITLE="Editar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>

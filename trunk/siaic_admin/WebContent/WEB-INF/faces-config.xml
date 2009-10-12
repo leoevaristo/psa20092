@@ -487,7 +487,7 @@
  <navigation-rule>
   <from-view-id>/paginas/Cond/Reuniao/consultar_reuniao.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>editar</from-outcome>
+   <from-outcome>Editar</from-outcome>
    <to-view-id>/paginas/Cond/Reuniao/cadastrar_reuniao.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
@@ -495,7 +495,7 @@
   <navigation-rule>
   <from-view-id>/paginas/Cond/Reuniao/cadastrar_reuniao.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>editar</from-outcome>
+   <from-outcome>Editar</from-outcome>
    <to-view-id>/paginas/Cond/Reuniao/consultar_reuniao.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
