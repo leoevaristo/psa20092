@@ -2,6 +2,7 @@ package br.com.cond.businesslogic;
 /**
  * 
  * @author Alain Rosemberg
+ * @author Robson (12/10/2009 - 13h)
  *
  */
 
@@ -10,7 +11,7 @@ public class Condomino {
 	private int codigoCondomino;
 	private String Nome;
 	private String DataNasc;
-	private int codApartamento;
+	private Apartamento apartamento;
 	
 	public int getCodigoCondomino() {
 		return codigoCondomino;
@@ -30,13 +31,12 @@ public class Condomino {
 	public void setDataNasc(String dataNasc) {
 		DataNasc = dataNasc;
 	}
-	public int getCodApartamento() {
-		return codApartamento;
+	public Apartamento getApartamento() {
+		return apartamento;
 	}
-	public void setCodApartamento(int codApartamento) {
-		this.codApartamento = codApartamento;
+	public void setApartamento(Apartamento apartamento) {
+		this.apartamento = apartamento;
 	}
-
 
 
 }
