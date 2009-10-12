@@ -47,10 +47,10 @@ public class ReuniaoBean {
 		if (acao.equals("Editar")) {
 			s = new ReuniaoDAO().altReuniao(atual, reuniao) ? "Sucesso" : "Falha";
 			acao = "Cadastrar";
-			nav = "editar";
+			nav = "Editar";
 		} else {
 			s = new ReuniaoDAO().addReuniao(reuniao) ? "Sucesso" : "Falha";
-			nav = "cadastrar";
+			nav = "Cadastrar";
 		}
 		if (s.equals("Sucesso")) {
 			msg = "Operação realizada com sucesso";
@@ -74,7 +74,15 @@ public class ReuniaoBean {
 	
 	public String Cancelar(){
 		Limpar();
-		return "Cancelar";
+		String s = "";
+		String nav = "";
+		if (acao.equals("Editar")) {
+			acao = "Cadastrar";
+			nav = "Editar";
+		} else {
+			nav = "Cadastrar";
+		}
+		return nav;
 	}
 	
 	public List<SelectItem> getReservaList() {
