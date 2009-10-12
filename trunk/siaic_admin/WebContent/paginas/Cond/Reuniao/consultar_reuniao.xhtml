@@ -79,8 +79,11 @@
 				</h:form>
 			</h:column>
 		</h:dataTable>
-		<h:form>
-			
+		<h:form styleClass="forms">
+			<span class="linha"></span>
+			<span class="botoes">
+				<h:commandButton action="#{reuniaoBean.Cancelar}" value="" styleClass="input_button" immediate="true" />
+			</span>
 		</h:form>
 	</ui:define>
 	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>

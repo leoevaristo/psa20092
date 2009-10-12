@@ -497,8 +497,23 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+  		<from-view-id>/paginas/Cond/Reuniao/consultar_reuniao.xhtml</from-view-id>
+  		<navigation-case>
+   			<from-outcome>Cadastrar</from-outcome>
+   			<to-view-id>/paginas/Cond/Reuniao/reuniao.xhtml</to-view-id>
+   			<redirect/>
+  		</navigation-case>
+  	</navigation-rule>
+  	<navigation-rule>
+  		<from-view-id>/paginas/Cond/Reuniao/cadastrar_reuniao.xhtml</from-view-id>
+  		<navigation-case>
+   			<from-outcome>Cadastrar</from-outcome>
+   			<to-view-id>/paginas/Cond/Reuniao/reuniao.xhtml</to-view-id>
+   			<redirect/>
+  		</navigation-case>
+ 	</navigation-rule>
 	<application>
 		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
 	</application>
 </faces-config>
-
