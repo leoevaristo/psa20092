@@ -33,7 +33,7 @@ public class ImovelCaracteristicaDAO {
 	public ImovelCaracteristica getImovelCaracteristica(int codigo)
 			throws SQLException {
 		String query = new String(
-				"select * from imovel_caracteristicas where IMC_CODIGO = ?");
+				"select * from IMOVEL_CARACTERISTICAS where IMC_CODIGO = ?");
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
 		ps.setInt(1, codigo);
@@ -79,7 +79,7 @@ public class ImovelCaracteristicaDAO {
 	// Listagem da tabela Imovel_Caracteristicas
 	public List<ImovelCaracteristica> getImovelCaracteristicaList()
 			throws SQLException {
-		String query = new String("select * from imovel_caracteristicas");
+		String query = new String("select * from IMOVEL_CARACTERISTICAS");
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
 		ResultSet rs = ps.executeQuery();

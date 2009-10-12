@@ -1,64 +1,77 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"	>
 
-	<ui:composition template="/WEB-INF/template/template.xhtml">
-	
-		<ui:define name="tituloGrande">
-			<h:outputText value="Gerenciar Agenda"/>
-		</ui:define>
-		<ui:define name="subtitulo">
-			<h:outputText value="Alterar"/>
-		</ui:define>		
-		
+<ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="tituloGrande">
+		<h:outputText value="Gerenciar Agenda" />
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="Alterar" />
+	</ui:define>
+
 	<ui:define name="conteudo">
-		<h:form styleClass="forms">
+		<a4j:form styleClass="forms">
 			<h:panelGroup id="panelCorretores">
 				<h:outputLabel for="corretor" value="Corretor" />
-				<h:selectOneMenu value="#{consultaAgendaBean.agenda.codCorretor}" id="corretor">
+				<h:selectOneMenu value="#{consultaAgendaBean.agenda.codCorretor}"
+					id="corretor">
 					<f:selectItem itemLabel="Corretor" itemValue="" />
-					<f:selectItems value="#{selectCorretores.corretores}" />				 
+					<f:selectItems value="#{selectCorretores.corretores}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup id="panelNomeCliente">
 				<h:outputLabel value="Nome do Cliente" for="nomeCliente" />
-				<h:outputText value="#{consultaAgendaBean.cliente.nome}" id="nomeCliente" />	
+				<h:outputText value="#{consultaAgendaBean.cliente.nome}"
+					id="nomeCliente" />
 			</h:panelGroup>
-			<h:panelGroup id="panelImovel">
-				<h:outputLabel value="Imóvel" for="imovel" />				
-				<h:selectOneMenu value="#{consultaAgendaBean.agenda.codImovel}" id="imovel">
-					<f:selectItems value="#{selectImoveis.listaImoveis}" />
-				</h:selectOneMenu>									
-			</h:panelGroup>
+			<h:panelGrid columns="2" id="listaDeImoveis">
+				<a4j:outputPanel>
+					<rich:pickList sourceListWidth="250px"
+						value="#{cadastrarAgendaBean.imoveisSelecionados}"
+						id="pickImoveis" required="true"
+						requiredMessage="Selecione ao menos um imóvel">
+						<f:selectItems value="#{cadastrarAgendaBean.listaImoveis}" />
+					</rich:pickList>
+					<h:message for="pickImoveis" styleClass="msgErro" />
+				</a4j:outputPanel>
+			</h:panelGrid>
 			<h:panelGroup id="panelData">
 				<h:outputLabel for="data" value="Data" />
-				<h:inputText value="#{consultaAgendaBean.agenda.data}" id="data" styleClass="obrigatorio" >					
-				</h:inputText> 
+				<h:inputText value="#{consultaAgendaBean.agenda.data}" id="data"
+					styleClass="obrigatorio">
+				</h:inputText>
 			</h:panelGroup>
 			<h:panelGroup id="panelHoraIni">
 				<h:outputLabel for="horaInicio" value="Hora de inicio (h:m:s)" />
-				<h:inputText value="#{consultaAgendaBean.agenda.horaInicio}" id="horaInicio" />
+				<h:inputText value="#{consultaAgendaBean.agenda.horaInicio}"
+					id="horaInicio" />
 			</h:panelGroup>
 			<h:panelGroup id="panelHoraFim">
 				<h:outputLabel for="horaFim" value="Hora de fim (h:m:s)" />
-				<h:inputText value="#{consultaAgendaBean.agenda.horaFim}" id="horaFim" />
+				<h:inputText value="#{consultaAgendaBean.agenda.horaFim}"
+					id="horaFim" />
 			</h:panelGroup>
 			<h:panelGroup id="panelDescricao">
 				<h:outputLabel for="descricao" value="Descricao" />
-				<h:inputTextarea value="#{consultaAgendaBean.agenda.descricao}" id="descricao" />
+				<h:inputTextarea value="#{consultaAgendaBean.agenda.descricao}"
+					id="descricao" />
 			</h:panelGroup>
-			<span class="linha"></span>
-			<span class="botoes">
-				<h:commandButton action="#{consultaAgendaBean.updateAgenda}" value="Salvar"
-					styleClass="input_botao"/>
-				<h:commandButton action="#" value="Limpar" styleClass="input_botao" />
-				<h:commandButton action="#{consultaAgendaBean.destroiSessao}" value="Cancelar" styleClass="input_botao" immediate="true" />
-			</span>						
-		</h:form>		
+			<h:panelGroup styleClass="linha" />
+			<h:panelGroup styleClass="botoes">
+				<h:commandButton action="#{cadastrarAgendaBean.criarRegistro}"
+					value="Salvar" styleClass="input_submit" />
+				<h:commandButton action="#{cadastrarAgendaBean.limparCampos}"
+					value="" styleClass="input_reset" />
+				<h:commandButton action="#{cadastrarAgendaBean.destroiSessao}"
+					value="" styleClass="input_button" immediate="true" />
+			</h:panelGroup>
+		</a4j:form>
 	</ui:define>
-
-	</ui:composition>
-
+</ui:composition>
 </html>
