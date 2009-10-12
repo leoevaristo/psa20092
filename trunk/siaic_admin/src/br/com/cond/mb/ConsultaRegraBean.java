@@ -1,22 +1,29 @@
 package br.com.cond.mb;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.Connection;
+import com.sun.el.parser.ParseException;
 
 import br.com.cond.businesslogic.Regras;
 import br.com.cond.dao.RegrasDAO;
 import br.com.siaic.dao.FabricaConexao;
 
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
 
 
 
@@ -193,23 +200,64 @@ public class ConsultaRegraBean {
 	}
 	
 	
-	public JasperPrint gerar() throws SQLException {
-		JasperPrint rel = null;
-		try {
+	
+	private String getContextPath() { 
+		  HttpSession session = (HttpSession) 
+		FacesContext.getCurrentInstance().getExternalContext().getSession(false); 
+		  return session.getServletContext().getContextPath(); 
+		}	
+	
+	
+	private String getDiretorioReal(String diretorio) { 
+		  HttpSession session = (HttpSession) 
+		FacesContext.getCurrentInstance().getExternalContext().getSession(false); 
+		  return session.getServletContext().getRealPath(diretorio); 
+		} 
+	
+	private void preenchePdf(JasperPrint print) throws JRException { 
+	//	   Pego o caminho completo do PDF desde a raiz 
+		  String saida;
+		  saida = getDiretorioReal("/pdf/RelRegras.pdf"); 
+		//   Exporto para PDF 
+		  JasperExportManager.exportReportToPdfFile(print, saida); 
+		  /* 
+		  * Jogo na variável saída o nome da aplicação mais o  
+		  * caminho para o PDF. Essa variável será utilizada pela view  
+		  */ 
+		  saida = getContextPath() + "/pdf/RelRegras.pdf"; 
+		}
+	
 
-	        FabricaConexao.getInstancia();
-  		    this.conexao = (Connection) FabricaConexao.conectar();
-			HashMap map = new HashMap();
-			String arquivoJasper = "../paginas/Cond/Regras/RelRegra.jasper";
-			rel = JasperFillManager.fillReport(arquivoJasper, map, conexao);
-		} catch (JRException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
-		}finally{
-			conexao.close();
+	
+	public String gerar() { 
+		  String jasper = getDiretorioReal("/rel/RelRegras.jasper"); 
+		 
+		  try { 
+		    // Abro a conexão com o banco que será passada para o JasperReports 
+			   FabricaConexao.getInstancia();
+				 this.conexao = (Connection) FabricaConexao.conectar();
 
-	}
-		return rel;
+		    // Mando o jasper gerar o relatório 
+		    JasperPrint print = JasperFillManager.fillReport(jasper, null, 
+		conexao); 
+		    // Gero o PDF 
+		    preenchePdf(print);  // VEJA O MÉTODO NO CAPÍTULO 3 DO TUTORIAL 
+		  } catch (Exception e) { 
+		    e.printStackTrace(); 
+		  } finally { 
+		    try { 
+		      // Sempre mando fechar a conexão, mesmo que tenha dado erro 
+		      if (conexao != null) 
+		        conexao.close(); 
+		    } catch (SQLException e) { 
+		       
+		    } 
+		  }
+		     
+		  return "exibeRelatorio"; 
+		}
 
-	}
+
+	
 }
 
