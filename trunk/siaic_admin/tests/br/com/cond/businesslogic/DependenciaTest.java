@@ -1,5 +1,7 @@
 package br.com.cond.businesslogic;
-
+/**
+ * @author José Carlos
+ */
 import junit.framework.TestCase;
 import br.com.cond.businesslogic.Dependencia;
 

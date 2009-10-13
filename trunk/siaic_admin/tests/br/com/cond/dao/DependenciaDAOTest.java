@@ -1,5 +1,7 @@
 package br.com.cond.dao;
-
+/**
+ * @author José Carlos
+ */
 import java.util.List;
 
 import junit.framework.TestCase;
