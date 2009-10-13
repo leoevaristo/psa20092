@@ -29,7 +29,7 @@ public class ImovelDAO {
      * @return Imovel ou null.
      */
     public Imovel getImovel(int codigo) {
-    	PreparedStatement ps = this.conn.getPreparedStatement("select * from imovel where imo_codigo = ?;");
+    	PreparedStatement ps = this.conn.getPreparedStatement("SELECT * FROM IMOVEL WHERE IMO_CODIGO = ?;");
     	try {
 			ps.setInt(1, codigo);
     		ResultSet rs = ps.executeQuery();
@@ -98,7 +98,7 @@ public class ImovelDAO {
     
     public void atualiza(Imovel imo) {
     	PreparedStatement ps = this.conn.getPreparedStatement
-    	  ("update imovel set " +
+    	  ("update IMOVEL set " +
     			" IMO_CARACTERISTICA = ?," +
     			" IMO_FINALIDADE = ?," +
     			" IMO_DETALHE = ?," +
@@ -134,7 +134,7 @@ public class ImovelDAO {
     
     public void salva(Imovel imo) {
     	PreparedStatement ps = this.conn.getPreparedStatement
-  	  ("insert into imovel (" +
+  	  ("insert into IMOVEL (" +
   			" IMO_CARACTERISTICA," +
   			" IMO_FINALIDADE," +
   			" IMO_DETALHE," +
@@ -168,7 +168,7 @@ public class ImovelDAO {
     
     public void exclui(Imovel imo) {
     	PreparedStatement ps = this.conn.getPreparedStatement
-    	  ("delete from imovel where imo_codigo = ?;");
+    	  ("delete from IMOVEL where imo_codigo = ?;");
     	try {
 			ps.setInt(1, imo.getCodigo());
 			ps.execute();
@@ -181,5 +181,86 @@ public class ImovelDAO {
 				e.printStackTrace();
 			}
 		}
+    }
+    
+    public List<Imovel> getImoveisPorPerfilCliente(int codigoCliente){
+    	
+    	String sql = "SELECT p.PRF_PESSOA_CLIENTE, p.PRF_IMOVEL_CARACTERISTICA, i.IMO_CARACTERISTICA," +
+    			" i.IMO_VALOR, i.IMO_ENDERECO, i.IMO_DETALHE, i.IMO_TIPO, i.IMO_VALOR_CONDOMINIO, i.IMO_FINALIDADE," +
+    			" i.IMO_FORMA_PAGAMENTO, i.IMO_CODIGO FROM PERFIL p, IMOVEL i WHERE p.PRF_PESSOA_CLIENTE = ?" +
+    			" AND p.PRF_IMOVEL_CARACTERISTICA = i.IMO_CARACTERISTICA;";
+    	
+    	try{
+    		
+    		PreparedStatement ps = this.conn.getPreparedStatement(sql);
+    		ps.setInt(1, codigoCliente);
+    		
+    		ResultSet rs = ps.executeQuery();
+    		
+    		List<Imovel> listaImoveisPerfil = new ArrayList<Imovel>();
+    		
+    		while(rs.next()){
+    			
+    			Imovel imovel = new Imovel();
+    			imovel.setCodigo(rs.getInt("IMO_CODIGO"));
+    			imovel.setCaracteristica(rs.getInt("IMO_CARACTERISTICA"));
+    			imovel.setTipo(rs.getInt("IMO_TIPO"));
+    			imovel.setValor(rs.getDouble("IMO_VALOR"));
+    			imovel.setFinalidade(rs.getInt("IMO_FINALIDADE"));
+    			imovel.setDetalhe(rs.getString("IMO_DETALHE"));
+    			imovel.setEndereco(rs.getInt("IMO_ENDERECO"));
+    			imovel.setFormaPagamento(rs.getString("IMO_FORMA_PAGAMENTO"));
+    			imovel.setValorCondominio(rs.getDouble("IMO_VALOR_CONDOMINIO"));
+    			
+    			listaImoveisPerfil.add(imovel);    			
+    		}
+    		
+				ps.close();
+				rs.close();
+				
+				return listaImoveisPerfil;    		
+    		    		
+    	} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+    	
+    	
+    }
+    
+    public List<Imovel> getImoveisAgenda(int agendaCodigo){
+    	
+    	String sql = "SELECT ima.IMA_IMOVEL_CODIGO, imo.IMO_CODIGO, imo.IMO_DETALHE," +
+    			" imo.IMO_ENDERECO FROM IMOVEL_AGENDA ima, IMOVEL imo" +
+    			" WHERE ima.IMA_AGENDA_CODIGO = ? AND ima.IMA_IMOVEL_CODIGO = imo.IMO_CODIGO";
+    	
+    	try{
+    		PreparedStatement ps = this.conn.getPreparedStatement(sql);
+    		ps.setInt(1, agendaCodigo);
+    		ResultSet rs = ps.executeQuery();
+    		
+    		List<Imovel> imoveisAgenda = new ArrayList<Imovel>();
+    		
+    		while(rs.next()){
+    			Imovel imo = new Imovel();
+    			imo.setCodigo(rs.getInt("IMO_CODIGO"));
+    			imo.setEndereco(rs.getInt("IMO_ENDERECO"));
+    			imo.setDetalhe(rs.getString("IMO_DETALHE"));
+    			
+    			imoveisAgenda.add(imo);
+    		}
+    		
+    		ps.close();
+    		rs.close();
+    		
+    		return imoveisAgenda;
+    		
+    	} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+    	
     }
 }
