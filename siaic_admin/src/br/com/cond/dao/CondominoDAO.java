@@ -7,6 +7,8 @@ import br.com.cond.businesslogic.Condomino;
 import br.com.siaic.dao.DB;
 
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -89,4 +91,42 @@ public class CondominoDAO {
 
 		return result;
 	}
+	
+	public List<Condomino> getTodasOsCondominos() throws SQLException {
+		// TODO
+		/*String sql = "SELECT REG_CODIGO, REG_DESCRICAO "
+				+ " FROM admcon_regras "
+				+ "	ORDER BY REG_CODIGO";*/
+
+
+		String sql = "SELECT CON_NOME, CON_SEXO, CON_DATA_NASCIMENTO, CON_APA_CODIGO  "
+			+ "FROM admcon_condomino ";
+		
+		PreparedStatement ps = DB.getConn().prepareStatement(sql);
+
+		ResultSet rs = ps.executeQuery();
+
+		List<Condomino> listaTodosOsCondominos = new ArrayList<Condomino>();
+
+		while (rs.next()) {
+
+			Condomino cond = new Condomino();
+
+			cond.setNome(rs.getString("CON_NOME"));
+			//cond.setSexo(rs.getString("CON_SEXO"));
+			cond.setDataNasc(rs.getDate("CON_DATA_NASCIMENTO"));
+
+			listaTodosOsCondominos.add(cond);
+
+		}
+		ps.close();
+
+		return listaTodosOsCondominos;
+
+	}
+
+	
+	
+	
+	
 }

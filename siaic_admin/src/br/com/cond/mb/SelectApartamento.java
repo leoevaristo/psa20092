@@ -12,12 +12,12 @@ import br.com.cond.dao.ApartamentoDAO;
 
 public class SelectApartamento {
 	
-	private static List<SelectItem> apartamentoV = new ArrayList<SelectItem>();
+	private static List<SelectItem> apartamentoLista = new ArrayList<SelectItem>();
 	
 	public SelectApartamento(){
-		if(apartamentoV.isEmpty())
+		if(apartamentoLista.isEmpty())
 			try {
-				setApartamentoV();
+				setApartamentoLista();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -25,16 +25,16 @@ public class SelectApartamento {
 	}
 	
 	public List<SelectItem> getApartamentoV() {
-		return apartamentoV;
+		return apartamentoLista;
 	}
 
-	public void setApartamentoV() throws SQLException {
+	public void setApartamentoLista() throws SQLException {
 		
 		ApartamentoDAO dao = new ApartamentoDAO();
 		List<Apartamento> ap = dao.getTodosOsApartamentos();
 		
 		for(Apartamento apartamento :ap)			
-			apartamentoV.add(new SelectItem(apartamento.getCodigoApartamento(),apartamento.getBloco()));
+			apartamentoLista.add(new SelectItem(apartamento.getCodigoApartamento(),apartamento.getBloco()));
 					
 	}
 
