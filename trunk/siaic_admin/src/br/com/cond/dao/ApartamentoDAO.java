@@ -136,7 +136,9 @@ public class ApartamentoDAO {
 
 		//	regra.setCodigoRegra(rs.getString());
 		//	regra.setRegra(rs.getString());
-			
+			apartamento.setCodigoApartamento(rs.getInt(1));
+			apartamento.setAndar(rs.getInt(2));			
+			apartamento.setBloco(rs.getString(3));
 
 			listaTodosApartamentos.add(apartamento);
 
