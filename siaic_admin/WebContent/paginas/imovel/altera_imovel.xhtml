@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="/WEB-INF/template/template.xhtml">
+		
+         <ui:define name="tituloGrande"> 
+			<h:outputText value="Imóveis" />
+		 </ui:define>		
+		 <ui:define name="subtitulo">  
+			<h:outputText value="Cadastrar de Imóveis" />
+		 </ui:define>
+		 <ui:define name="conteudo">
+		   <h:form styleClass="forms">
+		    
+		     <h:panelGroup id="finalidade">
+		       <h:outputLabel value="Finalidade:" />
+		       <h:inputText value="#{imovelBean.imoFin.nome}" styleClass="obrigatorio" size="50" required="true"/>
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="proprietario">
+		       <h:outputLabel value="Proprietário:" />
+		       <h:selectOneMenu value="#{imovelBean.prop.codigoPessoa}" id="prop">
+			     <f:selectItems value="#{imovelBean.listaClientes}" />
+			   </h:selectOneMenu>
+		     </h:panelGroup>
+		     		     
+		     <h:panelGroup id="caracbasica">
+		       <h:outputLabel value="Caracteristicas Básicas:" />
+		       <h:selectOneMenu value="#{imovelBean.imoCar.codigo}" id="carac">
+			     <f:selectItems value="#{imovelBean.listaCaracteristica}" />
+			   </h:selectOneMenu>
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="tipo">
+		       <h:outputLabel value="Tipo:" />
+		       <h:selectOneMenu value="#{imovelBean.imovel.tipo}" layout="pageDirection">
+		         <f:selectItem itemValue="1" itemLabel="Apartamento" />
+		         <f:selectItem itemValue="2" itemLabel="Casa" />
+		         <f:selectItem itemValue="3" itemLabel="Comercial" />
+		         <f:selectItem itemValue="4" itemLabel="Industrial" />
+		         <f:selectItem itemValue="5" itemLabel="Rural" />
+		       </h:selectOneMenu>
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="valor">
+		       <h:outputLabel value="Valor:" />
+		       <h:inputText value="#{imovelBean.imovel.valor}" styleClass="obrigatorio" size="10" maxlength="8" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="valcond">
+		       <h:outputLabel value="Valor Condominio:" />
+		       <h:inputText value="#{imovelBean.imovel.valorCondominio}" size="10" maxlength="8" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="formpag">
+		       <h:outputLabel value="Forma de Pagamento:" />
+		       <h:inputTextarea value="#{imovelBean.imovel.formaPagamento}" rows="2" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="detalhes">
+		       <h:outputLabel value="Detalhes:" />
+		       <h:inputTextarea value="#{imovelBean.imovel.detalhe}" rows="5" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="estado">
+				<h:outputLabel for="campoEstado" value="Estado" />
+				<h:selectOneMenu value="#{imovelBean.cidade.cidadeEstado}" 
+							    id="campoEstado" onchange="submit()"  immediate="true" valueChangeListener="#{cadastraClienteBean.filtraCidadePorEstado}">
+					<f:selectItem itemValue="" itemLabel="Estado"/>
+					<f:selectItems value="#{selectEstados.estados}" />										
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup id="cidade">
+				<h:outputLabel for="campoCidade" value="Cidade" />
+				<h:selectOneMenu value="#{imovelBean.endereco.enderecoBairro.bairroCidade}" id="campoCidade">
+					<f:selectItem itemValue="" itemLabel="Cidade"/>
+					<f:selectItems value="#{selectCidades.cidades}"/>				
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup id="bairro">
+				<h:outputLabel for="campoBairro" value="Bairro" />
+				<h:selectOneMenu value="#{imovelBean.endereco.enderecoBairro.bairroCodigo}" id="campoBairro"> 
+					<f:selectItem itemValue="" itemLabel="Bairro"/>
+					<f:selectItems  value="#{selectBairros.bairros}" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup id="logradouro">
+				<h:outputLabel for="campoLogradouro" value="Logradouro"/>
+				<h:selectOneMenu value="#{imovelBean.endereco.enderecoLogradouro}" id="campoLogradouro">
+					<f:selectItem itemValue="" itemLabel="Logradouro"/>
+					<f:selectItems value="#{imovelBean.logradouroo}"  />
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup id="endereco">
+				<h:outputLabel for="campoNomeEnd" value="EndereÃ§o" />
+				<h:inputText value="#{imovelBean.endereco.enderecoNome}"
+				 id="campoNomeEnd" styleClass="obrigatorio" size="50" required="true"/>
+			</h:panelGroup>
+			<h:panelGroup id="cep">
+				<h:outputLabel for="campoCep" value="CEP" />
+				<h:inputText value="#{imovelBean.endereco.enderecoCep}"
+				 id="campoCep" styleClass="obrigatorio" size="50" required="true"/>			 
+			</h:panelGroup>
+
+			<h:panelGroup styleClass="linha"></h:panelGroup>
+		     
+		      <h:panelGroup styleClass="botoes">
+				<h:commandButton action="#{imovelBean.atualizaImovel}" value=""
+					styleClass="input_submit" />
+				<h:commandButton action="#" value=""
+					styleClass="input_button" immediate="true" />
+			 </h:panelGroup>
+		     
+		   </h:form>
+		 </ui:define>
+		 
+		 <ui:define name="rodape"></ui:define>
+		 
+	</ui:composition>
+
+</html>
