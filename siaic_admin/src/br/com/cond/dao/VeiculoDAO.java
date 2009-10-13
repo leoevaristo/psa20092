@@ -128,7 +128,7 @@ public class VeiculoDAO {
 	 * @throws SQLException
 	 */
 	public List<Veiculo> getTodosOsVeiculos() throws SQLException {
-		// TODO
+		
 		String sql = "SELECT VEI_CODIGO, VEI_DESCRICAO, VEI_PLACA, VEI_COR "
 				+ " FROM admcon_veiculo "
 				+ "	WHERE VEI_CODIGO ORDER BY VEI_CODIGO";

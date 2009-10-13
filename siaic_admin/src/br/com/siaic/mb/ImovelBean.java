@@ -36,7 +36,7 @@ public class ImovelBean {
 	private Estado estado;
 
 	private static List<SelectItem> logradouro = new ArrayList<SelectItem>();
-	private static List<SelectItem> listaClientes = new ArrayList<SelectItem>();	
+	private static List<SelectItem> listaClientes = new ArrayList<SelectItem>();
 	private static List<SelectItem> listaCaracteristica = new ArrayList<SelectItem>();
 
 	public List<SelectItem> getLogradouroo() {
@@ -59,21 +59,21 @@ public class ImovelBean {
 
 		if (logradouro.isEmpty())
 			setLogradouro();
-		
-		if(listaClientes.isEmpty()){
+
+		if (listaClientes.isEmpty()) {
 			try {
 				setListaClientes();
 			} catch (SQLException e) {
-				
+
 				e.printStackTrace();
 			}
 		}
-		
-		if(listaCaracteristica.isEmpty()){
+
+		if (listaCaracteristica.isEmpty()) {
 			try {
 				setListaCaracteristica();
 			} catch (SQLException e) {
-				
+
 				e.printStackTrace();
 			}
 		}
@@ -214,10 +214,10 @@ public class ImovelBean {
 		ImovelFinalidadeDAO finDao = new ImovelFinalidadeDAO();
 		finDao.salvar(this.imoFin);
 		this.imovel.setFinalidade(this.imoFin.getCodigo());
-		
+
 		this.imovel.setProprietario(this.prop.getCodigoPessoa());
 		this.imovel.setCaracteristica(this.imoCar.getCodigo());
-		
+
 		EnderecoDAO end = new EnderecoDAO();
 		try {
 			end.adicionarEndereco(this.endereco);
@@ -225,7 +225,7 @@ public class ImovelBean {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		this.imovel.salvar();
 		return "novo";
 	}
@@ -237,20 +237,23 @@ public class ImovelBean {
 	public Cliente getProp() {
 		return prop;
 	}
-	
+
 	public void setListaClientes() throws SQLException {
 
-		List<Cliente> lc = new ClienteDAO().getTodosClientes();
-
-		for (Cliente cli : lc) {
-			listaClientes.add(new SelectItem(cli.getCodigoPessoa(), cli.getNome()));
+		ClienteDAO dc = new ClienteDAO();
+		List<Cliente> lc = dc.getTodosClientes();
+		if (lc != null) {
+			for (Cliente cli : lc) {
+				listaClientes.add(new SelectItem(cli.getCodigoPessoa(), cli
+						.getNome()));
+			}
 		}
-
 	}
-	
+
 	public void setListaCaracteristica() throws SQLException {
 
-		List<ImovelCaracteristica> lc = ImovelCaracteristicaDAO.getInstance().getImovelCaracteristicaList();
+		List<ImovelCaracteristica> lc = ImovelCaracteristicaDAO.getInstance()
+				.getImovelCaracteristicaList();
 
 		for (ImovelCaracteristica car : lc) {
 			StringBuilder sb = new StringBuilder();
@@ -262,26 +265,15 @@ public class ImovelBean {
 			sb.append(car.getQtdeGaragem());
 			sb.append(" Suites: ");
 			sb.append(car.getQtdeSuite());
-			
-			listaCaracteristica.add(new SelectItem(car.getCodigo(), sb.toString()));
+
+			listaCaracteristica.add(new SelectItem(car.getCodigo(), sb
+					.toString()));
 		}
 
 	}
-	
+
 	public List<SelectItem> getListaCaracteristica() {
 		return ImovelBean.listaCaracteristica;
 	}
-	
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
