@@ -50,6 +50,16 @@
 				<h:outputLabel for="campoDescricao" value="Descrição:" />
 				<h:outputText value="#{consultaAgendaBean.agenda.descricao}" />
 			</h:panelGrid>
+			<h:panelGrid columns="2" columnClasses="cor1,cor2" styleClass="panelas">
+				<h:outputLabel value="Imóveis" />
+				<rich:dataGrid value="#{consultaAgendaBean.imoveisAgenda}" var="imoveis">
+					<rich:panel>
+						<f:facet name="header">
+							<h:outputText value="#{imoveis.codigo}" />
+						</f:facet>
+					</rich:panel>				
+				</rich:dataGrid>			
+			</h:panelGrid>
 		</rich:panel>
 		<h:panelGroup id="link">
 			<h:outputLink value="consulta_agenda.xhtml">

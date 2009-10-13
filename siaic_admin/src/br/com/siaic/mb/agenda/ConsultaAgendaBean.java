@@ -1,6 +1,7 @@
 package br.com.siaic.mb.agenda;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
@@ -25,6 +26,16 @@ public class ConsultaAgendaBean {
 
 	private Usuario usuario;
 	
+	List<Imovel> imoveisAgenda = new ArrayList<Imovel>();
+	
+
+	public List<Imovel> getImoveisAgenda() {
+		return imoveisAgenda;
+	}
+
+	public void setImoveisAgenda(List<Imovel> imoveisAgenda) {
+		this.imoveisAgenda = imoveisAgenda;
+	}
 
 	public Cliente getCliente() {
 		return cliente;
@@ -123,9 +134,8 @@ public class ConsultaAgendaBean {
 	}
 
 	public void buscaImovelEntrada() {
-		ImovelDAO daoImovel = new ImovelDAO();
-		setImovel(daoImovel.getImovel(getAgenda().getCodImovel()));
-		
+		ImovelDAO daoImovel = new ImovelDAO();		
+		setImoveisAgenda(daoImovel.getImoveisAgenda(getAgenda().getCodigo()));				
 	}
 
 	public void buscaCorretorEntrada() throws SQLException {
