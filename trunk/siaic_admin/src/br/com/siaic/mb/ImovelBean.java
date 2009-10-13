@@ -21,10 +21,11 @@ import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.ImovelCaracteristicaDAO;
 import br.com.siaic.dao.ImovelDAO;
 import br.com.siaic.dao.ImovelFinalidadeDAO;
-import br.com.siaic.mb.endereco.SelectBairros;
 
 public class ImovelBean {
 
+	private static int globalCodigoImovel = -1;
+	
 	private Imovel imovel;
 	private ImovelCaracteristica imoCar;
 	private ImovelFinalidade imoFin;
@@ -77,6 +78,12 @@ public class ImovelBean {
 				e.printStackTrace();
 			}
 		}
+        
+		if (globalCodigoImovel != -1)
+        {
+        	this.consultaImovel2();
+        	globalCodigoImovel = -1;
+        }
 	}
 
 	public List<SelectItem> getListaClientes() {
@@ -146,29 +153,38 @@ public class ImovelBean {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+	
+	public void consultaImovel2() {
+		int cod = this.getParamCodigoImovel();
+		if (cod != -1) {
+			this.imovel = Imovel.getImovel(cod);
+			try {
+				this.imoCar = ImovelCaracteristicaDAO.getInstance()
+						.getImovelCaracteristica(
+								this.imovel.getCaracteristica());
+				this.prop = new ClienteDAO().getClientePorId(this.imovel
+						.getProprietario());
+				this.imoFin = new ImovelFinalidadeDAO()
+						.getImovelFinalidade(this.imovel.getFinalidade());
+				EnderecoDAO edao = new EnderecoDAO();
+				this.endereco = edao.getEnderecoPorCodigo(this.imovel
+						.getEndereco());
+
+				this.bairro = edao.getBairroPorCodigo(this.endereco
+						.getEnderecoBairro().getBairroCodigo());
+				this.cidade = edao.getCidadePorCodigo(this.bairro
+						.getBairroCidade());
+				this.estado = edao.getEstadoPorSigla(this.cidade
+						.getCidadeEstado());
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	public String consultaImovel() {
-		this.imovel = Imovel.getImovel(this.getParamCodigoImovel());
-		try {
-			this.imoCar = ImovelCaracteristicaDAO.getInstance()
-					.getImovelCaracteristica(this.imovel.getCaracteristica());
-			this.prop = new ClienteDAO().getClientePorId(this.imovel
-					.getProprietario());
-			this.imoFin = new ImovelFinalidadeDAO()
-					.getImovelFinalidade(this.imovel.getFinalidade());
-			EnderecoDAO edao = new EnderecoDAO();
-			this.endereco = edao
-					.getEnderecoPorCodigo(this.imovel.getEndereco());
-
-			this.bairro = edao.getBairroPorCodigo(this.endereco
-					.getEnderecoBairro().getBairroCodigo());
-			this.cidade = edao
-					.getCidadePorCodigo(this.bairro.getBairroCidade());
-			this.estado = edao.getEstadoPorSigla(this.cidade.getCidadeEstado());
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		globalCodigoImovel = this.getCodigoImovel();
 		return "altera";
 	}
 
@@ -176,9 +192,11 @@ public class ImovelBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest req = (HttpServletRequest) context
 				.getExternalContext().getRequest();
-		Integer codImovel = new Integer(req.getParameter("codigoImovel"))
-				.intValue();
-		return codImovel;
+		String aff = req.getParameter("codigoImovel");
+		if (aff != null)
+			return new Integer(aff).intValue();
+		else
+			return -1;
 	}
 
 	public String consultaCaracteristica() {
