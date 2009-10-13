@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 
 import br.com.siaic.businesslogic.Agenda;
@@ -30,51 +31,62 @@ public class ConsultaAgendaBean {
 	private Imovel imovel;
 
 	private Usuario usuario;
-	
+
 	private Endereco endereco;
-	
+
 	private ImovelCaracteristica imovelCaracteristica;
-	
+
 	private List<Imovel> imoveisAgenda = new ArrayList<Imovel>();
-	
+
 	private List<Endereco> imoveisEnderecoAgenda = new ArrayList<Endereco>();
-	
+
 	private List<HashMap<String, String>> infoAgenda = new ArrayList<HashMap<String, String>>();
-	
-	
-	
-	
+
+	private List<String> imoveisSelecionados;
+
+	private static List<SelectItem> listaImoveis = new ArrayList<SelectItem>();
+
 	public ConsultaAgendaBean() {
 
 		agenda = new Agenda();
 
 	}
-	
 
+	/**
+	 * Método setter da propriedade imoveisSelecionados
+	 * 
+	 * @param imoveisSelecionados
+	 */
+	public void setImoveisSelecionados(List<String> imoveisSelecionados) {
+		this.imoveisSelecionados = imoveisSelecionados;
+	}
+
+	/**
+	 * Método getter da propriedade imoveisSelecionados
+	 * 
+	 * @return List<Integer>
+	 */
+	public List<String> getImoveisSelecionados() {
+
+		return imoveisSelecionados;
+	}
 
 	public ImovelCaracteristica getImovelCaracteristica() {
 		return imovelCaracteristica;
 	}
 
-
-
-	public void setImovelCaracteristica(ImovelCaracteristica imovelCaracteristica) {
+	public void setImovelCaracteristica(
+			ImovelCaracteristica imovelCaracteristica) {
 		this.imovelCaracteristica = imovelCaracteristica;
 	}
-
-
 
 	public List<HashMap<String, String>> getInfoAgenda() {
 		return infoAgenda;
 	}
 
-
-
 	public void setInfoAgenda(List<HashMap<String, String>> infoAgenda) {
 		this.infoAgenda = infoAgenda;
 	}
-
-
 
 	public List<Endereco> getImoveisEnderecoAgenda() {
 		return imoveisEnderecoAgenda;
@@ -92,7 +104,6 @@ public class ConsultaAgendaBean {
 		this.endereco = endereco;
 	}
 
-	
 	public List<Imovel> getImoveisAgenda() {
 		return imoveisAgenda;
 	}
@@ -162,20 +173,50 @@ public class ConsultaAgendaBean {
 				.intValue();
 
 		AgendaDAO daoAgenda = new AgendaDAO();
+		ImovelDAO daoImovel = new ImovelDAO();
 
 		setAgenda(daoAgenda.getAgenda(idEntrada));
 		buscaClienteEntrada();
 		buscaCorretorEntrada();
 		buscaImovelEntrada();
+		setImoveisSelecionados(daoImovel.getIndiceImoveisAgenda(idEntrada));
 
 		return "sucesso";
 	}
 
 	public String updateAgenda() throws SQLException {
 
+		ImovelDAO daoImovel = new ImovelDAO();
 		AgendaDAO daoAgenda = new AgendaDAO();
-		daoAgenda.AtualizarAgenda(agenda);
 
+		int qtdImoveisSelecionados = getImoveisSelecionados().size();
+		int qtdImoveisAgenda = daoImovel.getNumeroImoveisAgenda(getAgenda()
+				.getCodigo());
+		List<String> indicesImoveisAgenda = daoImovel
+				.getIndiceImoveisAgenda(getAgenda().getCodigo());
+		System.out.println(qtdImoveisAgenda);
+		System.out.println(qtdImoveisSelecionados);
+
+		if (qtdImoveisSelecionados > qtdImoveisAgenda) {
+			for (int i = qtdImoveisAgenda; i <= qtdImoveisSelecionados - 1; i++) {
+				daoAgenda.associarImovelAgenda(Integer
+						.parseInt(getImoveisSelecionados().get(i)), getAgenda()
+						.getCodigo());
+			}
+		} else if(qtdImoveisAgenda > qtdImoveisSelecionados) {
+			for (int i = qtdImoveisSelecionados ; i >= qtdImoveisAgenda; i++ ) {
+				if (getImoveisSelecionados().get(i) == indicesImoveisAgenda
+						.get(i)) {
+					System.out.println("ok");
+				} else {
+					daoAgenda.apagarImovelAgenda(Integer
+							.parseInt(getImoveisSelecionados().get(i)),
+							getAgenda().getCodigo());
+				}
+			}
+		}
+
+		daoAgenda.AtualizarAgenda(agenda);
 		destroiSessao();
 
 		return "sucesso";
@@ -187,6 +228,9 @@ public class ConsultaAgendaBean {
 		FacesContext contexto = FacesContext.getCurrentInstance();
 		contexto.getExternalContext().getSessionMap().remove(
 				"consultaAgendaBean");
+		if (!listaImoveis.isEmpty()) {
+			listaImoveis.clear();
+		}
 
 		return "destruido";
 	}
@@ -194,72 +238,113 @@ public class ConsultaAgendaBean {
 	public void buscaImovelEntrada() throws SQLException {
 		ImovelDAO daoImovel = new ImovelDAO();
 		EnderecoDAO daoEndereco = new EnderecoDAO();
-		ImovelCaracteristicaDAO daoCaracteristica = ImovelCaracteristicaDAO.getInstance();
-		
-		List <HashMap<String,String>> dados = new ArrayList<HashMap<String, String>>();
-		HashMap<String,String> info = new HashMap<String, String>();
-		
+		ImovelCaracteristicaDAO daoCaracteristica = ImovelCaracteristicaDAO
+				.getInstance();
+
+		List<HashMap<String, String>> dados = new ArrayList<HashMap<String, String>>();
+		HashMap<String, String> info = new HashMap<String, String>();
+
 		setImoveisAgenda(daoImovel.getImoveisAgenda(getAgenda().getCodigo()));
-		
-		for(Imovel imo : imoveisAgenda){
+
+		for (Imovel imo : imoveisAgenda) {
+
 			setEndereco(daoEndereco.getEnderecoPorCodigo(imo.getEndereco()));
 			String nomeEnd = getEndereco().getEnderecoNome();
 			String logEnd = getEndereco().getEnderecoLogradouro();
-			String cepEnd = getEndereco().getEnderecoCep();
 			String bairroEnd = getEndereco().getEnderecoBairro()
 					.getBairroNome();
-			
-			setImovelCaracteristica(daoCaracteristica.getImovelCaracteristica(imo.getCaracteristica()));
-			String numQuartos = String.valueOf(getImovelCaracteristica().getQtdeDormitorio());
-			String numSuite = String.valueOf(getImovelCaracteristica().getQtdeSuite());
-			String numVagaGaragem = String.valueOf(getImovelCaracteristica().getQtdeGaragem());
-			String temPiscina = String.valueOf(getImovelCaracteristica().getPiscina());
-			
+
+			setImovelCaracteristica(daoCaracteristica
+					.getImovelCaracteristica(imo.getCaracteristica()));
+
+			String numQuartos = String.valueOf(getImovelCaracteristica()
+					.getQtdeDormitorio());
+
+			String numSuite = String.valueOf(getImovelCaracteristica()
+					.getQtdeSuite());
+
+			String numVagaGaragem = String.valueOf(getImovelCaracteristica()
+					.getQtdeGaragem());
+
+			String temPiscina = String.valueOf(getImovelCaracteristica()
+					.getPiscina());
+
 			info.put("nomeEnd", nomeEnd);
 			info.put("logEnd", logEnd);
-			info.put("bairroEnd", bairroEnd);	
+			info.put("bairroEnd", bairroEnd);
 			info.put("numQuartos", numQuartos);
 			info.put("numSuite", numSuite);
 			info.put("numVagaGaragem", numVagaGaragem);
 			info.put("temPiscina", temPiscina);
-			
+
 			dados.add(info);
-			setInfoAgenda(dados);			
-		}	
+			setInfoAgenda(dados);
+		}
 	}
 
 	public void buscaCorretorEntrada() throws SQLException {
 		UsuarioDAO daoUsuairo = new UsuarioDAO();
 		setUsuario(daoUsuairo.getUsuarioId(getAgenda().getCodCorretor()));
-		
+
 	}
 
 	public void buscaClienteEntrada() throws SQLException {
 		ClienteDAO daoCliente = new ClienteDAO();
-
 		setCliente(daoCliente.getClientePorId(getAgenda().getCodCliente()));
-		
 	}
-	
-	public String exibirDetalhesAgenda() throws SQLException{
+
+	public String exibirDetalhesAgenda() throws SQLException {
 		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
-		Integer idEntrada = new Integer(req.getParameter("codigoEntrada")).intValue();
-		//String tipoExibicao = new String(req.getParameter("tipoExibicao").toString());		
-		
+		HttpServletRequest req = (HttpServletRequest) context
+				.getExternalContext().getRequest();
+		Integer idEntrada = new Integer(req.getParameter("codigoEntrada"))
+				.intValue();
+		// String tipoExibicao = new
+		// String(req.getParameter("tipoExibicao").toString());
+
 		AgendaDAO daoAgenda = new AgendaDAO();
 
 		setAgenda(daoAgenda.getAgenda(idEntrada));
 		buscaClienteEntrada();
 		buscaCorretorEntrada();
-		buscaImovelEntrada();	
-		
-		
-		
-		
+		buscaImovelEntrada();
+
 		return "detalhes";
 	}
 
+	public List<SelectItem> getListaImoveis() {
+		return listaImoveis;
+	}
 
+	public void listarImoveisPerfil() throws SQLException {
+
+		if (listaImoveis.isEmpty()) {
+			EnderecoDAO daoEndereco = new EnderecoDAO();
+			ImovelCaracteristicaDAO daoCaracteristica = ImovelCaracteristicaDAO
+					.getInstance();
+			ImovelDAO daoImovel = new ImovelDAO();
+
+			List<Imovel> imoveis = daoImovel
+					.getImoveisPorPerfilCliente(getCliente().getCodigoPessoa());
+
+			for (Imovel imo : imoveis) {
+
+				setEndereco(daoEndereco.getEnderecoPorCodigo(imo.getEndereco()));
+				String nomeEnd = getEndereco().getEnderecoNome();
+				String logEnd = getEndereco().getEnderecoLogradouro();
+				String cepEnd = getEndereco().getEnderecoCep();
+				String bairroEnd = getEndereco().getEnderecoBairro()
+						.getBairroNome();
+
+				setImovelCaracteristica(daoCaracteristica
+						.getImovelCaracteristica(imo.getCaracteristica()));
+				String caracteristica = getImovelCaracteristica().toString();
+
+				listaImoveis.add((new SelectItem(imo.getCodigo(),
+						caracteristica + " - " + logEnd + " " + nomeEnd + " - "
+								+ bairroEnd + " - " + cepEnd)));
+			}
+		}
+	}
 
 }

@@ -392,6 +392,23 @@ public class AgendaDAO {
 		}
 		return codigoAgenda;
 	}
-	
-	
+
+	public boolean apagarImovelAgenda(int codigoImovel, int codigoEntrada)
+			throws SQLException {
+		String sql = "DELETE FROM IMOVEL_AGENDA WHERE IMA_IMOVEL_CODIGO = ? AND IMA_AGENDA_CODIGO = ?;";
+
+		try {
+			PreparedStatement ps = DB.getConn().prepareStatement(sql);
+			ps.setInt(1, codigoImovel);
+			ps.setInt(2, codigoEntrada);
+
+			boolean result = ps.executeUpdate() > 0;
+			ps.close();
+
+			return result;
+
+		} finally {
+			DB.getConn().close();
+		}
+	}
 }

@@ -364,6 +364,8 @@ public class CadastrarAgendaBean {
 			}
 
 			destroiSessao();
+			listaImoveis.clear();
+			
 			return "sucesso";
 		}
 

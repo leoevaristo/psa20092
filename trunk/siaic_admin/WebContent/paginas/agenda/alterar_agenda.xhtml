@@ -30,13 +30,20 @@
 				<h:outputText value="#{consultaAgendaBean.cliente.nome}"
 					id="nomeCliente" />
 			</h:panelGroup>
+			<h:panelGrid columns="2" id="panelImovel">
+					<h:outputLabel value="Imóvel" for="filtroCliente" />
+					<a4j:commandButton value="Filtrar pelo Perfil do Cliente"
+						id="filtroCliente"
+						action="#{consultaAgendaBean.listarImoveisPerfil}"
+						reRender="listaDeImoveis" ajaxSingle="true">
+					</a4j:commandButton>
+				</h:panelGrid>
 			<h:panelGrid columns="2" id="listaDeImoveis">
 				<a4j:outputPanel>
 					<rich:pickList sourceListWidth="250px"
-						value="#{cadastrarAgendaBean.imoveisSelecionados}"
-						id="pickImoveis" required="true"
-						requiredMessage="Selecione ao menos um imóvel">
-						<f:selectItems value="#{cadastrarAgendaBean.listaImoveis}" />
+						value="#{consultaAgendaBean.imoveisSelecionados}"
+						id="pickImoveis" >
+						<f:selectItems value="#{consultaAgendaBean.listaImoveis}" />
 					</rich:pickList>
 					<h:message for="pickImoveis" styleClass="msgErro" />
 				</a4j:outputPanel>
@@ -62,13 +69,11 @@
 				<h:inputTextarea value="#{consultaAgendaBean.agenda.descricao}"
 					id="descricao" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="linha" />
-			<h:panelGroup styleClass="botoes">
-				<h:commandButton action="#{cadastrarAgendaBean.criarRegistro}"
+			<h:panelGroup styleClass="linha" id="linha" />
+			<h:panelGroup styleClass="botoes" id="botoes">
+				<h:commandButton action="#{consultaAgendaBean.updateAgenda}"
 					value="Salvar" styleClass="input_submit" />
-				<h:commandButton action="#{cadastrarAgendaBean.limparCampos}"
-					value="" styleClass="input_reset" />
-				<h:commandButton action="#{cadastrarAgendaBean.destroiSessao}"
+				<h:commandButton action="#{consultaAgendaBean.destroiSessao}"
 					value="" styleClass="input_button" immediate="true" />
 			</h:panelGroup>
 		</a4j:form>
