@@ -8,6 +8,13 @@ import javax.faces.model.SelectItem;
 import br.com.cond.businesslogic.Condomino;
 import br.com.cond.dao.CondominoDAO;
 
+
+/**
+ * 
+ * @author Alain Rosemberg 
+ */
+
+
 public class SelectCondomino {
 	
 	
