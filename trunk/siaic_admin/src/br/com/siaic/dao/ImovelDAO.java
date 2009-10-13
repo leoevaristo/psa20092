@@ -232,7 +232,7 @@ public class ImovelDAO {
     public List<Imovel> getImoveisAgenda(int agendaCodigo){
     	
     	String sql = "SELECT ima.IMA_IMOVEL_CODIGO, imo.IMO_CODIGO, imo.IMO_DETALHE," +
-    			" imo.IMO_ENDERECO FROM IMOVEL_AGENDA ima, IMOVEL imo" +
+    			" imo.IMO_ENDERECO, imo.IMO_CARACTERISTICA FROM IMOVEL_AGENDA ima, IMOVEL imo" +
     			" WHERE ima.IMA_AGENDA_CODIGO = ? AND ima.IMA_IMOVEL_CODIGO = imo.IMO_CODIGO";
     	
     	try{
@@ -247,6 +247,7 @@ public class ImovelDAO {
     			imo.setCodigo(rs.getInt("IMO_CODIGO"));
     			imo.setEndereco(rs.getInt("IMO_ENDERECO"));
     			imo.setDetalhe(rs.getString("IMO_DETALHE"));
+    			imo.setCaracteristica(rs.getInt("IMO_CARACTERISTICA"));
     			
     			imoveisAgenda.add(imo);
     		}

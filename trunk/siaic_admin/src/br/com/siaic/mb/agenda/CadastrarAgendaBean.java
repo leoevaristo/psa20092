@@ -435,6 +435,19 @@ public class CadastrarAgendaBean {
 		return daoCliente.getClientesPeloNome(campoPesquisa);
 	}
 	/**
+	 * Retorna uma lista do tipo Cliente
+	 * filtrada pela string contida na propriedade
+	 * e que contenham perfil de cliente
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<Cliente> getClientePerfilPorNome() throws SQLException {
+
+		ClienteDAO daoCliente = new ClienteDAO();
+
+		return daoCliente.getClientesPerfilPeloNome(campoPesquisa);
+	}
+	/**
 	 * Escolhe o método de pesquisa
 	 * @throws SQLException
 	 */

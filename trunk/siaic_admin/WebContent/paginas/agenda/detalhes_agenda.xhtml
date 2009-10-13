@@ -50,15 +50,26 @@
 				<h:outputLabel for="campoDescricao" value="Descrição:" />
 				<h:outputText value="#{consultaAgendaBean.agenda.descricao}" />
 			</h:panelGrid>
-			<h:panelGrid columns="2" columnClasses="cor1,cor2" styleClass="panelas">
+			<h:panelGrid columns="2" columnClasses="cor1,cor2"
+				styleClass="panels">
 				<h:outputLabel value="Imóveis" />
-				<rich:dataGrid value="#{consultaAgendaBean.imoveisAgenda}" var="imoveis">
+				<rich:dataGrid  columns="2" value="#{consultaAgendaBean.infoAgenda}"	var="imoveis">
 					<rich:panel>
 						<f:facet name="header">
-							<h:outputText value="#{imoveis.codigo}" />
+							<h:outputText value="#{imoveis.logEnd} #{imoveis.nomeEnd} #{imoveis.bairroEnd}" />
 						</f:facet>
-					</rich:panel>				
-				</rich:dataGrid>			
+						<h:panelGrid columns="2">
+							<h:outputLabel value="No. Quartos:" />
+							<h:outputText value="#{imoveis.numQuartos}" />
+							<h:outputLabel value="No. Suítes:" />
+							<h:outputText value="#{imoveis.numSuite}" />
+							<h:outputLabel value="No. Vagas Garagem:" />
+							<h:outputText value="#{imoveis.numVagaGaragem}" />
+							<h:outputLabel value="Tem piscina?" />
+							<h:outputText value="#{imoveis.temPiscina}" />
+						</h:panelGrid>
+					</rich:panel>
+				</rich:dataGrid>
 			</h:panelGrid>
 		</rich:panel>
 		<h:panelGroup id="link">

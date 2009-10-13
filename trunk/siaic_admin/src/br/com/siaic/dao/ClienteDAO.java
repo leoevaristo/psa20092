@@ -135,9 +135,10 @@ public class ClienteDAO {
 
 		String sql = "SELECT p.PES_ENDERECO, p.PES_NOME, p.PES_TELEFONE, p.PES_CELULAR, p.PES_EMAIL, "
 			+ "c.PEC_CODIGO,c.PEC_CPF,c.PEC_RG,c.PEC_CNPJ, "
-			+ "e.END_LOGRADOURO,e.END_NOME,e.END_CEP,e.END_BAIRRO,e.END_CODIGO "
-			+ "FROM PESSOA p, PESSOA_CLIENTE c, ENDERECO e "
-			+ "WHERE p.PES_NOME LIKE ? AND p.PES_ENDERECO = e.END_CODIGO AND p.PES_CODIGO = c.PEC_CODIGO;";
+			+ "e.END_LOGRADOURO,e.END_NOME,e.END_CEP,e.END_BAIRRO,e.END_CODIGO, per.PRF_PESSOA_CLIENTE "
+			+ "FROM PESSOA p, PESSOA_CLIENTE c, ENDERECO e, PERFIL per "
+			+ "WHERE p.PES_NOME LIKE ? AND p.PES_ENDERECO = e.END_CODIGO AND p.PES_CODIGO = c.PEC_CODIGO; ";
+			
 
 		try{
 			
@@ -278,5 +279,49 @@ public class ClienteDAO {
 		return null;
 
 	}
+	public List<Cliente> getClientesPerfilPeloNome(String nome) throws SQLException {
+
+		String sql = "SELECT p.PES_ENDERECO, p.PES_NOME, p.PES_TELEFONE, p.PES_CELULAR, p.PES_EMAIL, "
+			+ "c.PEC_CODIGO,c.PEC_CPF,c.PEC_RG,c.PEC_CNPJ, "
+			+ "e.END_LOGRADOURO,e.END_NOME,e.END_CEP,e.END_BAIRRO,e.END_CODIGO, per.PRF_PESSOA_CLIENTE "
+			+ "FROM PESSOA p, PESSOA_CLIENTE c, ENDERECO e, PERFIL per "
+			+ "WHERE p.PES_NOME LIKE ? AND p.PES_ENDERECO = e.END_CODIGO AND p.PES_CODIGO = c.PEC_CODIGO "
+			+ "AND c.PEC_CODIGO = per.PRF_PESSOA_CLIENTE;";
+
+		try{
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, "%" + nome + "%");
+
+			ResultSet rs = ps.executeQuery();
+
+			List<Cliente> listaClientes = new ArrayList<Cliente>();
+
+			while (rs.next()) {
+			
+				Cliente cliente = new Cliente();
+				cliente.setCodigoPessoa(rs.getInt("PEC_CODIGO"));
+				cliente.setCpf(rs.getString("PEC_CPF"));
+				cliente.setRg(rs.getString("PEC_RG"));
+				cliente.setCnpj(rs.getString("PEC_CNPJ"));
+				cliente.setNome(rs.getString("PES_NOME"));
+				cliente.setEmail(rs.getString("PES_EMAIL"));
+				cliente.setTelefone(rs.getString("PES_TELEFONE"));
+
+				listaClientes.add(cliente);
+
+			}
+
+			ps.close();
+			rs.close();
+		
+			return listaClientes;
+		
+			}finally{
+				conexao.close();
+		}
+		
+	}
+	
 
 }
