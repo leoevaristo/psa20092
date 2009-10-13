@@ -24,26 +24,26 @@
 		</h:panelGroup>
 			<h:panelGroup id="panelApartamento">
 				<h:outputLabel for="apartamento" value="Apartamento" />
-				<h:selectOneMenu value="#{reuniaoBean.reuniao.dependencia.codigo}" id="apartamento">
+				<h:selectOneMenu value="#" id="apartamento">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{reuniaoBean.reservaList}" />				 
+					<f:selectItems value="#" />				 
 				</h:selectOneMenu>	
 			</h:panelGroup>
 			<h:panelGroup id="panelConselho">
-				<h:outputLabel for="conselho" value="Cargo do Conselho" />
-				<h:selectOneMenu value="#{reuniaoBean.reuniao.dependencia.codigo}" id="conselho">
+				<h:outputLabel for="responsavel" value="Responsavel" />
+				<h:selectOneMenu value="#" id="responsavel">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{reuniaoBean.reservaList}" />				 
+					<f:selectItems value="#" />				 
 				</h:selectOneMenu>	
 			</h:panelGroup>
 			<span class="linha"></span>
 			<span class="botoes">
-				<h:commandButton action="#{reuniaoBean.addReuniao}" value=""
+				<h:commandButton action="#" value=""
 					styleClass="input_submit"/>
-				<h:commandButton action="#{reuniaoBean.Limpar}" value="" styleClass="input_reset" />
-				<h:commandButton action="#{reuniaoBean.Cancelar}" value="" styleClass="input_button" immediate="true" />
+				<h:commandButton action="#" value="" styleClass="input_reset" />
+				<h:commandButton action="#" value="" styleClass="input_button" immediate="true" />
 			</span>
-			<h:outputText value="#{reuniaoBean.msg}" />
+			<h:outputText value="#" />
 	</h:form>
 	</ui:define>
 
