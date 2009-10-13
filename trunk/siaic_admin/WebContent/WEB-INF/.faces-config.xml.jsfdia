@@ -61,9 +61,10 @@
   PATH="/paginas/imovel/consulta_imoveis.xhtml" SHAPE="32,337,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#paginas#imovel#consulta_imoveis.xhtml:0"
    NAME="item" PATH="/paginas/imovel/consulta_imoveis.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="altera::#paginas#imovel#imoveis.xhtml"
-    NAME="output" PATH="/paginas/imovel/imoveis.xhtml" SHAPE="-1,16"
-    TARGET="rules:#paginas#imovel#imoveis.xhtml" TITLE="altera" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="altera::#paginas#imovel#altera_imovel.xhtml"
+    NAME="output" PATH="/paginas/imovel/altera_imovel.xhtml"
+    SHAPE="-1,16" TARGET="rules:#paginas#imovel#altera_imovel.xhtml"
+    TITLE="altera" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="novo::#paginas#imovel#cadastra_imovel.xhtml"
     NAME="output1" PATH="/paginas/imovel/cadastra_imovel.xhtml"
     SHAPE="-1,24" TARGET="rules:#paginas#imovel#cadastra_imovel.xhtml"
@@ -489,4 +490,6 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#Cond#Reuniao#reuniao.xhtml"
   PATH="/paginas/Cond/Reuniao/reuniao.xhtml" SHAPE="256,3793,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#imovel#altera_imovel.xhtml"
+  PATH="/paginas/imovel/altera_imovel.xhtml" SHAPE="32,4337,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
