@@ -48,6 +48,10 @@ public class Imovel {
 	public int getCodigo() {
 		return codigo;
 	}
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
 	public int getCaracteristica() {
 		return caracteristica;
 	}
