@@ -1,14 +1,15 @@
 package br.com.cond.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.cond.businesslogic.Condomino;
 import br.com.siaic.dao.DB;
-
-import java.sql.PreparedStatement;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 
@@ -32,8 +33,8 @@ public class CondominoDAO {
 			c.setCodigo(rs.getInt(1));
 			c.setNome(rs.getString(2));
 			c.setSexo(rs.getString(3).charAt(0));
-			c.setDataNasc(rs.getDate(4));
-			c.setCondomino(new CondominoDAO().getCondominio(rs.getInt(5)));
+			c.setDataNasc(new SimpleDateFormat("dd/MM/yyyy").format(rs.getDate(4)));
+			c.setResponsavel(new CondominoDAO().getCondominio(rs.getInt(5)));
 			c.setApartamento(new ApartamentoDAO().getApartamentoId(rs.getInt(6)));
 		}
 		
@@ -43,18 +44,23 @@ public class CondominoDAO {
 		return c;
 	}
 	
-	public boolean inserir(Condomino c) throws SQLException {
+	public boolean inserir(Condomino c) throws SQLException, ParseException {
 		String sql = "insert into admcon_condomino "+
 		"(CON_NOME, CON_SEXO, CON_DATA_NASCIMENTO, CON_CON_CODIGO, CON_APA_CODIGO) "+
 		"values (?, ?, ?, ?, ?)";
 		
 		PreparedStatement ps = DB.getConn().prepareStatement(sql);
 		ps.setString(1, c.getNome());
-		ps.setString(2, Character.toString(c.getSexo()));
-		ps.setDate(3, c.getDataNasc());
-		ps.setInt(4, c.getCondomino().getCodigo());
+		ps.setString(2, c.getSexo().toString());
+		ps.setString(3, new SimpleDateFormat("yyyy-MM-dd").format(new SimpleDateFormat("dd/MM/yyyy").parse(c.getDataNasc())));
+		if (!(c.getResponsavel().getCodigo() == null)) {
+			if (!c.getResponsavel().getCodigo().equals(new Integer(0))) {
+				ps.setInt(4, c.getResponsavel().getCodigo());
+			}
+		} else {
+			ps.setNull(4, c.getResponsavel().getCodigo());
+		}
 		ps.setInt(5, c.getApartamento().getCodigoApartamento());
-		
 		boolean result = ps.executeUpdate() > 0;
 		ps.close();
 		
@@ -73,7 +79,7 @@ public class CondominoDAO {
 		return result;
 	}
 	
-	public boolean update(Condomino cAtual, Condomino cNovo) throws SQLException {
+	public boolean update(Condomino cAtual, Condomino cNovo) throws SQLException, ParseException {
 		String sql = "update admcon_condomino set "+
 		"CON_NOME = ?, CON_SEXO = ?, CON_DATA_NASCIMENTO = ?, CON_CON_CODIGO = ?, CON_APA_CODIGO = ?) "+
 		"where CON_CODIGO = ?";
@@ -81,8 +87,15 @@ public class CondominoDAO {
 		PreparedStatement ps = DB.getConn().prepareStatement(sql);
 		ps.setString(1, cNovo.getNome());
 		ps.setString(2, Character.toString(cNovo.getSexo()));
-		ps.setDate(3, cNovo.getDataNasc());
-		ps.setInt(4, cNovo.getCondomino().getCodigo());
+		ps.setString(3, new SimpleDateFormat("yyyy-MM-dd").format(new SimpleDateFormat("dd/MM/yyyy").parse(cNovo.getDataNasc())));
+		if (!(cNovo.getResponsavel().getCodigo() == null)) {
+			if (!cNovo.getResponsavel().getCodigo().equals(new Integer(0))) {
+				ps.setInt(4, cNovo.getResponsavel().getCodigo());
+			}
+		} else {
+			ps.setNull(4, cNovo.getResponsavel().getCodigo());
+		}
+		ps.setInt(5, cNovo.getApartamento().getCodigoApartamento());
 		ps.setInt(5, cNovo.getApartamento().getCodigoApartamento());
 		ps.setInt(6, cAtual.getCodigo());
 		
@@ -93,36 +106,27 @@ public class CondominoDAO {
 	}
 	
 	public List<Condomino> getTodasOsCondominos() throws SQLException {
-		// TODO
-		/*String sql = "SELECT REG_CODIGO, REG_DESCRICAO "
-				+ " FROM admcon_regras "
-				+ "	ORDER BY REG_CODIGO";*/
-
-
-		String sql = "SELECT CON_NOME, CON_SEXO, CON_DATA_NASCIMENTO, CON_APA_CODIGO  "
-			+ "FROM admcon_condomino ";
+		String sql = "select * from admcon_condomino";
 		
 		PreparedStatement ps = DB.getConn().prepareStatement(sql);
-
 		ResultSet rs = ps.executeQuery();
 
-		List<Condomino> listaTodosOsCondominos = new ArrayList<Condomino>();
-
+		List<Condomino> l = new ArrayList<Condomino>();
+		Condomino c = null;
 		while (rs.next()) {
-
-			Condomino cond = new Condomino();
-
-			cond.setNome(rs.getString("CON_NOME"));
-			//cond.setSexo(rs.getString("CON_SEXO"));
-			cond.setDataNasc(rs.getDate("CON_DATA_NASCIMENTO"));
-
-			listaTodosOsCondominos.add(cond);
-
+			c = new Condomino();
+			c.setCodigo(rs.getInt(1));
+			c.setNome(rs.getString(2));
+			c.setSexo(rs.getString(3).charAt(0));
+			c.setDataNasc(new SimpleDateFormat("dd/MM/yyyy").format(rs.getDate(4)));
+			c.setResponsavel(new CondominoDAO().getCondominio(rs.getInt(5)));
+			c.setApartamento(new ApartamentoDAO().getApartamentoId(rs.getInt(6)));
+			l.add(c);
 		}
+		rs.close();
 		ps.close();
 
-		return listaTodosOsCondominos;
-
+		return l;
 	}
 
 	
