@@ -19,11 +19,17 @@ import br.com.cond.dao.CondominoDAO;
 
 public class CadastrarCondominoBean {
 	private Condomino condomino;
+	private List<Condomino> condominosList = null;
+	
+	private String filtro;
+	private String valor;
+	
 	private String msg;
 	private String acao;
 	
 	public CadastrarCondominoBean() {
 		condomino = new Condomino();
+		condominosList = new ArrayList<Condomino>();
 	}
 
 	public Condomino getCondomino() {
@@ -38,6 +44,22 @@ public class CadastrarCondominoBean {
 		return msg;
 	}
 	
+	public String getFiltro() {
+		return filtro;
+	}
+
+	public void setFiltro(String filtro) {
+		this.filtro = filtro;
+	}
+
+	public String getValor() {
+		return valor;
+	}
+
+	public void setValor(String valor) {
+		this.valor = valor;
+	}
+
 	//Complementares
 	public List<SelectItem> getApartamentosList() throws SQLException {
 		List<SelectItem> apartamentoLista = new ArrayList<SelectItem>();
@@ -67,7 +89,23 @@ public class CadastrarCondominoBean {
 		return condominoLista;
 	}
 	
+	public List<Condomino> getCondominosListConsulta() {
+		return condominosList;
+	}
+	
+	public void setCondominosList() throws SQLException {
+		condominosList = new CondominoDAO().getTodasOsCondominos(filtro, valor);
+	}
+	
 	//Acoes
+	public void buscar() {
+		try {
+			setCondominosList();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void limpar() {
 		condomino = new Condomino();
 		msg = "";

@@ -68,8 +68,16 @@ public class Condomino {
 		this.apartamento = apartamento;
 	}
 	
-	public String toString() {
-		String s = nome+", "+apartamento.toString();
+	public String getToString() {
+		String s = "";
+		if (apartamento.getCodigoApartamento() != 0) {
+			s = nome + ", " + apartamento.getAndar();
+			if (!(apartamento.getBloco() == null)) {
+				if (!apartamento.getBloco().equals("")) {
+					s = s + " " + apartamento.getBloco();
+				}
+			}
+		}
 		return s;
 	}
 

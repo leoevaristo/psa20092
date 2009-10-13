@@ -26,10 +26,9 @@ public class CondominoDAO {
 		ps.setInt(1, cod);
 		
 		ResultSet rs = ps.executeQuery();
-		Condomino c = null;
+		Condomino c = new Condomino();
 		
 		if (rs.first()) {
-			c = new Condomino();
 			c.setCodigo(rs.getInt(1));
 			c.setNome(rs.getString(2));
 			c.setSexo(rs.getString(3).charAt(0));
@@ -113,6 +112,39 @@ public class CondominoDAO {
 
 		List<Condomino> l = new ArrayList<Condomino>();
 		Condomino c = null;
+		while (rs.next()) {
+			c = new Condomino();
+			c.setCodigo(rs.getInt(1));
+			c.setNome(rs.getString(2));
+			c.setSexo(rs.getString(3).charAt(0));
+			c.setDataNasc(new SimpleDateFormat("dd/MM/yyyy").format(rs.getDate(4)));
+			c.setResponsavel(new CondominoDAO().getCondominio(rs.getInt(5)));
+			c.setApartamento(new ApartamentoDAO().getApartamentoId(rs.getInt(6)));
+			l.add(c);
+		}
+		rs.close();
+		ps.close();
+
+		return l;
+	}
+	
+	public List<Condomino> getTodasOsCondominos(String filtro, String valor) throws SQLException {
+		
+		String sql = "select * from admcon_condomino";
+		if (filtro.equals("nome")) {
+			valor = "%"+valor+"%";
+			sql = sql + " where CON_NOME like '"+valor+"' order by CON_NOME";
+		} if (filtro.equals("apartamento")) {
+			sql = sql + ", admcon_apartamento where (APA_CODIGO = CON_APA_CODIGO) and" +
+						" (APA_CODIGO = "+valor+") order by CON_APA_CODIGO, CON_NOME";
+		}
+		System.out.println(sql);
+		
+		PreparedStatement ps = DB.getConn().prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+
+		List<Condomino> l = new ArrayList<Condomino>();
+		Condomino c = new Condomino();
 		while (rs.next()) {
 			c = new Condomino();
 			c.setCodigo(rs.getInt(1));
