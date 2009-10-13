@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:rich="http://richfaces.org/rich">
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
 
 <ui:composition template="/WEB-INF/template/template.xhtml">
@@ -16,20 +15,19 @@
 		<h:form styleClass="forms" id="formFiltros">
 			<h:panelGroup>
 				<h:outputLabel for="campoFiltro" value="Filtrar por" />
-				<h:selectOneMenu value="#{consultaUsuarioBean.tipoPesquisa}" id="campoFiltro" >
-					<f:selectItem itemValue="" itemLabel="Tipo de Filtro" />
+				<h:selectOneMenu value="#{cadastrarCondominoBean.filtro}" id="campoFiltro" >
+					<f:selectItem itemValue="*" itemLabel="Todos" />
 					<f:selectItem itemValue="nome" itemLabel="Nome" />
-					<f:selectItem itemValue="codigo" itemLabel="Codigo" />
 					<f:selectItem itemValue="apartamento" itemLabel="Apartamento" />
-					<f:selectItem itemValue="conselho" itemLabel="Conselho" />
+					<f:selectItem itemValue="bloco" itemLabel="Bloco" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup>
 				<h:outputLabel value="Palavra-chave" for="inFiltro" />
-				<h:inputText value="#{consultaUsuarioBean.campoPesquisa}" id="inFiltro"/>
+				<h:inputText value="#{cadastrarCondominoBean.valor}" id="inFiltro"/>
 			</h:panelGroup>
 			<h:panelGroup>
-				<h:commandButton action="#{consultaUsuarioBean.escolheTipoPesquisa}" value="Filtrar" type="submit" /> 				
+				<h:commandButton action="#{cadastrarCondominoBean.buscar}" value="Filtrar" type="submit" /> 				
 			</h:panelGroup>
 		</h:form>
 	</ui:define>
@@ -38,7 +36,7 @@
 	</ui:define>
 	<ui:define name="infoGerais">
 		<h:dataTable styleClass="grid" headerClass="thead"
-			rowClasses="cor1,cor2" value="#{reuniaoBean.listaReuniao}"
+			rowClasses="cor1,cor2" value="#{cadastrarCondominoBean.condominosListConsulta}"
 			var="entrada">
 			<h:column>
 				<f:facet name="header">
@@ -51,32 +49,38 @@
 					<h:outputText value="Nome" />
 				</f:facet>
 				
-				<h:outputText value="#{entrada.dependencia.data}" />
+				<h:outputText value="#{entrada.nome}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Data de Nascimento" />
 				</f:facet>
-				<h:outputText value="#{entrada.dependencia.horaInicio}" />
-			</h:column>		
-				<h:column>
-				<f:facet name="header">
-					<h:outputText value="Apartamento" />
-				</f:facet>
-				<h:outputText value="#{entrada.dependencia.dependencia.descricao}" />
+				<h:outputText value="#{entrada.dataNasc}" />
 			</h:column>		
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Cargo no Conselho" />
+					<h:outputText value="Apartamento" />
 				</f:facet>
-				<h:outputText value="#{entrada.descricao}" />
+				<h:outputText value="#{entrada.apartamento.andar}" />
+			</h:column>		
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Bloco" />
+				</f:facet>
+				<h:outputText value="#{entrada.apartamento.bloco}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Responsavel" />
+				</f:facet>
+				<h:outputText value="#{entrada.responsavel.toString}" />
 			</h:column>	
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Editar" />
 				</f:facet>
 				<h:form id="alteraEntrada">
-					<h:commandLink	action="#{reuniaoBean.editarEntrada}">
+					<h:commandLink	action="#">
 						<h:graphicImage value="/images/imgedit.png" />
 						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
 					</h:commandLink>
@@ -90,7 +94,7 @@
 				<h:form id="excluiEntrada">
 					<h:commandLink id="excluir"
 						onclick="if (confirm('Voce tem certeza que deseja excluir essa entrada?')) {return true }; return false;"
-						action="#{reuniaoBean.excluiEntrada}">
+						action="#">
 						<h:graphicImage value="/images/imgdelete.png" />
 						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
 					</h:commandLink>
@@ -100,7 +104,7 @@
 		<h:form styleClass="forms">
 			<span class="linha"></span>
 			<span class="botoes">
-				<h:commandButton action="#{reuniaoBean.Cancelar}" value="" styleClass="input_button" immediate="true" />
+				<h:commandButton action="#" value="" styleClass="input_button" immediate="true" />
 			</span>
 		</h:form>
 	</ui:define>
