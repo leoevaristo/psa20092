@@ -22,6 +22,28 @@
 			<h:outputLabel for="datanasc" value="Data Nascimento" />
 			<rich:calendar id="datanasc" datePattern="dd/MM/yyyy" locale="pt_Br" /> 			
 		</h:panelGroup>
+			<h:panelGroup id="panelApartamento">
+				<h:outputLabel for="apartamento" value="Apartamento" />
+				<h:selectOneMenu value="#{reuniaoBean.reuniao.dependencia.codigo}" id="apartamento">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{reuniaoBean.reservaList}" />				 
+				</h:selectOneMenu>	
+			</h:panelGroup>
+			<h:panelGroup id="panelConselho">
+				<h:outputLabel for="conselho" value="Cargo do Conselho" />
+				<h:selectOneMenu value="#{reuniaoBean.reuniao.dependencia.codigo}" id="conselho">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{reuniaoBean.reservaList}" />				 
+				</h:selectOneMenu>	
+			</h:panelGroup>
+			<span class="linha"></span>
+			<span class="botoes">
+				<h:commandButton action="#{reuniaoBean.addReuniao}" value=""
+					styleClass="input_submit"/>
+				<h:commandButton action="#{reuniaoBean.Limpar}" value="" styleClass="input_reset" />
+				<h:commandButton action="#{reuniaoBean.Cancelar}" value="" styleClass="input_button" immediate="true" />
+			</span>
+			<h:outputText value="#{reuniaoBean.msg}" />
 	</h:form>
 	</ui:define>
 

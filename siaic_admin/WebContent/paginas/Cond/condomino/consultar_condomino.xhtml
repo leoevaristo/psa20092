@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich">
+	
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+	<ui:define name="tituloGrande"><h:outputText value="Condomino" />
+	</ui:define>
+	<ui:define name="subtitulo"><h:outputText value="Consultar Condomino" />
+	</ui:define>
+	<ui:define name="conteudo">
+		<h:form styleClass="forms" id="formFiltros">
+			<h:panelGroup>
+				<h:outputLabel for="campoFiltro" value="Filtrar por" />
+				<h:selectOneMenu value="#{consultaUsuarioBean.tipoPesquisa}" id="campoFiltro" >
+					<f:selectItem itemValue="" itemLabel="Tipo de Filtro" />
+					<f:selectItem itemValue="nome" itemLabel="Nome" />
+					<f:selectItem itemValue="codigo" itemLabel="Codigo" />
+					<f:selectItem itemValue="apartamento" itemLabel="Apartamento" />
+					<f:selectItem itemValue="conselho" itemLabel="Conselho" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:outputLabel value="Palavra-chave" for="inFiltro" />
+				<h:inputText value="#{consultaUsuarioBean.campoPesquisa}" id="inFiltro"/>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:commandButton action="#{consultaUsuarioBean.escolheTipoPesquisa}" value="Filtrar" type="submit" /> 				
+			</h:panelGroup>
+		</h:form>
+	</ui:define>
+	<ui:define name="tituloLista">
+		<h:outputText value="Lista dos Condominos" />
+	</ui:define>
+	<ui:define name="infoGerais">
+		<h:dataTable styleClass="grid" headerClass="thead"
+			rowClasses="cor1,cor2" value="#{reuniaoBean.listaReuniao}"
+			var="entrada">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Codigo" />
+				</f:facet>
+				<h:outputText value="#{entrada.codigo}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nome" />
+				</f:facet>
+				
+				<h:outputText value="#{entrada.dependencia.data}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data de Nascimento" />
+				</f:facet>
+				<h:outputText value="#{entrada.dependencia.horaInicio}" />
+			</h:column>		
+				<h:column>
+				<f:facet name="header">
+					<h:outputText value="Apartamento" />
+				</f:facet>
+				<h:outputText value="#{entrada.dependencia.dependencia.descricao}" />
+			</h:column>		
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Cargo no Conselho" />
+				</f:facet>
+				<h:outputText value="#{entrada.descricao}" />
+			</h:column>	
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Editar" />
+				</f:facet>
+				<h:form id="alteraEntrada">
+					<h:commandLink	action="#{reuniaoBean.editarEntrada}">
+						<h:graphicImage value="/images/imgedit.png" />
+						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir" />
+				</f:facet>
+				
+				<h:form id="excluiEntrada">
+					<h:commandLink id="excluir"
+						onclick="if (confirm('Voce tem certeza que deseja excluir essa entrada?')) {return true }; return false;"
+						action="#{reuniaoBean.excluiEntrada}">
+						<h:graphicImage value="/images/imgdelete.png" />
+						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+		<h:form styleClass="forms">
+			<span class="linha"></span>
+			<span class="botoes">
+				<h:commandButton action="#{reuniaoBean.Cancelar}" value="" styleClass="input_button" immediate="true" />
+			</span>
+		</h:form>
+	</ui:define>
+	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
+</ui:composition>
+</html>
