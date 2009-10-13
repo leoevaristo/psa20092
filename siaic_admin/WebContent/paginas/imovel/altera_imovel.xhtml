@@ -11,11 +11,16 @@
 			<h:outputText value="Imóveis" />
 		 </ui:define>		
 		 <ui:define name="subtitulo">  
-			<h:outputText value="Cadastrar de Imóveis" />
+			<h:outputText value="Alteração do Imóveis" />
 		 </ui:define>
 		 <ui:define name="conteudo">
 		   <h:form styleClass="forms">
 		    
+		     <h:panelGroup id="codigo">
+		       <h:outputLabel value="Código:" />
+		       <h:outputText value="#{imovelBean.imovel.codigo}" />
+		     </h:panelGroup>
+		     
 		     <h:panelGroup id="finalidade">
 		       <h:outputLabel value="Finalidade:" />
 		       <h:inputText value="#{imovelBean.imoFin.nome}" styleClass="obrigatorio" size="50" required="true"/>
