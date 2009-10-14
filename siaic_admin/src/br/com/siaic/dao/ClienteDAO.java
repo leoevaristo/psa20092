@@ -281,7 +281,7 @@ public class ClienteDAO {
 	}
 	public List<Cliente> getClientesPerfilPeloNome(String nome) throws SQLException {
 
-		String sql = "SELECT p.PES_ENDERECO, p.PES_NOME, p.PES_TELEFONE, p.PES_CELULAR, p.PES_EMAIL, "
+		String sql = "SELECT DISTINCT p.PES_ENDERECO, p.PES_NOME, p.PES_TELEFONE, p.PES_CELULAR, p.PES_EMAIL, "
 			+ "c.PEC_CODIGO,c.PEC_CPF,c.PEC_RG,c.PEC_CNPJ, "
 			+ "e.END_LOGRADOURO,e.END_NOME,e.END_CEP,e.END_BAIRRO,e.END_CODIGO, per.PRF_PESSOA_CLIENTE "
 			+ "FROM PESSOA p, PESSOA_CLIENTE c, ENDERECO e, PERFIL per "

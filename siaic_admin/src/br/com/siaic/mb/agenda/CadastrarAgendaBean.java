@@ -450,12 +450,11 @@ public class CadastrarAgendaBean {
 	public List<Cliente> getClientePerfilPorNome() throws SQLException {
 
 		ClienteDAO daoCliente = new ClienteDAO();
-		List<Cliente> clientesPerfil = daoCliente
-				.getClientesPerfilPeloNome(campoPesquisa);
+		List<Cliente> clientesPerfil = daoCliente.getClientesPerfilPeloNome(campoPesquisa);
+	
 		if (clientesPerfil.isEmpty()) {
 			FacesContext contexto = FacesContext.getCurrentInstance();
-			FacesMessage mensagem = new FacesMessage(
-					"Nenhum cliente encontrado.");
+			FacesMessage mensagem = new FacesMessage("Nenhum cliente encontrado.");
 			contexto.addMessage("formBusca", mensagem);
 		} else {
 			return clientesPerfil;
