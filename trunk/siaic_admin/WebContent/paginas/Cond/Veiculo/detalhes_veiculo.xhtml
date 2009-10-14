@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="/WEB-INF/template/template.xhtml">
+		<ui:define name="tituloGrande">
+			<h:outputText value="Pagina de Veículos" />
+		</ui:define>
+		<ui:define name="subtitulo">
+			<h:outputText value="Â» Detalhes do Veículo" />
+		</ui:define>		
+		<ui:define name="conteudo">
+			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
+				<h:outputLabel for="campoRegra" value="regra"/>
+				<h:outputText value="#{consultaRegraBean.regra.regra}" id="campoRegra" />
+			</h:panelGrid>					
+			<h:panelGroup>		
+			<h:outputLink value="consulta_regra.xhtml">
+				<h:outputText value="voltar para pÃ¡gina de consulta" />
+			</h:outputLink>	
+			</h:panelGroup>
+		</ui:define>
+		<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
+	</ui:composition>
+
+</html>

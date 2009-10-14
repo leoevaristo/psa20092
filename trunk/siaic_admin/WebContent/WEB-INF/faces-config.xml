@@ -166,6 +166,16 @@
   <managed-bean-class>br.com.cond.mb.CondominoBean</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+ 	<managed-bean-name>cadastraVeiculoBean</managed-bean-name>
+ 	<managed-bean-class>br.com.cond.mb.CadastraVeiculoBean</managed-bean-class>
+ 	<managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+ 	<managed-bean-name>selectApartamento</managed-bean-name>
+ 	<managed-bean-class>br.com.cond.mb.SelectApartamento</managed-bean-class>
+ 	<managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
  <navigation-rule>
   <from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
   <navigation-case>
