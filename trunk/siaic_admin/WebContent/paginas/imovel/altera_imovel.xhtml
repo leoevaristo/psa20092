@@ -15,7 +15,9 @@
 		 </ui:define>
 		 <ui:define name="conteudo">
 		   <h:form styleClass="forms">
-		    
+		     
+		     <input type="hidden" name="codigoImovelAltera" value="#{imovelBean.imovel.codigo}" />
+		     
 		     <h:panelGroup id="codigo">
 		       <h:outputLabel value="Código:" />
 		       <h:outputText value="#{imovelBean.imovel.codigo}" />
@@ -32,7 +34,7 @@
 			     <f:selectItems value="#{imovelBean.listaClientes}" />
 			   </h:selectOneMenu>
 		     </h:panelGroup>
-		     		     
+		     
 		     <h:panelGroup id="caracbasica">
 		       <h:outputLabel value="Caracteristicas Básicas:" />
 		       <h:selectOneMenu value="#{imovelBean.imoCar.codigo}" id="carac">
@@ -116,7 +118,7 @@
 		      <h:panelGroup styleClass="botoes">
 				<h:commandButton action="#{imovelBean.atualizaImovel}" value=""
 					styleClass="input_submit" />
-				<h:commandButton action="#" value=""
+				<h:commandButton action="#{imovelBean.voltar}" value=""
 					styleClass="input_button" immediate="true" />
 			 </h:panelGroup>
 		     

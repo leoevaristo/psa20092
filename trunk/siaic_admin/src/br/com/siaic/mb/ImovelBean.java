@@ -24,7 +24,7 @@ import br.com.siaic.dao.ImovelFinalidadeDAO;
 
 public class ImovelBean {
 
-	private static int globalCodigoImovel = -1;
+	private static int consultaCodigoImovel = -1;
 	
 	private Imovel imovel;
 	private ImovelCaracteristica imoCar;
@@ -79,11 +79,22 @@ public class ImovelBean {
 			}
 		}
         
-		if (globalCodigoImovel != -1)
+		if (consultaCodigoImovel != -1)
         {
         	this.consultaImovel2();
-        	globalCodigoImovel = -1;
+        	consultaCodigoImovel = -1;
         }
+		
+		int cod = this.getParamCodigoImovelAltera();
+		if (cod != -1) {
+			consultaCodigoImovel = cod;
+			this.consultaImovel2();
+			consultaCodigoImovel = -1;
+		}
+	}
+	
+	public String voltar() {
+		return "voltar";
 	}
 
 	public List<SelectItem> getListaClientes() {
@@ -155,7 +166,7 @@ public class ImovelBean {
 	}
 	
 	public void consultaImovel2() {
-		int cod = this.getParamCodigoImovel();
+		int cod = consultaCodigoImovel;
 		if (cod != -1) {
 			this.imovel = Imovel.getImovel(cod);
 			try {
@@ -184,7 +195,7 @@ public class ImovelBean {
 	}
 
 	public String consultaImovel() {
-		globalCodigoImovel = this.getCodigoImovel();
+		consultaCodigoImovel = this.getParamCodigoImovel();
 		return "altera";
 	}
 
@@ -193,6 +204,17 @@ public class ImovelBean {
 		HttpServletRequest req = (HttpServletRequest) context
 				.getExternalContext().getRequest();
 		String aff = req.getParameter("codigoImovel");
+		if (aff != null)
+			return new Integer(aff).intValue();
+		else
+			return -1;
+	}
+	
+	private int getParamCodigoImovelAltera() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context
+				.getExternalContext().getRequest();
+		String aff = req.getParameter("codigoImovelAltera");
 		if (aff != null)
 			return new Integer(aff).intValue();
 		else
@@ -218,9 +240,18 @@ public class ImovelBean {
 
 	public String atualizaImovel() {
 		try {
+			ImovelFinalidadeDAO finDao = new ImovelFinalidadeDAO();
+			finDao.salvar(this.imoFin);
+			this.imovel.setFinalidade(this.imoFin.getCodigo());
+
+			this.imovel.setProprietario(this.prop.getCodigoPessoa());
+			this.imovel.setCaracteristica(this.imoCar.getCodigo());
+			
 			EnderecoDAO daoEndereco = new EnderecoDAO();
 			daoEndereco.adicionarEndereco(endereco);
-			this.imovel.setCaracteristica(endereco.getEnderecoCodigo());
+			
+			
+			this.imovel.setCaracteristica(this.imovel.getCaracteristica());
 			this.imovel.atualizar();
 		} catch (SQLException e) {
 			e.printStackTrace();
