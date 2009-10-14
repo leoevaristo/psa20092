@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AvisoReuniao" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<parameter name="cod" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select AGD_CODIGO, AGD_DATA, AGD_HORA_INICIO, AGD_HORA_FINAL, DEP_DESCRICAO, CON_NOME, CON_SEXO, APA_ANDAR, APA_BLOCO, REU_DESCRICAO
+from admcon_agenda_dependencia, admcon_condomino, admcon_dependencia, admcon_apartamento, admcon_reuniao
+where REU_CODIGO = $P{cod}
+and REU_AGD_CODIGO = AGD_CODIGO
+and AGD_CON_CODIGO = CON_CODIGO
+and AGD_DEP_CODIGO = DEP_CODIGO
+and CON_APA_CODIGO = APA_CODIGO]]>
+	</queryString>
+	<field name="AGD_CODIGO" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="AGD_DATA" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="AGD_HORA_INICIO" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="AGD_HORA_FINAL" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DEP_DESCRICAO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CON_NOME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CON_SEXO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="APA_ANDAR" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="APA_BLOCO" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="REU_DESCRICAO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="108" splitType="Stretch">
+			<staticText>
+				<reportElement x="165" y="62" width="224" height="46"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aviso de Reunião]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="55" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="57" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="418" splitType="Stretch">
+			<textField>
+				<reportElement x="53" y="5" width="450" height="323"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Avisamos aos senhores condôminos que no próximo dia "+
+new java.text.SimpleDateFormat("dd' de 'MMMM' de 'yyyy', 'EEEE").format($F{AGD_DATA})+
+" às "+new java.text.SimpleDateFormat("HH:mm").format($F{AGD_HORA_INICIO})+
+" será realizada uma reunião extraordinária com previsão de término para às "+
+new java.text.SimpleDateFormat("HH:mm").format($F{AGD_HORA_FINAL})+
+" no "+$F{DEP_DESCRICAO}+
+". Solicitamos o comparecimento de todos. Abaixo seguem os detalhes da discução:\n\n"+
+$F{REU_DESCRICAO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="53" y="340" width="450" height="65"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["________________________________________________\n\n"+
+$F{CON_NOME}+" - aptº "+$F{APA_ANDAR}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="35" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="53" y="19" width="450" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[new java.text.SimpleDateFormat("dd' de 'MMMM' de 'yyyy").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
