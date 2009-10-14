@@ -15,7 +15,7 @@
 		<h:form styleClass="forms" id="formFiltros">
 			<h:panelGroup>
 				<h:outputLabel for="campoFiltro" value="Filtrar por" />
-				<h:selectOneMenu value="#{cadastrarCondominoBean.filtro}" id="campoFiltro" >
+				<h:selectOneMenu value="#{condominoBean.filtro}" id="campoFiltro" >
 					<f:selectItem itemValue="*" itemLabel="Todos" />
 					<f:selectItem itemValue="nome" itemLabel="Nome" />
 					<f:selectItem itemValue="apartamento" itemLabel="Apartamento" />
@@ -24,10 +24,10 @@
 			</h:panelGroup>
 			<h:panelGroup>
 				<h:outputLabel value="Palavra-chave" for="inFiltro" />
-				<h:inputText value="#{cadastrarCondominoBean.valor}" id="inFiltro"/>
+				<h:inputText value="#{condominoBean.valor}" id="inFiltro"/>
 			</h:panelGroup>
 			<h:panelGroup>
-				<h:commandButton action="#{cadastrarCondominoBean.buscar}" value="Filtrar" type="submit" /> 				
+				<h:commandButton action="#{condominoBean.buscar}" value="Filtrar" type="submit" /> 				
 			</h:panelGroup>
 		</h:form>
 	</ui:define>
@@ -36,7 +36,7 @@
 	</ui:define>
 	<ui:define name="infoGerais">
 		<h:dataTable styleClass="grid" headerClass="thead"
-			rowClasses="cor1,cor2" value="#{cadastrarCondominoBean.condominosListConsulta}"
+			rowClasses="cor1,cor2" value="#{condominoBean.condominosListConsulta}"
 			var="entrada">
 			<h:column>
 				<f:facet name="header">
@@ -104,6 +104,7 @@
 		<h:form styleClass="forms">
 			<span class="linha"></span>
 			<span class="botoes">
+			<h:commandButton action="#{condominoBean.limpar}" value="" styleClass="input_reset" />
 				<h:commandButton action="#" value="" styleClass="input_button" immediate="true" />
 			</span>
 		</h:form>

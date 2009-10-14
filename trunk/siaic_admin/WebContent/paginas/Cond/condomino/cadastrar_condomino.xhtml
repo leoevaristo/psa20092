@@ -11,11 +11,11 @@
 	<h:form styleClass="forms">
 		<h:panelGroup id="panelNome">
 			<h:outputLabel for="nome" value="Nome" />
-			<h:inputText id="nome" value="#{cadastrarCondominoBean.condomino.nome}" />					
+			<h:inputText id="nome" value="#{condominoBean.condomino.nome}" />					
 		</h:panelGroup>
 		<h:panelGroup id="panelSexo">
 			<h:outputLabel for="sexo" value="Sexo" />
-			<h:selectOneMenu value="#{cadastrarCondominoBean.condomino.sexo}" id="sexo">
+			<h:selectOneMenu value="#{condominoBean.condomino.sexo}" id="sexo">
 					<f:selectItem itemValue="" itemLabel="Selecione" />
 					<f:selectItem itemValue="M" itemLabel="Masculino" />
 					<f:selectItem itemValue="F" itemLabel="Feminino" />
@@ -23,30 +23,29 @@
 		</h:panelGroup>
 		<h:panelGroup id="panelDataNasc">
 			<h:outputLabel for="data" value="Data de Nascimento" />
-			<h:inputText value="#{cadastrarCondominoBean.condomino.dataNasc}" id="data"/>
+			<h:inputText value="#{condominoBean.condomino.dataNasc}" id="data"/>
 		</h:panelGroup>
 			<h:panelGroup id="panelApartamento">
 				<h:outputLabel for="apartamento" value="Apartamento" />
-				<h:selectOneMenu value="#{cadastrarCondominoBean.condomino.apartamento.codigoApartamento}" id="apartamento">
+				<h:selectOneMenu value="#{condominoBean.condomino.apartamento.codigoApartamento}" id="apartamento">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{cadastrarCondominoBean.apartamentosList}" />				 
+					<f:selectItems value="#{condominoBean.apartamentosList}" />				 
 				</h:selectOneMenu>	
 			</h:panelGroup>
 			<h:panelGroup id="panelResponsavel">
 				<h:outputLabel for="responsavel" value="Responsavel" />
-				<h:selectOneMenu value="#{cadastrarCondominoBean.condomino.responsavel.codigo}" id="responsavel">
+				<h:selectOneMenu value="#{condominoBean.condomino.responsavel.codigo}" id="responsavel">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{cadastrarCondominoBean.condominosList}" />				 
+					<f:selectItems value="#{condominoBean.condominosList}" />				 
 				</h:selectOneMenu>	
 			</h:panelGroup>
 			<span class="linha"></span>
 			<span class="botoes">
-				<h:commandButton action="#{cadastrarCondominoBean.cadastrar}" value=""
-					styleClass="input_submit"/>
-				<h:commandButton action="#{cadastrarCondominoBean.limpar}" value="" styleClass="input_reset" />
+				<h:commandButton action="#{condominoBean.cadastrar}" value="" styleClass="input_submit"/>
+				<h:commandButton action="#{condominoBean.limpar}" value="" styleClass="input_reset" />
 				<h:commandButton action="#" value="" styleClass="input_button" immediate="true" />
 			</span>
-			<h:outputText value="#{cadastrarCondominoBean.msg}" />
+			<h:outputText value="#{condominoBean.msg}" />
 	</h:form>
 	</ui:define>
 
