@@ -52,10 +52,8 @@ public class CondominoDAO {
 		ps.setString(1, c.getNome());
 		ps.setString(2, c.getSexo().toString());
 		ps.setString(3, new SimpleDateFormat("yyyy-MM-dd").format(new SimpleDateFormat("dd/MM/yyyy").parse(c.getDataNasc())));
-		if (!(c.getResponsavel().getCodigo() == null)) {
-			if (!c.getResponsavel().getCodigo().equals(new Integer(0))) {
-				ps.setInt(4, c.getResponsavel().getCodigo());
-			}
+		if (c.getResponsavel().getCodigo() != null && !c.getResponsavel().getCodigo().equals(new Integer(0))) {
+			ps.setInt(4, c.getResponsavel().getCodigo());
 		} else {
 			ps.setNull(4, c.getResponsavel().getCodigo());
 		}
@@ -87,10 +85,8 @@ public class CondominoDAO {
 		ps.setString(1, cNovo.getNome());
 		ps.setString(2, Character.toString(cNovo.getSexo()));
 		ps.setString(3, new SimpleDateFormat("yyyy-MM-dd").format(new SimpleDateFormat("dd/MM/yyyy").parse(cNovo.getDataNasc())));
-		if (!(cNovo.getResponsavel().getCodigo() == null)) {
-			if (!cNovo.getResponsavel().getCodigo().equals(new Integer(0))) {
-				ps.setInt(4, cNovo.getResponsavel().getCodigo());
-			}
+		if (cNovo.getResponsavel().getCodigo() != null && !cNovo.getResponsavel().getCodigo().equals(new Integer(0))) {
+			ps.setInt(4, cNovo.getResponsavel().getCodigo());
 		} else {
 			ps.setNull(4, cNovo.getResponsavel().getCodigo());
 		}

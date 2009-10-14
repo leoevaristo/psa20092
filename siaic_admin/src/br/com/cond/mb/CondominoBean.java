@@ -30,6 +30,7 @@ public class CondominoBean {
 	public CondominoBean() {
 		condomino = new Condomino();
 		condominosList = new ArrayList<Condomino>();
+		acao = "Cadastrar";
 	}
 
 	public Condomino getCondomino() {
@@ -108,8 +109,23 @@ public class CondominoBean {
 	
 	public void limpar() {
 		condomino = new Condomino();
+		condominosList.clear();
 		msg = "";
 	}
+	
+	public String Cancelar(){
+		limpar();
+		String s = "";
+		String nav = "";
+		if (acao.equals("Editar")) {
+			acao = "Cadastrar";
+			nav = "Editar";
+		} else {
+			nav = "Cadastrar";
+		}
+		return nav;
+	}
+	
 	public String cadastrar() {
 		String s = "";
 		String nav = "";
