@@ -504,4 +504,54 @@
     TARGET="rules:#paginas#imovel#consulta_imoveis.xhtml" TITLE="volta" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#Cond#condomino#consultar_condomino.xhtml"
+  PATH="/paginas/Cond/condomino/consultar_condomino.xhtml"
+  SHAPE="256,4385,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#Cond#condomino#consultar_condomino.xhtml:0"
+   NAME="item" PATH="/paginas/Cond/condomino/consultar_condomino.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Editar::#paginas#Cond#condomino#cadastrar_condomino.xhtml"
+    NAME="output"
+    PATH="/paginas/Cond/condomino/cadastrar_condomino.xhtml"
+    TARGET="rules:#paginas#Cond#condomino#cadastrar_condomino.xhtml"
+    TITLE="Editar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM
+   ID="rules:#paginas#Cond#condomino#consultar_condomino.xhtml:1"
+   NAME="item1" PATH="/paginas/Cond/condomino/consultar_condomino.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Cadastrar::#paginas#Cond#condomino#condomino.xhtml"
+    NAME="output" PATH="/paginas/Cond/condomino/condomino.xhtml"
+    TARGET="rules:#paginas#Cond#condomino#condomino.xhtml"
+    TITLE="Cadastrar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#Cond#condomino#cadastrar_condomino.xhtml"
+  PATH="/paginas/Cond/condomino/cadastrar_condomino.xhtml"
+  SHAPE="32,4369,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#Cond#condomino#cadastrar_condomino.xhtml:0"
+   NAME="item" PATH="/paginas/Cond/condomino/cadastrar_condomino.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Editar::#paginas#Cond#condomino#consultar_condomino.xhtml"
+    NAME="output"
+    PATH="/paginas/Cond/condomino/consultar_condomino.xhtml"
+    TARGET="rules:#paginas#Cond#condomino#consultar_condomino.xhtml"
+    TITLE="Editar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM
+   ID="rules:#paginas#Cond#condomino#cadastrar_condomino.xhtml:1"
+   NAME="item1" PATH="/paginas/Cond/condomino/cadastrar_condomino.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Cadastrar::#paginas#Cond#condomino#condomino.xhtml"
+    NAME="output" PATH="/paginas/Cond/condomino/condomino.xhtml"
+    TARGET="rules:#paginas#Cond#condomino#condomino.xhtml"
+    TITLE="Cadastrar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#Cond#condomino#condomino.xhtml"
+  PATH="/paginas/Cond/condomino/condomino.xhtml" SHAPE="256,4529,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
