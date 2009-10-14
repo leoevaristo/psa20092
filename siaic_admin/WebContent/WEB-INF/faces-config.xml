@@ -232,7 +232,7 @@
    <redirect/>
   </navigation-case>
   <navigation-case>
-   <from-outcome>volta</from-outcome>
+   <from-outcome>voltar</from-outcome>
    <to-view-id>/paginas/imovel/consulta_imoveis.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
@@ -530,7 +530,7 @@
  <navigation-rule>
   <from-view-id>/paginas/imovel/altera_imovel.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>volta</from-outcome>
+   <from-outcome>voltar</from-outcome>
    <to-view-id>/paginas/imovel/consulta_imoveis.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
