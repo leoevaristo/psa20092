@@ -66,6 +66,28 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">
+					<h:outputText value="Aviso" />
+				</f:facet>
+				<h:form id="impAviso">
+					<h:commandLink	action="#{reuniaoBean.impAviso}">
+						<h:graphicImage value="/images/print.png" />
+						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Ata" />
+				</f:facet>
+				<h:form id="impAta">
+					<h:commandLink	action="#">
+						<h:graphicImage value="/images/print.png" />
+						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
 					<h:outputText value="Excluir" />
 				</f:facet>
 				

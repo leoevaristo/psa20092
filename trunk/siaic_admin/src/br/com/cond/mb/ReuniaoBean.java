@@ -1,16 +1,31 @@
 package br.com.cond.mb;
 
+import java.io.File;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import net.sf.jasperreports.engine.JRDataset;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 import br.com.cond.businesslogic.AgendaDependencia;
 import br.com.cond.businesslogic.Reuniao;
 import br.com.cond.dao.ReuniaoDAO;
+import br.com.siaic.dao.DB;
 
 /**
  * @author Tamie
@@ -133,6 +148,56 @@ public class ReuniaoBean {
 		msg = "";
 		acao = "Editar";
 		return acao;
+	}
+	
+	private String getDiretorioReal(String diretorio) {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(false);
+		return session.getServletContext().getRealPath(diretorio);
+	}
+
+	private String getContextPath() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(false);
+		return session.getServletContext().getContextPath();
+	}
+
+	private void preenchePdf(JasperPrint print) throws JRException {
+		// Pego o caminho completo do PDF desde a raiz
+		String saida;
+		saida = getDiretorioReal("/pdf/RelRegras.pdf");
+		// Exporto para PDF
+		JasperExportManager.exportReportToPdfFile(print, saida);
+		/*
+		 * Jogo na variável saída o nome da aplicação mais o caminho para o PDF.
+		 * Essa variável será utilizada pela view
+		 */
+		saida = getContextPath() + "/pdf/RelRegras.pdf";
+	}
+	
+	public void impAviso() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context
+				.getExternalContext().getRequest();
+
+		Integer cod = new Integer(req.getParameter("codigoEntrada"))
+				.intValue();
+
+		Map parameters = new HashMap(); 
+		parameters.put("cod", new Integer(cod));
+
+		
+		String rel = getDiretorioReal("rel/AvisoReuniao.jasper");
+		
+		
+		try {
+			JasperPrint print = JasperFillManager.fillReport(rel, parameters, DB.getConn());
+			preenchePdf(print);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		 
+		
 	}
 	
 }
