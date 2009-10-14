@@ -1,15 +1,7 @@
 package br.com.siaic.mb;
 
-import java.sql.SQLException;
-import java.util.List;
-
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-
 import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.endereco.Endereco;
-import br.com.siaic.dao.ClienteDAO;
-import br.com.siaic.dao.PessoaDAO;
 
 
 /**
@@ -64,10 +56,7 @@ public class ClienteBean {
 
 		return cliente;
 
-	}
-	
-	
-	
+	}	
 
 	/**
 	 * 
@@ -77,19 +66,7 @@ public class ClienteBean {
 		
 		this.cliente = cliente;
 
-	}
-	
-	
-	
-
-	
-	
-	
-	
-
-	
-	
-	
+	}	
 	
 	public Endereco getEnderecoCliente(){
 		//TODO

@@ -173,6 +173,13 @@ public class ImovelDAO {
 		}
 	}
 
+	/**
+	 * Retorna uma lista do tipo Imovel
+	 * filtrada pelo Perfil do Cliente
+	 * @param codigoCliente
+	 * @return List<Imovel>
+	 * @author carlos
+	 */
 	public List<Imovel> getImoveisPorPerfilCliente(int codigoCliente) {
 
 		String sql = "SELECT p.PRF_PESSOA_CLIENTE, p.PRF_IMOVEL_CARACTERISTICA, i.IMO_CARACTERISTICA,"
@@ -217,11 +224,18 @@ public class ImovelDAO {
 		return null;
 
 	}
-
+	
+	/**
+	 * Método que retorna uma Lista de objetos do tipo Imovel
+	 * que pertencem a uma entrada específica de Agenda
+	 * @param agendaCodigo
+	 * @return List<Imovel>
+	 * @author carlos
+	 */
 	public List<Imovel> getImoveisAgenda(int agendaCodigo) {
 
 		String sql = "SELECT ima.IMA_IMOVEL_CODIGO, imo.IMO_CODIGO, imo.IMO_DETALHE,"
-				+ " imo.IMO_ENDERECO, imo.IMO_CARACTERISTICA FROM IMOVEL_AGENDA ima, IMOVEL imo"
+				+ " imo.IMO_ENDERECO, imo.IMO_CARACTERISTICA,imo.IMO_FORMA_PAGAMENTO, imo.IMO_VALOR FROM IMOVEL_AGENDA ima, IMOVEL imo "
 				+ " WHERE ima.IMA_AGENDA_CODIGO = ? AND ima.IMA_IMOVEL_CODIGO = imo.IMO_CODIGO";
 
 		try {
@@ -235,15 +249,16 @@ public class ImovelDAO {
 				Imovel imo = new Imovel();
 				imo.setCodigo(rs.getInt("IMO_CODIGO"));
 				imo.setEndereco(rs.getInt("IMO_ENDERECO"));
-				imo.setDetalhe(rs.getString("IMO_DETALHE"));
 				imo.setCaracteristica(rs.getInt("IMO_CARACTERISTICA"));
-
+				imo.setDetalhe(rs.getString("IMO_DETALHE"));
+				imo.setFormaPagamento(rs.getString("IMO_FORMA_PAGAMENTO"));
+				imo.setValor(rs.getDouble("IMO_VALOR"));
 				imoveisAgenda.add(imo);
 			}
 
 			ps.close();
 			rs.close();
-
+			
 			return imoveisAgenda;
 
 		} catch (SQLException e) {
@@ -254,6 +269,14 @@ public class ImovelDAO {
 
 	}
 
+	/**
+	 * Retorna uma lista com os identificadores únicos
+	 * de cada imóvel pertecente a uma entrada 
+	 * da Agenda
+	 * @param agendaCodigo
+	 * @return List<String>
+	 * @author carlos
+	 */
 	public List<String> getIndiceImoveisAgenda(int agendaCodigo) {
 
 		String sql = "SELECT ima.IMA_IMOVEL_CODIGO, imo.IMO_CODIGO "
@@ -286,7 +309,14 @@ public class ImovelDAO {
 		return null;
 
 	}
-
+	
+	/**
+	 * Retorna o número de imóveis registrados 
+	 * em uma entrada da Agenda
+	 * @param codigoAgenda
+	 * @return int
+	 * @author carlos
+	 */
 	public int getNumeroImoveisAgenda(int codigoAgenda){
 		
 		String sql = "SELECT COUNT(IMA_IMOVEL_CODIGO) AS QTD FROM IMOVEL_AGENDA WHERE " +

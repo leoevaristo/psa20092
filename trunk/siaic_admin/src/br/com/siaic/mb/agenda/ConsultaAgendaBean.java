@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
@@ -22,34 +23,76 @@ import br.com.siaic.dao.ImovelCaracteristicaDAO;
 import br.com.siaic.dao.ImovelDAO;
 import br.com.siaic.dao.UsuarioDAO;
 
+/**
+ * Classe para manipular todos dados referentes
+ * a exibição, alteração e exclusão dos dados
+ * de uma Agenda
+ * @author carlos
+ *
+ */
 public class ConsultaAgendaBean {
 
+	/**
+	 * Representa um objeto do tipo Agenda
+	 */
 	private Agenda agenda;
 
+	/**
+	 * Representa um objeto do tipo Cliente
+	 */
 	private Cliente cliente;
 
+	/**
+	 * Representa um objeto do tipo Imovel
+	 */
 	private Imovel imovel;
-
+	
+	/**
+	 * Representa um objeto do tipo Usuario
+	 */
 	private Usuario usuario;
 
+	/**
+	 * Representa um objeto do tipo Endereco
+	 */
 	private Endereco endereco;
 
+	/**
+	 * Representa um objeto do tipo ImovelCaracteristica
+	 */
 	private ImovelCaracteristica imovelCaracteristica;
 
+	/**
+	 * Representa uma lista de objetos do tipo Imovel
+	 */
 	private List<Imovel> imoveisAgenda = new ArrayList<Imovel>();
 
+	/**
+	 * Representa uma lista de objetos do tipo Endereco
+	 */
 	private List<Endereco> imoveisEnderecoAgenda = new ArrayList<Endereco>();
 
-	private List<HashMap<String, String>> infoAgenda = new ArrayList<HashMap<String, String>>();
+	/**
+	 * Representa uma lista de objetos do tipo Map
+	 */
+	private List<Map> infoAgenda = new ArrayList<Map>();
 
+	/**
+	 * Representa uma lista de objetos do tipo String
+	 */
 	private List<String> imoveisSelecionados;
 
+	/**
+	 * Representa uma lista de objetos do tipo SelectItem
+	 */
 	private static List<SelectItem> listaImoveis = new ArrayList<SelectItem>();
 
+	
+	/**
+	 * Construtor da classe ConsultaAgendaBean
+	 */
 	public ConsultaAgendaBean() {
-
 		agenda = new Agenda();
-
 	}
 
 	/**
@@ -70,86 +113,168 @@ public class ConsultaAgendaBean {
 
 		return imoveisSelecionados;
 	}
-
+	
+	/**
+	 * Método getter da propriedade imovelCaracteristica
+	 * @return ImovelCaracteristica
+	 */
 	public ImovelCaracteristica getImovelCaracteristica() {
 		return imovelCaracteristica;
 	}
 
+	/**
+	 * Método setter da propriedade imovelCaracteristica
+	 * @param imovelCaracteristica
+	 */
 	public void setImovelCaracteristica(
 			ImovelCaracteristica imovelCaracteristica) {
 		this.imovelCaracteristica = imovelCaracteristica;
 	}
-
-	public List<HashMap<String, String>> getInfoAgenda() {
+	
+	/**
+	 * Método getter da propriedade infoAgenda
+	 * @return List<Map>
+	 */
+	public List<Map> getInfoAgenda() {
 		return infoAgenda;
 	}
-
-	public void setInfoAgenda(List<HashMap<String, String>> infoAgenda) {
+	
+	/**
+	 * Método setter da propriedade infoAgenda
+	 * @param infoAgenda
+	 */
+	public void setInfoAgenda(List<Map> infoAgenda) {
 		this.infoAgenda = infoAgenda;
 	}
-
+	
+	/**
+	 * Método getter da propriedade imoveisEnderecoAgenda
+	 * @return List<Endereco>
+	 */
 	public List<Endereco> getImoveisEnderecoAgenda() {
 		return imoveisEnderecoAgenda;
 	}
 
+	/**
+	 * Método setter da propriedade imovelCaracteristica
+	 * @param imoveisEnderecoAgenda
+	 */
 	public void setImoveisEnderecoAgenda(List<Endereco> imoveisEnderecoAgenda) {
 		this.imoveisEnderecoAgenda = imoveisEnderecoAgenda;
 	}
-
+	
+	/**
+	 * Método getter da propriedade endereco
+	 * @return Endereco
+	 */
 	public Endereco getEndereco() {
 		return endereco;
 	}
 
+	/**
+	 * Método setter da propriedade endereco
+	 * @param endereco
+	 */
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 
+	/**
+	 * Método getter da propriedade imoveisAgenda
+	 * @return List<Imovel>
+	 */
 	public List<Imovel> getImoveisAgenda() {
 		return imoveisAgenda;
 	}
 
+	/**
+	 * Método setter da propriedade imoveisAgenda
+	 * @param imoveisAgenda
+	 */
 	public void setImoveisAgenda(List<Imovel> imoveisAgenda) {
 		this.imoveisAgenda = imoveisAgenda;
 	}
 
+	/**
+	 * Método getter da propriedade cliente
+	 * @return Cliente
+	 */
 	public Cliente getCliente() {
 		return cliente;
 	}
-
+	
+	/**
+	 * Método setter da propriedade cliente
+	 * @param cliente
+	 */
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
+	/**
+	 * Método getter da propriedade imovel
+	 * @return Imovel
+	 */
 	public Imovel getImovel() {
 		return imovel;
 	}
 
+	/**
+	 * Método setter da propriedade imovel
+	 * @param imovel
+	 */
 	public void setImovel(Imovel imovel) {
 		this.imovel = imovel;
 	}
-
+	
+	/**
+	 * Método getter da propriedade usuario
+	 * @return Usuario
+	 */
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
+	/**
+	 * Método setter da propriedade usuario
+	 * @param usuario
+	 */
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
+	/**
+	 * Método getter da propriedade agenda
+	 * @return Agenda
+	 */
 	public Agenda getAgenda() {
 		return agenda;
 	}
 
+	/**
+	 * Método setter da propriedade agendas
+	 * @param agenda
+	 */
 	public void setAgenda(Agenda agenda) {
 		this.agenda = agenda;
 	}
-
+	
+	/**
+	 * Retorna uma Lista de todas as entradas de Agenda
+	 * existentes
+	 * @return List<Agenda>
+	 * @throws SQLException
+	 */
 	public List<Agenda> getTodasEntradas() throws SQLException {
 
 		AgendaDAO daoAgenda = new AgendaDAO();
 		return daoAgenda.getAgendaList();
 	}
-
+	
+	/**
+	 * Remove uma entrada da Agenda
+	 * @throws SQLException
+	 */
 	public void excluiEntrada() throws SQLException {
 
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -163,7 +288,12 @@ public class ConsultaAgendaBean {
 		daoAgenda.ApagarAgenda(idEntradaAgenda);
 
 	}
-
+	
+	/**
+	 * Busca uma entrada da agenda filtrada por sua ID
+	 * @return String
+	 * @throws SQLException
+	 */
 	public String localizarAgendaPorId() throws SQLException {
 
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -183,41 +313,35 @@ public class ConsultaAgendaBean {
 
 		return "sucesso";
 	}
-
+	
+	/**
+	 * Realiza atualização dos dados de uma entrada da Agenda
+	 * @return String
+	 * @throws SQLException
+	 */
 	public String updateAgenda() throws SQLException {
 
 		ImovelDAO daoImovel = new ImovelDAO();
 		AgendaDAO daoAgenda = new AgendaDAO();
 
 		int qtdImoveisSelecionados = getImoveisSelecionados().size();
-		int qtdImoveisAgenda = daoImovel.getNumeroImoveisAgenda(getAgenda()
-				.getCodigo());
-		List<String> indicesImoveisAgenda = daoImovel
-				.getIndiceImoveisAgenda(getAgenda().getCodigo());
+		int qtdImoveisAgenda = daoImovel.getNumeroImoveisAgenda(getAgenda().getCodigo());
+		List<String> indicesImoveisAgenda = daoImovel.getIndiceImoveisAgenda(getAgenda().getCodigo());
 		System.out.println(qtdImoveisAgenda);
 		System.out.println(qtdImoveisSelecionados);
 
 		if (qtdImoveisSelecionados > qtdImoveisAgenda) {
 			for (int i = qtdImoveisAgenda; i <= qtdImoveisSelecionados - 1; i++) {
-				daoAgenda.associarImovelAgenda(Integer
-						.parseInt(getImoveisSelecionados().get(i)), getAgenda()
-						.getCodigo());
+				daoAgenda.associarImovelAgenda(Integer.parseInt(getImoveisSelecionados().get(i)), getAgenda().getCodigo());
 			}
 		} else if (qtdImoveisAgenda > qtdImoveisSelecionados) {
 			for (int i = qtdImoveisSelecionados - 1; i <= qtdImoveisAgenda; i++) {
-				if(qtdImoveisSelecionados == 0){
-					
+				if(qtdImoveisSelecionados == 0){					
 					daoAgenda.apagarTodosImoveisAgenda(getAgenda().getCodigo());
-					break;
-					
-				}else if (getImoveisSelecionados().get(i) != indicesImoveisAgenda
-						.get(i)) {
-					
-					daoAgenda.apagarImovelAgenda(Integer
-							.parseInt(getImoveisSelecionados().get(i)),
-							getAgenda().getCodigo());
-					qtdImoveisAgenda--;
-					
+					break;					
+				}else if (getImoveisSelecionados().get(i) != indicesImoveisAgenda.get(i)) {					
+					daoAgenda.apagarImovelAgenda(Integer.parseInt(getImoveisSelecionados().get(i)),	getAgenda().getCodigo());
+					qtdImoveisAgenda--;					
 					if(qtdImoveisAgenda == qtdImoveisSelecionados){
 						break;
 					}									
@@ -231,77 +355,93 @@ public class ConsultaAgendaBean {
 		return "sucesso";
 
 	}
-
+	
+	/**
+	 * Retira o Managed Bean do mapa de sessão
+	 * @return String
+	 */
 	public String destroiSessao() {
 
 		FacesContext contexto = FacesContext.getCurrentInstance();
-		contexto.getExternalContext().getSessionMap().remove(
-				"consultaAgendaBean");
+		contexto.getExternalContext().getSessionMap().remove("consultaAgendaBean");
 		if (!listaImoveis.isEmpty()) {
 			listaImoveis.clear();
 		}
 
 		return "destruido";
 	}
-
+	
+	/**
+	 * Busca os dados dos imóveis que pertencem
+	 * a uma entrada da Agenda
+	 * @throws SQLException
+	 */
 	public void buscaImovelEntrada() throws SQLException {
 		ImovelDAO daoImovel = new ImovelDAO();
 		EnderecoDAO daoEndereco = new EnderecoDAO();
-		ImovelCaracteristicaDAO daoCaracteristica = ImovelCaracteristicaDAO
-				.getInstance();
+		ImovelCaracteristicaDAO daoCaracteristica = ImovelCaracteristicaDAO.getInstance();
 
-		List<HashMap<String, String>> dados = new ArrayList<HashMap<String, String>>();
-		HashMap<String, String> info = new HashMap<String, String>();
+		List<Map> dados = new ArrayList<Map>();		
 
 		setImoveisAgenda(daoImovel.getImoveisAgenda(getAgenda().getCodigo()));
-
-		for (Imovel imo : imoveisAgenda) {
-
-			setEndereco(daoEndereco.getEnderecoPorCodigo(imo.getEndereco()));
-			String nomeEnd = getEndereco().getEnderecoNome();
-			String logEnd = getEndereco().getEnderecoLogradouro();
-			String bairroEnd = getEndereco().getEnderecoBairro()
-					.getBairroNome();
-
-			setImovelCaracteristica(daoCaracteristica
-					.getImovelCaracteristica(imo.getCaracteristica()));
-
-			String numQuartos = String.valueOf(getImovelCaracteristica()
-					.getQtdeDormitorio());
-
-			String numSuite = String.valueOf(getImovelCaracteristica()
-					.getQtdeSuite());
-
-			String numVagaGaragem = String.valueOf(getImovelCaracteristica()
-					.getQtdeGaragem());
-
-			String temPiscina = String.valueOf(getImovelCaracteristica()
-					.getPiscina());
-
-			info.put("nomeEnd", nomeEnd);
-			info.put("logEnd", logEnd);
-			info.put("bairroEnd", bairroEnd);
-			info.put("numQuartos", numQuartos);
-			info.put("numSuite", numSuite);
-			info.put("numVagaGaragem", numVagaGaragem);
-			info.put("temPiscina", temPiscina);
-
-			dados.add(info);
+		
+		for (Imovel imo : imoveisAgenda) {			
+			setImovel(imo);
+			setImovelCaracteristica(daoCaracteristica.getImovelCaracteristica(imo.getCaracteristica()));
+			setEndereco(daoEndereco.getEnderecoPorCodigo(imo.getEndereco()));	
+			dados.add(addDadosImoveis());
 			setInfoAgenda(dados);
 		}
 	}
-
+	
+	/**
+	 * Adiciona dados dos imóveis pertecentes
+	 * à uma entrada da Agenda a um objeto do tipo Map
+	 * @return Map
+	 */
+	@SuppressWarnings("unchecked")
+	public Map addDadosImoveis(){
+		
+		Map dadosImoveis = new HashMap();
+		dadosImoveis.put("nomeEnd", getEndereco().getEnderecoNome());
+		dadosImoveis.put("logEnd", getEndereco().getEnderecoLogradouro());
+		dadosImoveis.put("cepEnd", getEndereco().getEnderecoCep());
+		dadosImoveis.put("bairroEnd",getEndereco().getEnderecoBairro().getBairroNome());
+		dadosImoveis.put("temPiscina", getImovelCaracteristica().getPiscina());
+		dadosImoveis.put("numQuartos", getImovelCaracteristica().getQtdeDormitorio());
+		dadosImoveis.put("numSuite", getImovelCaracteristica().getQtdeSuite());
+		dadosImoveis.put("numVagaGaragem", getImovelCaracteristica().getQtdeGaragem());
+		dadosImoveis.put("valorImovel", getImovel().getValor());
+		dadosImoveis.put("detalhesImovel",getImovel().getDetalhe());
+		dadosImoveis.put("formaPagamento", getImovel().getFormaPagamento());
+		
+		return dadosImoveis;
+	}
+	
+	/**
+	 * Seta o corretor responsável por aquela entrada na Agenda
+	 * @throws SQLException
+	 */
 	public void buscaCorretorEntrada() throws SQLException {
 		UsuarioDAO daoUsuairo = new UsuarioDAO();
 		setUsuario(daoUsuairo.getUsuarioId(getAgenda().getCodCorretor()));
 
 	}
-
+	
+	/**
+	 * Seta cliente de uma entrada na Agenda
+	 * @throws SQLException
+	 */
 	public void buscaClienteEntrada() throws SQLException {
 		ClienteDAO daoCliente = new ClienteDAO();
 		setCliente(daoCliente.getClientePorId(getAgenda().getCodCliente()));
 	}
-
+	
+	/**
+	 * Exibe todos os dados pertecentes a uma entrada na Agenda
+	 * @return
+	 * @throws SQLException
+	 */
 	public String exibirDetalhesAgenda() throws SQLException {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest req = (HttpServletRequest) context
@@ -320,21 +460,28 @@ public class ConsultaAgendaBean {
 
 		return "detalhes";
 	}
-
+	
+	/**
+	 * Retorna uma lista de SelectItem contendo dados de imóveis 
+	 * @return
+	 */
 	public List<SelectItem> getListaImoveis() {
 		return listaImoveis;
 	}
-
+	
+	/**
+	 * Lista todos imóveis que se encaixam no Perfil de um determinado Cliente
+	 * e os adiciona numa lista de Select Item
+	 * @throws SQLException
+	 */
 	public void listarImoveisPerfil() throws SQLException {
 
 		if (listaImoveis.isEmpty()) {
 			EnderecoDAO daoEndereco = new EnderecoDAO();
-			ImovelCaracteristicaDAO daoCaracteristica = ImovelCaracteristicaDAO
-					.getInstance();
+			ImovelCaracteristicaDAO daoCaracteristica = ImovelCaracteristicaDAO.getInstance();
 			ImovelDAO daoImovel = new ImovelDAO();
 
-			List<Imovel> imoveis = daoImovel
-					.getImoveisPorPerfilCliente(getCliente().getCodigoPessoa());
+			List<Imovel> imoveis = daoImovel.getImoveisPorPerfilCliente(getCliente().getCodigoPessoa());
 
 			for (Imovel imo : imoveis) {
 
@@ -342,8 +489,7 @@ public class ConsultaAgendaBean {
 				String nomeEnd = getEndereco().getEnderecoNome();
 				String logEnd = getEndereco().getEnderecoLogradouro();
 				String cepEnd = getEndereco().getEnderecoCep();
-				String bairroEnd = getEndereco().getEnderecoBairro()
-						.getBairroNome();
+				String bairroEnd = getEndereco().getEnderecoBairro().getBairroNome();
 
 				setImovelCaracteristica(daoCaracteristica
 						.getImovelCaracteristica(imo.getCaracteristica()));

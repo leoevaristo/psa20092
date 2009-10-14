@@ -11,7 +11,7 @@ import br.com.siaic.dao.EnderecoDAO;
 
 /**
  * 
- * Classe que retorna os dados dascidades cadastradas no banco.
+ * Classe que retorna os dados das cidades cadastradas no banco.
  * Para serem utilizados em um componente <h:selectOneMenu>.
  * @author Carlos Junior
  *
