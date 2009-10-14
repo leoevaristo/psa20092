@@ -204,8 +204,15 @@ public class CadastraClienteBean {
 	
 	
 	public void limpaCampos(){
+		this.cliente = new Cliente();
+		this.endereco = new Endereco();
+		this.cidade = new Cidade();
+		this.estado = new Estado();
+		this.bairro = new Bairro();
 		
-		//TODO
+		if(!logradouro.isEmpty())
+		setLogradouro();
+		
 	}
 	
 	/**
