@@ -215,6 +215,11 @@ public class CadastraClienteBean {
 		
 	}
 	
+	public String cancelar(){
+		
+		return "cancelar";
+	}
+	
 	/**
 	 * Método que filtra automaticamente as cidades
 	 * pertencentes a um determinado estado

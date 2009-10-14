@@ -195,6 +195,11 @@
    <to-view-id>/paginas/cliente/cadastra_cliente.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
+  <navigation-case>
+  <from-outcome>cancelar</from-outcome>
+  <to-view-id>/paginas/cliente/consulta_cliente.xhtml</to-view-id>
+  <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/paginas/cliente/altera_cliente.xhtml</from-view-id>

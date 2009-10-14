@@ -129,9 +129,9 @@
 			<h:panelGroup styleClass="botoes">
 				<h:commandButton action="#{cadastraClienteBean.addCliente}" value=""
 					styleClass="input_submit" />
-				<h:commandButton action="#" value="" styleClass="input_reset" />
-				<h:commandButton action="#{cadastraClienteBean.limpaCampos}"
-					value="" styleClass="input_button" />
+				<h:commandButton action="#{cadastraClienteBean.limpaCampos}" value="" styleClass="input_reset" />
+				<h:commandButton action="#{cadastraClienteBean.cancelar}"
+					value="" styleClass="input_button" immediate="true" />
 			</h:panelGroup>
 		</h:form>
 	</ui:define>
