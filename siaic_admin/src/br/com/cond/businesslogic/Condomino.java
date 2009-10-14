@@ -19,10 +19,6 @@ public class Condomino {
 	private static boolean createResp = true;
 
 	public Condomino() {
-		codigo = null;
-		nome = null;
-		sexo = null;
-		dataNasc = null;
 		if (createResp) {
 			createResp = false;
 			responsavel = new Condomino();
