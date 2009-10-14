@@ -105,11 +105,11 @@ public class DependenciaDAO {
 			}
 		}
 		
-		if ( !dependencia.getDescricao().equals("")){
+		if ( dependencia.getDescricao() != null){
 			if (where.length() == 0) {
-				where.append("dep_descricao = '" + dependencia.getDescricao() + "'");
+				where.append("dep_descricao like '" + dependencia.getDescricao() + "'");
 			}else{
-				where.append(" and dep_descricao = '" + dependencia.getDescricao() + "'");
+				where.append(" and dep_descricao like '" + dependencia.getDescricao() + "'");
 			}
 		}
 		
