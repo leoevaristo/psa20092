@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import br.com.cond.businesslogic.Regras;
 import br.com.cond.businesslogic.Veiculo;
 import br.com.siaic.dao.FabricaConexao;
 
@@ -189,6 +190,46 @@ public class VeiculoDAO {
 		return veiculo;
 		
 	}
+	
+	
+	public List<Veiculo> getVeiculoPeloVeiculo(String nveiculo) throws SQLException {
+
+		String sql = "SELECT VEI_CODIGO,VEI_DESCRICAO,VEI_PLACA,VEI_COR "
+			+ "FROM admcon_veiculo "
+			+ "WHERE VEI_CODIGO LIKE ? ";
+
+		try{
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, "%" + nveiculo + "%");
+
+			ResultSet rs = ps.executeQuery();
+
+			List<Veiculo> listaVeiculos = new ArrayList<Veiculo>();
+
+			while (rs.next()) {
+			
+				Veiculo veiculo = new Veiculo();
+				veiculo.setCodigoVeiculo(rs.getInt("VEI_CODIGO"));
+				veiculo.setDescricao(rs.getString("VEI_DESCRICAO"));
+				veiculo.setCor(rs.getString("VEI_COR"));
+				veiculo.setPlaca(rs.getString("VEI_PLACA"));
+
+				listaVeiculos.add(veiculo);
+
+			}
+
+			ps.close();
+			rs.close();
+		
+			return listaVeiculos;
+		
+			}finally{
+				conexao.close();
+		}
+		
+	}
+
 	
 
 }

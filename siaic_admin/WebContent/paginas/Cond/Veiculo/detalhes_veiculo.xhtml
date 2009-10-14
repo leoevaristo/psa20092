@@ -13,11 +13,24 @@
 		</ui:define>		
 		<ui:define name="conteudo">
 			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
-				<h:outputLabel for="campoRegra" value="regra"/>
-				<h:outputText value="#{consultaRegraBean.regra.regra}" id="campoRegra" />
+				<h:outputLabel for="campoCodigo" value="codigoVeiculo"/>
+				<h:outputText value="#{consultaVeiculoBean.veiculo.codigoVeiculo}" id="campoVeiculo" />
 			</h:panelGrid>					
+			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
+				<h:outputLabel for="campoDescricao" value="descricao"/>
+				<h:outputText value="#{consultaVeiculoBean.veiculo.descricao}" id="campoDescricao" />
+			</h:panelGrid>					
+			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
+				<h:outputLabel for="campoPlaca" value="placa"/>
+				<h:outputText value="#{consultaVeiculoBean.veiculo.veiculo}" id="campoVeiculo" />
+			</h:panelGrid>					
+			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
+				<h:outputLabel for="campoCor" value="cor"/>
+				<h:outputText value="#{consultaVeiculoBean.veiculo.cor}" id="campoCor" />
+			</h:panelGrid>					
+
 			<h:panelGroup>		
-			<h:outputLink value="consulta_regra.xhtml">
+			<h:outputLink value="consulta_veiculo.xhtml">
 				<h:outputText value="voltar para página de consulta" />
 			</h:outputLink>	
 			</h:panelGroup>

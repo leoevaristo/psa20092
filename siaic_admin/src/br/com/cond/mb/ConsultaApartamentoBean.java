@@ -11,9 +11,9 @@ import javax.servlet.http.HttpSession;
 
 import com.mysql.jdbc.Connection;
 
+
 import br.com.cond.businesslogic.Apartamento;
-import br.com.cond.businesslogic.Veiculo;
-import br.com.cond.dao.VeiculoDAO;
+import br.com.cond.dao.ApartamentoDAO;
 import br.com.siaic.dao.FabricaConexao;
 
 import net.sf.jasperreports.engine.JRException;
@@ -23,29 +23,17 @@ import net.sf.jasperreports.engine.JasperPrint;
 
 
 
-public class ConsultaVeiculoBean {
+
+public class ConsultaApartamentoBean {
 	
 	private Connection conexao = null;
 	
-	private Veiculo veiculo;
-	
 	private Apartamento apartamento;
 		
-   private String tipoPesquisa;
+	private String tipoPesquisa;
 	
 	private String campoPesquisa;
 	
-
-	
-	public Veiculo getVeiculo() {
-		return veiculo;
-	}
-
-
-	public void setVeiculo(Veiculo veiculo) {
-		this.veiculo = veiculo;
-	}
-
 
 	public Apartamento getApartamento() {
 		return apartamento;
@@ -78,8 +66,7 @@ public class ConsultaVeiculoBean {
 
 
 	
-	public ConsultaVeiculoBean(){
-		veiculo = new Veiculo();
+	public ConsultaApartamentoBean(){
 		apartamento = new Apartamento();
 	}
 	
@@ -90,11 +77,11 @@ public class ConsultaVeiculoBean {
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<Veiculo> getTodosOsVeiculos() throws SQLException {
+	public List<Apartamento> getTodosOsApartamentos() throws SQLException {
 
-		VeiculoDAO dao = new VeiculoDAO();
+		ApartamentoDAO dao = new ApartamentoDAO();
 		
-		return dao.getTodosOsVeiculos();
+		return dao.getTodosOsApartamentos();
 
 	}
 	
@@ -104,16 +91,15 @@ public class ConsultaVeiculoBean {
 	 * @return
 	 * @throws SQLException
 	 */
-	public String VeiculoId() throws SQLException {
+	public String ApartamentoId() throws SQLException {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
-		Integer idVeiculo = new Integer(req.getParameter("codigoVeiculo")).intValue();
+		Integer idApartamento = new Integer(req.getParameter("codigoApartamento")).intValue();
 		//String tipoExibicao = new String(req.getParameter("tipoExibicao").toString());		
 		
-		VeiculoDAO dao = new VeiculoDAO();
-		setVeiculo(dao.getVeiculoId(idVeiculo));
-		getApartamento();
+		ApartamentoDAO dao = new ApartamentoDAO();
+		setApartamento(dao.getApartamentoId(idApartamento));
 		
 		return "modifica";
 
@@ -126,30 +112,30 @@ public class ConsultaVeiculoBean {
 	 * 
 	 * @throws SQLException
 	 */
-	public void excluiveiculo() throws SQLException {
+	public void excluiApartamento() throws SQLException {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest req = (HttpServletRequest) context
 				.getExternalContext().getRequest();
 
-		Integer idveiculo = new Integer(req.getParameter("codigoveiculo"))
+		Integer idApartamento = new Integer(req.getParameter("codigoApartamento"))
 				.intValue();
 
-		VeiculoDAO dao = new VeiculoDAO();
-		dao.removerveiculo(idveiculo);
+		ApartamentoDAO dao = new ApartamentoDAO();
+		dao.removerApartamento(idApartamento);
 
 	}
 	
 	
-	public String exibeDetalhesveiculos() throws SQLException{
+	public String exibeDetalhesApartamento() throws SQLException{
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
-		Integer idveiculo = new Integer(req.getParameter("codigoVeiculo")).intValue();
+		Integer idApartamento = new Integer(req.getParameter("codigoApartamento")).intValue();
 		//String tipoExibicao = new String(req.getParameter("tipoExibicao").toString());		
 		
-		VeiculoDAO dao = new VeiculoDAO();
-		setVeiculo(dao.getVeiculoId(idveiculo));	
+		ApartamentoDAO dao = new ApartamentoDAO();
+		setApartamento(dao.getApartamentoId(idApartamento));	
 		//getEnderecoUsuario();
 		
 		
@@ -163,14 +149,14 @@ public class ConsultaVeiculoBean {
 	 * @return
 	 * @throws SQLException
 	 */
-	public String updateveiculo() throws SQLException {
+	public String updateApartamento() throws SQLException {
 		// TODO
 		
 		String r = "sucesso";
 		
-		VeiculoDAO daoveiculo = new VeiculoDAO();
+		ApartamentoDAO daoApartamento = new ApartamentoDAO();
 		
-		daoveiculo.alterarVeiculos(veiculo);
+		daoApartamento.alterarApartamento(apartamento);
 		
 		destroiSessao();
 
@@ -180,18 +166,18 @@ public class ConsultaVeiculoBean {
 
 	
 	public String escolheTipoPesquisa() throws SQLException{
-		if(tipoPesquisa.equals("veiculo")){
+		if(tipoPesquisa.equals("bloco")){
 			
-			getveiculoPorveiculo();
+			getApartamentoPorAndar();
 		} 
 		return campoPesquisa;
 }
 	
-	public List<Veiculo> getveiculoPorveiculo() throws SQLException {
+	public List<Apartamento> getApartamentoPorAndar() throws SQLException {
 		
-		VeiculoDAO daoveiculo = new VeiculoDAO();
+		ApartamentoDAO daoApartamento = new ApartamentoDAO();
 		
-		return daoveiculo.getVeiculoPeloVeiculo(campoPesquisa);
+		return daoApartamento.getApartamentoPorBloco(campoPesquisa);
 		
 	}
 
@@ -204,7 +190,7 @@ public class ConsultaVeiculoBean {
 	public String destroiSessao(){
 		
 		FacesContext contexto = FacesContext.getCurrentInstance();
-		contexto.getExternalContext().getSessionMap().remove("veiculoBean");
+		contexto.getExternalContext().getSessionMap().remove("regraBean");
 		
 		return "destruido";
 	}
@@ -227,36 +213,36 @@ public class ConsultaVeiculoBean {
 	private void preenchePdf(JasperPrint print) throws JRException { 
 	//	   Pego o caminho completo do PDF desde a raiz 
 		  String saida;
-		  saida = getDiretorioReal("/pdf/Relveiculos.pdf"); 
+		  saida = getDiretorioReal("/pdf/RelRegras.pdf"); 
 		//   Exporto para PDF 
 		  JasperExportManager.exportReportToPdfFile(print, saida); 
 		  /* 
-		  * Jogo na variável saída o nome da aplicação mais o  
-		  * caminho para o PDF. Essa variável será utilizada pela view  
+		  * Jogo na variï¿½vel saï¿½da o nome da aplicaï¿½ï¿½o mais o  
+		  * caminho para o PDF. Essa variï¿½vel serï¿½ utilizada pela view  
 		  */ 
-		  saida = getContextPath() + "/pdf/Relveiculos.pdf"; 
+		  saida = getContextPath() + "/pdf/RelRegras.pdf"; 
 		}
 	
 
 	
 	public String gerar() { 
-		  String jasper = getDiretorioReal("/rel/Relveiculos.jasper"); 
+		  String jasper = getDiretorioReal("RelRegras.jasper"); 
 		 
 		  try { 
-		    // Abro a conexão com o banco que será passada para o JasperReports 
+		    // Abro a conexï¿½o com o banco que serï¿½ passada para o JasperReports 
 			   FabricaConexao.getInstancia();
 				 this.conexao = (Connection) FabricaConexao.conectar();
 
-		    // Mando o jasper gerar o relatório 
+		    // Mando o jasper gerar o relatï¿½rio 
 		    JasperPrint print = JasperFillManager.fillReport(jasper, null, 
 		conexao); 
 		    // Gero o PDF 
-		    preenchePdf(print);  // VEJA O MÉTODO NO CAPÍTULO 3 DO TUTORIAL 
+		    preenchePdf(print);  // VEJA O Mï¿½TODO NO CAPï¿½TULO 3 DO TUTORIAL 
 		  } catch (Exception e) { 
 		    e.printStackTrace(); 
 		  } finally { 
 		    try { 
-		      // Sempre mando fechar a conexão, mesmo que tenha dado erro 
+		      // Sempre mando fechar a conexï¿½o, mesmo que tenha dado erro 
 		      if (conexao != null) 
 		        conexao.close(); 
 		    } catch (SQLException e) { 

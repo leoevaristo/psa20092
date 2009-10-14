@@ -1,35 +1,30 @@
 package br.com.cond.mb;
 
-import java.io.File;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 
-import com.mysql.jdbc.Connection;
-import com.sun.el.parser.ParseException;
-
+import com.mysql.jdbc.Statement;
 import br.com.cond.businesslogic.Regras;
 import br.com.cond.dao.RegrasDAO;
 import br.com.siaic.dao.FabricaConexao;
 
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 
 public class ConsultaRegraBean {
 	
-	private Connection conexao = null;
+	private java.sql.Connection conexao = null;
 	
 	private Regras regra;
 		
@@ -71,6 +66,15 @@ public class ConsultaRegraBean {
 
 	
 	public ConsultaRegraBean(){
+		try
+			{
+				FabricaConexao.getInstancia();
+				this.conexao = FabricaConexao.conectar();
+			}
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
 		regra = new Regras();
 	}
 	
@@ -201,63 +205,98 @@ public class ConsultaRegraBean {
 	
 	
 	
-	private String getContextPath() { 
-		  HttpSession session = (HttpSession) 
-		FacesContext.getCurrentInstance().getExternalContext().getSession(false); 
-		  return session.getServletContext().getContextPath(); 
-		}	
+//    private String getContextPath() { 
+//		  HttpSession session = (HttpSession) 
+//		FacesContext.getCurrentInstance().getExternalContext().getSession(false); 
+//		  return session.getServletContext().getContextPath(); 
+//		}	
+//	
+//	
+//	private String getDiretorioReal(String diretorio) { 
+//		  HttpSession session = (HttpSession) 
+//		FacesContext.getCurrentInstance().getExternalContext().getSession(false); 
+//		  return session.getServletContext().getRealPath(diretorio); 
+//		} 
+//	
+//	private void preenchePdf(JasperPrint print) throws JRException { 
+//	//	   Pego o caminho completo do PDF desde a raiz 
+//		  String saida;
+//		  saida = getDiretorioReal("/pdf/RelRegras.pdf"); 
+//		//   Exporto para PDF 
+//		  JasperExportManager.exportReportToPdfFile(print, saida); 
+//		  /* 
+//		  * Jogo na variï¿½vel saï¿½da o nome da aplicaï¿½ï¿½o mais o  
+//		  * caminho para o PDF. Essa variï¿½vel serï¿½ utilizada pela view  
+//		  */ 
+//		  saida = getContextPath() + "/pdf/RelRegras.pdf"; 
+//		}
+//	
+//
+//	
+//	public String gerar() { 
+//		  String jasper = getDiretorioReal("/rel/RelRegras.jasper"); 
+//		 
+//		  try { 
+//		    // Abro a conexï¿½o com o banco que serï¿½ passada para o JasperReports 
+//			   FabricaConexao.getInstancia();
+//				 this.conexao = (Connection) FabricaConexao.conectar();
+//
+//		    // Mando o jasper gerar o relatï¿½rio 
+//		    JasperPrint print = JasperFillManager.fillReport(jasper, null, 
+//		conexao); 
+//		    // Gero o PDF 
+//		    preenchePdf(print);  // VEJA O Mï¿½TODO NO CAPï¿½TULO 3 DO TUTORIAL 
+//		  } catch (Exception e) { 
+//		    e.printStackTrace(); 
+//		  } finally { 
+//		    try { 
+//		      // Sempre mando fechar a conexï¿½o, mesmo que tenha dado erro 
+//		      if (conexao != null) 
+//		        conexao.close(); 
+//		    } catch (SQLException e) { 
+//		       
+//		    } 
+//		  }
+//		     
+//		  return "exibeRelatorio"; 
+//		}
+//
+//
 	
-	
-	private String getDiretorioReal(String diretorio) { 
-		  HttpSession session = (HttpSession) 
-		FacesContext.getCurrentInstance().getExternalContext().getSession(false); 
-		  return session.getServletContext().getRealPath(diretorio); 
-		} 
-	
-	private void preenchePdf(JasperPrint print) throws JRException { 
-	//	   Pego o caminho completo do PDF desde a raiz 
-		  String saida;
-		  saida = getDiretorioReal("/pdf/RelRegras.pdf"); 
-		//   Exporto para PDF 
-		  JasperExportManager.exportReportToPdfFile(print, saida); 
-		  /* 
-		  * Jogo na variável saída o nome da aplicação mais o  
-		  * caminho para o PDF. Essa variável será utilizada pela view  
-		  */ 
-		  saida = getContextPath() + "/pdf/RelRegras.pdf"; 
-		}
+	public void geraRelatorio() throws JRException, Exception 
+	 { 
+	   Statement stm = (Statement) conexao.createStatement(); 
+	   String query = "select * from admcon_regras"; 
+	   ResultSet rs =  stm.executeQuery( query ); 
+	 
+	/* implementaÃ§Ã£o da interface JRDataSource para DataSource ResultSet */ 
+	   JRResultSetDataSource jrRS = new JRResultSetDataSource( rs ); 
+	    
+	   /* HashMap de parametros utilizados no relatÃ³rio. Sempre instanciados */ 
+	   Map parameters = new HashMap(); 
+	   // parameters.put("COLUNA", valor); 
+	    
+	   /* Preenche o relatÃ³rio com os dados. Gera o arquivo BibliotecaPessoal.jrprint */ 
+	   JasperFillManager.fillReportToFile("../rel/RelRegras.jasper", parameters, jrRS ); 
+	 
+	 
+	    /* Exporta para o formato PDF */ 
+	    JasperExportManager.exportReportToPdfFile("/pdf/RelRegras.jrprint" ); 
+	 
+	   /* Preenche o relatorio e o salva diretamente em arquivo PDF. Sem 
+	       a necessidade do .jrprint */ 
+	   // JasperRunManager.runReportToPdfFile("BibliotecaPessoal.jasper", parameters, jrRS); 
+	    
+	   /* Visualiza o relatÃ³rio em formato PDF */ 
+	   JasperViewer.viewReport("/pdf/RelRegras.pdf", false );    
+	 } 
+	  
+//	   public static void main(String[] args) throws JRException, Exception 
+//	   { 
+//	     new RelatorioBibliotecaPessoal().geraRelatorio(); 
+//	   } 
+	 
+	} 
 	
 
-	
-	public String gerar() { 
-		  String jasper = getDiretorioReal("/rel/RelRegras.jasper"); 
-		 
-		  try { 
-		    // Abro a conexão com o banco que será passada para o JasperReports 
-			   FabricaConexao.getInstancia();
-				 this.conexao = (Connection) FabricaConexao.conectar();
-
-		    // Mando o jasper gerar o relatório 
-		    JasperPrint print = JasperFillManager.fillReport(jasper, null, 
-		conexao); 
-		    // Gero o PDF 
-		    preenchePdf(print);  // VEJA O MÉTODO NO CAPÍTULO 3 DO TUTORIAL 
-		  } catch (Exception e) { 
-		    e.printStackTrace(); 
-		  } finally { 
-		    try { 
-		      // Sempre mando fechar a conexão, mesmo que tenha dado erro 
-		      if (conexao != null) 
-		        conexao.close(); 
-		    } catch (SQLException e) { 
-		       
-		    } 
-		  }
-		     
-		  return "exibeRelatorio"; 
-		}
-
-
-	
-}
 
