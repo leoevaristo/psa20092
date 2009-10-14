@@ -17,7 +17,7 @@ import br.com.cond.dao.CondominoDAO;
  *
  */
 
-public class CadastrarCondominoBean {
+public class CondominoBean {
 	private Condomino condomino;
 	private List<Condomino> condominosList = null;
 	
@@ -27,7 +27,7 @@ public class CadastrarCondominoBean {
 	private String msg;
 	private String acao;
 	
-	public CadastrarCondominoBean() {
+	public CondominoBean() {
 		condomino = new Condomino();
 		condominosList = new ArrayList<Condomino>();
 	}

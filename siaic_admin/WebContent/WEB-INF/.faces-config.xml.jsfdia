@@ -359,6 +359,23 @@
     TARGET="rules:#paginas#imovel#consulta_imoveis.xhtml" TITLE="volta" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#perfil_cliente#cadastrar_perfil.xhtml"
+  PATH="/paginas/perfil_cliente/cadastrar_perfil.xhtml"
+  SHAPE="32,1649,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#perfil_cliente#cadastrar_perfil.xhtml:0"
+   NAME="item" PATH="/paginas/perfil_cliente/cadastrar_perfil.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Cancelar::#paginas#perfil_cliente#perfil_cliente.xhtml"
+    NAME="output" PATH="/paginas/perfil_cliente/perfil_cliente.xhtml"
+    TARGET="rules:#paginas#perfil_cliente#perfil_cliente.xhtml"
+    TITLE="Cancelar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#perfil_cliente#perfil_cliente.xhtml"
+  PATH="/paginas/perfil_cliente/perfil_cliente.xhtml"
+  SHAPE="240,1809,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#cadastra_regra.xhtml"
   PATH="/paginas/Cond/Regras/cadastra_regra.xhtml" SHAPE="48,2241,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#paginas#Cond#Regras#cadastra_regra.xhtml:0"
@@ -413,20 +430,10 @@
     TITLE="modifica" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM
-  NAME="rules:#paginas#perfil_cliente#cadastrar_perfil.xhtml"
-  PATH="/paginas/perfil_cliente/cadastrar_perfil.xhtml"
-  SHAPE="32,1649,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM
-   ID="rules:#paginas#perfil_cliente#cadastrar_perfil.xhtml:0"
-   NAME="item" PATH="/paginas/perfil_cliente/cadastrar_perfil.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="Cancelar::#paginas#perfil_cliente#perfil_cliente.xhtml"
-    NAME="output" PATH="/paginas/perfil_cliente/perfil_cliente.xhtml"
-    TARGET="rules:#paginas#perfil_cliente#perfil_cliente.xhtml"
-    TITLE="Cancelar" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#sucesso.xhtml"
+  PATH="/paginas/Cond/Regras/sucesso.xhtml" SHAPE="288,2257,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#detalhes_regra.xhtml"
+  PATH="/paginas/Cond/Regras/detalhes_regra.xhtml" SHAPE="288,2577,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM
   NAME="rules:#paginas#perfil_cliente#consultar_perfil.xhtml"
   PATH="/paginas/perfil_cliente/consultar_perfil.xhtml"
@@ -487,9 +494,6 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#Cond#Reuniao#reuniao.xhtml"
   PATH="/paginas/Cond/Reuniao/reuniao.xhtml" SHAPE="256,3793,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#paginas#perfil_cliente#perfil_cliente.xhtml"
-  PATH="/paginas/perfil_cliente/perfil_cliente.xhtml"
-  SHAPE="240,1809,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#paginas#imovel#altera_imovel.xhtml"
   PATH="/paginas/imovel/altera_imovel.xhtml" SHAPE="32,4337,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#paginas#imovel#altera_imovel.xhtml:0"
@@ -500,8 +504,4 @@
     TARGET="rules:#paginas#imovel#consulta_imoveis.xhtml" TITLE="volta" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#sucesso.xhtml"
-  PATH="/paginas/Cond/Regras/sucesso.xhtml" SHAPE="288,2257,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#detalhes_regra.xhtml"
-  PATH="/paginas/Cond/Regras/detalhes_regra.xhtml" SHAPE="288,2577,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
