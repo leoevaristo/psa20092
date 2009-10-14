@@ -17,19 +17,21 @@
 
 	<ui:define name="conteudo">
 		<a4j:form styleClass="forms">
-			<h:panelGroup id="panelCorretores">
+			<h:panelGrid columns="3" id="panelCorretores">
 				<h:outputLabel for="corretor" value="Corretor" />
 				<h:selectOneMenu value="#{consultaAgendaBean.agenda.codCorretor}"
-					id="corretor">
+					id="corretor" required="true" requiredMessage="Você deve selecionar um corretor">
 					<f:selectItem itemLabel="Corretor" itemValue="" />
 					<f:selectItems value="#{selectCorretores.corretores}" />
 				</h:selectOneMenu>
-			</h:panelGroup>
-			<h:panelGroup id="panelNomeCliente">
+				<h:message for="corretor" styleClass="msgErro"/>
+			</h:panelGrid>
+			<h:panelGrid columns="3" id="panelNomeCliente">
 				<h:outputLabel value="Nome do Cliente" for="nomeCliente" />
 				<h:outputText value="#{consultaAgendaBean.cliente.nome}"
-					id="nomeCliente" />
-			</h:panelGroup>
+					id="nomeCliente" required="true" />
+					<h:message for="nomeCliente" styleClass="msgErro"/>
+			</h:panelGrid>
 			<h:panelGrid columns="2" id="panelImovel">
 					<h:outputLabel value="Imóvel" for="filtroCliente" />
 					<a4j:commandButton value="Filtrar pelo Perfil do Cliente"
@@ -42,33 +44,33 @@
 				<a4j:outputPanel>
 					<rich:pickList sourceListWidth="250px"
 						value="#{consultaAgendaBean.imoveisSelecionados}"
-						id="pickImoveis" >
+						id="pickImoveis" required="true" requiredMessage="Selecione pelo menos um imóvel">
 						<f:selectItems value="#{consultaAgendaBean.listaImoveis}" />
 					</rich:pickList>
 					<h:message for="pickImoveis" styleClass="msgErro" />
 				</a4j:outputPanel>
 			</h:panelGrid>
-			<h:panelGroup id="panelData">
+			<h:panelGrid columns="3" id="panelDados">
 				<h:outputLabel for="data" value="Data" />
 				<h:inputText value="#{consultaAgendaBean.agenda.data}" id="data"
-					styleClass="obrigatorio">
+					styleClass="obrigatorio" required="true" requiredMessage="Digite a data no formato dd/MM/AAAA">
 				</h:inputText>
-			</h:panelGroup>
-			<h:panelGroup id="panelHoraIni">
-				<h:outputLabel for="horaInicio" value="Hora de inicio (h:m:s)" />
+				<h:message for="data" styleClass="msgErro"/>
+			
+			
+				<h:outputLabel for="horaInicio" value="Hora de inicio (h:m)" />
 				<h:inputText value="#{consultaAgendaBean.agenda.horaInicio}"
-					id="horaInicio" />
-			</h:panelGroup>
-			<h:panelGroup id="panelHoraFim">
+					id="horaInicio" required="true" requiredMessage="Digite a hora de início da visita"/>
+				<h:message for="horaInicio" styleClass="msgErro"/>			
 				<h:outputLabel for="horaFim" value="Hora de fim (h:m:s)" />
 				<h:inputText value="#{consultaAgendaBean.agenda.horaFim}"
-					id="horaFim" />
-			</h:panelGroup>
-			<h:panelGroup id="panelDescricao">
+					id="horaFim" required="true" requiredMessage="Digite a hora de término da visita" />
+				<h:message for="horaFim" styleClass="msgErro"/>			
 				<h:outputLabel for="descricao" value="Descricao" />
 				<h:inputTextarea value="#{consultaAgendaBean.agenda.descricao}"
-					id="descricao" />
-			</h:panelGroup>
+					id="descricao" required="true" requiredMessage="Digite a descrição da visita" />
+				<h:message for="descricao" styleClass="msgErro"/>					
+			</h:panelGrid>
 			<h:panelGroup styleClass="linha" id="linha" />
 			<h:panelGroup styleClass="botoes" id="botoes">
 				<h:commandButton action="#{consultaAgendaBean.updateAgenda}"

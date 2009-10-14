@@ -26,7 +26,7 @@
 			<rich:datascroller for="tableCliente" />
 			<rich:spacer height="30" />
 			<a4j:region>
-				<a4j:outputPanel>
+				<a4j:outputPanel>					
 					<rich:dataTable id="tableCliente"
 						onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
 						onRowMouseOut="this.style.backgroundColor='#FFFFFF'"
@@ -36,13 +36,13 @@
 						<f:facet name="header">
 							<rich:columnGroup>
 								<rich:column rowspan="2">
-									<rich:spacer />
+									<rich:spacer />																											
 								</rich:column>
 								<rich:column colspan="3">
 									<h:outputText value="Lista de Clientes" />
 								</rich:column>
 								<rich:column breakBefore="true">
-									<h:outputText value="Nome" />
+									<h:outputText value="Nome" />									
 								</rich:column>
 								<rich:column>
 									<h:outputText value="E-mail" />

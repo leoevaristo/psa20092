@@ -56,7 +56,7 @@
 				<rich:dataGrid  columns="2" value="#{consultaAgendaBean.infoAgenda}"	var="imoveis">
 					<rich:panel>
 						<f:facet name="header">
-							<h:outputText value="#{imoveis.logEnd} #{imoveis.nomeEnd} #{imoveis.bairroEnd}" />
+							<h:outputText value="#{imoveis.logEnd} #{imoveis.nomeEnd} - #{imoveis.bairroEnd}" />
 						</f:facet>
 						<h:panelGrid columns="2">
 							<h:outputLabel value="No. Quartos:" />
@@ -67,6 +67,14 @@
 							<h:outputText value="#{imoveis.numVagaGaragem}" />
 							<h:outputLabel value="Tem piscina?" />
 							<h:outputText value="#{imoveis.temPiscina}" />
+							<h:outputLabel value="CEP:" />
+							<h:outputText value="#{imoveis.cepEnd}" />
+							<h:outputLabel value="Detalhes:" />
+							<h:outputText value="#{imoveis.detalhesImovel}" />
+							<h:outputLabel value="Valor do Imóvel:" />
+							<h:outputText value="#{imoveis.valorImovel}" />
+							<h:outputLabel value="Forma de Pagamento:" />
+							<h:outputText value="#{imoveis.formaPagamento}" />							
 						</h:panelGrid>
 					</rich:panel>
 				</rich:dataGrid>

@@ -494,16 +494,6 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#Cond#Reuniao#reuniao.xhtml"
   PATH="/paginas/Cond/Reuniao/reuniao.xhtml" SHAPE="256,3793,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#paginas#imovel#altera_imovel.xhtml"
-  PATH="/paginas/imovel/altera_imovel.xhtml" SHAPE="32,4337,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#paginas#imovel#altera_imovel.xhtml:0"
-   NAME="item" PATH="/paginas/imovel/altera_imovel.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="volta::#paginas#imovel#consulta_imoveis.xhtml" NAME="output"
-    PATH="/paginas/imovel/consulta_imoveis.xhtml"
-    TARGET="rules:#paginas#imovel#consulta_imoveis.xhtml" TITLE="volta" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
  <PROCESS-ITEM
   NAME="rules:#paginas#Cond#condomino#consultar_condomino.xhtml"
   PATH="/paginas/Cond/condomino/consultar_condomino.xhtml"
@@ -550,6 +540,16 @@
     NAME="output" PATH="/paginas/Cond/condomino/condomino.xhtml"
     TARGET="rules:#paginas#Cond#condomino#condomino.xhtml"
     TITLE="Cadastrar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#imovel#altera_imovel.xhtml"
+  PATH="/paginas/imovel/altera_imovel.xhtml" SHAPE="32,4337,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#imovel#altera_imovel.xhtml:0"
+   NAME="item" PATH="/paginas/imovel/altera_imovel.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="volta::#paginas#imovel#consulta_imoveis.xhtml" NAME="output"
+    PATH="/paginas/imovel/consulta_imoveis.xhtml"
+    TARGET="rules:#paginas#imovel#consulta_imoveis.xhtml" TITLE="volta" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#Cond#condomino#condomino.xhtml"

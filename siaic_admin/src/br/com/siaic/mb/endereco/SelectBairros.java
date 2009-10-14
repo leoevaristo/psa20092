@@ -9,6 +9,12 @@ import javax.faces.model.SelectItem;
 import br.com.siaic.businesslogic.endereco.Bairro;
 import br.com.siaic.dao.EnderecoDAO;
 
+/**
+ * Classe que retorna os dados dos bairros cadastradas no banco.
+ * Para serem utilizados em um componente <h:selectOneMenu>.
+ * @author carlos
+ *
+ */
 public class SelectBairros {
 	
 	private static List<SelectItem> bairros = new ArrayList<SelectItem>();

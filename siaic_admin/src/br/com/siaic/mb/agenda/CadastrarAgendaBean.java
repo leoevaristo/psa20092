@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
@@ -350,22 +351,23 @@ public class CadastrarAgendaBean {
 	 * @throws SQLException
 	 */
 	public String criarRegistro() throws SQLException {
-		
-		AgendaDAO daoAgenda = new AgendaDAO();	
+
+		AgendaDAO daoAgenda = new AgendaDAO();
 		List<String> imo = getImoveisSelecionados();
 		agenda.setCodCliente(getCliente().getCodigoPessoa());
-		
+
 		if (daoAgenda.InserirAgenda(agenda)) {
 			agenda.setCodigo(daoAgenda.getUltimoIndiceAgenda());
-			
-			for(String codigo : imo){
-				
-				daoAgenda.associarImovelAgenda( Integer.parseInt(codigo), getAgenda().getCodigo());		
+
+			for (String codigo : imo) {
+
+				daoAgenda.associarImovelAgenda(Integer.parseInt(codigo),
+						getAgenda().getCodigo());
 			}
 
 			destroiSessao();
 			listaImoveis.clear();
-			
+
 			return "sucesso";
 		}
 
@@ -423,10 +425,11 @@ public class CadastrarAgendaBean {
 					+ " - " + cepEnd)));
 		}
 	}
+
 	/**
-	 * Retorna uma lista do tipo Cliente
-	 * filtrada pela string contida na propriedade
-	 * campoPesquisa
+	 * Retorna uma lista do tipo Cliente filtrada pela string contida na
+	 * propriedade campoPesquisa
+	 * 
 	 * @return List<Cliente>
 	 * @throws SQLException
 	 */
@@ -436,21 +439,33 @@ public class CadastrarAgendaBean {
 
 		return daoCliente.getClientesPeloNome(campoPesquisa);
 	}
+
 	/**
-	 * Retorna uma lista do tipo Cliente
-	 * filtrada pela string contida na propriedade
-	 * e que contenham perfil de cliente
+	 * Retorna uma lista do tipo Cliente filtrada pela string contida na
+	 * propriedade e que contenham perfil de cliente
+	 * 
 	 * @return
 	 * @throws SQLException
 	 */
 	public List<Cliente> getClientePerfilPorNome() throws SQLException {
 
 		ClienteDAO daoCliente = new ClienteDAO();
-
-		return daoCliente.getClientesPerfilPeloNome(campoPesquisa);
+		List<Cliente> clientesPerfil = daoCliente
+				.getClientesPerfilPeloNome(campoPesquisa);
+		if (clientesPerfil.isEmpty()) {
+			FacesContext contexto = FacesContext.getCurrentInstance();
+			FacesMessage mensagem = new FacesMessage(
+					"Nenhum cliente encontrado.");
+			contexto.addMessage("formBusca", mensagem);
+		} else {
+			return clientesPerfil;
+		}
+		return null;
 	}
+
 	/**
 	 * Escolhe o método de pesquisa
+	 * 
 	 * @throws SQLException
 	 */
 	public void escolheTipoPesquisa() throws SQLException {
@@ -459,6 +474,7 @@ public class CadastrarAgendaBean {
 			getClientePorNome();
 		}
 	}
+
 	/**
 	 * Limpa os campos do formulário de cadastro
 	 */

@@ -11,6 +11,11 @@ import br.com.siaic.businesslogic.endereco.Endereco;
 import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.ImovelDAO;
 
+/**
+ * Classe para manipular dados de Imovel na view
+ * @author carlos
+ *
+ */
 public class SelectImoveis {
 	
 	private static List<SelectItem> listaImoveis = new ArrayList<SelectItem>();
@@ -31,14 +36,10 @@ public class SelectImoveis {
 		return listaImoveis;
 	}
 
-	public void setListaImoveis() throws SQLException {
-		
+	public void setListaImoveis() throws SQLException {		
 		ImovelDAO daoImovel = new ImovelDAO();
 		EnderecoDAO daoEndereco = new EnderecoDAO();		
-		
-		
-		List<Imovel> imoveis = daoImovel.getImoveis();
-		
+		List<Imovel> imoveis = daoImovel.getImoveis();		
 		
 		for(Imovel imo : imoveis){
 			
@@ -46,23 +47,16 @@ public class SelectImoveis {
 			String nomeEnd = end.getEnderecoNome();
 			String logEnd = end.getEnderecoLogradouro();
 			String cepEnd = end.getEnderecoCep();
-			String bairroEnd = end.getEnderecoBairro().getBairroNome();
-			
+			String bairroEnd = end.getEnderecoBairro().getBairroNome();			
 			listaImoveis.add((new SelectItem(imo.getCodigo(),logEnd + " " + nomeEnd + " " + bairroEnd + " " + cepEnd)));
-		}
-		
-	}
-	
-	
-	
+		}		
+	}	
 
 	public void setImoveisSelecionados(List<Integer> imoveisSelecionados) {
 		this.imoveisSelecionados = imoveisSelecionados;
 	}
 
-	public List<Integer> getImoveisSelecionados() {
-		
-	
+	public List<Integer> getImoveisSelecionados() {	
 		return imoveisSelecionados;
 	}
 
