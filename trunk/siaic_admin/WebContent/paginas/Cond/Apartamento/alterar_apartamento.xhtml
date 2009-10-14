@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="tituloGrande">
+		<h:outputText value="Página de Apartamentos" />
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="» Alterar Apartamento" />
+	</ui:define>
+	<ui:define name="conteudo">
+		<h:form styleClass="forms">
+ 			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoAndar" value="Andar" />
+				<h:inputText value="#{consultaApartamentoBean.apartamento.andar}"
+					styleClass="obrigatorio" id="campoAndar" size="50" required="true" /> 
+			</h:panelGroup>
+ 			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoBloco" value="Bloco" />
+				<h:inputText value="#{consultaApartamentoBean.apartamento.bloco}"
+					styleClass="obrigatorio" id="campoBloco" size="50" required="true" /> 
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />
+			</h:panelGroup>
+			<h:panelGroup styleClass="linha"></h:panelGroup>
+			<h:panelGroup styleClass="botoes">
+				<h:commandButton action="#{consultaApartamentoBean.updateApartamento}" value=""
+					styleClass="input_submit" />
+				<h:commandButton action="#{consultaApartamentoBean.destroiSessao}" value=""
+					styleClass="input_button" immediate="true" />
+			</h:panelGroup>
+		</h:form>
+	</ui:define>	
+</ui:composition>
+
+</html>

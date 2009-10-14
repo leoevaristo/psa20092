@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="tituloGrande">
+		<h:outputText value="Pagina do Apartamento" />
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="Â» Consultar Apartamentos" />
+	</ui:define>
+	<ui:define name="conteudo">
+		<h:form styleClass="forms" id="formFiltros">
+			<h:panelGroup>
+				<h:outputLabel for="campoFiltro" value="Filtrar por" />
+				<h:selectOneMenu value="#{consultaApartamentoBean.tipoPesquisa}" id="campoFiltro" >
+					<f:selectItem itemValue="" itemLabel="Tipo de Filtro" />
+					<f:selectItem itemValue="bloco" itemLabel="Bloco" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:outputLabel value="Palavra-chave" for="inFiltro" />
+				<h:inputText value="#{consultaApartamentoBean.campoPesquisa}" id="inFiltro" size = "2"/>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:commandButton action="#{consultaApartamentoBean.escolheTipoPesquisa}" value="Filtrar" type="submit" /> 				
+			</h:panelGroup>
+
+		</h:form>
+	</ui:define>
+	<ui:define name="tituloLista">
+		<h:outputText value="Lista de Apartamentos" />
+	</ui:define>
+	<ui:define name="infoGerais">
+		<h:dataTable 
+			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
+			value="#{consultaApartamentoBean.apartamentoPorBloco}" var="apartamento" rendered="#{consultaApartamentoBean.tipoPesquisa eq 'bloco'}">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Código" />
+				</f:facet>
+				<h:outputText value="#{apartamento.codigoApartamento}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Andar" />
+				</f:facet>
+				<h:outputText value="#{apartamento.andar}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Bloco" />
+				</f:facet>
+				<h:outputText value="#{apartamento.bloco}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Editar" />
+				</f:facet>
+				<h:form id="alteraApartamento">
+					<h:commandLink action="#{consultaApartamentoBean.ApartamentoId}">
+						<h:graphicImage value="/images/imgedit.png" />
+						<f:param value="#{apartamento.codigoApartamento}" name="codigoApartamento" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Detalhes" />
+				</f:facet>
+				<h:form id="detalheApartamento">
+					<h:commandLink id="detalheLink"
+						action="#{consultaApartamentoBean.exibeDetalhesApartamento}">
+						<h:outputText value="Exibir Detalhes" />
+						<f:param value="#{apartamento.codigoApartamento}" name="codigoApartamento" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir" />
+				</f:facet>
+				<h:form id="excluiApartamento">
+					<h:commandLink id="excluir"
+						onclick="if (confirm('VocÃª tem certeza que deseja excluir esse Apartamento?')) {return true }; return false;"
+						action="#{consultaApartamentoBean.excluiApartamento}">
+						<h:graphicImage value="/images/imgdelete.png" />
+						<f:param value="#{apartamento.codigoApartamento}" name="codigoApartamento" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+		 <h:dataTable 
+			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
+			value="#{consultaApartamentoBean.todosOsApartamentos}" var="apartamentos" rendered="#{consultaApartamentoBean.campoPesquisa eq null}">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Código" />
+				</f:facet>
+				<h:outputText value="#{apartamentos.codigoApartamento}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Andar" />
+				</f:facet>
+				<h:outputText value="#{apartamentos.andar}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Bloco" />
+				</f:facet>
+				<h:outputText value="#{apartamentos.bloco}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Editar" />
+				</f:facet>
+				<h:form id="alteraApartamento">
+					<h:commandLink action="#{consultaApartamentoBean.ApartamentoId}">
+						<h:graphicImage value="/images/imgedit.png" />
+						<f:param value="#{apartamentos.codigoApartamento}" name="codigoApartamento" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Detalhes" />
+				</f:facet>
+				<h:form id="detalheApartamento">
+					<h:commandLink id="detalheLink"
+						action="#{consultaApartamentoBean.exibeDetalhesApartamento}">
+						<h:outputText value="Exibir Detalhes" />
+						<f:param value="#{apartamentos.codigoApartamento}" name="codigoApartamento" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir" />
+				</f:facet>
+				<h:form id="excluiRegra">
+					<h:commandLink id="excluir"
+						onclick="if (confirm('VocÃª tem certeza que deseja excluir esse Apartamento?')) {return true }; return false;"
+						action="#{consultaApartamentoBean.excluiApartamento}">
+						<h:graphicImage value="/images/imgdelete.png" />
+						<f:param value="#{apartamentos.codigoApartamento}" name="codigoApartamento" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</ui:define>
+	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
+</ui:composition>
+</html>
