@@ -52,6 +52,9 @@ public class SelectImoveis {
 		}
 		
 	}
+	
+	
+	
 
 	public void setImoveisSelecionados(List<Integer> imoveisSelecionados) {
 		this.imoveisSelecionados = imoveisSelecionados;
