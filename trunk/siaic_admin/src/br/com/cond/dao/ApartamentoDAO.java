@@ -180,6 +180,45 @@ public class ApartamentoDAO {
 		
 	}
 	
+	public List<Apartamento> getApartamentoPorBloco(String nbloco) throws SQLException {
+
+		String sql = "SELECT APA_CODIGO,APA_ANDAR,APA_BLOCO "
+			+ "FROM admcon_apartamento  "
+			+ "WHERE APA_BLOCO LIKE ? ";
+
+		try{
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, "%" + nbloco + "%");
+
+			ResultSet rs = ps.executeQuery();
+
+			List<Apartamento> listaApartamentos = new ArrayList<Apartamento>();
+
+			while (rs.next()) {
+			
+				Apartamento apartamento = new Apartamento();
+				apartamento.setCodigoApartamento(rs.getInt("APA_CODIGO"));
+				apartamento.setAndar(rs.getInt("APA_ANDAR"));
+				apartamento.setBloco(rs.getString("APA_BLOCO"));
+
+				listaApartamentos.add(apartamento);
+
+			}
+
+			ps.close();
+			rs.close();
+		
+			return listaApartamentos;
+		
+			}finally{
+				conexao.close();
+		}
+		
+	}
+
+
+	
 
 }
 
