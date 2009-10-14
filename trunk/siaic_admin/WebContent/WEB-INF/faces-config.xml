@@ -528,6 +528,38 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
+  <from-view-id>/paginas/Cond/condomino/consultar_condomino.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>Editar</from-outcome>
+   <to-view-id>/paginas/Cond/condomino/cadastrar_condomino.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/Cond/condomino/cadastrar_condomino.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>Editar</from-outcome>
+   <to-view-id>/paginas/Cond/condomino/consultar_condomino.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/Cond/condomino/consultar_condomino.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>Cadastrar</from-outcome>
+   <to-view-id>/paginas/Cond/condomino/condomino.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/Cond/condomino/cadastrar_condomino.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>Cadastrar</from-outcome>
+   <to-view-id>/paginas/Cond/condomino/condomino.xhtml</to-view-id> 
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
   <from-view-id>/paginas/imovel/altera_imovel.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>voltar</from-outcome>
