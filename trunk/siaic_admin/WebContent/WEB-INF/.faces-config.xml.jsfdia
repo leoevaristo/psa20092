@@ -19,6 +19,11 @@
     NAME="output1" PATH="/paginas/cliente/cadastra_cliente.xhtml"
     SHAPE="-1,16" TARGET="rules:#paginas#cliente#cadastra_cliente.xhtml"
     TITLE="destruido" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelar::#paginas#cliente#consulta_cliente.xhtml"
+    NAME="output2" PATH="/paginas/cliente/consulta_cliente.xhtml"
+    TARGET="rules:#paginas#cliente#consulta_cliente.xhtml"
+    TITLE="cancelar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#cliente#altera_cliente.xhtml"
@@ -354,9 +359,9 @@
     PATH="/paginas/imovel/consulta_imoveis.xhtml"
     TARGET="rules:#paginas#imovel#consulta_imoveis.xhtml" TITLE="novo" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="volta::#paginas#imovel#consulta_imoveis.xhtml" NAME="output1"
+    ID="voltar::#paginas#imovel#consulta_imoveis.xhtml" NAME="output1"
     PATH="/paginas/imovel/consulta_imoveis.xhtml"
-    TARGET="rules:#paginas#imovel#consulta_imoveis.xhtml" TITLE="volta" model-entity="JSFProcessItemOutput"/>
+    TARGET="rules:#paginas#imovel#consulta_imoveis.xhtml" TITLE="voltar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM
@@ -547,9 +552,9 @@
   <PROCESS-ITEM ID="rules:#paginas#imovel#altera_imovel.xhtml:0"
    NAME="item" PATH="/paginas/imovel/altera_imovel.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="volta::#paginas#imovel#consulta_imoveis.xhtml" NAME="output"
+    ID="voltar::#paginas#imovel#consulta_imoveis.xhtml" NAME="output"
     PATH="/paginas/imovel/consulta_imoveis.xhtml"
-    TARGET="rules:#paginas#imovel#consulta_imoveis.xhtml" TITLE="volta" model-entity="JSFProcessItemOutput"/>
+    TARGET="rules:#paginas#imovel#consulta_imoveis.xhtml" TITLE="voltar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#Cond#condomino#condomino.xhtml"
