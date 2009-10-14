@@ -1,10 +1,13 @@
 package br.com.cond.mb;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletRequest;
 
 import br.com.cond.businesslogic.Apartamento;
 import br.com.cond.businesslogic.Condomino;
@@ -19,6 +22,7 @@ import br.com.cond.dao.CondominoDAO;
 
 public class CondominoBean {
 	private Condomino condomino;
+	private Condomino atual;
 	private List<Condomino> condominosList = null;
 	
 	private String filtro;
@@ -43,6 +47,10 @@ public class CondominoBean {
 	
 	public String getMsg() {
 		return msg;
+	}
+	
+	public String getAcao() {
+		return acao;
 	}
 	
 	public String getFiltro() {
@@ -110,36 +118,40 @@ public class CondominoBean {
 	public void limpar() {
 		condomino = new Condomino();
 		condominosList.clear();
+		filtro = "";
+		valor = "";
 		msg = "";
 	}
 	
-	public String Cancelar(){
-		limpar();
-		String s = "";
+	public String cancelar() throws SQLException{
 		String nav = "";
 		if (acao.equals("Editar")) {
 			acao = "Cadastrar";
 			nav = "Editar";
+			setCondominosList();
 		} else {
 			nav = "Cadastrar";
+			limpar();
 		}
 		return nav;
 	}
 	
-	public String cadastrar() {
+	public String cadastrar() throws SQLException, ParseException {
 		String s = "";
 		String nav = "";
-//		if (acao.equals("Editar")) {
-//			s = new ReuniaoDAO().altReuniao(atual, reuniao) ? "Sucesso" : "Falha";
-//			acao = "Cadastrar";
-//			nav = "Editar";
-//		} else {
+		if (acao.equals("Editar")) {
+			s = new CondominoDAO().update(atual, condomino) ? "Sucesso" : "Falha";
+			acao = "Cadastrar";
+			nav = "Editar";
+			condominosList.clear();
+			setCondominosList();
+		} else {
 			try {
 				s = new CondominoDAO().inserir(condomino) ? "Sucesso" : "Falha";
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-//		}
+		}
 		if (s.equals("Sucesso")) {
 			msg = "Operação realizada com sucesso";
 		} else {
@@ -149,6 +161,36 @@ public class CondominoBean {
 		return nav;
 	}
 	
-}
+	public String editar(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
 
+		Integer cod = new Integer(req.getParameter("codigoEntrada")).intValue();
+		try {
+			condomino = new CondominoDAO().getCondominio(cod);
+			atual = new CondominoDAO().getCondominio(condomino.getCodigo());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		msg = "";
+		acao = "Editar";
+		return acao;
+	}
 	
+	public void excluir() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
+
+		Integer cod = new Integer(req.getParameter("codigoEntrada")).intValue();
+
+		try {
+			new CondominoDAO().deletar(new CondominoDAO().getCondominio(cod));
+			condominosList.clear();
+			setCondominosList();
+		} catch (SQLException e) {
+			msg = "Operação não realizada. Esse registro esta sendo usado.";
+			e.printStackTrace();
+		}	
+	}
+
+}
