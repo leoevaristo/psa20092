@@ -78,7 +78,7 @@ public class CondominoDAO {
 	
 	public boolean update(Condomino cAtual, Condomino cNovo) throws SQLException, ParseException {
 		String sql = "update admcon_condomino set "+
-		"CON_NOME = ?, CON_SEXO = ?, CON_DATA_NASCIMENTO = ?, CON_CON_CODIGO = ?, CON_APA_CODIGO = ?) "+
+		"CON_NOME = ?, CON_SEXO = ?, CON_DATA_NASCIMENTO = ?, CON_CON_CODIGO = ?, CON_APA_CODIGO = ? "+
 		"where CON_CODIGO = ?";
 		
 		PreparedStatement ps = DB.getConn().prepareStatement(sql);
@@ -130,11 +130,14 @@ public class CondominoDAO {
 		if (filtro.equals("nome")) {
 			valor = "%"+valor+"%";
 			sql = sql + " where CON_NOME like '"+valor+"' order by CON_NOME";
-		} if (filtro.equals("apartamento")) {
+		} else if (filtro.equals("apartamento")) {
 			sql = sql + ", admcon_apartamento where (APA_CODIGO = CON_APA_CODIGO) and" +
-						" (APA_CODIGO = "+valor+") order by CON_APA_CODIGO, CON_NOME";
+						" (APA_CODIGO = "+valor+") order by APA_ANDAR, CON_NOME";
+		} else if (filtro.equals("apartamento")) {
+			valor = "%"+valor+"%";
+			sql = sql + ", admcon_apartamento where (APA_CODIGO = CON_APA_CODIGO) and" +
+			" (APA_BLOCO like '"+valor+"') order by APA_ANDAR, CON_NOME";
 		}
-		System.out.println(sql);
 		
 		PreparedStatement ps = DB.getConn().prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();

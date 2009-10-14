@@ -80,7 +80,7 @@
 					<h:outputText value="Editar" />
 				</f:facet>
 				<h:form id="alteraEntrada">
-					<h:commandLink	action="#">
+					<h:commandLink	action="#{condominoBean.editar}">
 						<h:graphicImage value="/images/imgedit.png" />
 						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
 					</h:commandLink>
@@ -94,7 +94,7 @@
 				<h:form id="excluiEntrada">
 					<h:commandLink id="excluir"
 						onclick="if (confirm('Voce tem certeza que deseja excluir essa entrada?')) {return true }; return false;"
-						action="#">
+						action="#{condominoBean.excluir}">
 						<h:graphicImage value="/images/imgdelete.png" />
 						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
 					</h:commandLink>
@@ -105,8 +105,9 @@
 			<span class="linha"></span>
 			<span class="botoes">
 			<h:commandButton action="#{condominoBean.limpar}" value="" styleClass="input_reset" />
-				<h:commandButton action="#" value="" styleClass="input_button" immediate="true" />
+				<h:commandButton action="#{condominoBean.cancelar}" value="" styleClass="input_button" immediate="true" />
 			</span>
+			<h:outputText value="#{condominoBean.msg}" />
 		</h:form>
 	</ui:define>
 	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
