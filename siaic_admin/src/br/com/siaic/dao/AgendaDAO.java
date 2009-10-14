@@ -411,4 +411,23 @@ public class AgendaDAO {
 			DB.getConn().close();
 		}
 	}
+
+	public boolean apagarTodosImoveisAgenda(int codigoEntrada)
+			throws SQLException {
+		String sql = "DELETE FROM IMOVEL_AGENDA WHERE  IMA_AGENDA_CODIGO = ?;";
+
+		try {
+			PreparedStatement ps = DB.getConn().prepareStatement(sql);
+
+			ps.setInt(1, codigoEntrada);
+
+			boolean result = ps.executeUpdate() > 0;
+			ps.close();
+
+			return result;
+
+		} finally {
+			DB.getConn().close();
+		}
+	}
 }

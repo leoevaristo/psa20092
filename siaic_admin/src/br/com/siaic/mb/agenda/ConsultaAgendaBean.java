@@ -203,15 +203,24 @@ public class ConsultaAgendaBean {
 						.parseInt(getImoveisSelecionados().get(i)), getAgenda()
 						.getCodigo());
 			}
-		} else if(qtdImoveisAgenda > qtdImoveisSelecionados) {
-			for (int i = qtdImoveisSelecionados ; i >= qtdImoveisAgenda; i++ ) {
-				if (getImoveisSelecionados().get(i) == indicesImoveisAgenda
+		} else if (qtdImoveisAgenda > qtdImoveisSelecionados) {
+			for (int i = qtdImoveisSelecionados - 1; i <= qtdImoveisAgenda; i++) {
+				if(qtdImoveisSelecionados == 0){
+					
+					daoAgenda.apagarTodosImoveisAgenda(getAgenda().getCodigo());
+					break;
+					
+				}else if (getImoveisSelecionados().get(i) != indicesImoveisAgenda
 						.get(i)) {
-					System.out.println("ok");
-				} else {
+					
 					daoAgenda.apagarImovelAgenda(Integer
 							.parseInt(getImoveisSelecionados().get(i)),
 							getAgenda().getCodigo());
+					qtdImoveisAgenda--;
+					
+					if(qtdImoveisAgenda == qtdImoveisSelecionados){
+						break;
+					}									
 				}
 			}
 		}
