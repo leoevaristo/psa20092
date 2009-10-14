@@ -277,7 +277,7 @@ public class ConsultaRegraBean {
 	   // parameters.put("COLUNA", valor); 
 	    
 	   /* Preenche o relatório com os dados. Gera o arquivo BibliotecaPessoal.jrprint */ 
-	   JasperFillManager.fillReportToFile("../rel/RelRegras.jasper", parameters, jrRS ); 
+	   JasperFillManager.fillReportToFile("/exemplo/RelRegras.jasper", parameters, jrRS ); 
 	 
 	 
 	    /* Exporta para o formato PDF */ 
