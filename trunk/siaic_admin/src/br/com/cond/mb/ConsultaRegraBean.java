@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.mysql.jdbc.Statement;
 import br.com.cond.businesslogic.Regras;
@@ -212,11 +213,11 @@ public class ConsultaRegraBean {
 //		}	
 //	
 //	
-//	private String getDiretorioReal(String diretorio) { 
-//		  HttpSession session = (HttpSession) 
-//		FacesContext.getCurrentInstance().getExternalContext().getSession(false); 
-//		  return session.getServletContext().getRealPath(diretorio); 
-//		} 
+	private String getDiretorioReal(String diretorio) { 
+		  HttpSession session = (HttpSession) 
+		FacesContext.getCurrentInstance().getExternalContext().getSession(false); 
+		  return session.getServletContext().getRealPath(diretorio); 
+		} 
 //	
 //	private void preenchePdf(JasperPrint print) throws JRException { 
 //	//	   Pego o caminho completo do PDF desde a raiz 
@@ -275,9 +276,11 @@ public class ConsultaRegraBean {
 	   /* HashMap de parametros utilizados no relatório. Sempre instanciados */ 
 	   Map parameters = new HashMap(); 
 	   // parameters.put("COLUNA", valor); 
+	   
+	   String s = getDiretorioReal("rel/RelRegras.jasper");
 	    
 	   /* Preenche o relatório com os dados. Gera o arquivo BibliotecaPessoal.jrprint */ 
-	   JasperFillManager.fillReportToFile("/exemplo/RelRegras.jasper", parameters, jrRS ); 
+	   JasperFillManager.fillReportToFile(s, parameters, jrRS ); 
 	 
 	 
 	    /* Exporta para o formato PDF */ 

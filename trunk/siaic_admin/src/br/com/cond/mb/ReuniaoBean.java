@@ -1,6 +1,7 @@
 package br.com.cond.mb;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ import java.util.Map;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import net.sf.jasperreports.engine.JRDataset;
@@ -26,6 +28,7 @@ import br.com.cond.businesslogic.AgendaDependencia;
 import br.com.cond.businesslogic.Reuniao;
 import br.com.cond.dao.ReuniaoDAO;
 import br.com.siaic.dao.DB;
+import br.com.siaic.dao.FabricaConexao;
 
 /**
  * @author Tamie
@@ -53,9 +56,9 @@ public class ReuniaoBean {
 			s = new ReuniaoDAO().addReuniao(reuniao) ? "Sucesso" : "Falha";
 		}
 		if (s.equals("Sucesso")) {
-			msg = "Operação realizada com sucesso";
+			msg = "Operaï¿½ï¿½o realizada com sucesso";
 		} else {
-			msg = "Operação não realizada";
+			msg = "Operaï¿½ï¿½o nï¿½o realizada";
 			nav = "";
 		}
 		return nav;
@@ -169,35 +172,39 @@ public class ReuniaoBean {
 		// Exporto para PDF
 		JasperExportManager.exportReportToPdfFile(print, saida);
 		/*
-		 * Jogo na variável saída o nome da aplicação mais o caminho para o PDF.
-		 * Essa variável será utilizada pela view
+		 * Jogo na variï¿½vel saï¿½da o nome da aplicaï¿½ï¿½o mais o caminho para o PDF.
+		 * Essa variï¿½vel serï¿½ utilizada pela view
 		 */
 		saida = getContextPath() + "/pdf/RelRegras.pdf";
 	}
 	
-	public void impAviso() {
+	public void impAviso() throws JRException, SQLException, IOException {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest req = (HttpServletRequest) context
 				.getExternalContext().getRequest();
 
-		Integer cod = new Integer(req.getParameter("codigoEntrada"))
-				.intValue();
+		Integer cod = new Integer(req.getParameter("codigoEntrada")).intValue();
 
-		Map parameters = new HashMap(); 
+		Map parameters = new HashMap();
 		parameters.put("cod", new Integer(cod));
 
-		
 		String rel = getDiretorioReal("rel/AvisoReuniao.jasper");
-		
-		
-		try {
-			JasperPrint print = JasperFillManager.fillReport(rel, parameters, DB.getConn());
-			preenchePdf(print);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		 
-		
+		JasperPrint print = JasperFillManager.fillReport(rel, parameters, FabricaConexao.getInstancia().conectar());
+		byte[] bytes = JasperExportManager.exportReportToPdf(print);
+
+		HttpServletResponse response = (HttpServletResponse) context
+				.getExternalContext().getResponse();
+		/***********************************************************************
+		 * Pour afficher une boï¿½te de dialogue pour enregistrer le fichier sous
+		 * le nom rapport.pdf
+		 **********************************************************************/
+		response.addHeader("Content-disposition",
+				"attachment;filename=reporte.pdf");
+		response.setContentLength(bytes.length);
+		response.getOutputStream().write(bytes);
+		response.setContentType("application/pdf");
+		context.responseComplete();
+
 	}
 	
 }
