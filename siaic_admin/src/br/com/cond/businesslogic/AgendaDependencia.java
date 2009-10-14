@@ -1,11 +1,11 @@
 package br.com.cond.businesslogic;
 
-import java.sql.Date;
-import java.sql.Time;
-
 /**
  * @author José Carlos
  */
+
+import java.sql.Date;
+import java.sql.Time;
 
 public class AgendaDependencia {
 
@@ -69,9 +69,11 @@ public class AgendaDependencia {
 	}
 
 	public String toString(){
+		
 		String s = new String();
 		s = dependencia.toString()+", "+data.toString()+", às "+horaInicio.toString();
 		return s;
+		
 	}
 
 }
