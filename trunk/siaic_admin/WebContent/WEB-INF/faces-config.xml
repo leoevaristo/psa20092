@@ -231,6 +231,10 @@
    <to-view-id>/paginas/imovel/consulta_imoveis.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>volta</from-outcome>
+   <to-view-id>/paginas/imovel/consulta_imoveis.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/paginas/agenda/cadastrar_agenda.xhtml</from-view-id>
@@ -521,6 +525,13 @@
    <from-outcome>Cadastrar</from-outcome>
    <to-view-id>/paginas/Cond/Reuniao/reuniao.xhtml</to-view-id>
    <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/imovel/altera_imovel.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>volta</from-outcome>
+   <to-view-id>/paginas/imovel/consulta_imoveis.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <application>
