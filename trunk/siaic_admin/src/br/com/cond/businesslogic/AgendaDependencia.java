@@ -1,7 +1,8 @@
 package br.com.cond.businesslogic;
 
 /**
- * @author Josï¿½ Carlos
+ * @author José Carlos
+ * @author Yasmim
  */
 
 import java.sql.Date;
@@ -18,6 +19,11 @@ public class AgendaDependencia {
 	private AgendaFinalidade finalidade;
 	private char comparecimento;
 	
+	public AgendaDependencia() {
+		condomino = new Condomino();
+		dependencia = new Dependencia();
+		finalidade = new AgendaFinalidade();
+	}
 	
 	public int getCodigo() {
 		return codigo;
