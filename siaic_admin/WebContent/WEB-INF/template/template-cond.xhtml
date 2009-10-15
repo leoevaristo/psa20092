@@ -2,16 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
 
-<head>
+	<head>
 
 <title>SIAIC - Sistema Integrado de Administração de Imobiliárias e Condomínios</title>
 <link rel="stylesheet" type="text/css"  href="#{request.contextPath}/css/layout.css" />
-<script language="Javascript" src="#{request.contextPath}/js/siaic.js"></script>
+
 </head>
 
-<body onload="Javascript:tipoPessoa()">
+<body>
 
 <!-- Inicio Container -->
 <div id="container">
@@ -44,7 +46,7 @@
                     </ul>
                 </div>	
             	<h3 id="titulo_moduloadmin"><span class="none">Perfil do Usuário</span></h3>
-                 <ui:include src="/WEB-INF/template/template-menu-siaic.xhtml" />                            
+                 <ui:include src="/WEB-INF/template/template-menu-cond.xhtml" />                            
               </div>
             <span id="bgleft_rodape"></span>	        	
         </div>
@@ -77,4 +79,3 @@
 
 </body>
 </html>
-
