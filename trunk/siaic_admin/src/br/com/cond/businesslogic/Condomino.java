@@ -10,7 +10,7 @@ package br.com.cond.businesslogic;
 
 public class Condomino {
 
-	private Integer codigo;
+	private int codigo;
 	private String nome;
 	private Character sexo;
 	private String dataNasc;
