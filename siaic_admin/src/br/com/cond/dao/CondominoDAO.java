@@ -27,16 +27,15 @@ public class CondominoDAO {
 		
 		ResultSet rs = ps.executeQuery();
 		
-		Condomino c = new Condomino();
+		Condomino c = null;
 		
 		if (rs.first()) {
+			c = new Condomino();
 			c.setCodigo(rs.getInt(1));
 			c.setNome(rs.getString(2));
 			c.setSexo(rs.getString(3).charAt(0));
 			c.setDataNasc(new SimpleDateFormat("dd/MM/yyyy").format(rs.getDate(4)));
-			if (rs.getInt(5) != 0) {
-				c.setResponsavel(new CondominoDAO().getCondominio(rs.getInt(5)));
-			}
+			c.setResponsavel(new CondominoDAO().getCondominio(rs.getInt(5)));
 			c.setApartamento(new ApartamentoDAO().getApartamentoId(rs.getInt(6)));
 		}
 		
@@ -117,9 +116,7 @@ public class CondominoDAO {
 			c.setNome(rs.getString(2));
 			c.setSexo(rs.getString(3).charAt(0));
 			c.setDataNasc(new SimpleDateFormat("dd/MM/yyyy").format(rs.getDate(4)));
-			if (rs.getInt(5) != 0) {
-				c.setResponsavel(new CondominoDAO().getCondominio(rs.getInt(5)));
-			}
+			c.setResponsavel(new CondominoDAO().getCondominio(rs.getInt(5)));
 			c.setApartamento(new ApartamentoDAO().getApartamentoId(rs.getInt(6)));
 			l.add(c);
 		}
@@ -155,9 +152,7 @@ public class CondominoDAO {
 			c.setNome(rs.getString(2));
 			c.setSexo(rs.getString(3).charAt(0));
 			c.setDataNasc(new SimpleDateFormat("dd/MM/yyyy").format(rs.getDate(4)));
-			if (rs.getInt(5) != 0) {
-				c.setResponsavel(new CondominoDAO().getCondominio(rs.getInt(5)));
-			}
+			c.setResponsavel(new CondominoDAO().getCondominio(rs.getInt(5)));
 			c.setApartamento(new ApartamentoDAO().getApartamentoId(rs.getInt(6)));
 			l.add(c);
 		}
