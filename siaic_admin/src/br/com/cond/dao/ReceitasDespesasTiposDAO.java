@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import br.com.cond.businesslogic.ReceitaDespesaTipos;
+import br.com.cond.businesslogic.Veiculo;
 import br.com.siaic.dao.FabricaConexao;
 
 public class ReceitasDespesasTiposDAO {
@@ -27,9 +30,9 @@ public class ReceitasDespesasTiposDAO {
 		
 	}
 	
-	public ReceitaDespesaTipos[] listaTipos() throws Exception {
-		ReceitaDespesaTipos[] rd = null;
-		int qtdTipos = 0;
+	public List<ReceitaDespesaTipos> listaTipos() throws Exception {
+		ReceitaDespesaTipos rd = null;
+		List<ReceitaDespesaTipos> listaTodosTipos = null;
 		
 		try {
 			
@@ -42,22 +45,13 @@ public class ReceitasDespesasTiposDAO {
 				System.out.println("Nenhum tipo encontrado. ");
 			} else {
 				
-				do {
-					
-					qtdTipos +=1;
-					
-				} while(this.rst.next());
-				
-				rd = new ReceitaDespesaTipos[qtdTipos];
-				
-				pstm = this.con.prepareStatement(this.LISTAR_TIPOS);
-				this.rst = pstm.executeQuery();
-				
-				qtdTipos = 0;
+				listaTodosTipos = new ArrayList<ReceitaDespesaTipos>();
 				
 				while (this.rst.next()) {
-					rd[qtdTipos] = this.montaTipos(this.rst);
-					qtdTipos++;
+					rd = new ReceitaDespesaTipos();
+					rd.setCodigo(this.rst.getInt(1));
+					rd.setDescricao(this.rst.getString(2));
+					listaTodosTipos.add(rd);
 				}
 			}
 			
@@ -81,7 +75,7 @@ public class ReceitasDespesasTiposDAO {
 			}
 		}
 		
-		return rd;
+		return listaTodosTipos;
 	}
 	
 	public ReceitaDespesaTipos getReceitasDespesasTiposPorCodigo(int codigo) throws Exception {
@@ -137,11 +131,7 @@ public class ReceitasDespesasTiposDAO {
 	
 	public static void main(String[] args) throws Exception {
 		ReceitasDespesasTiposDAO rdd = new ReceitasDespesasTiposDAO();
-		ReceitaDespesaTipos[] rdt = null;
-		rdt = rdd.listaTipos();
 		
-		for(int i = 0; i < rdt.length; i++) {
-			System.out.println(rdt[i].getDescricao());
-		}
+		ArrayList<ReceitaDespesaTipos> = rdd.listaTipos();
 	}
 }
