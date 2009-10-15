@@ -101,6 +101,7 @@ public class DependenciaDAO {
 		
 		try{
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, codigo);
 			rs = ps.executeQuery();
 			
 			if(rs.first()){
