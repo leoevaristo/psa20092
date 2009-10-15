@@ -8,6 +8,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import br.com.cond.businesslogic.AgendaDependencia;
 import br.com.siaic.dao.FabricaConexao;
@@ -27,13 +28,14 @@ public class AgendaDependenciaDAO {
 	
 	public boolean adicionarAgendaDependencia(AgendaDependencia agendaDependencia) throws SQLException{
 		
-		String sql = "insert into tbteste(hora, data) values(?, ?)";
+		String sql = "insert into test(data, hora) values(?, ?)";
 		
 		PreparedStatement ps;
 		try{
 			ps = conn.prepareStatement(sql);
-			ps.setTime(1, agendaDependencia.getHoraInicio());
-			//ps.setTimestamp(2, new Timestamp(agendaDependencia.getData().getTime()));
+			ps.setTimestamp(1, new Timestamp(agendaDependencia.getData().getTime()));
+			ps.setTime(2, agendaDependencia.getHoraInicio());
+			
 			
 			ps.execute();
 		}finally{
@@ -48,8 +50,12 @@ public class AgendaDependenciaDAO {
 		AgendaDependenciaDAO agendaDao = new AgendaDependenciaDAO();
 		AgendaDependencia agenda = new AgendaDependencia();
 		
-		agenda.setData(new Date(2009, 10, 14));
-		agenda.setHoraInicio(new Time(13, 9, 45));
+		
+		Date dat = new Date(Calendar.getInstance().getTimeInMillis());
+		
+		agenda.setData(dat);
+		
+		agenda.setHoraInicio(new Time(dat.getTime()));
 
 		try {
 			agendaDao.adicionarAgendaDependencia(agenda);
