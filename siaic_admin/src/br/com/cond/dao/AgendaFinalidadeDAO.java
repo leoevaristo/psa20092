@@ -85,7 +85,34 @@ public class AgendaFinalidadeDAO {
 			conn.close();
 		}
 	}
-
+	public AgendaFinalidade buscarAgendaFinalidade(int codigo) throws SQLException {
+		
+		PreparedStatement ps;
+		ResultSet rs;
+		AgendaFinalidade agendaFinalidade = new AgendaFinalidade();
+		String sql = "select agf_codigo, agf_descricao from admcon_agenda_finalidade where agf_codigo = ?";
+		
+		
+		try{
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, codigo);
+			
+			rs = ps.executeQuery();
+			
+			if (rs.first()){
+				agendaFinalidade.setCodigo(rs.getInt("agf_codigo"));
+				agendaFinalidade.setDescricao(rs.getString("agf_descricao"));
+			}
+			
+			ps.close();
+			rs.close();
+			return agendaFinalidade;
+			
+		}finally{
+			conn.close();
+		}
+	}
+	
 	public List<AgendaFinalidade> buscarAgendaFinalidade(AgendaFinalidade agendaFinalidade) throws SQLException {
 		
 		String sql;
