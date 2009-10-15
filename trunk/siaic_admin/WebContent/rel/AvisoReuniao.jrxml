@@ -1,43 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AvisoReuniao" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<parameter name="cod" class="java.lang.Integer"/>
+	<parameter name="cod" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[select AGD_CODIGO, AGD_DATA, AGD_HORA_INICIO, AGD_HORA_FINAL, DEP_DESCRICAO, CON_NOME, CON_SEXO, APA_ANDAR, APA_BLOCO, REU_DESCRICAO
-from admcon_agenda_dependencia, admcon_condomino, admcon_dependencia, admcon_apartamento, admcon_reuniao
-where REU_CODIGO = $P{cod}
-and REU_AGD_CODIGO = AGD_CODIGO
-and AGD_CON_CODIGO = CON_CODIGO
-and AGD_DEP_CODIGO = DEP_CODIGO
-and CON_APA_CODIGO = APA_CODIGO]]>
+		<![CDATA[SELECT
+     admcon_agenda_dependencia.`AGD_DATA` AS admcon_agenda_dependencia_AGD_DATA,
+     admcon_agenda_dependencia.`AGD_HORA_INICIO` AS admcon_agenda_dependencia_AGD_HORA_INICIO,
+     admcon_agenda_dependencia.`AGD_HORA_FINAL` AS admcon_agenda_dependencia_AGD_HORA_FINAL,
+     admcon_condomino.`CON_NOME` AS admcon_condomino_CON_NOME,
+     admcon_reuniao.`REU_DESCRICAO` AS admcon_reuniao_REU_DESCRICAO,
+     admcon_apartamento.`APA_ANDAR` AS admcon_apartamento_APA_ANDAR,
+     admcon_apartamento.`APA_BLOCO` AS admcon_apartamento_APA_BLOCO,
+     admcon_dependencia.`DEP_DESCRICAO` AS admcon_dependencia_DEP_DESCRICAO
+FROM
+     `admcon_condomino` admcon_condomino INNER JOIN `admcon_agenda_dependencia` admcon_agenda_dependencia ON admcon_condomino.`CON_CODIGO` = admcon_agenda_dependencia.`AGD_CON_CODIGO`
+     INNER JOIN `admcon_reuniao` admcon_reuniao ON admcon_agenda_dependencia.`AGD_CODIGO` = admcon_reuniao.`REU_AGD_CODIGO`
+     INNER JOIN `admcon_dependencia` admcon_dependencia ON admcon_agenda_dependencia.`AGD_DEP_CODIGO` = admcon_dependencia.`DEP_CODIGO`
+     INNER JOIN `admcon_apartamento` admcon_apartamento ON admcon_condomino.`CON_APA_CODIGO` = admcon_apartamento.`APA_CODIGO`
+WHERE
+     admcon_reuniao.`REU_CODIGO` = $P{cod}]]>
 	</queryString>
-	<field name="AGD_CODIGO" class="java.lang.Integer">
+	<field name="admcon_agenda_dependencia_AGD_DATA" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="AGD_DATA" class="java.sql.Date">
+	<field name="admcon_agenda_dependencia_AGD_HORA_INICIO" class="java.sql.Time">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="AGD_HORA_INICIO" class="java.sql.Time">
+	<field name="admcon_agenda_dependencia_AGD_HORA_FINAL" class="java.sql.Time">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="AGD_HORA_FINAL" class="java.sql.Time">
+	<field name="admcon_condomino_CON_NOME" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="DEP_DESCRICAO" class="java.lang.String">
+	<field name="admcon_reuniao_REU_DESCRICAO" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="CON_NOME" class="java.lang.String">
+	<field name="admcon_apartamento_APA_ANDAR" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="CON_SEXO" class="java.lang.String">
+	<field name="admcon_apartamento_APA_BLOCO" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="APA_ANDAR" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="APA_BLOCO" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="REU_DESCRICAO" class="java.lang.String">
+	<field name="admcon_dependencia_DEP_DESCRICAO" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -68,13 +73,13 @@ and CON_APA_CODIGO = APA_CODIGO]]>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["Avisamos aos senhores condôminos que no próximo dia "+
-new java.text.SimpleDateFormat("dd' de 'MMMM' de 'yyyy', 'EEEE").format($F{AGD_DATA})+
-" às "+new java.text.SimpleDateFormat("HH:mm").format($F{AGD_HORA_INICIO})+
+new java.text.SimpleDateFormat("dd' de 'MMMM' de 'yyyy', 'EEEE").format($F{admcon_agenda_dependencia_AGD_DATA})+
+" às "+new java.text.SimpleDateFormat("HH:mm").format($F{admcon_agenda_dependencia_AGD_HORA_INICIO})+
 " será realizada uma reunião extraordinária com previsão de término para às "+
-new java.text.SimpleDateFormat("HH:mm").format($F{AGD_HORA_FINAL})+
-" no "+$F{DEP_DESCRICAO}+
+new java.text.SimpleDateFormat("HH:mm").format($F{admcon_agenda_dependencia_AGD_HORA_FINAL})+
+" no "+$F{admcon_dependencia_DEP_DESCRICAO}+
 ". Solicitamos o comparecimento de todos. Abaixo seguem os detalhes da discução:\n\n"+
-$F{REU_DESCRICAO}]]></textFieldExpression>
+$F{admcon_reuniao_REU_DESCRICAO}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="53" y="340" width="450" height="65"/>
@@ -82,7 +87,7 @@ $F{REU_DESCRICAO}]]></textFieldExpression>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["________________________________________________\n\n"+
-$F{CON_NOME}+" - aptº "+$F{APA_ANDAR}]]></textFieldExpression>
+$F{admcon_condomino_CON_NOME}+" - aptº "+$F{admcon_apartamento_APA_ANDAR}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
