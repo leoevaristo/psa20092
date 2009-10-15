@@ -21,7 +21,7 @@ public class CadastraVeiculoBean {
 	private Veiculo veiculo;
 	
 	
-	private static List<SelectItem> apartamentos = new ArrayList<SelectItem>();
+	private static List<SelectItem> listaApartamentos = new ArrayList<SelectItem>();
 	
 
 	
@@ -29,7 +29,17 @@ public class CadastraVeiculoBean {
 		
 		veiculo = new Veiculo();
 		apartamento = new Apartamento();
-	
+	    
+		if (listaApartamentos.isEmpty()) {
+			ApartamentoDAO apartDao = new ApartamentoDAO();
+			try {
+				for (Apartamento ap : apartDao.getTodosOsApartamentos()) {
+					
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	
 	}
 	
@@ -59,14 +69,14 @@ public class CadastraVeiculoBean {
 
 
 
-	public static List<SelectItem> getApartamentos() {
-		return apartamentos;
+	public List<SelectItem> getApartamentos() {
+		return listaApartamentos;
 	}
 
 
 
 	public static void setApartamentos(List<SelectItem> apartamentos) {
-		CadastraVeiculoBean.apartamentos = apartamentos;
+		CadastraVeiculoBean.listaApartamentos = apartamentos;
 	}
 
 
