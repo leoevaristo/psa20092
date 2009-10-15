@@ -177,14 +177,14 @@
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
- 	<managed-bean-name>consultaApartamentoBean</managed-bean-name>
- 	<managed-bean-class>br.com.cond.mb.ConsultaApartamentoBean</managed-bean-class>
- 	<managed-bean-scope>session</managed-bean-scope>
+  <managed-bean-name>consultaApartamentoBean</managed-bean-name>
+  <managed-bean-class>br.com.cond.mb.ConsultaApartamentoBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
- 	<managed-bean-name>cadastraApartamentoBean</managed-bean-name>
- 	<managed-bean-class>br.com.cond.mb.CadastraApartamentoBean</managed-bean-class>
- 	<managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-name>cadastraApartamentoBean</managed-bean-name>
+  <managed-bean-class>br.com.cond.mb.CadastraApartamentoBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <navigation-rule>
   <from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
@@ -206,9 +206,9 @@
    <redirect/>
   </navigation-case>
   <navigation-case>
-  <from-outcome>cancelar</from-outcome>
-  <to-view-id>/paginas/cliente/consulta_cliente.xhtml</to-view-id>
-  <redirect/>
+   <from-outcome>cancelar</from-outcome>
+   <to-view-id>/paginas/cliente/consulta_cliente.xhtml</to-view-id>
+   <redirect/>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -591,11 +591,10 @@
    <to-view-id>/paginas/imovel/consulta_imoveis.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
- 
-  <navigation-rule>
+ <navigation-rule>
   <from-view-id>/paginas/Cond/Apartamento/cadastra_apartamento.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>sucesso</from-outcome>
+   <from-outcome>sucesso</from-outcome> 
    <to-view-id>/paginas/Cond/Apartamento/sucesso.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
@@ -637,7 +636,6 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
- 
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
  </application>
