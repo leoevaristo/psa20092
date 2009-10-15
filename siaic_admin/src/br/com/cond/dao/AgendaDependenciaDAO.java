@@ -113,6 +113,42 @@ public class AgendaDependenciaDAO {
 			conn.close();
 		}
 	}
+	
+	public AgendaDependencia getAgendaDependencia(int cod) throws SQLException {
+		String sql = "select AGD_CODIGO, AGD_DATA, AGD_HORA_INICIO, AGD_HORA_FINAL, AGD_CON_CODIGO, "
+				+ "AGD_DEP_CODIGO, AGD_AGF_CODIGO, AGD_COMPARECIMENTO from admcon_agenda_dependencia "
+				+ "where AGD_CODIGO = ?";
+
+		PreparedStatement ps = FabricaConexao.getInstancia().conectar().prepareStatement(sql);
+		ps.setInt(1, cod);
+
+		ResultSet rs = ps.executeQuery();
+
+		AgendaDependencia d = null;
+
+		if (rs.first()) {
+			d = new AgendaDependencia();
+			d.setCodigo(rs.getInt("AGD_CODIGO"));
+			d.setData(rs.getDate("AGD_DATA"));
+			d.setHoraInicio(rs.getTime("AGD_HORA_INICIO"));
+			d.setHoraFinal(rs.getTime("AGD_HORA_FINAL"));
+			d.setCondomino(new CondominoDAO().getCondominio(rs
+					.getInt("AGD_CON_CODIGO")));
+			d.setDependencia(new DependenciaDAO().buscaDependencia(rs
+					.getInt("AGD_DEP_CODIGO")));
+			d.setFinalidade(new AgendaFinalidadeDAO().buscarAgendaFinalidade(rs
+					.getInt("AGD_AGF_CODIGO")));
+			char c = (rs.getString("AGD_COMPARECIMENTO") == null || rs
+					.getString("AGD_COMPARECIMENTO").isEmpty()) ? '\0' : rs
+					.getString("AGD_COMPARECIMENTO").charAt(0);
+		}
+		
+		rs.close();
+		ps.close();
+		
+		return d;
+
+	}
 
 	public List<AgendaDependencia> buscarAgendaDependencia(AgendaDependencia agendaDependencia) throws SQLException{
 		
