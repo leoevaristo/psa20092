@@ -1,6 +1,8 @@
 package br.com.cond.businesslogic;
 /**
  * @author José Carlos
+ * @author Yasmim
+ * 
  */
 public class Dependencia {
 	private int codigo;
