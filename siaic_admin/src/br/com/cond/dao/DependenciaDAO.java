@@ -90,7 +90,35 @@ public class DependenciaDAO {
 		}
 		
 	}
-	
+
+	public Dependencia buscaDependencia(int codigo) throws SQLException{
+
+		String sql;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Dependencia dep = new Dependencia();
+		sql = "select dep_codigo, dep_descricao, dep_reservavel from admcon_dependencia where dep_codigo = ?";
+		
+		try{
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			if(rs.first()){
+				dep.setCodigo(rs.getInt("dep_codigo"));
+				dep.setDescricao(rs.getString("dep_descricao"));
+				dep.setReservavel(rs.getString("dep_reservavel").charAt(0));
+			}
+			
+			ps.close();
+			rs.close();
+			
+			return dep;
+		}
+		finally{
+			conn.close();
+		}
+
+	}
 	public List<Dependencia> buscaDependencia(Dependencia dependencia) throws SQLException{
 		String sql;
 		StringBuilder where = new StringBuilder();
