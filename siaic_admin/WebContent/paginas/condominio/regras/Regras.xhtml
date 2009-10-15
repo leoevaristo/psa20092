@@ -1,29 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:composition template="/WEB-INF/template/template.xhtml">
-	
-		<ui:define name="tituloGrande">
-			<h:outputText value="Página do Usuario" />
-		</ui:define>
-		<ui:define name="subtitulo">
-			<h:outputText value="» Menu de Opções" />
-		</ui:define>
-		<ui:define name="conteudo"> 
-			<h:panelGroup>
-				<h:outputLink value="#{request.contextPath}/paginas/Cond/Regras/cadastra_regra.xhtml">
-					<h:outputText value="# Cadastrar Regras"  />
-				</h:outputLink>
-			</h:panelGroup>
-			<h:panelGroup>
-				<h:outputLink value="#{request.contextPath}/paginas/Cond/Regras/consulta_regra.xhtml">
-					<h:outputText value="# Consultar Regras"  />
-				</h:outputLink>	
-			</h:panelGroup>	
-				
-		</ui:define>		
+	<ui:composition template="/WEB-INF/template/template.xhtml">	
+	<ui:define name="tituloGrande">Regras</ui:define>
+	<ui:define name="subtitulo">Menu</ui:define>
+	<ui:define name="conteudo">
+		<h:form styleClass="forms" id="formFiltros">
+			
+		<ul>
+				<li><a href="#{request.contextPath}/paginas/condominio/regras/cadastra_regra.xhtml">Cadastrar Regra</a></li>
+				<li><a href="#{request.contextPath}/paginas/condominio/regras/consulta_regra.xhtml">Consultar Regra</a></li>
+				<h:panelGroup>
+				  <li><h:commandLink id="ImprimirRegras"
+						action="#{consultaRegraBean.gerarRel}">
+						<h:outputText value="Imprimir Regras" />
+					   </h:commandLink></li>
+			      </h:panelGroup>
+		</ul>
+		</h:form>
+	</ui:define>
 	</ui:composition>
+
 </html>
