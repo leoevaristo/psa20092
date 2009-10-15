@@ -37,7 +37,7 @@ public class ReuniaoDAO {
 				r = new Reuniao();
 				r.setCodigo(rs.getInt("REU_CODIGO"));
 				r.setDescricao(rs.getString("REU_DESCRICAO"));
-				r.setDependencia(new AgendaDependenciaDAO().getAgendaDependencia(rs.getInt("REU_AGD_CODIGO")));
+				r.setDependencia(new AgendaDependenciaDAO().buscarAgendaDependencia(rs.getInt("REU_AGD_CODIGO")));
 			}
 			ps.close();
 			rs.close();
@@ -109,7 +109,7 @@ public class ReuniaoDAO {
 				r = new Reuniao();
 				r.setCodigo(rs.getInt("REU_CODIGO"));
 				r.setDescricao(rs.getString("REU_DESCRICAO"));
-				r.setDependencia(new AgendaDependenciaDAO().getAgendaDependencia(rs.getInt("REU_AGD_CODIGO")));
+				r.setDependencia(new AgendaDependenciaDAO().buscarAgendaDependencia(rs.getInt("REU_AGD_CODIGO")));
 
 				l.add(r);
 			}
@@ -169,7 +169,7 @@ public class ReuniaoDAO {
 				r = new Reuniao();
 				r.setCodigo(rs.getInt("REU_CODIGO"));
 				r.setDescricao(rs.getString("REU_DESCRICAO"));
-				r.setDependencia(new AgendaDependenciaDAO().getAgendaDependencia(rs.getInt("REU_AGD_CODIGO")));
+				r.setDependencia(new AgendaDependenciaDAO().buscarAgendaDependencia(rs.getInt("REU_AGD_CODIGO")));
 				l.add(r);
 			}
 			rs.close();
