@@ -133,5 +133,18 @@ public class ReceitasDespesasTiposDAO {
 		ReceitasDespesasTiposDAO rdd = new ReceitasDespesasTiposDAO();
 		
 		ArrayList<ReceitaDespesaTipos> = rdd.listaTipos();
+		ReceitaDespesaTipos rdt;
+
+			
+		for(int i = 0; i < rdd.size(); i++)
+		{
+			rdt = rdd.get(i);
+			sysout(rdt.metodo);
+			
+		}
+	
+
+
+
 	}
 }
