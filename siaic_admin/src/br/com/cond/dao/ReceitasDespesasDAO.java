@@ -1,7 +1,15 @@
 package br.com.cond.dao;
-
+/********************************************************************************
+ * Title:       SIAIC - Sistema de Administração de Imobiliárias e Condomínion
+ * Description: Módulo Condomínios
+ * Copyright:   Copyright (c) 2009                                            
+ * Company:     Faculdade IDEZ
+ * Data:        14/10/2009
+ * @author:     Kleiton Vasconcelos Costa
+ * @version:    1.0
+ ********************************************************************************
+ */
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,6 +28,14 @@ public class ReceitasDespesasDAO {
 		"                                   DER_DATA, " +
 		"                                   DER_CON_CODIGO) " +
 		"VALUES(?,?,?,?,?) ";
+	
+	private final String ALTERAR_RECEITA_DESPESA = 
+		"UPDATE ADMCON_DESPESA_RECEITA SET DER_DRD_CODIGO = ?, " +
+		"                                  DER_VALOR = ?, " +
+		"                                  DER_TIPO = ?, " +
+		"                                  DER_DATA = ?, " +
+		"                                  DER_CON_CODIGO = ? " +
+		"WHERE DER_CODIGO = ? ";
 		
 	public ReceitasDespesasDAO() {
 		
@@ -72,6 +88,56 @@ public class ReceitasDespesasDAO {
 		}
 		
 		return inseriu;
+	}
+	
+	public Boolean alterarDespesaReceita( ReceitaDespesa novo, ReceitaDespesa atual) throws Exception {
+		boolean alterou = false;
+		int resultado = 0;
+		
+		try {
+			
+			// Abre uma conexão com o banco de dados
+			FabricaConexao.getInstancia();
+			this.con = FabricaConexao.conectar();
+			
+			pstm = this.con.prepareStatement(this.ALTERAR_RECEITA_DESPESA);
+			pstm.setInt(1, novo.getTipoRD().getCodigo());
+			pstm.setDouble(2, novo.getValor());
+			pstm.setString(3, novo.getTipo());
+			pstm.setString(4, novo.getData());
+			pstm.setInt(5, novo.getCondominio().getCodigo());
+			pstm.setInt(6, atual.getCodigo());
+			
+			resultado = pstm.executeUpdate();
+			if(resultado == 0) {
+				System.out.println("Não foi possível alterar a despesa/receita");
+				alterou = false;
+			} else {
+				System.out.println("Despesas/Receita alterada com sucesso. ");
+				alterou = true;
+			}
+			
+		} catch ( SQLException sql ) {
+			sql.printStackTrace();
+			System.out.println("Erro ao tentar alterer despesa e receitas. " +
+					sql.getMessage());
+		}
+		
+		finally {
+			
+			try {
+				
+				// Fecha a instrução e a conexão com o banco de dados
+				this.pstm.close();
+				this.con.close();
+				
+			} catch ( Exception e ) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		return alterou;
 	}
 	
 	public static void main(String[] args) throws Exception {
