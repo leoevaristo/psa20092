@@ -2,6 +2,7 @@ package br.com.cond.businesslogic;
 
 /**
  * @author José Carlos
+ * @author Yasmim
  */
 
 public class AgendaFinalidade {
