@@ -1,7 +1,7 @@
 package br.com.cond.businesslogic;
 
 /**
- * @author José Carlos
+ * @author Josï¿½ Carlos
  */
 
 import java.sql.Date;
@@ -71,7 +71,7 @@ public class AgendaDependencia {
 	public String toString(){
 		
 		String s = new String();
-		s = dependencia.toString()+", "+data.toString()+", às "+horaInicio.toString();
+		s = dependencia.toString()+", "+data.toString()+", ï¿½s "+horaInicio.toString();
 		return s;
 		
 	}
