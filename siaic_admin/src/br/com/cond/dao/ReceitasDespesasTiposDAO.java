@@ -30,9 +30,9 @@ public class ReceitasDespesasTiposDAO {
 		
 	}
 	
-	public List<ReceitaDespesaTipos> listaTipos() throws Exception {
+	public ArrayList<ReceitaDespesaTipos> listaTipos() throws Exception {
 		ReceitaDespesaTipos rd = null;
-		List<ReceitaDespesaTipos> listaTodosTipos = null;
+		ArrayList<ReceitaDespesaTipos> listaTodosTipos = null;
 		
 		try {
 			
@@ -129,17 +129,20 @@ public class ReceitasDespesasTiposDAO {
 		return new ReceitaDespesaTipos(codigo, descricao); 
 	}
 	
+	
+	
+	
 	public static void main(String[] args) throws Exception {
 		ReceitasDespesasTiposDAO rdd = new ReceitasDespesasTiposDAO();
 		
-		ArrayList<ReceitaDespesaTipos> = rdd.listaTipos();
+		ArrayList<ReceitaDespesaTipos> receitaDespesaTiposLista = rdd.listaTipos();
 		ReceitaDespesaTipos rdt;
 
 			
-		for(int i = 0; i < rdd.size(); i++)
+		for(int i = 0; i < receitaDespesaTiposLista.size(); i++)
 		{
-			rdt = rdd.get(i);
-			sysout(rdt.metodo);
+			rdt = receitaDespesaTiposLista.get(i);
+			System.out.println(rdt.getDescricao());
 			
 		}
 	
