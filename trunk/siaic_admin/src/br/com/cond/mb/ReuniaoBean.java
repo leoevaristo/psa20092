@@ -165,12 +165,33 @@ public class ReuniaoBean {
 		byte[] bytes = JasperExportManager.exportReportToPdf(print);
 
 		HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
-		response.addHeader("Content-disposition", "attachment;filename=reporte.pdf");
+		response.addHeader("Content-disposition", "attachment;filename=report.pdf");
 		response.setContentLength(bytes.length);
 		response.getOutputStream().write(bytes);
 		response.setContentType("application/pdf");
 		context.responseComplete();
 
 	}
-	
+	public void impAta() throws JRException, SQLException, IOException {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
+
+		Integer cod = new Integer(req.getParameter("codigoEntrada"));
+
+		Map<String, Integer> parameters = new HashMap<String, Integer>();
+		parameters.put("cod", cod);
+				
+		String jasperFile = getRealPath("rel/AtaReuniao.jasper");
+		
+		JasperPrint print = JasperFillManager.fillReport(jasperFile, parameters, DB.getConn());
+		byte[] bytes = JasperExportManager.exportReportToPdf(print);
+
+		HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
+		response.addHeader("Content-disposition", "attachment;filename=report.pdf");
+		response.setContentLength(bytes.length);
+		response.getOutputStream().write(bytes);
+		response.setContentType("application/pdf");
+		context.responseComplete();
+
+	}
 }
