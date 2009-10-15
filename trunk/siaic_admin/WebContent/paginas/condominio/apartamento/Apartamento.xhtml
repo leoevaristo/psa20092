@@ -1,29 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:composition template="/WEB-INF/template/template.xhtml">
-	
-		<ui:define name="tituloGrande">
-			<h:outputText value="Página do Usuario" />
-		</ui:define>
-		<ui:define name="subtitulo">
-			<h:outputText value="» Menu de Opções" />
-		</ui:define>
-		<ui:define name="conteudo"> 
-			<h:panelGroup>
-				<h:outputLink value="#{request.contextPath}/paginas/Cond/Apartamento/cadastra_apartamento.xhtml">
-					<h:outputText value="# Cadastrar Apartamentos"  />
-				</h:outputLink>
-			</h:panelGroup>
-			<h:panelGroup>
-				<h:outputLink value="#{request.contextPath}/paginas/Cond/Apartamento/consulta_apartamento.xhtml">
-					<h:outputText value="# Consultar Apartamentos"  />
-				</h:outputLink>	
-			</h:panelGroup>	
-				
-		</ui:define>		
+	<ui:composition template="/WEB-INF/template/template.xhtml">	
+	<ui:define name="tituloGrande">Regras</ui:define>
+	<ui:define name="subtitulo">Menu</ui:define>
+	<ui:define name="conteudo">
+		<ul>
+				<li><a href="#{request.contextPath}/paginas/condominio/apartamento/cadastra_apartamento.xhtml">Cadastrar Apartamento</a></li>
+				<li><a href="#{request.contextPath}/paginas/condominio/apartamento/consulta_apartamento.xhtml">Consultar Apartamento</a></li>
+		</ul>
+	</ui:define>
 	</ui:composition>
+
 </html>
