@@ -1,7 +1,5 @@
 package br.com.cond.businesslogic;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class TaxasCondominio {
@@ -16,17 +14,14 @@ public class TaxasCondominio {
 	
 	private boolean estaPago;
 	
-	private Calendar dataVencimento;
+	private Date dataVencimento;
 	
-	private Calendar dataPagamento;
+	private Date dataPagamento;
 	
 
 	
 	public TaxasCondominio(){
-		dataVencimento = Calendar.getInstance();
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		dataVencimento.set(Calendar.YEAR, 2010);
-		System.out.println(formato.format(dataVencimento.getTime()));
+		
 		
 		
 		
@@ -64,7 +59,7 @@ public class TaxasCondominio {
 		this.valor = valor;
 	}
 	
-	public boolean isEstaPago() {
+	public boolean getEstaPago() {
 		return estaPago;
 	}
 	
@@ -72,19 +67,19 @@ public class TaxasCondominio {
 		this.estaPago = estaPago;
 	}
 	
-	public Calendar getDataVencimento() {
+	public Date getDataVencimento() {
 		return dataVencimento;
 	}
 	
-	public void setDataVencimento(Calendar dataVencimento) {
+	public void setDataVencimento(Date dataVencimento) {		
 		this.dataVencimento = dataVencimento;
 	}
 	
-	public Calendar getDataPagamento() {
+	public Date getDataPagamento() {
 		return dataPagamento;
 	}
 	
-	public void setDataPagamento(Calendar dataPagamento) {
+	public void setDataPagamento(Date dataPagamento) {
 		this.dataPagamento = dataPagamento;
 	}
 	
