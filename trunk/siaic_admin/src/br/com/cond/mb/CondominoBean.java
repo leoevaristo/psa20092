@@ -109,6 +109,7 @@ public class CondominoBean {
 	//Acoes
 	public void buscar() {
 		try {
+			limpar();
 			setCondominosList();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -143,7 +144,6 @@ public class CondominoBean {
 			s = new CondominoDAO().update(atual, condomino) ? "Sucesso" : "Falha";
 			acao = "Cadastrar";
 			nav = "Editar";
-			condominosList.clear();
 			setCondominosList();
 		} else {
 			try {
@@ -185,7 +185,6 @@ public class CondominoBean {
 
 		try {
 			new CondominoDAO().deletar(new CondominoDAO().getCondominio(cod));
-			condominosList.clear();
 			setCondominosList();
 		} catch (SQLException e) {
 			msg = "Operação não realizada. Esse registro esta sendo usado.";

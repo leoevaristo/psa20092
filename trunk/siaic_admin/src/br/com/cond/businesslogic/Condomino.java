@@ -10,23 +10,13 @@ package br.com.cond.businesslogic;
 
 public class Condomino {
 
-	private int codigo;
+	private Integer codigo;
 	private String nome;
 	private Character sexo;
 	private String dataNasc;
 	private Condomino responsavel;
 	private Apartamento apartamento;
-	private static boolean createResp = true;
 
-	public Condomino() {
-		if (createResp) {
-			createResp = false;
-			responsavel = new Condomino();
-			createResp = true;
-		}
-		apartamento = new Apartamento();
-	}
-	
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -52,12 +42,18 @@ public class Condomino {
 		this.dataNasc = dataNasc;
 	}
 	public Condomino getResponsavel() {
+		if (responsavel == null) {
+			responsavel = new Condomino();
+		}
 		return responsavel;
 	}
 	public void setResponsavel(Condomino responsavel) {
 		this.responsavel = responsavel;
 	}
 	public Apartamento getApartamento() {
+		if (apartamento == null) {
+			apartamento = new Apartamento();
+		}
 		return apartamento;
 	}
 	public void setApartamento(Apartamento apartamento) {
@@ -66,7 +62,7 @@ public class Condomino {
 	
 	public String getToString() {
 		String s = "";
-		if (apartamento.getCodigoApartamento() != 0) {
+		if (getApartamento().getCodigoApartamento() != 0) {
 			s = nome + ", " + apartamento.getAndar();
 			if (!(apartamento.getBloco() == null)) {
 				if (!apartamento.getBloco().equals("")) {
