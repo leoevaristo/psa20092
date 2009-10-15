@@ -109,7 +109,7 @@ public class CondominoBean {
 	//Acoes
 	public void buscar() {
 		try {
-			limpar();
+			msg = "";
 			setCondominosList();
 		} catch (SQLException e) {
 			e.printStackTrace();
