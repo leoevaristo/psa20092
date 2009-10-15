@@ -48,7 +48,7 @@ public class CadastraApartamentoBean {
 		String r = "sucesso";
 
 		ApartamentoDAO daoApartamento = new ApartamentoDAO();
-    	daoApartamento.adicionarApartamento(apartamento);	
+		daoApartamento.adicionarApartamento(apartamento);	
 
     	return r;
 
