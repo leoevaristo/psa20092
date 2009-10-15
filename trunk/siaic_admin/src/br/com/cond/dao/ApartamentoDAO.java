@@ -43,27 +43,16 @@ public class ApartamentoDAO {
 
 	public void adicionarApartamento (Apartamento apartamento) throws SQLException {
 
-		String sql = "INSERT INTO admcon_apartamento (APA_ANDAR, APA_BLOCO)"
+		String sql = "INSERT INTO admcon_apartamento (APA_ANDAR, APA_BLOCO) "
 				+ "VALUES (?, ?)";
 
-		try {
+		PreparedStatement ps = conexao.prepareStatement(sql);
+		ps.setInt(1, apartamento.getAndar());
+		ps.setString(2, apartamento.getBloco());
 
-			PreparedStatement ps = conexao.prepareStatement(sql);
+		ps.execute();
 
-			ps.setInt(1, apartamento.getAndar());
-			ps.setString(2, apartamento.getBloco());
-
-			ps.execute();
-
-			ps.close();
-
-		}
-
-		catch (Exception e) {
-
-			throw new SQLException("Erro ao inserir dados no banco.");
-
-		}
+		ps.close();
 
 	}
 
