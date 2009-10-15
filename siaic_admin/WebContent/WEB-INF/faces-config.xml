@@ -176,21 +176,6 @@
   <managed-bean-class>br.com.cond.mb.SelectApartamento</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
- <managed-bean>
-  <managed-bean-name>consultaApartamentoBean</managed-bean-name>
-  <managed-bean-class>br.com.cond.mb.ConsultaApartamentoBean</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>cadastraApartamentoBean</managed-bean-name>
-  <managed-bean-class>br.com.cond.mb.CadastraApartamentoBean</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>taxasCondominioBean</managed-bean-name>
-  <managed-bean-class>br.com.cond.mb.TaxasCondominioBean</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
  <navigation-rule>
   <from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
   <navigation-case>
@@ -211,9 +196,9 @@
    <redirect/>
   </navigation-case>
   <navigation-case>
-   <from-outcome>cancelar</from-outcome>
-   <to-view-id>/paginas/cliente/consulta_cliente.xhtml</to-view-id>
-   <redirect/>
+  <from-outcome>cancelar</from-outcome>
+  <to-view-id>/paginas/cliente/consulta_cliente.xhtml</to-view-id>
+  <redirect/>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -449,7 +434,7 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/paginas/condominio/Regras/cadastra_regra.xhtml</from-view-id>
+  <from-view-id>/paginas/condominio/regras/cadastra_regra.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>altera</from-outcome>
    <to-view-id>/paginas/condominio/regras/alterar_regra.xhtml</to-view-id>
@@ -542,23 +527,18 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/paginas/condominio/Reuniao/cadastrar_reuniao.xhtml</from-view-id>
+  <from-view-id>/paginas/condominio/reuniao/consultar_reuniao.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>altera</from-outcome>
-   <to-view-id>/paginas/condominio/apartamento/alterar_apartamento.xhtml</to-view-id>
-   <redirect/>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>destruido</from-outcome>
-   <to-view-id>/paginas/condominio/apartamento/cadastra_apartamento.xhtml</to-view-id>
+   <from-outcome>Cadastrar</from-outcome>
+   <to-view-id>/paginas/condominio/reuniao/reuniao.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/paginas/condominio/reuniao/consultar_reuniao.xhtml</from-view-id>
+  <from-view-id>/paginas/condominio/reuniao/cadastrar_reuniao.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>Cadastrar</from-outcome>
-   <to-view-id>/paginas/condominio/condomino/condomino.xhtml</to-view-id>
+   <to-view-id>/paginas/condominio/reuniao/reuniao.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
  </navigation-rule>
@@ -579,6 +559,14 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
+  <from-view-id>/paginas/condominio/condomino/consultar_condomino.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>Cadastrar</from-outcome>
+   <to-view-id>/paginas/condominio/condomino/condomino.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
   <from-view-id>/paginas/condominio/condomino/cadastrar_condomino.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>Cadastrar</from-outcome>
@@ -587,58 +575,10 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/paginas/condominio/reuniao/cadastrar_reuniao.xhtml</from-view-id> 
-  <navigation-case>
-   <from-outcome>Cadastrar</from-outcome>
-   <to-view-id>/paginas/condominio/reuniao/reuniao.xhtml</to-view-id>
-   <redirect/>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
   <from-view-id>/paginas/imovel/altera_imovel.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>voltar</from-outcome>
    <to-view-id>/paginas/imovel/consulta_imoveis.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>/paginas/condominio/apartamento/cadastra_apartamento.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>sucesso</from-outcome>
-   <to-view-id>/paginas/condominio/apartamento/sucesso.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>/paginas/condominio/Apartamento/consulta_apartamento.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>Cadastrar</from-outcome>
-   <to-view-id>/paginas/condominio/reuniao/reuniao.xhtml</to-view-id>
-   <redirect/>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>/paginas/condominio/apartamento/alterar_apartamento.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>destruido</from-outcome>
-   <to-view-id>/paginas/condominio/apartamento/consulta_apartamento.xhtml</to-view-id>
-   <redirect/>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>sucesso</from-outcome>
-   <to-view-id>/paginas/condominio/apartamento/consulta_apartamento.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>/paginas/condominio/apartamento/consulta_apartamento.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>detalhes</from-outcome>
-   <to-view-id>/paginas/condominio/apartamento/detalhes_apartamento.xhtml</to-view-id>
-   <redirect/>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>modifica</from-outcome>
-   <to-view-id>/paginas/condominio/apartamento/alterar_apartamento.xhtml</to-view-id>
-   <redirect/>
   </navigation-case>
  </navigation-rule>
  <application>
