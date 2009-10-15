@@ -147,8 +147,10 @@ public class AgendaDependenciaDAO {
 						.buscaDependencia(rs.getInt("AGD_DEP_CODIGO")));
 				agendaDep.setFinalidade(new AgendaFinalidadeDAO()
 						.buscarAgendaFinalidade(rs.getInt("AGD_AGF_CODIGO")));
-				agendaDep.setComparecimento(rs.getString("AGD_COMPARECIMENTO")
-						.charAt(0));
+				char c = (rs.getString("AGD_COMPARECIMENTO") == null || rs
+						.getString("AGD_COMPARECIMENTO").isEmpty()) ? '\0' : rs
+						.getString("AGD_COMPARECIMENTO").charAt(0);
+				agendaDep.setComparecimento(c);
 			}
 
 			rs.close();
