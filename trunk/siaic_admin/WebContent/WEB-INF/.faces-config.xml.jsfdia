@@ -381,64 +381,6 @@
  <PROCESS-ITEM NAME="rules:#paginas#perfil_cliente#perfil_cliente.xhtml"
   PATH="/paginas/perfil_cliente/perfil_cliente.xhtml"
   SHAPE="240,1809,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#cadastra_regra.xhtml"
-  PATH="/paginas/Cond/Regras/cadastra_regra.xhtml" SHAPE="48,2241,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#paginas#Cond#Regras#cadastra_regra.xhtml:0"
-   NAME="item" PATH="/paginas/Cond/Regras/cadastra_regra.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="sucesso::#paginas#Cond#Regras#sucesso.xhtml"
-    NAME="output" PATH="/paginas/Cond/Regras/sucesso.xhtml"
-    TARGET="rules:#paginas#Cond#Regras#sucesso.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
-  <PROCESS-ITEM ID="rules:#paginas#Cond#Regras#cadastra_regra.xhtml:1"
-   NAME="item1" PATH="/paginas/Cond/Regras/cadastra_regra.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="altera::#paginas#Cond#Regras#alterar_regra.xhtml" NAME="output"
-    PATH="/paginas/Cond/Regras/alterar_regra.xhtml"
-    TARGET="rules:#paginas#Cond#Regras#alterar_regra.xhtml"
-    TITLE="altera" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT
-    ID="destruido::#paginas#Cond#Regras#cadastra_regra.xhtml"
-    NAME="output1" PATH="/paginas/Cond/Regras/cadastra_regra.xhtml"
-    TARGET="rules:#paginas#Cond#Regras#cadastra_regra.xhtml"
-    TITLE="destruido" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#alterar_regra.xhtml"
-  PATH="/paginas/Cond/Regras/alterar_regra.xhtml" SHAPE="288,2433,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#paginas#Cond#Regras#alterar_regra.xhtml:0"
-   NAME="item" PATH="/paginas/Cond/Regras/alterar_regra.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="destruido::#paginas#Cond#Regras#consulta_regra.xhtml"
-    NAME="output" PATH="/paginas/Cond/Regras/consulta_regra.xhtml"
-    TARGET="rules:#paginas#Cond#Regras#consulta_regra.xhtml"
-    TITLE="destruido" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT
-    ID="sucesso::#paginas#Cond#Regras#consulta_regra.xhtml"
-    NAME="output1" PATH="/paginas/Cond/Regras/consulta_regra.xhtml"
-    TARGET="rules:#paginas#Cond#Regras#consulta_regra.xhtml"
-    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#consulta_regra.xhtml"
-  PATH="/paginas/Cond/Regras/consulta_regra.xhtml" SHAPE="48,2417,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#paginas#Cond#Regras#consulta_regra.xhtml:0"
-   NAME="item" PATH="/paginas/Cond/Regras/consulta_regra.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="detalhes::#paginas#Cond#Regras#detalhes_regra.xhtml"
-    NAME="output" PATH="/paginas/Cond/Regras/detalhes_regra.xhtml"
-    TARGET="rules:#paginas#Cond#Regras#detalhes_regra.xhtml"
-    TITLE="detalhes" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT
-    ID="modifica::#paginas#Cond#Regras#alterar_regra.xhtml"
-    NAME="output1" PATH="/paginas/Cond/Regras/alterar_regra.xhtml"
-    TARGET="rules:#paginas#Cond#Regras#alterar_regra.xhtml"
-    TITLE="modifica" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#sucesso.xhtml"
-  PATH="/paginas/Cond/Regras/sucesso.xhtml" SHAPE="288,2257,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#paginas#Cond#Regras#detalhes_regra.xhtml"
-  PATH="/paginas/Cond/Regras/detalhes_regra.xhtml" SHAPE="288,2577,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM
   NAME="rules:#paginas#perfil_cliente#consultar_perfil.xhtml"
   PATH="/paginas/perfil_cliente/consultar_perfil.xhtml"
@@ -453,100 +395,6 @@
     TITLE="Cancelar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM
-  NAME="rules:#paginas#Cond#Reuniao#consultar_reuniao.xhtml"
-  PATH="/paginas/Cond/Reuniao/consultar_reuniao.xhtml"
-  SHAPE="240,3201,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM
-   ID="rules:#paginas#Cond#Reuniao#consultar_reuniao.xhtml:0"
-   NAME="item" PATH="/paginas/Cond/Reuniao/consultar_reuniao.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="Editar::#paginas#Cond#Reuniao#cadastrar_reuniao.xhtml"
-    NAME="output" PATH="/paginas/Cond/Reuniao/cadastrar_reuniao.xhtml"
-    TARGET="rules:#paginas#Cond#Reuniao#cadastrar_reuniao.xhtml"
-    TITLE="Editar" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
-  <PROCESS-ITEM
-   ID="rules:#paginas#Cond#Reuniao#consultar_reuniao.xhtml:1"
-   NAME="item1" PATH="/paginas/Cond/Reuniao/consultar_reuniao.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="Cadastrar::#paginas#Cond#Reuniao#reuniao.xhtml" NAME="output"
-    PATH="/paginas/Cond/Reuniao/reuniao.xhtml"
-    TARGET="rules:#paginas#Cond#Reuniao#reuniao.xhtml" TITLE="Cadastrar" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM
-  NAME="rules:#paginas#Cond#Reuniao#cadastrar_reuniao.xhtml"
-  PATH="/paginas/Cond/Reuniao/cadastrar_reuniao.xhtml"
-  SHAPE="32,3185,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM
-   ID="rules:#paginas#Cond#Reuniao#cadastrar_reuniao.xhtml:0"
-   NAME="item" PATH="/paginas/Cond/Reuniao/cadastrar_reuniao.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="Editar::#paginas#Cond#Reuniao#consultar_reuniao.xhtml"
-    NAME="output" PATH="/paginas/Cond/Reuniao/consultar_reuniao.xhtml"
-    TARGET="rules:#paginas#Cond#Reuniao#consultar_reuniao.xhtml"
-    TITLE="Editar" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
-  <PROCESS-ITEM
-   ID="rules:#paginas#Cond#Reuniao#cadastrar_reuniao.xhtml:1"
-   NAME="item1" PATH="/paginas/Cond/Reuniao/cadastrar_reuniao.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="Cadastrar::#paginas#Cond#Reuniao#reuniao.xhtml" NAME="output"
-    PATH="/paginas/Cond/Reuniao/reuniao.xhtml"
-    TARGET="rules:#paginas#Cond#Reuniao#reuniao.xhtml" TITLE="Cadastrar" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#paginas#Cond#Reuniao#reuniao.xhtml"
-  PATH="/paginas/Cond/Reuniao/reuniao.xhtml" SHAPE="256,3793,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM
-  NAME="rules:#paginas#Cond#condomino#consultar_condomino.xhtml"
-  PATH="/paginas/Cond/condomino/consultar_condomino.xhtml"
-  SHAPE="256,4385,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM
-   ID="rules:#paginas#Cond#condomino#consultar_condomino.xhtml:0"
-   NAME="item" PATH="/paginas/Cond/condomino/consultar_condomino.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="Editar::#paginas#Cond#condomino#cadastrar_condomino.xhtml"
-    NAME="output"
-    PATH="/paginas/Cond/condomino/cadastrar_condomino.xhtml"
-    TARGET="rules:#paginas#Cond#condomino#cadastrar_condomino.xhtml"
-    TITLE="Editar" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
-  <PROCESS-ITEM
-   ID="rules:#paginas#Cond#condomino#consultar_condomino.xhtml:1"
-   NAME="item1" PATH="/paginas/Cond/condomino/consultar_condomino.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="Cadastrar::#paginas#Cond#condomino#condomino.xhtml"
-    NAME="output" PATH="/paginas/Cond/condomino/condomino.xhtml"
-    TARGET="rules:#paginas#Cond#condomino#condomino.xhtml"
-    TITLE="Cadastrar" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM
-  NAME="rules:#paginas#Cond#condomino#cadastrar_condomino.xhtml"
-  PATH="/paginas/Cond/condomino/cadastrar_condomino.xhtml"
-  SHAPE="32,4369,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM
-   ID="rules:#paginas#Cond#condomino#cadastrar_condomino.xhtml:0"
-   NAME="item" PATH="/paginas/Cond/condomino/cadastrar_condomino.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="Editar::#paginas#Cond#condomino#consultar_condomino.xhtml"
-    NAME="output"
-    PATH="/paginas/Cond/condomino/consultar_condomino.xhtml"
-    TARGET="rules:#paginas#Cond#condomino#consultar_condomino.xhtml"
-    TITLE="Editar" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
-  <PROCESS-ITEM
-   ID="rules:#paginas#Cond#condomino#cadastrar_condomino.xhtml:1"
-   NAME="item1" PATH="/paginas/Cond/condomino/cadastrar_condomino.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="Cadastrar::#paginas#Cond#condomino#condomino.xhtml"
-    NAME="output" PATH="/paginas/Cond/condomino/condomino.xhtml"
-    TARGET="rules:#paginas#Cond#condomino#condomino.xhtml"
-    TITLE="Cadastrar" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#imovel#altera_imovel.xhtml"
   PATH="/paginas/imovel/altera_imovel.xhtml" SHAPE="32,4337,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#paginas#imovel#altera_imovel.xhtml:0"
@@ -557,88 +405,287 @@
     TARGET="rules:#paginas#imovel#consulta_imoveis.xhtml" TITLE="voltar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#paginas#Cond#condomino#condomino.xhtml"
-  PATH="/paginas/Cond/condomino/condomino.xhtml" SHAPE="256,4529,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM
-  NAME="rules:#paginas#Cond#Apartamento#cadastra_apartamento.xhtml"
-  PATH="/paginas/Cond/Apartamento/cadastra_apartamento.xhtml"
-  SHAPE="48,5217,0,0" model-entity="JSFProcessGroup">
+  NAME="rules:#paginas#condominio#Regras#cadastra_regra.xhtml"
+  PATH="/paginas/condominio/Regras/cadastra_regra.xhtml"
+  SHAPE="48,5041,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM
-   ID="rules:#paginas#Cond#Apartamento#cadastra_apartamento.xhtml:0"
-   NAME="item"
-   PATH="/paginas/Cond/Apartamento/cadastra_apartamento.xhtml" model-entity="JSFProcessItem">
+   ID="rules:#paginas#condominio#Regras#cadastra_regra.xhtml:0"
+   NAME="item" PATH="/paginas/condominio/Regras/cadastra_regra.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="sucesso::#paginas#Cond#Apartamento#sucesso.xhtml" NAME="output"
-    PATH="/paginas/Cond/Apartamento/sucesso.xhtml"
-    TARGET="rules:#paginas#Cond#Apartamento#sucesso.xhtml"
-    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
-  <PROCESS-ITEM
-   ID="rules:#paginas#Cond#Apartamento#cadastra_apartamento.xhtml:1"
-   NAME="item1"
-   PATH="/paginas/Cond/Apartamento/cadastra_apartamento.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="altera::#paginas#Cond#Apartamento#alterar_apartamento.xhtml"
-    NAME="output"
-    PATH="/paginas/Cond/Apartamento/alterar_apartamento.xhtml"
-    TARGET="rules:#paginas#Cond#Apartamento#alterar_apartamento.xhtml"
+    ID="altera::#paginas#condominio#regras#alterar_regra.xhtml"
+    NAME="output" PATH="/paginas/condominio/regras/alterar_regra.xhtml"
+    TARGET="rules:#paginas#condominio#regras#alterar_regra.xhtml"
     TITLE="altera" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="destruido::#paginas#Cond#Apartamento#cadastra_apartamento.xhtml"
+    ID="destruido::#paginas#condominio#regras#cadastra_regra.xhtml"
     NAME="output1"
-    PATH="/paginas/Cond/Apartamento/cadastra_apartamento.xhtml"
-    TARGET="rules:#paginas#Cond#Apartamento#cadastra_apartamento.xhtml"
+    PATH="/paginas/condominio/regras/cadastra_regra.xhtml"
+    TARGET="rules:#paginas#condominio#regras#cadastra_regra.xhtml"
     TITLE="destruido" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM
-  NAME="rules:#paginas#Cond#Apartamento#alterar_apartamento.xhtml"
-  PATH="/paginas/Cond/Apartamento/alterar_apartamento.xhtml"
-  SHAPE="288,5409,0,0" model-entity="JSFProcessGroup">
+  NAME="rules:#paginas#condominio#Reuniao#cadastrar_reuniao.xhtml"
+  PATH="/paginas/condominio/Reuniao/cadastrar_reuniao.xhtml"
+  SHAPE="32,5473,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM
-   ID="rules:#paginas#Cond#Apartamento#alterar_apartamento.xhtml:0"
+   ID="rules:#paginas#condominio#Reuniao#cadastrar_reuniao.xhtml:0"
    NAME="item"
-   PATH="/paginas/Cond/Apartamento/alterar_apartamento.xhtml" model-entity="JSFProcessItem">
+   PATH="/paginas/condominio/Reuniao/cadastrar_reuniao.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="destruido::#paginas#Cond#Apartamento#consulta_apartamento.xhtml"
+    ID="altera::#paginas#condominio#apartamento#alterar_apartamento.xhtml"
     NAME="output"
-    PATH="/paginas/Cond/Apartamento/consulta_apartamento.xhtml"
-    TARGET="rules:#paginas#Cond#Apartamento#consulta_apartamento.xhtml"
-    TITLE="destruido" model-entity="JSFProcessItemOutput"/>
+    PATH="/paginas/condominio/apartamento/alterar_apartamento.xhtml"
+    TARGET="rules:#paginas#condominio#apartamento#alterar_apartamento.xhtml"
+    TITLE="altera" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="sucesso::#paginas#Cond#Apartamento#consulta_apartamento.xhtml"
+    ID="destruido::#paginas#condominio#apartamento#cadastra_apartamento.xhtml"
     NAME="output1"
-    PATH="/paginas/Cond/Apartamento/consulta_apartamento.xhtml"
-    TARGET="rules:#paginas#Cond#Apartamento#consulta_apartamento.xhtml"
+    PATH="/paginas/condominio/apartamento/cadastra_apartamento.xhtml"
+    TARGET="rules:#paginas#condominio#apartamento#cadastra_apartamento.xhtml"
+    TITLE="destruido" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#condomino#consultar_condomino.xhtml"
+  PATH="/paginas/condominio/condomino/consultar_condomino.xhtml"
+  SHAPE="32,3777,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#condomino#consultar_condomino.xhtml:0"
+   NAME="item"
+   PATH="/paginas/condominio/condomino/consultar_condomino.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Editar::#paginas#condominio#condomino#cadastrar_condomino.xhtml"
+    NAME="output"
+    PATH="/paginas/condominio/condomino/cadastrar_condomino.xhtml"
+    TARGET="rules:#paginas#condominio#condomino#cadastrar_condomino.xhtml"
+    TITLE="Editar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#condomino#cadastrar_condomino.xhtml"
+  PATH="/paginas/condominio/condomino/cadastrar_condomino.xhtml"
+  SHAPE="240,3793,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#condomino#cadastrar_condomino.xhtml:0"
+   NAME="item"
+   PATH="/paginas/condominio/condomino/cadastrar_condomino.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Editar::#paginas#condominio#condomino#consultar_condomino.xhtml"
+    NAME="output"
+    PATH="/paginas/condominio/condomino/consultar_condomino.xhtml"
+    TARGET="rules:#paginas#condominio#condomino#consultar_condomino.xhtml"
+    TITLE="Editar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#condomino#cadastrar_condomino.xhtml:1"
+   NAME="item1"
+   PATH="/paginas/condominio/condomino/cadastrar_condomino.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Cadastrar::#paginas#condominio#condomino#condomino.xhtml"
+    NAME="output" PATH="/paginas/condominio/condomino/condomino.xhtml"
+    TARGET="rules:#paginas#condominio#condomino#condomino.xhtml"
+    TITLE="Cadastrar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#Apartamento#consulta_apartamento.xhtml"
+  PATH="/paginas/condominio/Apartamento/consulta_apartamento.xhtml"
+  SHAPE="32,2849,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#Apartamento#consulta_apartamento.xhtml:0"
+   NAME="item"
+   PATH="/paginas/condominio/Apartamento/consulta_apartamento.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Cadastrar::#paginas#condominio#reuniao#reuniao.xhtml"
+    NAME="output" PATH="/paginas/condominio/reuniao/reuniao.xhtml"
+    TARGET="rules:#paginas#condominio#reuniao#reuniao.xhtml"
+    TITLE="Cadastrar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#condomino#condomino.xhtml"
+  PATH="/paginas/condominio/condomino/condomino.xhtml"
+  SHAPE="464,3665,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#apartamento#cadastra_apartamento.xhtml"
+  PATH="/paginas/condominio/apartamento/cadastra_apartamento.xhtml"
+  SHAPE="480,3489,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#apartamento#cadastra_apartamento.xhtml:0"
+   NAME="item"
+   PATH="/paginas/condominio/apartamento/cadastra_apartamento.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="sucesso::#paginas#condominio#apartamento#sucesso.xhtml"
+    NAME="output" PATH="/paginas/condominio/apartamento/sucesso.xhtml"
+    TARGET="rules:#paginas#condominio#apartamento#sucesso.xhtml"
     TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM
-  NAME="rules:#paginas#Cond#Apartamento#consulta_apartamento.xhtml"
-  PATH="/paginas/Cond/Apartamento/consulta_apartamento.xhtml"
-  SHAPE="48,5393,0,0" model-entity="JSFProcessGroup">
+  NAME="rules:#paginas#condominio#apartamento#alterar_apartamento.xhtml"
+  PATH="/paginas/condominio/apartamento/alterar_apartamento.xhtml"
+  SHAPE="480,3601,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM
-   ID="rules:#paginas#Cond#Apartamento#consulta_apartamento.xhtml:0"
+   ID="rules:#paginas#condominio#apartamento#alterar_apartamento.xhtml:0"
    NAME="item"
-   PATH="/paginas/Cond/Apartamento/consulta_apartamento.xhtml" model-entity="JSFProcessItem">
+   PATH="/paginas/condominio/apartamento/alterar_apartamento.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="detalhes::#paginas#Cond#Apartamento#detalhes_apartamento.xhtml"
+    ID="destruido::#paginas#condominio#apartamento#consulta_apartamento.xhtml"
     NAME="output"
-    PATH="/paginas/Cond/Apartamento/detalhes_apartamento.xhtml"
-    TARGET="rules:#paginas#Cond#Apartamento#detalhes_apartamento.xhtml"
+    PATH="/paginas/condominio/apartamento/consulta_apartamento.xhtml"
+    TARGET="rules:#paginas#condominio#apartamento#consulta_apartamento.xhtml"
+    TITLE="destruido" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="sucesso::#paginas#condominio#apartamento#consulta_apartamento.xhtml"
+    NAME="output1"
+    PATH="/paginas/condominio/apartamento/consulta_apartamento.xhtml"
+    TARGET="rules:#paginas#condominio#apartamento#consulta_apartamento.xhtml"
+    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#apartamento#consulta_apartamento.xhtml"
+  PATH="/paginas/condominio/apartamento/consulta_apartamento.xhtml"
+  SHAPE="256,3761,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#apartamento#consulta_apartamento.xhtml:0"
+   NAME="item"
+   PATH="/paginas/condominio/apartamento/consulta_apartamento.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="detalhes::#paginas#condominio#apartamento#detalhes_apartamento.xhtml"
+    NAME="output"
+    PATH="/paginas/condominio/apartamento/detalhes_apartamento.xhtml"
+    TARGET="rules:#paginas#condominio#apartamento#detalhes_apartamento.xhtml"
     TITLE="detalhes" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="modifica::#paginas#Cond#Apartamento#alterar_apartamento.xhtml"
+    ID="modifica::#paginas#condominio#apartamento#alterar_apartamento.xhtml"
     NAME="output1"
-    PATH="/paginas/Cond/Apartamento/alterar_apartamento.xhtml"
-    TARGET="rules:#paginas#Cond#Apartamento#alterar_apartamento.xhtml"
+    PATH="/paginas/condominio/apartamento/alterar_apartamento.xhtml"
+    TARGET="rules:#paginas#condominio#apartamento#alterar_apartamento.xhtml"
     TITLE="modifica" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM
-  NAME="rules:#paginas#Cond#Apartamento#detalhes_apartamento.xhtml"
-  PATH="/paginas/Cond/Apartamento/detalhes_apartamento.xhtml"
-  SHAPE="288,5553,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#paginas#Cond#Apartamento#sucesso.xhtml"
-  PATH="/paginas/Cond/Apartamento/sucesso.xhtml" SHAPE="288,5793,0,0" model-entity="JSFProcessGroup"/>
+  NAME="rules:#paginas#condominio#apartamento#detalhes_apartamento.xhtml"
+  PATH="/paginas/condominio/apartamento/detalhes_apartamento.xhtml"
+  SHAPE="480,3745,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#apartamento#sucesso.xhtml"
+  PATH="/paginas/condominio/apartamento/sucesso.xhtml"
+  SHAPE="704,3505,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#reuniao#cadastrar_reuniao.xhtml"
+  PATH="/paginas/condominio/reuniao/cadastrar_reuniao.xhtml"
+  SHAPE="32,3265,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#reuniao#cadastrar_reuniao.xhtml:0"
+   NAME="item"
+   PATH="/paginas/condominio/reuniao/cadastrar_reuniao.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Editar::#paginas#condominio#reuniao#consultar_reuniao.xhtml"
+    NAME="output"
+    PATH="/paginas/condominio/reuniao/consultar_reuniao.xhtml"
+    TARGET="rules:#paginas#condominio#reuniao#consultar_reuniao.xhtml"
+    TITLE="Editar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#reuniao#cadastrar_reuniao.xhtml:1"
+   NAME="item1"
+   PATH="/paginas/condominio/reuniao/cadastrar_reuniao.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Cadastrar::#paginas#condominio#reuniao#reuniao.xhtml"
+    NAME="output" PATH="/paginas/condominio/reuniao/reuniao.xhtml"
+    TARGET="rules:#paginas#condominio#reuniao#reuniao.xhtml"
+    TITLE="Cadastrar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#condominio#reuniao#reuniao.xhtml"
+  PATH="/paginas/condominio/reuniao/reuniao.xhtml" SHAPE="256,3281,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#reuniao#consultar_reuniao.xhtml"
+  PATH="/paginas/condominio/reuniao/consultar_reuniao.xhtml"
+  SHAPE="32,3713,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#reuniao#consultar_reuniao.xhtml:0"
+   NAME="item"
+   PATH="/paginas/condominio/reuniao/consultar_reuniao.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Editar::#paginas#condominio#reuniao#cadastrar_reuniao.xhtml"
+    NAME="output"
+    PATH="/paginas/condominio/reuniao/cadastrar_reuniao.xhtml"
+    TARGET="rules:#paginas#condominio#reuniao#cadastrar_reuniao.xhtml"
+    TITLE="Editar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#reuniao#consultar_reuniao.xhtml:1"
+   NAME="item1"
+   PATH="/paginas/condominio/reuniao/consultar_reuniao.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="Cadastrar::#paginas#condominio#condomino#condomino.xhtml"
+    NAME="output" PATH="/paginas/condominio/condomino/condomino.xhtml"
+    TARGET="rules:#paginas#condominio#condomino#condomino.xhtml"
+    TITLE="Cadastrar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#regras#cadastra_regra.xhtml"
+  PATH="/paginas/condominio/regras/cadastra_regra.xhtml"
+  SHAPE="272,5473,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#regras#cadastra_regra.xhtml:0"
+   NAME="item" PATH="/paginas/condominio/regras/cadastra_regra.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="sucesso::#paginas#condominio#regras#sucesso.xhtml" NAME="output"
+    PATH="/paginas/condominio/regras/sucesso.xhtml"
+    TARGET="rules:#paginas#condominio#regras#sucesso.xhtml"
+    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#regras#alterar_regra.xhtml"
+  PATH="/paginas/condominio/regras/alterar_regra.xhtml"
+  SHAPE="272,5585,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#regras#alterar_regra.xhtml:0"
+   NAME="item" PATH="/paginas/condominio/regras/alterar_regra.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="destruido::#paginas#condominio#regras#consulta_regra.xhtml"
+    NAME="output" PATH="/paginas/condominio/regras/consulta_regra.xhtml"
+    TARGET="rules:#paginas#condominio#regras#consulta_regra.xhtml"
+    TITLE="destruido" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="sucesso::#paginas#condominio#regras#consulta_regra.xhtml"
+    NAME="output1"
+    PATH="/paginas/condominio/regras/consulta_regra.xhtml"
+    TARGET="rules:#paginas#condominio#regras#consulta_regra.xhtml"
+    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#regras#consulta_regra.xhtml"
+  PATH="/paginas/condominio/regras/consulta_regra.xhtml"
+  SHAPE="48,5713,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#regras#consulta_regra.xhtml:0"
+   NAME="item" PATH="/paginas/condominio/regras/consulta_regra.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="detalhes::#paginas#condominio#regras#detalhes_regra.xhtml"
+    NAME="output" PATH="/paginas/condominio/regras/detalhes_regra.xhtml"
+    TARGET="rules:#paginas#condominio#regras#detalhes_regra.xhtml"
+    TITLE="detalhes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="modifica::#paginas#condominio#regras#alterar_regra.xhtml"
+    NAME="output1" PATH="/paginas/condominio/regras/alterar_regra.xhtml"
+    TARGET="rules:#paginas#condominio#regras#alterar_regra.xhtml"
+    TITLE="modifica" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#condominio#regras#sucesso.xhtml"
+  PATH="/paginas/condominio/regras/sucesso.xhtml" SHAPE="496,5457,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#regras#detalhes_regra.xhtml"
+  PATH="/paginas/condominio/regras/detalhes_regra.xhtml"
+  SHAPE="272,5729,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
