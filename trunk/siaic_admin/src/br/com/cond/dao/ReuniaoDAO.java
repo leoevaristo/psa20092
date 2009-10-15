@@ -122,8 +122,11 @@ public class ReuniaoDAO {
 		
 		//Pega a dependencia para uma reuniao em aberto
 		public List<AgendaDependencia> getDependencia() throws SQLException{
-			String query = new String("select * from ADMCON_AGENDA_DEPENDENCIA "
-									+ "where AGD_DATA > now()");
+		String query = new String("select AGD_CODIGO, AGD_DATA, AGD_HORA_INICIO, AGD_HORA_FINAL, AGD_CON_CODIGO, "
+						+ "AGD_DEP_CODIGO, AGD_AGF_CODIGO, AGD_COMPARECIMENTO from admcon_agenda_dependencia "
+						+ "where (AGD_DATA > now()) "
+						+ "and (AGD_AGF_CODIGO in (select AGF_CODIGO from admcon_agenda_finalidade where AGF_DESCRICAO like '%reuni%')) "
+						+ "and (AGD_CODIGO not in (select REU_AGD_CODIGO from admcon_reuniao))");
 			PreparedStatement ps;
 			ps = DB.getConn().prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
@@ -137,10 +140,9 @@ public class ReuniaoDAO {
 				d.setData(rs.getDate("AGD_DATA"));
 				d.setHoraInicio(rs.getTime("AGD_HORA_INICIO"));
 				d.setHoraFinal(rs.getTime("AGD_HORA_FINAL"));	
-				//TODO Modificar para o DAO.
-				d.setCondomino(new Condomino());
-				d.setDependencia(new Dependencia());
-				d.setFinalidade(new AgendaFinalidade());
+				d.setCondomino(new CondominoDAO().getCondominio(rs.getInt("AGD_CON_CODIGO")));
+				d.setDependencia(new DependenciaDAO().buscaDependencia(rs.getInt("AGD_DEP_CODIGO")));
+				d.setFinalidade(new AgendaFinalidadeDAO().buscarAgendaFinalidade(rs.getInt("AGD_AGF_CODIGO")));
 				char c = (rs.getString("AGD_COMPARECIMENTO") == null || 
 						  rs.getString("AGD_COMPARECIMENTO").isEmpty()) ?
 						  '\0' : rs.getString("AGD_COMPARECIMENTO").charAt(0);
