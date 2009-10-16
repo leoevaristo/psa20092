@@ -13,6 +13,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import org.eclipse.jdt.internal.compiler.ast.ThisReference;
+
 import br.com.cond.businesslogic.ReceitaDespesa;
 import br.com.siaic.dao.FabricaConexao;
 
@@ -35,6 +38,10 @@ public class ReceitasDespesasDAO {
 		"                                  DER_TIPO = ?, " +
 		"                                  DER_DATA = ?, " +
 		"                                  DER_CON_CODIGO = ? " +
+		"WHERE DER_CODIGO = ? ";
+	
+	private final String CONSULTA_RECEITA_DEPESA_CODIGO = 
+		"SELECT * FROM ADMCON_DESPESA_RECEITA " +
 		"WHERE DER_CODIGO = ? ";
 		
 	public ReceitasDespesasDAO() {
@@ -138,6 +145,55 @@ public class ReceitasDespesasDAO {
 		}
 		
 		return alterou;
+	}
+	
+	public ReceitaDespesa consultaReceitaDespesaPorCodigo(int codigo) throws Exception {
+		ReceitaDespesa rd = null;
+		
+		try {
+			
+			// Abre a conexão com o banco de dados
+			FabricaConexao.getInstancia();
+			this.con = FabricaConexao.conectar();
+			
+			pstm = this.con.prepareStatement(this.CONSULTA_RECEITA_DEPESA_CODIGO);
+			pstm.setInt(1, codigo);
+			this.rst = pstm.executeQuery();
+			this.rst.next();
+			if(this.rst.getInt(1) == 0) {
+				System.out.println("Nenhuma rehistro encontrado. ");
+			} else {
+				rd = new ReceitaDespesa();
+				rd.setCodigo(this.rst.getInt(1));
+				rd.setTipoRD(new ReceitasDespesasTiposDAO().getReceitasDespesasTiposPorCodigo(
+						this.rst.getInt(2)));
+				rd.setValor(this.rst.getDouble(3));
+				rd.setTipo(this.rst.getString(4));
+				rd.setData(this.rst.getString(5));
+				rd.setCondominio(new CondominoDAO().getCondominio(this.rst.getInt(6)));
+			}
+			
+		} catch ( SQLException sql ) {
+			sql.printStackTrace();
+			System.out.println("Erro ao tentar consultar despesa e receitas. " + 
+					sql.getMessage());
+		}
+		
+		finally {
+			
+			try {
+				
+				// Fecha a instrução e a conexão com o banco de dados
+				this.pstm.close();
+				this.con.close();
+				
+			} catch ( Exception e ) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		return rd;
 	}
 	
 	public static void main(String[] args) throws Exception {
