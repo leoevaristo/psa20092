@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="/WEB-INF/template/template.xhtml">	
+	<ui:define name="tituloGrande"><h:outputText value="Condomino"/></ui:define>
+	<ui:define name="subtitulo"><h:outputText value="Despesas / Receitas Cadastrada"/></ui:define>
+	<ui:define name="conteudo">
+	<h:form styleClass="forms">
+		<h:panelGroup id="panelNomeTipoReceitaDespesa">
+			<h:outputLabel for="tipoRD" value="Tipo de Receita/Despesa:" />
+			<h:outputText value="#{CadastrarReceitaDespesa.rd.tipoRD.descricao}" />		
+		</h:panelGroup>
+		<h:panelGroup id="panelValor">
+			<h:outputLabel for="valor" value="Valor R$:"/>
+			<h:outputText value="#{CadastrarReceitaDespesa.rd.valor}" />
+		</h:panelGroup>
+		<h:panelGroup id="panelTipo">
+			<h:outputLabel for="tipo" value="Tipo:" />	
+			<h:outputText value="#{CadastrarReceitaDespesa.rd.tipo}" />		
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:outputLabel for="data" value="Data:"/>
+			<h:outputText value="#{CadastrarReceitaDespesa.rd.data}" />
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:outputLabel value="Codomino:" />
+			<h:outputText value="#{CadastrarReceitaDespesa.rd.condominio.nome}" />
+		</h:panelGroup>
+		<span class="linha"></span>
+			<span class="botoes">
+				<h:commandButton value="" styleClass="input_submit"/>
+			</span>
+	</h:form>
+	</ui:define>
+
+	</ui:composition>
+
+</html>
