@@ -9,9 +9,6 @@ import java.sql.SQLException;
 
 import br.com.cond.businesslogic.Apartamento;
 import br.com.cond.businesslogic.CartaCobranca;
-import br.com.cond.businesslogic.Condomino;
-import br.com.cond.businesslogic.ReceitaDespesa;
-import br.com.cond.businesslogic.ReceitaDespesaTipos;
 import br.com.cond.businesslogic.TaxasCondominio;
 import br.com.siaic.dao.FabricaConexao;
 
