@@ -12,7 +12,7 @@ public class TaxasCondominio {
 	
 	private double valor;
 	
-	private boolean estaPago;
+	private Character estaPago;
 	
 	private Date dataVencimento;
 	
@@ -59,14 +59,14 @@ public class TaxasCondominio {
 		this.valor = valor;
 	}
 	
-	public boolean getEstaPago() {
+	public Character getEstaPago() {
 		return estaPago;
 	}
-	
-	public void setEstaPago(boolean estaPago) {
+
+	public void setEstaPago(Character estaPago) {
 		this.estaPago = estaPago;
 	}
-	
+
 	public Date getDataVencimento() {
 		return dataVencimento;
 	}
