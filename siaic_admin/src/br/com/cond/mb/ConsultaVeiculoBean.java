@@ -126,18 +126,15 @@ public class ConsultaVeiculoBean {
 	 * 
 	 * @throws SQLException
 	 */
-	public void excluiveiculo() throws SQLException {
-
-		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest req = (HttpServletRequest) context
-				.getExternalContext().getRequest();
-
-		Integer idveiculo = new Integer(req.getParameter("codigoveiculo"))
-				.intValue();
+	public String excluiveiculo() throws SQLException {
 
 		VeiculoDAO dao = new VeiculoDAO();
-		dao.removerveiculo(idveiculo);
-
+		dao.removerveiculo(this.getCodigoParametro());
+        return "";
+	}
+	
+	public String alteraVeiculo() {
+		return "altera";
 	}
 	
 	
@@ -267,7 +264,15 @@ public class ConsultaVeiculoBean {
 		  return "exibeRelatorio"; 
 		}
 
+	private int getCodigoParametro() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context
+				.getExternalContext().getRequest();
 
+		Integer idveiculo = new Integer(req.getParameter("codigoVeiculo"))
+				.intValue();
+		return idveiculo;
+	}
 	
 }
 

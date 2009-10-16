@@ -16,6 +16,39 @@
 		 <ui:define name="conteudo">
 		   <h:form styleClass="forms">
 		     
+		      <!-- <h:panelGroup id="codigo">
+		       <h:outputLabel value="Código" />
+		       <h:outputText value="${cadastraVeiculoBean.veiculo.codigoVeiculo}" />
+		     </h:panelGroup> -->
+		     
+		     <h:panelGroup id="placa">
+		       <h:outputLabel value="Placa" />
+		       <h:inputText value="${cadastraVeiculoBean.veiculo.placa}" maxlength="7" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="cor">
+		       <h:outputLabel value="Cor" />
+		       <h:inputText value="${cadastraVeiculoBean.veiculo.cor}" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="apartamento">
+		       <h:outputLabel value="Apartamento" />
+		       <h:selectOneMenu value="${cadastraVeiculoBean.veiculo.codigoApartamento}" id="apart">
+		         <f:selectItems value="${cadastraVeiculoBean.apartamentos}" />
+		       </h:selectOneMenu>
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="descricao">
+		       <h:outputLabel value="Descrição" />
+		       <h:inputTextarea value="${cadastraVeiculoBean.veiculo.descricao}" rows="6" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup styleClass="linha"></h:panelGroup>
+		     
+		     <h:panelGroup styleClass="botoes">
+			   <h:commandButton action="#{cadastraVeiculoBean.addVeiculo}" value="" styleClass="input_submit" />
+			   <h:commandButton action="#{cadastraVeiculoBean.voltar}" value="" styleClass="input_button" immediate="true" />
+			 </h:panelGroup>
 		     
 		   </h:form>
 		 </ui:define>
