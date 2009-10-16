@@ -43,12 +43,13 @@ public class ApartamentoDAO {
 
 	public void adicionarApartamento (Apartamento apartamento) throws SQLException {
 
-		String sql = "INSERT INTO admcon_apartamento (APA_ANDAR, APA_BLOCO) "
-				+ "VALUES (?, ?)";
+		String sql = "INSERT INTO admcon_apartamento (APA_NUMERO ,APA_ANDAR, APA_BLOCO) "
+				+ "VALUES (? ,?, ?)";
 
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setInt(1, apartamento.getAndar());
-		ps.setString(2, apartamento.getBloco());
+		ps.setInt(1, apartamento.getNumero());
+		ps.setInt(2, apartamento.getAndar());
+		ps.setString(3, apartamento.getBloco());
 
 		ps.execute();
 
@@ -78,7 +79,7 @@ public class ApartamentoDAO {
 
 	public void alterarApartamento(Apartamento apartamento) throws SQLException {
 
-		String sql = "UPDATE admcon_apartamento SET APA_ANDAR = ?, APA_BLOCO = ? "
+		String sql = "UPDATE admcon_apartamento SET APA_NUMERO = ?, APA_ANDAR = ?, APA_BLOCO = ? "
 				+ " WHERE  APA_CODIGO = ?";
 
 		try {
@@ -109,7 +110,7 @@ public class ApartamentoDAO {
 	 */
 	public List<Apartamento> getTodosOsApartamentos() throws SQLException {
 		// TODO
-		String sql = "SELECT APA_CODIGO, APA_ANDAR, APA_BLOCO "
+		String sql = "SELECT APA_CODIGO,APA_NUMERO, APA_ANDAR, APA_BLOCO "
 				+ " FROM admcon_apartamento "
 				+ " ORDER BY APA_BLOCO";
 
@@ -126,8 +127,9 @@ public class ApartamentoDAO {
 		//	regra.setCodigoRegra(rs.getString());
 		//	regra.setRegra(rs.getString());
 			apartamento.setCodigoApartamento(rs.getInt(1));
-			apartamento.setAndar(rs.getInt(2));			
-			apartamento.setBloco(rs.getString(3));
+			apartamento.setNumero(rs.getInt(2));
+			apartamento.setAndar(rs.getInt(3));			
+			apartamento.setBloco(rs.getString(4));
 
 			listaTodosApartamentos.add(apartamento);
 
@@ -143,7 +145,7 @@ public class ApartamentoDAO {
 	public Apartamento getApartamentoId(int apartamentoCodigo) throws SQLException
 	{
 		
-		String sql = "SELECT APA_CODIGO, APA_ANDAR, APA_BLOCO " 
+		String sql = "SELECT APA_CODIGO,APA_NUMERO, APA_ANDAR, APA_BLOCO " 
 			+"FROM admcon_apartamento " 
 			+"WHERE APA_CODIGO = ?  ";
 		
@@ -158,6 +160,7 @@ public class ApartamentoDAO {
 		rs.first();
 		
 		apartamento.setCodigoApartamento(rs.getInt("APA_CODIGO"));
+		apartamento.setNumero(rs.getInt("APA_NUMERO"));
 		apartamento.setAndar(rs.getInt("APA_ANDAR"));
 		apartamento.setBloco(rs.getString("APA_BLOCO"));
 		
@@ -171,7 +174,7 @@ public class ApartamentoDAO {
 	
 	public List<Apartamento> getApartamentoPorBloco(String nbloco) throws SQLException {
 
-		String sql = "SELECT APA_CODIGO,APA_ANDAR,APA_BLOCO "
+		String sql = "SELECT APA_CODIGO,APA_NUMERO,APA_ANDAR,APA_BLOCO "
 			+ "FROM admcon_apartamento  "
 			+ "WHERE APA_BLOCO LIKE ? ";
 
@@ -188,6 +191,7 @@ public class ApartamentoDAO {
 			
 				Apartamento apartamento = new Apartamento();
 				apartamento.setCodigoApartamento(rs.getInt("APA_CODIGO"));
+				apartamento.setNumero(rs.getInt("APA_NUMERO"));
 				apartamento.setAndar(rs.getInt("APA_ANDAR"));
 				apartamento.setBloco(rs.getString("APA_BLOCO"));
 

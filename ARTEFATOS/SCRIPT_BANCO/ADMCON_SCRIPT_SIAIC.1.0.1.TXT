@@ -1,7 +1,7 @@
 create table ADMCON_CONDOMINO (CON_CODIGO int(10) not null auto_increment, CON_NOME varchar(50) not null, CON_SEXO char(1) not null, CON_DATA_NASCIMENTO date not null, CON_CON_CODIGO int(10), CON_APA_CODIGO int(10) not null, constraint CON_CODIGO primary key (CON_CODIGO)) ENGINE=InnoDB;
 create table ADMCON_INFRACAO (INF_CODIGO int(10) not null auto_increment, INF_DESCRICAO varchar(30), primary key (INF_CODIGO)) ENGINE=InnoDB;
 create table ADMCON_VEICULO (VEI_CODIGO int(10) not null auto_increment, VEI_DESCRICAO varchar(30) not null, VEI_PLACA char(7), VEI_COR varchar(15), VEI_APA_CODIGO int(10) not null, primary key (VEI_CODIGO)) ENGINE=InnoDB;
-create table ADMCON_APARTAMENTO (APA_CODIGO int(10) not null auto_increment, APA_ANDAR int(10), APA_BLOCO int(10), primary key (APA_CODIGO)) ENGINE=InnoDB;
+create table ADMCON_APARTAMENTO (APA_CODIGO int(10) not null auto_increment, APA_NUMERO int(10), APA_ANDAR int(10), APA_BLOCO varchar(10), primary key (APA_CODIGO)) ENGINE=InnoDB;
 create table ADMCON_DEPENDENCIA (DEP_CODIGO int(10) not null auto_increment, DEP_DESCRICAO varchar(30) not null, DEP_RESERVAVEL char(1) not null, primary key (DEP_CODIGO)) ENGINE=InnoDB;
 create table ADMCON_REUNIAO (REU_CODIGO int(10) not null auto_increment, REU_DESCRICAO text, REU_AGD_CODIGO int(10) not null, primary key (REU_CODIGO)) ENGINE=InnoDB;
 create table ADMCON_APARTAMENTO_INFRACAO (API_CODIGO int(10) not null auto_increment, API_DATA_HORA datetime not null, API_OBSERVACAO text, API_INF_CODIGO int(10) not null, API_APA_CODIGO int(10) not null, primary key (API_CODIGO)) ENGINE=InnoDB;
