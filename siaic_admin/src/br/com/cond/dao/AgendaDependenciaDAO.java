@@ -46,8 +46,6 @@ public class AgendaDependenciaDAO {
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(sql);
-			// ps.setTimestamp(1, new
-			// Timestamp(agendaDependencia.getData().getTime()));
 			ps.setDate(1, new Date(agendaDependencia.getData().getTime()));
 			ps.setTime(2, agendaDependencia.getHoraInicio());
 			ps.setTime(3, agendaDependencia.getHoraFinal());
@@ -107,7 +105,7 @@ public class AgendaDependenciaDAO {
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(7, agendaDependencia.getCodigo());
+			ps.setInt(1, agendaDependencia.getCodigo());
 
 			flag = ps.execute();
 
@@ -147,9 +145,11 @@ public class AgendaDependenciaDAO {
 						.buscaDependencia(rs.getInt("AGD_DEP_CODIGO")));
 				agendaDep.setFinalidade(new AgendaFinalidadeDAO()
 						.buscarAgendaFinalidade(rs.getInt("AGD_AGF_CODIGO")));
+				
 				char c = (rs.getString("AGD_COMPARECIMENTO") == null || rs
 						.getString("AGD_COMPARECIMENTO").isEmpty()) ? '\0' : rs
 						.getString("AGD_COMPARECIMENTO").charAt(0);
+				
 				agendaDep.setComparecimento(c);
 			}
 
@@ -168,8 +168,6 @@ public class AgendaDependenciaDAO {
 	public List<AgendaDependencia> buscarAgendaDependencia(
 			AgendaDependencia agendaDependencia) throws SQLException {
 
-		// TODO buscar através dos filtros fornecidos pelo objeto
-		// AgendaDependencia todos os registros relacionados
 
 		String sql;
 		StringBuilder where = new StringBuilder();
@@ -295,28 +293,22 @@ public class AgendaDependenciaDAO {
 				AgendaFinalidadeDAO agendaFDao = new AgendaFinalidadeDAO();
 				agendaDepen.setFinalidade(agendaFDao.buscarAgendaFinalidade(rs
 						.getInt("AGD_AGF_CODIGO")));
-
+				
+				
+				char c = (rs.getString("AGD_COMPARECIMENTO") == null || rs
+						.getString("AGD_COMPARECIMENTO").isEmpty()) ? '\0' : rs
+						.getString("AGD_COMPARECIMENTO").charAt(0);
+				
+				agendaDepen.setComparecimento(c);
+				
+				listaAgendaDependencia.add(agendaDepen);
 			}
+			
+			return listaAgendaDependencia;
 		} finally {
 			conn.close();
 		}
 
-		// String sql =
-		// "delete from admcon_agenda_dependencia where AGD_CODIGO = ?";
-		//		
-		// PreparedStatement ps;
-		// try{
-		// ps = conn.prepareStatement(sql);
-		// ps.setInt(7, agendaDependencia.getCodigo());
-		//			
-		// ps.close();
-		//			
-		// return null;
-		// }finally{
-		// conn.close();
-		// }
-
-		return null;
 	}
 
 	public static void main(String[] args) {
