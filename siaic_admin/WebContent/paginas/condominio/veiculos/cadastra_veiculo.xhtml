@@ -23,7 +23,7 @@
 		     
 		     <h:panelGroup id="placa">
 		       <h:outputLabel value="Placa" />
-		       <h:inputText value="${cadastraVeiculoBean.veiculo.placa}" />
+		       <h:inputText value="${cadastraVeiculoBean.veiculo.placa}" maxlength="7" />
 		     </h:panelGroup>
 		     
 		     <h:panelGroup id="cor">
@@ -42,6 +42,13 @@
 		       <h:outputLabel value="Descrição" />
 		       <h:inputTextarea value="${cadastraVeiculoBean.veiculo.descricao}" rows="6" />
 		     </h:panelGroup>
+		     
+		     <h:panelGroup styleClass="linha"></h:panelGroup>
+		     
+		     <h:panelGroup styleClass="botoes">
+			   <h:commandButton action="#{cadastraVeiculoBean.addVeiculo}" value="" styleClass="input_submit" />
+			   <h:commandButton action="#{cadastraVeiculoBean.voltar}" value="" styleClass="input_button" immediate="true" />
+			 </h:panelGroup>
 		     
 		   </h:form>
 		 </ui:define>
