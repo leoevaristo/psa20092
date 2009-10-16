@@ -673,4 +673,57 @@
   NAME="rules:#paginas#condominio#regras#detalhes_regra.xhtml"
   PATH="/paginas/condominio/regras/detalhes_regra.xhtml"
   SHAPE="272,5729,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#veiculos#consulta_veiculo.xhtml"
+  PATH="/paginas/condominio/veiculos/consulta_veiculo.xhtml"
+  SHAPE="32,6577,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#veiculos#consulta_veiculo.xhtml:0"
+   NAME="item"
+   PATH="/paginas/condominio/veiculos/consulta_veiculo.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastra::#paginas#condominio#veiculos#cadastra_veiculo.xhtml"
+    NAME="output"
+    PATH="/paginas/condominio/veiculos/cadastra_veiculo.xhtml"
+    TARGET="rules:#paginas#condominio#veiculos#cadastra_veiculo.xhtml"
+    TITLE="cadastra" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="altera::#paginas#condominio#veiculos#altera_veiculo.xhtml"
+    NAME="output1"
+    PATH="/paginas/condominio/veiculos/altera_veiculo.xhtml"
+    TARGET="rules:#paginas#condominio#veiculos#altera_veiculo.xhtml"
+    TITLE="altera" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#veiculos#cadastra_veiculo.xhtml"
+  PATH="/paginas/condominio/veiculos/cadastra_veiculo.xhtml"
+  SHAPE="256,6593,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#veiculos#cadastra_veiculo.xhtml:0"
+   NAME="item"
+   PATH="/paginas/condominio/veiculos/cadastra_veiculo.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="sucesso::#paginas#condominio#veiculos#consulta_veiculo.xhtml"
+    NAME="output"
+    PATH="/paginas/condominio/veiculos/consulta_veiculo.xhtml"
+    TARGET="rules:#paginas#condominio#veiculos#consulta_veiculo.xhtml"
+    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#veiculos#altera_veiculo.xhtml"
+  PATH="/paginas/condominio/veiculos/altera_veiculo.xhtml"
+  SHAPE="256,6737,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#veiculos#altera_veiculo.xhtml:0"
+   NAME="item" PATH="/paginas/condominio/veiculos/altera_veiculo.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="sucesso::#paginas#condominio#veiculos#consulta_veiculo.xhtml"
+    NAME="output"
+    PATH="/paginas/condominio/veiculos/consulta_veiculo.xhtml"
+    TARGET="rules:#paginas#condominio#veiculos#consulta_veiculo.xhtml"
+    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>
