@@ -201,6 +201,11 @@
   <managed-bean-class>br.com.cond.mb.ConsultaVeiculoBean</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>alteraVeiculoBean</managed-bean-name>
+  <managed-bean-class>br.com.cond.mb.AlteraVeiculoBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
  <navigation-rule>
   <from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
   <navigation-case>

@@ -58,14 +58,14 @@
 					<h:outputText value="#{veiculo.descricao}" />
 				</h:column>
 	
-				<!-- <h:column>
+				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Editar" />
 					</f:facet>
-					<h:form id="alteraApartamento">
-						<h:commandLink action="#{consultaApartamentoBean.ApartamentoId}">
+					<h:form id="alteraVeiculo">
+						<h:commandLink action="#{consultaVeiculoBean.alteraVeiculo}">
 							<h:graphicImage value="/images/imgedit.png" />
-							<f:param value="#{}" name="codigoApartamento" />
+							<f:param value="#{veiculo.codigoVeiculo}" name="codigoVeiculo" />
 						</h:commandLink>
 					</h:form>
 				</h:column>
@@ -74,15 +74,15 @@
 					<f:facet name="header">
 						<h:outputText value="Excluir" />
 					</f:facet>
-					<h:form id="excluiApartamento">
+					<h:form id="excluiVeiculo">
 						<h:commandLink id="excluir"
-							onclick="if (confirm('VocÃª tem certeza que deseja excluir esse Apartamento?')) {return true }; return false;"
-							action="#{consultaApartamentoBean.excluiApartamento}">
+							onclick="if (confirm('VocÃª tem certeza que deseja excluir esse Ve�culo?')) {return true }; return false;"
+							action="#{consultaVeiculoBean.excluiveiculo}">
 							<h:graphicImage value="/images/imgdelete.png" />
-							<f:param value="#{}" name="codigoApartamento" />
+							<f:param value="#{veiculo.codigoVeiculo}" name="codigoVeiculo" />
 						</h:commandLink>
 					</h:form> 
-				</h:column> -->
+				</h:column>
 				
 			</h:dataTable>
 		     
