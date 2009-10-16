@@ -37,9 +37,9 @@ public class CadastraVeiculoBean {
 					StringBuilder label = new StringBuilder();
 					label.append("Nº: ");
 					label.append(ap.getCodigoApartamento());
-					label.append(" - Andar");
+					label.append(" - Andar ");
 					label.append(ap.getAndar());
-					label.append(" - Bloco");
+					label.append(" - Bloco ");
 					label.append(ap.getBloco());
 					listaApartamentos.add(new SelectItem(ap.getCodigoApartamento(), label.toString()));
 				}
@@ -86,7 +86,9 @@ public class CadastraVeiculoBean {
 		CadastraVeiculoBean.listaApartamentos = apartamentos;
 	}
 
-
+    public String voltar() {
+    	return "voltar";
+    }
 
 	/**
 	 * 
@@ -100,11 +102,11 @@ public class CadastraVeiculoBean {
 
 		VeiculoDAO daoVeiculo = new VeiculoDAO();
 
-		ApartamentoDAO daoApartamento = new ApartamentoDAO();
+		//ApartamentoDAO daoApartamento = new ApartamentoDAO();
 		
-		daoApartamento.adicionarApartamento(apartamento);
+		//daoApartamento.adicionarApartamento(apartamento);
 		
-		veiculo.setCodigoApartamento(apartamento.getCodigoApartamento());
+		//veiculo.setCodigoApartamento();
 	
      	daoVeiculo.adicionarVeiculo(veiculo);	
 

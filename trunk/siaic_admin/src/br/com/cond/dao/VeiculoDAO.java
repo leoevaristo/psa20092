@@ -67,7 +67,7 @@ public class VeiculoDAO {
 
 		catch (Exception e) {
 
-			throw new SQLException("Erro ao inserir dados no banco.");
+			throw new SQLException("Erro ao inserir dados do Veiculo no banco. " + e.getMessage());
 
 		}
 
