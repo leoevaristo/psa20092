@@ -5,7 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:composition template="/WEB-INF/template/template.xhtml">
+	<ui:composition template="/WEB-INF/template/template-cond.xhtml">
 		
          <ui:define name="tituloGrande"> 
 			<h:outputText value="Veículos" />
@@ -18,12 +18,74 @@
 		 <ui:define name="conteudo">
 		   <h:form styleClass="forms">
 		     <!-- Gerenciador de Acesso -->
+		     <h:outputText value="[Gerenciador de Acesso...]" />
+		     <h:panelGroup styleClass="linha"></h:panelGroup>
 		   </h:form>
 		 </ui:define>
 		 
 		 <ui:define name="infoGerais">
 		   <h:panelGroup id="listaVeiculos">
 		     <!-- Lista de veiculos -->
+		     
+		     <h:dataTable 
+				styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
+				value="#{consultaVeiculoBean.todosOsVeiculos}" var="veiculo">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Código" />
+					</f:facet>
+					<h:outputText value="#{veiculo.codigoVeiculo}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Placa" />
+					</f:facet>
+					<h:outputText value="#{veiculo.placa}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Cor" />
+					</f:facet>
+					<h:outputText value="#{veiculo.cor}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descrição" />
+					</f:facet>
+					<h:outputText value="#{veiculo.descricao}" />
+				</h:column>
+	
+				<!-- <h:column>
+					<f:facet name="header">
+						<h:outputText value="Editar" />
+					</f:facet>
+					<h:form id="alteraApartamento">
+						<h:commandLink action="#{consultaApartamentoBean.ApartamentoId}">
+							<h:graphicImage value="/images/imgedit.png" />
+							<f:param value="#{}" name="codigoApartamento" />
+						</h:commandLink>
+					</h:form>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Excluir" />
+					</f:facet>
+					<h:form id="excluiApartamento">
+						<h:commandLink id="excluir"
+							onclick="if (confirm('VocÃƒÂª tem certeza que deseja excluir esse Apartamento?')) {return true }; return false;"
+							action="#{consultaApartamentoBean.excluiApartamento}">
+							<h:graphicImage value="/images/imgdelete.png" />
+							<f:param value="#{}" name="codigoApartamento" />
+						</h:commandLink>
+					</h:form> 
+				</h:column> -->
+				
+			</h:dataTable>
+		     
 		   </h:panelGroup>
 		 </ui:define>
 		 
