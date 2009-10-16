@@ -61,7 +61,7 @@ public class TaxasCondominioBean {
 			}
 		}
 		
-		return null;
+		return "sucesso";
 		
 	}
 	
@@ -71,9 +71,15 @@ public class TaxasCondominioBean {
 	}
 	
 	public String setarPagamento(){
-		return null;
+		TaxasCondominioDAO daoTaxas = new TaxasCondominioDAO();
+		if(daoTaxas.setarPagamentoTaxa(taxasCondominio)){
+			return "sucesso";
+		}		
 		
+		return "falha";		
 	}
+	
+	
 
 
 	
