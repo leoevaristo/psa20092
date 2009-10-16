@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import br.com.cond.businesslogic.Regras;
 import br.com.cond.businesslogic.Veiculo;
 import br.com.siaic.dao.FabricaConexao;
 
