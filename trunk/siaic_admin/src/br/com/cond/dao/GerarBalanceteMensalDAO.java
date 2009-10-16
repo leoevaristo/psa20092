@@ -38,10 +38,10 @@ private Connection conexao = null;
 			
 		String sql = "SELECT DRC_CODIGO, DRC_DESCRICAO, DER_CODIGO,   "
 			+ "DER_VALOR, DER_TIPO, DER_DATA "
-			+ "FROM admcon_despesa_receita JOIN admcon_despesa_receita_dominio"
-			+ "WHERE admcon_despesa_receita. DRC_CODIGO = admcon_despesa_receita_dominio.DER_DRD_CODIGO"
-			+ " AND MONTH = ? AND YEAR= ? "
-			+ "ORDER BY DER_TIPO AND DER_DATA";
+			+ "FROM ADMCON_DESPESA_RECEITA JOIN ADMCON_DESPESA_RECEITA_DOMINIO"
+			+ "WHERE ADMCON_DESPESA_RECEITA.DRC_CODIGO = ADMCON_DESPESA_RECEITA_DOMINIO.DER_DRD_CODIGO"
+			+ " AND MONTH(DER_DATA) = ? AND YEAR(DER_DATA)= ? "
+			+ "ORDER BY DER_TIPO, DER_DATA";
 
 		try{
 			
@@ -84,7 +84,7 @@ private Connection conexao = null;
 	public List<ReceitaDespesa> getTotalReceitasDespesas(BalanceteMensal bal) throws SQLException {
 				
 		String sql = "SELECT DER_TIPO, SUM(DER_VALOR) "
-				+ "FROM admcon_despesa_receita "
+				+ "FROM ADMCON_DESPESA_RECEITA "
 				+ "GROUP BY DER_TIPO";
 
 		try{
