@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import br.com.cond.businesslogic.ReceitaDespesaTipos;
@@ -41,18 +40,14 @@ public class ReceitasDespesasTiposDAO {
 			this.con = FabricaConexao.conectar();
 			pstm = this.con.prepareStatement(this.LISTAR_TIPOS);
 			this.rst = pstm.executeQuery();
-			if(!(this.rst.next())) {
-				System.out.println("Nenhum tipo encontrado. ");
-			} else {
 				
-				listaTodosTipos = new ArrayList<ReceitaDespesaTipos>();
+			listaTodosTipos = new ArrayList<ReceitaDespesaTipos>();
 				
-				while (this.rst.next()) {
-					rd = new ReceitaDespesaTipos();
-					rd.setCodigo(this.rst.getInt(1));
-					rd.setDescricao(this.rst.getString(2));
-					listaTodosTipos.add(rd);
-				}
+			while (this.rst.next()) {
+				rd = new ReceitaDespesaTipos();
+				rd.setCodigo(this.rst.getInt(1));
+				rd.setDescricao(this.rst.getString(2));
+				listaTodosTipos.add(rd);
 			}
 			
 		} catch ( SQLException sql ) {
@@ -122,16 +117,6 @@ public class ReceitasDespesasTiposDAO {
 		return rdt;
 	}
 	
-	private ReceitaDespesaTipos montaTipos( ResultSet rst ) throws Exception {
-		int codigo = rst.getInt(1);
-		String descricao = rst.getString(2);
-		
-		return new ReceitaDespesaTipos(codigo, descricao); 
-	}
-	
-	
-	
-	
 	public static void main(String[] args) throws Exception {
 		ReceitasDespesasTiposDAO rdd = new ReceitasDespesasTiposDAO();
 		
@@ -145,9 +130,6 @@ public class ReceitasDespesasTiposDAO {
 			System.out.println(rdt.getDescricao());
 			
 		}
-	
-
-
 
 	}
 }
