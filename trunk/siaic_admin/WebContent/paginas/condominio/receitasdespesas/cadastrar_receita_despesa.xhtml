@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="/WEB-INF/template/template.xhtml">	
+	<ui:define name="tituloGrande"><h:outputText value="Condomino"/></ui:define>
+	<ui:define name="subtitulo"><h:outputText value="Cadastro de Despesas e Receitas"/></ui:define>
+	<ui:define name="conteudo">
+	<h:form styleClass="forms">
+		<h:panelGroup id="panelNomeTipoReceitaDespesa">
+			<h:outputLabel for="tipoRD" value="Tipo de Receita/Despesa:" />
+			<h:selectOneMenu value="#{ValorMercadoBean.bairro.bairroNome}" id="cmbTipoRD" required="true">
+				<f:selectItems value="#{ListaTiposReceitasDespesasBean.receitasDespesas}">
+				</f:selectItems>
+			</h:selectOneMenu>						
+		</h:panelGroup>
+		<h:panelGroup id="panelValor">
+			<h:outputLabel for="valor" value="Valor R$:"/>
+			<h:inputText value="#{CadastrarReceitaDespesa.rd.valor}" id="edtValor" />
+		</h:panelGroup>
+		<h:panelGroup id="panelTipo">
+			<h:outputLabel for="tipo" value="Tipo:" />
+			<h:selectOneMenu value="#{CadastrarReceitaDespesa.rd.tipo}" id="cmbTipo" required="true">
+				<f:selectItem itemValue="" itemLabel="Selecione"/>
+				<f:selectItem itemValue="R" itemLabel="Receita" />
+				<f:selectItem itemValue="D" itemLabel="Despesa" />
+			</h:selectOneMenu>						
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:outputLabel for="data" value="Data:"/>
+			<h:inputText id="edtData" value="#{CadastrarReceitaDespesa.rd.data}" /> 
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:outputLabel value="Codômino:" />
+			<h:selectOneMenu value="#{CadastrarReceitaDespesa.rd.condominio.codigo}">
+				<f:selectItems value="#{condominoBean.condominosList"></f:selectItems>
+			</h:selectOneMenu>
+		</h:panelGroup>
+		<span class="linha"></span>
+			<span class="botoes">
+				<h:commandButton action="#{CadastrarReceitaDespesa.adicionarReceitaDespesa}" value="" styleClass="input_submit"/>
+				<h:commandButton action="#{CadastrarReceitaDespesa.limpar}" value="" styleClass="input_reset" />
+				<h:commandButton value="" styleClass="input_button" immediate="true" />
+			</span>
+	</h:form>
+	</ui:define>
+
+	</ui:composition>
+
+</html>
