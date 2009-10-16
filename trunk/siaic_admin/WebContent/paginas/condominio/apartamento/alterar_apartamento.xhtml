@@ -14,6 +14,12 @@
 	</ui:define>
 	<ui:define name="conteudo">
 		<h:form styleClass="forms">
+			<h:panelGroup styleClass="textcenter">
+				<h:outputLabel for="campoNumero" value="Numero" />
+				<h:inputText value="#{consultaApartamentoBean.apartamento.numero}"
+					styleClass="obrigatorio" id="campoNumero" size="8" required="true" /> 
+			</h:panelGroup>
+
  			<h:panelGroup styleClass="textcenter">
 				<h:outputLabel for="campoAndar" value="Andar" />
 				<h:inputText value="#{consultaApartamentoBean.apartamento.andar}"

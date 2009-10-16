@@ -17,6 +17,10 @@
 				<h:outputText value="#{consultaApartamentoBean.apartamento.codigoApartamento}" id="campoApartamento" />
 			</h:panelGrid>					
 			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
+				<h:outputLabel for="campoNumero" value="Numero"/>
+				<h:outputText value="#{consultaApartamentoBean.apartamento.numero}" id="numeroApartamento" />
+			</h:panelGrid>					
+			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
 				<h:outputLabel for="campoAndar" value="andar"/>
 				<h:outputText value="#{consultaApartamentoBean.apartamento.andar}" id="campoAndar" />
 			</h:panelGrid>					
