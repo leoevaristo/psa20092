@@ -47,7 +47,7 @@ FROM
 						key="image-1"/>
 					<box></box>
 					<graphicElement stretchType="NoStretch"/>
-					<imageExpression class="java.lang.String"><![CDATA["C:\\Documents and Settings\\Alan\\Meus documentos\\Minhas imagens\\logoSiaic_menor.png"]]></imageExpression>
+					<imageExpression class="java.lang.String"><![CDATA["C:\\Documents and Settings\\Alan\\Meus documentos\\Alain\\Projetos\\psa20092\\psa20092\\siaic_admin\\WebContent\\images\\logoSiaic_menor.png"]]></imageExpression>
 				</image>
 				<line direction="TopDown">
 					<reportElement
@@ -92,7 +92,7 @@ FROM
 				<staticText>
 					<reportElement
 						mode="Opaque"
-						x="0"
+						x="-31"
 						y="0"
 						width="555"
 						height="18"
