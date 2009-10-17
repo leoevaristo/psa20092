@@ -95,8 +95,8 @@ public class VeiculoDAO {
 
 	public void alterarVeiculos(Veiculo veiculo) throws SQLException {
 
-		String sql = "UPDATE admcon_veiculo SET VEI_DESCRICAO, VEI_PLACA, VEI_COR, VEI_APA_CODIGO"
-				+ " WHERE VEI_CODIGO = ?";
+		String sql = "UPDATE admcon_veiculo SET VEI_DESCRICAO = ?, VEI_PLACA = ?, VEI_COR = ?, VEI_APA_CODIGO = ? "
+				+ " WHERE VEI_CODIGO = ?;";
 
 		try {
 
@@ -105,7 +105,7 @@ public class VeiculoDAO {
 			ps.setString(2, veiculo.getPlaca());
 			ps.setString(3, veiculo.getCor());
 			ps.setInt(4, veiculo.getCodigoApartamento());
-			ps.setInt(4, veiculo.getCodigoVeiculo());
+			ps.setInt(5, veiculo.getCodigoVeiculo());
 			
 			
 			ps.executeUpdate();

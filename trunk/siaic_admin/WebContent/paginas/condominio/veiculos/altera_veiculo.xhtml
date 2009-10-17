@@ -5,7 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:composition template="/WEB-INF/template/template.xhtml">
+	<ui:composition template="/WEB-INF/template/template-cond.xhtml">
 		
          <ui:define name="tituloGrande"> 
 			<h:outputText value="Veículos" />
@@ -16,38 +16,38 @@
 		 <ui:define name="conteudo">
 		   <h:form styleClass="forms">
 		     
-		      <!-- <h:panelGroup id="codigo">
+		     <h:panelGroup id="codigo">
 		       <h:outputLabel value="Código" />
-		       <h:outputText value="${cadastraVeiculoBean.veiculo.codigoVeiculo}" />
-		     </h:panelGroup> -->
+		       <h:outputText value="${alteraVeiculoBean.veiculo.codigoVeiculo}" />
+		     </h:panelGroup>
 		     
 		     <h:panelGroup id="placa">
 		       <h:outputLabel value="Placa" />
-		       <h:inputText value="${cadastraVeiculoBean.veiculo.placa}" maxlength="7" />
+		       <h:inputText value="${alteraVeiculoBean.veiculo.placa}" maxlength="7" />
 		     </h:panelGroup>
 		     
 		     <h:panelGroup id="cor">
 		       <h:outputLabel value="Cor" />
-		       <h:inputText value="${cadastraVeiculoBean.veiculo.cor}" />
+		       <h:inputText value="${alteraVeiculoBean.veiculo.cor}" />
 		     </h:panelGroup>
 		     
 		     <h:panelGroup id="apartamento">
 		       <h:outputLabel value="Apartamento" />
-		       <h:selectOneMenu value="${cadastraVeiculoBean.veiculo.codigoApartamento}" id="apart">
-		         <f:selectItems value="${cadastraVeiculoBean.apartamentos}" />
+		       <h:selectOneMenu value="${alteraVeiculoBean.veiculo.codigoApartamento}" id="apart">
+		         <f:selectItems value="${alteraVeiculoBean.apartamentos}" />
 		       </h:selectOneMenu>
 		     </h:panelGroup>
 		     
 		     <h:panelGroup id="descricao">
 		       <h:outputLabel value="Descrição" />
-		       <h:inputTextarea value="${cadastraVeiculoBean.veiculo.descricao}" rows="6" />
+		       <h:inputTextarea value="${alteraVeiculoBean.veiculo.descricao}" rows="6" />
 		     </h:panelGroup>
 		     
 		     <h:panelGroup styleClass="linha"></h:panelGroup>
 		     
 		     <h:panelGroup styleClass="botoes">
-			   <h:commandButton action="#{cadastraVeiculoBean.addVeiculo}" value="" styleClass="input_submit" />
-			   <h:commandButton action="#{cadastraVeiculoBean.voltar}" value="" styleClass="input_button" immediate="true" />
+			   <h:commandButton action="#{alteraVeiculoBean.alteraVeiculo}" value="" styleClass="input_submit" />
+			   <h:commandButton action="#{alteraVeiculoBean.voltar}" value="" styleClass="input_button" immediate="true" />
 			 </h:panelGroup>
 		     
 		   </h:form>
