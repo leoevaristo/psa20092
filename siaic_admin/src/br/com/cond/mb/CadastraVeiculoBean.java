@@ -36,7 +36,7 @@ public class CadastraVeiculoBean {
 				for (Apartamento ap : apartDao.getTodosOsApartamentos()) {
 					StringBuilder label = new StringBuilder();
 					label.append("Nº: ");
-					label.append(ap.getCodigoApartamento());
+					label.append(ap.getNumero());
 					label.append(" - Andar ");
 					label.append(ap.getAndar());
 					label.append(" - Bloco ");
@@ -87,7 +87,7 @@ public class CadastraVeiculoBean {
 	}
 
     public String voltar() {
-    	return "voltar";
+    	return "sucesso";
     }
 
 	/**

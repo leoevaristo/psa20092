@@ -31,7 +31,7 @@ public class ConsultaVeiculoBean {
 	
 	private Apartamento apartamento;
 		
-   private String tipoPesquisa;
+    private String tipoPesquisa;
 	
 	private String campoPesquisa;
 	
@@ -272,6 +272,10 @@ public class ConsultaVeiculoBean {
 		Integer idveiculo = new Integer(req.getParameter("codigoVeiculo"))
 				.intValue();
 		return idveiculo;
+	}
+	
+	public String cadastraVeiculo() {
+		return "cadastra";
 	}
 	
 }

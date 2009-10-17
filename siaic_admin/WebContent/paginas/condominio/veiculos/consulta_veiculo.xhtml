@@ -27,6 +27,10 @@
 		   <h:panelGroup id="listaVeiculos">
 		     <!-- Lista de veiculos -->
 		     
+		     <h:form>
+		       <h:commandLink value="Novo Veículo" action="#{consultaVeiculoBean.cadastraVeiculo}" />
+		     </h:form>
+		     
 		     <h:dataTable 
 				styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
 				value="#{consultaVeiculoBean.todosOsVeiculos}" var="veiculo">
@@ -63,13 +67,14 @@
 						<h:outputText value="Editar" />
 					</f:facet>
 					<h:form id="alteraVeiculo">
-						<h:commandLink action="#{consultaVeiculoBean.alteraVeiculo}">
+						<h:commandLink action="#{alteraVeiculoBean.alteraVeiculo2}">
 							<h:graphicImage value="/images/imgedit.png" />
-							<f:param value="#{veiculo.codigoVeiculo}" name="codigoVeiculo" />
+							<f:param value="#{veiculo.codigoVeiculo}" name="codigoAlteraVeiculo" />
 						</h:commandLink>
 					</h:form>
-				</h:column>
 				
+				</h:column>
+
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Excluir" />
