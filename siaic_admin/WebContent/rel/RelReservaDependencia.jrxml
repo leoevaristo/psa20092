@@ -23,11 +23,18 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<queryString><![CDATA[select agd_data, agd_hora_inicio, agd_hora_final,agf_descricao,dep_descricao, con_nome from admcon_agenda_dependencia, admcon_dependencia, admcon_condomino, admcon_agenda_finalidade
-where admcon_agenda_dependencia.agd_dep_codigo = admcon_dependencia.dep_codigo
-and admcon_agenda_dependencia.agd_con_codigo = admcon_condomino.con_codigo
-and admcon_agenda_dependencia.agd_agf_codigo = agf_codigo]]></queryString>
+	<parameter name="cod" isForPrompting="true" class="java.lang.Integer">
+		<defaultValueExpression ><![CDATA[$P{cod}]]></defaultValueExpression>
+	</parameter>
+	<queryString><![CDATA[SELECT agd_codigo, agd_data, agd_hora_inicio, agd_hora_final, agf_descricao, dep_descricao, con_nome
+FROM admcon_agenda_dependencia
+INNER JOIN admcon_dependencia ON admcon_agenda_dependencia.agd_dep_codigo = admcon_dependencia.dep_codigo
+INNER JOIN admcon_condomino ON admcon_agenda_dependencia.agd_con_codigo = admcon_condomino.con_codigo
+INNER JOIN admcon_agenda_finalidade ON admcon_agenda_dependencia.agd_agf_codigo = admcon_agenda_finalidade.agf_codigo
+WHERE admcon_agenda_dependencia.agd_codigo = $P{cod}
+]]></queryString>
 
+	<field name="agd_codigo" class="java.lang.Integer"/>
 	<field name="agd_data" class="java.sql.Date"/>
 	<field name="agd_hora_inicio" class="java.sql.Time"/>
 	<field name="agd_hora_final" class="java.sql.Time"/>
