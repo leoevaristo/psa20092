@@ -16,11 +16,10 @@
 				<h:outputText value="#{consultaTaxasCondominioBean.taxasCondominio.ano}" id="modalAno" />
 				<h:outputLabel value="Mês" for="modalMes" />
 				<h:outputText value="#{consultaTaxasCondominioBean.taxasCondominio.mes}" id="modalMes" />
-				<h:outputLabel value="Data do Vencimento" for="calPagamento" />
-				<rich:calendar currentDate="#{consultaTaxasCondominioBean.taxasCondominio.dataPagamento}" >
-				
+				<h:outputLabel value="Data do Vencimento" for="modalData" />
+				<rich:calendar value="#{consultaTaxasCondominioBean.taxasCondominio.dataVencimento}" datePattern="dd/MM/yyyy" id="modalData" locale="pt_BR" >				
 				</rich:calendar>
-				<h:outputLabel value="Valor" for="modalValor" />
+				<h:outputLabel value="Valor" for="modalValor" />				
 				<h:inputText value="#{consultaTaxasCondominioBean.taxasCondominio.valor}" id="modalValor"/>
 			</h:panelGrid>
 				
