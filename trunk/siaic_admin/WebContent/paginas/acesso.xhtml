@@ -13,15 +13,15 @@
 		<h:form styleClass="forms" id="formFiltros">
 			<h:panelGroup>
 				<h:outputLabel value="Login" />
-				<h:inputText value="#{acessoBean.login}" id="login"/>
+				<h:inputText value="#{acessoBean.login_acesso}" id="login"/>
 			</h:panelGroup>
 			<h:panelGroup>
 				<h:outputLabel value="Senha" />
-				<h:inputText value="#{acessoBean.senha}" id="senha"/>
+				<h:inputText value="#{acessoBean.senha_acesso}" id="senha"/>
 			</h:panelGroup>
 
 			<h:panelGroup>
-				<h:commandButton action="#{acessoBean.validaLogin}" value="Acessar" type="submit" /> 				
+				<h:commandButton action="#{acessoBean.ValidaLogin}" value="Acessar" type="submit" /> 				
 			</h:panelGroup>
 		</h:form>
 	</ui:define>
