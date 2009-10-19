@@ -154,7 +154,7 @@
  <managed-bean>
   <managed-bean-name>acessoBean</managed-bean-name>
   <managed-bean-class>br.com.siaic.mb.AcessoBean</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
   <managed-bean-name>reuniaoBean</managed-bean-name>
@@ -207,9 +207,9 @@
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
- 	<managed-bean-name>cadastroDependenciaBean</managed-bean-name>
- 	<managed-bean-class>br.com.cond.mb.CadastroDependenciaBean</managed-bean-class>
- 	<managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-name>cadastroDependenciaBean</managed-bean-name>
+  <managed-bean-class>br.com.cond.mb.CadastroDependenciaBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <navigation-rule>
   <from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
