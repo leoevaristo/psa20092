@@ -7,60 +7,15 @@
 	xmlns:rich="http://richfaces.org/rich">
 
 <ui:composition template="/WEB-INF/template/template-cond.xhtml">
-	<ui:define name="conteudo">
-		<a4j:form id="formConsultaTaxas">
-			<rich:dataTable value="#{consultaTaxasCondominioBean.all}"	var="taxas" 
-			   onRowMouseOver="this.style.backgroundColor='#ADFF2F'" onRowMouseOut="this.style.backgroundColor='#FFFFFF'"
-			   	style="text-align:center;margin:0 auto;" id="tableTaxas">
-					<f:facet name="header">
-						<rich:columnGroup>
-							<rich:column colspan="8">
-								<h:outputText value="Tabela de Taxas de Condomínio" />
-							</rich:column>
-							<rich:column breakBefore="true">
-								<h:outputText value="Ano" />
-							</rich:column>							
-							<rich:column>
-								<h:outputText value="Mês" />
-							</rich:column>
-							<rich:column>
-								<h:outputText value="Valor" />
-							</rich:column>							
-							<rich:column>
-								<h:outputText value="Data de Vencimento" />
-							</rich:column>							
-							<rich:column>
-								<h:outputText value="Ações" />								
-							</rich:column>
-						</rich:columnGroup>
-					</f:facet>					
-					<rich:column >
-						<h:outputText value="#{taxas.ano}">
-							<f:convertDateTime  type="date"/>
-						</h:outputText>
-					</rich:column>
-					<rich:column>
-						<h:outputText value="#{taxas.mes}" />
-					</rich:column>
-					<rich:column>
-						<h:outputText value="#{taxas.valor}">
-							<f:convertNumber currencySymbol="R$" type="currency" locale="pt_BR" />
-						</h:outputText>
-					</rich:column>					
-					<rich:column>
-						<h:outputText value="#{taxas.dataVencimento}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</h:outputText>
-					</rich:column>						
-					<rich:column>
-						<a4j:commandLink value="Alterar" id="pagamento" ajaxSingle="true" reRender="modalAno,modalMes,modalValor,modalData">
-							<rich:componentControl attachTo="pagamento" for="modalPagamento"
-							operation="show" event="onclick" />
-							<f:setPropertyActionListener value="#{taxas}" target="#{consultaTaxasCondominioBean.taxasCondominio}"></f:setPropertyActionListener>
-						</a4j:commandLink>
-					</rich:column>
-				</rich:dataTable>					
-		</a4j:form>
+	<ui:define name="conteudo">		
+		<rich:tabPanel switchType="ajax" width="600" style="margin: 0 auto;">
+			<rich:tab label="Taxas/Mês">
+				<ui:include src="/includes/consulta-taxas-all.xhtml" />
+			</rich:tab>
+			<rich:tab label="Taxas/Apartamento">
+				<ui:include src="/paginas/taxas_condominio/consulta_taxas_apartamentos.xhtml" />
+			</rich:tab>
+		</rich:tabPanel>
 		<ui:include src="/includes/modal_taxas.xhtml" />
 	</ui:define>
 </ui:composition>

@@ -170,7 +170,7 @@ public class TaxasCondominioDAO {
 
 		String sql = "SELECT COF_MES, COF_ANO, COF_APA_CODIGO, COF_VALOR, COF_PAGO,"
 				+ " COF_DATA_VENCIMENTO, COF_DATA_PAGAMENTO FROM ADMCON_TAXA_CONDOMINIO_FATOS "
-				+ "ORDER BY COF_ANO";
+				+ "ORDER BY COF_APA_CODIGO";
 
 		try {
 			PreparedStatement ps = this.conexao.prepareStatement(sql);

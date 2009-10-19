@@ -1,6 +1,5 @@
 
-<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
+<ui:fragment xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:a4j="http://richfaces.org/a4j"
@@ -17,7 +16,7 @@
 				<h:outputLabel value="Mês" for="modalMes" />
 				<h:outputText value="#{consultaTaxasCondominioBean.taxasCondominio.mes}" id="modalMes" />
 				<h:outputLabel value="Data do Vencimento" for="modalData" />
-				<rich:calendar value="#{consultaTaxasCondominioBean.taxasCondominio.dataVencimento}" datePattern="dd/MM/yyyy" id="modalData" locale="pt_BR" >				
+				<rich:calendar value="#{consultaTaxasCondominioBean.taxasCondominio.dataVencimento}" currentDate="#{consultaTaxasCondominioBean.taxasCondominio.dataVencimento}" datePattern="dd/MM/yyyy" id="modalData" locale="pt_BR" >				
 				</rich:calendar>
 				<h:outputLabel value="Valor" for="modalValor" />				
 				<h:inputText value="#{consultaTaxasCondominioBean.taxasCondominio.valor}" id="modalValor"/>
