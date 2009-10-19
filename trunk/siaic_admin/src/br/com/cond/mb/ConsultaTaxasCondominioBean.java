@@ -38,5 +38,15 @@ public class ConsultaTaxasCondominioBean {
 		TaxasCondominioDAO daoTaxas = new TaxasCondominioDAO();
 		return daoTaxas.getAll();
 	}
+	
+	public List<TaxasCondominio> getTaxasTodosApartamentos() throws SQLException{
+		TaxasCondominioDAO daoTaxas = new TaxasCondominioDAO();
+		return daoTaxas.getTaxasTodosApartamentos();
+	}
+	
+	public void update(){
+		TaxasCondominioDAO daoTaxas = new TaxasCondominioDAO();
+		daoTaxas.update(taxasCondominio);
+	}
 
 }

@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import br.com.cond.businesslogic.TaxasCondominio;
@@ -41,8 +43,7 @@ public class TaxasCondominioDAO {
 				ps.setString(2, taxas.getMes());
 				ps.setString(3, taxas.getAno());
 				ps.setDouble(4, taxas.getValor());
-				ps.setTimestamp(5, new java.sql.Timestamp(taxas
-						.getDataVencimento().getTime()));
+				ps.setDate(5, java.sql.Date.valueOf(taxas.getDataVencimento().toString()));
 				ps.execute();
 				ps.close();
 
@@ -73,8 +74,7 @@ public class TaxasCondominioDAO {
 		try {
 			PreparedStatement ps = this.conexao.prepareStatement(sql);
 			ps.setString(1, taxas.getEstaPago().toString());
-			ps.setTimestamp(2, new java.sql.Timestamp(taxas.getDataVencimento()
-					.getTime()));
+			ps.setDate(2, java.sql.Date.valueOf(taxas.getDataPagamento().toString()));
 			ps.setString(3, taxas.getMes());
 			ps.setString(4, taxas.getAno());
 			ps.setInt(5, taxas.getApartamento().getCodigoApartamento());
@@ -133,6 +133,41 @@ public class TaxasCondominioDAO {
 			e1.getLocalizedMessage();
 		}
 
+		String sql = "SELECT COF_MES, COF_ANO, COF_VALOR, COF_DATA_VENCIMENTO "
+				+ "FROM ADMCON_TAXA_CONDOMINIO_FATOS "
+				+ "GROUP BY COF_ANO, COF_MES";
+
+		try {
+			PreparedStatement ps = this.conexao.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			List<TaxasCondominio> todasTaxas = new ArrayList<TaxasCondominio>();
+			while (rs.next()) {
+				TaxasCondominio tx = new TaxasCondominio();
+				tx.setAno(new SimpleDateFormat("yyyy").format(rs.getDate("COF_ANO")));
+				tx.setMes(rs.getString("COF_MES"));
+				tx.setValor(rs.getDouble("COF_VALOR"));
+				tx.setDataVencimento(rs.getDate("COF_DATA_VENCIMENTO"));
+				todasTaxas.add(tx);
+			}
+
+			ps.close();
+			rs.close();
+			
+			return todasTaxas;
+
+		}finally{
+			this.conexao.close();
+		}
+		
+	}
+
+	public List<TaxasCondominio> getTaxasTodosApartamentos() throws SQLException {
+		try {
+			this.conexao = FabricaConexao.conectar();
+		} catch (SQLException e1) {
+			e1.getLocalizedMessage();
+		}
+
 		String sql = "SELECT COF_MES, COF_ANO, COF_APA_CODIGO, COF_VALOR, COF_PAGO,"
 				+ " COF_DATA_VENCIMENTO, COF_DATA_PAGAMENTO FROM ADMCON_TAXA_CONDOMINIO_FATOS "
 				+ "ORDER BY COF_ANO";
@@ -163,5 +198,32 @@ public class TaxasCondominioDAO {
 		}
 		
 	}
-
+	
+	public boolean update(TaxasCondominio taxas){
+		try {
+			this.conexao = FabricaConexao.conectar();
+		} catch (SQLException e1) {
+			e1.getLocalizedMessage();
+		}
+		
+		String sql = "UPDATE ADMCON_TAXA_CONDOMINIO_FATOS SET COF_DATA_VENCIMENTO = ?, COF_VALOR = ? "
+					+"WHERE COF_MES = ? AND COF_ANO = ? ";
+		
+		try{
+			PreparedStatement ps = this.conexao.prepareStatement(sql);
+			ps.setDate(1, java.sql.Date.valueOf(taxas.getDataVencimento().toString()));
+			ps.setDouble(2, taxas.getValor());
+			ps.setString(3, taxas.getMes());
+			ps.setString(4, taxas.getAno());
+			
+			return  ps.executeUpdate() > 0 ? true : false;
+			
+		} catch (SQLException e) {		
+			e.getLocalizedMessage();
+		}finally{
+			
+		}
+		return false;
+		
+	}
 }

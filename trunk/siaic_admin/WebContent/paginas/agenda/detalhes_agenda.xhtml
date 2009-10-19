@@ -53,12 +53,14 @@
 			<h:panelGrid columns="2" columnClasses="cor1,cor2"
 				styleClass="panels">
 				<h:outputLabel value="Imóveis" />
-				<rich:dataGrid  columns="2" value="#{consultaAgendaBean.infoAgenda}"	var="imoveis">
+				<rich:dataGrid  columns="2" value="#{consultaAgendaBean.infoAgenda}" var="imoveis" width="550" >
 					<rich:panel>
 						<f:facet name="header">
-							<h:outputText value="#{imoveis.logEnd} #{imoveis.nomeEnd} - #{imoveis.bairroEnd}" />
+							<h:outputText value="#{imoveis.logEnd} #{imoveis.nomeEnd} " />
 						</f:facet>
 						<h:panelGrid columns="2">
+							<h:outputLabel value="Bairro:"/>
+							<h:outputText value=" #{imoveis.bairroEnd}" />
 							<h:outputLabel value="No. Quartos:" />
 							<h:outputText value="#{imoveis.numQuartos}" />
 							<h:outputLabel value="No. Suítes:" />
