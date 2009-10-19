@@ -14,9 +14,9 @@ public class AcessoBean {
 	
 	private Usuario usuario;
 	
-	private Usuario login;
+	private Usuario login_acesso;
 	
-	private Usuario Senha;
+	private Usuario senha_acesso;
 	
 	private Connection conexao = null;
 
@@ -28,22 +28,23 @@ public class AcessoBean {
 		this.usuario = usuario;
 	}
 
-	public Usuario getLogin() {
-		return login;
-	}
-
-	public void setLogin(Usuario login) {
-		this.login = login;
-	}
-
-	public Usuario getSenha() {
-		return Senha;
-	}
-
-	public void setSenha(Usuario senha) {
-		Senha = senha;
-	}
 	
+
+	public Usuario getLogin_acesso() {
+		return login_acesso;
+	}
+
+	public void setLogin_acesso(Usuario login_acesso) {
+		this.login_acesso = login_acesso;
+	}
+
+	public Usuario getSenha_acesso() {
+		return senha_acesso;
+	}
+
+	public void setSenha_acesso(Usuario senha_acesso) {
+		this.senha_acesso = senha_acesso;
+	}
 
 	public AcessoBean() {
 
@@ -59,17 +60,18 @@ public class AcessoBean {
 	}
 
 	
-	public List<Usuario> getAcesso(String login) throws SQLException {
+	public List<Usuario> getAcesso(String login, String senha) throws SQLException {
 
-		String sql = "SELECT PEU_LOGIN "
+		String sql = "SELECT PEU_LOGIN, PEU_SENHA "
 			+ "FROM PESSOA_USUARIOS "
-			+ "WHERE PEU_LOGIN LIKE ? ";
+			+ "WHERE PEU_LOGIN LIKE ? and PEU_SENHA LIKE ? ";
 
 
 		try{
 			
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.setString(1, "%" + login + "%");
+			ps.setString(2, "%" + senha + "%");
 
 			ResultSet rs = ps.executeQuery();
 			
@@ -96,7 +98,7 @@ public class AcessoBean {
 	
   public String ValidaLogin()
   {
-	return null;
+     return null;
 	  
 	  
   }
