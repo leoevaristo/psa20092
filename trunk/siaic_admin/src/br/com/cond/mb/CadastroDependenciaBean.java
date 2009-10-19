@@ -3,7 +3,9 @@ package br.com.cond.mb;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.faces.component.html.HtmlCommandLink;
 import javax.faces.component.html.HtmlSelectBooleanCheckbox;
+import javax.faces.event.ActionEvent;
 
 import br.com.cond.businesslogic.Dependencia;
 import br.com.cond.dao.DependenciaDAO;
@@ -63,6 +65,17 @@ public class CadastroDependenciaBean {
 		}
 		
 		return null;
+	}
+	
+	public void obterObjeto(ActionEvent e){
+		HtmlCommandLink link = (HtmlCommandLink) e.getComponent().findComponent("link");
+		
+		dependencia = (Dependencia) link.getValue();
+		
+		System.out.println(dependencia.getDescricao());
+		System.out.println("teste");
+		
+		//return null;
 	}
 	
 	
