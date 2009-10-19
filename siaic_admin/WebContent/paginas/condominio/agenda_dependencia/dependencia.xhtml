@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="/WEB-INF/template/template-cond.xhtml">	
+		<ui:define name="tituloGrande"> 
+			<h:outputText value="Dependencias" />
+		 </ui:define>			 
+		<ui:define name="subtitulo">  
+			
+		 </ui:define>			 
+		<ui:define name="tituloLista"> 
+			<h:outputText value="Listagem de Dependencias" />
+		</ui:define>		
+		<ui:define name="linkNovo">	
+			<h:outputLink value="cadastro_dependencia.xhtml" id="info_novo" styleClass="textcenter">
+				<h:outputText value="Nova Dependencia" />
+			</h:outputLink>
+		</ui:define>				
+		<ui:define name="infoGerais">
+		
+			<h:dataTable rendered="true" styleClass="grid" headerClass="thead" rowClasses="cor1,cor2" 
+			value="#{cadastroDependenciaBean.buscaDependencia}" var="dependencia" 
+			columnClasses="col1, col2" >
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Código" />
+					</f:facet>
+					<h:outputText value="#{dependencia.codigo}"  />					
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descrição" />
+					</f:facet>
+					<h:outputText value="#{dependencia.descricao}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Reservável" />
+					</f:facet>
+					<h:outputText value="#{dependencia.reservavel}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Editar" />
+					</f:facet>
+					<h:outputLink value="#" styleClass="textcenter">
+						<h:graphicImage value="/images/imgedit.png" />
+					</h:outputLink>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Excluir" />
+					</f:facet>
+					<h:form>
+					 <h:commandLink action="#" onclick="" >
+					 	<h:graphicImage value="/images/imgdelete.png" />    						
+   					 </h:commandLink>  		
+				    </h:form>		
+				</h:column>			
+			</h:dataTable>		
+		</ui:define>		
+		<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
+	</ui:composition>
+</html>
