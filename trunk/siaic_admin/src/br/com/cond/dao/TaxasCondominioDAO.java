@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import br.com.cond.businesslogic.TaxasCondominio;
@@ -43,7 +41,8 @@ public class TaxasCondominioDAO {
 				ps.setString(2, taxas.getMes());
 				ps.setString(3, taxas.getAno());
 				ps.setDouble(4, taxas.getValor());
-				ps.setDate(5, java.sql.Date.valueOf(taxas.getDataVencimento().toString()));
+				ps.setTimestamp(5, new java.sql.Timestamp(taxas
+						.getDataVencimento().getTime()));
 				ps.execute();
 				ps.close();
 
@@ -74,7 +73,8 @@ public class TaxasCondominioDAO {
 		try {
 			PreparedStatement ps = this.conexao.prepareStatement(sql);
 			ps.setString(1, taxas.getEstaPago().toString());
-			ps.setDate(2, java.sql.Date.valueOf(taxas.getDataPagamento().toString()));
+			ps.setTimestamp(2, new java.sql.Timestamp(taxas.getDataVencimento()
+					.getTime()));
 			ps.setString(3, taxas.getMes());
 			ps.setString(4, taxas.getAno());
 			ps.setInt(5, taxas.getApartamento().getCodigoApartamento());
@@ -211,7 +211,7 @@ public class TaxasCondominioDAO {
 		
 		try{
 			PreparedStatement ps = this.conexao.prepareStatement(sql);
-			ps.setDate(1, java.sql.Date.valueOf(taxas.getDataVencimento().toString()));
+			ps.setTimestamp(1, new java.sql.Timestamp(taxas.getDataVencimento().getTime()));
 			ps.setDouble(2, taxas.getValor());
 			ps.setString(3, taxas.getMes());
 			ps.setString(4, taxas.getAno());

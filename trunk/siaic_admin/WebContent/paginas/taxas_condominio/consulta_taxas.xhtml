@@ -53,7 +53,7 @@
 						</h:outputText>
 					</rich:column>						
 					<rich:column>
-						<a4j:commandLink value="Alterar" id="pagamento" ajaxSingle="true" reRender="modalNumero,modalAno,modalMes,modalValor,calPagamento">
+						<a4j:commandLink value="Alterar" id="pagamento" ajaxSingle="true" reRender="modalAno,modalMes,modalValor,modalData,data">
 							<rich:componentControl attachTo="pagamento" for="modalPagamento"
 							operation="show" event="onclick" />
 							<f:setPropertyActionListener value="#{taxas}" target="#{consultaTaxasCondominioBean.taxasCondominio}"></f:setPropertyActionListener>
