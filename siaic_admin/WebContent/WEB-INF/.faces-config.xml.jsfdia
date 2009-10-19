@@ -259,24 +259,9 @@
   PATH="/paginas/acesso.xhtml" SHAPE="32,1249,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#paginas#acesso.xhtml:0" NAME="item"
    PATH="/paginas/acesso.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="logado::#paginas#BoasVindas.xhtml"
+   <PROCESS-ITEM-OUTPUT ID="sucesso::#paginas#BoasVindas.xhtml"
     NAME="output" PATH="/paginas/BoasVindas.xhtml" SHAPE="-1,16"
-    TARGET="rules:#paginas#BoasVindas.xhtml" TITLE="logado" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
-  <PROCESS-ITEM ID="rules:#paginas#acesso.xhtml:1" NAME="item1"
-   PATH="/paginas/acesso.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="sucesso::#paginas#usuario#cadastra_usuario.xhtml" NAME="output"
-    PATH="/paginas/usuario/cadastra_usuario.xhtml"
-    TARGET="rules:#paginas#usuario#cadastra_usuario.xhtml"
-    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
-  <PROCESS-ITEM ID="rules:#paginas#acesso.xhtml:2" NAME="item2"
-   PATH="/paginas/acesso.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="falhou::#paginas#usuario#sucesso_usuario.xhtml" NAME="output"
-    PATH="/paginas/usuario/sucesso_usuario.xhtml"
-    TARGET="rules:#paginas#usuario#sucesso_usuario.xhtml" TITLE="falhou" model-entity="JSFProcessItemOutput"/>
+    TARGET="rules:#paginas#BoasVindas.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#agenda#sucesso.xhtml"

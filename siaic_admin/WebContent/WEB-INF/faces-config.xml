@@ -416,7 +416,7 @@
  <navigation-rule>
   <from-view-id>/paginas/acesso.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>logado</from-outcome>
+   <from-outcome>sucesso</from-outcome>
    <to-view-id>/paginas/BoasVindas.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
@@ -527,22 +527,6 @@
   <navigation-case>
    <from-outcome>destruido</from-outcome>
    <to-view-id>/paginas/agenda/consulta_agenda.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>/paginas/acesso.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>sucesso</from-outcome>
-   <to-view-id>/paginas/usuario/cadastra_usuario.xhtml</to-view-id>
-   <redirect/>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>/paginas/acesso.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>falhou</from-outcome>
-   <to-view-id>/paginas/usuario/sucesso_usuario.xhtml</to-view-id>
-   <redirect/>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>

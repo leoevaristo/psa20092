@@ -36,6 +36,8 @@ public class AcessoBean {
 
 	public Usuario getAcesso(String login, String senha) throws SQLException {
 
+		conexao = FabricaConexao.conectar();
+		
 		String sql = "SELECT PEU_CODIGO " + "FROM PESSOA_USUARIOS "
 				+ "WHERE PEU_LOGIN LIKE ? AND PEU_SENHA LIKE ? ";
 
