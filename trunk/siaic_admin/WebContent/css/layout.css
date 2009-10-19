@@ -206,11 +206,12 @@ div#container div#content div#col_right div#col_rightConteudo form.forms{
 	margin:10px 0;
 	display:block;
 }
-div#container div#content div#col_right div#col_rightConteudo form.forms h4{
+div#container div#content div#col_right div#col_rightConteudo h4{
 	font-size:14px;
 	font-weight:bold;
 	color:#8eacbe;
 	margin-bottom:20px;
+	margin-left: 20px;
 }
 div#container div#content div#col_right div#col_rightConteudo form.forms span{
 	display:block;
@@ -239,7 +240,9 @@ div#container div#content div#col_right div#col_rightConteudo form.forms span.in
 	margin:0;
 	color:#8eacbe;
 	font-size:11px;
-	
+	display: block;
+	margin-bottom: 10px;
+		
 }
 div#container div#content div#col_right div#col_rightConteudo form.forms span.infor:after{
 	content:".";
@@ -249,10 +252,11 @@ div#container div#content div#col_right div#col_rightConteudo form.forms span.in
 	display:block;
 }
 div#container div#content div#col_right div#col_rightConteudo form.forms span.linha{
-	background:url(../images/linhaform.png) no-repeat center 0;
+	background: url(../images/linhaform.png) no-repeat center 0;
 	display:block;
 	width:100%;
 	height:3px;
+	clear:both;
 }
 div#container div#content div#col_right div#col_rightConteudo form.forms span.botoes {
 	text-align:center;
@@ -369,3 +373,9 @@ div#container div#footer{
 /* -- Container -> footer -- */
 
 /* -- fim Container -- */
+.col1{
+	width:20px
+}	
+.col2{
+	width:20px
+}
