@@ -9,31 +9,43 @@
 <ui:composition template="/WEB-INF/template/template-cond.xhtml">
 	<ui:define name="conteudo">
 		<a4j:form id="formConsultaTaxas">
-			<rich:dataTable value="#{consultaTaxasCondominioBean.all}"	var="taxas" 
+			<rich:dataTable value="#{consultaTaxasCondominioBean.taxasTodosApartamentos}"	var="taxas" 
 			   onRowMouseOver="this.style.backgroundColor='#ADFF2F'" onRowMouseOut="this.style.backgroundColor='#FFFFFF'"
-			   	style="text-align:center;margin:0 auto;" id="tableTaxas">
+			   	style="text-align:center;margin:0 auto;">
 					<f:facet name="header">
 						<rich:columnGroup>
 							<rich:column colspan="8">
 								<h:outputText value="Tabela de Taxas de Condomínio" />
 							</rich:column>
 							<rich:column breakBefore="true">
+								<h:outputText value="Apartamento" />
+							</rich:column>
+							<rich:column>
 								<h:outputText value="Ano" />
-							</rich:column>							
+							</rich:column>
 							<rich:column>
 								<h:outputText value="Mês" />
 							</rich:column>
 							<rich:column>
 								<h:outputText value="Valor" />
-							</rich:column>							
+							</rich:column>
+							<rich:column>
+								<h:outputText value="Pago" />
+							</rich:column>
 							<rich:column>
 								<h:outputText value="Data de Vencimento" />
-							</rich:column>							
+							</rich:column>
+							<rich:column>
+								<h:outputText value="Data de Pagamento" />
+							</rich:column>
 							<rich:column>
 								<h:outputText value="Ações" />								
 							</rich:column>
 						</rich:columnGroup>
-					</f:facet>					
+					</f:facet>
+					<rich:column>
+						<h:outputText value="#{taxas.apartamento.numero}" />
+					</rich:column>
 					<rich:column >
 						<h:outputText value="#{taxas.ano}">
 							<f:convertDateTime  type="date"/>
@@ -46,14 +58,22 @@
 						<h:outputText value="#{taxas.valor}">
 							<f:convertNumber currencySymbol="R$" type="currency" locale="pt_BR" />
 						</h:outputText>
-					</rich:column>					
+					</rich:column>
+					<rich:column>
+						<h:outputText value="#{taxas.estaPago}" />
+					</rich:column>
 					<rich:column>
 						<h:outputText value="#{taxas.dataVencimento}">
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</h:outputText>
-					</rich:column>						
+					</rich:column>
 					<rich:column>
-						<a4j:commandLink value="Alterar" id="pagamento" ajaxSingle="true" reRender="modalNumero,modalAno,modalMes,modalValor,calPagamento">
+						<h:outputText value="#{taxas.dataPagamento}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</rich:column>
+					<rich:column>
+						<a4j:commandLink value="Alterar" id="pagamento" ajaxSingle="true" reRender="modalNumero,modalAno,modalMes">
 							<rich:componentControl attachTo="pagamento" for="modalPagamento"
 							operation="show" event="onclick" />
 							<f:setPropertyActionListener value="#{taxas}" target="#{consultaTaxasCondominioBean.taxasCondominio}"></f:setPropertyActionListener>
