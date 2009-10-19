@@ -4,20 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import br.com.siaic.businesslogic.Usuario;
 import br.com.siaic.dao.FabricaConexao;
+import br.com.siaic.dao.UsuarioDAO;
 
 public class AcessoBean {
-	
+
 	private Usuario usuario;
-	
-	private Usuario login_acesso;
-	
-	private Usuario senha_acesso;
-	
+
 	private Connection conexao = null;
 
 	public Usuario getUsuario() {
@@ -28,82 +23,64 @@ public class AcessoBean {
 		this.usuario = usuario;
 	}
 
-	
-
-	public Usuario getLogin_acesso() {
-		return login_acesso;
-	}
-
-	public void setLogin_acesso(Usuario login_acesso) {
-		this.login_acesso = login_acesso;
-	}
-
-	public Usuario getSenha_acesso() {
-		return senha_acesso;
-	}
-
-	public void setSenha_acesso(Usuario senha_acesso) {
-		this.senha_acesso = senha_acesso;
-	}
-
 	public AcessoBean() {
 
-		try
-		{
+		usuario = new Usuario();
+		try {
 			FabricaConexao.getInstancia();
 			this.conexao = FabricaConexao.conectar();
-		}
-		catch (SQLException e) 
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	
-	public List<Usuario> getAcesso(String login, String senha) throws SQLException {
+	public Usuario getAcesso(String login, String senha) throws SQLException {
 
-		String sql = "SELECT PEU_LOGIN, PEU_SENHA "
-			+ "FROM PESSOA_USUARIOS "
-			+ "WHERE PEU_LOGIN LIKE ? and PEU_SENHA LIKE ? ";
+		String sql = "SELECT PEU_CODIGO " + "FROM PESSOA_USUARIOS "
+				+ "WHERE PEU_LOGIN LIKE ? AND PEU_SENHA LIKE ? ";
 
+		try {
 
-		try{
-			
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.setString(1, "%" + login + "%");
 			ps.setString(2, "%" + senha + "%");
 
 			ResultSet rs = ps.executeQuery();
-			
-			List<Usuario> listaUsuarios = new ArrayList<Usuario>();
 
-			
-			while (rs.next()) {
-			
-				Usuario usuario = new Usuario();
-				usuario.setLogin(rs.getString("PEU_LOGIN"));
-				listaUsuarios.add(usuario);
+			Usuario u = null;
+
+			if (rs.first()) {
+				u = new UsuarioDAO().getUsuarioId(rs.getInt(1));
 			}
 
-			ps.close();
 			rs.close();
+			ps.close();
 
-			return listaUsuarios;
+			return u;
 
-			}finally{
-				conexao.close();
+		} finally {
+			conexao.close();
+		}
+
+	}
+
+	public String ValidaLogin() {
+
+		String s;
+
+		try {
+			usuario = getAcesso(usuario.getLogin(), usuario.getSenha());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		s = (usuario != null) ? "sucesso" : "falha";
+		
+		if (usuario == null) {
+			usuario = new Usuario();
 		}
 		
+		return s;
 	}
-	
-  public String ValidaLogin()
-  {
-     return null;
-	  
-	  
-  }
 
-	
-	
-	
 }
