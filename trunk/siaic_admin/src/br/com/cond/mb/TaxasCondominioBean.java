@@ -11,12 +11,26 @@ import br.com.cond.businesslogic.TaxasCondominio;
 import br.com.cond.dao.ApartamentoDAO;
 import br.com.cond.dao.TaxasCondominioDAO;
 
+/**
+ * Managed Bean responsável por registrar as taxas de condomínio.
+ * @author carlos
+ *
+ */
 public class TaxasCondominioBean {
 	
+	/**
+	 * Propriedade que referencia a classe Apartamento
+	 */
 	private Apartamento apartamento;
 	
+	/**
+	 * Propriedade que referencia a classe TaxasCondominio
+	 */
 	private TaxasCondominio taxasCondominio;
 	
+	/**
+	 * Construtor da classe TaxasCondominioBean
+	 */
 	public TaxasCondominioBean(){
 		apartamento = new Apartamento();
 		taxasCondominio = new TaxasCondominio();
@@ -42,7 +56,11 @@ public class TaxasCondominioBean {
 		this.taxasCondominio = taxasCondominio;
 	}
 
-
+	/**
+	 * Método que grava os dados das taxas de condomínio no banco de dados
+	 * @return String
+	 * @throws SQLException
+	 */
 	public String cadastrar() throws SQLException{
 		ApartamentoDAO daoApartamento = new ApartamentoDAO();
 		TaxasCondominioDAO daoTaxas = new TaxasCondominioDAO();
@@ -65,6 +83,9 @@ public class TaxasCondominioBean {
 		
 	}
 	
+	/**
+	 * Método que destrói os objetos dessa classe no SessionMap
+	 */
 	public void destroiSessao(){		
 		FacesContext contexto = FacesContext.getCurrentInstance();
 		contexto.getExternalContext().getSessionMap().remove("taxasCondominioBean");		
