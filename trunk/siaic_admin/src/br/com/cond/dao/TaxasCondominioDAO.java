@@ -112,7 +112,8 @@ public class TaxasCondominioDAO {
 
 			ResultSet rs = ps.executeQuery();
 			if (rs.first()) {
-				if (rs.getString("COF_MES").equals(mes) && rs.getString("COF_ANO").equals(ano)
+				if (rs.getString("COF_MES").equals(mes)
+						&& rs.getString("COF_ANO").equals(ano)
 						&& rs.getInt("COF_APA_CODIGO") == codigoApartamento) {
 					return false;
 				}
@@ -143,7 +144,8 @@ public class TaxasCondominioDAO {
 			List<TaxasCondominio> todasTaxas = new ArrayList<TaxasCondominio>();
 			while (rs.next()) {
 				TaxasCondominio tx = new TaxasCondominio();
-				tx.setAno(new SimpleDateFormat("yyyy").format(rs.getDate("COF_ANO")));
+				tx.setAno(new SimpleDateFormat("yyyy").format(rs
+						.getDate("COF_ANO")));
 				tx.setMes(rs.getString("COF_MES"));
 				tx.setValor(rs.getDouble("COF_VALOR"));
 				tx.setDataVencimento(rs.getDate("COF_DATA_VENCIMENTO"));
@@ -152,16 +154,17 @@ public class TaxasCondominioDAO {
 
 			ps.close();
 			rs.close();
-			
+
 			return todasTaxas;
 
-		}finally{
+		} finally {
 			this.conexao.close();
 		}
-		
+
 	}
 
-	public List<TaxasCondominio> getTaxasTodosApartamentos() throws SQLException {
+	public List<TaxasCondominio> getTaxasTodosApartamentos()
+			throws SQLException {
 		try {
 			this.conexao = FabricaConexao.conectar();
 		} catch (SQLException e1) {
@@ -178,52 +181,96 @@ public class TaxasCondominioDAO {
 			List<TaxasCondominio> todasTaxas = new ArrayList<TaxasCondominio>();
 			while (rs.next()) {
 				TaxasCondominio tx = new TaxasCondominio();
-				tx.setAno(new SimpleDateFormat("yyyy").format(rs.getDate("COF_ANO")));
+				tx.setAno(new SimpleDateFormat("yyyy").format(rs
+						.getDate("COF_ANO")));
 				tx.setMes(rs.getString("COF_MES"));
 				tx.setValor(rs.getDouble("COF_VALOR"));
 				tx.setEstaPago(rs.getString("COF_PAGO").charAt(0));
 				tx.setDataVencimento(rs.getDate("COF_DATA_VENCIMENTO"));
 				tx.setDataPagamento(rs.getDate("COF_DATA_PAGAMENTO"));
-				tx.setApartamento(new ApartamentoDAO().getApartamentoId(rs.getInt("COF_APA_CODIGO")));
+				tx.setApartamento(new ApartamentoDAO().getApartamentoId(rs
+						.getInt("COF_APA_CODIGO")));
 				todasTaxas.add(tx);
 			}
 
 			ps.close();
 			rs.close();
-			
+
 			return todasTaxas;
 
-		}finally{
+		} finally {
 			this.conexao.close();
 		}
-		
+
 	}
-	
-	public boolean update(TaxasCondominio taxas){
+
+	public boolean update(TaxasCondominio taxas) {
 		try {
 			this.conexao = FabricaConexao.conectar();
 		} catch (SQLException e1) {
 			e1.getLocalizedMessage();
 		}
-		
+
 		String sql = "UPDATE ADMCON_TAXA_CONDOMINIO_FATOS SET COF_DATA_VENCIMENTO = ?, COF_VALOR = ? "
-					+"WHERE COF_MES = ? AND COF_ANO = ? ";
-		
-		try{
+				+ "WHERE COF_MES = ? AND COF_ANO = ? ";
+
+		try {
 			PreparedStatement ps = this.conexao.prepareStatement(sql);
-			ps.setTimestamp(1, new java.sql.Timestamp(taxas.getDataVencimento().getTime()));
+			ps.setTimestamp(1, new java.sql.Timestamp(taxas.getDataVencimento()
+					.getTime()));
 			ps.setDouble(2, taxas.getValor());
 			ps.setString(3, taxas.getMes());
 			ps.setString(4, taxas.getAno());
-			
-			return  ps.executeUpdate() > 0 ? true : false;
-			
-		} catch (SQLException e) {		
+
+			return ps.executeUpdate() > 0 ? true : false;
+
+		} catch (SQLException e) {
 			e.getLocalizedMessage();
-		}finally{
-			
+		} finally {
+
 		}
 		return false;
-		
+
+	}
+
+	public List<TaxasCondominio> getInadimplentes() {
+		try {
+			this.conexao = FabricaConexao.conectar();
+		} catch (SQLException e1) {
+			e1.getLocalizedMessage();
+		}
+
+		String sql = "SELECT COF_MES, COF_ANO, COF_APA_CODIGO, COF_PAGO, COF_DATA_VENCIMENTO, DATEDIFF(CURDATE(),COF_DATA_VENCIMENTO) AS ATRASO "
+				+ "FROM ADMCON_TAXA_CONDOMINIO_FATOS WHERE COF_PAGO = 'N' AND CURDATE() > COF_DATA_VENCIMENTO;";
+		try {
+
+			PreparedStatement ps = this.conexao.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			List<TaxasCondominio> taxasInadimplentes = new ArrayList<TaxasCondominio>();
+			while (rs.next()) {
+				TaxasCondominio tx = new TaxasCondominio();
+				tx.setMes(rs.getString("COF_MES"));
+				tx.setAno(new SimpleDateFormat("yyyy").format(rs.getDate("COF_ANO")));
+				tx.setApartamento(new ApartamentoDAO().getApartamentoId(rs.getInt("COF_APA_CODIGO")));
+				tx.setEstaPago(rs.getString("COF_PAGO").charAt(0));
+				tx.setDataVencimento(rs.getDate("COF_DATA_VENCIMENTO"));
+				tx.setDiasAtraso(rs.getInt("ATRASO"));
+				taxasInadimplentes.add(tx);
+			}
+
+			ps.close();
+			rs.close();
+			return taxasInadimplentes;
+
+		} catch (SQLException e) {
+			e.getLocalizedMessage();
+		} finally {
+			try {
+				this.conexao.close();
+			} catch (SQLException e) {
+				e.getLocalizedMessage();
+			}
+		}
+		return null;
 	}
 }

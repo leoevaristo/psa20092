@@ -11,16 +11,16 @@
 		<rich:tabPanel switchType="ajax" width="600" style="margin: 0 auto;">
 			<rich:tab label="Taxas/Mês">
 				<ui:include src="/includes/consulta-taxas-all.xhtml" />
+				<ui:include src="/includes/modal_taxas.xhtml" />
 			</rich:tab>
 			<rich:tab label="Taxas/Apartamento">
 				<ui:include src="/includes/consulta_taxas_apartamentos.xhtml" />
+				<ui:include src="/includes/modal-taxas-pagamento.xhtml" />
 			</rich:tab>
-			<rich:tab label="Taxas/Pagos">
-						
+			<rich:tab label="Taxas/Inadimplentes">
+				<ui:include src="/includes/consulta_taxas_inadimplentes.xhtml" />
 			</rich:tab>
-		</rich:tabPanel>
-		<ui:include src="/includes/modal_taxas.xhtml" />
-		<ui:include src="/includes/modal-taxas-pagamento.xhtml" />
+		</rich:tabPanel>		
 	</ui:define>
 </ui:composition>
 </html>
