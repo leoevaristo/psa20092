@@ -9,42 +9,53 @@
 <ui:composition template="/WEB-INF/template/template-cond.xhtml">
 
 	<ui:define name="conteudo">
-		<a4j:form id="formTaxa">
-			<rich:panel style="width:500px;margin:0 auto;" id="panelDados">
-				<f:facet name="header">
-					<h:outputText value="Taxas de Condomínio" />
-				</f:facet>
-				<h:panelGrid columns="3">
-					<h:outputLabel value="Ano" for="taxaAno" />
-					<rich:comboBox value="#{taxasCondominioBean.taxasCondominio.ano}" id="taxaAno"  width="70" required="true" requiredMessage="Campo Obrigatório">
-						<f:selectItem itemLabel="2009" itemValue="2009"/>
-						<f:selectItem itemLabel="2010" itemValue="2010"/>						
-					</rich:comboBox>
-					<rich:message for="taxaAno" styleClass="msgErro"/>
-					<h:outputLabel value="Mês" for="taxaMes"/>
-					<rich:comboBox value="#{taxasCondominioBean.taxasCondominio.mes}" id="taxaMes" width="70" required="true" requiredMessage="Campo Obrigatório">
-						<f:selectItem itemLabel="Outubro" itemValue="10"/>
-						<f:selectItem itemLabel="Novembro" itemValue="11"/>
-						<f:selectItem itemLabel="Dezembro" itemValue="12"/>
-					</rich:comboBox>
-					<rich:message for="taxaMes" styleClass="msgErro" />
-					<h:outputLabel value="Valor" for="taxaValor" />
-					<h:inputText value="#{taxasCondominioBean.taxasCondominio.valor}" id="taxaValor" required="true" requiredMessage="Campo Obrigatório">
-						<f:convertNumber currencySymbol="R$" type="currency" />
-					</h:inputText>
-					<rich:message for="taxaValor" styleClass="msgErro"/>
-					<h:outputLabel value="Data Vencimento" for="taxaCalendar" />
-					<rich:calendar value="#{taxasCondominioBean.taxasCondominio.dataVencimento}" id="taxaCalendar"   datePattern="dd/MM/yyyy" locale="pt_BR" required="true" requiredMessage="Campo Obrigatório" />
-					<rich:message for="taxaCalendar" styleClass="msgErro" />
-				</h:panelGrid>
-				<h:panelGrid columns="2">
-					<rich:spacer width="250" />
-					<a4j:commandButton action="#{taxasCondominioBean.cadastrar}" value="Registrar" reRender="panelDados" ></a4j:commandButton>
-				</h:panelGrid>
-			<rich:message for="formTaxa" styleClass="msgErro"/>
-			</rich:panel>
-		</a4j:form>		
+		<a4j:form id="formTaxa">			
+				<rich:panel style="width:500px;margin:0 auto;">
+					<f:facet name="header">
+						<h:outputText value="Taxas de Condomínio" />
+					</f:facet>
+					<a4j:region>
+					<h:panelGrid columns="3" id="panelDados">
+						<h:outputLabel value="Ano" for="taxaAno" />
+						<rich:comboBox value="#{taxasCondominioBean.taxasCondominio.ano}"
+							id="taxaAno" width="70" required="true"
+							requiredMessage="Campo Obrigatório">
+							<f:selectItem itemLabel="2009" itemValue="2009" />
+							<f:selectItem itemLabel="2010" itemValue="2010" />
+						</rich:comboBox>
+						<rich:message for="taxaAno" styleClass="msgErro" />
+						<h:outputLabel value="Mês" for="taxaMes" />
+						<rich:comboBox value="#{taxasCondominioBean.taxasCondominio.mes}"
+							id="taxaMes" width="70" required="true"
+							requiredMessage="Campo Obrigatório">
+							<f:selectItem itemLabel="Outubro" itemValue="10" />
+							<f:selectItem itemLabel="Novembro" itemValue="11" />
+							<f:selectItem itemLabel="Dezembro" itemValue="12" />
+						</rich:comboBox>
+						<rich:message for="taxaMes" styleClass="msgErro" />
+						<h:outputLabel value="Valor" for="taxaValor" />
+						<h:inputText value="#{taxasCondominioBean.taxasCondominio.valor}"
+							id="taxaValor" required="true"
+							requiredMessage="Campo Obrigatório">
+							<f:convertNumber currencySymbol="R$" type="currency" />
+						</h:inputText>
+						<rich:message for="taxaValor" styleClass="msgErro" />
+						<h:outputLabel value="Data Vencimento" for="taxaCalendar" />
+						<rich:calendar
+							value="#{taxasCondominioBean.taxasCondominio.dataVencimento}"
+							id="taxaCalendar" datePattern="dd/MM/yyyy" locale="pt_BR"
+							required="true" requiredMessage="Campo Obrigatório" />
+						<rich:message for="taxaCalendar" styleClass="msgErro" />
+					</h:panelGrid>
+					</a4j:region>
+					<h:panelGrid columns="2">
+						<rich:spacer width="250" />
+						<a4j:commandButton action="#{taxasCondominioBean.cadastrar}"
+							value="Registrar" reRender="panelDados"></a4j:commandButton>
+					</h:panelGrid>
+					<rich:message for="formTaxa" styleClass="msgErro" />
+				</rich:panel>			
+		</a4j:form>
 	</ui:define>
-	
 </ui:composition>
 </html>
