@@ -1,0 +1,35 @@
+<ui:fragment xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<rich:modalPanel id="modalPagar" autosized="true" width="400">
+		<f:facet name="header">
+			<h:outputText value="Adicionar Pagamento" />
+		</f:facet>
+		<a4j:form id="formPagar">
+			<h:panelGrid id="panelDadosPagamento" columns="2">
+			<h:outputLabel value="Apartamento" for="modalNumeroPagamento" />
+				<h:outputText value="#{consultaTaxasCondominioBean.taxasCondominio.apartamento.numero}" id="modalNumeroPagamento" />
+			    <h:outputLabel value="Ano" for="modalAnoPagamento" />
+				<h:outputText value="#{consultaTaxasCondominioBean.taxasCondominio.ano}" id="modalAnoPagamento" />
+				<h:outputLabel value="Mês" for="modalMesPagamento" />
+				<h:outputText value="#{consultaTaxasCondominioBean.taxasCondominio.mes}" id="modalMesPagamento" />
+				<h:outputLabel value="Data do Pagamento" for="modalDataPagamento" />
+				<rich:calendar value="#{consultaTaxasCondominioBean.taxasCondominio.dataPagamento}"  datePattern="dd/MM/yyyy" id="modalDataPagamento" locale="pt_BR" >				
+				</rich:calendar>				
+			</h:panelGrid>				
+			<h:panelGrid>
+				<a4j:commandButton action="#{consultaTaxasCondominioBean.pagar}" value="Salvar" reRender="tblTaxasPagamento" oncomplete="Richfaces.hideModalPanel('modalPagar')"></a4j:commandButton>
+			</h:panelGrid>
+		</a4j:form>
+		<f:facet name="controls">
+			<h:outputLink id="linkFecha1" value="#">
+				<h:outputText value="fechar" />
+				<rich:componentControl attachTo="linkFecha1" for="modalPagar"
+					event="onclick" operation="hide" />
+			</h:outputLink>
+		</f:facet>
+	</rich:modalPanel>
+</ui:fragment>
