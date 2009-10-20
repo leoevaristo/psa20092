@@ -44,13 +44,14 @@ public class AcessoBean {
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(sql);
-			ps.setString(1, "%" + login + "%");
-			ps.setString(2, "%" + senha + "%");
+			
+			ps.setString(1, login);
+			ps.setString(2, senha);
 
 			ResultSet rs = ps.executeQuery();
 
 			Usuario u = null;
-
+			
 			if (rs.first()) {
 				u = new UsuarioDAO().getUsuarioId(rs.getInt(1));
 			}
@@ -71,7 +72,13 @@ public class AcessoBean {
 		String s;
 
 		try {
+			if (usuario == null)
+			{
+				System.out.println("mizera");
+			}else
+			{	
 			usuario = getAcesso(usuario.getLogin(), usuario.getSenha());
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -81,7 +88,7 @@ public class AcessoBean {
 		if (usuario == null) {
 			usuario = new Usuario();
 		}
-		
+
 		return s;
 	}
 
