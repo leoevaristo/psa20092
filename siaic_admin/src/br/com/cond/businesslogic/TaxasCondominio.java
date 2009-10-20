@@ -18,6 +18,7 @@ public class TaxasCondominio {
 	
 	private Date dataPagamento;
 	
+	private int diasAtraso;
 
 	
 	public TaxasCondominio(){
@@ -81,6 +82,14 @@ public class TaxasCondominio {
 	
 	public void setDataPagamento(Date dataPagamento) {
 		this.dataPagamento = dataPagamento;
+	}
+
+	public int getDiasAtraso() {
+		return diasAtraso;
+	}
+
+	public void setDiasAtraso(int diasAtraso) {
+		this.diasAtraso = diasAtraso;
 	}
 	
 

@@ -59,10 +59,16 @@ public class ConsultaTaxasCondominioBean {
 	public void pagar(){
 		if(getTaxasCondominio().getDataPagamento() != null){
 			getTaxasCondominio().setEstaPago('S');
+			TaxasCondominioDAO daoTaxas = new TaxasCondominioDAO();
+			daoTaxas.setarPagamentoTaxa(taxasCondominio);
 		}
-		TaxasCondominioDAO daoTaxas = new TaxasCondominioDAO();
-		daoTaxas.setarPagamentoTaxa(taxasCondominio);
+		
 		destroiSessao();
+	}
+	
+	public List<TaxasCondominio> getInadimplentes(){
+		TaxasCondominioDAO daoTaxas = new TaxasCondominioDAO();
+		return daoTaxas.getInadimplentes();
 	}
 
 }
