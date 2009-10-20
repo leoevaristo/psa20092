@@ -9,7 +9,7 @@
 			value="#{consultaTaxasCondominioBean.taxasTodosApartamentos}"
 			var="taxas" onRowMouseOver="this.style.backgroundColor='#ADFF2F'"
 			onRowMouseOut="this.style.backgroundColor='#FFFFFF'"
-			style="text-align:center;margin:0 auto;">
+			style="text-align:center;margin:0 auto;" id="tblTaxasPagamento">
 			<f:facet name="header">
 				<rich:columnGroup>
 					<rich:column colspan="8">
@@ -72,8 +72,8 @@
 			</rich:column>
 			<rich:column>
 				<a4j:commandLink value="Alterar" id="pagamento" ajaxSingle="true"
-					reRender="modalNumero,modalAno,modalMes">
-					<rich:componentControl attachTo="pagamento" for="modalPagamento"
+					reRender="modalNumeroPagamento,modalAnoPagamento,modalMesPagamento">
+					<rich:componentControl attachTo="pagamento" for="modalPagar"
 						operation="show" event="onclick" />
 					<f:setPropertyActionListener value="#{taxas}"
 						target="#{consultaTaxasCondominioBean.taxasCondominio}"></f:setPropertyActionListener>

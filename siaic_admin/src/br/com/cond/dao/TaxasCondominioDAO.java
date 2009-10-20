@@ -73,7 +73,7 @@ public class TaxasCondominioDAO {
 		try {
 			PreparedStatement ps = this.conexao.prepareStatement(sql);
 			ps.setString(1, taxas.getEstaPago().toString());
-			ps.setTimestamp(2, new java.sql.Timestamp(taxas.getDataVencimento()
+			ps.setTimestamp(2, new java.sql.Timestamp(taxas.getDataPagamento()
 					.getTime()));
 			ps.setString(3, taxas.getMes());
 			ps.setString(4, taxas.getAno());
@@ -135,7 +135,7 @@ public class TaxasCondominioDAO {
 
 		String sql = "SELECT COF_MES, COF_ANO, COF_VALOR, COF_DATA_VENCIMENTO "
 				+ "FROM ADMCON_TAXA_CONDOMINIO_FATOS "
-				+ "GROUP BY COF_ANO, COF_MES";
+				+ "GROUP BY COF_ANO, COF_MES ORDER BY COF_ANO";
 
 		try {
 			PreparedStatement ps = this.conexao.prepareStatement(sql);
