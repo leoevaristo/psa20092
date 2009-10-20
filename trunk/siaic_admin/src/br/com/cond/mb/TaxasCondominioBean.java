@@ -60,23 +60,14 @@ public class TaxasCondominioBean {
 				ctx.addMessage("formTaxa", msg);				
 			}
 		}
-		
+		destroiSessao();
 		return "sucesso";
 		
 	}
 	
-	public String alterar(){
-		return null;
-		
-	}
-	
-	public String setarPagamento(){
-		TaxasCondominioDAO daoTaxas = new TaxasCondominioDAO();
-		if(daoTaxas.setarPagamentoTaxa(taxasCondominio)){
-			return "sucesso";
-		}		
-		
-		return "falha";		
+	public void destroiSessao(){		
+		FacesContext contexto = FacesContext.getCurrentInstance();
+		contexto.getExternalContext().getSessionMap().remove("taxasCondominioBean");		
 	}
 	
 	
