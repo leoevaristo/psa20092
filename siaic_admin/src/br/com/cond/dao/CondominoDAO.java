@@ -18,7 +18,12 @@ import br.com.siaic.dao.DB;
  */
 public class CondominoDAO {
 	
+	
+	static int i = 0;
+	
 	public Condomino getCondominio(int cod) throws SQLException {
+		
+		i++;
 		
 		String sql = "select * from admcon_condomino where con_codigo = ?";
 		PreparedStatement ps = DB.getConn().prepareStatement(sql);
@@ -35,7 +40,10 @@ public class CondominoDAO {
 			c.setNome(rs.getString(2));
 			c.setSexo(rs.getString(3).charAt(0));
 			c.setDataNasc(new SimpleDateFormat("dd/MM/yyyy").format(rs.getDate(4)));
-			c.setResponsavel(new CondominoDAO().getCondominio(rs.getInt(5)));
+			System.out.println(i);
+			c.setResponsavel(new CondominoDAO().getReponsavelCondomino(rs.getInt(5)));
+			
+			
 			c.setApartamento(new ApartamentoDAO().getApartamentoId(rs.getInt(6)));
 		}
 		
@@ -44,6 +52,36 @@ public class CondominoDAO {
 		
 		return c;
 	}
+	
+	
+	public Condomino getReponsavelCondomino(int cod) throws SQLException {
+		
+		String sql = "select * from admcon_condomino where con_codigo = ?";
+		PreparedStatement ps = DB.getConn().prepareStatement(sql);
+		
+		ps.setInt(1, cod);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		Condomino c = null;
+		
+		if (rs.first()) {
+			c = new Condomino();
+			c.setCodigo(rs.getInt(1));
+			c.setNome(rs.getString(2));
+			c.setSexo(rs.getString(3).charAt(0));
+			c.setDataNasc(new SimpleDateFormat("dd/MM/yyyy").format(rs.getDate(4)));
+			System.out.println(i);
+			c.setApartamento(new ApartamentoDAO().getApartamentoId(rs.getInt(6)));
+		}
+		
+		rs.close();
+		ps.close();
+		
+		return c;
+	}
+		
+	
 	
 	public boolean inserir(Condomino c) throws SQLException, ParseException {
 		String sql = "insert into admcon_condomino "+
