@@ -13,7 +13,7 @@ public class BalanceteMensalBean {
 	private String paramMes;
 	private String paramAno;
 	private ReceitaDespesa rctdp = new ReceitaDespesa();
-	private BalanceteMensal bal = new BalanceteMensal();
+	BalanceteMensal balancete = new BalanceteMensal();
 	private GerarBalanceteMensalDAO dao = new GerarBalanceteMensalDAO();
 	private List<ReceitaDespesa> listaReceitas = new ArrayList<ReceitaDespesa>();
 	private List<ReceitaDespesa> listaDespesas = new ArrayList<ReceitaDespesa>();
@@ -57,14 +57,6 @@ public class BalanceteMensalBean {
 		this.despesas = dao.getTotalDespesas(balancete);
 	}
 
-	public BalanceteMensal getBal(){
-		return bal;
-	}
-	
-	public void setBal(BalanceteMensal bal) {
-		this.bal = bal;
-	}
-	
 	public List<ReceitaDespesa> getListaReceitas() {
 		return listaReceitas;
 	}
@@ -87,16 +79,23 @@ public class BalanceteMensalBean {
 		return rctdp;
 	}
 
+	public BalanceteMensal getBalancete() {
+		return balancete;
+	}
+
+	public void setBalancete(BalanceteMensal balancete) {
+		this.balancete = balancete;
+	}
+
 	public String buscar() throws SQLException{
 		String s ="sucesso";
-		bal.setMes(paramMes);
-		bal.setAno(paramAno);
 		
-		setListaReceitas(bal);
-		setListaDespesas(bal);	
+				
+		setListaReceitas(balancete);
+		//setListaDespesas(balancete);
 		
-		setReceitas(bal);
-		setDespesas(bal);
+		//setReceitas(balancete);
+		//setDespesas(bal);
 		
 		return s;
 				
