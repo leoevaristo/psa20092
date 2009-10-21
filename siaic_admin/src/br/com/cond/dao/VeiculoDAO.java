@@ -229,7 +229,38 @@ public class VeiculoDAO {
 		
 	}
 
-	
+	public Veiculo getVeiculoPelaPlaca(String placa) throws SQLException {
+
+		String sql = "SELECT VEI_CODIGO,VEI_DESCRICAO,VEI_PLACA,VEI_COR "
+			+ "FROM admcon_veiculo "
+			+ "WHERE VEI_PLACA = ?;";
+
+		try{
+			
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, placa);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+			
+				Veiculo veiculo = new Veiculo();
+				veiculo.setCodigoVeiculo(rs.getInt("VEI_CODIGO"));
+				veiculo.setDescricao(rs.getString("VEI_DESCRICAO"));
+				veiculo.setCor(rs.getString("VEI_COR"));
+				veiculo.setPlaca(rs.getString("VEI_PLACA"));
+				ps.close();
+				rs.close();
+				return veiculo;
+
+			} else 
+				return null;
+		
+		} finally {
+			conexao.close();
+		}
+		
+	}
 
 }
 

@@ -1,14 +1,15 @@
 package br.com.cond.mb;
 
+import java.sql.SQLException;
+
 import br.com.cond.businesslogic.Veiculo;
+import br.com.cond.dao.VeiculoDAO;
 
 
 public class AcessoVeiculoBean {
 	
 	public AcessoVeiculoBean() {
-		this.veiculo = new Veiculo();
-		veiculo.setDescricao("Gol Bola");
-		veiculo.setCor("Vermelho");
+
 	}
 
 	private boolean liberado;
@@ -39,4 +40,15 @@ public class AcessoVeiculoBean {
 		this.veiculo = veiculo;
 	}
 	
+	public String verificarAcesso() {
+		VeiculoDAO vdao = new VeiculoDAO();
+		try {
+			this.veiculo = vdao.getVeiculoPelaPlaca(this.placa);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		this.liberado = this.veiculo != null;
+		return "";
+	}
+
 }
