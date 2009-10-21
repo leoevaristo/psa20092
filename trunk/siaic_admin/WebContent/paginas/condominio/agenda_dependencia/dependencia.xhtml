@@ -53,7 +53,7 @@
 		</h:outputLink>
 	</ui:define>
 	<ui:define name="infoGerais">
-
+		<h:form>
 		<h:dataTable id="dataTable" rendered="true" styleClass="grid"
 			headerClass="thead" rowClasses="cor1,cor2"
 			value="#{cadastroDependenciaBean.buscaDependencia}" var="dependencia"
@@ -80,19 +80,16 @@
 				<f:facet name="header">
 					<h:outputText value="Editar" />
 				</f:facet>
-				<h:form>
 					<h:commandLink value="" action="editarDependencia" immediate="true">
 						<h:graphicImage value="/images/imgedit.png" />
 						<f:setPropertyActionListener value="#{dependencia}"
 							target="#{cadastroDependenciaBean.dependencia}"></f:setPropertyActionListener>
 					</h:commandLink>
-				</h:form>
 			</h:column>
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Excluir" />
 				</f:facet>
-				<h:form>
 					<a4j:commandLink value=""
 						action="#{cadastroDependenciaBean.removerDependencia}"
 						reRender="dataTable" ajaxSingle="true">
@@ -100,9 +97,9 @@
 						<f:setPropertyActionListener value="#{dependencia}"
 							target="#{cadastroDependenciaBean.dependencia}"></f:setPropertyActionListener>
 					</a4j:commandLink>
-				</h:form>
 			</h:column>
 		</h:dataTable>
+		</h:form>
 	</ui:define>
 	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
 </ui:composition>
