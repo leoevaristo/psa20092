@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:a4j="http://richfaces.org/a4j"
+	  xmlns:rich="http://richfaces.org/rich">
 
 	<ui:composition template="/WEB-INF/template/template-cond.xhtml">	
 		<ui:define name="tituloGrande"> 
@@ -44,48 +46,48 @@
 			</h:outputLink>
 		</ui:define>				
 		<ui:define name="infoGerais">
-			<h:dataTable rendered="true" styleClass="grid" headerClass="thead" rowClasses="cor1,cor2" value=""  >
+			<h:dataTable id="dataTable" rendered="true" styleClass="grid" headerClass="thead" rowClasses="cor1,cor2" 
+			value="#{cadastroDependenciaBean.buscaDependencia}" var="dependencia" 
+			columnClasses="width30 textcenter, , width60 textcenter, width30 textcenter, width30 textcenter" >
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="CÃ³digo" />
+						<h:outputText value="Código" />
 					</f:facet>
-					<h:outputText value="teste"  />					
+					<h:outputText value="#{dependencia.codigo}"  />					
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Nome" />
+						<h:outputText value="Descrição" />
 					</f:facet>
-					<h:outputText value="" />
+					<h:outputText value="#{dependencia.descricao}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Email" />
+						<h:outputText value="Reservável" styleClass="textcenter"/>
 					</f:facet>
-					<h:outputText value="" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Telefone" />
-					</f:facet>
-					<h:outputText value="" />
+					<h:outputText value="#{dependencia.reservavel}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Editar" />
 					</f:facet>
-					<h:outputLink value="#" styleClass="textcenter">
+					<h:form>
+					<h:commandLink value="" action="editarDependencia" immediate="true" >
 						<h:graphicImage value="/images/imgedit.png" />
-					</h:outputLink>
+						<f:setPropertyActionListener value="#{dependencia}" target="#{cadastroDependenciaBean.dependencia}"></f:setPropertyActionListener>
+					</h:commandLink>
+					</h:form>
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Excluir" />
 					</f:facet>
-					<h:form>
-					 <h:commandLink action="#" onclick="" >
-					 	<h:graphicImage value="/images/imgdelete.png" />    						
-   					 </h:commandLink>  		
-				    </h:form>		
+					 <h:form>
+					 <a4j:commandLink value="" action="#{cadastroDependenciaBean.removerDependencia}" reRender="dataTable" ajaxSingle="true" >
+					 	<h:graphicImage value="/images/imgdelete.png"  />    						
+   					 	<f:setPropertyActionListener value="#{dependencia}" target="#{cadastroDependenciaBean.dependencia}"></f:setPropertyActionListener>
+   					 </a4j:commandLink>
+   					 </h:form>  		
 				</h:column>			
 			</h:dataTable>		
 		</ui:define>		
