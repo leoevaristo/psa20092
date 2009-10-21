@@ -8,11 +8,26 @@
 	<ui:define name="tituloGrande">Taxas de Condomínio</ui:define>
 	<ui:define name="subtitulo">Menu</ui:define>
 	<ui:define name="conteudo">
-			<ul>
-				<li><a href="#{request.contextPath}/paginas/condominio/taxas/cadastra_taxas.xhtml">Cadastrar</a></li>
-				<li><a href="#{request.contextPath}/paginas/condominio/taxas/consulta_taxas.xhtml">Consultar</a></li>
-			</ul>
-	</ui:define>>
+	
+			<h:form styleClass="forms" id="formTaxas">
+			
+		<ul>
+				<li><a href="#{request.contextPath}/paginas/condominio/taxas/cadastra_taxas.xhtml">Cadastrar Taxas</a></li>
+				<li><a href="#{request.contextPath}/paginas/condominio/taxas/consulta_taxas.xhtml">Consultar Taxas</a></li>
+				<h:panelGroup>
+				  <li><h:commandLink id="RelaçãoInadimplentes"
+						action="#{consultaTaxasCondominioBean.gerarRel}">
+						<h:outputText value="Relacao Inadimplentes" />
+					   </h:commandLink></li>
+			      </h:panelGroup>
+		</ul>
+		</h:form>
+
+	</ui:define>
 	</ui:composition>
+	
+	
+	
+	
 
 </html>
