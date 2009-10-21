@@ -17,7 +17,14 @@
 		 
 		 <ui:define name="conteudo">
 		   <h:form styleClass="forms">
-		     <h:commandLink value="Listar Veiculos" action="consulta" />
+		     
+		     <h:panelGroup id="listarVeiculos">
+		       <h:commandLink value="Listar Veiculos..." action="consulta" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="gerAcesso">
+		       <h:inputText value="#{acessoVeiculoBean.placa}" />
+		     </h:panelGroup>
 		     
 		     <h:panelGroup styleClass="linha"></h:panelGroup>
 		   </h:form>

@@ -7,6 +7,13 @@
   <managed-bean-class>br.com.siaic.mb.CadastraClienteBean</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ 
+ <managed-bean>
+  <managed-bean-name>acessoVeiculoBean</managed-bean-name>
+  <managed-bean-class>br.com.cond.mb.AcessoVeiculoBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ 
  <managed-bean>
   <managed-bean-name>imovelCaracteristicaBean</managed-bean-name>
   <managed-bean-class>br.com.siaic.mb.imovelcaracteristica.ImovelCaracteristicaBean</managed-bean-class>
