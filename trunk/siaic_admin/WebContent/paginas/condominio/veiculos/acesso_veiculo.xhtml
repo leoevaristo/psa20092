@@ -12,13 +12,13 @@
 		 </ui:define>	
 		 	
 		 <ui:define name="subtitulo">  
-			<h:outputText value="Veículos do Condominio" />
+			<h:outputText value="Gerenciador de Acesso" />
 		 </ui:define>
 		 
 		 <ui:define name="conteudo">
 		   <h:form styleClass="forms">
-		     <!-- Gerenciador de Acesso -->
-		     <h:outputText value="[Gerenciador de Acesso...]" />
+		     <h:commandLink value="Listar Veiculos" action="consulta" />
+		     
 		     <h:panelGroup styleClass="linha"></h:panelGroup>
 		   </h:form>
 		 </ui:define>
