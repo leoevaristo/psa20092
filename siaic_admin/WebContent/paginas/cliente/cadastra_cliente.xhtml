@@ -77,31 +77,33 @@
 				<h:selectOneMenu value="#{cadastraClienteBean.cidade.cidadeEstado}"
 					id="campoEstado"
 					valueChangeListener="#{cadastraClienteBean.filtraCidadePorEstado}"
-					 immediate="true">
+					 >
 					<f:selectItem itemValue="" itemLabel="Estado" />
 					<f:selectItems value="#{selectEstados.estados}" />
-					<a4j:support event="onchange" reRender="campoCidade"/>
+					<a4j:support event="onchange" reRender="campoCidade" ajaxSingle="true"/>
 				</h:selectOneMenu>
 			</h:panelGroup>
+			<a4j:region>
 			<h:panelGroup id="panelCidade">
-				<h:outputLabel for="campoCidade" value="Cidade" />
-				<a4j:region>
+				<h:outputLabel for="campoCidade" value="Cidade" />				
 				<h:selectOneMenu value="#{cadastraClienteBean.cidade.cidadeNome}"
-					id="campoCidade">
+					id="campoCidade"
+					valueChangeListener="#{cadastraClienteBean.filtraBairroPorCidade}">
 					<f:selectItem itemValue="" itemLabel="Cidade" />
 					<f:selectItems value="#{cadastraClienteBean.cidades}" />
-				</h:selectOneMenu>
-				</a4j:region>
+					<a4j:support event="onchange" reRender="campoBairro" ajaxSingle="true" /> 
+				</h:selectOneMenu>				
 			</h:panelGroup>
 			<h:panelGroup id="panelBairro">
-				<h:outputLabel for="campoBairro" value="Bairro" />
+				<h:outputLabel for="campoBairro" value="Bairro" />				
 				<h:selectOneMenu
-					value="#{cadastraClienteBean.endereco.enderecoBairro.bairroCodigo}"
+					value="#{cadastraClienteBean.bairro.bairroCodigo}"
 					id="campoBairro">
 					<f:selectItem itemValue="" itemLabel="Bairro" />
-					<f:selectItems value="#{selectBairros.bairros}" />
-				</h:selectOneMenu>
+					<f:selectItems value="#{cadastraClienteBean.bairros}" />
+				</h:selectOneMenu>				
 			</h:panelGroup>
+			</a4j:region>
 			<h:panelGroup id="panelLogradouro">
 				<h:outputLabel for="campoLogradouro" value="Logradouro" />
 				<h:selectOneMenu
