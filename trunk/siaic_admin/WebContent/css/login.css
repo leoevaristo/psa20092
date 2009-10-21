@@ -15,7 +15,13 @@ div#container div#content div#col_login div#col_loginConteudo{
 	height:auto;
 	padding:0 20px 20px 20px;
 }
-
+div#container div#content div#col_login div#col_loginConteudo h4{
+	font-size:14px;
+	font-weight:bold;
+	color:#8eacbe;
+	margin-bottom:20px;
+	margin-left: 20px;
+}
 div#container div#content div#col_login div#col_loginConteudo form.forms{
 	width:615px;	
 	background:url(../images/bgform.png) no-repeat 0 bottom;
@@ -23,12 +29,6 @@ div#container div#content div#col_login div#col_loginConteudo form.forms{
 	padding:0 25px 15px 25px;
 	margin:10px 0;
 	display:block;
-}
-div#container div#content div#col_login div#col_loginConteudo form.forms h4{
-	font-size:14px;
-	font-weight:bold;
-	color:#8eacbe;
-	margin-bottom:20px;
 }
 div#container div#content div#col_login div#col_loginConteudo form.forms span{
 	display:block;
@@ -50,7 +50,7 @@ div#container div#content div#col_login div#col_loginConteudo form.forms span in
 div#container div#content div#col_login div#col_loginConteudo form.forms span input.obrigatorio{
 	border-left:4px solid #15688f;
 }
-div#container div#content div#col_login div#col_loginConteudo form.forms span.infor p{
+div#container div#content div#col_login div#col_loginConteudo form.forms span.infor {
 	width:150px;
 	border-left:4px solid #15688f;
 	float:right;
@@ -58,7 +58,9 @@ div#container div#content div#col_login div#col_loginConteudo form.forms span.in
 	margin:0;
 	color:#8eacbe;
 	font-size:11px;
-	
+	display: block;
+	margin-bottom: 10px;
+		
 }
 div#container div#content div#col_login div#col_loginConteudo form.forms span.infor:after{
 	content:".";
@@ -68,11 +70,13 @@ div#container div#content div#col_login div#col_loginConteudo form.forms span.in
 	display:block;
 }
 div#container div#content div#col_login div#col_loginConteudo form.forms span.linha{
-	background:url(../images/linhaform.png) no-repeat center 0;
+	background: url(../images/linhaform.png) no-repeat center 0;
 	display:block;
 	width:100%;
 	height:3px;
+	clear:both;
 }
+
 div#container div#content div#col_login div#col_loginConteudo form.forms span.botoes {
 	text-align:center;
 	padding:0;
@@ -93,6 +97,9 @@ div#container div#content div#col_login div#col_loginConteudo form.forms span.bo
 }
 div#container div#content div#col_login div#col_loginConteudo form.forms span.botoes input.input_buttom{
 	background:url(../images/btnformcancelar.png);
+}
+div#container div#content div#col_login div#col_loginConteudo form.forms span.botoes input.input_entrar{
+	background:url(../images/btnformentrar.jpg);
 }
 div#container div#content div#col_login span#bglogin_rodape{
 	width:732px;
