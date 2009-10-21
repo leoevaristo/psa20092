@@ -20,13 +20,6 @@
         <div id="logo">
         	<a href="#{request.contextPath}/paginas/index.xhtml" target="_self" ><img src="#{request.contextPath}/images/logo.png" alt="SIAIC - Sistema Integrado de Administração de Imobiliárias e Condomínios" /></a>
         </div>
-        <ul id="menuHeader">
-        	<li><a href="#">Configurações</a></li>
-            <li>|</li>
-            <li><a href="#">Ajuda</a></li>
-            <li>|</li>
-            <li><a href="#">Sair</a></li>
-        </ul>
     </div>
     <!-- FIM Header -->
     
@@ -37,8 +30,8 @@
         <div id="col_login">
         	<span id="bglogin_topo"></span>
         	<div id="col_loginConteudo">        		
-        		<h2 id="titulos_internos"> <h:outputText value="»" /> <ui:insert name="tituloGrande"></ui:insert></h2>                               
-                <h4> <ui:insert name="subtitulo"></ui:insert> </h4>
+        		<h2 id="titulos_internos"> <h:outputText value="&#187; " /> <ui:insert name="tituloGrande"></ui:insert></h2>                               
+                <h4> <ui:insert name="subtitulo"></ui:insert></h4>
                 <ui:insert name="conteudo" > </ui:insert>                     	
                <div id="infogerais" class="grid">
               	 <p id="info_titulo">  <ui:insert name="tituloLista"> </ui:insert> </p>
