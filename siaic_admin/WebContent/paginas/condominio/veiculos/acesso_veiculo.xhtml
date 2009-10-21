@@ -36,7 +36,7 @@
 		     <h:panelGroup id="acessoVeiculo" rendered="#{acessoVeiculoBean.veiculo ne null}">
 		       <h:outputLabel value="Veiculo:" />
 		       <h:commandLink value="#{acessoVeiculoBean.veiculo.placa}" action="altera" />
-		       <h:outputText value="(clique para editar)" />
+		       
 		       <h:panelGroup id="acessoVeiculoDescricao">
 		         <h:outputLabel value="Detalhe:" />
 		         <h:outputText value="#{acessoVeiculoBean.veiculo.descricao}" />
