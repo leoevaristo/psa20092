@@ -35,19 +35,19 @@ private Connection conexao = null;
 
 	//metodo que trará como retorno a descrição detalhada de todas as receitas e despesas do mes desejado
 	public List<ReceitaDespesa> getReceitas(BalanceteMensal bal) throws SQLException {
-			
-		String sql = "SELECT DRC_CODIGO, DRC_DESCRICAO, DER_CODIGO,   "
-			+ "DER_VALOR, DER_TIPO, DER_DATA "
-			+ "FROM ADMCON_DESPESA_RECEITA JOIN ADMCON_DESPESA_RECEITA_DOMINIO"
-			+ "WHERE ADMCON_DESPESA_RECEITA_DOMINIO.DRC_CODIGO = ADMCON_DESPESA_RECEITA.DER_DRC_CODIGO"
-			+ " AND MONTH(DER_DATA) = ? AND YEAR(DER_DATA)= ? AND DER_TIPO = \"R\""
-			+ "ORDER BY DER_DATA";
+		String s ="R";	
+		String sql = "SELECT DRC_CODIGO, DRC_DESCRICAO, DER_CODIGO, DER_VALOR, DER_TIPO, DER_DATA "
+			+ " FROM ADMCON_DESPESA_RECEITA JOIN ADMCON_DESPESA_RECEITA_DOMINIO "
+			+ " WHERE ADMCON_DESPESA_RECEITA_DOMINIO.DRC_CODIGO = ADMCON_DESPESA_RECEITA.DER_DRC_CODIGO "
+			+ " AND month(DER_DATA) like ? and year (DER_DATA) like ? AND DER_TIPO = ?"
+			+ " ORDER BY DER_DATA";
 
 		try{
 			
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.setString(1, bal.getMes());
 			ps.setString(2, bal.getAno());
+			ps.setString(3, s);
 			
 			ResultSet rs = ps.executeQuery();
 
@@ -66,7 +66,7 @@ private Connection conexao = null;
 				recDesp.setTipoRD(rcdt);
 				recDesp.setTipo(rs.getString(5));
 				recDesp.setData(rs.getString(6));
-				recDesp.setCondominio(null);	//nao é relevante saber o responsavel no balancete			
+				//recDesp.setCondominio(null);	//nao é relevante saber o responsavel no balancete			
 				
 				listaReceitas.add(recDesp);
 			}
@@ -82,19 +82,19 @@ private Connection conexao = null;
 	}
 	
 	public List<ReceitaDespesa> getDespesas(BalanceteMensal bal) throws SQLException {
-		
-		String sql = "SELECT DRC_CODIGO, DRC_DESCRICAO, DER_CODIGO,   "
-			+ "DER_VALOR, DER_TIPO, DER_DATA "
-			+ "FROM ADMCON_DESPESA_RECEITA JOIN ADMCON_DESPESA_RECEITA_DOMINIO"
-			+ "WHERE ADMCON_DESPESA_RECEITA_DOMINIO.DRC_CODIGO = ADMCON_DESPESA_RECEITA.DER_DRC_CODIGO"
-			+ " AND MONTH(DER_DATA) = ? AND YEAR(DER_DATA)= ? AND DER_TIPO = \"D\""
-			+ "ORDER BY DER_DATA";
+		String s = "D";
+		String sql = "SELECT DRC_CODIGO, DRC_DESCRICAO, DER_CODIGO, DER_VALOR, DER_TIPO, DER_DATA "
+			+ " FROM ADMCON_DESPESA_RECEITA JOIN ADMCON_DESPESA_RECEITA_DOMINIO "
+			+ " WHERE ADMCON_DESPESA_RECEITA_DOMINIO.DRC_CODIGO = ADMCON_DESPESA_RECEITA.DER_DRC_CODIGO "
+			+ " AND month(DER_DATA) like ? and year (DER_DATA) like ? AND DER_TIPO = ?"
+			+ " ORDER BY DER_DATA";
 
 		try{
 			
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.setString(1, bal.getMes());
 			ps.setString(2, bal.getAno());
+			ps.setString(3, s);
 			
 			ResultSet rs = ps.executeQuery();
 
@@ -113,7 +113,7 @@ private Connection conexao = null;
 				recDesp.setTipoRD(rcdt);
 				recDesp.setTipo(rs.getString(5));
 				recDesp.setData(rs.getString(6));
-				recDesp.setCondominio(null);	//nao é relevante saber o responsavel no balancete			
+				//recDesp.setCondominio(null);	//nao é relevante saber o responsavel no balancete			
 				
 				listaDespesas.add(recDesp);
 			}

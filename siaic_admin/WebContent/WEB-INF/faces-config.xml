@@ -26,7 +26,7 @@
  <managed-bean>
   <managed-bean-name>BalanceteMensalBean</managed-bean-name>
   <managed-bean-class>br.com.cond.mb.BalanceteMensalBean</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <!-- GERAR BALANCETE FIM -->
  <!-- EVALOR MERCADO IÍNICIO -->
