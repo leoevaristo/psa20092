@@ -8,23 +8,23 @@
 
 	<ui:composition template="/WEB-INF/template/template-cond.xhtml">
 		<ui:define name="tituloGrande"><h:outputText value="Balancete Mensal" />
-	</ui:define>
-	<ui:define name="subtitulo"><h:outputText value="Gerar Balancete" />
-	</ui:define>
-	<ui:define name="conteudo">
-		<h:form styleClass="forms" id="formBalanco">
+		</ui:define>
+		<ui:define name="subtitulo"><h:outputText value="Gerar Balancete" />
+		</ui:define>
+		<ui:define name="conteudo">
+		<h:form styleClass="forms" id="entrada">
 			<h:panelGroup>
-				<h:outputLabel for="campoMes" value="Mes" />
-				<h:selectOneMenu value="#{condominoBean.filtro}" id="campoFiltro" >
-					<f:selectItem itemValue="set" itemLabel="Setembro" />
-					<f:selectItem itemValue="out" itemLabel="Outubro" />
-					<f:selectItem itemValue="nov" itemLabel="novembro" />
-					<f:selectItem itemValue="jan" itemLabel="Dezembro" />
+				<h:outputLabel value="Mes" id="selectmes"/>
+				<h:selectOneMenu value="#{BalanceteMensalBean.paramMes}" id="meses"  required="true">
+					<f:selectItem itemValue="09" itemLabel="Setembro" />
+					<f:selectItem itemValue="10" itemLabel="Outubro" />
+					<f:selectItem itemValue="11" itemLabel="novembro" />
+					<f:selectItem itemValue="12" itemLabel="Dezembro" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup>
-				<h:outputLabel value="Ano: " for="campoAno" />
-				<h:selectOneMenu value="#{condominoBean.filtro}" id="campoFiltro" >
+				<h:outputLabel value="Ano" id="selectano" />
+				<h:selectOneMenu value="#{BalanceteMensalBean.paramAno}" id="anos" required="true" >
 					<f:selectItem itemValue="2008" itemLabel="2008" />
 					<f:selectItem itemValue="2009" itemLabel="2009" />
 					<f:selectItem itemValue="2010" itemLabel="2010" />
@@ -32,7 +32,7 @@
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup>
-				<h:commandButton action="#{condominoBean.buscar}; #{}" value="Buscar" type="submit" /> 				
+				<h:commandButton action="#{BalanceteMensalBean.buscar}" value="Buscar" type="submit" /> 				
 			</h:panelGroup>
 		</h:form>
 	</ui:define>	

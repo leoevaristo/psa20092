@@ -39,7 +39,7 @@ private Connection conexao = null;
 		String sql = "SELECT DRC_CODIGO, DRC_DESCRICAO, DER_CODIGO,   "
 			+ "DER_VALOR, DER_TIPO, DER_DATA "
 			+ "FROM ADMCON_DESPESA_RECEITA JOIN ADMCON_DESPESA_RECEITA_DOMINIO"
-			+ "WHERE ADMCON_DESPESA_RECEITA.DRC_CODIGO = ADMCON_DESPESA_RECEITA_DOMINIO.DER_DRD_CODIGO"
+			+ "WHERE ADMCON_DESPESA_RECEITA_DOMINIO.DRC_CODIGO = ADMCON_DESPESA_RECEITA.DER_DRC_CODIGO"
 			+ " AND MONTH(DER_DATA) = ? AND YEAR(DER_DATA)= ? AND DER_TIPO = \"R\""
 			+ "ORDER BY DER_DATA";
 
@@ -64,7 +64,8 @@ private Connection conexao = null;
 				recDesp.setCodigo(rs.getInt(3));
 				recDesp.setValor(rs.getDouble(4));
 				recDesp.setTipoRD(rcdt);
-				recDesp.setData(rs.getString(5));
+				recDesp.setTipo(rs.getString(5));
+				recDesp.setData(rs.getString(6));
 				recDesp.setCondominio(null);	//nao é relevante saber o responsavel no balancete			
 				
 				listaReceitas.add(recDesp);
@@ -85,7 +86,7 @@ private Connection conexao = null;
 		String sql = "SELECT DRC_CODIGO, DRC_DESCRICAO, DER_CODIGO,   "
 			+ "DER_VALOR, DER_TIPO, DER_DATA "
 			+ "FROM ADMCON_DESPESA_RECEITA JOIN ADMCON_DESPESA_RECEITA_DOMINIO"
-			+ "WHERE ADMCON_DESPESA_RECEITA.DRC_CODIGO = ADMCON_DESPESA_RECEITA_DOMINIO.DER_DRD_CODIGO"
+			+ "WHERE ADMCON_DESPESA_RECEITA_DOMINIO.DRC_CODIGO = ADMCON_DESPESA_RECEITA.DER_DRC_CODIGO"
 			+ " AND MONTH(DER_DATA) = ? AND YEAR(DER_DATA)= ? AND DER_TIPO = \"D\""
 			+ "ORDER BY DER_DATA";
 
@@ -110,7 +111,8 @@ private Connection conexao = null;
 				recDesp.setCodigo(rs.getInt(3));
 				recDesp.setValor(rs.getDouble(4));
 				recDesp.setTipoRD(rcdt);
-				recDesp.setData(rs.getString(5));
+				recDesp.setTipo(rs.getString(5));
+				recDesp.setData(rs.getString(6));
 				recDesp.setCondominio(null);	//nao é relevante saber o responsavel no balancete			
 				
 				listaDespesas.add(recDesp);
