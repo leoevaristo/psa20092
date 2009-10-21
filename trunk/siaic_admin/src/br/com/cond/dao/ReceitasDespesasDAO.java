@@ -14,8 +14,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.eclipse.jdt.internal.compiler.ast.ThisReference;
-
 import br.com.cond.businesslogic.ReceitaDespesa;
 import br.com.siaic.dao.FabricaConexao;
 
@@ -200,7 +198,7 @@ public class ReceitasDespesasDAO {
 		ReceitasDespesasDAO rdd = new ReceitasDespesasDAO();
 		ReceitaDespesa rd = new ReceitaDespesa();
 		
-		rd.setTipoRD(new ReceitasDespesasTiposDAO().getReceitasDespesasTiposPorCodigo(1));
+		rd.setTipoRD(new ReceitasDespesasTiposDAO().getReceitasDespesasTiposPorCodigo(2));
 		rd.setCondominio(new CondominoDAO().getCondominio(1));
 		rd.setValor(100);
 		rd.setTipo("R");
