@@ -3,10 +3,12 @@
 /* CSS Document
 	@Data: 13/09/2009
 	@Author: José Carlos Lacerda
-	@E-mail: josecarlos@bc10.com.br
-	@CopyRight: BC10 - Criação de Sites
+	@E-mail: josecarloslacerda@msn.com
 */
 /* CSS Document */
+
+.width30{width:30px}	
+.width60{width:60px}
 
 body{ 
 	background:url(../images/bgsite.jpg) #0b5481 no-repeat center 0; 
@@ -373,9 +375,3 @@ div#container div#footer{
 /* -- Container -> footer -- */
 
 /* -- fim Container -- */
-.col1{
-	width:20px
-}	
-.col2{
-	width:20px
-}
