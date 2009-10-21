@@ -688,6 +688,10 @@
  		<from-outcome>editarDependencia</from-outcome>
  		<to-view-id>/paginas/condominio/agenda_dependencia/editar_dependencia.xhtml</to-view-id>
  	</navigation-case>
+ 	<navigation-case>
+ 		<from-outcome>removerDependencia</from-outcome>
+ 		<to-view-id>/paginas/condominio/agenda_dependencia/dependencia.xhtml</to-view-id>
+ 	</navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/paginas/condominio/balanceteMensal/BalanceteMensal.xhtml</from-view-id>
