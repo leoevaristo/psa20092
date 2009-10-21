@@ -701,6 +701,15 @@
   </navigation-case>
  </navigation-rule>
  
+ <navigation-rule>
+   <from-view-id>/paginas/condominio/veiculos/acesso_veiculo.xhtml</from-view-id>
+   <navigation-case>
+     <from-outcome>consulta</from-outcome>
+     <to-view-id>/paginas/condominio/veiculos/consulta_veiculo.xhtml</to-view-id>
+     <redirect />
+   </navigation-case>
+ </navigation-rule>
+ 
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
  </application>
