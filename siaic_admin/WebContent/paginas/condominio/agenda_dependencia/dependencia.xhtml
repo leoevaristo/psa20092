@@ -2,74 +2,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:a4j="http://richfaces.org/a4j"
-	  xmlns:rich="http://richfaces.org/rich">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
 
-	<ui:composition template="/WEB-INF/template/template-cond.xhtml">	
-		<ui:define name="tituloGrande"> 
-			<h:outputText value="Dependencias" />
-		 </ui:define>			 
-		<ui:define name="subtitulo">  
-			
-		 </ui:define>			 
-		<ui:define name="tituloLista"> 
-			<h:outputText value="Listagem de Dependencias" />
-		</ui:define>		
-		<ui:define name="linkNovo">	
-			<h:outputLink value="cadastro_dependencia.xhtml" id="info_novo" styleClass="textcenter">
-				<h:outputText value="Nova Dependencia" />
-			</h:outputLink>
-		</ui:define>				
-		<ui:define name="infoGerais">
+<ui:composition template="/WEB-INF/template/template-cond.xhtml">
+	<ui:define name="tituloGrande">
+		<h:outputText value="Dependencias" />
+	</ui:define>
+	<ui:define name="subtitulo">
+
+	</ui:define>
+	<ui:define name="tituloLista">
+		<h:outputText value="Listagem de Dependencias" />
+		<br />
+		<h:outputLink value="#" id="link">
+			<h:outputText value="&#187; Buscar Dependencia" />
+			<rich:componentControl for="panel" attachTo="link" operation="show"	event="onclick" />
+		</h:outputLink>
 		
-			<h:dataTable id="dataTable" rendered="true" styleClass="grid" headerClass="thead" rowClasses="cor1,cor2" 
-			value="#{cadastroDependenciaBean.buscaDependencia}" var="dependencia" 
-			columnClasses="width30 textcenter, , width60 textcenter, width30 textcenter, width30 textcenter" >
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Código" />
-					</f:facet>
-					<h:outputText value="#{dependencia.codigo}"  />					
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Descrição" />
-					</f:facet>
-					<h:outputText value="#{dependencia.descricao}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Reservável" styleClass="textcenter"/>
-					</f:facet>
-					<h:outputText value="#{dependencia.reservavel}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Editar" />
-					</f:facet>
-					<h:form>
-					<h:commandLink value="" action="editarDependencia" immediate="true" >
-						<h:graphicImage value="/images/imgedit.png" />
-						<f:setPropertyActionListener value="#{dependencia}" target="#{cadastroDependenciaBean.dependencia}"></f:setPropertyActionListener>
-					</h:commandLink>
-					</h:form>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Excluir" />
-					</f:facet>
-					 <h:form>
-					 <a4j:commandLink value="" action="#{cadastroDependenciaBean.removerDependencia}" reRender="dataTable" ajaxSingle="true" >
-					 	<h:graphicImage value="/images/imgdelete.png"  />    						
-   					 	<f:setPropertyActionListener value="#{dependencia}" target="#{cadastroDependenciaBean.dependencia}"></f:setPropertyActionListener>
-   					 </a4j:commandLink>
-   					 </h:form>  		
-				</h:column>			
-			</h:dataTable>
-
 		<rich:modalPanel id="panel" width="350" height="100">
 			<f:facet name="header">
 				<h:panelGroup>
@@ -78,22 +31,79 @@
 			</f:facet>
 			<f:facet name="controls">
 				<h:panelGroup>
-					<h:outputLink value="Fechar" id="hidelink" />
-					<rich:componentControl for="panel" attachTo="hidelink"
-						operation="hide" event="onclick" />
+					<h:outputLink value="#" styleClass="hidelink" id="hidelink">
+						<h:outputText value="Fechar"/>
+					</h:outputLink>					
+					<rich:componentControl for="panel" attachTo="hidelink" operation="hide" event="onclick" />
 				</h:panelGroup>
 			</f:facet>
-			<h:outputText
-				value="This panel is called using Component Control Component"></h:outputText>
-			<br />
-			<h:outputText
-				value="Closure link (X) works also through Component Control"></h:outputText>
-		</rich:modalPanel>
-		<h:outputLink value="#" id="link">
-        	Show Modal Panel 
-        	<rich:componentControl for="panel" attachTo="link"	operation="show" event="onclick" />
+			<h:form>
+			<h:panelGroup>
+				<h:outputLabel value="Descrição "/>
+				<h:inputText value="#{cadastroDependenciaBean.dependencia}" />
+			</h:panelGroup>
+			</h:form>
+		</rich:modalPanel>		
+
+	</ui:define>
+	<ui:define name="linkNovo">
+		<h:outputLink value="cadastro_dependencia.xhtml" id="info_novo"
+			styleClass="textcenter">
+			<h:outputText value="Nova Dependencia" />
 		</h:outputLink>
-	</ui:define>		
-		<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
-	</ui:composition>
+	</ui:define>
+	<ui:define name="infoGerais">
+
+		<h:dataTable id="dataTable" rendered="true" styleClass="grid"
+			headerClass="thead" rowClasses="cor1,cor2"
+			value="#{cadastroDependenciaBean.buscaDependencia}" var="dependencia"
+			columnClasses="width30 textcenter, , width60 textcenter, width30 textcenter, width30 textcenter">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Código" />
+				</f:facet>
+				<h:outputText value="#{dependencia.codigo}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Descrição" />
+				</f:facet>
+				<h:outputText value="#{dependencia.descricao}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Reservável" styleClass="textcenter" />
+				</f:facet>
+				<h:outputText value="#{dependencia.reservavel}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Editar" />
+				</f:facet>
+				<h:form>
+					<h:commandLink value="" action="editarDependencia" immediate="true">
+						<h:graphicImage value="/images/imgedit.png" />
+						<f:setPropertyActionListener value="#{dependencia}"
+							target="#{cadastroDependenciaBean.dependencia}"></f:setPropertyActionListener>
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir" />
+				</f:facet>
+				<h:form>
+					<a4j:commandLink value=""
+						action="#{cadastroDependenciaBean.removerDependencia}"
+						reRender="dataTable" ajaxSingle="true">
+						<h:graphicImage value="/images/imgdelete.png" />
+						<f:setPropertyActionListener value="#{dependencia}"
+							target="#{cadastroDependenciaBean.dependencia}"></f:setPropertyActionListener>
+					</a4j:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</ui:define>
+	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
+</ui:composition>
 </html>
