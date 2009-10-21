@@ -711,4 +711,24 @@
     TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#balanceteMensal#BalanceteMensal.xhtml"
+  PATH="/paginas/condominio/balanceteMensal/BalanceteMensal.xhtml"
+  SHAPE="480,4433,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#balanceteMensal#BalanceteMensal.xhtml:0"
+   NAME="item"
+   PATH="/paginas/condominio/balanceteMensal/BalanceteMensal.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="sucesso::#paginas#condominio#balanceteMensal#sucesso.xhtml"
+    NAME="output"
+    PATH="/paginas/condominio/balanceteMensal/sucesso.xhtml"
+    TARGET="rules:#paginas#condominio#balanceteMensal#sucesso.xhtml"
+    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#balanceteMensal#sucesso.xhtml"
+  PATH="/paginas/condominio/balanceteMensal/sucesso.xhtml"
+  SHAPE="656,5009,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

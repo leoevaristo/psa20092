@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="/WEB-INF/template/template-cond.xhtml">
+		<ui:define name="tituloGrande"><h:outputText value="Balancete Mensal" />
+		</ui:define>
+		<ui:define name="subtitulo"><h:outputText value="Mes Selecionado: " /><h:outputText value="#{BalanceteMensalBean.paramMes}" />
+			<h:outputText value="#{BalanceteMensalBean.paramAno}" />
+		</ui:define>
+		
+	<ui:define name="infoGerais">
+		<table align="left" width="200">
+		<thead><td>>>RECEITAS</td></thead>
+		<h:dataTable styleClass="grid" headerClass="thead"
+			rowClasses="cor1,cor2" value="#{BalanceteMensalBean.listaReceitas}"
+			var="receita">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Codigo" />
+				</f:facet></h:column></td>						
+				<h:outputText value="#{receita.codigo}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Descrição" />
+				</f:facet>
+				
+				<h:outputText value="#{receita.tipoRD.descricao}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Valor" />
+				</f:facet>
+				<h:outputText value="#{receita.valor}" />
+			</h:column>		
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data Vencimento" />
+				</f:facet>
+				<h:outputText value="#{receita.data}" />
+			</h:column>	
+			<!-- 	
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Editar" />
+				</f:facet>
+				<h:form id="alteraEntrada">
+					<h:commandLink	action="#{condominoBean.editar}">
+						<h:graphicImage value="/images/imgedit.png" />
+						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir" />
+				</f:facet>
+				
+				<h:form id="excluiEntrada">
+					<h:commandLink id="excluir"
+						onclick="if (confirm('Voce tem certeza que deseja excluir essa entrada?')) {return true }; return false;"
+						action="#{condominoBean.excluir}">
+						<h:graphicImage value="/images/imgdelete.png" />
+						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			 -->
+		</h:dataTable>
+		</table>
+		
+		<table align="right" width="200">
+		<thead><td>>>DESPESAS</td></thead>
+		<h:dataTable styleClass="grid" headerClass="thead"
+			rowClasses="cor1,cor2" value="#{BalanceteMensalBean.listaDespesas}"
+			var="despesa" >
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Codigo" />
+				</f:facet>
+				<h:outputText value="#{despesa.codigo}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Descrição" />
+				</f:facet>
+				
+				<h:outputText value="#{despesa.tipoRD.descricao}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Valor" />
+				</f:facet>
+				<h:outputText value="#{despesa.valor}" />
+			</h:column>		
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data Vencimento" />
+				</f:facet>
+				<h:outputText value="#{despesa.data}" />
+			</h:column>	
+			
+			<!-- 	
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Editar" />
+				</f:facet>
+				<h:form id="alteraEntrada">
+					<h:commandLink	action="#{condominoBean.editar}">
+						<h:graphicImage value="/images/imgedit.png" />
+						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir" />
+				</f:facet>
+				
+				<h:form id="excluiEntrada">
+					<h:commandLink id="excluir"
+						onclick="if (confirm('Voce tem certeza que deseja excluir essa entrada?')) {return true }; return false;"
+						action="#{condominoBean.excluir}">
+						<h:graphicImage value="/images/imgdelete.png" />
+						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			 -->
+		</h:dataTable>
+		</table>
+						
+		<h:form styleClass="forms">
+			<span class="linha"></span>
+			<span class="botoes">
+			<h:commandButton action="#{condominoBean.limpar}" value="" styleClass="input_reset" />
+				<h:commandButton action="#{condominoBean.cancelar}" value="" styleClass="input_button" immediate="true" />
+			</span>
+			<h:outputText value="#{condominoBean.msg}" />
+		</h:form>
+	</ui:define>
+	</ui:composition>
+
+</html>
