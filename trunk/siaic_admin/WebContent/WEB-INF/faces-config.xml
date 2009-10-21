@@ -715,6 +715,11 @@
      <to-view-id>/paginas/condominio/veiculos/consulta_veiculo.xhtml</to-view-id>
      <redirect />
    </navigation-case>
+   <navigation-case>
+     <from-outcome>alterar</from-outcome>
+     <to-view-id>/paginas/condominio/veiculos/altera_veiculo.xhtml</to-view-id>
+     <redirect />
+   </navigation-case>
  </navigation-rule>
  
  <application>

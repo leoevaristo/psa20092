@@ -35,14 +35,19 @@
 		     
 		     <h:panelGroup id="acessoVeiculo" rendered="#{acessoVeiculoBean.veiculo ne null}">
 		       <h:outputLabel value="Veiculo:" />
-		       <h:commandLink action="dr" value="#{acessoVeiculoBean.veiculo.descricao + ', ' + acessoVeiculoBean.veiculo.cor + '.'}" />
+		       <h:commandLink action="alterar" value="#{acessoVeiculoBean.veiculo.placa}" />
+		       <h:outputText value="(clique para editar)" />
+		       <h:panelGroup id="acessoVeiculoDescricao">
+		         <h:outputLabel value="Detalhe:" />
+		         <h:outputText value="#{acessoVeiculoBean.veiculo.descricao}" />
+		         <h:outputText value=" #{acessoVeiculoBean.veiculo.cor}" />
+		       </h:panelGroup>
 		     </h:panelGroup>
 		     
 		     <h:panelGroup styleClass="linha"></h:panelGroup>
 		     
 		     <h:panelGroup styleClass="botoes">
-			   <h:commandButton action="dr" value="" styleClass="input_submit" />
-			   <h:commandButton action="dr" value="" styleClass="input_button" immediate="true" />
+			   <h:commandButton action="#{acessoVeiculoBean.verificarAcesso}" value="" styleClass="input_submit" />
 			 </h:panelGroup>
 			 
 		   </h:form>
