@@ -659,6 +659,7 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
+ 
  <navigation-rule>
   <from-view-id>/paginas/condominio/veiculos/consulta_veiculo.xhtml</from-view-id>
   <navigation-case>
@@ -690,6 +691,20 @@
  </navigation-rule>
  
  <navigation-rule>
+   <from-view-id>/paginas/condominio/veiculos/acesso_veiculo.xhtml</from-view-id>
+   <navigation-case>
+     <from-outcome>consulta</from-outcome>
+     <to-view-id>/paginas/condominio/veiculos/consulta_veiculo.xhtml</to-view-id>
+     <redirect />
+   </navigation-case>
+   <navigation-case>
+     <from-outcome>altera</from-outcome>
+     <to-view-id>/paginas/condominio/veiculos/altera_veiculo.xhtml</to-view-id>
+     <redirect />
+   </navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
  	<display-name>paginas/condominio/agenda_dependencia/dependencia</display-name>
  	<from-view-id>/paginas/condominio/agenda_dependencia/dependencia.xhtml</from-view-id>
  	<navigation-case>
@@ -710,19 +725,6 @@
   </navigation-case>
  </navigation-rule>
  
- <navigation-rule>
-   <from-view-id>/paginas/condominio/veiculos/acesso_veiculo.xhtml</from-view-id>
-   <navigation-case>
-     <from-outcome>consulta</from-outcome>
-     <to-view-id>/paginas/condominio/veiculos/consulta_veiculo.xhtml</to-view-id>
-     <redirect />
-   </navigation-case>
-   <navigation-case>
-     <from-outcome>altera</from-outcome>
-     <to-view-id>/paginas/condominio/veiculos/altera_veiculo.xhtml</to-view-id>
-     <redirect />
-   </navigation-case>
- </navigation-rule>
  
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
