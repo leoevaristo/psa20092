@@ -16,7 +16,14 @@ public class CadastroDependenciaBean {
 	private boolean reservado;
 	
 	public boolean isReservado() {
-		return reservado;
+		
+		if(dependencia.getReservavel() == 'S'){
+			return true;
+		}else if(dependencia.getReservavel() == 'N'){
+			return false;
+		}
+		
+		return false;
 	}
 
 	public void setReservado(boolean reservado) {
@@ -40,7 +47,7 @@ public class CadastroDependenciaBean {
 		
 		DependenciaDAO depDAO = new DependenciaDAO();
 		
-		if(this.isReservado()){
+		if(this.reservado){
 			getDependencia().setReservavel('S');
 		}else{
 			getDependencia().setReservavel('N');
@@ -52,6 +59,38 @@ public class CadastroDependenciaBean {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void alterarDependencia(){
+		
+		DependenciaDAO depDAO = new DependenciaDAO();
+		
+		if(this.reservado){
+			getDependencia().setReservavel('S');
+		}else{
+			getDependencia().setReservavel('N');
+		}
+		
+		try {
+			depDAO.alterarDependencia(dependencia);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}	
+	
+	public void removerDependencia(){
+		
+		DependenciaDAO depDAO = new DependenciaDAO();
+		
+		try {
+			depDAO.removerDependencia(dependencia);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//retorna a navegação
+		//return "removerDependencia";
+
 	}
 	
 	public List<Dependencia> getBuscaDependencia(){
@@ -66,18 +105,4 @@ public class CadastroDependenciaBean {
 		
 		return null;
 	}
-	
-	public void obterObjeto(ActionEvent e){
-		HtmlCommandLink link = (HtmlCommandLink) e.getComponent().findComponent("link");
-		
-		dependencia = (Dependencia) link.getValue();
-		
-		System.out.println(dependencia.getDescricao());
-		System.out.println("teste");
-		
-		//return null;
-	}
-	
-	
-	
 }
