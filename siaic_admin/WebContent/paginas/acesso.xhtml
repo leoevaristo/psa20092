@@ -7,7 +7,7 @@
 <ui:composition template="/WEB-INF/template/templateAcesso.xhtml">
 
 	<ui:define name="tituloGrande">
-		<h:outputText value="Seja Bem-Vindo" />
+		<h:outputText value="Tela Acesso" />
 	</ui:define>
 	<ui:define name="subtitulo">
 		<h:outputText value="&#187; Login" />
@@ -23,7 +23,7 @@
 				<h:inputSecret value="#{acessoBean.usuario.senha}" id="senha" styleClass="obrigatorio" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="infor">
-				<h:outputText value="Campos Obrigatóriosa" />
+				<h:outputText value="Campos Obrigatórios" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="linha"></h:panelGroup>
 			<h:panelGroup  styleClass="botoes">
@@ -31,6 +31,5 @@
 			</h:panelGroup>
 		</h:form>
 	</ui:define>
-	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
 </ui:composition>
 </html>

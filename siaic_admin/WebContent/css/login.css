@@ -53,7 +53,7 @@ div#container div#content div#col_login div#col_loginConteudo form.forms span in
 div#container div#content div#col_login div#col_loginConteudo form.forms span.infor {
 	width:150px;
 	border-left:4px solid #15688f;
-	float:right;
+	float:center;
 	padding:0 0 0 10px;
 	margin:0;
 	color:#8eacbe;
@@ -107,4 +107,8 @@ div#container div#content div#col_login span#bglogin_rodape{
 	background:url(../images/bgright_rodape.png) no-repeat;
 	display:block;
 }
+div#container div#content div#col_login span#rodape{
+	display:black;
+}
+
 /* -- fim Container -> header -> col_login -- */
