@@ -22,11 +22,29 @@
 		       <h:commandLink value="Listar Veiculos..." action="consulta" />
 		     </h:panelGroup>
 		     
-		     <h:panelGroup id="gerAcesso">
+		     <h:panelGroup id="placaAcesso">
+		       <h:outputLabel value="Placa do veículo" />
 		       <h:inputText value="#{acessoVeiculoBean.placa}" />
+		       <h:graphicImage value="${acessoVeiculoBean.liberado ? '/images/check.png' : '/images/block.png'}" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="statusAcesso">
+		       <h:outputLabel value="Status:" />
+		       <h:outputText value="${acessoVeiculoBean.liberado ? 'Autorizado.' : 'Negado.'}" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="acessoVeiculo" rendered="#{acessoVeiculoBean.veiculo ne null}">
+		       <h:outputLabel value="Veiculo:" />
+		       <h:commandLink action="dr" value="#{acessoVeiculoBean.veiculo.descricao + ', ' + acessoVeiculoBean.veiculo.cor + '.'}" />
 		     </h:panelGroup>
 		     
 		     <h:panelGroup styleClass="linha"></h:panelGroup>
+		     
+		     <h:panelGroup styleClass="botoes">
+			   <h:commandButton action="dr" value="" styleClass="input_submit" />
+			   <h:commandButton action="dr" value="" styleClass="input_button" immediate="true" />
+			 </h:panelGroup>
+			 
 		   </h:form>
 		 </ui:define>
 		 
