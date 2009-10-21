@@ -59,6 +59,11 @@ public class CadastraClienteBean {
 	 */
 	private static List<SelectItem> cidades = new ArrayList<SelectItem>();
 	
+	/**
+	 * Representa uma lista de objetos do tipo SelectItem
+	 */
+	private static List<SelectItem> bairros = new ArrayList<SelectItem>();
+	
 	
 	/**
 	 * Construtor da classe CadastraClienteBean
@@ -236,6 +241,15 @@ public class CadastraClienteBean {
 		}
 	}
 	
+	public void filtraBairroPorCidade(ValueChangeEvent event) throws SQLException{
+		if(event.getNewValue() != event.getOldValue()){
+			List<Bairro> listaBairros = new ArrayList<Bairro>();
+			EnderecoDAO daoEndereco = new EnderecoDAO();
+			listaBairros = daoEndereco.getBairroPorCidade(event.getNewValue().toString());
+			setBairros(listaBairros);
+		}
+	}
+	
 	/**
 	 * Retorna uma Lista de SelectItem contendo
 	 * nome de cidades
@@ -258,6 +272,19 @@ public class CadastraClienteBean {
 		
 		for(Cidade cid : listCidades){
 			cidades.add(new SelectItem(cid.getCidadeCodigo(),cid.getCidadeNome()));
+		}
+	}
+
+	public  List<SelectItem> getBairros() {
+		return bairros;
+	}
+
+	public static void setBairros(List<Bairro> listBairros) {
+		if(!bairros.isEmpty()){
+			bairros.clear();
+		}
+		for(Bairro bai : listBairros){
+			bairros.add(new SelectItem(bai.getBairroCodigo(),bai.getBairroNome()));
 		}
 	}
 }

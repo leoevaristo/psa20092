@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.siaic.businesslogic.Pessoa;
 import br.com.siaic.businesslogic.endereco.Bairro;
 import br.com.siaic.businesslogic.endereco.Cidade;
 import br.com.siaic.businesslogic.endereco.Endereco;
@@ -138,7 +137,7 @@ public class EnderecoDAO {
 	}//public boolean adicionarBairro(Estado estado)
 		
 	/**
-	 * Adiciona um endereï¿½o na Base de Dados. O Objeto será retornado com o código cadastrado no banco.
+	 * Adiciona um endereï¿½o na Base de Dados. O Objeto serï¿½ retornado com o cï¿½digo cadastrado no banco.
 	 * corrigido mais tarde. 
 	 * @param endereco
 	 * @return
@@ -767,6 +766,38 @@ public class EnderecoDAO {
 		rs.close();
 		conexao.close();
 		return cidades;
+	}
+	
+	public List<Bairro> getBairroPorCidade(String codCidade) throws SQLException{
+		String sql = "SELECT BAR_CODIGO, BAR_NOME, BAR_CIDADE FROM BAIRRO WHERE BAR_CIDADE = ?";
+		FabricaConexao.getInstancia();
+		conexao = FabricaConexao.conectar();
+		try{
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(codCidade));
+			ResultSet rs = ps.executeQuery();
+			List<Bairro> listaBairros = new ArrayList<Bairro>();
+			while(rs.next()){
+				Bairro bairro = new Bairro();
+				bairro.setBairroCodigo(rs.getInt("BAR_CODIGO"));
+				bairro.setBairroNome(rs.getString("BAR_NOME"));
+				bairro.setBairroCidade(rs.getInt("BAR_CIDADE"));
+				listaBairros.add(bairro);
+			}
+
+			ps.close();
+			rs.close();
+			
+			return listaBairros;
+			
+		} finally{
+			try {
+				conexao.close();
+			} catch (SQLException e) {
+				e.getLocalizedMessage();
+			}
+		}
+		
 	}
 
 }//class
