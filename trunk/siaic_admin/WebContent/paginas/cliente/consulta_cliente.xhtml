@@ -35,8 +35,10 @@
 	<ui:define name="tituloLista">
 		<h:outputText value="Lista de Clientes" />
 	</ui:define>
-	<ui:define name="linkNovo">
-		<h:outputText value="Novo Cliente" />
+	<ui:define name="linkNovo" >
+		<h:outputLink value="#{request.contextPath}/paginas/cliente/cadastra_cliente.xhtml" styleClass="info_novo">
+			<h:outputText value="Novo Cliente"/>
+		</h:outputLink>
 	</ui:define>
 	<ui:define name="infoGerais">
 		<h:dataTable 
