@@ -247,12 +247,21 @@
    NAME="item"
    PATH="/paginas/valoresMercado/cadastro_valor_mercado.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="sucesso::#paginas#valoresMercado#cadastro_valor_mercado.xhtml"
-    NAME="output"
-    PATH="/paginas/valoresMercado/cadastro_valor_mercado.xhtml"
+    ID="sucesso::#paginas#valoresMercado#sucessoCadastro.xhtml"
+    NAME="output" PATH="/paginas/valoresMercado/sucessoCadastro.xhtml"
     SHAPE="-1,16"
-    TARGET="rules:#paginas#valoresMercado#cadastro_valor_mercado.xhtml"
+    TARGET="rules:#paginas#valoresMercado#sucessoCadastro.xhtml"
     TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM
+   ID="rules:#paginas#valoresMercado#cadastro_valor_mercado.xhtml:1"
+   NAME="item1"
+   PATH="/paginas/valoresMercado/cadastro_valor_mercado.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelar::#paginas#valoresMercado#valorMercado.xhtml"
+    NAME="output" PATH="/paginas/valoresMercado/valorMercado.xhtml"
+    TARGET="rules:#paginas#valoresMercado#valorMercado.xhtml"
+    TITLE="cancelar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#acesso.xhtml"
@@ -815,4 +824,25 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#index.xhtml"
   PATH="/paginas/index.xhtml" SHAPE="240,6561,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#valoresMercado#sucessoCadastro.xhtml"
+  PATH="/paginas/valoresMercado/sucessoCadastro.xhtml"
+  SHAPE="240,1873,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#valoresMercado#valorMercado.xhtml"
+  PATH="/paginas/valoresMercado/valorMercado.xhtml" SHAPE="256,1873,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#valoresMercado#consulta_valor_mercado.xhtml"
+  PATH="/paginas/valoresMercado/consulta_valor_mercado.xhtml"
+  SHAPE="32,2225,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#valoresMercado#consulta_valor_mercado.xhtml:0"
+   NAME="item"
+   PATH="/paginas/valoresMercado/consulta_valor_mercado.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelarconsulta::#paginas#valoresMercado#valorMercado.xhtml"
+    NAME="output" PATH="/paginas/valoresMercado/valorMercado.xhtml"
+    TARGET="rules:#paginas#valoresMercado#valorMercado.xhtml"
+    TITLE="cancelarconsulta" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>
