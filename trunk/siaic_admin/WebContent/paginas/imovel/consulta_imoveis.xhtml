@@ -17,11 +17,6 @@
     <ui:define name="tituloLista">
 			<h:outputText value="Imóveis" />
 		</ui:define>
-		<ui:define name="linkNovo">
-		  <h:form>
-			<h:commandLink value="Novo Imovel" action="#{imovelBean.novoImovel}" />
-		  </h:form>
-		</ui:define>
 
 	<ui:define name="infoGerais">
 		
@@ -65,7 +60,7 @@
 					</f:facet>
 					<h:form id="detalheImovel">
 						<h:commandLink id="detalheLink"
-							action="#{imovelBean.consultaImovel}">
+							action="#{imovelBean.detalheImovel}">
 							<h:outputText value="Exibir Detalhes" />
 							<f:param value="#{imo.codigo}" name="codigoImovel" />
 						</h:commandLink>

@@ -198,6 +198,11 @@ public class ImovelBean {
 		consultaCodigoImovel = this.getParamCodigoImovel();
 		return "altera";
 	}
+	
+	public String detalheImovel() {
+		consultaCodigoImovel = this.getParamCodigoImovel();
+		return "detalhe";
+	}
 
 	private int getParamCodigoImovel() {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -241,14 +246,14 @@ public class ImovelBean {
 	public String atualizaImovel() {
 		try {
 			ImovelFinalidadeDAO finDao = new ImovelFinalidadeDAO();
-			finDao.salvar(this.imoFin);
+			finDao.atualizar(this.imoFin);
 			this.imovel.setFinalidade(this.imoFin.getCodigo());
 
 			this.imovel.setProprietario(this.prop.getCodigoPessoa());
 			this.imovel.setCaracteristica(this.imoCar.getCodigo());
 			
 			EnderecoDAO daoEndereco = new EnderecoDAO();
-			daoEndereco.adicionarEndereco(endereco);
+			daoEndereco.alterarEndereco(endereco);
 			
 			
 			this.imovel.setCaracteristica(this.imovel.getCaracteristica());

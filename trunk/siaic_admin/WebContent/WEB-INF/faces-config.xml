@@ -296,6 +296,11 @@
    <redirect/>
   </navigation-case>
   <navigation-case>
+   <from-outcome>detalhe</from-outcome>
+   <to-view-id>/paginas/imovel/detalhes_imovel.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+  <navigation-case>
    <from-outcome>novo</from-outcome>
    <to-view-id>/paginas/imovel/cadastra_imovel.xhtml</to-view-id>
    <redirect/>
@@ -305,7 +310,7 @@
   <from-view-id>/paginas/imovel/cadastra_imovel.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>novo</from-outcome>
-   <to-view-id>/paginas/imovel/consulta_imoveis.xhtml</to-view-id>
+   <to-view-id>/paginas/imovel/sucesso_imovel.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
   <navigation-case>
