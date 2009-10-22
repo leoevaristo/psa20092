@@ -19,6 +19,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import br.com.cond.businesslogic.Apartamento;
 import br.com.cond.businesslogic.TaxasCondominio;
 import br.com.cond.dao.TaxasCondominioDAO;
+import br.com.siaic.dao.DB;
 import br.com.siaic.dao.FabricaConexao;
 
 /**
@@ -152,6 +153,36 @@ public class ConsultaTaxasCondominioBean {
 		context.responseComplete();
 
 	}
+
+	private String getRealPath(String diretorio) {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(false);
+		return session.getServletContext().getRealPath(diretorio);
+	}
+
+	public void impCobranca() throws JRException, SQLException, IOException {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
+
+		Integer cod = new Integer(req.getParameter("codigoCobranca"));
+
+		Map<String, Integer> parameters = new HashMap<String, Integer>();
+		parameters.put("cod", cod);
+				
+		String jasperFile = getRealPath("rel/RelCartaCobranca.jasper");
+		
+		JasperPrint print = JasperFillManager.fillReport(jasperFile, parameters,FabricaConexao.getInstancia().conectar());
+		byte[] bytes = JasperExportManager.exportReportToPdf(print);
+
+		HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
+		response.addHeader("Content-disposition", "attachment;filename=RelCartaCobranca.pdf");
+		response.setContentLength(bytes.length);
+		response.getOutputStream().write(bytes);
+		response.setContentType("application/pdf");
+		context.responseComplete();
+
+	}
+
 
 	
 	

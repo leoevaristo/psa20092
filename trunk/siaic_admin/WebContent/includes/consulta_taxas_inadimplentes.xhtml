@@ -16,6 +16,9 @@
 						<h:outputText value="Tabela de Taxas de Condomínio" />
 					</rich:column>
 					<rich:column breakBefore="true">
+						<h:outputText value="Codigo" />
+					</rich:column>
+					<rich:column>
 						<h:outputText value="Apartamento" />
 					</rich:column>
 					<rich:column>
@@ -39,6 +42,10 @@
 				</rich:columnGroup>
 			</f:facet>
 			<rich:column>
+				<h:outputText value="#{taxas.apartamento.codigo}" />
+			</rich:column>
+
+			<rich:column>
 				<h:outputText value="#{taxas.apartamento.numero}" />
 			</rich:column>
 			<rich:column>
@@ -61,7 +68,17 @@
 				<h:outputText value="#{taxas.diasAtraso}" />
 			</rich:column>	
 			<rich:column>
-				<h:commandButton value="Emitir carta de cobrança"/>
+				<f:facet name="header">
+					<h:outputText value="Dependencia" />
+				</f:facet>
+				<h:form id="impCobrança">
+					<h:commandLink	action="#{consultaTaxasCondominioBean.impCobranca}">
+						<h:graphicImage value="/images/print.PNG" />
+						<f:param value="#{taxas.apartamento.codigo}" name="codigoCobranca" />
+					</h:commandLink>
+				</h:form>
+				<!--  <h:commandButton value="Emitir carta de cobrança"/>
+				<h:commandButton action="" value="" />-->
 			</rich:column>		
 		</rich:dataTable>
 	</a4j:form>
