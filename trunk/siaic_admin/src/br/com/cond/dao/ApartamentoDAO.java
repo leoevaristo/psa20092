@@ -85,9 +85,10 @@ public class ApartamentoDAO {
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(sql);
-			ps.setInt(1, apartamento.getAndar());
-			ps.setString(2, apartamento.getBloco());
-			ps.setInt(3, apartamento.getCodigoApartamento());
+			ps.setInt(1, apartamento.getNumero());
+			ps.setInt(2, apartamento.getAndar());
+			ps.setString(3, apartamento.getBloco());
+			ps.setInt(4, apartamento.getCodigoApartamento());
 
 			ps.executeUpdate();
 			ps.close();
