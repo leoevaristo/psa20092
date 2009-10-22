@@ -5,12 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+
+import br.com.cond.businesslogic.Apartamento;
 import br.com.cond.businesslogic.Infracao;
 import br.com.siaic.dao.FabricaConexao;
 
 /**
  * 
  * @author George Fernandes Maia
+ * @author Fellipe Weldson
  *
  */
 
@@ -26,14 +30,14 @@ public class InfracaoDAO {
 	public boolean adicionarInfracao(Infracao infracao) throws SQLException{
 		boolean retorno = false;
 		PreparedStatement ps = null;
-		String sql = "INSERT INTO admcon_infracao( INF_CODIGO, INF_DESCRICAO) VALUES (null, ?)";
+		String sql = "INSERT INTO admcon_infracao(INF_DESCRICAO) VALUES (?)";
 		
 		try {
 			FabricaConexao.getInstancia();
 			conexao = FabricaConexao.conectar();
 			ps = conexao.prepareStatement(sql);
-			ps.setString(2, infracao.getDescricaoInfracao());
-			ps.execute();
+			ps.setString(1, infracao.getDescricaoInfracao());
+			ps.executeUpdate();
 			retorno = true;
 		}//try
 		catch (Exception e) {
@@ -51,34 +55,83 @@ public class InfracaoDAO {
 
 	
 	
-	public Infracao getInfracaoPorCodigo(int codigoInfracaoParametro) throws SQLException
-	{
-		String sql = 		"SELECT * " + 
-							"FROM " + 
-								"admcon_infracao " +
-							"WHERE " +
-								"INF_CODIGO = ?";
-		
-		FabricaConexao.getInstancia();
-		conexao = FabricaConexao.conectar();
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<Infracao> getTodasAsInfracoes() throws SQLException {
+		// TODO
+		String sql = 
+			
+			"SELECT * " + 
+			"FROM " + 
+				"admcon_infracao " +
+			"ORDER BY INF_CODIGO = ?";
+			
+			
 		PreparedStatement ps = conexao.prepareStatement(sql);
-		ps.setInt(1, codigoInfracaoParametro);
+
+		ResultSet rs = ps.executeQuery();
+
+		List<Infracao> listaTodasAsInfracoes = new ArrayList<Infracao>();
+
+		while (rs.next()) {
+
+		Infracao infracao = new Infracao();	
+			
+
+		//	regra.setCodigoRegra(rs.getString());
+		//	regra.setRegra(rs.getString());
+			
+		infracao.setCodigoInfracao(rs.getInt(1));
+		infracao.setDescricaoInfracao(rs.getString(2));
+		
+		
+			listaTodasAsInfracoes.add(infracao);
+
+		}
+		conexao.close();
+
+		return listaTodasAsInfracoes;
+
+	}
+	
+	
+	
+	public Infracao getInfracaoId(int infracaoCodigo) throws SQLException
+	{
+		
+		String sql = "SELECT * " + 
+		"FROM " + 
+		"admcon_infracao " +
+	"WHERE " +
+		"INF_CODIGO = ?";
+
+			
+		PreparedStatement ps = conexao.prepareStatement(sql);
+		ps.setInt(1, infracaoCodigo);
 		
 		ResultSet rs = ps.executeQuery();
 		
-		Infracao infracao = new Infracao();
+		Infracao infracao = new Infracao();	
 		
-		rs.next();
-		infracao.setCodigoInfracao(rs.getInt(1));
-		infracao.setDescricaoInfracao(rs.getString(2));
-
+		rs.first();
+		
+		
+		infracao.setCodigoInfracao(rs.getInt("INF_CODICO"));
+		infracao.setDescricaoInfracao(rs.getString("INF_DESCRICAO"));
+		
 		ps.close();
 		rs.close();
-		conexao.close();
+		
 		
 		return infracao;
+		
 	}
 	
+	
+		
 	public ArrayList<Infracao> pesquisaInfracao(String infracaoPesquisaParametro) throws SQLException
 	{
 		String sql = "SELECT * FROM admcon_infracao WHERE inf_descricao LIKE '%"+ infracaoPesquisaParametro +"%'";

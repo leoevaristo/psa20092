@@ -75,7 +75,7 @@ public class InfracaoOcorrenciaDAO {
 		infracaoOcorrencia.setDataHoraInfracaoOcorrencia(rs.getTimestamp(2));
 		infracaoOcorrencia.setObservacaoInfracaoOcorrencia(rs.getString(3));
 		infracaoOcorrencia.setInfracaoOcorrencia(
-				new InfracaoDAO().getInfracaoPorCodigo( rs.getInt(4) ) );
+				new InfracaoDAO().getInfracaoId( rs.getInt(4) ) );
 		infracaoOcorrencia.setApartamentoInfracaoOcorrencia( 
 				new ApartamentoDAO().getApartamentoId( rs.getInt(5)));
 		
@@ -112,7 +112,7 @@ public class InfracaoOcorrenciaDAO {
 			infracaoOcorrenciaLista.add(new InfracaoOcorrencia(rs.getInt(1), 
 																rs.getTimestamp(2), 
 																rs.getString(3), 
-																new InfracaoDAO().getInfracaoPorCodigo( rs.getInt(4)), 
+																new InfracaoDAO().getInfracaoId( rs.getInt(4)), 
 																new ApartamentoDAO().getApartamentoId( rs.getInt(5) )));
 			
 		}while(rs.next());

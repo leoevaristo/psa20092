@@ -7,34 +7,27 @@
 		<ui:composition template="/WEB-INF/template/template-cond.xhtml">
 		
          <ui:define name="tituloGrande"> 
-			<h:outputText value="Infracão" />
+			<h:outputText value="Infracao" />
 		 </ui:define>		
 		 <ui:define name="subtitulo">  
-			<h:outputText value="Cadastro de Infrações" />
+			<h:outputText value="Cadastro de Infracoes" />
 		 </ui:define>
 		 <ui:define name="conteudo">
 		   <h:form styleClass="forms">
-		     
-		     
-		     <!-- <h:panelGroup id="codigo">
-		       <h:outputLabel value="Código" />
-		       <h:outputText value="${cadastraVeiculoBean.veiculo.codigoVeiculo}" />
-		     </h:panelGroup> -->
-		     
+			     
 		     
 		     <h:panelGroup id="Descricao">
 		       <h:outputLabel value="Descricao" />
-		       <h:inputText value="${" />
-		       <h:inputText value="${cadastraInfracaoBean.infracao.descricao}" maxlength="7" />
+		       <h:inputText value="${cadastroInfracaoBean.infracao.descricaoInfracao}" />
 		     </h:panelGroup>
 		     
 		     <h:panelGroup styleClass="linha"></h:panelGroup>
 		     
 		     <h:panelGroup styleClass="botoes">
 		     
-		       <h:commandButton action="#{cadastroInfracaoBean.addInfracao}" value "" styleCkass="input_submit"/>
-			   <h:commandButton action="#{cadastraVeiculoBean.addVeiculo}" value="" styleClass="input_submit" />
-			   <h:commandButton action="#{cadastraInfracaoBean.voltar}" value="" styleClass="input_button" immediate="true" />
+		       <h:commandButton action="#{cadastroInfracaoBean.addInfracao}" value="" styleClass="input_submit"/>
+			  
+			   <h:commandButton action="#{cadastroInfracaoBean.voltar}" value="" styleClass="input_button" immediate="true" />
 			 </h:panelGroup>
 		     
 		   </h:form>

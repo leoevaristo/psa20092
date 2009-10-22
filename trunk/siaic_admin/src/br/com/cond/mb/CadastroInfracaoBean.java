@@ -37,12 +37,17 @@ public class CadastroInfracaoBean {
 		InfracaoDAO daoInfracao = new InfracaoDAO();
 		daoInfracao.adicionarInfracao(infracao);
 		
+		infracao = new  Infracao();
+		
 		return r;
 		
 		
 	}
 	
-	public void limpacampos(){
+	
+	public String voltar(){
+	
+		return "voltar";
 	}
 	
 	
