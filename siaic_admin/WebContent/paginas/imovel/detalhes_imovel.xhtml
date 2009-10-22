@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -6,17 +7,52 @@
 
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 		<ui:define name="tituloGrande">
-			<h:outputText value="PÃ¡gina do Imóvel" />
+			<h:outputText value="Página do Imóvel" />
 		</ui:define>
 		<ui:define name="subtitulo">
-			<h:outputText value="Â» Detalhes do Imóvel" />
+			<h:outputText value="Detalhes do Imóvel" />
 		</ui:define>		
 		<ui:define name="conteudo">
 			
 			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
 				<h:outputLabel for="campoProp" value="Proprietário"/>
 				<h:outputText value="#{imovelBean.prop.nome}" id="campoProp" />
-			</h:panelGrid>					
+			</h:panelGrid>	
+			
+			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
+				<h:outputLabel for="campoFin" value="Finalidade"/>
+				<h:outputText value="#{imovelBean.imoFin.nome}" id="campoFin" />
+			</h:panelGrid>		
+			
+			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
+				<h:outputLabel for="campoCar" value="Caracteristicas"/>
+				<h:outputText value=""/>
+				<h:outputText for="campoPis" value="Piscina"/>
+				<h:outputText value="#{imovelBean.imoCar.piscina == 'S' ? 'Sim' : 'Não'}" id="campoPis" />
+				<h:outputText for="campoDor" value="Quant. de Dormitórios"/>
+				<h:outputText value="#{imovelBean.imoCar.qtdeDormitorio}" id="campoDor" />
+				<h:outputText for="campoGar" value="Vagas de garagem"/>
+				<h:outputText value="#{imovelBean.imoCar.qtdeGaragem}" id="campoGar" />
+				<h:outputText for="campoSui" value="Suites"/>
+				<h:outputText value="#{imovelBean.imoCar.qtdeSuite == 0 ? 'Não Possui' : imovelBean.imoCar.qtdeSuite}" id="campoSui" />
+			</h:panelGrid>				
+			
+			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
+				<h:outputLabel for="campoDen" value="Detalhes"/>
+				<h:outputText value="#{imovelBean.imovel.detalhe}" id="campoDen" />
+			</h:panelGrid>	
+			
+			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
+				<h:outputLabel for="campoPag" value="Forma de Pagamento"/>
+				<h:outputText value="#{imovelBean.imovel.formaPagamento}" id="campoPag" />
+			</h:panelGrid>	
+			
+			<h:panelGrid columns="2"  columnClasses="cor1,cor2" styleClass="panels" >
+				<h:outputLabel for="campoVal" value="Valor"/>
+				<h:outputText value="#{imovelBean.imovel.valor}" id="campoVal">
+				  <f:convertNumber currencySymbol="R$" type="currency" />
+				</h:outputText>
+			</h:panelGrid>	
 			
 			<h:panelGroup>		
 			<h:outputLink value="consulta_imoveis.xhtml">
