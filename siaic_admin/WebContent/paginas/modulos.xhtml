@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template/templateAcesso.xhtml">
+
+	<ui:define name="tituloGrande">
+		<h:outputText value="Módulos" />
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="&#187; Login" />
+	</ui:define>
+	<ui:define name="conteudo">
+		<h:form styleClass="forms" id="formFiltros">
+				<h:form styleClass="forms" id="formRegras">
+			
+		<ul>
+				<li><a href="#{request.contextPath}/paginas//cadastra_regra.xhtml">Módulo Imobiliária</a></li>
+				<li><a href="#{request.contextPath}/paginas//regras/consulta_regra.xhtml">Módulo Administração de Condomínio</a></li>
+				<h:panelGroup>
+				  <li><h:commandLink id="ImprimirRegras"
+						action="#{consultaRegraBean.gerarRel}">
+						<h:outputText value="Imprimir Regras" />
+					   </h:commandLink></li>
+			      </h:panelGroup>
+		</ul>
+		</h:form>
+		
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
