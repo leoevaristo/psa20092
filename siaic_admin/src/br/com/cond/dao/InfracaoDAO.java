@@ -108,7 +108,7 @@ public class InfracaoDAO {
 	"WHERE " +
 		"INF_CODIGO = ?";
 
-			
+		conexao = FabricaConexao.getInstancia().conectar();	
 		PreparedStatement ps = conexao.prepareStatement(sql);
 		ps.setInt(1, infracaoCodigo);
 		
@@ -119,8 +119,8 @@ public class InfracaoDAO {
 		rs.first();
 		
 		
-		infracao.setCodigoInfracao(rs.getInt("INF_CODICO"));
-		infracao.setDescricaoInfracao(rs.getString("INF_DESCRICAO"));
+		infracao.setCodigoInfracao(rs.getInt(1));
+		infracao.setDescricaoInfracao(rs.getString(2));
 		
 		ps.close();
 		rs.close();
