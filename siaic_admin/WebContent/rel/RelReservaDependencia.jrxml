@@ -31,8 +31,7 @@ FROM admcon_agenda_dependencia
 INNER JOIN admcon_dependencia ON admcon_agenda_dependencia.agd_dep_codigo = admcon_dependencia.dep_codigo
 INNER JOIN admcon_condomino ON admcon_agenda_dependencia.agd_con_codigo = admcon_condomino.con_codigo
 INNER JOIN admcon_agenda_finalidade ON admcon_agenda_dependencia.agd_agf_codigo = admcon_agenda_finalidade.agf_codigo
-WHERE admcon_agenda_dependencia.agd_codigo = $P{cod}
-]]></queryString>
+WHERE admcon_agenda_dependencia.agd_codigo = $P{cod}]]></queryString>
 
 	<field name="agd_codigo" class="java.lang.Integer"/>
 	<field name="agd_data" class="java.sql.Date"/>

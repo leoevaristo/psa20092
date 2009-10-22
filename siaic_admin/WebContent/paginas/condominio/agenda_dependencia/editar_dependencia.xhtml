@@ -79,6 +79,18 @@
 					</h:commandLink>
 					</h:form>
 				</h:column>
+										<h:column>
+				<f:facet name="header">
+					<h:outputText value="Dependencia" />
+				</f:facet>
+				<h:form id="impDependencia">
+					<h:commandLink	action="#{cadastroDependenciaBean.impDependencia}">
+						<h:graphicImage value="/images/print.PNG" />
+						<f:param value="#{dependencia.codigo}" name="codigoDependencia" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+				
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Excluir" />

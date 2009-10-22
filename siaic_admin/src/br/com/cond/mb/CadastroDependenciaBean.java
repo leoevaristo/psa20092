@@ -1,14 +1,27 @@
 package br.com.cond.mb;
 
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 
 import br.com.cond.businesslogic.Dependencia;
 import br.com.cond.dao.DependenciaDAO;
 import br.com.cond.msg.MensagensUtil;
+import br.com.siaic.dao.DB;
+import br.com.siaic.dao.FabricaConexao;
 
 public class CadastroDependenciaBean {
 
@@ -94,7 +107,7 @@ public class CadastroDependenciaBean {
 			e.printStackTrace();
 		}
 
-		// retorna a navegação
+		// retorna a navegaï¿½ï¿½o
 		// return "removerDependencia";
 		dependencia = new Dependencia();
 	}
@@ -111,4 +124,37 @@ public class CadastroDependenciaBean {
 
 		return null;
 	}
+	
+	
+	
+	private String getRealPath(String diretorio) {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(false);
+		return session.getServletContext().getRealPath(diretorio);
+	}
+
+
+	public void impDependencia() throws JRException, SQLException, IOException {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
+
+		Integer cod = new Integer(req.getParameter("codigoDependencia"));
+
+		Map<String, Integer> parameters = new HashMap<String, Integer>();
+		parameters.put("cod", cod);
+				
+		String jasperFile = getRealPath("rel/RelReservaDependencia.jasper");
+		
+		JasperPrint print = JasperFillManager.fillReport(jasperFile, parameters,FabricaConexao.getInstancia().conectar());
+		byte[] bytes = JasperExportManager.exportReportToPdf(print);
+
+		HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
+		response.addHeader("Content-disposition", "attachment;filename=RelReservaDependencia.pdf");
+		response.setContentLength(bytes.length);
+		response.getOutputStream().write(bytes);
+		response.setContentType("application/pdf");
+		context.responseComplete();
+
+	}
+
 }
