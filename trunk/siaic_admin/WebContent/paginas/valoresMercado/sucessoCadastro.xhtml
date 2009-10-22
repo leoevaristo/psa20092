@@ -12,8 +12,9 @@
 			<h:outputText value="Valor de Mercado Cadastrado com Sucesso" />
 		 </ui:define>		
 		 <ui:define name="conteudo">
+		 <h:panelGroup styleClass="linha"></h:panelGroup>
 		 	<h:panelGroup styleClass="botoes">
-			   <h:commandButton  value="Voltar" styleClass="input_button" />
+			   <h:commandButton action="#{ValorMercadoBean.cadastrado}" styleClass="input_button" />
 			</h:panelGroup>	
 		 </ui:define>
 	</ui:composition>
