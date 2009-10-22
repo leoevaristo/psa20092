@@ -463,7 +463,7 @@
   <from-view-id>/paginas/acesso.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>sucesso</from-outcome>
-   <to-view-id>/paginas/BoasVindas.xhtml</to-view-id>
+   <to-view-id>/paginas/modulos.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>

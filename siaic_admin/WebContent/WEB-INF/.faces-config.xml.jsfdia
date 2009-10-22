@@ -70,10 +70,13 @@
     NAME="output" PATH="/paginas/imovel/altera_imovel.xhtml"
     SHAPE="-1,16" TARGET="rules:#paginas#imovel#altera_imovel.xhtml"
     TITLE="altera" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="detalhe::#paginas#imovel#detalhes_imovel.xhtml" NAME="output1"
+    PATH="/paginas/imovel/detalhes_imovel.xhtml"
+    TARGET="rules:#paginas#imovel#detalhes_imovel.xhtml" TITLE="detalhe" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="novo::#paginas#imovel#cadastra_imovel.xhtml"
-    NAME="output1" PATH="/paginas/imovel/cadastra_imovel.xhtml"
-    SHAPE="-1,24" TARGET="rules:#paginas#imovel#cadastra_imovel.xhtml"
-    TITLE="novo" model-entity="JSFProcessItemOutput"/>
+    NAME="output2" PATH="/paginas/imovel/cadastra_imovel.xhtml"
+    TARGET="rules:#paginas#imovel#cadastra_imovel.xhtml" TITLE="novo" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#imovel#imoveis.xhtml"
@@ -268,15 +271,13 @@
   PATH="/paginas/acesso.xhtml" SHAPE="32,1249,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#paginas#acesso.xhtml:0" NAME="item"
    PATH="/paginas/acesso.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="sucesso::#paginas#BoasVindas.xhtml"
-    NAME="output" PATH="/paginas/BoasVindas.xhtml" SHAPE="-1,16"
-    TARGET="rules:#paginas#BoasVindas.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="sucesso::#paginas#modulos.xhtml"
+    NAME="output" PATH="/paginas/modulos.xhtml" SHAPE="-1,16"
+    TARGET="rules:#paginas#modulos.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#agenda#sucesso.xhtml"
   PATH="/paginas/agenda/sucesso.xhtml" SHAPE="496,593,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#paginas#BoasVindas.xhtml"
-  PATH="/paginas/BoasVindas.xhtml" SHAPE="240,1265,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#paginas#usuario#alterar_usuario.xhtml"
   PATH="/paginas/usuario/alterar_usuario.xhtml" SHAPE="256,1009,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#paginas#usuario#alterar_usuario.xhtml:0"
@@ -348,10 +349,9 @@
   PATH="/paginas/imovel/cadastra_imovel.xhtml" SHAPE="256,497,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#paginas#imovel#cadastra_imovel.xhtml:0"
    NAME="item" PATH="/paginas/imovel/cadastra_imovel.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="novo::#paginas#imovel#consulta_imoveis.xhtml" NAME="output"
-    PATH="/paginas/imovel/consulta_imoveis.xhtml"
-    TARGET="rules:#paginas#imovel#consulta_imoveis.xhtml" TITLE="novo" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="novo::#paginas#imovel#sucesso_imovel.xhtml"
+    NAME="output" PATH="/paginas/imovel/sucesso_imovel.xhtml"
+    TARGET="rules:#paginas#imovel#sucesso_imovel.xhtml" TITLE="novo" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
     ID="voltar::#paginas#imovel#consulta_imoveis.xhtml" NAME="output1"
     PATH="/paginas/imovel/consulta_imoveis.xhtml"
@@ -860,4 +860,10 @@
  <PROCESS-ITEM NAME="rules:#paginas#condominio#Infracao#infracao.xhtml"
   PATH="/paginas/condominio/Infracao/infracao.xhtml"
   SHAPE="256,7409,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#imovel#sucesso_imovel.xhtml"
+  PATH="/paginas/imovel/sucesso_imovel.xhtml" SHAPE="496,625,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#imovel#detalhes_imovel.xhtml"
+  PATH="/paginas/imovel/detalhes_imovel.xhtml" SHAPE="272,385,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#modulos.xhtml"
+  PATH="/paginas/modulos.xhtml" SHAPE="240,2721,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

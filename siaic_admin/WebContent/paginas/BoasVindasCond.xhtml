@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template/template-cond.xhtml">
+
+	<ui:define name="tituloGrande">
+		<h:outputText value="Página de Boas Vindas" />
+	</ui:define>
+	<!--<ui:define name="subtitulo">
+		<h:outputText value="» Consultar Estados" />
+	</ui:define>
+	<ui:define name="conteudo">
+	 	<h:form styleClass="forms" id="formFiltros">
+			<h:panelGroup>
+				<h:outputLabel for="campoFiltro" value="Filtrar por" />
+				<h:selectOneMenu value="" id="campoFiltro" disabled="true">
+					<f:selectItem itemValue="" itemLabel="Tipo de Filtro" />
+					<f:selectItem itemValue="email" itemLabel="E-mail" />
+					<f:selectItem itemValue="nome" itemLabel="Nome" />
+					<f:selectItem itemValue="telefone" itemLabel="Telefone" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:outputLabel value="Palavra-chave" for="inFiltro" />
+				<h:inputText value="" id="inFiltro"/>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:commandButton action="#" value="Filtrar" type="submit" /> 				
+			</h:panelGroup>
+		</h:form>
+
+	</ui:define>-->
+	<ui:define name="tituloLista">
+		<h:outputText value="BEM VINDO SIAIC" />
+		<br/>
+		<h:outputText value="Utilize o menu ao lado ter acesso as páginas do SIAIC" />
+	</ui:define>
+	<!-- ><ui:define name="infoGerais">
+		<h:dataTable 
+			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
+			value="#{consultaEstadoBean.todosEstados}" var="estado">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nome" />
+				</f:facet>
+				<h:outputText value="#{estado.estadoNome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Sigla" />
+				</f:facet>
+				<h:outputText value="#{estado.estadoSigla}" />
+			</h:column>
+					
+		</h:dataTable>
+	</ui:define> -->
+</ui:composition>
+</html>
