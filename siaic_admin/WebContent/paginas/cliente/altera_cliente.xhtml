@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
 
 <ui:composition template="/WEB-INF/template/template.xhtml">
 
@@ -43,80 +45,97 @@
 				<h:inputText value="#{consultaClienteBean.cliente.celular}"
 					id="campoCelular" />
 			</h:panelGroup>
-			<h:panelGroup id="panelRG"  rendered="#{consultaClienteBeancliente.tipoPessoa eq 'F'}">
+			<h:panelGroup id="panelRG"
+				rendered="#{consultaClienteBeancliente.tipoPessoa eq 'F'}">
 				<h:outputLabel for="campo04" value="RG" />
 				<h:inputText value="#{consultaClienteBean.cliente.rg}"
 					styleClass="obrigatorio" id="campo04" />
 			</h:panelGroup>
-			<h:panelGroup id="panelCPF"  rendered="#{consultaClienteBean.cliente.tipoPessoa eq 'F'}">
+			<h:panelGroup id="panelCPF"
+				rendered="#{consultaClienteBean.cliente.tipoPessoa eq 'F'}">
 				<h:outputLabel for="campo05" value="CPF" />
 				<h:inputText value="#{consultaClienteBean.cliente.cpf}"
 					styleClass="obrigatorio" id="campo05" />
 			</h:panelGroup>
-			<h:panelGroup id="panelSexo" rendered="#{consultaClienteBean.cliente.tipoPessoa eq 'F'}">
+			<h:panelGroup id="panelSexo"
+				rendered="#{consultaClienteBean.cliente.tipoPessoa eq 'F'}">
 				<h:outputLabel for="sexo" value="Sexo" />
-				<h:selectOneMenu value="#{consultaClienteBean.cliente.sexo}" id="sexo">
+				<h:selectOneMenu value="#{consultaClienteBean.cliente.sexo}"
+					id="sexo">
 					<f:selectItem itemValue="" itemLabel="Sexo" />
 					<f:selectItem itemValue="M" itemLabel="Masculino" />
 					<f:selectItem itemValue="F" itemLabel="Feminino" />
 				</h:selectOneMenu>
-			</h:panelGroup>			
-			<h:panelGroup id="PanelCnpj" rendered="#{consultaClienteBean.cliente.tipoPessoa eq 'J'}" >
+			</h:panelGroup>
+			<h:panelGroup id="PanelCnpj"
+				rendered="#{consultaClienteBean.cliente.tipoPessoa eq 'J'}">
 				<h:outputLabel for="campo06" value="CNPJ" />
 				<h:inputText value="#{consultaClienteBean.cliente.cnpj}"
 					styleClass="obrigatorio" id="campo06" />
 			</h:panelGroup>
 			<h:panelGroup id="panelEstado">
 				<h:outputLabel for="campoEstado" value="Estado" />
-				<h:selectOneMenu value="#{consultaClienteBean.cidade.cidadeEstado}" id="campoEstado" valueChangeListener="#{cadastraClienteBean.filtraCidadePorEstado}" onchange="submit()"  immediate="true" >
-				
-					<f:selectItem itemValue="" itemLabel="Estado"/>
-					<f:selectItems value="#{selectEstados.estados}" />					
+				<h:selectOneMenu value="#{consultaClienteBean.cidade.cidadeEstado}"
+					id="campoEstado"
+					valueChangeListener="#{cadastraClienteBean.filtraCidadePorEstado}">
+
+					<f:selectItem itemValue="" itemLabel="Estado" />
+					<f:selectItems value="#{selectEstados.estados}" />
+					<a4j:support event="onchange" reRender="campoCidade" ajaxSingle="true" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup id="panelNomeCidade">
 				<h:outputLabel for="campoCidade" value="Cidade" />
-				<h:selectOneMenu value="#{consultaClienteBean.endereco.enderecoBairro.bairroCidade}" id="campoCidade">
-					<f:selectItem itemValue="" itemLabel="Cidade"/>
-					<f:selectItems value="#{selectCidades.cidades}"/>				
+				<h:selectOneMenu
+					value="#{consultaClienteBean.endereco.enderecoBairro.bairroCidade}"
+					id="campoCidade"
+					valueChangeListener="#{cadastraClienteBean.filtraBairroPorCidade}">
+					<f:selectItem itemValue="" itemLabel="Cidade" />
+					<f:selectItems value="#{selectCidades.cidades}" />
+					<a4j:support event="onchange" reRender="campoBairro" ajaxSingle="true" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup id="panelBairro">
 				<h:outputLabel for="campoBairro" value="Bairro" />
-				<h:selectOneMenu value="#{consultaClienteBean.endereco.enderecoBairro.bairroCodigo}" id="campoBairro"> 
-					<f:selectItem itemValue="" itemLabel="Bairro"/>
-					<f:selectItems  value="#{selectBairros.bairros}" />
+				<h:selectOneMenu
+					value="#{consultaClienteBean.endereco.enderecoBairro.bairroCodigo}"
+					id="campoBairro">
+					<f:selectItem itemValue="" itemLabel="Bairro" />
+					<f:selectItems value="#{selectBairros.bairros}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup id="panelLogradouro">
-				<h:outputLabel for="campoLogradouro" value="Logradouro"/>
-				<h:selectOneMenu value="#{consultaClienteBean.endereco.enderecoLogradouro}" id="campoLogradouro">
-					<f:selectItem itemValue="" itemLabel="Logradouro"/>
-					<f:selectItems value="#{consultaClienteBean.logradouro}" required="true" />
+				<h:outputLabel for="campoLogradouro" value="Logradouro" />
+				<h:selectOneMenu
+					value="#{consultaClienteBean.endereco.enderecoLogradouro}"
+					id="campoLogradouro">
+					<f:selectItem itemValue="" itemLabel="Logradouro" />
+					<f:selectItems value="#{consultaClienteBean.logradouro}" />
 				</h:selectOneMenu>
-			</h:panelGroup>	
+			</h:panelGroup>
 			<h:panelGroup id="panelEndereco">
 				<h:outputLabel for="campoNomeEnd" value="Endereço" />
 				<h:inputText value="#{consultaClienteBean.endereco.enderecoNome}"
-				 id="campoNomeEnd" styleClass="obrigatorio" size="50" required="true"/>
+					id="campoNomeEnd" styleClass="obrigatorio" size="50"
+					required="true" />
 			</h:panelGroup>
 			<h:panelGroup id="panelCEP">
 				<h:outputLabel for="campoCep" value="CEP" />
 				<h:inputText value="#{consultaClienteBean.endereco.enderecoCep}"
-				 id="campoCep" styleClass="obrigatorio" size="50" required="true"/>			 
-			</h:panelGroup>		
+					id="campoCep" styleClass="obrigatorio" size="50" required="true" />
+			</h:panelGroup>
 			<h:panelGroup id="panelObg">
 				<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />
 			</h:panelGroup>
 			<h:panelGroup id="panelLinha" styleClass="linha"></h:panelGroup>
 			<h:panelGroup id="panelBotoes" styleClass="botoes">
-				<h:commandButton action="#{consultaClienteBean.updateCliente}" value=""
-					styleClass="input_submit" />
-				<h:commandButton action="#{consultaClienteBean.destroiSessao}" value=""
-					styleClass="input_button" immediate="true" />
+				<h:commandButton action="#{consultaClienteBean.updateCliente}"
+					value="" styleClass="input_submit" />
+				<h:commandButton action="#{consultaClienteBean.destroiSessao}"
+					value="" styleClass="input_button" immediate="true" />
 			</h:panelGroup>
 		</h:form>
-	</ui:define>	
+	</ui:define>
 </ui:composition>
 
 </html>
