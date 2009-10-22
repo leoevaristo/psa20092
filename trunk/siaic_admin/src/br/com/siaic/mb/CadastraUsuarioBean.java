@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
@@ -12,6 +13,7 @@ import br.com.siaic.businesslogic.endereco.Bairro;
 import br.com.siaic.businesslogic.endereco.Cidade;
 import br.com.siaic.businesslogic.endereco.Endereco;
 import br.com.siaic.businesslogic.endereco.Estado;
+import br.com.siaic.dao.ClienteDAO;
 import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.PessoaDAO;
 import br.com.siaic.dao.UsuarioDAO;
@@ -127,26 +129,27 @@ public class CadastraUsuarioBean {
 		String r = "sucesso";
 
 		UsuarioDAO daoUsuario = new UsuarioDAO();
-
 		PessoaDAO daoPessoa = new PessoaDAO();
-		
 		EnderecoDAO daoEndereco = new EnderecoDAO();
 		
 		daoEndereco.adicionarEndereco(endereco);
-		
 		usuario.setEnderecoCodigo(endereco.getEnderecoCodigo());
-		
-	//	EnderecoDAO daoEndereco = new EnderecoDAO();
-
 		daoPessoa.adicionarPessoa(usuario);
 		daoUsuario.adicionarUsuario(usuario);
-	//	daoEndereco.adicionarEndereco(endereco);
 		
-		
+		destroiSessao();
 
 		return r;
-
 	}
+	
+	public String destroiSessao(){
+		
+		FacesContext contexto = FacesContext.getCurrentInstance();
+		contexto.getExternalContext().getSessionMap().remove("consultaUsuarioBean");
+		
+		return "destruido";
+	}
+	
 	
 	public void setLogradouro(){
 		
