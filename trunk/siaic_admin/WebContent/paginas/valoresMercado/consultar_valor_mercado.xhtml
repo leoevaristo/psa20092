@@ -13,19 +13,16 @@
 		 </ui:define>		
 		 <ui:define name="conteudo"> 			
 			<h:form styleClass="forms">				
-			    <h:panelGroup styleClass="textcenter">
+			    <h:panelGroup id="pnlBairro2">
 					<h:outputLabel for="cmbBairros"  value="Bairro"/>
 					<h:selectOneMenu value="#{ValorMercadoBean.bairro.bairroCodigo}" id="campo02" required="true">
 						<f:selectItems value="#{selectBairros.bairros}">
 						</f:selectItems>
 					</h:selectOneMenu>						
 				</h:panelGroup> 
-				<h:panelGroup styleClass="textcenter">
+				<h:panelGroup id="pnlValor2">
 					<h:outputLabel for="campo01"  value="Valor Venal (R$)"/>
 					<h:inputText value="#{ValorMercadoBean.valorMercado.valor}" styleClass="obrigatorio" id="campo01" required="true" />
-				</h:panelGroup>
-				<h:panelGroup>
-					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
 				</h:panelGroup>
 				<h:panelGroup styleClass="linha"></h:panelGroup>
 				<h:panelGroup styleClass="botoes">

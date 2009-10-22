@@ -13,27 +13,25 @@
 		 </ui:define>		
 		 <ui:define name="conteudo"> 			
 			<h:form styleClass="forms">				
-			    <h:panelGroup styleClass="textcenter">
+			    <h:panelGroup id="pnlBairro">
 					<h:outputLabel for="cmbBairros"  value="Bairro"/>
 					<h:selectOneMenu value="#{ValorMercadoBean.bairro.bairroNome}" id="campo02" required="true">
 						<f:selectItems value="#{selectBairros.bairros}">
 						</f:selectItems>
 					</h:selectOneMenu>						
 				</h:panelGroup> 
-				<h:panelGroup styleClass="textcenter">
+				<h:panelGroup id="pnlValor">
 					<h:outputLabel for="campo01"  value="Valor Venal (R$)"/>
 					<h:inputText value="#{ValorMercadoBean.valorMercado.valor}" styleClass="obrigatorio" id="campo01" required="true" />
-				</h:panelGroup>
-				<h:panelGroup>
-					<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />				
+					<f:convertNumber currencySymbol="R$" type="currency" />
+				</h:inputText>
 				</h:panelGroup>
 				<h:panelGroup styleClass="linha"></h:panelGroup>
 				<h:panelGroup styleClass="botoes">
-					<h:commandButton action="#{ValorMercadoBean.addValorMercado}" value="" styleClass="input_submit" />
-					<h:commandButton  value="" type="reset" styleClass="input_reset" />
-					<h:commandButton  value="" styleClass="input_button" />
+					<h:commandButton action="#{ValorMercadoBean.addValorMercado}" styleClass="input_submit" />
+					<h:commandButton  type="reset" styleClass="input_reset" />
+					<h:commandButton action="#{ValorMercadoBean.cancelar}" styleClass="input_button" />
 				</h:panelGroup>	
-				
 			</h:form>		
 		</ui:define>		
 		<ui:define name="linkNovo"> 	
