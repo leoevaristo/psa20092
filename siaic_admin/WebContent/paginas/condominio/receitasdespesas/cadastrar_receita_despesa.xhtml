@@ -11,18 +11,17 @@
 	<h:form styleClass="forms">
 		<h:panelGroup id="panelNomeTipoReceitaDespesa">
 			<h:outputLabel for="tipoRD" value="Tipo de Receita/Despesa:" />
-			<h:selectOneMenu value="#{ValorMercadoBean.bairro.bairroNome}" id="cmbTipoRD" required="true">
-				<f:selectItems value="#{ListaTiposReceitasDespesasBean.receitasDespesas}">
-				</f:selectItems>
+			<h:selectOneMenu value="#{ReceitasDespesas.rd.tipoRD.descricao}" id="cmbTipoRD" required="true">
+				<f:selectItems value="#{ListarReceitasDespesas.receitasDespesas}"></f:selectItems>
 			</h:selectOneMenu>						
 		</h:panelGroup>
 		<h:panelGroup id="panelValor">
 			<h:outputLabel for="valor" value="Valor R$:"/>
-			<h:inputText value="#{CadastrarReceitaDespesa.rd.valor}" id="edtValor" />
+			<h:inputText value="#{ReceritasDespesas.rd.valor}" id="edtValor" />
 		</h:panelGroup>
 		<h:panelGroup id="panelTipo">
 			<h:outputLabel for="tipo" value="Tipo:" />
-			<h:selectOneMenu value="#{CadastrarReceitaDespesa.rd.tipo}" id="cmbTipo" required="true">
+			<h:selectOneMenu value="#{ReceritasDespesas.rd.tipo}" id="cmbTipo" required="true">
 				<f:selectItem itemValue="" itemLabel="Selecione"/>
 				<f:selectItem itemValue="R" itemLabel="Receita" />
 				<f:selectItem itemValue="D" itemLabel="Despesa" />
@@ -30,18 +29,18 @@
 		</h:panelGroup>
 		<h:panelGroup>
 			<h:outputLabel for="data" value="Data:"/>
-			<h:inputText id="edtData" value="#{CadastrarReceitaDespesa.rd.data}" /> 
+			<h:inputText id="edtData" value="#{ReceritasDespesas.rd.data}" /> 
 		</h:panelGroup>
 		<h:panelGroup>
 			<h:outputLabel value="Codomino:" />
-			<h:selectOneMenu value="#{CadastrarReceitaDespesa.rd.condominio.codigo}">
-				<f:selectItems value="#{condominoBean.condominosList"></f:selectItems>
+			<h:selectOneMenu value="#{ReceritasDespesas.rd.condominio.codigo}">
+				<f:selectItems value="#{ListaTiposReceitasDespesasBean.receitasDespesas}"></f:selectItems>
 			</h:selectOneMenu>
 		</h:panelGroup>
 		<span class="linha"></span>
 			<span class="botoes">
-				<h:commandButton action="#{CadastrarReceitaDespesa.adicionarReceitaDespesa}" value="" styleClass="input_submit"/>
-				<h:commandButton action="#{CadastrarReceitaDespesa.limpar}" value="" styleClass="input_reset" />
+				<h:commandButton action="#{ReceritasDespesas.adicionarReceitaDespesa}" value="" styleClass="input_submit"/>
+				<h:commandButton action="#{ReceritasDespesas.limpar}" value="" styleClass="input_reset" />
 				<h:commandButton value="" styleClass="input_button" immediate="true" />
 			</span>
 	</h:form>
