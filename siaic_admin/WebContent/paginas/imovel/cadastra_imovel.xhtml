@@ -48,12 +48,16 @@
 		     
 		     <h:panelGroup id="valor">
 		       <h:outputLabel value="Valor:" />
-		       <h:inputText value="#{imovelBean.imovel.valor}" styleClass="obrigatorio" size="10" maxlength="8" />
+		       <h:inputText value="#{imovelBean.imovel.valor}" styleClass="obrigatorio" size="10" maxlength="8" required="true">
+		         <f:convertNumber currencySymbol="R$" type="currency" />
+		       </h:inputText>
 		     </h:panelGroup>
 		     
 		     <h:panelGroup id="valcond">
 		       <h:outputLabel value="Valor Condominio:" />
-		       <h:inputText value="#{imovelBean.imovel.valorCondominio}" size="10" maxlength="8" />
+		       <h:inputText value="#{imovelBean.imovel.valorCondominio}" size="10" maxlength="8">
+		         <f:convertNumber currencySymbol="R$" type="currency" />
+		       </h:inputText>
 		     </h:panelGroup>
 		     
 		     <h:panelGroup id="formpag">
