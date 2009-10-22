@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
 
 <ui:composition template="/WEB-INF/template/template.xhtml">
 
@@ -41,7 +43,7 @@
 			<h:panelGroup id="CCreci">
 				<h:outputLabel for="campoCRECI" value="CRECI" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.CRECI}"
-					styleClass="obrigatorio" id="campoCRECI" size="15" required="true" />
+					styleClass="obrigatorio" id="campoCRECI" size="5" required="true" />
 			</h:panelGroup>
 			<h:panelGroup id="Email">
 				<h:outputLabel for="campoEmail" value="E-mail" />
@@ -52,11 +54,13 @@
 				<h:outputLabel for="campoTelefone" value="Telefone" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.telefone}"
 					styleClass="obrigatorio" id="campoTelefone" size="12" required="true" />
+				<rich:jQuery selector="#campoTelefone" query="mask('(99) 9999-9999')" timing="onload"></rich:jQuery>
 			</h:panelGroup>
 			<h:panelGroup id="Celular">
 				<h:outputLabel for="campoCelular" value="Celular" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.celular}"
 					id="campoCelular" size="12" required="true" />
+				<rich:jQuery selector="#campoCelular" query="mask('(99) 9999-9999')" timing="onload"></rich:jQuery>
 			</h:panelGroup>
 			<h:panelGroup id="panelSexo">
 				<h:outputLabel for="sexo" value="Sexo" />
@@ -68,23 +72,27 @@
 			</h:panelGroup>
 			<h:panelGroup id="Estado">
 				<h:outputLabel for="campoEstado" value="Estado" />
-				<h:selectOneMenu value="" id="campoEstado" required="true">
+				<h:selectOneMenu value="#{cadastraUsuarioBean.cidade.cidadeEstado}" id="campoEstado" 
+				valueChangeListener="#{cadastraUsuarioBean.filtraCidadePorEstado}" required="true">
 					<f:selectItem itemValue="" itemLabel="Estado"/>
-					<f:selectItems value="#{selectEstados.estados}" />					
+					<f:selectItems value="#{selectEstados.estados}" />	
+					<a4j:support event="onchange" reRender="campoCidade" ajaxSingle="true"/>				
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup id="Cidade">
 				<h:outputLabel for="campoCidade" value="Cidade" />
-				<h:selectOneMenu value="#{cadastraUsuarioBean.cidade.cidadeCodigo}" id="campoCidade" required="true">
+				<h:selectOneMenu value="#{cadastraUsuarioBean.cidade.cidadeCodigo}" id="campoCidade" 
+				valueChangeListener="#{cadastraUsuarioBean.filtraBairroPorCidade}" required="true">
 					<f:selectItem itemValue="" itemLabel="Cidade"/>
-					<f:selectItems value="#{selectCidades.cidades}"/>				
+					<f:selectItems value="#{cadastraUsuarioBean.cidades}"/>		
+					<a4j:support event="onchange" reRender="campoBairro" ajaxSingle="true" />		
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup id="Bairro">
 				<h:outputLabel for="campoBairro" value="Bairro" />
 				<h:selectOneMenu value="#{cadastraUsuarioBean.endereco.enderecoBairro.bairroCodigo}" id="campoBairro" required="true"> 
 					<f:selectItem itemValue="" itemLabel="Bairro"/>
-					<f:selectItems  value="#{selectBairros.bairros}" />
+					<f:selectItems  value="#{cadastraUsuarioBean.bairros}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup id="Logradouro">
@@ -103,6 +111,7 @@
 				<h:outputLabel for="campoCep" value="CEP" />
 				<h:inputText value="#{cadastraUsuarioBean.endereco.enderecoCep}"
 				 id="campoCep" styleClass="obrigatorio" size="10" required="true"/>
+		  	    <rich:jQuery selector="#campoCep" query="mask('99999-999')" timing="onload"></rich:jQuery>
 			</h:panelGroup>
 			<h:panelGroup id="Obg">
 				<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />
@@ -119,9 +128,6 @@
 	</ui:define>
 	<ui:define name="tituloLista">
 		<h:outputText value="Lista de Usuarios" />
-	</ui:define>
-	<ui:define name="linkNovo">
-		<h:outputText value="Novo Usuario" />
 	</ui:define>
 </ui:composition>
 </html>
