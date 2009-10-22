@@ -22,7 +22,7 @@
 				</h:panelGroup> 
 				<h:panelGroup id="pnlValor">
 					<h:outputLabel for="campo01"  value="Valor Venal (R$)"/>
-					<h:inputText value="#{ValorMercadoBean.valorMercado.valor}" styleClass="obrigatorio" id="campo01" required="true" />
+					<h:inputText value="#{ValorMercadoBean.valorMercado.valor}" styleClass="obrigatorio" id="campo01" required="true">
 					<f:convertNumber currencySymbol="R$" type="currency" />
 				</h:inputText>
 				</h:panelGroup>
