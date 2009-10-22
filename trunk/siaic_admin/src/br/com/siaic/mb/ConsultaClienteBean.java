@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 
@@ -34,7 +35,25 @@ public class ConsultaClienteBean {
 	
 	private String campoPesquisa;
 	
+	private static List<SelectItem> estados = new ArrayList<SelectItem>();
 	
+	private static List<SelectItem> logradouro = new ArrayList<SelectItem>();
+	
+	private static List<SelectItem> cidades = new ArrayList<SelectItem>();
+	
+	private static List<SelectItem> bairros = new ArrayList<SelectItem>();
+	
+
+	public ConsultaClienteBean(){
+		cliente = new Cliente();
+		cidade = new Cidade();
+		bairro = new Bairro();
+		estado = new Estado();
+		endereco = new Endereco();
+		
+		if(logradouro.isEmpty())
+			setLogradouro();
+	}
 	
 	
 	public Bairro getBairro() {
@@ -44,11 +63,7 @@ public class ConsultaClienteBean {
 
 	public void setBairro(Bairro bairro) {
 		this.bairro = bairro;
-	}
-
-
-	private static List<SelectItem> logradouro = new ArrayList<SelectItem>();
-	
+	}	
 	
 	
 	public Cidade getCidade() {
@@ -78,17 +93,6 @@ public class ConsultaClienteBean {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
-	}
-
-
-	public ConsultaClienteBean(){
-		cliente = new Cliente();
-		cidade = new Cidade();
-		bairro = new Bairro();
-		
-		
-		if(logradouro.isEmpty())
-			setLogradouro();
 	}
 
 
@@ -303,6 +307,79 @@ public class ConsultaClienteBean {
 
 	public String getCampoPesquisa() {
 		return campoPesquisa;
+	}
+
+
+	public static List<SelectItem> getEstados() {
+		return estados;
+	}
+
+
+	public static void setEstados(List<SelectItem> estados) {
+		ConsultaClienteBean.estados = estados;
+	}
+	
+	/**
+	 * Método que filtra automaticamente as cidades
+	 * pertencentes a um determinado estado
+	 * @param event
+	 * @throws SQLException
+	 */
+	public void filtraCidadePorEstado(ValueChangeEvent event) throws SQLException{		
+		
+		if(event.getNewValue() != event.getOldValue()){
+			List<Cidade> cid = new ArrayList<Cidade>();
+			EnderecoDAO dao = new EnderecoDAO();
+			cid = dao.getCidadePorEstado(event.getNewValue().toString());
+			setCidades(cid);		
+		}
+	}
+	
+	public void filtraBairroPorCidade(ValueChangeEvent event) throws SQLException{
+		if(event.getNewValue() != event.getOldValue()){
+			List<Bairro> listaBairros = new ArrayList<Bairro>();
+			EnderecoDAO daoEndereco = new EnderecoDAO();
+			listaBairros = daoEndereco.getBairroPorCidade(event.getNewValue().toString());
+			setBairros(listaBairros);
+		}
+	}
+	
+	/**
+	 * Retorna uma Lista de SelectItem contendo
+	 * nome de cidades
+	 * @return List<SelectItem>
+	 */
+	public  List<SelectItem> getCidades()  {
+		return cidades;
+	}
+
+	/**
+	 * Método que recebe uma lista do tipo Cidade
+	 * e preenhce uma lista do tipo SelectItem com esses dados
+	 * @param listCidades
+	 */
+	public static void setCidades(List<Cidade> listCidades) {
+		
+		if(!cidades.isEmpty()){
+			cidades.clear();
+		}
+		
+		for(Cidade cid : listCidades){
+			cidades.add(new SelectItem(cid.getCidadeCodigo(),cid.getCidadeNome()));
+		}
+	}
+
+	public  List<SelectItem> getBairros() {
+		return bairros;
+	}
+
+	public static void setBairros(List<Bairro> listBairros) {
+		if(!bairros.isEmpty()){
+			bairros.clear();
+		}
+		for(Bairro bai : listBairros){
+			bairros.add(new SelectItem(bai.getBairroCodigo(),bai.getBairroNome()));
+		}
 	}
 
 }
