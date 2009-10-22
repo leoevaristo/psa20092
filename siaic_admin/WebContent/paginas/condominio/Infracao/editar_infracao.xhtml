@@ -10,7 +10,7 @@
 			<h:outputText value="Infracao" />
 		 </ui:define>		
 		 <ui:define name="subtitulo">  
-			<h:outputText value="Cadastro de Infracoes" />
+			<h:outputText value="Editar Infracoes" />
 		 </ui:define>
 		 <ui:define name="conteudo">
 		   <h:form styleClass="forms">
@@ -19,7 +19,7 @@
 		     <h:panelGroup id="Descricao">
 		      <h:panelGroup id="panelDescricao">
 				<h:outputLabel for="descricao" value="Descricao" />
-				<h:inputTextarea value="#{cadastroInfracaoBean.infracao.descricaoInfracao}" id="descricao" />
+				<h:inputTextarea value="#{editarInfracaoBean.infracao.descricaoInfracao}" id="descricao" />
 			  </h:panelGroup>
 		     </h:panelGroup>
 		     
@@ -27,9 +27,9 @@
 		     
 		     <h:panelGroup styleClass="botoes">
 		     
-		       <h:commandButton action="#{cadastroInfracaoBean.addInfracao}" value="" styleClass="input_submit"/>
+		       <h:commandButton action="#{editarInfracaoBean.addInfracao}" value="" styleClass="input_submit"/>
 			  
-			   <h:commandButton action="#{cadastroInfracaoBean.voltar}" value="" styleClass="input_button" immediate="true" />
+			   <h:commandButton action="#{editarInfracaoBean.voltar}" value="" styleClass="input_button" immediate="true" />
 			 </h:panelGroup>
 		     
 		   </h:form>

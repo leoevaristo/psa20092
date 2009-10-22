@@ -6,10 +6,10 @@ import br.com.cond.businesslogic.Infracao;
 import br.com.cond.dao.InfracaoDAO;
 import br.com.cond.dao.ReuniaoDAO;
 
-public class CadastroInfracaoBean {
+public class EditarInfracaoBean {
 	private Infracao infracao;
 	
-	public CadastroInfracaoBean(){
+	public EditarInfracaoBean(){
 		
 		infracao = new Infracao();
 	}
@@ -28,13 +28,13 @@ public class CadastroInfracaoBean {
 	}
 
 	
-	public String addInfracao() throws SQLException{
+	public String editarInfracao() throws SQLException{
 		//TODO 
 		
 		String r = "sucesso";
 		
 		InfracaoDAO daoInfracao = new InfracaoDAO();
-		daoInfracao.adicionarInfracao(infracao);
+		daoInfracao.alterarInfracao(infracao);
 		
 		infracao = new  Infracao();
 		

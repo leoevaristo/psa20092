@@ -5,12 +5,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 
-import br.com.cond.businesslogic.Apartamento;
 import br.com.cond.businesslogic.Infracao;
-import br.com.cond.dao.ApartamentoDAO;
 import br.com.cond.dao.InfracaoDAO;
+import br.com.cond.dao.ReuniaoDAO;
 
 public class ConsultaInfracaoBean {
 	
@@ -18,9 +16,6 @@ public class ConsultaInfracaoBean {
 	
 	private Infracao infracao;
 	
-	private String tipopesquisa;
-	
-	private String campopesquisa;
 
 	public Infracao getInfracao() {
 		return infracao;
@@ -30,23 +25,7 @@ public class ConsultaInfracaoBean {
 		this.infracao = infracao;
 	}
 
-	public String getTipopesquisa() {
-		return tipopesquisa;
-	}
 
-	public void setTipopesquisa(String tipopesquisa) {
-		this.tipopesquisa = tipopesquisa;
-	}
-
-	public String getCampopesquisa() {
-		return campopesquisa;
-	}
-
-	public void setCampopesquisa(String campopesquisa) {
-		this.campopesquisa = campopesquisa;
-	}
-
-	
 	/**
 	 * 
 	 * @return
@@ -59,104 +38,25 @@ public class ConsultaInfracaoBean {
 		
 		
 	}
-
-	
-	/**
-	 * 
-	 * @return
-	 * @throws SQLException
-	 */
-	public String InfracaoId() throws SQLException {
-		
-		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
-		Integer idInfracao = new Integer(req.getParameter("codigoInfracao")).intValue();
-		//String tipoExibicao = new String(req.getParameter("tipoExibicao").toString());		
-		
-		InfracaoDAO dao = new InfracaoDAO();
-		setInfracao(dao.getInfracaoId(idInfracao));
-		
-		return "modifica";
-		
-		
-	}
-	
-	
-	/**
-	 * 
-	 * @throws SQLException
-	 */
-	public void excluiInfracao() throws SQLException {
-
-		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest req = (HttpServletRequest) context
-				.getExternalContext().getRequest();
-
-		Integer idInfracao = new Integer(req.getParameter("codigoInfracao"))
-				.intValue();
-
-		InfracaoDAO dao =  new InfracaoDAO();
-		dao.removerInfracao(idInfracao);
-		
-		
-	}
-	
-	/**
-	 * 
-	 * @return
-	 * @throws SQLException
-	 */
-	public String updateInfracao() throws SQLException {
-		// TODO
-		
-		String r = "sucesso";
-		
-		InfracaoDAO daoInfracao = new InfracaoDAO();
-		
-		daoInfracao.alterarInfracao(infracao);
-		
-		
-		destroiSessao();
-
-		return r;
-
-	}
-
-	public String escolheTipoPesquisa() throws SQLException{
-		if(tipopesquisa.equals("Codigo")){
-			
-			getInfracaoPorCodigo();
-		} 
-		return campopesquisa;
-}
-	
-	public List<Infracao> getInfracaoPorCodigo() throws SQLException {
-
-		InfracaoDAO daoInfracao = new InfracaoDAO();
-		return null;
-		//return daoInfracao.getInfracaoId(campopesquisa);
-		
-		
-	}
-
-	
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public String destroiSessao(){
-		
-		FacesContext contexto = FacesContext.getCurrentInstance();
-		contexto.getExternalContext().getSessionMap().remove("regraBean");
-		
-		return "destruido";
-	}
-	
-	
-
-
-
+//	public String editarEntrada(){
+//		FacesContext context = FacesContext.getCurrentInstance();
+//		HttpServletRequest req = (HttpServletRequest) context
+//				.getExternalContext().getRequest();
+//
+//		Integer cod = new Integer(req.getParameter("codigoEntrada"))
+//				.intValue();
+//		
+//		context.getExternalContext().getRes;
+//		
+//		try {
+//			infracao = new InfracaoDAO().getInfracaoId(cod);
+//			atual = new ReuniaoDAO().getReuniao(reuniao.getCodigo());
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return "editar";
+//	}
 	
 }
 
