@@ -77,7 +77,7 @@
 				<h:outputLabel for="campoEstado" value="Estado" />
 				<h:selectOneMenu value="#{consultaClienteBean.cidade.cidadeEstado}"
 					id="campoEstado"
-					valueChangeListener="#{cadastraClienteBean.filtraCidadePorEstado}">
+					valueChangeListener="#{consultaClienteBean.filtraCidadePorEstado}">
 
 					<f:selectItem itemValue="" itemLabel="Estado" />
 					<f:selectItems value="#{selectEstados.estados}" />
@@ -89,7 +89,7 @@
 				<h:selectOneMenu
 					value="#{consultaClienteBean.endereco.enderecoBairro.bairroCidade}"
 					id="campoCidade"
-					valueChangeListener="#{cadastraClienteBean.filtraBairroPorCidade}">
+					valueChangeListener="#{consultaClienteBean.filtraBairroPorCidade}">
 					<f:selectItem itemValue="" itemLabel="Cidade" />
 					<f:selectItems value="#{selectCidades.cidades}" />
 					<a4j:support event="onchange" reRender="campoBairro" ajaxSingle="true" />
