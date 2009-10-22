@@ -32,7 +32,7 @@ public class CadastroInfracaoBean {
 	public String addInfracao() throws SQLException{
 		//TODO 
 		
-		String r = "Sucesso";
+		String r = "sucesso";
 		
 		InfracaoDAO daoInfracao = new InfracaoDAO();
 		daoInfracao.adicionarInfracao(infracao);
