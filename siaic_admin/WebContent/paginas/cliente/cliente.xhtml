@@ -13,16 +13,11 @@
 			<h:outputText value="» Menu de Opções" />
 		</ui:define>
 		<ui:define name="conteudo"> 
-			<h:panelGroup>
-				<h:outputLink value="#{request.contextPath}/paginas/cliente/cadastra_cliente.xhtml">
-					<h:outputText value="# Cadastrar Cliente"  />
-				</h:outputLink>
-			</h:panelGroup>
-			<h:panelGroup>
-				<h:outputLink value="#{request.contextPath}/paginas/cliente/consulta_cliente.xhtml">
-					<h:outputText value="# Consultar Clientes"  />
-				</h:outputLink>	
-			</h:panelGroup>	
+			
+		<ul>
+				<li><a href="#{request.contextPath}/paginas/cliente/cadastra_cliente.xhtml">Cadastrar Clientes</a></li>
+				<li><a href="#{request.contextPath}/paginas/cliente/consulta_cliente.xhtml">Consultar Clientes</a></li>
+		</ul>
 		</ui:define>		
 	</ui:composition>
 </html>

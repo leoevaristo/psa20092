@@ -36,7 +36,9 @@
 		<h:outputText value="Lista de Usuarios" />
 	</ui:define>
 	<ui:define name="linkNovo">
-		<h:outputText value="Novo Usuario" />
+		<h:outputLink value="#{request.contextPath}/paginas/usuario/cadastra_usuario.xhtml" styleClass="info_novo">
+			<h:outputText value="Novo Usuario"/>
+		</h:outputLink>
 	</ui:define>
 	<ui:define name="infoGerais">
 		<h:dataTable 
