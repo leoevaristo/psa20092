@@ -7,13 +7,11 @@
   <managed-bean-class>br.com.siaic.mb.CadastraClienteBean</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
- 
  <managed-bean>
   <managed-bean-name>acessoVeiculoBean</managed-bean-name>
   <managed-bean-class>br.com.cond.mb.AcessoVeiculoBean</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
- 
  <managed-bean>
   <managed-bean-name>imovelCaracteristicaBean</managed-bean-name>
   <managed-bean-class>br.com.siaic.mb.imovelcaracteristica.ImovelCaracteristicaBean</managed-bean-class>
@@ -35,8 +33,8 @@
   <managed-bean-class>br.com.cond.mb.BalanceteMensalBean</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
- <!-- GERAR BALANCETE FIM -->
- <!-- EVALOR MERCADO IÍNICIO -->
+ <!-- GERAR BALANCETE FIM 
+ EVALOR MERCADO IÍNICIO -->
  <managed-bean>
   <managed-bean-name>ValorMercadoBean</managed-bean-name>
   <managed-bean-class>br.com.siaic.mb.ValorMercadoBean</managed-bean-class>
@@ -224,6 +222,11 @@
   <managed-bean-name>cadastroDependenciaBean</managed-bean-name>
   <managed-bean-class>br.com.cond.mb.CadastroDependenciaBean</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>cadastroInfracaoBean</managed-bean-name>
+  <managed-bean-class>br.com.cond.mb.CadastroInfracaoBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <navigation-rule>
   <from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
@@ -659,7 +662,6 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
- 
  <navigation-rule>
   <from-view-id>/paginas/condominio/veiculos/consulta_veiculo.xhtml</from-view-id>
   <navigation-case>
@@ -689,48 +691,43 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
- 
  <navigation-rule>
-   <from-view-id>/paginas/condominio/veiculos/acesso_veiculo.xhtml</from-view-id>
-   <navigation-case>
-     <from-outcome>consulta</from-outcome>
-     <to-view-id>/paginas/condominio/veiculos/consulta_veiculo.xhtml</to-view-id>
-     <redirect />
-   </navigation-case>
-   <navigation-case>
-     <from-outcome>altera</from-outcome>
-     <to-view-id>/paginas/condominio/veiculos/altera_veiculo.xhtml</to-view-id>
-     <redirect />
-   </navigation-case>
+  <from-view-id>/paginas/condominio/veiculos/acesso_veiculo.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>consulta</from-outcome>
+   <to-view-id>/paginas/condominio/veiculos/consulta_veiculo.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>altera</from-outcome>
+   <to-view-id>/paginas/condominio/veiculos/altera_veiculo.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
- 
  <navigation-rule>
- 	<display-name>paginas/condominio/agenda_dependencia/dependencia</display-name>
- 	<from-view-id>/paginas/condominio/agenda_dependencia/dependencia.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>editarDependencia</from-outcome>
- 		<to-view-id>/paginas/condominio/agenda_dependencia/editar_dependencia.xhtml</to-view-id>
- 	</navigation-case>
- 	<navigation-case>
- 		<from-outcome>removerDependencia</from-outcome>
- 		<to-view-id>/paginas/condominio/agenda_dependencia/dependencia.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>paginas/condominio/agenda_dependencia/dependencia</display-name>
+  <from-view-id>/paginas/condominio/agenda_dependencia/dependencia.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>editarDependencia</from-outcome>
+   <to-view-id>/paginas/condominio/agenda_dependencia/editar_dependencia.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>removerDependencia</from-outcome>
+   <to-view-id>/paginas/condominio/agenda_dependencia/dependencia.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
-
  <navigation-rule>
- 	<display-name>paginas/condominio/agenda_dependencia/cadastro_dependencia</display-name>
- 	<from-view-id>/paginas/condominio/agenda_dependencia/cadastro_dependencia.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>editarDependencia</from-outcome>
- 		<to-view-id>/paginas/condominio/agenda_dependencia/editar_dependencia.xhtml</to-view-id>
- 	</navigation-case>
- 	<navigation-case>
- 		<from-outcome>removerDependencia</from-outcome>
- 		<to-view-id>/paginas/condominio/agenda_dependencia/cadastro_dependencia.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>paginas/condominio/agenda_dependencia/cadastro_dependencia</display-name>
+  <from-view-id>/paginas/condominio/agenda_dependencia/cadastro_dependencia.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>editarDependencia</from-outcome>
+   <to-view-id>/paginas/condominio/agenda_dependencia/editar_dependencia.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>removerDependencia</from-outcome>
+   <to-view-id>/paginas/condominio/agenda_dependencia/cadastro_dependencia.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
-
- 
  <navigation-rule>
   <from-view-id>/paginas/condominio/balanceteMensal/BalanceteMensal.xhtml</from-view-id>
   <navigation-case>
@@ -738,8 +735,6 @@
    <to-view-id>/paginas/condominio/balanceteMensal/sucesso.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
- 
- 
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
  </application>
