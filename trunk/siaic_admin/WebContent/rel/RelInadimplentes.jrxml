@@ -27,8 +27,8 @@
 FROM ADMCON_TAXA_CONDOMINIO_FATOS ft, ADMCON_APARTAMENTO ap
 WHERE COF_PAGO = 'N'
 AND CURDATE( ) > COF_DATA_VENCIMENTO
-GROUP BY ft.COF_APA_CODIGO
-]]></queryString>
+AND ft.COF_APA_CODIGO = ap.APA_CODIGO
+GROUP BY ft.COF_APA_CODIGO]]></queryString>
 
 	<field name="Apartamento" class="java.lang.Integer"/>
 	<field name="Mes" class="java.lang.Integer"/>
