@@ -234,7 +234,7 @@ public class ConsultaUsuarioBean {
 
 	
 	public String escolheTipoPesquisa() throws SQLException{
-		if(tipoPesquisa.equals("login")){
+		if(tipoPesquisa.equals("nome")){
 			
 			getUsuarioPorNome();
 		} 
