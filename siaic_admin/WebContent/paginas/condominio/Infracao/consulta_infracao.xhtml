@@ -40,9 +40,9 @@
 					<h:outputText value="Editar" />
 				</f:facet>
 				<h:form id="alteraEntrada">
-					<h:commandLink	action="#{reuniaoBean.editarEntrada}">
+					<h:commandLink	action="#{editarInfracaoBean.editar}">
 						<h:graphicImage value="/images/imgedit.png" />
-						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
+						<f:param value="#{entrada.codigoInfracao}" name="codigoEntrada" />
 					</h:commandLink>
 				</h:form>
 			</h:column>
@@ -54,9 +54,9 @@
 				<h:form id="excluiEntrada">
 					<h:commandLink id="excluir"
 						onclick="if (confirm('Voce tem certeza que deseja excluir essa entrada?')) {return true }; return false;"
-						action="#{reuniaoBean.excluiEntrada}">
+						action="#{consultaInfracaoBean.excluir}">
 						<h:graphicImage value="/images/imgdelete.png" />
-						<f:param value="#{entrada.codigo}" name="codigoEntrada" />
+						<f:param value="#{entrada.codigoInfracao}" name="codigoEntrada" />
 					</h:commandLink>
 				</h:form>
 			</h:column>
@@ -64,7 +64,7 @@
 		<h:form styleClass="forms">
 			<span class="linha"></span>
 			<span class="botoes">
-				<h:commandButton action="#{reuniaoBean.Cancelar}" value="" styleClass="input_button" immediate="true" />
+				<h:commandButton action="#{consultaInfracaoBean.voltar}" value="" styleClass="input_button" immediate="true" />
 			</span>
 		</h:form>
 	</ui:define>

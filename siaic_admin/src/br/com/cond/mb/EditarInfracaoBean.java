@@ -44,7 +44,7 @@ public class EditarInfracaoBean {
 	
 	
 	public String voltar(){
-	
+		infracao = new Infracao();
 		return "voltar";
 	}
 	
