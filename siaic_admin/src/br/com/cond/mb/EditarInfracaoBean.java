@@ -2,9 +2,10 @@ package br.com.cond.mb;
 
 import java.sql.SQLException;
 
+import javax.faces.context.FacesContext;
+
 import br.com.cond.businesslogic.Infracao;
 import br.com.cond.dao.InfracaoDAO;
-import br.com.cond.dao.ReuniaoDAO;
 
 public class EditarInfracaoBean {
 	private Infracao infracao;
@@ -45,6 +46,24 @@ public class EditarInfracaoBean {
 	public String voltar(){
 	
 		return "voltar";
+	}
+	
+	public String editar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest req = (HttpServletRequest) context
+				.getExternalContext().getRequest();
+
+		Integer cod = new Integer(req.getParameter("codigoEntrada"))
+				.intValue();
+		
+		
+		try {
+			infracao = new InfracaoDAO().getInfracaoId(cod);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return "editar";
 	}
 	
 	
