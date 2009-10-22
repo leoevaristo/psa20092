@@ -100,6 +100,7 @@ public class ConsultaUsuarioBean {
 	public ConsultaUsuarioBean(){
 		usuario = new Usuario();
 		endereco = new Endereco();
+		cidade = new Cidade();
 	}
 	
 	
