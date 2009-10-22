@@ -45,12 +45,15 @@ public class ValorMercadoBean {
 		ValorMercadoDAO vmd = new ValorMercadoDAO();
 		valorMercado.setBairro(new EnderecoDAO().getBairroPorCodigo(bairro.getBairroCodigo()));
 		vmd.inserirValorMercado(valorMercado);
+		
 		return "sucesso";
 	}
 	
-	public void consultaValor() throws Exception {
+	public String consultaValor() throws Exception {
 		ValorMercadoDAO vmd = new ValorMercadoDAO();
 		this.valorMercado = vmd.consultaValorMercadoPorBairro(bairro);
+		
+		return "consulta";
 	}
 	
 	public String cancelar() {
