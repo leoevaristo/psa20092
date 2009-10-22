@@ -79,7 +79,7 @@ public class ImovelCaracteristicaDAO {
 	// Listagem da tabela Imovel_Caracteristicas
 	public List<ImovelCaracteristica> getImovelCaracteristicaList()
 			throws SQLException {
-		String query = new String("select * from IMOVEL_CARACTERISTICAS");
+		String query = new String("select * from IMOVEL_CARACTERISTICAS order by IMC_CODIGO;");
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
 		ResultSet rs = ps.executeQuery();
