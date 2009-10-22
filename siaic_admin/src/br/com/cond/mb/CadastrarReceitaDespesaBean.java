@@ -1,12 +1,12 @@
 package br.com.cond.mb;
 
 import javax.faces.context.FacesContext;
+
 import javax.servlet.http.HttpServletRequest;
 
 import br.com.cond.businesslogic.ReceitaDespesa;
 import br.com.cond.businesslogic.ReceitaDespesaTipos;
 import br.com.cond.dao.ReceitasDespesasDAO;
-import br.com.cond.dao.VeiculoDAO;
 /********************************************************************************
  * Title:       SIAIC - Sistema de Administração de Imobiliárias e Condomínion
  * Description: Módulo Condomínios
