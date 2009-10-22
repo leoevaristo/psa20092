@@ -3,6 +3,7 @@ package br.com.cond.mb;
 import java.sql.SQLException;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import br.com.cond.businesslogic.Infracao;
 import br.com.cond.dao.InfracaoDAO;
