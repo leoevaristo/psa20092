@@ -66,9 +66,9 @@ public class InfracaoDAO {
 			
 			"SELECT * " + 
 			"FROM " + 
-				"admcon_infracao " +
-			"ORDER BY INF_CODIGO = ?";
-			
+				"admcon_infracao " ;
+		
+		conexao = FabricaConexao.getInstancia().conectar();
 			
 		PreparedStatement ps = conexao.prepareStatement(sql);
 

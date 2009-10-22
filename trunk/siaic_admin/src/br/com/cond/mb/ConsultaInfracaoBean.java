@@ -1,4 +1,4 @@
-//package br.com.cond.mb;
+package br.com.cond.mb;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -36,6 +36,10 @@ public class ConsultaInfracaoBean {
 		}
 		
 		return "excluir";
+	}
+	
+	public String voltar(){
+		return "voltar";
 	}
 }
 
