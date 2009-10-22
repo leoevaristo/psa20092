@@ -85,7 +85,7 @@
  <managed-bean>
   <managed-bean-name>cadastraUsuarioBean</managed-bean-name>
   <managed-bean-class>br.com.siaic.mb.CadastraUsuarioBean</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
+  <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <managed-bean>
   <managed-bean-name>consultaImovelCaracteristicaBean</managed-bean-name>
@@ -810,14 +810,14 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
-   <navigation-rule>
+ <navigation-rule>
   <from-view-id>/paginas/condominio/Infracao/consulta_infracao.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>voltar</from-outcome>
    <to-view-id>/paginas/condominio/Infracao/infracao.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
-  </navigation-rule>
+ </navigation-rule>
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
  </application>
