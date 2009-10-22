@@ -240,8 +240,7 @@ public class TaxasCondominioDAO {
 			e1.getLocalizedMessage();
 		}
 
-		String sql = "SELECT COF_MES, COF_ANO, COF_APA_CODIGO, COF_PAGO, COF_DATA_VENCIMENTO, DATEDIFF(CURDATE(),COF_DATA_VENCIMENTO) AS ATRASO "
-				+ "FROM ADMCON_TAXA_CONDOMINIO_FATOS WHERE COF_PAGO = 'N' AND CURDATE() > COF_DATA_VENCIMENTO;";
+		String sql = "SELECT ft.COF_MES, ft.COF_ANO, ft.COF_APA_CODIGO, ft.COF_PAGO, ft.COF_DATA_VENCIMENTO, DATEDIFF(CURDATE(),COF_DATA_VENCIMENTO) AS ATRASO,  ft.COF_VALOR, ap.APA_NUMERO FROM ADMCON_TAXA_CONDOMINIO_FATOS ft, ADMCON_APARTAMENTO ap WHERE COF_PAGO = 'N' AND CURDATE() > COF_DATA_VENCIMENTO GROUP BY ft.COF_APA_CODIGO;";
 		try {
 
 			PreparedStatement ps = this.conexao.prepareStatement(sql);
@@ -255,6 +254,7 @@ public class TaxasCondominioDAO {
 				tx.setEstaPago(rs.getString("COF_PAGO").charAt(0));
 				tx.setDataVencimento(rs.getDate("COF_DATA_VENCIMENTO"));
 				tx.setDiasAtraso(rs.getInt("ATRASO"));
+				tx.setValor(rs.getDouble("COF_VALOR"));
 				taxasInadimplentes.add(tx);
 			}
 
