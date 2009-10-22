@@ -133,7 +133,8 @@ public class ConsultaInfracaoBean {
 	public List<Infracao> getInfracaoPorCodigo() throws SQLException {
 
 		InfracaoDAO daoInfracao = new InfracaoDAO();
-		return daoInfracao.get(campopesquisa);
+		return null;
+		//return daoInfracao.getInfracaoId(campopesquisa);
 		
 		
 	}
