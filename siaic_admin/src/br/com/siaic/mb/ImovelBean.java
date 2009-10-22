@@ -305,18 +305,7 @@ public class ImovelBean {
 				.getImovelCaracteristicaList();
 
 		for (ImovelCaracteristica car : lc) {
-			StringBuilder sb = new StringBuilder();
-			sb.append("Piscina: ");
-			sb.append(car.getPiscina() == 'S' ? "SIM" : "NÃO");
-			sb.append(" Dormitorios: ");
-			sb.append(car.getQtdeDormitorio());
-			sb.append(" V. Garagem: ");
-			sb.append(car.getQtdeGaragem());
-			sb.append(" Suites: ");
-			sb.append(car.getQtdeSuite());
-
-			listaCaracteristica.add(new SelectItem(car.getCodigo(), sb
-					.toString()));
+			listaCaracteristica.add(new SelectItem(car.getCodigo(), car.toString()));
 		}
 
 	}

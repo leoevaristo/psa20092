@@ -56,7 +56,7 @@ public class ImovelCaracteristica {
 		this.piscina = piscina;
 	}
 	public String toString(){
-		String s = new String();
+		/*String s = new String();
 		
 		s = Integer.toString(qtdeDormitorio)+" quartos, "+
 			Integer.toString(qtdeSuite)+" suites, "+
@@ -66,8 +66,19 @@ public class ImovelCaracteristica {
 			s = s+"com piscina";
 		} else if (piscina == 'N' || piscina == 'n') {
 			s=s+"sem piscina";
-		}
+		} 
 		
-		return s;
+		return s;*/
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("Piscina: ");
+		sb.append(this.getPiscina() == 'S' ? "SIM" : "NÃO");
+		sb.append(" - Dormitorios: ");
+		sb.append(this.getQtdeDormitorio());
+		sb.append(" - V. Garagem: ");
+		sb.append(this.getQtdeGaragem() != 0 ? this.getQtdeGaragem() : "Não Possui");
+		sb.append(" - Suites: ");
+		sb.append(this.getQtdeSuite() != 0 ? this.getQtdeSuite() : "Não Possui");
+		return sb.toString();
 	}
 }
