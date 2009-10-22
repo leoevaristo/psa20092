@@ -368,6 +368,7 @@
   <navigation-case>
    <from-outcome>sucesso</from-outcome>
    <to-view-id>/paginas/usuario/consulta_usuario.xhtml</to-view-id>
+   <redirect/>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
