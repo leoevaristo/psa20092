@@ -262,12 +262,12 @@ public class EnderecoDAO {
 		ps.setInt(1, bairroCodigo);
 		ResultSet rs = ps.executeQuery();
 		Bairro bairro = new Bairro();
-		rs.next();
+		while(rs.next()){
 		
 		bairro.setBairroCodigo(rs.getInt(1));
 		bairro.setBairroNome(rs.getString(2));
 		bairro.setBairroCidade(  rs.getInt(3) );
-		
+		}
 		ps.close();
 		rs.close();
 		conexao.close();
