@@ -1,80 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-<<<<<<< .mine
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:a4j="http://richfaces.org/a4j"
-	  xmlns:rich="http://richfaces.org/rich">
-
-	<ui:composition template="/WEB-INF/template/template-cond.xhtml">	
-		<ui:define name="tituloGrande"> 
-			<h:outputText value="Dependencias" />
-		 </ui:define>			 
-		<ui:define name="subtitulo">  
-			<h:outputText value="&#187; Cadastro de Dependencias" />
-		 </ui:define>			 
-		<ui:define name="conteudo"> 			
-			<h:form styleClass="forms">				
-				<h:panelGroup id="panelDescricao">
-					<h:outputLabel value="Dependencia"/>
-					<h:inputText value="#{cadastroDependenciaBean.dependencia.descricao}" styleClass="obrigatorio" />
-				</h:panelGroup>	
-				<h:panelGroup id="panelReservavel">
-					<h:outputLabel value="Reservavel" />
-					<h:selectBooleanCheckbox value="#{cadastroDependenciaBean.reservado}" />
-				</h:panelGroup>
-									
-				<h:panelGroup styleClass="infor" >
-					<h:outputText value="Campos Obrigatóriosa" />				
-				</h:panelGroup>
-				<h:panelGroup styleClass="linha"></h:panelGroup>
-				<h:panelGroup styleClass="botoes">
-					<h:commandButton action="#{cadastroDependenciaBean.cadastroDependencia}" value="" styleClass="input_submit" />
-					<h:commandButton action="#" value="" type="reset" styleClass="input_reset" />
-					<h:commandButton action="#" value="" styleClass="input_button" />
-				</h:panelGroup>						
-			</h:form>		
-		</ui:define>		  
-		<ui:define name="tituloLista">
-			
-			<h:outputText value="&#187; Listagem de Dependencias" />
-		</ui:define>		
-		<ui:define name="linkNovo">	
-			<h:outputLink value="cadastro_dependencia.xhtml" id="info_novo" styleClass="textcenter">
-				<h:outputText value="Nova Dependencia" />
-			</h:outputLink>
-		</ui:define>				
-		<ui:define name="infoGerais">
-			<h:dataTable id="dataTable" rendered="true" styleClass="grid" headerClass="thead" rowClasses="cor1,cor2" 
-			value="#{cadastroDependenciaBean.buscaDependencia}" var="dependencia" 
-			columnClasses="width30 textcenter, , width60 textcenter, width30 textcenter, width30 textcenter" >
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="C�digo" />
-					</f:facet>
-					<h:outputText value="#{dependencia.codigo}"  />					
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Descri��o" />
-					</f:facet>
-					<h:outputText value="#{dependencia.descricao}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Reserv�vel" styleClass="textcenter"/>
-					</f:facet>
-					<h:outputText value="#{dependencia.reservavel}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Editar" />
-					</f:facet>
-					<h:form>
-					<h:commandLink value="" action="editarDependencia" immediate="true" >
-=======
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -156,29 +82,10 @@
 				</f:facet>
 				<h:form>
 					<h:commandLink value="" action="editarDependencia" immediate="true">
->>>>>>> .r789
 						<h:graphicImage value="/images/imgedit.png" />
 						<f:setPropertyActionListener value="#{dependencia}"
 							target="#{cadastroDependenciaBean.dependencia}"></f:setPropertyActionListener>
 					</h:commandLink>
-<<<<<<< .mine
-					</h:form>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Excluir" />
-					</f:facet>
-					 <h:form>
-					 <a4j:commandLink value="" action="#{cadastroDependenciaBean.removerDependencia}" reRender="dataTable" ajaxSingle="true" >
-					 	<h:graphicImage value="/images/imgdelete.png"  />    						
-   					 	<f:setPropertyActionListener value="#{dependencia}" target="#{cadastroDependenciaBean.dependencia}"></f:setPropertyActionListener>
-   					 </a4j:commandLink>
-   					 </h:form>  		
-				</h:column>			
-			</h:dataTable>		
-		</ui:define>		
-	</ui:composition>
-=======
 				</h:form>
 			</h:column>
 			<h:column>
@@ -199,5 +106,5 @@
 	</ui:define>
 	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
 </ui:composition>
->>>>>>> .r789
+
 </html>
