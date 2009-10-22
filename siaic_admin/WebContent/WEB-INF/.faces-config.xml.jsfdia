@@ -731,4 +731,73 @@
   NAME="rules:#paginas#condominio#balanceteMensal#sucesso.xhtml"
   PATH="/paginas/condominio/balanceteMensal/sucesso.xhtml"
   SHAPE="656,5009,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#veiculos#acesso_veiculo.xhtml"
+  PATH="/paginas/condominio/veiculos/acesso_veiculo.xhtml"
+  SHAPE="64,7505,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#veiculos#acesso_veiculo.xhtml:0"
+   NAME="item" PATH="/paginas/condominio/veiculos/acesso_veiculo.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="consulta::#paginas#condominio#veiculos#consulta_veiculo.xhtml"
+    NAME="output"
+    PATH="/paginas/condominio/veiculos/consulta_veiculo.xhtml"
+    TARGET="rules:#paginas#condominio#veiculos#consulta_veiculo.xhtml"
+    TITLE="consulta" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="altera::#paginas#condominio#veiculos#altera_veiculo.xhtml"
+    NAME="output1"
+    PATH="/paginas/condominio/veiculos/altera_veiculo.xhtml"
+    TARGET="rules:#paginas#condominio#veiculos#altera_veiculo.xhtml"
+    TITLE="altera" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#agenda_dependencia#dependencia.xhtml"
+  PATH="/paginas/condominio/agenda_dependencia/dependencia.xhtml"
+  SHAPE="32,5601,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#agenda_dependencia#dependencia.xhtml:0"
+   NAME="item"
+   PATH="/paginas/condominio/agenda_dependencia/dependencia.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editarDependencia::#paginas#condominio#agenda_dependencia#editar_dependencia.xhtml"
+    NAME="output"
+    PATH="/paginas/condominio/agenda_dependencia/editar_dependencia.xhtml"
+    TARGET="rules:#paginas#condominio#agenda_dependencia#editar_dependencia.xhtml"
+    TITLE="editarDependencia" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="removerDependencia::#paginas#condominio#agenda_dependencia#dependencia.xhtml"
+    NAME="output1"
+    PATH="/paginas/condominio/agenda_dependencia/dependencia.xhtml"
+    TARGET="rules:#paginas#condominio#agenda_dependencia#dependencia.xhtml"
+    TITLE="removerDependencia" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#agenda_dependencia#cadastro_dependencia.xhtml"
+  PATH="/paginas/condominio/agenda_dependencia/cadastro_dependencia.xhtml"
+  SHAPE="32,5745,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#agenda_dependencia#cadastro_dependencia.xhtml:0"
+   NAME="item"
+   PATH="/paginas/condominio/agenda_dependencia/cadastro_dependencia.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editarDependencia::#paginas#condominio#agenda_dependencia#editar_dependencia.xhtml"
+    NAME="output"
+    PATH="/paginas/condominio/agenda_dependencia/editar_dependencia.xhtml"
+    TARGET="rules:#paginas#condominio#agenda_dependencia#editar_dependencia.xhtml"
+    TITLE="editarDependencia" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="removerDependencia::#paginas#condominio#agenda_dependencia#cadastro_dependencia.xhtml"
+    NAME="output1"
+    PATH="/paginas/condominio/agenda_dependencia/cadastro_dependencia.xhtml"
+    TARGET="rules:#paginas#condominio#agenda_dependencia#cadastro_dependencia.xhtml"
+    TITLE="removerDependencia" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#agenda_dependencia#editar_dependencia.xhtml"
+  PATH="/paginas/condominio/agenda_dependencia/editar_dependencia.xhtml"
+  SHAPE="256,5617,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
