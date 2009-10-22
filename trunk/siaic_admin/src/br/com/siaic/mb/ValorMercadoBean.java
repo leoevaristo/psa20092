@@ -1,5 +1,7 @@
 package br.com.siaic.mb;
 
+import org.apache.catalina.connector.Response;
+
 import br.com.siaic.businesslogic.ValorMercado;
 
 import br.com.siaic.businesslogic.endereco.Bairro;
@@ -51,5 +53,9 @@ public class ValorMercadoBean {
 	public void consultaValor() throws Exception {
 		ValorMercadoDAO vmd = new ValorMercadoDAO();
 		this.valorMercado = vmd.consultaValorMercadoPorBairro(bairro);
+	}
+	
+	public String cancelar() {
+		return "cancelar";
 	}
 }
