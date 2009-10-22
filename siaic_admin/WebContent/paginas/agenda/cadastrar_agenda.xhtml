@@ -46,7 +46,7 @@
 				</h:panelGrid>
 				<h:panelGrid columns="2" id="listaDeImoveis">
 					<a4j:outputPanel>
-						<rich:pickList sourceListWidth="250px"
+						<rich:pickList sourceListWidth="250px" targetListWidth="250px"
 							value="#{cadastrarAgendaBean.imoveisSelecionados}"
 							id="pickImoveis" 							
 							copyAllControlLabel="Adicionar todos"
@@ -65,16 +65,21 @@
 					<h:inputText value="#{cadastrarAgendaBean.agenda.data}" id="data"
 						styleClass="obrigatorio" required="true"
 						requiredMessage="Campo Obrigatório">
+						<rich:jQuery selector="#data" query="mask('99/99/9999')" timing="onload"></rich:jQuery>
 					</h:inputText>
 					<h:message for="data" styleClass="msgErro" />
 					<h:outputLabel for="horaInicio" value="Hora de inicio (h:m:s)" />
 					<h:inputText value="#{cadastrarAgendaBean.agenda.horaInicio}"
 						id="horaInicio" required="true"
-						requiredMessage="Campo Obrigatório" />
+						requiredMessage="Campo Obrigatório" >
+						<rich:jQuery selector="#horaInicio" query="mask('99:99')" timing="onload"></rich:jQuery>
+					</h:inputText>
 					<h:message for="horaInicio" styleClass="msgErro" />
 					<h:outputLabel for="horaFim" value="Hora de fim (h:m:s)" />
 					<h:inputText value="#{cadastrarAgendaBean.agenda.horaFim}"
-						id="horaFim" required="true" requiredMessage="Campo Obrigatório" />
+						id="horaFim" required="true" requiredMessage="Campo Obrigatório" >
+						<rich:jQuery selector="#horaFim" query="mask('99:99')" timing="onload"></rich:jQuery>
+					</h:inputText>
 					<h:message for="horaFim" styleClass="msgErro" />
 					<h:outputLabel for="descricao" value="Descricao" />
 					<h:inputTextarea value="#{cadastrarAgendaBean.agenda.descricao}"

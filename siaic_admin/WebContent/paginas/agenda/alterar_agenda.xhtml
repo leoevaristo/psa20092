@@ -42,9 +42,14 @@
 				</h:panelGrid>
 			<h:panelGrid columns="2" id="listaDeImoveis">
 				<a4j:outputPanel>
-					<rich:pickList sourceListWidth="250px"
+					<rich:pickList sourceListWidth="250px" targetListWidth="250px"
 						value="#{consultaAgendaBean.imoveisSelecionados}"
-						id="pickImoveis" required="true" requiredMessage="Selecione pelo menos um imóvel">
+						id="pickImoveis"
+						copyAllControlLabel="Adicionar todos"
+						copyControlLabel="Adicionar à lista"
+						removeAllControlLabel="Remover todos"
+						removeControlLabel="Remover da lista"
+						 required="true" requiredMessage="Selecione pelo menos um imóvel">
 						<f:selectItems value="#{consultaAgendaBean.listaImoveis}" />
 					</rich:pickList>
 					<h:message for="pickImoveis" styleClass="msgErro" />
