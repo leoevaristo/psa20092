@@ -42,7 +42,7 @@
 				</rich:columnGroup>
 			</f:facet>
 			<rich:column>
-				<h:outputText value="#{taxas.apartamento.codigo}" />
+				<h:outputText value="#{taxas.apartamento.codigoApartamento}" />
 			</rich:column>
 
 			<rich:column>
@@ -74,7 +74,7 @@
 				<h:form id="impCobrança">
 					<h:commandLink	action="#{consultaTaxasCondominioBean.impCobranca}">
 						<h:graphicImage value="/images/print.PNG" />
-						<f:param value="#{taxas.apartamento.codigo}" name="codigoCobranca" />
+						<f:param value="#{taxas.apartamento.codigoApartamento}" name="codigoCobranca" />
 					</h:commandLink>
 				</h:form>
 				<!--  <h:commandButton value="Emitir carta de cobrança"/>
