@@ -84,7 +84,7 @@
 				<h:outputLabel for="campoLogradouro" value="Logradouro"/>
 				<h:selectOneMenu value="#{consultaUsuarioBean.endereco.enderecoLogradouro}" id="campoLogradouro">
 					<f:selectItem itemValue="" itemLabel="Logradouro"/>
-					<f:selectItems value="#{consultaClienteBean.logradouro}" required="true" />
+					<f:selectItems value="#{consultaClienteBean.logradouro}" />
 				</h:selectOneMenu>
 			</h:panelGroup>			
 			<h:panelGroup id="Endereco">
