@@ -437,7 +437,21 @@
   <from-view-id>/paginas/valoresMercado/cadastro_valor_mercado.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>sucesso</from-outcome>
-   <to-view-id>/paginas/valoresMercado/cadastro_valor_mercado.xhtml</to-view-id>
+   <to-view-id>/paginas/valoresMercado/sucessoCadastro.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/valoresMercado/cadastro_valor_mercado.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>cancelar</from-outcome>
+   <to-view-id>/paginas/valoresMercado/valorMercado.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/valoresMercado/consulta_valor_mercado.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>cancelarconsulta</from-outcome>
+   <to-view-id>/paginas/valoresMercado/valorMercado.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
