@@ -81,7 +81,7 @@
 			</h:panelGroup>
 			<h:panelGroup id="Cidade">
 				<h:outputLabel for="campoCidade" value="Cidade" />
-				<h:selectOneMenu value="#{cadastraUsuarioBean.cidade.cidadeCodigo}" id="campoCidade" 
+				<h:selectOneMenu value="#{cadastraUsuarioBean.cidade.cidadeNome}" id="campoCidade" 
 				valueChangeListener="#{cadastraUsuarioBean.filtraBairroPorCidade}" required="true">
 					<f:selectItem itemValue="" itemLabel="Cidade"/>
 					<f:selectItems value="#{cadastraUsuarioBean.cidades}"/>		
