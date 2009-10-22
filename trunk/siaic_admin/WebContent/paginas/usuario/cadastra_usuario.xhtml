@@ -15,50 +15,50 @@
 	</ui:define>
 	<ui:define name="conteudo">
 		<h:form styleClass="forms" id="form1">
-  		 <h:panelGroup styleClass="textcenter">
+  		 <h:panelGroup id="CPessoa">
 				<h:outputLabel for="campo0" value="Pessoa" />
 				<h:selectOneMenu value="#{cadastraUsuarioBean.usuario.tipoPessoa}"
 					id="campo0" required="true">
 				<f:selectItem itemValue="F" itemLabel="Física" />
 			   </h:selectOneMenu>
 		</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="Nome">
 				<h:outputLabel for="campoNome" value="Nome" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.nome}"
 					styleClass="obrigatorio" id="campoNome" size="50" required="true" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="Login">
 				<h:outputLabel for="campoLogin" value="Login" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.login}"
 					styleClass="obrigatorio" id="campoLogin" size="10" required="true" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="Senha">
 				<h:outputLabel for="campoSenha" value="Senha" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.senha}"
 					styleClass="obrigatorio" id="campoSenha" size="10" required="true" />
 			</h:panelGroup>
 
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="CCreci">
 				<h:outputLabel for="campoCRECI" value="CRECI" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.CRECI}"
 					styleClass="obrigatorio" id="campoCRECI" size="15" required="true" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="Email">
 				<h:outputLabel for="campoEmail" value="E-mail" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.email}"
 					styleClass="obrigatorio" id="campoEmail" size="30" required="true" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="Telefone">
 				<h:outputLabel for="campoTelefone" value="Telefone" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.telefone}"
 					styleClass="obrigatorio" id="campoTelefone" size="12" required="true" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="Celular">
 				<h:outputLabel for="campoCelular" value="Celular" />
 				<h:inputText value="#{cadastraUsuarioBean.usuario.celular}"
 					id="campoCelular" size="12" required="true" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter" id="panelSexo">
+			<h:panelGroup id="panelSexo">
 				<h:outputLabel for="sexo" value="Sexo" />
 				<h:selectOneMenu value="#{cadastraUsuarioBean.usuario.sexo}" id="sexo" required="true">
 					<f:selectItem itemValue="" itemLabel="Sexo" />
@@ -66,45 +66,45 @@
 					<f:selectItem itemValue="F" itemLabel="Feminino" />
 				</h:selectOneMenu>
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="Estado">
 				<h:outputLabel for="campoEstado" value="Estado" />
 				<h:selectOneMenu value="" id="campoEstado" required="true">
 					<f:selectItem itemValue="" itemLabel="Estado"/>
 					<f:selectItems value="#{selectEstados.estados}" />					
 				</h:selectOneMenu>
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="Cidade">
 				<h:outputLabel for="campoCidade" value="Cidade" />
 				<h:selectOneMenu value="#{cadastraUsuarioBean.cidade.cidadeCodigo}" id="campoCidade" required="true">
 					<f:selectItem itemValue="" itemLabel="Cidade"/>
 					<f:selectItems value="#{selectCidades.cidades}"/>				
 				</h:selectOneMenu>
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="Bairro">
 				<h:outputLabel for="campoBairro" value="Bairro" />
 				<h:selectOneMenu value="#{cadastraUsuarioBean.endereco.enderecoBairro.bairroCodigo}" id="campoBairro" required="true"> 
 					<f:selectItem itemValue="" itemLabel="Bairro"/>
 					<f:selectItems  value="#{selectBairros.bairros}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="Logradouro">
 				<h:outputLabel for="campoLogradouro" value="Logradouro"/>
 				<h:selectOneMenu value="#{cadastraUsuarioBean.endereco.enderecoLogradouro}" id="campoLogradouro" required="true">
 					<f:selectItem itemValue="" itemLabel="Logradouro"/>
 					<f:selectItems value="#{cadastraClienteBean.logradouro}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="Endereco">
 				<h:outputLabel for="campoNomeEnd" value="Endereço" />
 				<h:inputText value="#{cadastraUsuarioBean.endereco.enderecoNome}"
 				 id="campoNomeEnd" styleClass="obrigatorio" size="50" required="true" />
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="CEP">
 				<h:outputLabel for="campoCep" value="CEP" />
 				<h:inputText value="#{cadastraUsuarioBean.endereco.enderecoCep}"
 				 id="campoCep" styleClass="obrigatorio" size="10" required="true"/>
 			</h:panelGroup>
-			<h:panelGroup styleClass="textcenter">
+			<h:panelGroup id="Obg">
 				<h:outputLabel value="Campos Obrigatórios" styleClass="infor" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="linha"></h:panelGroup>
@@ -123,6 +123,5 @@
 	<ui:define name="linkNovo">
 		<h:outputText value="Novo Usuario" />
 	</ui:define>
-	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
 </ui:composition>
 </html>

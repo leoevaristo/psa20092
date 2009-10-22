@@ -305,7 +305,7 @@ div#container div#content div#col_right div#infogerais p#info_titulo{
 }
 div#container div#content div#col_right div#infogerais a#info_novo{
 	float:right;
-	background: url(../images/imgnovo.png) no-repeat 0 2px;
+	/*background: url(../images/imgnovo.png) no-repeat 0 2px;*/
 	padding-left:18px;
 	color:#2e6587;
 	font-weight:bold;
