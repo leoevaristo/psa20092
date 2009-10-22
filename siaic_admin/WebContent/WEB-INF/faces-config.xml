@@ -785,6 +785,39 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/condominio/Infracao/consultar_infracao.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>editar</from-outcome>
+   <to-view-id>/paginas/condominio/Infracao/editar_infracao.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+  <from-view-id>/paginas/condominio/Infracao/consultar_infracao.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>voltar</from-outcome>
+   <to-view-id>/paginas/condominio/Infracao/infracao.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+  <from-view-id>/paginas/condominio/Infracao/editar_infracao.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>voltar</from-outcome>
+   <to-view-id>/paginas/condominio/Infracao/consultar_infracao.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+  
+  <navigation-rule>
+  <from-view-id>/paginas/condominio/Infracao/editar_infracao.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>sucesso</from-outcome>
+   <to-view-id>/paginas/condominio/Infracao/sucesso.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ </navigation-rule>
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
  </application>
