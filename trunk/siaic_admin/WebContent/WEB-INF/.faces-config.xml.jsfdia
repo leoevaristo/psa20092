@@ -800,4 +800,19 @@
   NAME="rules:#paginas#condominio#agenda_dependencia#editar_dependencia.xhtml"
   PATH="/paginas/condominio/agenda_dependencia/editar_dependencia.xhtml"
   SHAPE="256,5617,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#condominio#Infracao#CadastroInfracao.xhtml"
+  PATH="/paginas/condominio/Infracao/CadastroInfracao.xhtml"
+  SHAPE="32,6545,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#condominio#Infracao#CadastroInfracao.xhtml:0"
+   NAME="item"
+   PATH="/paginas/condominio/Infracao/CadastroInfracao.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="voltar::#paginas#index.xhtml" NAME="output"
+    PATH="/paginas/index.xhtml" TARGET="rules:#paginas#index.xhtml"
+    TITLE="voltar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#index.xhtml"
+  PATH="/paginas/index.xhtml" SHAPE="240,6561,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
