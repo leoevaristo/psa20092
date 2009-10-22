@@ -805,7 +805,7 @@
   <from-view-id>/paginas/condominio/Infracao/editar_infracao.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>sucesso</from-outcome>
-   <to-view-id>/paginas/condominio/Infracao/sucesso.xhtml</to-view-id>
+   <to-view-id>/paginas/condominio/Infracao/consulta_infracao.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
  </navigation-rule>

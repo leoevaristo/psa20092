@@ -879,9 +879,10 @@
    NAME="item1"
    PATH="/paginas/condominio/Infracao/editar_infracao.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="sucesso::#paginas#condominio#Infracao#sucesso.xhtml"
-    NAME="output" PATH="/paginas/condominio/Infracao/sucesso.xhtml"
-    TARGET="rules:#paginas#condominio#Infracao#sucesso.xhtml"
+    ID="sucesso::#paginas#condominio#Infracao#consulta_infracao.xhtml"
+    NAME="output"
+    PATH="/paginas/condominio/Infracao/consulta_infracao.xhtml"
+    TARGET="rules:#paginas#condominio#Infracao#consulta_infracao.xhtml"
     TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
