@@ -12,7 +12,7 @@
 			style="text-align:center;margin:0 auto;" id="tblTaxasIndadimplentes">
 			<f:facet name="header">
 				<rich:columnGroup>
-					<rich:column colspan="8">
+					<rich:column colspan="10">
 						<h:outputText value="Tabela de Taxas de Condomínio" />
 					</rich:column>
 					<rich:column breakBefore="true">
@@ -25,10 +25,16 @@
 						<h:outputText value="Mês" />
 					</rich:column>
 					<rich:column>
+						<h:outputText value="Valor" />
+					</rich:column>
+					<rich:column>
 						<h:outputText value="Data de Vencimento" />
 					</rich:column>					
 					<rich:column>
 						<h:outputText value="Dias de Atraso" />
+					</rich:column>
+					<rich:column>
+						<h:outputText value="Ações" />
 					</rich:column>
 				</rich:columnGroup>
 			</f:facet>
@@ -44,13 +50,19 @@
 				<h:outputText value="#{taxas.mes}" />
 			</rich:column>
 			<rich:column>
+				<h:outputText value="#{taxas.valor}" />
+			</rich:column>
+			<rich:column>
 				<h:outputText value="#{taxas.dataVencimento}">
 					<f:convertDateTime pattern="dd/MM/yyyy" />
 				</h:outputText>
 			</rich:column>	
 			<rich:column>
 				<h:outputText value="#{taxas.diasAtraso}" />
-			</rich:column>			
+			</rich:column>	
+			<rich:column>
+				<h:commandButton value="Emitir carta de cobrança"/>
+			</rich:column>		
 		</rich:dataTable>
 	</a4j:form>
 </ui:fragment>
