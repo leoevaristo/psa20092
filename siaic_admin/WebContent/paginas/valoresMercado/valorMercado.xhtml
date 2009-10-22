@@ -13,19 +13,10 @@
 		</ui:define>
 		<ui:define name="conteudo"> 
 			<h:panelGroup>
-				<h:outputLink value="#{request.contextPath}/paginas/valoresMercado/cadastro_valor_mercado.xhtml">
-					<h:outputText value="# Cadastrar  Valor de Mercado"  />
-				</h:outputLink>
-			</h:panelGroup>
-			<h:panelGroup>
-				<h:outputLink value="#{request.contextPath}/paginas/valoresMercado/alterar_valor_mercado.xhtml">
-					<h:outputText value="# Alterar Valor de Mercado"  />
-				</h:outputLink>	
-			</h:panelGroup>	
-			<h:panelGroup>
-				<h:outputLink value="#{request.contextPath}/paginas/valoresMercado/consultar_valor_mercado.xhtml">
-					<h:outputText value="# Consultar  Valor de Mercado"  />
-				</h:outputLink>	
+				<ul>
+					<li><a href="#{request.contextPath}/paginas/valoresMercado/cadastro_valor_mercado.xhtml">Cadastrar Valor de Mercado</a></li>
+					<li><a href="#{request.contextPath}/paginas/valoresMercado/consultar_valor_mercado.xhtml">Consultar Valor de Mercado</a></li>
+				</ul>
 			</h:panelGroup>	
 		</ui:define>		
 	</ui:composition>
