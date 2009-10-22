@@ -134,7 +134,7 @@ public class ConsultaTaxasCondominioBean {
 		Map parameters = new HashMap();
 //		parameters.put("cod", new Integer(cod));
 
-		String rel = getDiretorioReal("rel/RelatorioInadimplentes.jasper");
+		String rel = getDiretorioReal("rel/RelInadimplentes.jasper");
 		JasperPrint print = JasperFillManager.fillReport(rel,parameters,FabricaConexao.getInstancia().conectar());
 		byte[] bytes = JasperExportManager.exportReportToPdf(print);
 
@@ -145,7 +145,7 @@ public class ConsultaTaxasCondominioBean {
 		 * le nom rapport.pdf
 		 **********************************************************************/
 		response.addHeader("Content-disposition",
-				"attachment;filename=RelatorioInadimplentes.pdf");
+				"attachment;filename=RelInadimplentes.pdf");
 		response.setContentLength(bytes.length);
 		response.getOutputStream().write(bytes);
 		response.setContentType("application/pdf");

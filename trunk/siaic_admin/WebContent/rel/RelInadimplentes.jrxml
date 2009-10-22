@@ -23,16 +23,20 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<queryString><![CDATA[SELECT tx.COF_MES, tx.COF_ANO, tx.COF_APA_CODIGO, tx.COF_PAGO, tx.COF_DATA_VENCIMENTO, DATEDIFF(CURDATE(),COF_DATA_VENCIMENTO) AS ATRASO, 
-ap.APA_NUMERO FROM ADMCON_TAXA_CONDOMINIO_FATOS tx, ADMCON_APARTAMENTO ap WHERE COF_PAGO = 'N' AND CURDATE() > COF_DATA_VENCIMENTO]]></queryString>
+	<queryString><![CDATA[SELECT ap.APA_NUMERO AS Apartamento, ft.COF_MES AS Mes, ft.COF_ANO AS Ano, ft.COF_PAGO AS Pago, ft.COF_DATA_VENCIMENTO AS Vencimento, DATEDIFF( CURDATE( ) , COF_DATA_VENCIMENTO ) AS DiasAtraso, ft.COF_VALOR AS Valor
+FROM ADMCON_TAXA_CONDOMINIO_FATOS ft, ADMCON_APARTAMENTO ap
+WHERE COF_PAGO = 'N'
+AND CURDATE( ) > COF_DATA_VENCIMENTO
+GROUP BY ft.COF_APA_CODIGO
+]]></queryString>
 
-	<field name="COF_MES" class="java.lang.Integer"/>
-	<field name="COF_ANO" class="java.lang.Integer"/>
-	<field name="COF_APA_CODIGO" class="java.lang.Integer"/>
-	<field name="COF_PAGO" class="java.lang.String"/>
-	<field name="COF_DATA_VENCIMENTO" class="java.sql.Date"/>
-	<field name="ATRASO" class="java.lang.Long"/>
-	<field name="APA_NUMERO" class="java.lang.Integer"/>
+	<field name="Apartamento" class="java.lang.Integer"/>
+	<field name="Mes" class="java.lang.Integer"/>
+	<field name="Ano" class="java.lang.Integer"/>
+	<field name="Pago" class="java.lang.String"/>
+	<field name="Vencimento" class="java.sql.Date"/>
+	<field name="DiasAtraso" class="java.lang.Integer"/>
+	<field name="Valor" class="java.lang.Double"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -125,6 +129,24 @@ ap.APA_NUMERO FROM ADMCON_TAXA_CONDOMINIO_FATOS tx, ADMCON_APARTAMENTO ap WHERE 
 				</line>
 				<staticText>
 					<reportElement
+						x="0"
+						y="0"
+						width="111"
+						height="17"
+						forecolor="#FFFFFF"
+						key="staticText"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+				<text><![CDATA[Apartamento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
 						x="111"
 						y="0"
 						width="111"
@@ -161,7 +183,7 @@ ap.APA_NUMERO FROM ADMCON_TAXA_CONDOMINIO_FATOS tx, ADMCON_APARTAMENTO ap WHERE 
 				</staticText>
 				<staticText>
 					<reportElement
-						x="444"
+						x="333"
 						y="0"
 						width="111"
 						height="17"
@@ -179,7 +201,7 @@ ap.APA_NUMERO FROM ADMCON_TAXA_CONDOMINIO_FATOS tx, ADMCON_APARTAMENTO ap WHERE 
 				</staticText>
 				<staticText>
 					<reportElement
-						x="333"
+						x="444"
 						y="0"
 						width="111"
 						height="17"
@@ -193,7 +215,7 @@ ap.APA_NUMERO FROM ADMCON_TAXA_CONDOMINIO_FATOS tx, ADMCON_APARTAMENTO ap WHERE 
 					<textElement>
 						<font size="12"/>
 					</textElement>
-				<text><![CDATA[Data Vencimento]]></text>
+				<text><![CDATA[Vencimento]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
@@ -211,11 +233,11 @@ ap.APA_NUMERO FROM ADMCON_TAXA_CONDOMINIO_FATOS tx, ADMCON_APARTAMENTO ap WHERE 
 					<textElement>
 						<font size="12"/>
 					</textElement>
-				<text><![CDATA[Atraso]]></text>
+				<text><![CDATA[DiasAtraso]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="0"
+						x="666"
 						y="0"
 						width="111"
 						height="17"
@@ -229,7 +251,7 @@ ap.APA_NUMERO FROM ADMCON_TAXA_CONDOMINIO_FATOS tx, ADMCON_APARTAMENTO ap WHERE 
 					<textElement>
 						<font size="12"/>
 					</textElement>
-				<text><![CDATA[Nº Apartamento Numero]]></text>
+				<text><![CDATA[Valor]]></text>
 				</staticText>
 			</band>
 		</columnHeader>
@@ -248,8 +270,8 @@ ap.APA_NUMERO FROM ADMCON_TAXA_CONDOMINIO_FATOS tx, ADMCON_APARTAMENTO ap WHERE 
 				</line>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="111"
-						y="-1"
+						x="0"
+						y="0"
 						width="111"
 						height="17"
 						forecolor="#000000"
@@ -262,12 +284,30 @@ ap.APA_NUMERO FROM ADMCON_TAXA_CONDOMINIO_FATOS tx, ADMCON_APARTAMENTO ap WHERE 
 					<textElement>
 						<font size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{COF_MES}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{Apartamento}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="111"
+						y="0"
+						width="111"
+						height="17"
+						forecolor="#000000"
+						key="textField"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement>
+						<font size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{Mes}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="222"
-						y="-1"
+						y="0"
 						width="111"
 						height="17"
 						forecolor="#000000"
@@ -280,30 +320,12 @@ ap.APA_NUMERO FROM ADMCON_TAXA_CONDOMINIO_FATOS tx, ADMCON_APARTAMENTO ap WHERE 
 					<textElement>
 						<font size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{COF_ANO}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="444"
-						y="-1"
-						width="111"
-						height="17"
-						forecolor="#000000"
-						key="textField"/>
-					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-</box>
-					<textElement>
-						<font size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{COF_PAGO}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{Ano}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="333"
-						y="-1"
+						y="0"
 						width="111"
 						height="17"
 						forecolor="#000000"
@@ -316,12 +338,30 @@ ap.APA_NUMERO FROM ADMCON_TAXA_CONDOMINIO_FATOS tx, ADMCON_APARTAMENTO ap WHERE 
 					<textElement>
 						<font size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.util.Date"><![CDATA[$F{COF_DATA_VENCIMENTO}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Pago}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="444"
+						y="0"
+						width="111"
+						height="17"
+						forecolor="#000000"
+						key="textField"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement>
+						<font size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{Vencimento}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="555"
-						y="-1"
+						y="0"
 						width="111"
 						height="17"
 						forecolor="#000000"
@@ -334,12 +374,12 @@ ap.APA_NUMERO FROM ADMCON_TAXA_CONDOMINIO_FATOS tx, ADMCON_APARTAMENTO ap WHERE 
 					<textElement>
 						<font size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{ATRASO}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{DiasAtraso}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="0"
-						y="-1"
+						x="666"
+						y="0"
 						width="111"
 						height="17"
 						forecolor="#000000"
@@ -352,7 +392,7 @@ ap.APA_NUMERO FROM ADMCON_TAXA_CONDOMINIO_FATOS tx, ADMCON_APARTAMENTO ap WHERE 
 					<textElement>
 						<font size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{APA_NUMERO}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$F{Valor}]]></textFieldExpression>
 				</textField>
 			</band>
 		</detail>
