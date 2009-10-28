@@ -140,7 +140,7 @@
    NAME="item" PATH="/paginas/usuario/cadastra_usuario.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
     ID="sucesso::#paginas#usuario#sucesso_usuario.xhtml" NAME="output"
-    PATH="/paginas/usuario/sucesso_usuario.xhtml" SHAPE="-1,16"
+    PATH="/paginas/usuario/sucesso_usuario.xhtml"
     TARGET="rules:#paginas#usuario#sucesso_usuario.xhtml"
     TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
@@ -265,15 +265,6 @@
     NAME="output" PATH="/paginas/valoresMercado/valorMercado.xhtml"
     TARGET="rules:#paginas#valoresMercado#valorMercado.xhtml"
     TITLE="cancelar" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#paginas#acesso.xhtml"
-  PATH="/paginas/acesso.xhtml" SHAPE="32,1249,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#paginas#acesso.xhtml:0" NAME="item"
-   PATH="/paginas/acesso.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="sucesso::#paginas#modulos.xhtml"
-    NAME="output" PATH="/paginas/modulos.xhtml" SHAPE="-1,16"
-    TARGET="rules:#paginas#modulos.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#agenda#sucesso.xhtml"
@@ -864,8 +855,6 @@
   PATH="/paginas/imovel/sucesso_imovel.xhtml" SHAPE="496,625,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#paginas#imovel#detalhes_imovel.xhtml"
   PATH="/paginas/imovel/detalhes_imovel.xhtml" SHAPE="272,385,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#paginas#modulos.xhtml"
-  PATH="/paginas/modulos.xhtml" SHAPE="240,2721,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM
   NAME="rules:#paginas#condominio#Infracao#consulta_infracao.xhtml"
   PATH="/paginas/condominio/Infracao/consulta_infracao.xhtml"
@@ -918,4 +907,22 @@
     TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,9425,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logout::#paginas#login.xhtml" NAME="output"
+    PATH="/paginas/login.xhtml" TARGET="rules:#paginas#login.xhtml"
+    TITLE="logout" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#login.xhtml"
+  PATH="/paginas/login.xhtml" SHAPE="240,10449,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#login.xhtml:0" NAME="item"
+   PATH="/paginas/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logou::#paginas#modulos.xhtml" NAME="output"
+    PATH="/paginas/modulos.xhtml" TARGET="rules:#paginas#modulos.xhtml"
+    TITLE="logou" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#modulos.xhtml"
+  PATH="/paginas/modulos.xhtml" SHAPE="512,11361,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

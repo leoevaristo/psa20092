@@ -16,27 +16,23 @@
 		<h:form styleClass="forms" id="formFiltros">
 			<h:panelGroup id="panelLogin">
 				<h:outputLabel value="Login" />
-				<h:inputText value="#{acessoBean.usuario.login}" id="login" styleClass="obrigatorio" />
+				<h:inputText value="#{loginMB.usuario.login}" id="login" styleClass="obrigatorio" />
 			</h:panelGroup>
 			<h:panelGroup id="panelSenha">
 				<h:outputLabel value="Senha" />
-				<h:inputSecret value="#{acessoBean.usuario.senha}" id="senha" styleClass="obrigatorio" />
+				<h:inputSecret value="#{loginMB.usuario.senha}" id="senha" styleClass="obrigatorio" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="infor">
 				<h:outputText value="Campos Obrigatórios" />
 			</h:panelGroup>
 			<h:panelGroup styleClass="linha"></h:panelGroup>
 			<h:panelGroup  styleClass="botoes">
-				<h:commandButton action="#{acessoBean.ValidaLogin}" value="" type="submit" styleClass="input_entrar" />
+			<h:commandButton styleClass="input_entrar" value=""
+				action="#{loginMB.ValidaLogin}">
+				<f:setPropertyActionListener value="#{loginMB.usuario.login}"
+					target="#{resultadoMB.login}" />
+			</h:commandButton>
 			</h:panelGroup>
-						<h:panelGroup styleClass="botoes">
-				<h:commandButton action="#{cadastraUsuarioBean.addUsuario}" value=""
-					styleClass="input_submit" />
-				<h:commandButton action="#" value="" type="reset"
-					styleClass="input_reset" />
-				<h:commandButton action="#" value="" styleClass="input_button" />
-			</h:panelGroup>			
-			
 		</h:form>
 	</ui:define>
 </ui:composition>
