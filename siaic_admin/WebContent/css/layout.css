@@ -281,6 +281,10 @@ div#container div#content div#col_right div#col_rightConteudo form.forms span.bo
 	background:url(../images/btnformsalvar.png);
 }
 
+div#container div#content div#col_right div#col_rightConteudo form.forms span.botoes input.input_consultar{
+	background:url(../images/btn_consultar.jpg);
+}
+
 div#container div#content div#col_right div#col_rightConteudo form.forms span.botoes input.input_reset{
 	background:url(../images/btnformlimpar.png);
 }
