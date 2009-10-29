@@ -12,11 +12,13 @@
 			<h:outputText value="Valor de Mercado Cadastrado com Sucesso" />
 		 </ui:define>		
 		 <ui:define name="conteudo">
+		 <h:form styleClass="forms">	
 		 <h:panelGroup styleClass="linha"></h:panelGroup>
 		 	<h:panelGroup styleClass="botoes">
-			   <h:commandButton action="#{ValorMercadoBean.cadastrado}" value="" styleClass="input_button" />
+			   <h:commandButton action="#{ValorMercadoBean.cadastrado}" value="" styleClass="input_voltar" />
 			</h:panelGroup>	
-		 </ui:define>
+		</h:form>
+		 </ui:define>	 
 	</ui:composition>
 
 </html>
