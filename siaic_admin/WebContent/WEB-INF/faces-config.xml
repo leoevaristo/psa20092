@@ -258,9 +258,6 @@
   <managed-bean-class>controlesessao.SessaoMB</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
-<<<<<<< .mine
- <!-- <navigation-rule>
-=======
  <managed-bean>
   <managed-bean-name>imovelBaseBean</managed-bean-name>
   <managed-bean-class>br.com.siaic.mb.imoveis.ImovelBaseBean</managed-bean-class>
@@ -281,8 +278,8 @@
   <managed-bean-class>br.com.siaic.mb.imoveis.ConsultaImovelBean</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <!-- 
  <navigation-rule>
->>>>>>> .r870
   <from-view-id>*</from-view-id>
   <navigation-case>
    <from-outcome>logout</from-outcome>
@@ -296,11 +293,9 @@
    <from-outcome>logou</from-outcome>
    <to-view-id>/paginas/modulos.xhtml</to-view-id>
   </navigation-case>
-<<<<<<< .mine
  </navigation-rule>  -->
-=======
+ 
  </navigation-rule>
->>>>>>> .r870
  <navigation-rule>
   <from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
   <navigation-case>
