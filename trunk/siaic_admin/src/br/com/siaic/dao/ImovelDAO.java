@@ -125,7 +125,7 @@ public class ImovelDAO {
 		}
 	}
 
-	public void salva(Imovel imo) {
+	public void salva(Imovel imo) throws SQLException {
 		PreparedStatement ps = this.conn
 				.getPreparedStatement("insert into IMOVEL ("
 						+ " IMO_CARACTERISTICA," + " IMO_FINALIDADE,"
@@ -146,12 +146,12 @@ public class ImovelDAO {
 			ps.setInt(9, imo.getEndereco());
 			ps.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new SQLException(e.getMessage());
 		} finally {
 			try {
 				ps.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw new SQLException(e.getMessage());
 			}
 		}
 	}
