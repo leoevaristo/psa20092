@@ -276,12 +276,12 @@ public class ImovelBean {
 		try {
 			end.adicionarEndereco(this.endereco);
 			this.imovel.setEndereco(this.endereco.getEnderecoCodigo());
+			this.imovel.salvar();
+			return "novo";
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return "erro";
 		}
-
-		this.imovel.salvar();
-		return "novo";
 	}
 
 	public ImovelCaracteristica getImoCar() {

@@ -101,7 +101,7 @@ public class Imovel {
 		this.proprietario = proprietario;
 	}
 	
-	public void salvar() {
+	public void salvar() throws SQLException {
 		this.imoDAO.salva(this);
 	}
 	
