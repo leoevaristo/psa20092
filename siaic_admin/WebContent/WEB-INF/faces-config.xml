@@ -258,6 +258,26 @@
   <managed-bean-class>controlesessao.SessaoMB</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>imovelBaseBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.imoveis.ImovelBaseBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>cadastraImovelBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.imoveis.CadastraImovelBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>alteraImovelBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.imoveis.AlteraImovelBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>consultaImovelBean</managed-bean-name>
+  <managed-bean-class>br.com.siaic.mb.imoveis.ConsultaImovelBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
  <navigation-rule>
   <from-view-id>*</from-view-id>
   <navigation-case>
@@ -273,7 +293,6 @@
    <to-view-id>/paginas/modulos.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
-
  <navigation-rule>
   <from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
   <navigation-case>
