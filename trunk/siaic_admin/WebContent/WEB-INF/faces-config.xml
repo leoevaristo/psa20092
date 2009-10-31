@@ -871,6 +871,18 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
+ <navigation-rule>
+  <display-name>CorretorConsultaImovel</display-name>
+  <from-view-id>/paginas/corretor/imoveis/consulta_imoveis.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>detalhe</from-outcome>
+   <to-view-id>/paginas/imovel/detalhes_imovel.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>altera</from-outcome>
+   <to-view-id>/paginas/corretor/imoveis/altera_imovel.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
  </application>
