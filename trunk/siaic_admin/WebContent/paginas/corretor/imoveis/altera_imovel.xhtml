@@ -1,13 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:a4j="http://richfaces.org/a4j">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
 
-	<ui:composition template="">
+<ui:composition template="/WEB-INF/template/template-cond.xhtml">
 
-	</ui:composition>
+	<ui:define name="tituloGrande">
+		<h:outputText value="Imóveis" />
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="Consulta de Imóveis" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<h:form styleClass="forms">
+			<h:panelGroup id="codigo">
+				<h:outputLabel value="Código:" />
+				<h:outputText value="#{alteraImovelBean.imovel.codigo}" />
+			</h:panelGroup>
+
+			<h:panelGroup id="finalidade">
+				<h:outputLabel value="Finalidade:" />
+				<h:inputText value="#{alteraImovelBean.imovelFinalidade.nome}"
+					styleClass="obrigatorio" size="50" required="true" />
+			</h:panelGroup>
+
+			<h:panelGroup id="proprietario">
+				<h:outputLabel value="Proprietário:" />
+				<h:selectOneMenu value="#{alteraImovelBean.imovel.proprietario}" id="prop">
+					<f:selectItems value="#{alteraImovelBean.listaClientes}" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+
+			<h:panelGroup id="caracbasica">
+				<h:outputLabel value="Caracteristicas Básicas:" />
+				<h:selectOneMenu value="#{alteraImovelBean.imovel.caracteristica}" id="carac">
+					<f:selectItems value="#{alteraImovelBean.listaCaracteristica}" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+
+			<h:panelGroup id="tipo">
+				<h:outputLabel value="Tipo:" />
+				<h:selectOneMenu value="#{alteraImovelBean.imovel.tipo}"
+					layout="pageDirection">
+					<f:selectItem itemValue="1" itemLabel="Apartamento" />
+					<f:selectItem itemValue="2" itemLabel="Casa" />
+					<f:selectItem itemValue="3" itemLabel="Comercial" />
+					<f:selectItem itemValue="4" itemLabel="Industrial" />
+					<f:selectItem itemValue="5" itemLabel="Rural" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+
+			<h:panelGroup id="valor">
+				<h:outputLabel value="Valor:" />
+				<h:inputText value="#{alteraImovelBean.imovel.valor}"
+					styleClass="obrigatorio" size="10" maxlength="8">
+					<f:convertNumber currencySymbol="R$" type="currency" />
+				</h:inputText>
+			</h:panelGroup>
+
+			<h:panelGroup id="valcond">
+				<h:outputLabel value="Valor Condominio:" />
+				<h:inputText value="#{alteraImovelBean.imovel.valorCondominio}" size="10"
+					maxlength="8">
+					<f:convertNumber currencySymbol="R$" type="currency" />
+				</h:inputText>
+			</h:panelGroup>
+
+			<h:panelGroup id="formpag">
+				<h:outputLabel value="Forma de Pagamento:" />
+				<h:inputTextarea value="#{alteraImovelBean.imovel.formaPagamento}"
+					rows="2" />
+			</h:panelGroup>
+
+			<h:panelGroup id="detalhes">
+				<h:outputLabel value="Detalhes:" />
+				<h:inputTextarea value="#{alteraImovelBean.imovel.detalhe}" rows="5" />
+			</h:panelGroup>
+
+			<h:panelGroup id="panelNomeEstado">
+				<h:outputLabel for="campoEstado" value="Estado" />
+				<h:selectOneMenu value="#{alteraImovelBean.estado.estadoSigla}"
+					id="campoEstado" onchange="submit()" immediate="true"
+					valueChangeListener="#{alteraImovelBean.filtraCidadePorEstado}">
+					<f:selectItem itemValue="" itemLabel="Estado" />
+					<f:selectItems value="#{selectEstados.estados}" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup id="panelNomeCidade">
+				<h:outputLabel for="campoCidade" value="Cidade" />
+				<h:selectOneMenu
+					value="#{alteraImovelBean.imovelEndereco.enderecoBairro.bairroCidade}"
+					id="campoCidade"
+					valueChangeListener="#{alteraImovelBean.filtraBairroPorCidade}">
+					<f:selectItem itemValue="" itemLabel="Cidade" />
+					<f:selectItems value="#{selectCidades.cidades}" />
+					<a4j:support event="onchange" reRender="campoBairro" ajaxSingle="true" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup id="panelBairro">
+				<h:outputLabel for="campoBairro" value="Bairro" />
+				<h:selectOneMenu
+					value="#{alteraImovelBean.imovelEndereco.enderecoBairro.bairroCodigo}"
+					id="campoBairro">
+					<f:selectItem itemValue="" itemLabel="Bairro" />
+					<f:selectItems value="#{selectBairros.bairros}" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup id="panelLogradouro">
+				<h:outputLabel for="campoLogradouro" value="Logradouro" />
+				<h:selectOneMenu
+					value="#{alteraImovelBean.imovelEndereco.enderecoLogradouro}"
+					id="campoLogradouro">
+					<f:selectItem itemValue="" itemLabel="Logradouro" />
+					<f:selectItems value="#{alteraImovelBean.listaLogradouro}" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+
+			<h:panelGroup id="endereco">
+				<h:outputLabel for="campoNomeEnd" value="Endereço" />
+				<h:inputText value="#{alteraImovelBean.imovelEndereco.enderecoNome}"
+					id="campoNomeEnd" styleClass="obrigatorio" size="50"
+					required="true" />
+			</h:panelGroup>
+			<h:panelGroup id="cep">
+				<h:outputLabel for="campoCep" value="CEP" />
+				<h:inputText value="#{alteraImovelBean.imovelEndereco.enderecoCep}"
+					id="campoCep" styleClass="obrigatorio" size="50" required="true" />
+				<rich:jQuery selector="#campoCep" query="mask('99999-999')"
+					timing="onload" />
+			</h:panelGroup>
+
+			<h:panelGroup styleClass="linha"></h:panelGroup>
+
+			<h:panelGroup styleClass="botoes">
+				<h:commandButton action="#{imovelBean.atualizaImovel}" value=""
+					styleClass="input_submit" />
+				<h:commandButton action="#{imovelBean.voltar}" value=""
+					styleClass="input_button" immediate="true" />
+			</h:panelGroup>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
 
 </html>
