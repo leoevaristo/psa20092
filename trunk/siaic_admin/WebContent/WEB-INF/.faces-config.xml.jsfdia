@@ -907,6 +907,8 @@
     TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+<<<<<<< .mine
+=======
  <PROCESS-ITEM
   NAME="rules:#paginas#corretor#imoveis#consulta_imoveis.xhtml"
   PATH="/paginas/corretor/imoveis/consulta_imoveis.xhtml"
@@ -929,4 +931,5 @@
   NAME="rules:#paginas#corretor#imoveis#altera_imovel.xhtml"
   PATH="/paginas/corretor/imoveis/altera_imovel.xhtml"
   SHAPE="288,10337,0,0" model-entity="JSFProcessGroup"/>
+>>>>>>> .r878
 </PROCESS>
