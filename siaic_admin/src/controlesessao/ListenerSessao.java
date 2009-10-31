@@ -27,8 +27,9 @@ public class ListenerSessao implements PhaseListener {
           
         if (!loginPage && !loggedIn(fc)) {
         	
-        	/*MensagemUtil.montarMensagemErro(
-					new Exception("Execute o login."),fc);*/
+        	MensagemUtil.montarMensagemErro(
+					new Exception("Execute o login."),fc);
+        	
             NavigationHandler nh = fc.getApplication().getNavigationHandler();
             nh.handleNavigation(fc, null, "logout");
         }
