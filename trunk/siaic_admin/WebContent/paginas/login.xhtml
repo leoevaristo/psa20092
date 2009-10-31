@@ -16,11 +16,11 @@
 		<h:form styleClass="forms" id="formFiltros">
 			<h:panelGroup id="panelLogin">
 				<h:outputLabel value="Login" />
-				<h:inputText value="#{loginMB.usuario.login}" id="login" styleClass="obrigatorio" />
+				<h:inputText value="#{loginMB.usuario.login}" id="login" styleClass="obrigatorio" required="true" requiredMessage="Informe o login"/>
 			</h:panelGroup>
 			<h:panelGroup id="panelSenha">
 				<h:outputLabel value="Senha" />
-				<h:inputSecret value="#{loginMB.usuario.senha}" id="senha" styleClass="obrigatorio" />
+				<h:inputSecret value="#{loginMB.usuario.senha}" id="senha" styleClass="obrigatorio" required="true" requiredMessage="Informe a senha"/>
 			</h:panelGroup>
 			<h:panelGroup styleClass="infor">
 				<h:outputText value="Campos Obrigatórios" />

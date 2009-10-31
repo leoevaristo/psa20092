@@ -92,7 +92,7 @@ public class LoginMB implements Serializable {
 			HttpSession sessao = (HttpSession) FacesContext
 					.getCurrentInstance().getExternalContext().getSession(true);
 			sessao.setAttribute("usuario", usuario);
-			System.out.println(sessao.getAttribute("login"));
+			System.out.println(sessao.getAttribute("usuario"));
 
 			return "logou";
 		} else {

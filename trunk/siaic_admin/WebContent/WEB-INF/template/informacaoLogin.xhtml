@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:fragment xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h3 id="titulo_perfil"><span class="none"
+		style="FONT-SIZE: small;">Perfil do Usuário</span></h3>
+	<div id="perfil">
+	<ul id="dadosperfil">
+		<li class="strong">Nome:</li>
+		<li><h:outputText value="#{sessionScope.usuario.login}" /></li>
+		<li><h:form>
+			<h:commandLink action="#{logoutMB.executarLogout}" value="Sair" />
+		</h:form></li>
+	</ul>
+	</div>
+
+</ui:fragment>
+

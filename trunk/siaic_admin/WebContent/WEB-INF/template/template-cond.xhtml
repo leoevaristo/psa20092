@@ -31,13 +31,7 @@
         <div id="col_left">
 			<span id="bgleft_topo"></span>
             <div id="col_leftConteudo">
-            	<h3 id="titulo_perfil"><span class="none" style="FONT-SIZE: small;">Perfil do Usuário</span></h3>
-                <div id="perfil">
-                    <ul id="dadosperfil">
-                    	<li class="strong">Nome:</li>
-                         <li><h:outputText value="#{sessionScope.usuario.login}" /></li>
-                    </ul>
-                </div>	
+            	<ui:include src="/WEB-INF/template/informacaoLogin.xhtml" />
             	<h3 id="titulo_moduloadmin"><span class="none">Perfil do Usuário</span></h3>
                  <ui:include src="/WEB-INF/template/template-menu-cond.xhtml" />                            
               </div>
@@ -52,7 +46,7 @@
         		<h2 id="titulos_internos"> <h:outputText value="&#187;" /> <ui:insert name="tituloGrande"></ui:insert></h2>                               
                 <h4> <ui:insert name="subtitulo"></ui:insert> </h4>
                 <br />
-                <h:messages></h:messages>
+                <h:messages id="mensagens"></h:messages>
                 <ui:insert name="conteudo" > </ui:insert>                     	
                <div id="infogerais" class="grid">
               	 <p id="info_titulo">  <ui:insert name="tituloLista"> </ui:insert> </p>

@@ -9,18 +9,10 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import br.com.cond.businesslogic.AgendaDependencia;
-import br.com.cond.businesslogic.AgendaFinalidade;
-import br.com.cond.businesslogic.Condomino;
-import br.com.cond.businesslogic.Dependencia;
 import br.com.siaic.dao.FabricaConexao;
 
 public class AgendaDependenciaDAO {
