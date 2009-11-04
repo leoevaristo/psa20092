@@ -18,7 +18,7 @@ public class ConsultaImovelBean {
 		new ImovelDAO().getImovel(this.getCodigoImovelParametroGET()).excluir();
 		return "";
 	}
-	
+
 	private int getCodigoImovelParametroGET() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest req = (HttpServletRequest) context
@@ -30,9 +30,4 @@ public class ConsultaImovelBean {
 			return -1;
 	}
 	
-	public String alteraImovel() {
-		//this. = this.getCodigoImovelParametroGET();
-		return "altera";
-	}
-
 }
