@@ -902,7 +902,6 @@
   <navigation-case>
    <from-outcome>altera</from-outcome>
    <to-view-id>/paginas/corretor/imoveis/altera_imovel.xhtml</to-view-id>
-   <redirect/>
   </navigation-case>
  </navigation-rule>
  <application>

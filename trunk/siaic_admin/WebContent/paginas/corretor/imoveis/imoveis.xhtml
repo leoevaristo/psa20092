@@ -1,20 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:a4j="http://richfaces.org/a4j">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
 
-	<ui:composition template="/WEB-INF/template/template-corretor.xhtml">
-      <ui:define name="conteudo">
-        <h:form styleClass="forms">
-          <h:panelGroup id="teste">
-            <h:outputLabel value="Teste" />
-            <h:inputText value="teste" />
-          </h:panelGroup>
-        </h:form>
-      </ui:define>
-	</ui:composition>
+<ui:composition template="/WEB-INF/template/template-corretor.xhtml">
+
+	<ui:define name="tituloGrande">
+		<h:outputText value="Imóveis" />
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="Menu" />
+	</ui:define>
+	<ui:define name="conteudo">
+
+		<ul>
+			<li>
+			  <a href="#{request.contextPath}/paginas/corretor/imoveis/consulta_imoveis.xhtml">Consultar Imóveis</a>
+			</li>
+			<li>
+			  <a href="#{request.contextPath}/paginas/corretor/imoveis/cadastra_imovel.xhtml">Cadastrar Imóvel</a>
+			</li>
+			<li>
+			  <a href="#{request.contextPath}/paginas/corretor/imoveis/reserva_imovel.xhtml">Reservar Imóvel</a>
+			</li>
+		</ul>
+
+	</ui:define>
+</ui:composition>
 
 </html>

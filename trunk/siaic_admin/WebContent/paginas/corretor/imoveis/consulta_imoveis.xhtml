@@ -7,7 +7,7 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a4j="http://richfaces.org/a4j">
 
-  <ui:composition template="/WEB-INF/template/template-cond.xhtml">
+  <ui:composition template="/WEB-INF/template/template-corretor.xhtml">
 
 	<ui:define name="tituloGrande">
 		<h:outputText value="Imóveis" />
@@ -52,7 +52,7 @@
 					<h:form id="alteraImovel">
 						<h:commandLink action="altera">
 							<h:graphicImage value="/images/imgedit.png" />
-							<f:param value="#{imo.codigo}" name="codigoImovel" />
+							<f:setPropertyActionListener target="#{alteraImovelBean.imovelRequest}" value="#{imo}" />
 						</h:commandLink>
 					</h:form>
 				</h:column>
