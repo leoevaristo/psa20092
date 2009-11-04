@@ -35,44 +35,16 @@ public class AlteraImovelBean extends ImovelBaseBean {
 		}
 	}
 	
-//	public void consultaImovel2() {
-//		int cod = consultaCodigoImovel;
-//		if (cod != -1) {
-//			this.imovel = Imovel.getImovel(cod);
-//			try {
-//				this.imoCar = ImovelCaracteristicaDAO.getInstance()
-//						.getImovelCaracteristica(
-//								this.imovel.getCaracteristica());
-//				this.prop = new ClienteDAO().getClientePorId(this.imovel
-//						.getProprietario());
-//				this.imoFin = new ImovelFinalidadeDAO()
-//						.getImovelFinalidade(this.imovel.getFinalidade());
-//				EnderecoDAO edao = new EnderecoDAO();
-//				this.endereco = edao.getEnderecoPorCodigo(this.imovel
-//						.getEndereco());
-//
-//				this.bairro = edao.getBairroPorCodigo(this.endereco
-//						.getEnderecoBairro().getBairroCodigo());
-//				this.cidade = edao.getCidadePorCodigo(this.bairro
-//						.getBairroCidade());
-//				this.estado = edao.getEstadoPorSigla(this.cidade
-//						.getCidadeEstado());
-//
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//	}
-	
-	private int getCodigoImovelParametroGET() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest req = (HttpServletRequest) context
-				.getExternalContext().getRequest();
-		String aff = req.getParameter("codigoImovel");
-		if (aff != null)
-			return new Integer(aff).intValue();
-		else
-			return -1;
+	public void setImovelRequest(Imovel imovel) throws SQLException {
+		this.setImovel(imovel);
+		this.setImovelCaracteristica(ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(this.getImovel().getCaracteristica()));
+		this.setImovelProprietario(new ClienteDAO().getClientePorId(this.getImovel().getProprietario()));
+		this.setImovelFinalidade(new ImovelFinalidadeDAO().getImovelFinalidade(this.getImovel().getFinalidade()));
+		EnderecoDAO edao = new EnderecoDAO();
+		this.setImovelEndereco(edao.getEnderecoPorCodigo(this.getImovel().getEndereco()));
+		this.setBairro(edao.getBairroPorCodigo(this.getImovelEndereco().getEnderecoBairro().getBairroCodigo()));
+		this.setCidade(edao.getCidadePorCodigo(this.getBairro().getBairroCidade()));
+		this.setEstado(edao.getEstadoPorSigla(this.getCidade().getCidadeEstado()));
 	}
 	
 }
