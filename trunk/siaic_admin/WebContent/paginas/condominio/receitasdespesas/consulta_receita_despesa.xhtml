@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="tituloGrande">
+		<h:outputText value="Receitas e Despesas" />
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="Consulta Geral" />
+	</ui:define>
+
+    <ui:define name="tituloLista">
+			<h:outputText value="Receitas e Despesas" />
+		</ui:define>
+
+	<ui:define name="infoGerais">
+		
+		<h:panelGroup styleClass="textcenter">
+
+			<h:dataTable styleClass="grid" headerClass="thead" rowClasses="cor1,cor2" 
+				value="#{ListaReceitasDespesas" var="recdep">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Condômino" />
+					</f:facet>
+					<h:outputText value="teste" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Tipo RD" />
+					</f:facet>
+					<h:outputText value="teste" />
+				</h:column>
+			</h:dataTable>
+		</h:panelGroup>
+	</ui:define>
+
+	<ui:define name="rodape">
+	</ui:define>
+</ui:composition>
+
+</html>
