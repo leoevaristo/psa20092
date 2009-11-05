@@ -85,27 +85,26 @@
           
 			<h:panelGroup id="panelNomeEstado">
 				<h:outputLabel for="campoEstado" value="Estado" />
-				  <a4j:region>	
+				  <a4j:region>
 					<h:selectOneMenu value="#{alteraImovelBean.estado.estadoSigla}"
-						id="campoEstado"
-						valueChangeListener="#{alteraImovelBean.filtraCidadePorEstado}">
+						id="campoEstado">
 						<f:selectItem itemValue="" itemLabel="Estado" />
 						<f:selectItems value="#{selectEstados.estados}" />
-						<a4j:support event="onchange" reRender="campoCidade" />
 					</h:selectOneMenu>
-				  </a4j:region>	
+				  </a4j:region>
 			</h:panelGroup>
 			
 			<h:panelGroup id="panelNomeCidade">
 				<h:outputLabel for="campoCidade" value="Cidade" />
 				<a4j:region>
-					<h:selectOneMenu
+					<h:selectOneMenu values="#{alteraImovelBean.bairro.bairroCidade}"
 						id="campoCidade">
 						<f:selectItem itemValue="" itemLabel="Cidade" />
 						<f:selectItems value="#{selectCidades.cidades}" />
 					</h:selectOneMenu>
 				</a4j:region>
 			</h:panelGroup>
+			
 			<h:panelGroup id="panelBairro">
 				<h:outputLabel for="campoBairro" value="Bairro" />
 				<h:selectOneMenu
@@ -115,6 +114,7 @@
 					<f:selectItems value="#{selectBairros.bairros}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
+			
 			<h:panelGroup id="panelLogradouro">
 				<h:outputLabel for="campoLogradouro" value="Logradouro" />
 				<h:selectOneMenu
