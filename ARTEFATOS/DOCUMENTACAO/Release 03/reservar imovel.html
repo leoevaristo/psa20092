@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Modelo Formulário</title>
+<link href="css/layout.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<form class="cadastro">
+<fieldset>
+<legend>Reservar Imóvel</legend>
+    <span class="linhaForm"><label for="texto" class="lab">Código do Cliente</label><input id="texto" name="texto" class="inp" type="text" /></span>
+    <span class="linhaForm">
+    <span class="linhaForm"><label for="texto" class="lab">Código do Imóvel</label><input id="texto" name="texto" class="inp" type="text" /></span>
+    <span class="linhaForm">
+        <label for="opcoes" class="lab">Tempo da Reserva</label>
+        <select id="opcoes" class="selec" name="opcoes">
+            <option value="opcao1" >12h</option>
+            <option value="opcao2" >48h</option>
+            <option value="opcao3" >72h</option>
+        </select>
+    </span>
+</fieldset>
+	<span class="botoes"><input id="enviar" name="enviar" type="submit" value="Enviar Dados" /><input id="enviar" name="limpar" type="reset" value="Limpar Formulário" /></span>
+</form>
+</body>
+</html>
