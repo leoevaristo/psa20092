@@ -918,8 +918,25 @@
  <PROCESS-ITEM
   NAME="rules:#paginas#corretor#imoveis#altera_imovel.xhtml"
   PATH="/paginas/corretor/imoveis/altera_imovel.xhtml"
-  SHAPE="256,705,0,0" model-entity="JSFProcessGroup"/>
+  SHAPE="256,705,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#corretor#imoveis#altera_imovel.xhtml:0"
+   NAME="item" PATH="/paginas/corretor/imoveis/altera_imovel.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="altera::#paginas#corretor#imoveis#consulta_imoveis.xhtml"
+    NAME="output"
+    PATH="/paginas/corretor/imoveis/consulta_imoveis.xhtml"
+    TARGET="rules:#paginas#corretor#imoveis#consulta_imoveis.xhtml"
+    TITLE="altera" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="erro::#paginas#corretor#imoveis#imoveis.xhtml" NAME="output1"
+    PATH="/paginas/corretor/imoveis/imoveis.xhtml"
+    TARGET="rules:#paginas#corretor#imoveis#imoveis.xhtml" TITLE="erro" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#paginas#perfil_cliente#perfil_cliente.xhtml"
   PATH="/paginas/perfil_cliente/perfil_cliente.xhtml"
   SHAPE="256,2225,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#corretor#imoveis#imoveis.xhtml"
+  PATH="/paginas/corretor/imoveis/imoveis.xhtml" SHAPE="496,913,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

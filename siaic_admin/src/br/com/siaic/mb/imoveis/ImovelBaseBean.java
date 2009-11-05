@@ -26,6 +26,22 @@ public class ImovelBaseBean {
 
 		if (logradouros.isEmpty())
 			setLogradouro();
+		
+		if (listaClientes.isEmpty()) {
+			try {
+				setClientes();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if (listaCaracteristica.isEmpty()) {
+			try {
+				setCaracteristicas();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	private Imovel imovel;
@@ -202,6 +218,28 @@ public class ImovelBaseBean {
 		logradouros.add(new SelectItem("Travessa", "Travessa"));
 		logradouros.add(new SelectItem("Alameda", "Alameda"));
 		logradouros.add(new SelectItem("Parque", "Parque"));
+
+	}
+	
+	public void setClientes() throws SQLException {
+		ClienteDAO dc = new ClienteDAO();
+		List<Cliente> lc = dc.getTodosClientes();
+		if (lc != null) {
+			for (Cliente cli : lc) {
+				listaClientes.add(new SelectItem(cli.getCodigoPessoa(), cli
+						.getNome()));
+			}
+		}
+	}
+	
+	public void setCaracteristicas() throws SQLException {
+
+		List<ImovelCaracteristica> lc = ImovelCaracteristicaDAO.getInstance()
+				.getImovelCaracteristicaList();
+
+		for (ImovelCaracteristica car : lc) {
+			listaCaracteristica.add(new SelectItem(car.getCodigo(), car.toString()));
+		}
 
 	}
 	
