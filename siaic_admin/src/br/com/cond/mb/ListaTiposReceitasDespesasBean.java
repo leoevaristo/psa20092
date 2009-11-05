@@ -20,7 +20,7 @@ import br.com.cond.dao.ReceitasDespesasTiposDAO;
  */
 public class ListaTiposReceitasDespesasBean {
 	
-private static List<SelectItem> receitasdespesas = new ArrayList<SelectItem>();
+    private static List<SelectItem> receitasdespesas = new ArrayList<SelectItem>();
 	
 	public ListaTiposReceitasDespesasBean() throws Exception {
 		
