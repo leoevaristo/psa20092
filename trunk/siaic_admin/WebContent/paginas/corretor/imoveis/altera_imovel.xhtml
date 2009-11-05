@@ -17,7 +17,7 @@
 	</ui:define>
 
 	<ui:define name="conteudo">
-		<h:form styleClass="forms">
+		<a4j:form styleClass="forms">
 			<h:panelGroup id="codigo">
 				<h:outputLabel value="Código:" />
 				<h:outputText value="#{alteraImovelBean.imovel.codigo}" />
@@ -81,26 +81,30 @@
 				<h:outputLabel value="Detalhes:" />
 				<h:inputTextarea value="#{alteraImovelBean.imovel.detalhe}" rows="5" />
 			</h:panelGroup>
-
+            
+          
 			<h:panelGroup id="panelNomeEstado">
 				<h:outputLabel for="campoEstado" value="Estado" />
-				<h:selectOneMenu value="#{alteraImovelBean.estado.estadoSigla}"
-					id="campoEstado" onchange="submit()" immediate="true"
-					valueChangeListener="#{alteraImovelBean.filtraCidadePorEstado}">
-					<f:selectItem itemValue="" itemLabel="Estado" />
-					<f:selectItems value="#{selectEstados.estados}" />
-				</h:selectOneMenu>
+				  <a4j:region>	
+					<h:selectOneMenu value="#{alteraImovelBean.estado.estadoSigla}"
+						id="campoEstado"
+						valueChangeListener="#{alteraImovelBean.filtraCidadePorEstado}">
+						<f:selectItem itemValue="" itemLabel="Estado" />
+						<f:selectItems value="#{selectEstados.estados}" />
+						<a4j:support event="onchange" reRender="campoCidade" />
+					</h:selectOneMenu>
+				  </a4j:region>	
 			</h:panelGroup>
+			
 			<h:panelGroup id="panelNomeCidade">
 				<h:outputLabel for="campoCidade" value="Cidade" />
-				<h:selectOneMenu
-					value="#{alteraImovelBean.imovelEndereco.enderecoBairro.bairroCidade}"
-					id="campoCidade"
-					valueChangeListener="#{alteraImovelBean.filtraBairroPorCidade}">
-					<f:selectItem itemValue="" itemLabel="Cidade" />
-					<f:selectItems value="#{selectCidades.cidades}" />
-					<a4j:support event="onchange" reRender="campoBairro" ajaxSingle="true" />
-				</h:selectOneMenu>
+				<a4j:region>
+					<h:selectOneMenu
+						id="campoCidade">
+						<f:selectItem itemValue="" itemLabel="Cidade" />
+						<f:selectItems value="#{selectCidades.cidades}" />
+					</h:selectOneMenu>
+				</a4j:region>
 			</h:panelGroup>
 			<h:panelGroup id="panelBairro">
 				<h:outputLabel for="campoBairro" value="Bairro" />
@@ -144,7 +148,7 @@
 					styleClass="input_button" immediate="true" />
 			</h:panelGroup>
 
-		</h:form>
+		</a4j:form>
 	</ui:define>
 </ui:composition>
 

@@ -15,7 +15,10 @@ import br.com.siaic.businesslogic.endereco.Bairro;
 import br.com.siaic.businesslogic.endereco.Cidade;
 import br.com.siaic.businesslogic.endereco.Endereco;
 import br.com.siaic.businesslogic.endereco.Estado;
+import br.com.siaic.dao.ClienteDAO;
 import br.com.siaic.dao.EnderecoDAO;
+import br.com.siaic.dao.ImovelCaracteristicaDAO;
+import br.com.siaic.dao.ImovelFinalidadeDAO;
 
 public class ImovelBaseBean {
 
@@ -200,6 +203,18 @@ public class ImovelBaseBean {
 		logradouros.add(new SelectItem("Alameda", "Alameda"));
 		logradouros.add(new SelectItem("Parque", "Parque"));
 
+	}
+	
+	public void setImovelRequest(Imovel imovel) throws SQLException {
+		this.setImovel(imovel);
+		this.setImovelCaracteristica(ImovelCaracteristicaDAO.getInstance().getImovelCaracteristica(this.getImovel().getCaracteristica()));
+		this.setImovelProprietario(new ClienteDAO().getClientePorId(this.getImovel().getProprietario()));
+		this.setImovelFinalidade(new ImovelFinalidadeDAO().getImovelFinalidade(this.getImovel().getFinalidade()));
+		EnderecoDAO edao = new EnderecoDAO();
+		this.setImovelEndereco(edao.getEnderecoPorCodigo(this.getImovel().getEndereco()));
+		this.setBairro(edao.getBairroPorCodigo(this.getImovelEndereco().getEnderecoBairro().getBairroCodigo()));
+		this.setCidade(edao.getCidadePorCodigo(this.getBairro().getBairroCidade()));
+		this.setEstado(edao.getEstadoPorSigla(this.getCidade().getCidadeEstado()));
 	}
 
 }
