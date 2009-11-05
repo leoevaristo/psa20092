@@ -10,10 +10,10 @@
 	<ui:define name="conteudo">
 	<h:form styleClass="forms">
 		<h:panelGroup id="panelNomeTipoReceitaDespesa">
-			<h:outputLabel for="tipoRD" value="Tipo de Receita/Despesa:" />
+			<h:outputLabel for="tipoRD" value="Receita/Despesa:" />
 			<h:selectOneMenu value="#{ReceitasDespesas.rd.tipoRD.codigo}" id="cmbTipoRD" required="true">
 				<f:selectItem itemValue="" itemLabel="Selecione"/>
-				<f:selectItems value="#{ListaTipoReceitasDespesas.receitasDespesas}"></f:selectItems>
+				<f:selectItems value="#{ListaTipos.receitasDespesas}"></f:selectItems>
 			</h:selectOneMenu>						
 		</h:panelGroup>
 		<h:panelGroup id="panelValor">
@@ -28,13 +28,13 @@
 				<f:selectItem itemValue="D" itemLabel="Despesa" />
 			</h:selectOneMenu>						
 		</h:panelGroup>
-		<h:panelGroup>
+		<h:panelGroup id="pnlData">
 			<h:outputLabel for="data" value="Data:"/>
 			<h:inputText id="edtData" value="#{ReceitasDespesas.rd.data}" /> 
 		</h:panelGroup>
-		<h:panelGroup>
+		<h:panelGroup id="pnlCondomino">
 			<h:outputLabel value="Codomino:" />
-			<h:selectOneMenu value="#{ReceitasDespesas.rd.condominio.codigo}">
+			<h:selectOneMenu value="#{ReceitasDespesas}">
 			    <f:selectItem itemValue="" itemLabel="Selecione"/>
 				<f:selectItems value="#{condominoBean.condominosList}"></f:selectItems>
 			</h:selectOneMenu>
