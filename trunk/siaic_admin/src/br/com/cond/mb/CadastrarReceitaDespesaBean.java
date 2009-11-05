@@ -22,6 +22,7 @@ public class CadastrarReceitaDespesaBean {
 	private ReceitaDespesa rd = null;
 	private ReceitaDespesaTipos rdt = null;
 	
+	
 	public ReceitaDespesaTipos getRdt() {
 		return rdt;
 	}
@@ -30,9 +31,11 @@ public class CadastrarReceitaDespesaBean {
 		this.rdt = rdt;
 	}
 
-	public CadastrarReceitaDespesaBean() {
+	public CadastrarReceitaDespesaBean() throws Exception {
+		
 		this.rd = new ReceitaDespesa();
 	}
+
 
 	public ReceitaDespesa getRd() {
 		return rd;
