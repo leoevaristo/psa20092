@@ -12,28 +12,24 @@
 		<script
 			src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=#{gmapBean.key}"
 			type="text/javascript">
-
 </script>
 	</ui:define>
 	<ui:define name="conteudo">
 		<rich:panel header="Localizar Imóveis">
 			<h:form>
 				<h:inputText value="#{gmapBean.lugar}" />
-				<h:commandButton action="#"/>
+				<h:commandButton action="#{gmapBean.transformaEndereco}" />
 			</h:form>
-			
-			<m:map width="500px" height="500px" address="#{gmapBean.lugar}" zoom="13" id="mapa" >
+			<!-- <m:map width="500px" height="500px" address="#{gmapBean.lugar}"	zoom="13" id="mapa">
 				<ui:repeat var="imovel" value="#{consultaImovelBean.todosImoveis}">
-				<m:marker address="João pessoa">
-					<m:icon imageURL="#{request.contextPath}/images/home.png" height="24" width="24" />
-					<m:htmlInformationWindow htmlText="#{imovel.detalhe}" />
-				</m:marker>		
-			</ui:repeat>
-			</m:map>
-
+					<m:marker address="João pessoa">
+						<m:icon imageURL="#{request.contextPath}/images/home.png" height="24" width="24" />
+						<m:htmlInformationWindow htmlText="#{imovel.detalhe}" />
+					</m:marker>
+				</ui:repeat>
+			</m:map> -->
+			<h:outputText value="#{gmapBean.dadosEndereco}" />
 		</rich:panel>
 	</ui:define>
-
 </ui:composition>
-
 </html>
