@@ -79,6 +79,7 @@ public class TaxasCondominioBean {
 			}
 		}
 		destroiSessao();
+		limparForm();
 		return "sucesso";
 		
 	}
@@ -89,6 +90,11 @@ public class TaxasCondominioBean {
 	public void destroiSessao(){		
 		FacesContext contexto = FacesContext.getCurrentInstance();
 		contexto.getExternalContext().getSessionMap().remove("taxasCondominioBean");		
+	}
+	
+	public void limparForm(){
+		apartamento = new Apartamento();
+		taxasCondominio = new TaxasCondominio();
 	}
 	
 	
