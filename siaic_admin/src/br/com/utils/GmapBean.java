@@ -1,9 +1,7 @@
 package br.com.utils;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class GmapBean {
@@ -83,6 +81,7 @@ public class GmapBean {
 
 		String endereco = getUrl() + "&q=" + getLugar().replace(" ", "+") + "&output=csv&oe=utf8&sensor=false" + getKey();
 		String resultado = "";
+		String dados[];
 		try {
 			URL url = new URL(endereco);
 			InputStreamReader isr;
@@ -98,6 +97,10 @@ public class GmapBean {
 		}
 		
 		setDadosEndereco(resultado);
+		dados = resultado.split(",");	
+		setLatitude(dados[2]);
+		setLongitude(dados[3]);
+		
 		
 	}
 

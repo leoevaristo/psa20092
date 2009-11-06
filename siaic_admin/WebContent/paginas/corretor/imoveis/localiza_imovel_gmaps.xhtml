@@ -20,14 +20,14 @@
 				<h:inputText value="#{gmapBean.lugar}" />
 				<h:commandButton action="#{gmapBean.transformaEndereco}" />
 			</h:form>
-			<!-- <m:map width="500px" height="500px" address="#{gmapBean.lugar}"	zoom="13" id="mapa">
-				<ui:repeat var="imovel" value="#{consultaImovelBean.todosImoveis}">
-					<m:marker address="João pessoa">
+			 <m:map width="500px" height="500px" latitude="#{gmapBean.latitude}" longitude="#{gmapBean.longitude}" zoom="13" id="mapa">
+				<!--  <ui:repeat var="imovel" value="#{consultaImovelBean.todosImoveis}">-->
+					<m:marker  latitude="#{gmapBean.latitude}" longitude="#{gmapBean.longitude}">
 						<m:icon imageURL="#{request.contextPath}/images/home.png" height="24" width="24" />
-						<m:htmlInformationWindow htmlText="#{imovel.detalhe}" />
+						<m:htmlInformationWindow  htmlText="" />
 					</m:marker>
-				</ui:repeat>
-			</m:map> -->
+				<!-- </ui:repeat> -->
+			</m:map> 
 			<h:outputText value="#{gmapBean.dadosEndereco}" />
 		</rich:panel>
 	</ui:define>
