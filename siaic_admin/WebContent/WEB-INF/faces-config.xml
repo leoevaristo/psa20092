@@ -278,7 +278,6 @@
   <managed-bean-class>br.com.siaic.mb.imoveis.ConsultaImovelBean</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
-<<<<<<< .mine
  <managed-bean>
   <managed-bean-name>calendarDataModel</managed-bean-name>
   <managed-bean-class>org.richfaces.demo.calendar.CalendarDataModelImpl</managed-bean-class>
@@ -300,7 +299,11 @@
   <managed-bean-class>br.com.cond.mb.CadastrarReceitaDespesaBean</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
-=======
+ <managed-bean>
+  <managed-bean-name>gmapBean</managed-bean-name>
+  <managed-bean-class>br.com.utils.GmapBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
  <!-- 
  <navigation-rule>
   <from-view-id>*</from-view-id>
@@ -339,7 +342,6 @@
   </navigation-case> 
  </navigation-rule>
 -->
->>>>>>> .r889
  <navigation-rule>
   <from-view-id>*</from-view-id>
   <navigation-case>
