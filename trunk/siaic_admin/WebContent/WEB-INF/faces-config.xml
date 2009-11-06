@@ -372,8 +372,6 @@
    <to-view-id>/paginas/modulos.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
- <!--
->>>>>>> .r878
  <navigation-rule>
   <from-view-id>/paginas/cliente/cadastra_cliente.xhtml</from-view-id>
   <navigation-case>
@@ -590,19 +588,12 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <from-view-id>/paginas/valoresMercado/consulta_valor_mercado.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>cancelarconsulta</from-outcome>
-   <to-view-id>/paginas/valoresMercado/valorMercado.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
   <from-view-id>/paginas/acesso.xhtml</from-view-id>
   <navigation-case>
    <from-outcome>sucesso</from-outcome>
    <to-view-id>/paginas/modulos.xhtml</to-view-id>
   </navigation-case>
- </navigation-rule>-->
+ </navigation-rule>
  <navigation-rule>
   <from-view-id>/paginas/agenda/consulta_agenda.xhtml</from-view-id>
   <navigation-case>
