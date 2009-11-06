@@ -152,12 +152,12 @@ public class UsuarioDAO {
 			listaTodosUsuarios.add(usuario);
 
 		}
+		
 		conexao.close();
 
 		return listaTodosUsuarios;
 
 	}
-	
 	
 	
 	public List<Usuario> getUsuarioPeloNome(String nome) throws SQLException {
