@@ -163,13 +163,9 @@ public class InfracaoDAO {
 	public boolean alterarInfracao(Infracao infracao) throws SQLException {
 
 		boolean retorno = false; 
-		String sql =    "UPDATE " + 
-							"ADMCON_INFRACAO " + 
-						"SET " +
-							"INF_CODIGO = ?, " + 
-							  "INF_DESCRICAO = ? " +
-						"WHERE " +
-							"INF_CODIGO = ? ";
+		String sql =   "UPDATE admcon_infracao SET INF_DESCRICAO = ?," +  "WHERE INF_CODIGO = ?;";
+		
+		
 		try {
 			
 			FabricaConexao.getInstancia();
@@ -178,7 +174,7 @@ public class InfracaoDAO {
 			
 			ps.setInt(1, infracao.getCodigoInfracao());
 			ps.setString(2, infracao.getDescricaoInfracao());
-			ps.setInt(3, infracao.getCodigoInfracao());
+			
 			ps.executeUpdate();
 			ps.close();
 			conexao.close();

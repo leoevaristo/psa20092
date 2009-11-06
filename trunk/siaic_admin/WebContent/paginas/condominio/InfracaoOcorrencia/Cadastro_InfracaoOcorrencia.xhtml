@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+		<ui:composition template="/WEB-INF/template/template-cond.xhtml">
+		
+         <ui:define name="tituloGrande"> 
+			<h:outputText value="Infracao Ocorrencias" />
+		 </ui:define>		
+		 <ui:define name="subtitulo">  
+			<h:outputText value="Associar Infracoes a Apartamentos" />
+		 </ui:define>
+		 <ui:define name="conteudo">
+		   <h:form styleClass="forms">
+			     
+		     
+		     <h:panelGroup id="infracao">
+		      <h:outputLabel for= "infracao" value="Infracao" />
+				<h:selectOneMenu value="${infracaoOcorrenciaBean.infracao.codigoInfracao}" id="infracao">
+		         <f:selectItems value="${infracaoOcorrenciaBean.infracao}" />
+		         	       
+							  </h:panelGroup>
+		     </h:panelGroup>
+		     
+		      <h:panelGroup id="apartamento">
+		       <h:outputLabel value="Apartamento" />
+		       <h:selectOneMenu value="${infracaoOcorrenciaBean.apartamento.codigoApartamento}" id="apart">
+		         <f:selectItems value="${infracaoOcorrenciaBean.apartamentos}" />
+		       </h:selectOneMenu>
+		     </h:panelGroup>
+		     
+		     <h:panelGroup styleClass="linha"></h:panelGroup>
+		     
+		     <h:panelGroup styleClass="botoes">
+		     
+		       <h:commandButton action="#{infracaoOcorrenciaBean.addInfracao}" value="" styleClass="input_submit"/>
+			  
+			   <h:commandButton action="#{infracaoOcorrenciaBean.voltar}" value="" styleClass="input_button" immediate="true" />
+			 </h:panelGroup>
+		     
+		   </h:form>
+		 </ui:define>
+		 
+		 <ui:define name="rodape"></ui:define>
+		 
+	</ui:composition>
+
+</html>
