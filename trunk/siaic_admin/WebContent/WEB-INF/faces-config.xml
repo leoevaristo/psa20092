@@ -960,7 +960,6 @@
   <navigation-case>
    <from-outcome>detalhe</from-outcome>
    <to-view-id>/paginas/imovel/detalhes_imovel.xhtml</to-view-id>
-   <redirect/>
   </navigation-case>
   <navigation-case>
    <from-outcome>altera</from-outcome>

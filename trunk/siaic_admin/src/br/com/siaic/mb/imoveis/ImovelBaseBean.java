@@ -24,6 +24,15 @@ public class ImovelBaseBean {
 
 	public ImovelBaseBean() {
 
+		this.imovel = new Imovel();
+		this.imovelCaracteristica = new ImovelCaracteristica();
+		this.imovelFinalidade = new ImovelFinalidade();
+		this.imovelProprietario = new Cliente();
+		this.imovelEndereco = new Endereco();
+		this.bairro = new Bairro();
+		this.cidade = new Cidade();
+		this.estado = new Estado();
+		
 		if (logradouros.isEmpty())
 			setLogradouro();
 		

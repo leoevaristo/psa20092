@@ -31,14 +31,16 @@
 
 			<h:panelGroup id="proprietario">
 				<h:outputLabel value="Proprietário:" />
-				<h:selectOneMenu value="#{alteraImovelBean.imovel.proprietario}" id="prop">
+				<h:selectOneMenu value="#{alteraImovelBean.imovel.proprietario}"
+					id="prop">
 					<f:selectItems value="#{alteraImovelBean.listaClientes}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 
 			<h:panelGroup id="caracbasica">
 				<h:outputLabel value="Caracteristicas Básicas:" />
-				<h:selectOneMenu value="#{alteraImovelBean.imovel.caracteristica}" id="carac">
+				<h:selectOneMenu value="#{alteraImovelBean.imovel.caracteristica}"
+					id="carac">
 					<f:selectItems value="#{alteraImovelBean.listaCaracteristica}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
@@ -65,8 +67,8 @@
 
 			<h:panelGroup id="valcond">
 				<h:outputLabel value="Valor Condominio:" />
-				<h:inputText value="#{alteraImovelBean.imovel.valorCondominio}" size="10"
-					maxlength="8">
+				<h:inputText value="#{alteraImovelBean.imovel.valorCondominio}"
+					size="10" maxlength="8">
 					<f:convertNumber currencySymbol="R$" type="currency" />
 				</h:inputText>
 			</h:panelGroup>
@@ -81,19 +83,19 @@
 				<h:outputLabel value="Detalhes:" />
 				<h:inputTextarea value="#{alteraImovelBean.imovel.detalhe}" rows="5" />
 			</h:panelGroup>
-            
-          
+
+
 			<h:panelGroup id="panelNomeEstado">
 				<h:outputLabel for="campoEstado" value="Estado" />
-				  <a4j:region>
+				<a4j:region>
 					<h:selectOneMenu value="#{alteraImovelBean.estado.estadoSigla}"
 						id="campoEstado">
 						<f:selectItem itemValue="" itemLabel="Estado" />
 						<f:selectItems value="#{selectEstados.estados}" />
 					</h:selectOneMenu>
-				  </a4j:region>
+				</a4j:region>
 			</h:panelGroup>
-			
+
 			<h:panelGroup id="panelNomeCidade">
 				<h:outputLabel for="campoCidade" value="Cidade" />
 				<a4j:region>
@@ -104,7 +106,7 @@
 					</h:selectOneMenu>
 				</a4j:region>
 			</h:panelGroup>
-			
+
 			<h:panelGroup id="panelBairro">
 				<h:outputLabel for="campoBairro" value="Bairro" />
 				<h:selectOneMenu
@@ -114,7 +116,7 @@
 					<f:selectItems value="#{selectBairros.bairros}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
-			
+
 			<h:panelGroup id="panelLogradouro">
 				<h:outputLabel for="campoLogradouro" value="Logradouro" />
 				<h:selectOneMenu
@@ -142,12 +144,13 @@
 			<h:panelGroup styleClass="linha"></h:panelGroup>
 
 			<h:panelGroup styleClass="botoes">
-				<h:commandButton action="#{alteraImovelBean.atualizaImovel}" value=""
-					styleClass="input_submit" />
-				<h:commandButton action="voltar" value=""
-					styleClass="input_button" immediate="true" />
+				<h:commandButton action="#{alteraImovelBean.atualizaImovel}"
+					value="" styleClass="input_submit">
+				</h:commandButton>
+				<h:commandButton action="voltar" value="" styleClass="input_button"
+					immediate="true" />
 			</h:panelGroup>
-
+            
 		</a4j:form>
 	</ui:define>
 </ui:composition>
