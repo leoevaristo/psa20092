@@ -1,14 +1,79 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:a4j="http://richfaces.org/a4j">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
 
-	<ui:composition template="/WEB-INF/template/template-corretor.xhtml">
+<ui:composition template="/WEB-INF/template/template-corretor.xhtml">
 
-	</ui:composition>
+	<ui:define name="tituloGrande">
+		<h:outputText value="Imóveis" />
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="Consulta de Imóveis" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+
+		<h:panelGrid columns="2" columnClasses="cor1,cor2" styleClass="panels">
+
+			<h:outputLabel for="campoProp" value="Proprietário:" />
+			<h:outputText value="#{alteraImovelBean.imovelProprietario.nome}"
+				id="campoProp" />
+
+			<h:outputLabel for="campoFin" value="Finalidade:" />
+			<h:outputText value="#{alteraImovelBean.imovelFinalidade.nome}"
+				id="campoFin" />
+
+			<h:outputLabel for="campoDen" value="Detalhes:" />
+			<h:outputText value="#{alteraImovelBean.imovel.detalhe}"
+				id="campoDen" />
+
+            <h:panelGrid columns="1" columnClasses="cor1" styleClass="panels">
+					<h:outputLabel for="campoCar" value="Caracteristicas" />
+		   </h:panelGrid>
+			<h:panelGrid columns="1" columnClasses="cor1" styleClass="panels">
+				<h:panelGrid columns="2" columnClasses="cor1,cor2"
+					styleClass="panels">
+					<h:outputText for="campoPis" value="Piscina:" />
+					<h:outputText
+						value="#{alteraImovelBean.imovelCaracteristica.piscina == 'S' ? 'Sim' : 'Não'}"
+						id="campoPis" />
+					<h:outputText for="campoDor" value="Quant. de Dormitórios:" />
+					<h:outputText
+						value="#{alteraImovelBean.imovelCaracteristica.qtdeDormitorio}"
+						id="campoDor" />
+					<h:outputText for="campoGar" value="Vagas de garagem:" />
+					<h:outputText
+						value="#{alteraImovelBean.imovelCaracteristica.qtdeGaragem}"
+						id="campoGar" />
+					<h:outputText for="campoSui" value="Suites:" />
+					<h:outputText
+						value="#{alteraImovelBean.imovelCaracteristica.qtdeSuite == 0 ? 'Não Possui' : alteraImovelBean.imovelCaracteristica.qtdeSuite}"
+						id="campoSui" />
+				</h:panelGrid>
+			</h:panelGrid>
+
+			<h:outputLabel for="campoPag" value="Forma de Pagamento:" />
+			<h:outputText value="#{alteraImovelBean.imovel.formaPagamento}"
+				id="campoPag" />
+
+			<h:outputLabel for="campoVal" value="Valor:" />
+			<h:outputText value="#{alteraImovelBean.imovel.valor}" id="campoVal">
+				<f:convertNumber currencySymbol="R$" type="currency" />
+			</h:outputText>
+
+		</h:panelGrid>
+
+		<h:panelGroup>
+			<h:outputLink value="consulta_imoveis.xhtml">
+				<h:outputText value="voltar para página de consulta" />
+			</h:outputLink>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
 
 </html>
