@@ -19,6 +19,7 @@ import br.com.siaic.dao.ClienteDAO;
 import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.ImovelCaracteristicaDAO;
 import br.com.siaic.dao.ImovelFinalidadeDAO;
+import br.com.siaic.mb.endereco.CidadeBean;
 
 public class ImovelBaseBean {
 
@@ -170,22 +171,29 @@ public class ImovelBaseBean {
 			throws SQLException {
 
 		if (event.getNewValue() != event.getOldValue()) {
-			List<Cidade> cid = new ArrayList<Cidade>();
-			EnderecoDAO dao = new EnderecoDAO();
-			cid = dao.getCidadePorEstado(event.getNewValue().toString());
-			setCidades(cid);
+			this.listaCidadePorEstado(event.getNewValue().toString());
 		}
+	}
+	
+	private void listaCidadePorEstado(String estado) throws SQLException {
+		List<Cidade> cid = new ArrayList<Cidade>();
+		EnderecoDAO dao = new EnderecoDAO();
+		cid = dao.getCidadePorEstado(estado);
+		setCidades(cid);
 	}
 
 	public void filtraBairroPorCidade(ValueChangeEvent event)
 			throws SQLException {
 		if (event.getNewValue() != event.getOldValue()) {
-			List<Bairro> listaBairros = new ArrayList<Bairro>();
-			EnderecoDAO daoEndereco = new EnderecoDAO();
-			listaBairros = daoEndereco.getBairroPorCidade(event.getNewValue()
-					.toString());
-			setBairros(listaBairros);
+			this.listaBairroPorCidade(event.getNewValue().toString());
 		}
+	}
+	
+	private void listaBairroPorCidade(String cidade) throws SQLException {
+		List<Bairro> listaBairros = new ArrayList<Bairro>();
+		EnderecoDAO daoEndereco = new EnderecoDAO();
+		listaBairros = daoEndereco.getBairroPorCidade(cidade);
+		setBairros(listaBairros);
 	}
 
 	public List<SelectItem> getCidades() {
@@ -262,6 +270,9 @@ public class ImovelBaseBean {
 		this.setBairro(edao.getBairroPorCodigo(this.getImovelEndereco().getEnderecoBairro().getBairroCodigo()));
 		this.setCidade(edao.getCidadePorCodigo(this.getBairro().getBairroCidade()));
 		this.setEstado(edao.getEstadoPorSigla(this.getCidade().getCidadeEstado()));
+		
+	    this.listaCidadePorEstado(this.estado.getEstadoSigla());
+	    this.listaBairroPorCidade(String.valueOf(this.cidade.getCidadeCodigo()));
 	}
 
 }

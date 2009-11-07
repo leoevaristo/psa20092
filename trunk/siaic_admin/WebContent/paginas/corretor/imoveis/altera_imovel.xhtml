@@ -88,10 +88,12 @@
 			<h:panelGroup id="panelNomeEstado">
 				<h:outputLabel for="campoEstado" value="Estado" />
 				<a4j:region>
-					<h:selectOneMenu value="#{alteraImovelBean.estado.estadoSigla}"
-						id="campoEstado">
+					<h:selectOneMenu value="#{alteraImovelBean.estado.estadoSigla}" 
+					    valueChangeListener="#{alteraImovelBean.filtraCidadePorEstado}"
+						id="campoEstado" >
 						<f:selectItem itemValue="" itemLabel="Estado" />
 						<f:selectItems value="#{selectEstados.estados}" />
+						<a4j:support event="onchange" reRender="campoCidade" />
 					</h:selectOneMenu>
 				</a4j:region>
 			</h:panelGroup>
@@ -100,21 +102,25 @@
 				<h:outputLabel for="campoCidade" value="Cidade" />
 				<a4j:region>
 					<h:selectOneMenu values="#{alteraImovelBean.bairro.bairroCidade}"
+					    valueChangeListener="#{alteraImovelBean.filtraBairroPorCidade}"
 						id="campoCidade">
 						<f:selectItem itemValue="" itemLabel="Cidade" />
-						<f:selectItems value="#{selectCidades.cidades}" />
+						<f:selectItems value="#{alteraImovelBean.cidades}" />
+						<a4j:support event="onchange" reRender="campoBairro" />
 					</h:selectOneMenu>
 				</a4j:region>
 			</h:panelGroup>
 
 			<h:panelGroup id="panelBairro">
 				<h:outputLabel for="campoBairro" value="Bairro" />
-				<h:selectOneMenu
-					value="#{alteraImovelBean.imovelEndereco.enderecoBairro.bairroCodigo}"
-					id="campoBairro">
-					<f:selectItem itemValue="" itemLabel="Bairro" />
-					<f:selectItems value="#{selectBairros.bairros}" />
-				</h:selectOneMenu>
+				<a4j:region>
+					<h:selectOneMenu
+						value="#{alteraImovelBean.imovelEndereco.enderecoBairro.bairroCodigo}"
+						id="campoBairro">
+						<f:selectItem itemValue="" itemLabel="Bairro" />
+						<f:selectItems value="#{alteraImovelBean.bairros}" />
+					</h:selectOneMenu>
+				</a4j:region>
 			</h:panelGroup>
 
 			<h:panelGroup id="panelLogradouro">
@@ -146,6 +152,7 @@
 			<h:panelGroup styleClass="botoes">
 				<h:commandButton action="#{alteraImovelBean.atualizaImovel}"
 					value="" styleClass="input_submit">
+					<f:setPropertyActionListener target="#{alteraImovelBean.imovelRequest}" value="#{alteraImovelBean.imovel}" />
 				</h:commandButton>
 				<h:commandButton action="voltar" value="" styleClass="input_button"
 					immediate="true" />

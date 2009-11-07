@@ -271,7 +271,7 @@
  <managed-bean>
   <managed-bean-name>alteraImovelBean</managed-bean-name>
   <managed-bean-class>br.com.siaic.mb.imoveis.AlteraImovelBean</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
   <managed-bean-name>consultaImovelBean</managed-bean-name>
