@@ -1,25 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:a4j="http://richfaces.org/a4j">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
 
-	<ui:composition template="/WEB-INF/template/template-corretor.xhtml">
-      <ui:define name="tituloGrande">
+<ui:composition template="/WEB-INF/template/template-corretor.xhtml">
+	<ui:define name="tituloGrande">
 		<h:outputText value="Imóveis" />
 	</ui:define>
 	<ui:define name="subtitulo">
-		<h:outputText value="Consulta de Imóveis" />
+		<h:outputText value="Cadastro de Imóvel" />
 	</ui:define>
 
 	<ui:define name="conteudo">
-		<h:form styleClass="forms">
-			<h:panelGroup id="codigo">
-				<h:outputLabel value="Código:" />
-				<h:outputText value="#{cadastraImovelBean.imovel.codigo}" />
-			</h:panelGroup>
+		<a4j:form styleClass="forms">
+<!--			<h:panelGroup id="codigo">-->
+<!--				<h:outputLabel value="Código:" />-->
+<!--				<h:outputText value="#{cadastraImovelBean.imovel.codigo}" />-->
+<!--			</h:panelGroup>-->
 
 			<h:panelGroup id="finalidade">
 				<h:outputLabel value="Finalidade:" />
@@ -29,14 +30,16 @@
 
 			<h:panelGroup id="proprietario">
 				<h:outputLabel value="Proprietário:" />
-				<h:selectOneMenu value="#{cadastraImovelBean.imovel.proprietario}" id="prop">
+				<h:selectOneMenu value="#{cadastraImovelBean.imovel.proprietario}"
+					id="prop">
 					<f:selectItems value="#{cadastraImovelBean.listaClientes}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
 
 			<h:panelGroup id="caracbasica">
 				<h:outputLabel value="Caracteristicas Básicas:" />
-				<h:selectOneMenu value="#{cadastraImovelBean.imovel.caracteristica}" id="carac">
+				<h:selectOneMenu value="#{cadastraImovelBean.imovel.caracteristica}"
+					id="carac">
 					<f:selectItems value="#{cadastraImovelBean.listaCaracteristica}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
@@ -63,8 +66,8 @@
 
 			<h:panelGroup id="valcond">
 				<h:outputLabel value="Valor Condominio:" />
-				<h:inputText value="#{cadastraImovelBean.imovel.valorCondominio}" size="10"
-					maxlength="8">
+				<h:inputText value="#{cadastraImovelBean.imovel.valorCondominio}"
+					size="10" maxlength="8">
 					<f:convertNumber currencySymbol="R$" type="currency" />
 				</h:inputText>
 			</h:panelGroup>
@@ -80,35 +83,45 @@
 				<h:inputTextarea value="#{cadastraImovelBean.imovel.detalhe}" rows="5" />
 			</h:panelGroup>
 
+
 			<h:panelGroup id="panelNomeEstado">
 				<h:outputLabel for="campoEstado" value="Estado" />
-				<h:selectOneMenu value="#{cadastraImovelBean.estado.estadoSigla}"
-					id="campoEstado" onchange="submit()" immediate="true"
-					valueChangeListener="#{cadastraImovelBean.filtraCidadePorEstado}">
-					<f:selectItem itemValue="" itemLabel="Estado" />
-					<f:selectItems value="#{selectEstados.estados}" />
-				</h:selectOneMenu>
+				<a4j:region>
+					<h:selectOneMenu value="#{cadastraImovelBean.estado.estadoSigla}"
+						valueChangeListener="#{cadastraImovelBean.filtraCidadePorEstado}"
+						id="campoEstado">
+						<f:selectItem itemValue="" itemLabel="Estado" />
+						<f:selectItems value="#{selectEstados.estados}" />
+						<a4j:support event="onchange" reRender="campoCidade" />
+					</h:selectOneMenu>
+				</a4j:region>
 			</h:panelGroup>
+
 			<h:panelGroup id="panelNomeCidade">
 				<h:outputLabel for="campoCidade" value="Cidade" />
-				<h:selectOneMenu
-					value="#{cadastraImovelBean.imovelEndereco.enderecoBairro.bairroCidade}"
-					id="campoCidade"
-					valueChangeListener="#{cadastraImovelBean.filtraBairroPorCidade}">
-					<f:selectItem itemValue="" itemLabel="Cidade" />
-					<f:selectItems value="#{selectCidades.cidades}" />
-					<a4j:support event="onchange" reRender="campoBairro" ajaxSingle="true" />
-				</h:selectOneMenu>
+				<a4j:region>
+					<h:selectOneMenu value="#{cadastraImovelBean.cidade.cidadeCodigo}"
+						valueChangeListener="#{cadastraImovelBean.filtraBairroPorCidade}"
+						id="campoCidade">
+						<f:selectItem itemValue="" itemLabel="Cidade" />
+						<f:selectItems value="#{cadastraImovelBean.cidades}" />
+						<a4j:support event="onchange" reRender="campoBairro" />
+					</h:selectOneMenu>
+				</a4j:region>
 			</h:panelGroup>
+
 			<h:panelGroup id="panelBairro">
 				<h:outputLabel for="campoBairro" value="Bairro" />
-				<h:selectOneMenu
-					value="#{cadastraImovelBean.imovelEndereco.enderecoBairro.bairroCodigo}"
-					id="campoBairro">
-					<f:selectItem itemValue="" itemLabel="Bairro" />
-					<f:selectItems value="#{selectBairros.bairros}" />
-				</h:selectOneMenu>
+				<a4j:region>
+					<h:selectOneMenu
+						value="#{cadastraImovelBean.imovelEndereco.enderecoBairro.bairroCodigo}"
+						id="campoBairro">
+						<f:selectItem itemValue="" itemLabel="Bairro" />
+						<f:selectItems value="#{cadastraImovelBean.bairros}" />
+					</h:selectOneMenu>
+				</a4j:region>
 			</h:panelGroup>
+
 			<h:panelGroup id="panelLogradouro">
 				<h:outputLabel for="campoLogradouro" value="Logradouro" />
 				<h:selectOneMenu
@@ -136,14 +149,15 @@
 			<h:panelGroup styleClass="linha"></h:panelGroup>
 
 			<h:panelGroup styleClass="botoes">
-				<h:commandButton action="#{cadastraImovelBean.salvaImovel}" value=""
-					styleClass="input_submit" />
-				<h:commandButton action="imovel" value=""
-					styleClass="input_button" immediate="true" />
+				<h:commandButton action="#{cadastraImovelBean.salvaImovel}"
+					value="" styleClass="input_submit">
+				</h:commandButton>
+				<h:commandButton action="voltar" value="" styleClass="input_button"
+					immediate="true" />
 			</h:panelGroup>
 
-		</h:form>
+		</a4j:form>
 	</ui:define>
-	</ui:composition>
+</ui:composition>
 
 </html>

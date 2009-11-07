@@ -6,19 +6,9 @@ import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.ImovelFinalidadeDAO;
 
 public class AlteraImovelBean extends ImovelBaseBean {
-	
-	private int codigoImovel;
-	
-	public int getCodigoImovel() {
-		return codigoImovel;
-	}
-	public void setCodigoImovel(int codigoImovel) {
-		this.codigoImovel = codigoImovel;
-	}
 
 	public String atualizaImovel() {
 		try {
-			System.out.println(codigoImovel);
 			ImovelFinalidadeDAO finDao = new ImovelFinalidadeDAO();
 			finDao.atualizar(this.getImovelFinalidade());
 			this.getImovel().setFinalidade(this.getImovelFinalidade().getCodigo());
