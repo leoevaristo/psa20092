@@ -981,7 +981,7 @@
   <navigation-rule>
   <from-view-id>/paginas/corretor/imoveis/cadastra_imovel.xhtml</from-view-id>
   <navigation-case>
-   <from-outcome>altera</from-outcome>
+   <from-outcome>sucesso</from-outcome>
    <to-view-id>/paginas/corretor/imoveis/consulta_imoveis.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
