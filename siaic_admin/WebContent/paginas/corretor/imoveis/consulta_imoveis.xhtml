@@ -19,6 +19,25 @@
 	<ui:define name="tituloLista">
 		<h:outputText value="Imóveis" />
 	</ui:define>
+	
+	<ui:define name="conteudo">
+	  <h:form styleClass="forms" id="formFiltros">
+		<h:panelGroup>
+			<h:outputLabel for="campoFiltro" value="Filtrar por: " />
+			<h:selectOneMenu value="#{consultaImovelBean.tipoPesquisa}" id="campoFiltro" >
+				<f:selectItem itemValue="" itemLabel="Tipo de Filtro" />
+				<f:selectItems value="#{consultaImovelBean.buscas}" />					
+			</h:selectOneMenu>
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:outputLabel value="Palavra-chave: " for="inFiltro" />
+			<h:inputText value="#{consultaImovelBean.palavraChave}" id="inFiltro"/>
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:commandButton action="#{consultaImovelBean.escolheTipoPesquisa}" value="Filtrar" type="submit" /> 				
+		</h:panelGroup>
+	  </h:form>
+	</ui:define>
 
 	<ui:define name="infoGerais">
 
