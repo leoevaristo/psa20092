@@ -101,7 +101,7 @@
 			<h:panelGroup id="panelNomeCidade">
 				<h:outputLabel for="campoCidade" value="Cidade" />
 				<a4j:region>
-					<h:selectOneMenu values="#{alteraImovelBean.bairro.bairroCidade}"
+					<h:selectOneMenu value="#{alteraImovelBean.cidade.cidadeCodigo}"
 					    valueChangeListener="#{alteraImovelBean.filtraBairroPorCidade}"
 						id="campoCidade">
 						<f:selectItem itemValue="" itemLabel="Cidade" />
@@ -152,7 +152,6 @@
 			<h:panelGroup styleClass="botoes">
 				<h:commandButton action="#{alteraImovelBean.atualizaImovel}"
 					value="" styleClass="input_submit">
-					<f:setPropertyActionListener target="#{alteraImovelBean.imovelRequest}" value="#{alteraImovelBean.imovel}" />
 				</h:commandButton>
 				<h:commandButton action="voltar" value="" styleClass="input_button"
 					immediate="true" />
