@@ -14,9 +14,6 @@ public class CadastraImovelBean extends ImovelBaseBean {
 		finDao.salvar(this.getImovelFinalidade());
 		this.getImovel().setFinalidade(this.getImovelFinalidade().getCodigo());
 
-		this.getImovel().setProprietario(this.getImovelProprietario().getCodigoPessoa());
-		this.getImovel().setCaracteristica(this.getImovelCaracteristica().getCodigo());
-
 		EnderecoDAO end = new EnderecoDAO();
 		try {
 			end.adicionarEndereco(this.getImovelEndereco());
