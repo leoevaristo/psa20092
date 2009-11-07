@@ -64,7 +64,7 @@
 						<h:commandLink id="detalheLink"
 							action="detalhe">
 							<h:outputText value="Exibir Detalhes" />
-							<f:param value="#{imo.codigo}" name="codigoImovel" />
+							<f:setPropertyActionListener target="#{alteraImovelBean.imovelRequest}" value="#{imo}" />
 						</h:commandLink>
 					</h:form>
 				</h:column>
