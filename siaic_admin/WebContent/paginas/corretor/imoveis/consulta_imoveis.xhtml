@@ -34,7 +34,7 @@
 			<h:inputText value="#{consultaImovelBean.palavraChave}" id="inFiltro"/>
 		</h:panelGroup>
 		<h:panelGroup>
-			<h:commandButton action="#{consultaImovelBean.escolheTipoPesquisa}" value="Filtrar" type="submit" /> 				
+			<h:commandButton action="#{consultaImovelBean.escolheTipoPesquisa}" value="Filtrar" /> 				
 		</h:panelGroup>
 	  </h:form>
 	</ui:define>
@@ -43,7 +43,7 @@
 
 		<h:panelGroup styleClass="textcenter">
 
-			<h:dataTable styleClass="grid" headerClass="thead"
+			<h:dataTable styleClass="grid" headerClass="thead" id="gridImoveis"
 				rowClasses="cor1,cor2" value="#{consultaImovelBean.todosImoveis}" var="imo">
 				<h:column>
 					<f:facet name="header">
@@ -59,11 +59,18 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
+						<h:outputText value="Valor" />
+					</f:facet>
+					<h:outputText value="#{imo.valor}">
+					  <f:convertNumber currencySymbol="R$" type="currency" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
 						<h:outputText value="Forma de Pagamento" />
 					</f:facet>
 					<h:outputText value="#{imo.formaPagamento}" />
 				</h:column>
-
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Editar" />

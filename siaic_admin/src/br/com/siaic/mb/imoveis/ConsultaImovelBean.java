@@ -1,6 +1,5 @@
 package br.com.siaic.mb.imoveis;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,10 +15,12 @@ public class ConsultaImovelBean {
 	public ConsultaImovelBean() {
 		this.tipoPesquisa = BUSCA_EMPTY;
 		this.palavraChave = "";
+		this.listaImoveis = new ImovelDAO().getImoveis();
 	}
 	
 	private String tipoPesquisa;
 	private String palavraChave;
+	private List<Imovel> listaImoveis;
 	
 	public final static String BUSCA_CIDADE = "Cidade";
 	public final static String BUSCA_BAIRRO = "Bairro";
@@ -41,8 +42,7 @@ public class ConsultaImovelBean {
 	}
 
 	public List<Imovel> getTodosImoveis() {
-		// TODO: Trazer os imoveis de acordo com o tipo de pesquisa escolhido, jutamente com sua palavra-chave.
-		return new ImovelDAO().getImoveis();
+		return this.listaImoveis;
 	}
 
 	public String excluiImovel() {
@@ -61,32 +61,32 @@ public class ConsultaImovelBean {
 			return -1;
 	}
 
-	public void escolheTipoPesquisa() throws SQLException {
-        // TODO: Mudar a palavra-chave
-//		if (tipoPesquisa.equals("email")) {
-//
-//			pesquisaClientePorEmail(campoPesquisa);
-//
-//		} else if (tipoPesquisa.equals("nome")) {
-//
-//			getClientePorNome();
-//
-//		} else if (tipoPesquisa.equals("telefone")) {
-//
-//			pesquisaClientePorTelefone(campoPesquisa);
-//		}
-
+	public String escolheTipoPesquisa() {
+        if (this.tipoPesquisa.equals(BUSCA_EMPTY)) {
+        	this.listaImoveis = new ImovelDAO().getImoveis();
+        } else if (this.tipoPesquisa.equals(BUSCA_BAIRRO)) {
+            this.listaImoveis = new ImovelDAO().getImovesPorBairro(this.palavraChave);
+        } else if (this.tipoPesquisa.equals(BUSCA_CLIENTE)) {
+        	this.listaImoveis = new ImovelDAO().getImovesPorCliente(this.palavraChave);
+        } else if (this.tipoPesquisa.equals(BUSCA_ENDERECO)) {
+        	this.listaImoveis = new ImovelDAO().getImovesPorEndereco(this.palavraChave);
+        } else if (this.tipoPesquisa.equals(BUSCA_VALOR)) {
+        	this.listaImoveis = new ImovelDAO().getImovesPorValor(this.palavraChave);
+        } else if (this.tipoPesquisa.equals(BUSCA_CIDADE)) {
+            this.listaImoveis = new ImovelDAO().getImovesPorCidade(this.palavraChave);
+        }
+        return "";
 	}
 
 	public String getTipoPesquisa() {
 		return tipoPesquisa;
 	}
 
-	public void getTipoPesquisa(String tipoPesquisa) {
+	public void setTipoPesquisa(String tipoPesquisa) {
 		this.tipoPesquisa = tipoPesquisa;
 	}
 
-	public void getPalavraChave(String campoPesquisa) {
+	public void setPalavraChave(String campoPesquisa) {
 		this.palavraChave = campoPesquisa;
 	}
 
