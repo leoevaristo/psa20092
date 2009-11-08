@@ -141,3 +141,7 @@ CREATE TABLE VALOR_MERCADO(
     FOREIGN KEY(VAM_BAIRRO) REFERENCES BAIRRO(BAR_CODIGO),
     PRIMARY KEY(VAM_BAIRRO)
 );
+
+create table foto (
+fot_imo_codigo int,
+fot_binario blob);
