@@ -145,6 +145,5 @@ CREATE TABLE VALOR_MERCADO(
 CREATE TABLE FOTO (
 fot_imo_codigo INT,
 fot_nome VARCHAR(100),
-fot_mime VARCHAR(100),
 fot_tamanho INT,
 fot_data BLOB);
