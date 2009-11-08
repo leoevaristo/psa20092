@@ -142,6 +142,9 @@ CREATE TABLE VALOR_MERCADO(
     PRIMARY KEY(VAM_BAIRRO)
 );
 
-create table foto (
-fot_imo_codigo int,
-fot_binario blob);
+CREATE TABLE FOTO (
+fot_imo_codigo INT,
+fot_nome VARCHAR(100),
+fot_mime VARCHAR(100),
+fot_tamanho INT,
+fot_data BLOB);
