@@ -77,7 +77,73 @@ public class ImovelDAO {
 				imo.setValorCondominio(rs.getInt("IMO_VALOR_CONDOMINIO"));
 				imo.setProprietario(rs.getInt("IMO_CLIENTE"));
 				imo.setEndereco(rs.getInt("IMO_ENDERECO"));
-				System.out.println(rs.getInt("IMO_ENDERECO"));
+				imos.add(imo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return imos;
+	}
+	
+	public List<Imovel> getImovesPorCidade(String cidade) {
+		return this.getImoveisPorFiltro(" AND CID_NOME LIKE ? ", "%" + cidade + "%");
+	}
+	
+	public List<Imovel> getImovesPorBairro(String bairro) {
+		return this.getImoveisPorFiltro(" AND BAR_NOME LIKE ? ", "%" + bairro + "%");
+	}
+	
+	public List<Imovel> getImovesPorEndereco(String endereco) {
+		return this.getImoveisPorFiltro(" AND END_NOME LIKE ? ", "%" + endereco + "%");
+	}
+	
+	public List<Imovel> getImovesPorValor(String valor) {
+		return this.getImoveisPorFiltro(" AND IMO_VALOR = ? ", valor);
+	}
+	
+	public List<Imovel> getImovesPorCliente(String cliente) {
+		return this.getImoveisPorFiltro(" AND PES_NOME LIKE ? ", "%" + cliente + "%");
+	}
+	
+	protected List<Imovel> getImoveisPorFiltro(String like, Object value) {
+
+		List<Imovel> imos = new ArrayList<Imovel>();
+		
+		StringBuffer sb = new StringBuffer();
+		sb.append(" SELECT * ");
+		sb.append(" FROM IMOVEL, ENDERECO, BAIRRO, CIDADE, PESSOA, PESSOA_CLIENTE ");
+		sb.append(" WHERE IMO_ENDERECO = END_CODIGO ");
+		sb.append(" AND END_BAIRRO = BAR_CODIGO ");
+		sb.append(" AND BAR_CIDADE = CID_CODIGO ");
+		sb.append(" AND IMO_CLIENTE = PEC_CODIGO ");
+		sb.append(" AND PEC_CODIGO = PES_CODIGO ");
+		sb.append(like);
+		
+		PreparedStatement ps = this.conn
+				.getPreparedStatement(sb.toString());
+		
+		try {
+			ps.setObject(1, value);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Imovel imo = new Imovel(rs.getInt("IMO_CODIGO"));
+				imo.setCaracteristica(rs.getInt("IMO_CARACTERISTICA"));
+				imo.setFinalidade(rs.getInt("IMO_FINALIDADE"));
+				imo.setDetalhe(rs.getString("IMO_DETALHE"));
+				imo.setFormaPagamento(rs.getString("IMO_FORMA_PAGAMENTO"));
+				imo.setTipo(rs.getInt("IMO_TIPO"));
+				imo.setValor(rs.getInt("IMO_VALOR"));
+				imo.setValorCondominio(rs.getInt("IMO_VALOR_CONDOMINIO"));
+				imo.setProprietario(rs.getInt("IMO_CLIENTE"));
+				imo.setEndereco(rs.getInt("IMO_ENDERECO"));
 				imos.add(imo);
 			}
 		} catch (SQLException e) {
