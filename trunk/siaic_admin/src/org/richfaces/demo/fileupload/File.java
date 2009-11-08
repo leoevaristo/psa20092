@@ -2,6 +2,13 @@ package org.richfaces.demo.fileupload;
 
 public class File {
 
+	public File() {
+		this.Name = "";
+		this.mime = "";
+		this.data = null;
+		this.length = 0;
+	}
+	
 	private String Name;
 	private String mime;
 	private long length;

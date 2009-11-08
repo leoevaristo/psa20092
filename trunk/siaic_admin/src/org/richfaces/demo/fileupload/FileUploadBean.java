@@ -17,6 +17,7 @@ public class FileUploadBean {
     private int uploadsAvailable = 5;
     private boolean autoUpload = false;
     private boolean useFlash = false;
+    
     public int getSize() {
         if (getFiles().size()>0){
             return getFiles().size();
@@ -34,7 +35,7 @@ public class FileUploadBean {
     }
     public void listener(UploadEvent event) throws Exception{
         UploadItem item = event.getUploadItem();
-        File file = new File();
+        org.richfaces.demo.fileupload.File file = new org.richfaces.demo.fileupload.File();
         file.setLength(item.getData().length);
         file.setName(item.getFileName());
         file.setData(item.getData());
