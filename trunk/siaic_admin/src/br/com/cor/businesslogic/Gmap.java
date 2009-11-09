@@ -17,14 +17,10 @@ public class Gmap {
 	private String dadosEndereco;
 	
 	private String cidade;
+	
+	private String bairro;
 
-	public String getZoom() {
-		return zoom;
-	}
 
-	public void setZoom(String zoom) {
-		this.zoom = zoom;
-	}
 
 	public Gmap() {
 		this.cidade = "João Pessoa";
@@ -81,6 +77,22 @@ public class Gmap {
 
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+	
+	public String getZoom() {
+		return zoom;
+	}
+
+	public void setZoom(String zoom) {
+		this.zoom = zoom;
 	}
 
 }
