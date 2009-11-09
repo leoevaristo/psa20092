@@ -1,5 +1,8 @@
 package br.com.siaic.dao;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -44,14 +47,30 @@ public class FotoDAO {
 		return fotos;
 	}
 
-	public void salvaFoto(Foto foto) throws SQLException {
+	public void salvaFoto(Foto foto) throws SQLException, IOException {
 		PreparedStatement ps = this.conn
-				.getPreparedStatement("insert into FOTO (FOT_IMO_CODIGO,FOT_NOME,FOT_TAMANHO,FOT_DATA) values (?,?,?,?);");
+				.getPreparedStatement("insert into FOTO (FOT_IMO_CODIGO,FOT_NOME,FOT_TAMANHO,FOT_PATH) values (?,?,?,?);");
 		try {
 			ps.setInt(1, foto.getImovel());
 			ps.setString(2, foto.getName());
 			ps.setLong(3, foto.getLength());
-			ps.setBytes(4, foto.getData());
+			
+			StringBuffer pathBuilder = new StringBuffer(); 
+			pathBuilder.append(File.separator);
+			pathBuilder.append("WEB-INF");
+			pathBuilder.append(File.separator);
+			pathBuilder.append("fotos");
+			pathBuilder.append(File.separator);
+			pathBuilder.append(foto.getName());
+            String path = pathBuilder.toString();
+            
+			File file = new File(path);
+			FileOutputStream fos = new FileOutputStream(file);
+			fos.write(foto.getData());
+			fos.flush();
+			fos.close();
+			
+			ps.setString(4, path);
 
 			ps.execute();
 		} catch (SQLException e) {
