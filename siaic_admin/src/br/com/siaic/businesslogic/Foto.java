@@ -1,8 +1,8 @@
-package org.richfaces.demo.fileupload;
+package br.com.siaic.businesslogic;
 
-public class File {
+public class Foto {
 
-	public File() {
+	public Foto() {
 		this.Name = "";
 		this.mime = "";
 		this.data = null;
