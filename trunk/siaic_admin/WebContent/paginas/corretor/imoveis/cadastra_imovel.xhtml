@@ -161,22 +161,26 @@
 					timing="onload" />
 			</h:panelGroup>
 
-			<h:panelGroup styleClass="linha"></h:panelGroup>
-
 			<h:panelGrid columns="2" columnClasses="top,top">
 				<rich:fileUpload fileUploadListener="#{fileUploadBean.listener}"
 					maxFilesQuantity="#{fileUploadBean.uploadsAvailable}" id="upload"
 					immediateUpload="#{fileUploadBean.autoUpload}"
 					acceptedTypes="jpg, gif, png, bmp"
-					allowFlash="#{fileUploadBean.useFlash}" 
-					addControlLabel="Adicionar..." uploadControlLabel="Enviar" 
+					allowFlash="#{fileUploadBean.useFlash}"
+					addControlLabel="Adicionar..." uploadControlLabel="Enviar"
 					stopControlLabel="Parar" cancelEntryControlLabel="Cancelar"
 					transferErrorLabel="Houve erro ao enviar o arquivo."
 					clearAllControlLabel="Apagar todos" clearControlLabel="Apagar"
-					doneLabel="Completo" stopEntryControlLabel="Parar" progressLabel="enviando">
+					doneLabel="Completo" stopEntryControlLabel="Parar"
+					progressLabel="enviando">
 					<a4j:support event="onuploadcomplete" reRender="info" />
 				</rich:fileUpload>
+				<br />
 				<h:panelGroup id="info">
+					<br />
+					<a4j:commandButton action="#{fileUploadBean.clearUploadData}"
+						reRender="info, upload" value="Limpar arquivos enviados"
+						rendered="#{fileUploadBean.size>0}" immediate="true" />
 					<rich:panel bodyClass="info">
 						<f:facet name="header">
 							<h:outputText value="Arquivos enviados" />
@@ -203,12 +207,10 @@
 						</rich:dataGrid>
 					</rich:panel>
 					<rich:spacer height="3" />
-					<br />
-					<a4j:commandButton action="#{fileUploadBean.clearUploadData}"
-						reRender="info, upload" value="Limpar arquivos enviados"
-						rendered="#{fileUploadBean.size>0}" />
 				</h:panelGroup>
 			</h:panelGrid>
+
+            <h:panelGroup styleClass="linha"></h:panelGroup>
 
 			<h:panelGroup styleClass="botoes">
 				<h:commandButton action="#{cadastraImovelBean.salvaImovel}" value=""
@@ -219,6 +221,7 @@
 			</h:panelGroup>
 
 		</a4j:form>
+
 	</ui:define>
 </ui:composition>
 
