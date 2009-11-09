@@ -4,8 +4,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpSession;
 
 import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.Imovel;
@@ -273,6 +275,12 @@ public class ImovelBaseBean {
 		
 	    this.listaCidadePorEstado(this.estado.getEstadoSigla());
 	    this.listaBairroPorCidade(String.valueOf(this.cidade.getCidadeCodigo()));
+	}
+	
+	public static String getRealPath(String diretorio) {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(false);
+		return session.getServletContext().getRealPath(diretorio);
 	}
 
 }

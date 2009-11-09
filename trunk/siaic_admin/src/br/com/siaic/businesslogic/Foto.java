@@ -1,5 +1,16 @@
 package br.com.siaic.businesslogic;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
+import br.com.siaic.mb.imoveis.ImovelBaseBean;
+
 public class Foto {
 
 	public Foto() {
@@ -15,6 +26,8 @@ public class Foto {
 	private String mime;
 	private long length;
 	private byte[] data;
+	protected static String pathImg = File.separator + "WEB-INF" + 
+	    File.separator + "fotos" + File.separator;
 	
 	public int getCodigo() {
 	    return this.codigo;	
@@ -72,4 +85,29 @@ public class Foto {
 	public String getMime() {
 		return mime;
 	}
+
+	public static String salvaFoto(Foto foto) throws IOException {
+		
+		String path = pathImg + foto.getName();
+		File file = new File(ImovelBaseBean.getRealPath(path));
+		FileOutputStream fos = new FileOutputStream(file);
+		fos.write(foto.getData());
+		fos.flush();
+		fos.close();
+		
+		return path;
+	}
+	
+	public static byte[] pegaFoto(String pathRel) throws IOException {
+		
+		String path = pathImg + pathRel;
+		File file = new File(ImovelBaseBean.getRealPath(path));
+		FileInputStream fis = new FileInputStream(file);
+		byte[] bin = new byte[(int)file.length()];
+		fis.read(bin);
+		fis.close();
+		
+		return bin;
+	}
+	
 }
