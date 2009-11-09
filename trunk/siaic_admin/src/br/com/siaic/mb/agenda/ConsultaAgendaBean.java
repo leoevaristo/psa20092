@@ -327,8 +327,7 @@ public class ConsultaAgendaBean {
 		int qtdImoveisSelecionados = getImoveisSelecionados().size();
 		int qtdImoveisAgenda = daoImovel.getNumeroImoveisAgenda(getAgenda().getCodigo());
 		List<String> indicesImoveisAgenda = daoImovel.getIndiceImoveisAgenda(getAgenda().getCodigo());
-		System.out.println(qtdImoveisAgenda);
-		System.out.println(qtdImoveisSelecionados);
+		
 
 		if (qtdImoveisSelecionados > qtdImoveisAgenda) {
 			for (int i = qtdImoveisAgenda; i <= qtdImoveisSelecionados - 1; i++) {
