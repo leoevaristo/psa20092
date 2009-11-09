@@ -9,10 +9,26 @@ public class Foto {
 		this.length = 0;
 	}
 	
+	private int codigo;
+	private int imovel;
 	private String Name;
 	private String mime;
 	private long length;
 	private byte[] data;
+	
+	public int getCodigo() {
+	    return this.codigo;	
+	}
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	
+	public int getImovel() {
+		return this.imovel;
+	}
+	public void setImovel(int imovel) {
+		this.imovel = imovel;
+	}
 
 	public byte[] getData() {
 		return data;

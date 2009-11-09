@@ -7,6 +7,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+import javax.el.ELResolver;
+import javax.faces.context.FacesContext;
+
 import org.richfaces.event.UploadEvent;
 import org.richfaces.model.UploadItem;
 
@@ -61,6 +64,12 @@ public class FileUploadBean {
 		files.clear();
 		setUploadsAvailable(5);
 		return "";
+	}
+	
+	public static FileUploadBean getCurrentSession() {
+		FacesContext context = FacesContext.getCurrentInstance();  
+	    ELResolver resolver = context.getApplication().getELResolver();  
+	    return (FileUploadBean) resolver.getValue(context.getELContext(), null, "fileUploadBean");
 	}
 
 	public long getTimeStamp() {

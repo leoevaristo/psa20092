@@ -92,44 +92,48 @@ public class ImovelDAO {
 
 		return imos;
 	}
-	
+
 	public List<Imovel> getImovesPorCidade(String cidade) {
-		return this.getImoveisPorFiltro(" AND CID_NOME LIKE ? ", "%" + cidade + "%");
+		return this.getImoveisPorFiltro(" AND CID_NOME LIKE ? ", "%" + cidade
+				+ "%");
 	}
-	
+
 	public List<Imovel> getImovesPorBairro(String bairro) {
-		return this.getImoveisPorFiltro(" AND BAR_NOME LIKE ? ", "%" + bairro + "%");
+		return this.getImoveisPorFiltro(" AND BAR_NOME LIKE ? ", "%" + bairro
+				+ "%");
 	}
-	
+
 	public List<Imovel> getImovesPorEndereco(String endereco) {
-		return this.getImoveisPorFiltro(" AND END_NOME LIKE ? ", "%" + endereco + "%");
+		return this.getImoveisPorFiltro(" AND END_NOME LIKE ? ", "%" + endereco
+				+ "%");
 	}
-	
+
 	public List<Imovel> getImovesPorValor(String valor) {
 		return this.getImoveisPorFiltro(" AND IMO_VALOR = ? ", valor);
 	}
-	
+
 	public List<Imovel> getImovesPorCliente(String cliente) {
-		return this.getImoveisPorFiltro(" AND PES_NOME LIKE ? ", "%" + cliente + "%");
+		return this.getImoveisPorFiltro(" AND PES_NOME LIKE ? ", "%" + cliente
+				+ "%");
 	}
-	
+
 	protected List<Imovel> getImoveisPorFiltro(String like, Object value) {
 
 		List<Imovel> imos = new ArrayList<Imovel>();
-		
+
 		StringBuffer sb = new StringBuffer();
 		sb.append(" SELECT * ");
-		sb.append(" FROM IMOVEL, ENDERECO, BAIRRO, CIDADE, PESSOA, PESSOA_CLIENTE ");
+		sb
+				.append(" FROM IMOVEL, ENDERECO, BAIRRO, CIDADE, PESSOA, PESSOA_CLIENTE ");
 		sb.append(" WHERE IMO_ENDERECO = END_CODIGO ");
 		sb.append(" AND END_BAIRRO = BAR_CODIGO ");
 		sb.append(" AND BAR_CIDADE = CID_CODIGO ");
 		sb.append(" AND IMO_CLIENTE = PEC_CODIGO ");
 		sb.append(" AND PEC_CODIGO = PES_CODIGO ");
 		sb.append(like);
-		
-		PreparedStatement ps = this.conn
-				.getPreparedStatement(sb.toString());
-		
+
+		PreparedStatement ps = this.conn.getPreparedStatement(sb.toString());
+
 		try {
 			ps.setObject(1, value);
 			ResultSet rs = ps.executeQuery();
@@ -211,6 +215,7 @@ public class ImovelDAO {
 			ps.setInt(8, imo.getProprietario());
 			ps.setInt(9, imo.getEndereco());
 			ps.execute();
+			this.setCodigoImovel(imo);
 		} catch (SQLException e) {
 			throw new SQLException(e.getMessage());
 		} finally {
@@ -222,12 +227,32 @@ public class ImovelDAO {
 		}
 	}
 
+	private void setCodigoImovel(Imovel imo) {
+		PreparedStatement ps = this.conn
+				.getPreparedStatement("SELECT MAX(IMO_CODIGO) CODIGO_IMOVEL FROM IMOVEL;");
+		try {
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				imo.setCodigo(rs.getInt("CODIGO_IMOVEL"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	public void exclui(Imovel imo) {
 		PreparedStatement ps = this.conn
 				.getPreparedStatement("delete from IMOVEL where imo_codigo = ?;");
 		try {
 			ps.setInt(1, imo.getCodigo());
 			ps.execute();
+			new FotoDAO().apagaFotos(imo.getCodigo());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -240,8 +265,8 @@ public class ImovelDAO {
 	}
 
 	/**
-	 * Retorna uma lista do tipo Imovel
-	 * filtrada pelo Perfil do Cliente
+	 * Retorna uma lista do tipo Imovel filtrada pelo Perfil do Cliente
+	 * 
 	 * @param codigoCliente
 	 * @return List<Imovel>
 	 * @author carlos
@@ -290,10 +315,11 @@ public class ImovelDAO {
 		return null;
 
 	}
-	
+
 	/**
-	 * Método que retorna uma Lista de objetos do tipo Imovel
-	 * que pertencem a uma entrada específica de Agenda
+	 * Método que retorna uma Lista de objetos do tipo Imovel que pertencem a
+	 * uma entrada específica de Agenda
+	 * 
 	 * @param agendaCodigo
 	 * @return List<Imovel>
 	 * @author carlos
@@ -324,7 +350,7 @@ public class ImovelDAO {
 
 			ps.close();
 			rs.close();
-			
+
 			return imoveisAgenda;
 
 		} catch (SQLException e) {
@@ -336,9 +362,9 @@ public class ImovelDAO {
 	}
 
 	/**
-	 * Retorna uma lista com os identificadores únicos
-	 * de cada imóvel pertecente a uma entrada 
-	 * da Agenda
+	 * Retorna uma lista com os identificadores únicos de cada imóvel
+	 * pertecente a uma entrada da Agenda
+	 * 
 	 * @param agendaCodigo
 	 * @return List<String>
 	 * @author carlos
@@ -375,33 +401,33 @@ public class ImovelDAO {
 		return null;
 
 	}
-	
+
 	/**
-	 * Retorna o número de imóveis registrados 
-	 * em uma entrada da Agenda
+	 * Retorna o número de imóveis registrados em uma entrada da Agenda
+	 * 
 	 * @param codigoAgenda
 	 * @return int
 	 * @author carlos
 	 */
-	public int getNumeroImoveisAgenda(int codigoAgenda){
-		
-		String sql = "SELECT COUNT(IMA_IMOVEL_CODIGO) AS QTD FROM IMOVEL_AGENDA WHERE " +
-					 "IMA_AGENDA_CODIGO = ?";
-		
-		try{
+	public int getNumeroImoveisAgenda(int codigoAgenda) {
+
+		String sql = "SELECT COUNT(IMA_IMOVEL_CODIGO) AS QTD FROM IMOVEL_AGENDA WHERE "
+				+ "IMA_AGENDA_CODIGO = ?";
+
+		try {
 			PreparedStatement ps = this.conn.getPreparedStatement(sql);
 			ps.setInt(1, codigoAgenda);
 			ResultSet rs = ps.executeQuery();
 			int qtdImoveis = 0;
-			while(rs.next()){
+			while (rs.next()) {
 				qtdImoveis = rs.getInt("QTD");
-			}			
-			
+			}
+
 			ps.close();
 			rs.close();
-			
+
 			return qtdImoveis;
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
