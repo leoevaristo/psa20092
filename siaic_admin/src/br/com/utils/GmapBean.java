@@ -136,15 +136,8 @@ public class GmapBean {
 	}
 	
 	
-	public List<Imovel> showImoveis(){
-		ImovelDAO dao = new ImovelDAO();
-		return dao.getImoveis();
-		
-	}
-	
 	/**
-	 * Busca os dados dos imóveis que pertencem
-	 * a uma entrada da Agenda
+	 * Busca todos imóveis cadastrados e exibe-os no mapa.
 	 * @throws SQLException
 	 */
 	public void buscaImovelEntrada() throws SQLException {
@@ -166,8 +159,7 @@ public class GmapBean {
 	}
 	
 	/**
-	 * Adiciona dados dos imóveis pertecentes
-	 * à uma entrada da Agenda a um objeto do tipo Map
+	 * Adiciona dados dos imóveis cadastrados a um objeto do tipo Map
 	 * @return Map
 	 */
 	@SuppressWarnings("unchecked")

@@ -305,6 +305,8 @@ public class EnderecoDAO {
 			endereco.setEnderecoNome(rs.getString(3));
 			endereco.setEnderecoCep( rs.getString(4));
 			endereco.setEnderecoBairro( getBairroPorCodigo(rs.getInt(5)) );
+			endereco.setEnderecoLatitude(rs.getString(6));
+			endereco.setEnderecoLongitude(rs.getString(7));
 		}
 		ps.close();
 		rs.close();
