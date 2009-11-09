@@ -2,6 +2,8 @@ package br.com.siaic.mb.imoveis;
 
 import java.sql.SQLException;
 
+import org.richfaces.demo.fileupload.FileUploadBean;
+
 import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.ImovelFinalidadeDAO;
 
@@ -21,7 +23,7 @@ public class AlteraImovelBean extends ImovelBaseBean {
 			
 			this.getImovel().setCaracteristica(this.getImovel().getCaracteristica());
 			this.getImovel().atualizar();
-			
+			FileUploadBean.getCurrentSession().clearUploadData();
 			return "altera";
 		} catch (SQLException e) {
 			e.printStackTrace();

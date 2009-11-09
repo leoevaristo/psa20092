@@ -9,7 +9,10 @@ import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpSession;
 
+import org.richfaces.demo.fileupload.FileUploadBean;
+
 import br.com.siaic.businesslogic.Cliente;
+import br.com.siaic.businesslogic.Foto;
 import br.com.siaic.businesslogic.Imovel;
 import br.com.siaic.businesslogic.ImovelCaracteristica;
 import br.com.siaic.businesslogic.ImovelFinalidade;
@@ -19,6 +22,7 @@ import br.com.siaic.businesslogic.endereco.Endereco;
 import br.com.siaic.businesslogic.endereco.Estado;
 import br.com.siaic.dao.ClienteDAO;
 import br.com.siaic.dao.EnderecoDAO;
+import br.com.siaic.dao.FotoDAO;
 import br.com.siaic.dao.ImovelCaracteristicaDAO;
 import br.com.siaic.dao.ImovelFinalidadeDAO;
 import br.com.siaic.mb.endereco.CidadeBean;
@@ -275,6 +279,11 @@ public class ImovelBaseBean {
 		
 	    this.listaCidadePorEstado(this.estado.getEstadoSigla());
 	    this.listaBairroPorCidade(String.valueOf(this.cidade.getCidadeCodigo()));
+	    
+	    FileUploadBean fileUploadBean = FileUploadBean.getCurrentSession();
+	    fileUploadBean.clearUploadData();
+	    ArrayList<Foto> fotos = (ArrayList<Foto>)new FotoDAO().getFotos(this.imovel.getCodigo());
+	    fileUploadBean.setFiles(fotos);
 	}
 	
 	public static String getRealPath(String diretorio) {
