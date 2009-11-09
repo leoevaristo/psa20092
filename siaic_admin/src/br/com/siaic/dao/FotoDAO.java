@@ -27,6 +27,7 @@ public class FotoDAO {
 		PreparedStatement ps = this.conn
 				.getPreparedStatement("SELECT * FROM FOTO WHERE FOT_IMO_CODIGO = ?;");
 		try {
+			ps.setInt(1, codigoImovel);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Foto foto = new Foto();
