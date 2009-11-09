@@ -461,6 +461,15 @@ public class ConsultaAgendaBean {
 		return "detalhes";
 	}
 	
+	
+	public List<Agenda> getTodasAtividades() throws SQLException {
+
+		AgendaDAO dao = new AgendaDAO();
+		
+		return dao.getAgendaList();
+
+	}
+
 	/**
 	 * Retorna uma lista de SelectItem contendo dados de imóveis 
 	 * @return
