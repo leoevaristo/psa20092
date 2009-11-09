@@ -9,6 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
 import br.com.siaic.businesslogic.Foto;
 import br.com.siaic.businesslogic.Imovel;
 
@@ -29,12 +32,18 @@ public class FotoDAO {
 				Foto foto = new Foto();
 				foto.setImovel(rs.getInt("FOT_IMO_CODIGO"));
 				foto.setCodigo(rs.getInt("FOT_CODIGO"));
-				foto.setData(rs.getBytes("FOT_DATA"));
 				foto.setLength(rs.getInt("FOT_TAMANHO"));
 				foto.setName(rs.getString("FOT_NOME"));
+				
+				String path = rs.getString("FOT_PATH");
+				foto.setData(Foto.pegaFoto(path));
+				
 				fotos.add(foto);
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
 		} finally {
@@ -47,33 +56,18 @@ public class FotoDAO {
 		return fotos;
 	}
 
-	public void salvaFoto(Foto foto) throws SQLException, IOException {
+	public void salvaFoto(Foto foto) throws SQLException {
 		PreparedStatement ps = this.conn
 				.getPreparedStatement("insert into FOTO (FOT_IMO_CODIGO,FOT_NOME,FOT_TAMANHO,FOT_PATH) values (?,?,?,?);");
 		try {
 			ps.setInt(1, foto.getImovel());
 			ps.setString(2, foto.getName());
 			ps.setLong(3, foto.getLength());
-			
-			StringBuffer pathBuilder = new StringBuffer(); 
-			pathBuilder.append(File.separator);
-			pathBuilder.append("WEB-INF");
-			pathBuilder.append(File.separator);
-			pathBuilder.append("fotos");
-			pathBuilder.append(File.separator);
-			pathBuilder.append(foto.getName());
-            String path = pathBuilder.toString();
-            
-			File file = new File(path);
-			FileOutputStream fos = new FileOutputStream(file);
-			fos.write(foto.getData());
-			fos.flush();
-			fos.close();
-			
+			String path = Foto.salvaFoto(foto);
 			ps.setString(4, path);
 
 			ps.execute();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			throw new SQLException(e.getMessage());
 		} finally {
 			try {
