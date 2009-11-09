@@ -1,5 +1,6 @@
 package br.com.siaic.mb.imoveis;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import org.richfaces.demo.fileupload.FileUploadBean;
@@ -33,7 +34,13 @@ public class CadastraImovelBean extends ImovelBaseBean {
 	    FileUploadBean fileUploadBean = FileUploadBean.getCurrentSession();
 	    for (Foto fh : fileUploadBean.getFiles()) {
 	    	fh.setImovel(this.getImovel().getCodigo());
-	    	new FotoDAO().salvaFoto(fh);
+	    	
+	    	try {
+				new FotoDAO().salvaFoto(fh);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 	    }
 	    fileUploadBean.clearUploadData();
 	}
