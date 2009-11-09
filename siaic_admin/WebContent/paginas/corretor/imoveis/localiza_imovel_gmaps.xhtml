@@ -10,26 +10,37 @@
 <ui:composition template="/WEB-INF/template/template-corretor.xhtml">
 	<ui:define name="head">
 		<script
-			src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=#{gmapBean.key}"
+			src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=#{gmapBean.googlemap.key}"
 			type="text/javascript">
-</script>
+		</script>
 	</ui:define>
 	<ui:define name="conteudo">
-		<rich:panel header="Localizar Imóveis">
-			<h:form>
-				<h:inputText value="#{gmapBean.lugar}" />
-				<h:commandButton action="#{gmapBean.transformaEndereco}" />
-			</h:form>
-			 <m:map width="500px" height="500px" latitude="#{gmapBean.latitude}" longitude="#{gmapBean.longitude}" zoom="13" id="mapa">
-				<!--  <ui:repeat var="imovel" value="#{consultaImovelBean.todosImoveis}">-->
-					<m:marker  latitude="#{gmapBean.latitude}" longitude="#{gmapBean.longitude}">
-						<m:icon imageURL="#{request.contextPath}/images/home.png" height="24" width="24" />
-						<m:htmlInformationWindow  htmlText="" />
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Digite um endereço" />
+				<h:inputText value="#{gmapBean.googlemap.lugar}" required="true"
+					requiredMessage="Você deve digitar um endereço válido." />
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<rich:spacer width="210" />
+				<h:commandButton action="#{gmapBean.transformaEndereco}" value="Localizar" />
+			</h:panelGrid>
+		</h:form>
+<h:panelGroup>
+</h:panelGroup>
+		<h:panelGroup id="panelMapa">
+			<m:map address="#{gmapBean.googlemap.cidade}" width="100%" height="500px" zoom="15"	id="mapa">
+				<ui:repeat var="imovel" value="#{gmapBean.infoMapa}">
+					<m:marker address="#{imovel.logEnd} #{imovel.nomeEnd}, #{imovel.bairroEnd}" >
+						<m:icon imageURL="#{request.contextPath}/images/home.png"	height="24" width="24" />						
+						<m:htmlInformationWindow htmlText="#{imovel.logEnd} #{imovel.nomeEnd}, #{imovel.bairroEnd} - CEP: #{imovel.cepEnd}" />
 					</m:marker>
-				<!-- </ui:repeat> -->
-			</m:map> 
-			<h:outputText value="#{gmapBean.dadosEndereco}" />
-		</rich:panel>
+				</ui:repeat>
+			</m:map>
+		</h:panelGroup>
+		<h:message for="mapa" id="msgMapa" styleClass="msgErro" />
+		<h:outputText value="#{gmapBean.googlemap.dadosEndereco}" />
+
 	</ui:define>
 </ui:composition>
 </html>

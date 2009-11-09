@@ -181,12 +181,9 @@ public class ConsultaClienteBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
 		Integer idPessoa = new Integer(req.getParameter("codigoPessoa")).intValue();
-		//String tipoExibicao = new String(req.getParameter("tipoExibicao").toString());		
-		
 		ClienteDAO dao = new ClienteDAO();
 		setCliente(dao.getClientePorId(idPessoa));	
-		getEnderecoCliente();
-		
+		getEnderecoCliente();	
 		
 		return "detalhes";
 	}

@@ -15,11 +15,9 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-
 import br.com.cond.businesslogic.Apartamento;
 import br.com.cond.businesslogic.TaxasCondominio;
 import br.com.cond.dao.TaxasCondominioDAO;
-import br.com.siaic.dao.DB;
 import br.com.siaic.dao.FabricaConexao;
 
 /**
