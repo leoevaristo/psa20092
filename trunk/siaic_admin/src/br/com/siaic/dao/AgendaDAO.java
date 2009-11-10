@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import br.com.siaic.businesslogic.Agenda;
@@ -99,6 +101,54 @@ public class AgendaDAO {
 		return l;
 	}
 
+	
+	public List<Agenda> getAgendaData(String data) throws SQLException {
+
+		String sql = "SELECT * FROM AGENDA where AGE_DATA = ?";
+
+	//	try{
+			
+			PreparedStatement ps = DB.getConn().prepareStatement(sql);
+			//ps.setDate(1, new java.sql.Date(data.getTimeInMillis()) );
+			ps.setString(1,"%"+ data +"%" );
+
+			ResultSet rs = ps.executeQuery();
+
+			List<Agenda> listaAgen = new ArrayList<Agenda>();
+
+			while (rs.next()) {
+			
+				Agenda a = new Agenda();
+				a.setCodigo(rs.getInt("AGE_CODIGO"));
+				a.setCodCliente(rs.getInt("AGE_PESSOA_CLIENTE"));
+				a.setCodCorretor(rs.getInt("AGE_PESSOA_USUARIO"));
+				a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
+				a.setData(rs.getString("AGE_DATA"));
+				a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
+				a.setHoraFim(rs.getString("AGE_HORA_FIM"));
+				a.setDescricao(rs.getString("AGE_DESCRICAO"));
+
+				listaAgen.add(a);
+
+			}
+
+			ps.close();
+			rs.close();
+		
+			return listaAgen;
+		
+			/*}finally{
+				conexao.close();
+		}*/
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Lista todas as ocorrencias da tabela Agenda de um determinado Usu�rio
 	 * (Corretor)
@@ -320,7 +370,7 @@ public class AgendaDAO {
 			ps.setInt(1, agenda.getCodCliente());
 			ps.setInt(2, agenda.getCodCorretor());
 			ps.setInt(3, agenda.getCodImovel());
-			ps.setString(4, agenda.getData());
+			ps.setString(4,agenda.getData());
 			ps.setString(5, agenda.getHoraInicio());
 			ps.setString(6, agenda.getHoraFim());
 			ps.setString(7, agenda.getDescricao());

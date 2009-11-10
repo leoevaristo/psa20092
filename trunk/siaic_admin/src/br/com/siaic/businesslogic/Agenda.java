@@ -1,5 +1,10 @@
 package br.com.siaic.businesslogic;
 
+
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
+
 import br.com.siaic.dao.AgendaDAO;
 import br.com.siaic.mb.agenda.AgendaBean;
 
@@ -56,6 +61,7 @@ public class Agenda {
 	 */
 
 	public Agenda() {
+		
 
 	}
 
@@ -122,5 +128,6 @@ public class Agenda {
 	public String getDescricao() {
 		return descricao;
 	}
+
 
 }
