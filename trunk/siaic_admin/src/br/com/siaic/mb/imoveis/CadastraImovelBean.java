@@ -29,7 +29,7 @@ public class CadastraImovelBean extends ImovelBaseBean {
 		return "sucesso";
 	}
 	
-	public void salvarFotos() throws SQLException {
+	private void salvarFotos() throws SQLException {
 	    FileUploadBean fileUploadBean = FileUploadBean.getCurrentSession();
 	    for (Foto fh : fileUploadBean.getFiles()) {
 	    	fh.setImovel(this.getImovel().getCodigo());
