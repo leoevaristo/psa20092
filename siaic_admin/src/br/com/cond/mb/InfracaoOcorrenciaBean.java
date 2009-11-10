@@ -8,10 +8,11 @@ import javax.faces.model.SelectItem;
 
 import br.com.cond.businesslogic.Apartamento;
 import br.com.cond.businesslogic.Infracao;
+import br.com.cond.businesslogic.InfracaoOcorrencia;
 import br.com.cond.dao.InfracaoDAO;
 import br.com.cond.dao.ApartamentoDAO;
 import br.com.cond.dao.InfracaoOcorrenciaDAO;
-import br.com.cond.dao.VeiculoDAO;
+
 
 public class InfracaoOcorrenciaBean {
 	
@@ -138,7 +139,7 @@ public class InfracaoOcorrenciaBean {
 			
 			//veiculo.setCodigoApartamento();
 
-			daoInfracaoOcorrencia.adicionarInfracaoOcorrencia(null);
+			daoInfracaoOcorrencia.addInfracaoOcorrencia(infracaoOcorrencia);
 			
 				     	
 	     	return r;
