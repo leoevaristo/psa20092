@@ -1,19 +1,12 @@
 package br.com.siaic.dao;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
-
 import br.com.siaic.businesslogic.Foto;
-import br.com.siaic.businesslogic.Imovel;
 
 public class FotoDAO {
 	private Query conn;

@@ -100,7 +100,7 @@ public class Foto {
 	
 	public static byte[] pegaFoto(String pathRel) throws IOException {
 		
-		String path = pathImg + pathRel;
+		String path = pathRel;
 		File file = new File(ImovelBaseBean.getRealPath(path));
 		FileInputStream fis = new FileInputStream(file);
 		byte[] bin = new byte[(int)file.length()];

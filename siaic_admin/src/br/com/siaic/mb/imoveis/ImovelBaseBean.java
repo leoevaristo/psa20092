@@ -25,7 +25,6 @@ import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.FotoDAO;
 import br.com.siaic.dao.ImovelCaracteristicaDAO;
 import br.com.siaic.dao.ImovelFinalidadeDAO;
-import br.com.siaic.mb.endereco.CidadeBean;
 
 public class ImovelBaseBean {
 
