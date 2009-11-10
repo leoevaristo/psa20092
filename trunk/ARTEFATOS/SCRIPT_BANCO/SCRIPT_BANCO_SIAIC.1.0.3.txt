@@ -138,7 +138,7 @@ CREATE TABLE AGENDA(
     PRIMARY KEY(AGE_CODIGO)
 );
 
-alter table AGENDA add column AGE_DATA varchar(100) not null;
+alter table AGENDA add column AGE_DESCRICAO varchar(100) not null;
 
 CREATE TABLE VALOR_MERCADO(
     VAM_BAIRRO INT NOT NULL,
