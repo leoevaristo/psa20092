@@ -13,7 +13,7 @@
 					<rich:dataTable id="tableAtividade"
 						onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
 						onRowMouseOut="this.style.backgroundColor='#FFFFFF'"
-						value="#{consultaAgendaBean.todasAtividades}" var="tabatividade"
+						value="#{consultaAgendaBean.agendaData}" var="tabatividade"
 						width="450">
 
 						<f:facet name="header">
@@ -36,14 +36,14 @@
 							</rich:columnGroup>
 						</f:facet>
 						<rich:column>
-							<!-- <a4j:commandLink
+						<a4j:commandLink
 								action="#"
 								id="setaCliente" reRender="cli" ajaxSingle="true">
 								<h:graphicImage value="/images/check.png" />
 								<f:setPropertyActionListener
-									target="#{consultaAgendaBean.todasAtividades}"
+									target="#{consultaAgendaBean.agendaData}"
 									value="#{tabatividade}"></f:setPropertyActionListener>
-							</a4j:commandLink> -->														
+							</a4j:commandLink> 														
 						</rich:column>
 						<rich:column>
 							<h:outputText value="#{tabatividade.data}" />

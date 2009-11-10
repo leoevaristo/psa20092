@@ -19,10 +19,10 @@
 			<a4j:region>
 				<h:panelGrid columns="2" id="panelLocalizarAtividades">
 					<h:outputLabel for="atv" value="Data Atividade" />
-						<rich:calendar
-							value=""
-							id="taxaCalendar" popup="true" datePattern="dd/MM/yyyy" locale="pt_BR"
-							required="true" requiredMessage="Campo Obrigatório" />
+					 <rich:calendar
+							value="#{consultaAgendaBean.agenda.data}"
+							id="agenda" popup="true" datePattern="yyyy-MM-dd" locale="pt_BR"
+							required="true" requiredMessage="Campo Obrigatório" /> 
 					<rich:spacer />
 					<a4j:commandButton value="Localizar Atividades" id="atividade">
 						<rich:componentControl attachTo="atividade" for="modalAtividades"

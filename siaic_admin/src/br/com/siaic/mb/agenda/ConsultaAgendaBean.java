@@ -1,6 +1,7 @@
 package br.com.siaic.mb.agenda;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +32,8 @@ import br.com.siaic.dao.UsuarioDAO;
  *
  */
 public class ConsultaAgendaBean {
+	
+	private List<Agenda> agendas;
 
 	/**
 	 * Representa um objeto do tipo Agenda
@@ -271,6 +274,14 @@ public class ConsultaAgendaBean {
 		return daoAgenda.getAgendaList();
 	}
 	
+	
+	public List<Agenda> getAgendaData() throws SQLException {
+
+		AgendaDAO daoAgenda = new AgendaDAO();
+		return daoAgenda.getAgendaData(agenda.getData());
+	}
+	
+
 	/**
 	 * Remove uma entrada da Agenda
 	 * @throws SQLException
