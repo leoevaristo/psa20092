@@ -2,6 +2,10 @@ package br.com.siaic.mb.imoveis;
 
 import java.sql.SQLException;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.richfaces.demo.fileupload.FileUploadBean;
 
 import br.com.siaic.businesslogic.Foto;
@@ -10,12 +14,21 @@ import br.com.siaic.dao.FotoDAO;
 import br.com.siaic.dao.ImovelFinalidadeDAO;
 
 public class CadastraImovelBean extends ImovelBaseBean {
+
+	private boolean isPostBack;
 	
-	public String limpaFotos() {
-		FileUploadBean.getCurrentSession().clearUploadData();
-		return null;
+	public boolean isPostBack() {
+		return isPostBack;
 	}
-	
+	public void setPostBack(boolean isPostBack) {
+		this.isPostBack = isPostBack;
+	}
+
+	public CadastraImovelBean() {
+		if (!isPostBack)
+		  FileUploadBean.getCurrentSession().clearUploadData();
+	}
+
 	public String salvaImovel() {
 		ImovelFinalidadeDAO finDao = new ImovelFinalidadeDAO();
 		finDao.salvar(this.getImovelFinalidade());
@@ -24,7 +37,8 @@ public class CadastraImovelBean extends ImovelBaseBean {
 		EnderecoDAO end = new EnderecoDAO();
 		try {
 			end.adicionarEndereco(this.getImovelEndereco());
-			this.getImovel().setEndereco(this.getImovelEndereco().getEnderecoCodigo());
+			this.getImovel().setEndereco(
+					this.getImovelEndereco().getEnderecoCodigo());
 			this.getImovel().salvar();
 			this.salvarFotos();
 		} catch (SQLException e) {
@@ -33,14 +47,14 @@ public class CadastraImovelBean extends ImovelBaseBean {
 		}
 		return "sucesso";
 	}
-	
+
 	private void salvarFotos() throws SQLException {
-	    FileUploadBean fileUploadBean = FileUploadBean.getCurrentSession();
-	    for (Foto fh : fileUploadBean.getFiles()) {
-	    	fh.setImovel(this.getImovel().getCodigo());
-	    	new FotoDAO().salvaFoto(fh);
-	    }
-	    fileUploadBean.clearUploadData();
+		FileUploadBean fileUploadBean = FileUploadBean.getCurrentSession();
+		for (Foto fh : fileUploadBean.getFiles()) {
+			fh.setImovel(this.getImovel().getCodigo());
+			new FotoDAO().salvaFoto(fh);
+		}
+		fileUploadBean.clearUploadData();
 	}
-	
+
 }
