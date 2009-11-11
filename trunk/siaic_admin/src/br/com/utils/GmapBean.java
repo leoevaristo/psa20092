@@ -11,10 +11,12 @@ import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 
 import br.com.cor.businesslogic.Gmap;
 import br.com.siaic.businesslogic.Imovel;
 import br.com.siaic.businesslogic.ImovelCaracteristica;
+import br.com.siaic.businesslogic.endereco.Bairro;
 import br.com.siaic.businesslogic.endereco.Endereco;
 import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.ImovelCaracteristicaDAO;
@@ -28,6 +30,8 @@ public class GmapBean {
 	
 	private Endereco endereco;
 	
+	private Bairro bairro;
+	
 	private ImovelCaracteristica imovelCaracteristica;
 	
 	private List<Imovel> imoveis = new ArrayList<Imovel>();
@@ -35,6 +39,8 @@ public class GmapBean {
 	private List<Endereco> enderecos = new ArrayList<Endereco>();
 	
 	private List<Map> infoMapa = new ArrayList<Map>();
+	
+	private static List<SelectItem> bairros = new ArrayList<SelectItem>();
 	
 	
 	
@@ -44,9 +50,27 @@ public class GmapBean {
 		imovel = new Imovel();
 		endereco = new Endereco();
 		imovelCaracteristica = new ImovelCaracteristica();
+		bairro = new Bairro();
+		if(bairros.isEmpty()){
+			setBairros();
+		}
 		buscaImovelEntrada();
 
 	}
+	
+	
+
+	public Bairro getBairro() {
+		return bairro;
+	}
+
+
+
+	public void setBairro(Bairro bairro) {
+		this.bairro = bairro;
+	}
+
+
 
 	public Imovel getImovel() {
 		return imovel;
@@ -182,7 +206,39 @@ public class GmapBean {
 		return dadosImoveis;
 	}
 	
+	public  List<SelectItem> getBairros() {
+		return bairros;
+	}
 
+	public static void setBairros() throws SQLException {
+		if(!bairros.isEmpty()){
+			bairros.clear();
+		}
+		EnderecoDAO dao = new EnderecoDAO();
+		List<Bairro> b = dao.getTodosBairros();
+		
+		for(Bairro bai : b){
+			bairros.add(new SelectItem(bai.getBairroNome(), bai.getBairroNome()));
+		}
+	}
+
+	public void buscaImovelPorBairro() throws SQLException{
+		ImovelDAO daoImovel = new ImovelDAO();
+		EnderecoDAO daoEndereco = new EnderecoDAO();
+		ImovelCaracteristicaDAO daoCaracteristica = ImovelCaracteristicaDAO.getInstance();
+
+		List<Map> dados = new ArrayList<Map>();		
+
+		setImoveis(daoImovel.getImovesPorBairro(bairro.getBairroNome()));
+		
+		for (Imovel imo : imoveis) {			
+			setImovel(imo);
+			setImovelCaracteristica(daoCaracteristica.getImovelCaracteristica(imo.getCaracteristica()));
+			setEndereco(daoEndereco.getEnderecoPorCodigo(imo.getEndereco()));	
+			dados.add(addDadosImoveis());
+			setInfoMapa(dados);
+		}
+	}
 	
 	
 

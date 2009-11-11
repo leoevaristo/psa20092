@@ -15,25 +15,46 @@
 		</script>
 	</ui:define>
 	<ui:define name="conteudo">
-		<h:form>
-			<h:panelGrid columns="2">
-				<h:outputLabel value="Digite um endereço" />
-				<h:inputText value="#{gmapBean.googlemap.lugar}" required="true"
-					requiredMessage="Você deve digitar um endereço válido." />
-			</h:panelGrid>
-			<h:panelGrid columns="2">
-				<rich:spacer width="210" />
-				<h:commandButton action="#{gmapBean.transformaEndereco}" value="Localizar" />
-			</h:panelGrid>
-		</h:form>
-<h:panelGroup>
-</h:panelGroup>
+		<rich:panel header="Filtra Imóveis">
+			<h:panelGroup>
+				<h:form>
+					<h:panelGroup id="panelFinalidade">
+						<h:outputLabel value="Finalidade" />
+						<rich:comboBox value="">
+							<f:selectItem itemValue="Venda" itemLabel="Venda" />
+							<f:selectItem itemValue="Aluguel" itemLabel="Aluguel" />
+						</rich:comboBox>
+					</h:panelGroup>
+					<h:panelGroup id="panelTipo">
+						<h:outputLabel value="Tipo" />
+						<rich:comboBox value="">
+							<f:selectItem itemValue="Casa" itemLabel="Casa" />
+							<f:selectItem itemValue="Apartamento" itemLabel="Apartamento" />
+							<f:selectItem itemValue="Terreno" itemLabel="Terreno" />
+							<f:selectItem itemValue="Sala Comercial"
+								itemLabel="Sala Comercial" />
+						</rich:comboBox>
+					</h:panelGroup>
+					<h:panelGroup id="panelBairro">
+						<h:outputLabel value="Bairro" />
+						<rich:comboBox value="#{gmapBean.bairro.bairroNome}" >
+							<f:selectItems value="#{gmapBean.bairros}"  />
+						</rich:comboBox>
+					</h:panelGroup>
+					<h:panelGroup>
+						<h:commandButton action="#{gmapBean.buscaImovelPorBairro}" value="Filtrar" reRenderAfterComplete="mapa"/>
+					</h:panelGroup>
+				</h:form>
+			</h:panelGroup>
+		</rich:panel>
 		<h:panelGroup id="panelMapa">
-			<m:map address="#{gmapBean.googlemap.cidade}" width="100%" height="500px" zoom="15"	id="mapa">
+			<m:map address="#{gmapBean.googlemap.cidade}" width="100%"	height="500px" zoom="15" id="mapa">
 				<ui:repeat var="imovel" value="#{gmapBean.infoMapa}">
 					<m:marker address="#{imovel.logEnd} #{imovel.nomeEnd}, #{imovel.bairroEnd}" >
-						<m:icon imageURL="#{request.contextPath}/images/home.png"	height="24" width="24" />						
-						<m:htmlInformationWindow htmlText="#{imovel.logEnd} #{imovel.nomeEnd}, #{imovel.bairroEnd} - CEP: #{imovel.cepEnd}" />
+						<m:icon imageURL="#{request.contextPath}/images/home.png"
+							height="24" width="24" />
+						<m:htmlInformationWindow
+							htmlText="#{imovel.logEnd} #{imovel.nomeEnd}, #{imovel.bairroEnd} - CEP: #{imovel.cepEnd}" />
 					</m:marker>
 				</ui:repeat>
 			</m:map>
