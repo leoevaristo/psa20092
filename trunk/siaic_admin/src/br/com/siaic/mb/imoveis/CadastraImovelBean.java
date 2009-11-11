@@ -15,20 +15,6 @@ import br.com.siaic.dao.ImovelFinalidadeDAO;
 
 public class CadastraImovelBean extends ImovelBaseBean {
 
-	private boolean isPostBack;
-	
-	public boolean isPostBack() {
-		return isPostBack;
-	}
-	public void setPostBack(boolean isPostBack) {
-		this.isPostBack = isPostBack;
-	}
-
-	public CadastraImovelBean() {
-		if (!isPostBack)
-		  FileUploadBean.getCurrentSession().clearUploadData();
-	}
-
 	public String salvaImovel() {
 		ImovelFinalidadeDAO finDao = new ImovelFinalidadeDAO();
 		finDao.salvar(this.getImovelFinalidade());

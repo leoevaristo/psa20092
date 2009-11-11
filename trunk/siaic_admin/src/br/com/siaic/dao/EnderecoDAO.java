@@ -300,11 +300,11 @@ public class EnderecoDAO {
 		while(rs.next()){
 		
 			
-			endereco.setEnderecoCodigo( rs.getInt(1));
-			endereco.setEnderecoLogradouro( rs.getString(2));
-			endereco.setEnderecoNome(rs.getString(3));
-			endereco.setEnderecoCep( rs.getString(4));
-			endereco.setEnderecoBairro( getBairroPorCodigo(rs.getInt(5)) );
+			endereco.setEnderecoCodigo( rs.getInt("END_CODIGO"));
+			endereco.setEnderecoLogradouro( rs.getString("END_LOGRADOURO"));
+			endereco.setEnderecoNome(rs.getString("END_NOME"));
+			endereco.setEnderecoCep( rs.getString("END_CEP"));
+			endereco.setEnderecoBairro( getBairroPorCodigo(rs.getInt("END_BAIRRO")) );
 			// TODO: Não esta compilando, por isso comentei para poder trabalhar.
 			//endereco.setEnderecoLatitude(rs.getString(6));
 			//endereco.setEnderecoLongitude(rs.getString(7));
