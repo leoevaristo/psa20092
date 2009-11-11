@@ -4,10 +4,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletRequest;
 
 import br.com.cond.businesslogic.Apartamento;
 import br.com.cond.businesslogic.Infracao;
+import br.com.cond.businesslogic.InfracaoOcorrencia;
 import br.com.cond.businesslogic.Veiculo;
 import br.com.cond.dao.ApartamentoDAO;
 import br.com.cond.dao.InfracaoDAO;
@@ -28,8 +31,15 @@ public class EditarInfracaoOcorrenciaBean {
 	 
 	 public EditarInfracaoOcorrenciaBean(){
 		 
-		 			
-				infracao = new Infracao();
+		 InfracaoOcorrenciaDAO infracaoOcorrenciaDao = new InfracaoOcorrenciaDAO();
+		 try{
+			 infracaoOcorrenciaDao = infracaoOcorrenciaDao.getInfracaoOcorrenciaPorCodigo(); 
+		 } catch (SQLException e1) {
+			e1.printStackTrace();
+		 }
+		 
+		 
+		 		infracao = new Infracao();
 				apartamento = new Apartamento();
 				InfracaoDAO infDao = null;
 				
@@ -64,9 +74,24 @@ public class EditarInfracaoOcorrenciaBean {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+				
+			}
 			}
 
-		
+			public String EditarInfracaoOcorrencia2() {
+				codigoGambiMasterFii = this.getCodigoParametro();
+				return "altera";
+			}
+			
+			private int getCodigoParametro() {
+				FacesContext context = FacesContext.getCurrentInstance();
+				HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
+		        String codigo = req.getParameter("codigoEditarInfracaoOcorrencia");
+				if (codigo != null) {
+		            Integer idInfracaoOcorrencia = new Integer(codigo).intValue();
+		            return idInfracaoOcorrencia;
+				} else return 0;
+			
 	 }
 
 	public Infracao getInfracao() {
@@ -116,6 +141,7 @@ public class EditarInfracaoOcorrenciaBean {
 	 */
 	public String alteraInfracaoOcorrencia() throws SQLException {
 		InfracaoOcorrenciaDAO infOcorrenciadao = new InfracaoOcorrenciaDAO();
+		InfracaoOcorrencia infracaoOcorrencia = new InfracaoOcorrencia();
 		infOcorrenciadao.alterarInfracaoOcorrencia(infracaoOcorrencia);
 		
 		return "sucesso";
@@ -124,3 +150,4 @@ public class EditarInfracaoOcorrenciaBean {
 }
 
 }
+
