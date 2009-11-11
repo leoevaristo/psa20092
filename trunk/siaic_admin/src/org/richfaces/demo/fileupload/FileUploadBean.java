@@ -14,6 +14,7 @@ import org.richfaces.event.UploadEvent;
 import org.richfaces.model.UploadItem;
 
 import br.com.siaic.businesslogic.Foto;
+import br.com.siaic.dao.FotoDAO;
 
 /**
  * @author Ilya Shaikovsky
@@ -63,6 +64,33 @@ public class FileUploadBean {
 	public String clearUploadData() {
 		files.clear();
 		setUploadsAvailable(5);
+		return "";
+	}
+	
+	private String fotoApagar;
+	public String getFotoApagar() {
+		return fotoApagar;
+	}
+	public void setFotoApagar(String fotoApagar) {
+		this.fotoApagar = fotoApagar;
+	}
+	
+	private int fotoImovel;
+	public int getFotoImovel() {
+		return fotoImovel;
+	}
+	public void setFotoImovel(int fotoImovel) {
+		this.fotoImovel = fotoImovel;
+	}
+	
+	public String apagarFoto() {
+		for (Foto fh : this.files) {
+			if (fh.getName().equals(fotoApagar)) {
+				if (fh.getCodigo() != 0)
+				    new FotoDAO().apagaFoto(fh);
+			}
+		}
+		this.files = (ArrayList<Foto>)new FotoDAO().getFotos(fotoImovel);
 		return "";
 	}
 	

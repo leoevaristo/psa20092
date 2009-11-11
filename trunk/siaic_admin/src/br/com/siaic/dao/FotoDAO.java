@@ -74,7 +74,7 @@ public class FotoDAO {
 
 	public void apagaFoto(Foto foto) {
 		PreparedStatement ps = this.conn
-				.getPreparedStatement("delete from FOTO where FOT_CODIGO = ?, FOT_IMO_CODIGO = ?;");
+				.getPreparedStatement("delete from FOTO where FOT_CODIGO = ? AND FOT_IMO_CODIGO = ?;");
 		try {
 			ps.setInt(1, foto.getCodigo());
 			ps.setInt(2, foto.getImovel());
