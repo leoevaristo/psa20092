@@ -23,6 +23,7 @@ public class AlteraImovelBean extends ImovelBaseBean {
 			
 			this.getImovel().setCaracteristica(this.getImovel().getCaracteristica());
 			this.getImovel().atualizar();
+			this.salvarFotos();
 			FileUploadBean.getCurrentSession().clearUploadData();
 			return "altera";
 		} catch (SQLException e) {
