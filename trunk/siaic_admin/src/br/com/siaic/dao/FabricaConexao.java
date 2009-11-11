@@ -47,8 +47,13 @@ public class FabricaConexao {
 
 		}
 
-		return DriverManager.getConnection("jdbc:mysql://localhost:3306/SIAIC",
+
+		return DriverManager.getConnection("jdbc:mysql://10.20.2.16:3306/siaic",
 				"root", "");
+
+//		return DriverManager.getConnection("jdbc:mysql://localhost:3306/SIAIC",
+//				"root", "");
+
 		
 //		return DriverManager.getConnection("jdbc:mysql://s156.eatj.com:3307/psa20092",
 //				"psa20092", "psa20092");
