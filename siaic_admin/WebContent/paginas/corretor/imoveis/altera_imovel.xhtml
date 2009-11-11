@@ -162,7 +162,7 @@
 					<a4j:support event="onuploadcomplete" reRender="info" />
 				</rich:fileUpload>
 				<br />
-				<h:panelGroup id="info">
+				<h:panelGrid id="info">
 					<br />
 					<a4j:commandButton action="#{fileUploadBean.clearUploadData}"
 						reRender="info, upload" value="Limpar arquivos enviados"
@@ -187,13 +187,23 @@
 										<h:outputText value="#{file.name}" />
 										<h:outputText value="Tamanho(bytes):" />
 										<h:outputText value="#{file.length}" />
+										<h:panelGrid column="1">
+										  <a4j:region>
+										    <a4j:commandLink action="#{fileUploadBean.apagarFoto}" value="">
+										      <f:setPropertyActionListener target="#{fileUploadBean.fotoApagar}" value="#{file.name}" />
+										      <f:setPropertyActionListener target="#{fileUploadBean.fotoImovel}" value="#{alteraImovelBean.imovel.codigo}" />
+										      <h:graphicImage value="/images/imgdelete.png" />
+										      <a4j:support reRender="info" event="onclick" />
+										    </a4j:commandLink>
+										  </a4j:region>
+										</h:panelGrid>
 									</h:panelGrid>
 								</h:panelGrid>
 							</rich:panel>
 						</rich:dataGrid>
 					</rich:panel>
 					<rich:spacer height="3" />
-				</h:panelGroup>
+				</h:panelGrid>
 			</h:panelGrid>
 
 			<h:panelGroup styleClass="linha"></h:panelGroup>

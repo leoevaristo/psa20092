@@ -54,6 +54,7 @@ public class ConsultaImovelBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest req = (HttpServletRequest) context
 				.getExternalContext().getRequest();
+		
 		String aff = req.getParameter("codigoImovel");
 		if (aff != null)
 			return new Integer(aff).intValue();

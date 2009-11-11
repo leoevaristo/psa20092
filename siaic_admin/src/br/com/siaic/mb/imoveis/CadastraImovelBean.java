@@ -2,10 +2,6 @@ package br.com.siaic.mb.imoveis;
 
 import java.sql.SQLException;
 
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.richfaces.demo.fileupload.FileUploadBean;
 
 import br.com.siaic.businesslogic.Foto;
@@ -38,4 +34,12 @@ public class CadastraImovelBean extends ImovelBaseBean {
 		return "sucesso";
 	}
 
+	protected void salvarFotos() throws SQLException {
+		FileUploadBean fileUploadBean = FileUploadBean.getCurrentSession();
+		for (Foto fh : fileUploadBean.getFiles()) {
+			fh.setImovel(this.getImovel().getCodigo());
+			new FotoDAO().salvaFoto(fh);
+		}
+		fileUploadBean.clearUploadData();
+	}
 }
