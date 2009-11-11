@@ -9,7 +9,7 @@
 
 <ui:composition template="/WEB-INF/template/template-corretor.xhtml">
 
-	<style>
+<style>
 .top {
 	vertical-align: top;
 }
@@ -26,13 +26,16 @@
 	<ui:define name="subtitulo">
 		<h:outputText value="Cadastro de Imóvel" />
 	</ui:define>
-
+    
 	<ui:define name="conteudo">
-		<a4j:form styleClass="forms">
+		<a4j:form styleClass="forms" oncomplete="#{cadastraImovelBean.limpaFotos}">
 			<!--			<h:panelGroup id="codigo">-->
 			<!--				<h:outputLabel value="Código:" />-->
 			<!--				<h:outputText value="#{cadastraImovelBean.imovel.codigo}" />-->
 			<!--			</h:panelGroup>-->
+
+            <h:commandButton action="#{cadastraImovelBean.limpaFotos}" id="gambi" />
+            
 
 			<h:panelGroup id="finalidade">
 				<h:outputLabel value="Finalidade:" />
