@@ -196,9 +196,10 @@ public class EnderecoDAO {
 		
 		Estado estado = new Estado();
 		
-		rs.next();
+		if (rs.next()) {
 		estado.setEstadoSigla(rs.getString(1));
 		estado.setEstadoNome(rs.getString(2));
+		}
 
 		ps.close();
 		rs.close();
@@ -229,10 +230,11 @@ public class EnderecoDAO {
 		ps.setInt(1, cidadeCodigo);
 		ResultSet rs = ps.executeQuery();
 		Cidade cidade = new Cidade();
-		rs.next();
+		if (rs.next()) {
 		cidade.setCidadeCodigo(rs.getInt(1));
 		cidade.setCidadeNome(rs.getString(2));
 		cidade.setCidadeEstado(rs.getString(3));
+		}
 
 		ps.close();
 		rs.close();
