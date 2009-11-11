@@ -275,7 +275,7 @@ public class ConsultaAgendaBean {
 	}
 	
 	
-	public List<Agenda> getAgendaData() throws SQLException {
+	public List<Agenda> getAgendaData() throws SQLException, ParseException {
 
 		AgendaDAO daoAgenda = new AgendaDAO();
 		return daoAgenda.getAgendaData(agenda.getData());
