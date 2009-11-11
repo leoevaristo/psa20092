@@ -23,7 +23,7 @@ public class InfracaoOcorrencia {
 				+ apartamentoInfracaoOcorrencia + ", codigoInfracaoOcorrencia="
 				+ codigoInfracaoOcorrencia + ", dataHoraInfracaoOcorrencia="
 				+ dataHoraInfracaoOcorrencia + ", infracaoOcorrencia="
-				+ infracaoOcorrencia + ", observacaoInfracaoOcorrencia="
+				+ infracao + ", observacaoInfracaoOcorrencia="
 				+ observacaoInfracaoOcorrencia + "]";
 	}
 
@@ -58,13 +58,13 @@ public class InfracaoOcorrencia {
 	}
 
 
-	public Infracao getInfracaoOcorrencia() {
-		return infracaoOcorrencia;
+	public Infracao getInfracao() {
+		return infracao;
 	}
 
 
-	public void setInfracaoOcorrencia(Infracao infracaoOcorrencia) {
-		this.infracaoOcorrencia = infracaoOcorrencia;
+	public void setInfracao(Infracao infracao) {
+		this.infracao = infracao;
 	}
 
 
@@ -82,18 +82,18 @@ public class InfracaoOcorrencia {
 	int codigoInfracaoOcorrencia;
 	Timestamp dataHoraInfracaoOcorrencia;
 	String observacaoInfracaoOcorrencia;
-	Infracao infracaoOcorrencia;
+	Infracao infracao;
 	Apartamento apartamentoInfracaoOcorrencia;
 	
 	public InfracaoOcorrencia(int codigoInfracaoOcorrencia,
 			Timestamp dataHoraInfracaoOcorrencia,
-			String observacaoInfracaoOcorrencia, Infracao infracaoOcorrencia,
+			String observacaoInfracaoOcorrencia, Infracao infracao,
 			Apartamento apartamentoInfracaoOcorrencia) {
 		super();
 		this.codigoInfracaoOcorrencia = codigoInfracaoOcorrencia;
 		this.dataHoraInfracaoOcorrencia = dataHoraInfracaoOcorrencia;
 		this.observacaoInfracaoOcorrencia = observacaoInfracaoOcorrencia;
-		this.infracaoOcorrencia = infracaoOcorrencia;
+		this.infracao = infracao;
 		this.apartamentoInfracaoOcorrencia = apartamentoInfracaoOcorrencia;
 	}
 	

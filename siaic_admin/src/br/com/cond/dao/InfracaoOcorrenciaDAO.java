@@ -34,7 +34,7 @@ public class InfracaoOcorrenciaDAO {
 			ps = conexao.prepareStatement(sql);
 			ps.setTimestamp(1, infracaoOcorrencia.getDataHoraInfracaoOcorrencia() );
 			ps.setString(2, infracaoOcorrencia.getObservacaoInfracaoOcorrencia() );
-			ps.setInt(3, infracaoOcorrencia.getInfracaoOcorrencia().getCodigoInfracao());
+			ps.setInt(3, infracaoOcorrencia.getInfracao().getCodigoInfracao());
 			ps.setInt(4, infracaoOcorrencia.getApartamentoInfracaoOcorrencia().getCodigoApartamento() );
 
 			ps.execute();
@@ -74,7 +74,7 @@ public class InfracaoOcorrenciaDAO {
 		infracaoOcorrencia.setCodigoInfracaoOcorrencia(rs.getInt(1));
 		infracaoOcorrencia.setDataHoraInfracaoOcorrencia(rs.getTimestamp(2));
 		infracaoOcorrencia.setObservacaoInfracaoOcorrencia(rs.getString(3));
-		infracaoOcorrencia.setInfracaoOcorrencia(
+		infracaoOcorrencia.setInfracao(
 				new InfracaoDAO().getInfracaoId( rs.getInt(4) ) );
 		infracaoOcorrencia.setApartamentoInfracaoOcorrencia( 
 				new ApartamentoDAO().getApartamentoId( rs.getInt(5)));
@@ -145,7 +145,7 @@ public class InfracaoOcorrenciaDAO {
 			
 			ps.setTimestamp(1, infracaoOcorrencia.getDataHoraInfracaoOcorrencia() );
 			ps.setString(2, infracaoOcorrencia.getObservacaoInfracaoOcorrencia());
-			ps.setInt(3, infracaoOcorrencia.getInfracaoOcorrencia().getCodigoInfracao() );
+			ps.setInt(3, infracaoOcorrencia.getInfracao().getCodigoInfracao() );
 			ps.setInt(4, infracaoOcorrencia.getApartamentoInfracaoOcorrencia().getCodigoApartamento() );
 			ps.setInt(5, infracaoOcorrencia.getCodigoInfracaoOcorrencia() );
 			ps.executeUpdate();

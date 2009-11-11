@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template/template-cond.xhtml">
+		
+         <ui:define name="tituloGrande"> 
+			<h:outputText value="Infracoes" />
+		 </ui:define>		
+		 <ui:define name="subtitulo">  
+			<h:outputText value="Alteracao de Infracoes" />
+		 </ui:define>
+		 <ui:define name="conteudo">
+		   <h:form styleClass="forms">
+		     
+		     <h:panelGroup id="codigo">
+		       <h:outputLabel value="Codigo" />
+		       <h:outputText value="${consultaInfracaoBean.updateInfracao.}" />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup id="descricao">
+		       <h:outputLabel value="Descricao" />
+		       <h:inputTextarea value="${consultaInfracaoBean.updateInfracao}"  />
+		     </h:panelGroup>
+		     
+		     <h:panelGroup styleClass="linha"></h:panelGroup>
+		     
+		     <h:panelGroup styleClass="botoes">
+			   <h:commandButton action="#{consultaInfracaoBean.updateInfracao}" value="" styleClass="input_submit" />
+			   <h:commandButton action="#{cadastroInfracaoBean.voltar}" value="" styleClass="input_button" immediate="true" />
+			 </h:panelGroup>
+		     
+		   </h:form>
+		 </ui:define>
+		 
+		 <ui:define name="rodape"></ui:define>
+		 
+	</ui:composition>
+
+</html>
