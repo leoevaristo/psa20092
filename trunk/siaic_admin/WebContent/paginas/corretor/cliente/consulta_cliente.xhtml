@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="tituloGrande">
+		<h:outputText value="Página do Cliente" />
+	</ui:define>
+	<ui:define name="subtitulo">
+		<h:outputText value="» Consultar Cliente" />
+	</ui:define>
+	<ui:define name="conteudo">
+		<h:form styleClass="forms" id="formFiltros">
+			<h:panelGroup>
+				<h:outputLabel for="campoFiltro" value="Filtrar por: " />
+				<h:selectOneMenu value="#{consultaClienteBean.tipoPesquisa}" id="campoFiltro" >
+					<f:selectItem itemValue="" itemLabel="Tipo de Filtro" />
+					<f:selectItem itemValue="nome" itemLabel="Nome" />					
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:outputLabel value="Palavra-chave: " for="inFiltro" />
+				<h:inputText value="#{consultaClienteBean.campoPesquisa}" id="inFiltro"/>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:commandButton action="#{consultaClienteBean.escolheTipoPesquisa}" value="Filtrar" type="submit" /> 				
+			</h:panelGroup>
+		</h:form>
+	</ui:define>
+	<ui:define name="tituloLista">
+		<h:outputText value="Lista de Clientes" />
+	</ui:define>
+	<ui:define name="linkNovo" >
+		<h:outputLink value="#{request.contextPath}/paginas/cliente/cadastra_cliente.xhtml" styleClass="info_novo">
+			<h:outputText value="Novo Cliente"/>
+		</h:outputLink>
+	</ui:define>
+	<ui:define name="infoGerais">
+		<h:dataTable 
+			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
+			value="#{consultaClienteBean.clientePorNome}" var="cliente" rendered="#{consultaClienteBean.tipoPesquisa eq 'nome'}">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Código" />
+				</f:facet>
+				<h:outputText value="#{cliente.codigoPessoa}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nome" />
+				</f:facet>
+				<h:outputText value="#{cliente.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Email" />
+				</f:facet>
+				<h:outputText value="#{cliente.email}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Telefone" />
+				</f:facet>
+				<h:outputText value="#{cliente.telefone}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Editar" />
+				</f:facet>
+				<h:form id="alteraCliente">
+					<h:commandLink action="#{consultaClienteBean.localizarClientePorId}">
+						<h:graphicImage value="/images/imgedit.png" />
+						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Detalhes" />
+				</f:facet>
+				<h:form id="detalheCliente">
+					<h:commandLink id="detalheLink"
+						action="#{consultaClienteBean.exibeDetalhesCliente}">
+						<h:outputText value="Exibir Detalhes" />
+						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir" />
+				</f:facet>
+				<h:form id="excluiCliente">
+					<h:commandLink id="excluir"
+						onclick="if (confirm('Você tem certeza que deseja excluir esse cliente?')) {return true }; return false;"
+						action="#{consultaClienteBean.excluiCliente}">
+						<h:graphicImage value="/images/imgdelete.png" />
+						<f:param value="#{cliente.codigoPessoa}" name="codigoPessoa" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+		<h:dataTable 
+			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
+			value="#{consultaClienteBean.todosClientes}" var="clientes" rendered="#{consultaClienteBean.campoPesquisa eq null}">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Código" />
+				</f:facet>
+				<h:outputText value="#{clientes.codigoPessoa}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nome" />
+				</f:facet>
+				<h:outputText value="#{clientes.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Email" />
+				</f:facet>
+				<h:outputText value="#{clientes.email}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Telefone" />
+				</f:facet>
+				<h:outputText value="#{clientes.telefone}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Editar" />
+				</f:facet>
+				<h:form id="alteraCliente">
+					<h:commandLink action="#{consultaClienteBean.localizarClientePorId}">
+						<h:graphicImage value="/images/imgedit.png" />
+						<f:param value="#{clientes.codigoPessoa}" name="codigoPessoa" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Detalhes" />
+				</f:facet>
+				<h:form id="detalheCliente">
+					<h:commandLink id="detalheLink"
+						action="#{consultaClienteBean.exibeDetalhesCliente}">
+						<h:outputText value="Exibir Detalhes" />
+						<f:param value="#{clientes.codigoPessoa}" name="codigoPessoa" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir" />
+				</f:facet>
+				<h:form id="excluiCliente">
+					<h:commandLink id="excluir"
+						onclick="if (confirm('Você tem certeza que deseja excluir esse cliente?')) {return true }; return false;"
+						action="#{consultaClienteBean.excluiCliente}">
+						<h:graphicImage value="/images/imgdelete.png" />
+						<f:param value="#{clientes.codigoPessoa}" name="codigoPessoa" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</ui:define>
+	<ui:define name="rodape"> SIAIC - Todos os direitos reservados</ui:define>
+</ui:composition>
+</html>

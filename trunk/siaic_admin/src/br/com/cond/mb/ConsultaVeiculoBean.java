@@ -104,7 +104,7 @@ public class ConsultaVeiculoBean {
 	 * @return
 	 * @throws SQLException
 	 */
-	public String VeiculoId() throws SQLException {
+	public String VeiculoId() throws SQLException { 
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();

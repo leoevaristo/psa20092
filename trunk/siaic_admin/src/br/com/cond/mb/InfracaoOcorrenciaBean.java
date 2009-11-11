@@ -19,7 +19,7 @@ public class InfracaoOcorrenciaBean {
 	private Apartamento apartamento;
 	private Infracao infracao;
 	private static List<SelectItem> listaApartamentos = new ArrayList<SelectItem>();
-	private List<SelectItem> listaTodasAsInfracoes = new ArrayList<SelectItem>();
+	private  List<SelectItem> listaTodasAsInfracoes = new ArrayList<SelectItem>();
 	
 	
 	
