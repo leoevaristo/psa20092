@@ -15,6 +15,10 @@ import br.com.siaic.dao.ImovelFinalidadeDAO;
 
 public class CadastraImovelBean extends ImovelBaseBean {
 
+	public String limpaFotos() {
+		return null;
+	}
+	
 	public String salvaImovel() {
 		ImovelFinalidadeDAO finDao = new ImovelFinalidadeDAO();
 		finDao.salvar(this.getImovelFinalidade());
