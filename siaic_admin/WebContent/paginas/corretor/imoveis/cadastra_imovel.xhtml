@@ -34,9 +34,6 @@
 			<!--				<h:outputText value="#{cadastraImovelBean.imovel.codigo}" />-->
 			<!--			</h:panelGroup>-->
 
-            <h:commandButton action="#{cadastraImovelBean.limpaFotos}" id="gambi" />
-            
-
 			<h:panelGroup id="finalidade">
 				<h:outputLabel value="Finalidade:" />
 				<h:inputText value="#{cadastraImovelBean.imovelFinalidade.nome}"
@@ -167,9 +164,9 @@
 			<h:panelGrid columns="2" columnClasses="top,top">
 				<rich:fileUpload fileUploadListener="#{fileUploadBean.listener}"
 					maxFilesQuantity="#{fileUploadBean.uploadsAvailable}" id="upload"
-					immediateUpload="#{fileUploadBean.autoUpload}"
+					immediateUpload="#{fileUploadBeanCadastro.autoUpload}"
 					acceptedTypes="jpg, gif, png, bmp"
-					allowFlash="#{fileUploadBean.useFlash}"
+					allowFlash="#{fileUploadBeanCadastro.useFlash}"
 					addControlLabel="Adicionar..." uploadControlLabel="Enviar"
 					stopControlLabel="Parar" cancelEntryControlLabel="Cancelar"
 					transferErrorLabel="Houve erro ao enviar o arquivo."
@@ -181,23 +178,23 @@
 				<br />
 				<h:panelGroup id="info">
 					<br />
-					<a4j:commandButton action="#{fileUploadBean.clearUploadData}"
+					<a4j:commandButton action="#{fileUploadBeanCadastro.clearUploadData}"
 						reRender="info, upload" value="Limpar arquivos enviados"
-						rendered="#{fileUploadBean.size>0}" immediate="true" />
+						rendered="#{fileUploadBeanCadastro.size>0}" immediate="true" />
 					<rich:panel bodyClass="info">
 						<f:facet name="header">
 							<h:outputText value="Arquivos enviados" />
 						</f:facet>
 						<h:outputText value="Nenhum arquivo enviado."
-							rendered="#{fileUploadBean.size==0}" />
-						<rich:dataGrid columns="1" value="#{fileUploadBean.files}"
+							rendered="#{fileUploadBeanCadastro.size==0}" />
+						<rich:dataGrid columns="1" value="#{fileUploadBeanCadastro.files}"
 							var="file" rowKeyVar="row">
 							<rich:panel bodyClass="rich-laguna-panel-no-header">
 								<h:panelGrid columns="2">
 									<a4j:mediaOutput element="img" mimeType="#{file.mime}"
-										createContent="#{fileUploadBean.paint}" value="#{row}"
+										createContent="#{fileUploadBeanCadastro.paint}" value="#{row}"
 										style="width:100px; height:100px;" cacheable="false">
-										<f:param value="#{fileUploadBean.timeStamp}" name="time" />
+										<f:param value="#{fileUploadBeanCadastro.timeStamp}" name="time" />
 									</a4j:mediaOutput>
 									<h:panelGrid columns="2">
 										<h:outputText value="Nome do Arquivo:" />
