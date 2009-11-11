@@ -34,13 +34,4 @@ public class CadastraImovelBean extends ImovelBaseBean {
 		return "sucesso";
 	}
 
-	private void salvarFotos() throws SQLException {
-		FileUploadBean fileUploadBean = FileUploadBean.getCurrentSession();
-		for (Foto fh : fileUploadBean.getFiles()) {
-			fh.setImovel(this.getImovel().getCodigo());
-			new FotoDAO().salvaFoto(fh);
-		}
-		fileUploadBean.clearUploadData();
-	}
-
 }
