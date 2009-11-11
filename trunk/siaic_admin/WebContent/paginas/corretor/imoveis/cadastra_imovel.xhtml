@@ -162,8 +162,8 @@
 			</h:panelGroup>
 
 			<h:panelGrid columns="2" columnClasses="top,top">
-				<rich:fileUpload fileUploadListener="#{fileUploadBean.listener}"
-					maxFilesQuantity="#{fileUploadBean.uploadsAvailable}" id="upload"
+				<rich:fileUpload fileUploadListener="#{fileUploadBeanCadastro.listener}"
+					maxFilesQuantity="#{fileUploadBeanCadastro.uploadsAvailable}" id="upload"
 					immediateUpload="#{fileUploadBeanCadastro.autoUpload}"
 					acceptedTypes="jpg, gif, png, bmp"
 					allowFlash="#{fileUploadBeanCadastro.useFlash}"
@@ -216,7 +216,7 @@
 				<h:commandButton action="#{cadastraImovelBean.salvaImovel}" value=""
 					styleClass="input_submit">
 				</h:commandButton>
-				<h:commandButton action="sucesso" value="" styleClass="input_button"
+				<h:commandButton action="erro" value="" styleClass="input_button"
 					immediate="true" />
 			</h:panelGroup>
 
