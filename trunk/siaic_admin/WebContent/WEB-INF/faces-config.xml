@@ -8,6 +8,11 @@
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
+  <managed-bean-name>fileUploadBeanCadastro</managed-bean-name>
+  <managed-bean-class>org.richfaces.demo.fileupload.FileUploadBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
   <managed-bean-name>cadastraClienteBean</managed-bean-name>
   <managed-bean-class>br.com.siaic.mb.CadastraClienteBean</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
