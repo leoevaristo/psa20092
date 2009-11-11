@@ -18,10 +18,6 @@
 		<param-name>org.ajax4jsf.SKIN</param-name>
 		<param-value>classic</param-value>
 	</context-param>
-	<context-param>
-		<param-name>onload-config</param-name>
-		<param-value>/WEB-INF/onload-config.xml</param-value>
-	</context-param>
 	<filter>
 		<display-name>Ajax4jsf Filter</display-name>
 		<filter-name>ajax4jsf</filter-name>
