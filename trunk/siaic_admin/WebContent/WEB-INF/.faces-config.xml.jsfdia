@@ -959,40 +959,4 @@
   NAME="rules:#paginas#corretor#imoveis#detalhes_imovel.xhtml"
   PATH="/paginas/corretor/imoveis/detalhes_imovel.xhtml"
   SHAPE="272,545,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM
-  NAME="rules:#paginas#corretor#perfil_cliente#cadastrar_perfil.xhtml"
-  PATH="/paginas/corretor/perfil_cliente/cadastrar_perfil.xhtml"
-  SHAPE="32,4225,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM
-   ID="rules:#paginas#corretor#perfil_cliente#cadastrar_perfil.xhtml:0"
-   NAME="item"
-   PATH="/paginas/corretor/perfil_cliente/cadastrar_perfil.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="Cancelar::#paginas#corretor#perfil_cliente#perfil_cliente.xhtml"
-    NAME="output"
-    PATH="/paginas/corretor/perfil_cliente/perfil_cliente.xhtml"
-    TARGET="rules:#paginas#corretor#perfil_cliente#perfil_cliente.xhtml"
-    TITLE="Cancelar" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM
-  NAME="rules:#paginas#corretor#perfil_cliente#perfil_cliente.xhtml"
-  PATH="/paginas/corretor/perfil_cliente/perfil_cliente.xhtml"
-  SHAPE="240,4241,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM
-  NAME="rules:#paginas#corretor#perfil_cliente#consultar_perfil.xhtml"
-  PATH="/paginas/corretor/perfil_cliente/consultar_perfil.xhtml"
-  SHAPE="32,5073,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM
-   ID="rules:#paginas#corretor#perfil_cliente#consultar_perfil.xhtml:0"
-   NAME="item"
-   PATH="/paginas/corretor/perfil_cliente/consultar_perfil.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT
-    ID="Cancelar::#paginas#corretor#perfil_cliente#perfil_cliente.xhtml"
-    NAME="output"
-    PATH="/paginas/corretor/perfil_cliente/perfil_cliente.xhtml"
-    TARGET="rules:#paginas#corretor#perfil_cliente#perfil_cliente.xhtml"
-    TITLE="Cancelar" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
 </PROCESS>
