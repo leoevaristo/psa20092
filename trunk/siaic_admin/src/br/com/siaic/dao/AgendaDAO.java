@@ -3,8 +3,9 @@ package br.com.siaic.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +27,9 @@ import br.com.siaic.businesslogic.Usuario;
  */
 public class AgendaDAO {
 	private static AgendaDAO instance;
-
+	private Date cnv;
+	private Agenda agenda;
+	
 	public static AgendaDAO getInstance() {
 		if (AgendaDAO.instance == null) {
 			AgendaDAO.instance = new AgendaDAO();
@@ -102,16 +105,19 @@ public class AgendaDAO {
 	}
 
 	
-	public List<Agenda> getAgendaData(String data) throws SQLException {
+	public List<Agenda> getAgendaData(String data) throws SQLException, ParseException {
+		if (data == null) {
+			return null;
+		} 
+		String sql = "SELECT * FROM AGENDA where AGE_DATA = ? ";
+		//AgendaDAO daoAgenda = new AgendaDAO();
+		
+  		    cnv = new SimpleDateFormat("yyyy-MM-dd").parse(data);
+		    System.out.println(cnv);
 
-		String sql = "SELECT * FROM AGENDA where AGE_DATA = ?";
-
-	//	try{
-			
-			PreparedStatement ps = DB.getConn().prepareStatement(sql);
-			//ps.setDate(1, new java.sql.Date(data.getTimeInMillis()) );
-			ps.setString(1,"%"+ data +"%" );
-
+		    PreparedStatement ps = DB.getConn().prepareStatement(sql);
+			ps.setString(1,""+ cnv +"" );
+			System.out.println(ps);
 			ResultSet rs = ps.executeQuery();
 
 			List<Agenda> listaAgen = new ArrayList<Agenda>();
