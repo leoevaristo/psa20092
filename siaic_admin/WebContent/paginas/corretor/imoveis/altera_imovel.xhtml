@@ -177,11 +177,15 @@
 							var="file" rowKeyVar="row">
 							<rich:panel bodyClass="rich-laguna-panel-no-header">
 								<h:panelGrid columns="2">
-									<a4j:mediaOutput element="img" mimeType="#{file.mime}"
-										createContent="#{fileUploadBean.paint}" value="#{row}"
-										style="width:100px; height:100px;" cacheable="false">
-										<f:param value="#{fileUploadBean.timeStamp}" name="time" />
-									</a4j:mediaOutput>
+								  <h:panelGrid columns="1">
+									  <h:outputLink value="#{request.contextPath}/fotostemp/#{file.name}" rel="lightbox" title="">
+									      <a4j:mediaOutput element="img" mimeType="#{file.mime}"
+										    createContent="#{fileUploadBean.paint}" value="#{row}"
+										    style="width:100px; height:100px;" cacheable="false">
+										  <f:param value="#{fileUploadBean.timeStamp}" name="time" />
+									    </a4j:mediaOutput>
+									  </h:outputLink>
+									</h:panelGrid>
 									<h:panelGrid columns="2">
 										<h:outputText value="Nome do Arquivo:" />
 										<h:outputText value="#{file.name}" />

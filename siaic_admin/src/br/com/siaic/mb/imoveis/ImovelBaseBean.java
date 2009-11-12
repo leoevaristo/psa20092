@@ -284,11 +284,5 @@ public class ImovelBaseBean {
 	    ArrayList<Foto> fotos = (ArrayList<Foto>)new FotoDAO().getFotos(this.imovel.getCodigo());
 	    fileUploadBean.setFiles(fotos);
 	}
-	
-	public static String getRealPath(String diretorio) {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-		return session.getServletContext().getRealPath(diretorio);
-	}
 
 }
