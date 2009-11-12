@@ -10,12 +10,12 @@
 		<a4j:form id="formBusca">
 			<h:panelGroup id="panelPesquisa">
 				<h:outputText value="Nome"/>
-				<h:inputText value="#{cadastrarAgendaBean.campoPesquisa}"
+				<h:inputText value="#{reservarImovelBean.campoPesquisa}"
 					id="campoPesquisa" />
 			</h:panelGroup>
 			<h:panelGroup id="panelBotaoPesquisa">
 				<a4j:commandButton
-					action="#{cadastrarAgendaBean.escolheTipoPesquisa}"
+					action="#{reservarImovelBean.escolheTipoPesquisa}"
 					reRender="tableCliente" value="Localizar" limitToList="true">
 				</a4j:commandButton>
 			</h:panelGroup>
@@ -27,7 +27,7 @@
 					<rich:dataTable id="tableCliente"
 						onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
 						onRowMouseOut="this.style.backgroundColor='#FFFFFF'"
-						value="#{cadastrarAgendaBean.clientePerfilPorNome}" var="tabcliente"
+						value="#{reservarImovelBean.clientePerfilPorNome}" var="tabcliente"
 						width="450">
 
 						<f:facet name="header">
@@ -55,7 +55,7 @@
 								id="setaCliente" reRender="cli" ajaxSingle="true">
 								<h:graphicImage value="/images/check.png" />
 								<f:setPropertyActionListener
-									target="#{cadastrarAgendaBean.cliente}"
+									target="#{reservarImovelBean.cliente}"
 									value="#{tabcliente}"></f:setPropertyActionListener>
 							</a4j:commandLink>														
 						</rich:column>
