@@ -314,6 +314,11 @@
   <managed-bean-class>br.com.cor.mb.BuscarClienteBean</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>reservarImovelBean</managed-bean-name>
+  <managed-bean-class>br.com.cor.mb.ReservarImovelBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
  <!--
 		<navigation-rule> <from-view-id>*</from-view-id> <navigation-case>
 		<from-outcome>logout</from-outcome>
