@@ -1,0 +1,86 @@
+<ui:fragment xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<rich:modalPanel id="modalCliente" autosized="true">
+
+
+		<a4j:form id="formBusca">
+			<h:panelGroup id="panelPesquisa">
+				<h:outputText value="Nome"/>
+				<h:inputText value="#{cadastrarAgendaBean.campoPesquisa}"
+					id="campoPesquisa" />
+			</h:panelGroup>
+			<h:panelGroup id="panelBotaoPesquisa">
+				<a4j:commandButton
+					action="#{cadastrarAgendaBean.escolheTipoPesquisa}"
+					reRender="tableCliente" value="Localizar" limitToList="true">
+				</a4j:commandButton>
+			</h:panelGroup>
+			<rich:spacer height="30" />
+			<rich:datascroller for="tableCliente" />
+			<rich:spacer height="30" />
+			<a4j:region>
+				<a4j:outputPanel>					
+					<rich:dataTable id="tableCliente"
+						onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+						onRowMouseOut="this.style.backgroundColor='#FFFFFF'"
+						value="#{cadastrarAgendaBean.clientePerfilPorNome}" var="tabcliente"
+						width="450">
+
+						<f:facet name="header">
+							<rich:columnGroup>
+								<rich:column rowspan="2">
+									<rich:spacer />																											
+								</rich:column>
+								<rich:column colspan="3">
+									<h:outputText value="Lista de Clientes" />
+								</rich:column>
+								<rich:column breakBefore="true">
+									<h:outputText value="Nome" />									
+								</rich:column>
+								<rich:column>
+									<h:outputText value="E-mail" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Telefone" />
+								</rich:column>
+							</rich:columnGroup>
+						</f:facet>
+						<rich:column>
+							<a4j:commandLink
+								action="#"
+								id="setaCliente" reRender="cli" ajaxSingle="true">
+								<h:graphicImage value="/images/check.png" />
+								<f:setPropertyActionListener
+									target="#{cadastrarAgendaBean.cliente}"
+									value="#{tabcliente}"></f:setPropertyActionListener>
+							</a4j:commandLink>														
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{tabcliente.nome}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{tabcliente.email}" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{tabcliente.telefone}" />
+						</rich:column>
+					</rich:dataTable>
+				</a4j:outputPanel>
+			</a4j:region>
+		</a4j:form>
+		<f:facet name="header">
+			<h:outputText value="Selecionar cliente" />
+		</f:facet>
+		<f:facet name="controls">
+			<h:outputLink id="linkFecha" value="#">
+				<h:outputText value="fechar" />
+				<rich:componentControl attachTo="linkFecha" for="modalCliente"
+					event="onclick" operation="hide" />
+			</h:outputLink>
+		</f:facet>
+	</rich:modalPanel>
+</ui:fragment>

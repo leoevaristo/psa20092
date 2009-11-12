@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:rich="http://richfaces.org/rich">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
 
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 		
@@ -16,29 +17,34 @@
 		 </ui:define>
 		 <ui:define name="conteudo">
 		   <h:form styleClass="forms">
-		     <h:panelGroup id="cliente">
-		       <h:outputLabel value="Cliente:" />
-		       <h:inputText value="" styleClass="obrigatorio" size="50" required="true"/>
-		       		       <h:commandButton action="#" value="" styleClass="input_submit"/>
-		       <h:selectOneMenu value="" id="clienteresult">
-			     <f:selectItems value=""/>
-			   </h:selectOneMenu>
-		     </h:panelGroup>			    
-		     <h:panelGroup id="imovel">
+		     <a4j:region>
+				<h:panelGrid columns="2" id="panelLocalizaCliente">
+					<h:outputLabel for="cli" value="Cliente" />
+					<h:outputText value="#{cadastrarAgendaBean.cliente.nome}" id="cli"
+						rendered="#{not empty cadastrarAgendaBean.cliente}" />
+					<rich:spacer />
+					<a4j:commandButton value="Localizar Cliente" id="cliente">
+						<rich:componentControl attachTo="cliente" for="modalCliente"
+							operation="show" event="onclick" />
+					</a4j:commandButton>
+				</h:panelGrid>
+				</a4j:region>
+		 			    
+		     <!-- <h:panelGroup id="imovel">
 		       <h:outputLabel value="Imóvel:" />
-		       <h:selectOneMenu value="#" id="imovel">
-			     <f:selectItems value="#"/>
+		       <h:selectOneMenu value="" id="imovel">
+			     <f:selectItem itemLabel="" itemValue="" />
 			   </h:selectOneMenu>
 		     </h:panelGroup>
 		     <h:panelGroup id="periodo">
 		       <h:outputLabel value="Periodo de reserva:" />
-		       <h:selectOneMenu value="#" id="periodo">
+		       <h:selectOneMenu value="" id="periodo">
 		         <f:selectItem itemLabel="24 Horas" itemValue="24" />
 		         <f:selectItem itemLabel="48 Horas" itemValue="48" />
 		         <f:selectItem itemLabel="72 Horas" itemValue="72" />
 			     <f:selectItems value="#"></f:selectItems>
 			   </h:selectOneMenu>
-		     </h:panelGroup>    
+		     </h:panelGroup> -->   
 		 
 			<h:panelGroup styleClass="linha"></h:panelGroup>
 		     
@@ -50,6 +56,7 @@
 			 </h:panelGroup>
 		     
 		   </h:form>
+		   <ui:include src="/paginas/corretor/imoveis/includes/modal_cliente.xhtml" />
 		 </ui:define>
 		 
 		 <ui:define name="rodape"></ui:define>
