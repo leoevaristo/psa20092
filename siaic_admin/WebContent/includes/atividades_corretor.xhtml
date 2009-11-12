@@ -38,10 +38,10 @@
 						<rich:column>
 						<a4j:commandLink
 								action="#"
-								id="setaCliente" reRender="cli" ajaxSingle="true">
+								id="setaAgenda" reRender="ag" ajaxSingle="true">
 								<h:graphicImage value="/images/check.png" />
 								<f:setPropertyActionListener
-									target="#{consultaAgendaBean.agendaData}"
+									target="#{cadastrarAgendaBean.agenda}"
 									value="#{tabatividade}"></f:setPropertyActionListener>
 							</a4j:commandLink> 														
 						</rich:column>

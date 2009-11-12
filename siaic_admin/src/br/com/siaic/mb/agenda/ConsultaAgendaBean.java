@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,6 +24,7 @@ import br.com.siaic.dao.EnderecoDAO;
 import br.com.siaic.dao.ImovelCaracteristicaDAO;
 import br.com.siaic.dao.ImovelDAO;
 import br.com.siaic.dao.UsuarioDAO;
+import controlesessao.MensagemUtil;
 
 /**
  * Classe para manipular todos dados referentes
@@ -96,6 +98,8 @@ public class ConsultaAgendaBean {
 	 */
 	public ConsultaAgendaBean() {
 		agenda = new Agenda();
+		agendas = new ArrayList<Agenda>();
+		
 	}
 
 	/**
@@ -276,11 +280,28 @@ public class ConsultaAgendaBean {
 	
 	
 	public List<Agenda> getAgendaData() throws SQLException, ParseException {
-
+		
 		AgendaDAO daoAgenda = new AgendaDAO();
-		return daoAgenda.getAgendaData(agenda.getData());
+		return daoAgenda.getAgendaData(agenda.getData());	
+	
 	}
 	
+	
+	
+	/*public void buscarAgendaData(ActionEvent evento) {
+
+		AgendaDAO daoAgenda = new AgendaDAO();
+		try {
+			agendas =  daoAgenda.getAgendaData(agenda.getData());
+		} catch (SQLException e) {
+			MensagemUtil.montarMensagemErro(e, FacesContext.getCurrentInstance());
+			e.printStackTrace();
+		} catch (ParseException e) {
+			MensagemUtil.montarMensagemErro(e, FacesContext.getCurrentInstance());
+			e.printStackTrace();
+		}
+		
+	}*/
 
 	/**
 	 * Remove uma entrada da Agenda

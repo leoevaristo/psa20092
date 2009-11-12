@@ -1,6 +1,8 @@
 package br.com.siaic.businesslogic;
 
 
+import java.util.Calendar;
+
 import br.com.siaic.dao.AgendaDAO;
 import br.com.siaic.mb.agenda.AgendaBean;
 
@@ -21,7 +23,7 @@ public class Agenda {
 	private int codCliente;
 	private int codCorretor;
 	private int codImovel;
-	private String data;
+	private Calendar data;
 	private String horaInicio;
 	private String horaFim;
 	private String descricao;
@@ -93,11 +95,11 @@ public class Agenda {
 		this.codigo = codigo;
 	}
 
-	public String getData() {
+	public Calendar getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(Calendar data) {
 		this.data = data;
 	}
 
