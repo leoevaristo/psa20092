@@ -1,5 +1,7 @@
 package br.com.cor.mb;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,10 +9,13 @@ import java.util.List;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
+import br.com.siaic.businesslogic.Cliente;
 import br.com.siaic.businesslogic.endereco.Bairro;
 import br.com.siaic.businesslogic.endereco.Cidade;
 import br.com.siaic.businesslogic.endereco.Estado;
+import br.com.siaic.dao.ClienteDAO;
 import br.com.siaic.dao.EnderecoDAO;
+import br.com.siaic.dao.FabricaConexao;
 
 public class BuscarClienteBean {
 
@@ -28,12 +33,13 @@ public class BuscarClienteBean {
 	private static List<SelectItem> cidades = new ArrayList<SelectItem>();
 	private static List<SelectItem> bairros = new ArrayList<SelectItem>();
 
-	
+	private List<Cliente> clientes;
 	
 	public BuscarClienteBean() {
 		estado = new Estado();
 		cidade = new Cidade();
 		bairro = new Bairro();
+		clientes = new ArrayList<Cliente>();
 	}
 	
 	public String getNome() {
@@ -156,18 +162,35 @@ public class BuscarClienteBean {
 		}
 	}
 	
-	public void buscar() {
+	public void buscar() throws SQLException {
 		StringBuilder sql = new StringBuilder();
 		sql.append("select PEC_CODIGO from PESSOA_CLIENTE join PESSOA on PEC_CODIGO = PES_CODIGO where ");
-		
-		if ((nome != null) && !nome.equals("")) {
-			sql.append("PES_NOME like '%"+nome+"%'");
+		if (nome ==  null) {
+			nome = new String("");
 		}
+		sql.append("PES_NOME like '%"+nome+"%'");
 		
+		System.out.println(bairro.getBairroCodigo());
 		if (bairro.getBairroCodigo() != 0) {
-			//TODO bairo
+			sql.append(" and PES_ENDERECO in (select END_CODIGO from ENDERECO where END_BAIRRO = ");
+			sql.append(bairro.getBairroCodigo());
+		}
+		System.out.println(sql.toString());
+		PreparedStatement ps = FabricaConexao.getInstancia().conectar().prepareStatement(sql.toString());
+		ResultSet rs = ps.executeQuery();
+		
+		ClienteDAO dao = new ClienteDAO();
+		
+		
+		while (rs.next()) {
+			clientes.add(dao.getClientePorId(rs.getInt(1)));
 		}
 		
-		System.out.println(sql.toString());
+		
+	}
+	
+	
+	public List<Cliente> getClientes() throws SQLException {
+		return clientes;
 	}
 }
