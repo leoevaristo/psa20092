@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class AgendaDAO {
 			a.setCodCliente(rs.getInt("AGE_PESSOA_CLIENTE"));
 			a.setCodCorretor(rs.getInt("AGE_PESSOA_USUARIO"));
 			a.setCodImovel(rs.getInt("AGE_IMOVEL"));
-			a.setData(rs.getString("AGE_DATA"));
+			a.setData(criarCalendario(rs.getDate("AGE_DATA")));
 			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
 			a.setHoraFim(rs.getString("AGE_HORA_FIM"));
 			a.setDescricao(rs.getString("AGE_DESCRICAO"));
@@ -69,6 +70,12 @@ public class AgendaDAO {
 		ps.close();
 
 		return a;
+	}
+
+	private Calendar criarCalendario(java.sql.Date date) {
+		Calendar aux = Calendar.getInstance();
+		aux.setTimeInMillis(date.getTime());
+		return aux;
 	}
 
 	/**
@@ -92,7 +99,7 @@ public class AgendaDAO {
 			a.setCodCliente(rs.getInt("AGE_PESSOA_CLIENTE"));
 			a.setCodCorretor(rs.getInt("AGE_PESSOA_USUARIO"));
 			a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
-			a.setData(rs.getString("AGE_DATA"));
+			a.setData(criarCalendario(rs.getDate("AGE_DATA")));
 			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
 			a.setHoraFim(rs.getString("AGE_HORA_FIM"));
 			a.setDescricao(rs.getString("AGE_DESCRICAO"));
@@ -105,18 +112,14 @@ public class AgendaDAO {
 	}
 
 	
-	public List<Agenda> getAgendaData(String data) throws SQLException, ParseException {
-		if (data == null) {
-			return null;
-		} 
+	public List<Agenda> getAgendaData(Calendar data) throws SQLException, ParseException {
+	
 		String sql = "SELECT * FROM AGENDA where AGE_DATA = ? ";
-		//AgendaDAO daoAgenda = new AgendaDAO();
-		
-  		    cnv = new SimpleDateFormat("yyyy-MM-dd").parse(data);
-		    System.out.println(cnv);
 
 		    PreparedStatement ps = DB.getConn().prepareStatement(sql);
-			ps.setString(1,""+ cnv +"" );
+			ps.setDate(1,new java.sql.Date(data.getTimeInMillis()) );
+			System.out.println("\n\n\n" + data);
+			
 			System.out.println(ps);
 			ResultSet rs = ps.executeQuery();
 
@@ -129,7 +132,7 @@ public class AgendaDAO {
 				a.setCodCliente(rs.getInt("AGE_PESSOA_CLIENTE"));
 				a.setCodCorretor(rs.getInt("AGE_PESSOA_USUARIO"));
 				a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
-				a.setData(rs.getString("AGE_DATA"));
+				a.setData(criarCalendario(rs.getDate("AGE_DATA")));
 				a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
 				a.setHoraFim(rs.getString("AGE_HORA_FIM"));
 				a.setDescricao(rs.getString("AGE_DESCRICAO"));
@@ -180,7 +183,7 @@ public class AgendaDAO {
 			a.setCodCliente(rs.getInt("AGE_PESSOA_CLIENTE"));
 			a.setCodCorretor(rs.getInt("AGE_PESSOA_USUARIO"));
 			a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
-			a.setData(rs.getString("AGE_DATA"));
+			a.setData(criarCalendario(rs.getDate("AGE_DATA")));
 			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
 			a.setHoraFim(rs.getString("AGE_HORA_FIM"));
 			a.setDescricao(rs.getString("AGE_DESCRICAO"));
@@ -215,7 +218,7 @@ public class AgendaDAO {
 			a.setCodCliente(rs.getInt("AGE_PESSOA_CLIENTE"));
 			a.setCodCorretor(rs.getInt("AGE_PESSOA_USUARIO"));
 			a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
-			a.setData(rs.getString("AGE_DATA"));
+			a.setData(criarCalendario(rs.getDate("AGE_DATA")));
 			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
 			a.setHoraFim(rs.getString("AGE_HORA_FIM"));
 			a.setDescricao(rs.getString("AGE_DESCRICAO"));
@@ -250,7 +253,7 @@ public class AgendaDAO {
 			a.setCodCliente(rs.getInt("AGE_PESSOA_CLIENTE"));
 			a.setCodCorretor(rs.getInt("AGE_PESSOA_USUARIO"));
 			a.setCodImovel(rs.getInt("AGE_PESSOA_USUARIO"));
-			a.setData(rs.getString("AGE_DATA"));
+			a.setData(criarCalendario(rs.getDate("AGE_DATA")));
 			a.setHoraInicio(rs.getString("AGE_HORA_INICIO"));
 			a.setHoraFim(rs.getString("AGE_HORA_FIM"));
 			a.setDescricao(rs.getString("AGE_DESCRICAO"));
@@ -289,7 +292,7 @@ public class AgendaDAO {
 		ps.setInt(2, nova.getCodCliente());
 		ps.setInt(3, nova.getCodCorretor());
 		ps.setInt(4, nova.getCodImovel());
-		ps.setString(5, nova.getData());
+		ps.setDate(5, new java.sql.Date( nova.getData().getTimeInMillis()));
 		ps.setString(6, nova.getHoraInicio());
 		ps.setString(7, nova.getHoraFim());
 		ps.setString(8, nova.getDescricao());
@@ -345,7 +348,7 @@ public class AgendaDAO {
 			ps.setInt(1, a.getCodCliente());
 			ps.setInt(2, a.getCodCorretor());
 			ps.setInt(3, a.getCodImovel());
-			ps.setString(4, a.getData());
+			ps.setDate(4, new java.sql.Date(a.getData().getTimeInMillis()));
 			ps.setString(5, a.getHoraInicio());
 			ps.setString(6, a.getHoraFim());
 			ps.setString(7, a.getDescricao());
@@ -376,7 +379,7 @@ public class AgendaDAO {
 			ps.setInt(1, agenda.getCodCliente());
 			ps.setInt(2, agenda.getCodCorretor());
 			ps.setInt(3, agenda.getCodImovel());
-			ps.setString(4,agenda.getData());
+			ps.setDate(4, new java.sql.Date(agenda.getData().getTimeInMillis()));
 			ps.setString(5, agenda.getHoraInicio());
 			ps.setString(6, agenda.getHoraFim());
 			ps.setString(7, agenda.getDescricao());
