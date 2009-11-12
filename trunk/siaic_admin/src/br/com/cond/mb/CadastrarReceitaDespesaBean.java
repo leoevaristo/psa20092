@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import br.com.cond.businesslogic.ReceitaDespesa;
 import br.com.cond.businesslogic.ReceitaDespesaTipos;
 import br.com.cond.dao.ReceitasDespesasDAO;
+import br.com.cond.dao.ReceitasDespesasTiposDAO;
 /********************************************************************************
  * Title:       SIAIC - Sistema de Administração de Imobiliárias e Condomínion
  * Description: Módulo Condomínios
@@ -80,5 +81,9 @@ public class CadastrarReceitaDespesaBean {
 	public void limpar() throws Exception {
 		this.rd = new ReceitaDespesa();
 		new ListaTiposReceitasDespesasBean().getReceitasDespesas().clear();
+	}
+	
+	public String cancelarCadastro() {
+		return "cancelarCadastro";
 	}
 }
