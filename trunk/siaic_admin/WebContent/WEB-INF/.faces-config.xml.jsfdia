@@ -959,4 +959,86 @@
   NAME="rules:#paginas#corretor#imoveis#detalhes_imovel.xhtml"
   PATH="/paginas/corretor/imoveis/detalhes_imovel.xhtml"
   SHAPE="272,545,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#corretor#cliente#cadastra_cliente.xhtml"
+  PATH="/paginas/corretor/cliente/cadastra_cliente.xhtml"
+  SHAPE="64,4193,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#corretor#cliente#cadastra_cliente.xhtml:0"
+   NAME="item" PATH="/paginas/corretor/cliente/cadastra_cliente.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="sucesso::#paginas#corretor#cliente#sucesso.xhtml" NAME="output"
+    PATH="/paginas/corretor/cliente/sucesso.xhtml"
+    TARGET="rules:#paginas#corretor#cliente#sucesso.xhtml"
+    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM
+   ID="rules:#paginas#corretor#cliente#cadastra_cliente.xhtml:1"
+   NAME="item1" PATH="/paginas/corretor/cliente/cadastra_cliente.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="altera::#paginas#corretor#cliente#altera_cliente.xhtml"
+    NAME="output" PATH="/paginas/corretor/cliente/altera_cliente.xhtml"
+    TARGET="rules:#paginas#corretor#cliente#altera_cliente.xhtml"
+    TITLE="altera" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="destruido::#paginas#corretor#cliente#cadastra_cliente.xhtml"
+    NAME="output1"
+    PATH="/paginas/corretor/cliente/cadastra_cliente.xhtml"
+    TARGET="rules:#paginas#corretor#cliente#cadastra_cliente.xhtml"
+    TITLE="destruido" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cancelar::#paginas#corretor#cliente#consulta_cliente.xhtml"
+    NAME="output2"
+    PATH="/paginas/corretor/cliente/consulta_cliente.xhtml"
+    TARGET="rules:#paginas#corretor#cliente#consulta_cliente.xhtml"
+    TITLE="cancelar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#corretor#cliente#altera_cliente.xhtml"
+  PATH="/paginas/corretor/cliente/altera_cliente.xhtml"
+  SHAPE="320,4817,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#corretor#cliente#altera_cliente.xhtml:0"
+   NAME="item" PATH="/paginas/corretor/cliente/altera_cliente.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="destruido::#paginas#corretor#cliente#consulta_cliente.xhtml"
+    NAME="output"
+    PATH="/paginas/corretor/cliente/consulta_cliente.xhtml"
+    TARGET="rules:#paginas#corretor#cliente#consulta_cliente.xhtml"
+    TITLE="destruido" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="sucesso::#paginas#corretor#cliente#consulta_cliente.xhtml"
+    NAME="output1"
+    PATH="/paginas/corretor/cliente/consulta_cliente.xhtml"
+    TARGET="rules:#paginas#corretor#cliente#consulta_cliente.xhtml"
+    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#corretor#cliente#consulta_cliente.xhtml"
+  PATH="/paginas/corretor/cliente/consulta_cliente.xhtml"
+  SHAPE="64,4801,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#paginas#corretor#cliente#consulta_cliente.xhtml:0"
+   NAME="item" PATH="/paginas/corretor/cliente/consulta_cliente.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="detalhes::#paginas#corretor#cliente#detalhes_cliente.xhtml"
+    NAME="output"
+    PATH="/paginas/corretor/cliente/detalhes_cliente.xhtml"
+    TARGET="rules:#paginas#corretor#cliente#detalhes_cliente.xhtml"
+    TITLE="detalhes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="modifica::#paginas#corretor#cliente#altera_cliente.xhtml"
+    NAME="output1" PATH="/paginas/corretor/cliente/altera_cliente.xhtml"
+    TARGET="rules:#paginas#corretor#cliente#altera_cliente.xhtml"
+    TITLE="modifica" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#corretor#cliente#sucesso.xhtml"
+  PATH="/paginas/corretor/cliente/sucesso.xhtml" SHAPE="320,4209,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#paginas#corretor#cliente#detalhes_cliente.xhtml"
+  PATH="/paginas/corretor/cliente/detalhes_cliente.xhtml"
+  SHAPE="320,4961,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
