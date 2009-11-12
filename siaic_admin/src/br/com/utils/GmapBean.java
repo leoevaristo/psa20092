@@ -30,8 +30,6 @@ public class GmapBean {
 	
 	private Endereco endereco;
 	
-	private Bairro bairro;
-	
 	private ImovelCaracteristica imovelCaracteristica;
 	
 	private List<Imovel> imoveis = new ArrayList<Imovel>();
@@ -42,15 +40,41 @@ public class GmapBean {
 	
 	private static List<SelectItem> bairros = new ArrayList<SelectItem>();
 	
+	private String bairroSelecionado;
 	
+	private String finalidadeSelecionada;
 	
+	private String qtdQuartosSeleionados;
+	
+	private String br = "<BR>";
+	
+	private String centro ="<CENTER>";
+	
+
+	public String getCentro() {
+		return centro;
+	}
+
+
+
+
+
+
+	public String getBr() {
+		return br;
+	}
+
+
+
+
+
 
 	public GmapBean() throws SQLException {
 		googlemap = new Gmap();
 		imovel = new Imovel();
 		endereco = new Endereco();
 		imovelCaracteristica = new ImovelCaracteristica();
-		bairro = new Bairro();
+		
 		if(bairros.isEmpty()){
 			setBairros();
 		}
@@ -60,16 +84,7 @@ public class GmapBean {
 	
 	
 
-	public Bairro getBairro() {
-		return bairro;
-	}
-
-
-
-	public void setBairro(Bairro bairro) {
-		this.bairro = bairro;
-	}
-
+	
 
 
 	public Imovel getImovel() {
@@ -127,6 +142,60 @@ public class GmapBean {
 	public void setInfoMapa(List<Map> infoMapa) {
 		this.infoMapa = infoMapa;
 	}
+
+	public String getBairroSelecionado() {
+		return bairroSelecionado;
+	}
+
+
+
+
+
+
+	public void setBairroSelecionado(String bairroSelecionado) {
+		this.bairroSelecionado = bairroSelecionado;
+	}
+
+
+
+
+
+
+	public String getFinalidadeSelecionada() {
+		return finalidadeSelecionada;
+	}
+
+
+
+
+
+
+	public void setFinalidadeSelecionada(String finalidadeSelecionada) {
+		this.finalidadeSelecionada = finalidadeSelecionada;
+	}
+
+
+
+
+
+
+	public String getQtdQuartosSeleionados() {
+		return qtdQuartosSeleionados;
+	}
+
+
+
+
+
+
+	public void setQtdQuartosSeleionados(String qtdQuartosSeleionados) {
+		this.qtdQuartosSeleionados = qtdQuartosSeleionados;
+	}
+
+
+
+
+
 
 	public void transformaEndereco() {
 
@@ -229,7 +298,7 @@ public class GmapBean {
 
 		List<Map> dados = new ArrayList<Map>();		
 
-		setImoveis(daoImovel.getImovesPorBairro(bairro.getBairroNome()));
+		setImoveis(daoImovel.getImovesPorBairro(getBairroSelecionado()));
 		
 		for (Imovel imo : imoveis) {			
 			setImovel(imo);
