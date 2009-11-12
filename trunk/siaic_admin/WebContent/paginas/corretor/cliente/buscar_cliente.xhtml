@@ -22,8 +22,8 @@
 			</h:panelGroup>
 			<h:panelGroup id="Estado">
 				<h:outputLabel for="campoEstado" value="Estado" />
-				<h:selectOneMenu value="#{cadastraUsuarioBean.cidade.cidadeEstado}" id="campoEstado" 
-				valueChangeListener="#{cadastraUsuarioBean.filtraCidadePorEstado}" required="true">
+				<h:selectOneMenu value="#{buscarClienteBean.cidade.cidadeEstado}" id="campoEstado" 
+				valueChangeListener="#{buscarClienteBean.filtraCidadePorEstado}" >
 					<f:selectItem itemValue="" itemLabel="Estado"/>
 					<f:selectItems value="#{selectEstados.estados}" />	
 					<a4j:support event="onchange" reRender="campoCidade" ajaxSingle="true"/>				
@@ -31,21 +31,21 @@
 			</h:panelGroup>
 			<h:panelGroup id="Cidade">
 				<h:outputLabel for="campoCidade" value="Cidade" />
-				<h:selectOneMenu value="#{cadastraUsuarioBean.cidade.cidadeNome}" id="campoCidade" 
-				valueChangeListener="#{cadastraUsuarioBean.filtraBairroPorCidade}" required="true">
+				<h:selectOneMenu value="#{buscarClienteBean.cidade.cidadeNome}" id="campoCidade" 
+				valueChangeListener="#{buscarClienteBean.filtraBairroPorCidade}" >
 					<f:selectItem itemValue="" itemLabel="Cidade"/>
-					<f:selectItems value="#{cadastraUsuarioBean.cidades}"/>		
+					<f:selectItems value="#{buscarClienteBean.cidades}"/>		
 					<a4j:support event="onchange" reRender="campoBairro" ajaxSingle="true" />		
 				</h:selectOneMenu>
 			</h:panelGroup>
 			<h:panelGroup id="Bairro">
 				<h:outputLabel for="campoBairro" value="Bairro" />
-				<h:selectOneMenu value="#{cadastraUsuarioBean.endereco.enderecoBairro.bairroCodigo}" id="campoBairro" required="true"> 
+				<h:selectOneMenu value="#{cadastraUsuarioBean.bairro.bairroCodigo}" id="campoBairro" > 
 					<f:selectItem itemValue="" itemLabel="Bairro"/>
-					<f:selectItems  value="#{cadastraUsuarioBean.bairros}" />
+					<f:selectItems  value="#{buscarClienteBean.bairros}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
-			<rich:spacer width="20" />
+			
 		</rich:panel>
 		</h:form>
 	</ui:define>
