@@ -8,6 +8,7 @@ public class BuscarClienteBean {
 	private Estado estado;
 	private Cidade cidade;
 	private Bairro bairro;
+	
 	public Estado getEstado() {
 		return estado;
 	}
@@ -26,6 +27,4 @@ public class BuscarClienteBean {
 	public void setBairro(Bairro bairro) {
 		this.bairro = bairro;
 	}
-	
-	
 }

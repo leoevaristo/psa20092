@@ -309,6 +309,11 @@
   <managed-bean-class>br.com.utils.GmapBean</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>buscarClienteBean</managed-bean-name>
+  <managed-bean-class>br.com.cor.mb.BuscarClienteBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
  <!--
 		<navigation-rule> <from-view-id>*</from-view-id> <navigation-case>
 		<from-outcome>logout</from-outcome>
