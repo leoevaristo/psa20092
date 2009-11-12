@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.el.ELResolver;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import org.richfaces.event.UploadEvent;
 import org.richfaces.model.UploadItem;
@@ -55,10 +56,11 @@ public class FileUploadBean {
 			file.setData(data);
 			file.setLength(data.length);
 			file.setName(item.getFileName());
+		
+	        Foto.salvaFoto(file,"/fotostemp/");
+			files.add(file);
+			uploadsAvailable--;
 		}
-
-		files.add(file);
-		uploadsAvailable--;
 	}
 
 	public String clearUploadData() {
@@ -110,6 +112,13 @@ public class FileUploadBean {
 
 	public void setFiles(ArrayList<Foto> files) {
 		this.files = files;
+		for (Foto foto : this.files) {
+			try {
+				Foto.salvaFoto(foto,"/fotostemp/");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public int getUploadsAvailable() {
@@ -134,6 +143,12 @@ public class FileUploadBean {
 
 	public void setUseFlash(boolean useFlash) {
 		this.useFlash = useFlash;
+	}
+	
+	public static String getRealPath(String diretorio) {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(false);
+		return session.getServletContext().getRealPath(diretorio);
 	}
 
 }

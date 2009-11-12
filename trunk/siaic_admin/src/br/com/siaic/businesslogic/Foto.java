@@ -2,14 +2,10 @@ package br.com.siaic.businesslogic;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
-
-import br.com.siaic.mb.imoveis.ImovelBaseBean;
+import org.richfaces.demo.fileupload.FileUploadBean;
 
 public class Foto {
 
@@ -85,11 +81,10 @@ public class Foto {
 	public String getMime() {
 		return mime;
 	}
-
-	public static String salvaFoto(Foto foto) throws IOException {
-		
-		String path = pathImg + foto.getName();
-		File file = new File(ImovelBaseBean.getRealPath(path));
+	
+	public static String salvaFoto(Foto foto, String pathSalva) throws IOException {
+		String path = pathSalva + foto.getName();
+		File file = new File(FileUploadBean.getRealPath(path));
 		FileOutputStream fos = new FileOutputStream(file);
 		fos.write(foto.getData());
 		fos.flush();
@@ -97,11 +92,15 @@ public class Foto {
 		
 		return path;
 	}
+
+	public static String salvaFoto(Foto foto) throws IOException {
+		return Foto.salvaFoto(foto, pathImg);
+	}
 	
 	public static byte[] pegaFoto(String pathRel) throws IOException {
 		
 		String path = pathRel;
-		File file = new File(ImovelBaseBean.getRealPath(path));
+		File file = new File(FileUploadBean.getRealPath(path));
 		FileInputStream fis = new FileInputStream(file);
 		byte[] bin = new byte[(int)file.length()];
 		fis.read(bin);
