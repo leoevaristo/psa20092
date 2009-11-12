@@ -3,6 +3,8 @@ package br.com.cor.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.cond.businesslogic.Reuniao;
 import br.com.cond.dao.AgendaDependenciaDAO;
@@ -18,7 +20,7 @@ public class ReservarImovelDAO {
 	public ReservarImovel getReserva(int codigo)
 			throws SQLException {
 		String query = new String(
-				"select * from ADMCOR_RESERVA_IMOVEL where PEC_CODIGO = ?");
+				"SELECT * FROM ADMCOR_RESERVA_IMOVEL WHERE PEC_CODIGO = ?");
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
 		ps.setInt(1, codigo);
@@ -43,8 +45,8 @@ public class ReservarImovelDAO {
 	public boolean addReuniao(Reuniao r)
 			throws SQLException {
 		String query = new String(
-				"insert into ADMCON_REUNIAO (REU_DESCRICAO, REU_AGD_CODIGO) "
-				+ "values (?, ?)");
+				"INSERT INTO ADMCON_REUNIAO (REU_DESCRICAO, REU_AGD_CODIGO) "
+				+ "VALUES (?, ?)");
 		PreparedStatement ps;
 		ps = DB.getConn().prepareStatement(query);
 
@@ -55,5 +57,43 @@ public class ReservarImovelDAO {
 		ps.close();
 
 		return result;
+	}
+	// Delete da tabela reservar imovel
+	public boolean delReserva(ReservarImovel r)
+			throws SQLException {
+		String query = new String(
+				"DELETE FROM ADMCOR_RESERVA_IMOVEL WHERE REI_CODIGO = ? ");
+		PreparedStatement ps;
+		ps = DB.getConn().prepareStatement(query);
+		ps.setInt(1, r.getCodigo());
+
+		boolean result = ps.executeUpdate() > 0;
+		ps.close();
+
+		return result;
+	}
+	// Listagem da tabela RESERVAR IMOVEL
+	public List<ReservarImovel> getReservaList()
+			throws SQLException {
+		String query = new String("SELECT * FROM ADMCOR_RESERVA_IMOVEL");
+		PreparedStatement ps;
+		ps = DB.getConn().prepareStatement(query);
+		ResultSet rs = ps.executeQuery();
+
+		List<ReservarImovel> l = new ArrayList<ReservarImovel>();
+		ReservarImovel r = null;
+
+		while (rs.next()) {
+			r = new ReservarImovel();
+			r.setCodigo(rs.getInt("REI_CODIGO"));
+			r.setCliente(new ClienteDAO().getClientePorId(rs.getInt("REI_CLIENTE")));
+			r.setImovel(new ImovelDAO().getImovel(rs.getInt("REU_AGD_CODIGO")));
+			r.setData(rs.getDate("REI_DATA"));
+			r.setTempoReserva(rs.getInt("REI_TEMPO_RESERVA"));
+			l.add(r);
+		}
+		rs.close();
+		ps.close();
+		return l;
 	}
 }
