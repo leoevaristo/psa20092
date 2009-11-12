@@ -9,10 +9,16 @@ public class Gmap {
 	private String longitude;
 
 	private String lugar;
+	
+	private String origem;
+	
+	private String destino;
 
 	private String zoom;
 
 	private String url = "http://maps.google.com/maps/geo?";
+	
+	private String urlRota ="http://maps.google.com/maps?output=kml&&hl=pt-BR&f=d&source=s_d";
 	
 	private String dadosEndereco;
 	
@@ -23,7 +29,7 @@ public class Gmap {
 
 
 	public Gmap() {
-		this.cidade = "João Pessoa";
+		this.lugar = "João Pessoa";
 	}
 
 	public String getKey() {
@@ -93,6 +99,26 @@ public class Gmap {
 
 	public void setZoom(String zoom) {
 		this.zoom = zoom;
+	}
+
+	public String getOrigem() {
+		return origem;
+	}
+
+	public void setOrigem(String origem) {
+		this.origem = origem;
+	}
+
+	public String getDestino() {
+		return destino;
+	}
+
+	public void setDestino(String destino) {
+		this.destino = destino;
+	}
+
+	public String getUrlRota() {
+		return urlRota;
 	}
 
 }
