@@ -14,19 +14,36 @@ import br.com.siaic.dao.EnderecoDAO;
 
 public class BuscarClienteBean {
 
+	private String nome;
+		
 	private Estado estado;
 	private Cidade cidade;
 	private Bairro bairro;
+	
+	private int quartos;
+	private int suites;
+	private int garagens;
+	private char piscina;
 
 	private static List<SelectItem> cidades = new ArrayList<SelectItem>();
 	private static List<SelectItem> bairros = new ArrayList<SelectItem>();
 
+	
+	
 	public BuscarClienteBean() {
 		estado = new Estado();
 		cidade = new Cidade();
 		bairro = new Bairro();
 	}
 	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	public Estado getEstado() {
 		return estado;
 	}
@@ -49,6 +66,38 @@ public class BuscarClienteBean {
 
 	public void setBairro(Bairro bairro) {
 		this.bairro = bairro;
+	}
+	
+	public int getQuartos() {
+		return quartos;
+	}
+
+	public void setQuartos(int quartos) {
+		this.quartos = quartos;
+	}
+
+	public int getSuites() {
+		return suites;
+	}
+
+	public void setSuites(int suites) {
+		this.suites = suites;
+	}
+
+	public int getGaragens() {
+		return garagens;
+	}
+
+	public void setGaragens(int garagens) {
+		this.garagens = garagens;
+	}
+
+	public char getPiscina() {
+		return piscina;
+	}
+
+	public void setPiscina(char piscina) {
+		this.piscina = piscina;
 	}
 
 	public List<SelectItem> getCidades() {
@@ -84,9 +133,13 @@ public class BuscarClienteBean {
 
 		if (event.getNewValue() != event.getOldValue()) {
 			List<Cidade> cid = new ArrayList<Cidade>();
+			List<Bairro> listaBairros = new ArrayList<Bairro>();
 			EnderecoDAO dao = new EnderecoDAO();
-			cid = dao.getCidadePorEstado(event.getNewValue().toString());
+			if (event.getNewValue() != null) {
+				cid = dao.getCidadePorEstado(event.getNewValue().toString());
+			}
 			setCidades(cid);
+			setBairros(listaBairros);
 		}
 	}
 
@@ -95,9 +148,26 @@ public class BuscarClienteBean {
 		if (event.getNewValue() != event.getOldValue()) {
 			List<Bairro> listaBairros = new ArrayList<Bairro>();
 			EnderecoDAO daoEndereco = new EnderecoDAO();
-			listaBairros = daoEndereco.getBairroPorCidade(event.getNewValue()
-					.toString());
+			if (event.getNewValue() != null) {
+				listaBairros = daoEndereco.getBairroPorCidade(event.getNewValue()
+						.toString());
+			}
 			setBairros(listaBairros);
 		}
+	}
+	
+	public void buscar() {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select PEC_CODIGO from PESSOA_CLIENTE join PESSOA on PEC_CODIGO = PES_CODIGO where ");
+		
+		if ((nome != null) && !nome.equals("")) {
+			sql.append("PES_NOME like '%"+nome+"%'");
+		}
+		
+		if (bairro.getBairroCodigo() != 0) {
+			//TODO bairo
+		}
+		
+		System.out.println(sql.toString());
 	}
 }

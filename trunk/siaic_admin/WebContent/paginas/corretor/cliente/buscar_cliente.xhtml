@@ -16,9 +16,9 @@
 	<ui:define name="conteudo">
 		<h:form styleClass="forms" id="form1">
 		<rich:panel>
-			<h:panelGroup id="panelLogin">
+			<h:panelGroup id="panelNome">
 				<h:outputLabel value="Nome" />
-				<h:inputText id="inNome" value=""  />
+				<h:inputText id="inNome" value="#{buscarClienteBean.nome}"  />
 			</h:panelGroup>
 			<h:panelGroup id="Estado">
 				<h:outputLabel for="campoEstado" value="Estado" />
@@ -26,9 +26,10 @@
 				valueChangeListener="#{buscarClienteBean.filtraCidadePorEstado}" >
 					<f:selectItem itemValue="" itemLabel="Estado"/>
 					<f:selectItems value="#{selectEstados.estados}" />	
-					<a4j:support event="onchange" reRender="campoCidade" ajaxSingle="true"/>				
+					<a4j:support event="onchange" reRender="grupo" ajaxSingle="true"/>				
 				</h:selectOneMenu>
 			</h:panelGroup>
+			<h:panelGroup id="grupo">
 			<h:panelGroup id="Cidade">
 				<h:outputLabel for="campoCidade" value="Cidade" />
 				<h:selectOneMenu value="#{buscarClienteBean.cidade.cidadeNome}" id="campoCidade" 
@@ -45,7 +46,68 @@
 					<f:selectItems  value="#{buscarClienteBean.bairros}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
-			
+			</h:panelGroup>
+			<h:panelGroup id="panelQuartos">
+				<h:outputLabel value="Quartos" />
+				<h:selectOneMenu value="#{buscarClienteBean.quartos}" id="campoQuartos" > 
+					<f:selectItem itemValue="" itemLabel=""/>
+					<f:selectItem  itemValue="1" itemLabel="1" />
+					<f:selectItem itemValue="2" itemLabel="2"/>
+					<f:selectItem itemValue="3" itemLabel="3"/>
+					<f:selectItem itemValue="4" itemLabel="4"/>
+					<f:selectItem itemValue="5" itemLabel="6"/>
+					<f:selectItem itemValue="5" itemLabel="6"/>
+					<f:selectItem itemValue="7" itemLabel="7"/>
+					<f:selectItem itemValue="8" itemLabel="8"/>
+					<f:selectItem itemValue="9" itemLabel="9"/>
+					<f:selectItem itemValue="10" itemLabel="10"/>
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup id="panelSuites">
+				<h:outputLabel value="Suites" />
+				<h:selectOneMenu value="#{buscarClienteBean.suites}" id="campoSuites" > 
+					<f:selectItem itemValue="" itemLabel=""/>
+					<f:selectItem  itemValue="1" itemLabel="1" />
+					<f:selectItem itemValue="2" itemLabel="2"/>
+					<f:selectItem itemValue="3" itemLabel="3"/>
+					<f:selectItem itemValue="4" itemLabel="4"/>
+					<f:selectItem itemValue="5" itemLabel="6"/>
+					<f:selectItem itemValue="5" itemLabel="6"/>
+					<f:selectItem itemValue="7" itemLabel="7"/>
+					<f:selectItem itemValue="8" itemLabel="8"/>
+					<f:selectItem itemValue="9" itemLabel="9"/>
+					<f:selectItem itemValue="10" itemLabel="10"/>
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup id="panelGaragem">
+				<h:outputLabel value="Vagas na Garagem" />
+				<h:selectOneMenu value="#{buscarClienteBean.garagens}" id="campoGaragens" > 
+					<f:selectItem itemValue="" itemLabel=""/>
+					<f:selectItem  itemValue="1" itemLabel="1" />
+					<f:selectItem itemValue="2" itemLabel="2"/>
+					<f:selectItem itemValue="3" itemLabel="3"/>
+					<f:selectItem itemValue="4" itemLabel="4"/>
+					<f:selectItem itemValue="5" itemLabel="6"/>
+					<f:selectItem itemValue="5" itemLabel="6"/>
+					<f:selectItem itemValue="7" itemLabel="7"/>
+					<f:selectItem itemValue="8" itemLabel="8"/>
+					<f:selectItem itemValue="9" itemLabel="9"/>
+					<f:selectItem itemValue="10" itemLabel="10"/>
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:panelGroup id="panelPiscina">
+				<h:outputLabel value="Piscina" />
+				<h:selectOneMenu value="#{buscarClienteBean.piscina}" id="campoPiscina" > 
+					<f:selectItem itemValue="" itemLabel=""/>
+					<f:selectItem  itemValue="S" itemLabel="Sim" />
+					<f:selectItem itemValue="N" itemLabel="Nao"/>
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<span class="linha"></span>
+			<span class="botoes">
+				<h:commandButton action="#{buscarClienteBean.buscar}" value=""
+					styleClass="input_submit"/>
+			</span>
 		</rich:panel>
 		</h:form>
 	</ui:define>
