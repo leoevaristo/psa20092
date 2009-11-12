@@ -23,7 +23,7 @@ public class Agenda {
 	private int codCliente;
 	private int codCorretor;
 	private int codImovel;
-	private Calendar data;
+	private String data;
 	private String horaInicio;
 	private String horaFim;
 	private String descricao;
@@ -95,11 +95,11 @@ public class Agenda {
 		this.codigo = codigo;
 	}
 
-	public Calendar getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Calendar data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
