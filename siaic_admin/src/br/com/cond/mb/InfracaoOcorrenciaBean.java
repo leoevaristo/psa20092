@@ -107,9 +107,10 @@ public class InfracaoOcorrenciaBean {
 	 */
 	public String addInfracaoOcorrencia() {
 		String r = null;
-
+            
 		InfracaoOcorrenciaDAO daoInfracaoOcorrencia = new InfracaoOcorrenciaDAO();
 		InfracaoOcorrencia infracaoOcorrencia = new InfracaoOcorrencia();
+		
 		infracaoOcorrencia.setApartamentoInfracaoOcorrencia(apartamento);
 		infracaoOcorrencia.setInfracao(infracao);
 
