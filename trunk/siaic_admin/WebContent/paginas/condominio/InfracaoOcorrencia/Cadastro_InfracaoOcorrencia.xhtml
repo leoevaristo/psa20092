@@ -16,17 +16,23 @@
 		   <h:form styleClass="forms">
 			     
 		     
+		     <h:panelGroup id="Observacao">
+		       <h:outputLabel value="Observacao" />
+		       <h:inputText value="${infracaoOcorrenciaBean"  />
+		     </h:panelGroup>
+		     
 		     <h:panelGroup id="infracao">
 		      <h:outputLabel for= "infracao" value="Infracao" />
 				<h:selectOneMenu value="${infracaoOcorrenciaBean.infracao.codigoInfracao}" id="infracao">
 		         <f:selectItems value="${infracaoOcorrenciaBean.infracao}" />
+		           </h:selectOneMenu>
 		         	       
-							  </h:panelGroup>
+							 
 		     </h:panelGroup>
 		     
 		      <h:panelGroup id="apartamento">
 		       <h:outputLabel value="Apartamento" />
-		       <h:selectOneMenu value="${infracaoOcorrenciaBean.infracaoOcorencia.codigoApartamento}" id="apart">
+		       <h:selectOneMenu value="${infracaoOcorrenciaBean.apartamento.codigoApartamento}" id="apart">
 		         <f:selectItems value="${infracaoOcorrenciaBean.apartamentos}" />
 		       </h:selectOneMenu>
 		     </h:panelGroup>
@@ -35,7 +41,7 @@
 		     
 		     <h:panelGroup styleClass="botoes">
 		     
-		       <h:commandButton action="#{infracaoOcorrenciaBean.addInfracao}" value="" styleClass="input_submit"/>
+		       <h:commandButton action="#{infracaoOcorrenciaBean.addInfracaoOcorrencia}" value="" styleClass="input_submit"/>
 			  
 			   <h:commandButton action="#{infracaoOcorrenciaBean.voltar}" value="" styleClass="input_button" immediate="true" />
 			 </h:panelGroup>
