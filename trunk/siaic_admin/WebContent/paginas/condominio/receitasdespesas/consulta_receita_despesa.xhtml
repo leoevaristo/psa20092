@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="/WEB-INF/template/template.xhtml">
+<ui:composition template="/WEB-INF/template/template-cond.xhtml">
 
 	<ui:define name="tituloGrande">
 		<h:outputText value="Receitas e Despesas" />
@@ -23,18 +23,36 @@
 		<h:panelGroup styleClass="textcenter">
 
 			<h:dataTable styleClass="grid" headerClass="thead" rowClasses="cor1,cor2" 
-				value="#{ListaReceitasDespesas" var="recdep">
+				value="" var="recdep">
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Condômino" />
 					</f:facet>
-					<h:outputText value="teste" />
+					<h:outputText value="Kleiton Vasconcelos" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Receita ou Despesa" />
+					</f:facet>
+					<h:outputText value="Receita" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Tipo RD" />
 					</f:facet>
-					<h:outputText value="teste" />
+					<h:outputText value="AGUA" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Valor" />
+					</f:facet>
+					<h:outputText value="100,00" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Data Recebimento" />
+					</f:facet>
+					<h:outputText value="11/11/2009" />
 				</h:column>
 			</h:dataTable>
 		</h:panelGroup>
