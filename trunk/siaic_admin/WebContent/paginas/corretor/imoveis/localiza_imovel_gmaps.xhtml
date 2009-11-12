@@ -18,6 +18,13 @@
 		<rich:panel header="Filtra Imóveis">
 			<h:panelGroup>
 				<h:form>
+					<h:panelGrid columns="1">
+						<h:outputLabel value="Onde você está?" />
+						<h:inputText value="#{gmapBean.googlemap.lugar}" required="true"
+							requiredMessage="Você deve digitar um endereço válido." />
+						<h:commandButton action="#{gmapBean.transformaEndereco}"
+							value="Localizar" />
+					</h:panelGrid>
 					<h:panelGroup id="panelFinalidade">
 						<h:outputLabel value="Finalidade" />
 						<rich:comboBox value="">
@@ -35,26 +42,42 @@
 								itemLabel="Sala Comercial" />
 						</rich:comboBox>
 					</h:panelGroup>
+					<h:panelGroup>
+						<h:outputLabel value="Quartos" />
+						<rich:comboBox>
+							<f:selectItem itemValue="1" itemLabel="1" />
+							<f:selectItem itemValue="2" itemLabel="2" />
+							<f:selectItem itemValue="3" itemLabel="3" />
+							<f:selectItem itemValue="4" itemLabel="4" />
+						</rich:comboBox>
+					</h:panelGroup>
 					<h:panelGroup id="panelBairro">
 						<h:outputLabel value="Bairro" />
-						<rich:comboBox value="#{gmapBean.bairro.bairroNome}" >
-							<f:selectItems value="#{gmapBean.bairros}"  />
+						<rich:comboBox value="#{gmapBean.bairroSelecionado}">
+							<f:selectItems value="#{gmapBean.bairros}" />
 						</rich:comboBox>
 					</h:panelGroup>
 					<h:panelGroup>
-						<h:commandButton action="#{gmapBean.buscaImovelPorBairro}" value="Filtrar" reRenderAfterComplete="mapa"/>
+						<h:commandButton action="#{gmapBean.buscaImovelPorBairro}"
+							value="Filtrar" />
 					</h:panelGroup>
 				</h:form>
 			</h:panelGroup>
 		</rich:panel>
 		<h:panelGroup id="panelMapa">
-			<m:map address="#{gmapBean.googlemap.cidade}" width="100%"	height="500px" zoom="15" id="mapa">
+			<m:map address="#{gmapBean.googlemap.lugar}" width="100%"
+				height="500px" zoom="15" id="mapa">
+				<m:marker address="#{gmapBean.googlemap.lugar}">
+					<m:htmlInformationWindow htmlText="Você está aqui: #{gmapBean.googlemap.lugar}" />
+				</m:marker>
 				<ui:repeat var="imovel" value="#{gmapBean.infoMapa}">
-					<m:marker address="#{imovel.logEnd} #{imovel.nomeEnd}, #{imovel.bairroEnd}" >
+					<m:marker
+						address="#{imovel.logEnd} #{imovel.nomeEnd}, #{imovel.bairroEnd}"
+						rendered="#{!empty gmapBean.bairroSelecionado}">
 						<m:icon imageURL="#{request.contextPath}/images/home.png"
 							height="24" width="24" />
 						<m:htmlInformationWindow
-							htmlText="#{imovel.logEnd} #{imovel.nomeEnd}, #{imovel.bairroEnd} - CEP: #{imovel.cepEnd}" />
+							htmlText="#{gmapBean.centro} #{imovel.logEnd} #{imovel.nomeEnd}, #{imovel.bairroEnd} - CEP: #{imovel.cepEnd} #{gmapBean.br} Detalhes: #{imovel.numQuartos}  Quartos,   #{imovel.numSuite} Suítes,  Valor R$ #{imovel.valorImovel} "/>
 					</m:marker>
 				</ui:repeat>
 			</m:map>
