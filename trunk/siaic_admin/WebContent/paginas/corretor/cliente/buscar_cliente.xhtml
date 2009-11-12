@@ -24,7 +24,7 @@
 				<h:outputLabel for="campoEstado" value="Estado" />
 				<h:selectOneMenu value="#{buscarClienteBean.cidade.cidadeEstado}" id="campoEstado" 
 				valueChangeListener="#{buscarClienteBean.filtraCidadePorEstado}" >
-					<f:selectItem itemValue="" itemLabel="Estado"/>
+					<f:selectItem itemValue="0" itemLabel="Estado"/>
 					<f:selectItems value="#{selectEstados.estados}" />	
 					<a4j:support event="onchange" reRender="grupo" ajaxSingle="true"/>				
 				</h:selectOneMenu>
@@ -34,7 +34,7 @@
 				<h:outputLabel for="campoCidade" value="Cidade" />
 				<h:selectOneMenu value="#{buscarClienteBean.cidade.cidadeNome}" id="campoCidade" 
 				valueChangeListener="#{buscarClienteBean.filtraBairroPorCidade}" >
-					<f:selectItem itemValue="" itemLabel="Cidade"/>
+					<f:selectItem itemValue="0" itemLabel="Cidade"/>
 					<f:selectItems value="#{buscarClienteBean.cidades}"/>		
 					<a4j:support event="onchange" reRender="campoBairro" ajaxSingle="true" />		
 				</h:selectOneMenu>
@@ -42,7 +42,7 @@
 			<h:panelGroup id="Bairro">
 				<h:outputLabel for="campoBairro" value="Bairro" />
 				<h:selectOneMenu value="#{cadastraUsuarioBean.bairro.bairroCodigo}" id="campoBairro" > 
-					<f:selectItem itemValue="" itemLabel="Bairro"/>
+					<f:selectItem itemValue="0" itemLabel="Bairro"/>
 					<f:selectItems  value="#{buscarClienteBean.bairros}" />
 				</h:selectOneMenu>
 			</h:panelGroup>
@@ -50,7 +50,7 @@
 			<h:panelGroup id="panelQuartos">
 				<h:outputLabel value="Quartos" />
 				<h:selectOneMenu value="#{buscarClienteBean.quartos}" id="campoQuartos" > 
-					<f:selectItem itemValue="" itemLabel=""/>
+					<f:selectItem itemValue="0" itemLabel=""/>
 					<f:selectItem  itemValue="1" itemLabel="1" />
 					<f:selectItem itemValue="2" itemLabel="2"/>
 					<f:selectItem itemValue="3" itemLabel="3"/>
@@ -66,7 +66,7 @@
 			<h:panelGroup id="panelSuites">
 				<h:outputLabel value="Suites" />
 				<h:selectOneMenu value="#{buscarClienteBean.suites}" id="campoSuites" > 
-					<f:selectItem itemValue="" itemLabel=""/>
+					<f:selectItem itemValue="0" itemLabel=""/>
 					<f:selectItem  itemValue="1" itemLabel="1" />
 					<f:selectItem itemValue="2" itemLabel="2"/>
 					<f:selectItem itemValue="3" itemLabel="3"/>
@@ -82,7 +82,7 @@
 			<h:panelGroup id="panelGaragem">
 				<h:outputLabel value="Vagas na Garagem" />
 				<h:selectOneMenu value="#{buscarClienteBean.garagens}" id="campoGaragens" > 
-					<f:selectItem itemValue="" itemLabel=""/>
+					<f:selectItem itemValue="0" itemLabel=""/>
 					<f:selectItem  itemValue="1" itemLabel="1" />
 					<f:selectItem itemValue="2" itemLabel="2"/>
 					<f:selectItem itemValue="3" itemLabel="3"/>
@@ -98,7 +98,7 @@
 			<h:panelGroup id="panelPiscina">
 				<h:outputLabel value="Piscina" />
 				<h:selectOneMenu value="#{buscarClienteBean.piscina}" id="campoPiscina" > 
-					<f:selectItem itemValue="" itemLabel=""/>
+					<f:selectItem itemValue="0" itemLabel=""/>
 					<f:selectItem  itemValue="S" itemLabel="Sim" />
 					<f:selectItem itemValue="N" itemLabel="Nao"/>
 				</h:selectOneMenu>
@@ -108,6 +108,35 @@
 				<h:commandButton action="#{buscarClienteBean.buscar}" value=""
 					styleClass="input_submit"/>
 			</span>
+
+		<h:dataTable 
+			styleClass="grid" headerClass="thead" rowClasses="cor1,cor2"
+			value="#{buscarClienteBean.clientes}" var="cliente" >
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Código" style="FONT-FAMILY: 'AlArabiya';"/>
+				</f:facet>
+				<h:outputText value="#{cliente.codigoPessoa}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nome" />
+				</f:facet>
+				<h:outputText value="#{cliente.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Email" />
+				</f:facet>
+				<h:outputText value="#{cliente.email}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Telefone" />
+				</f:facet>
+				<h:outputText value="#{cliente.telefone}" />
+			</h:column>
+		</h:dataTable>
 		</rich:panel>
 		</h:form>
 	</ui:define>
