@@ -174,9 +174,9 @@ public class CadastraClienteBean {
 		EnderecoDAO daoEndereco = new EnderecoDAO();
 		daoEndereco.adicionarEndereco(endereco);		
 		cliente.setEnderecoCodigo(endereco.getEnderecoCodigo());
+		
 		daoPessoa.adicionarPessoa(cliente);
-		daoCliente.adicionarCliente(cliente);		
-
+		daoCliente.adicionarCliente(cliente);	
 		return r;
 	}
 	

@@ -135,8 +135,7 @@ public class ConsultaClienteBean {
 		ClienteDAO dao = new ClienteDAO();
 		setCliente(dao.getClientePorId(idPessoa));
 		getEnderecoCliente();
-		
-		
+
 		
 		return "modifica";
 
